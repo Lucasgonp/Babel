@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Babel/Babel.xcodeproj">
+   </FileRef>
+   <Group
+      location = "group:Modules"
+      name = "Modules">
+      <Group
+         location = "group:Features"
+         name = "Features">
+         <Group
+            location = "group:Authenticator"
+            name = "Authenticator">
+            <FileRef
+               location = "group:Authenticator.xcodeproj">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
+         location = "group:Kits"
+         name = "Kits">
+         <Group
+            location = "group:CoreKit"
+            name = "CoreKit">
+            <FileRef
+               location = "group:CoreKit.xcodeproj">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:DesignKit"
+            name = "DesignKit">
+            <FileRef
+               location = "group:DesignKit.xcodeproj">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:NetworkKit"
+            name = "NetworkKit">
+            <FileRef
+               location = "group:NetworkKit.xcodeproj">
+            </FileRef>
+         </Group>
+      </Group>
+   </Group>
+   <Group
+      location = "group:Dependencies"
+      name = "Dependencies">
+      <Group
+         location = "group:Dependencies"
+         name = "Dependencies">
+         <FileRef
+            location = "group:Dependencies.xcodeproj">
+         </FileRef>
+         <Group
+            location = "group:Dependencies"
+            name = "Dependencies">
+            <FileRef
+               location = "group:DependencyResolving.swift">
+            </FileRef>
+            <Group
+               location = "group:DI"
+               name = "DI">
+               <FileRef
+                  location = "group:DependencyOrchestrating.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:InjectorFactory.swift">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:Dependencies.h">
+            </FileRef>
+            <Group
+               location = "group:Dependencies.docc"
+               name = "Dependencies.docc">
+               <Group
+                  location = "group:Resources"
+                  name = "Resources">
+               </Group>
+               <FileRef
+                  location = "group:Dependencies.md">
+               </FileRef>
+            </Group>
+         </Group>
+      </Group>
+   </Group>
+</Workspace>

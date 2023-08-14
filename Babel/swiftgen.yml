@@ -1,0 +1,13 @@
+input_dir: Babel
+output_dir: Babel/Generated/
+strings:
+  - inputs: Localizable/Localizable.strings
+    outputs:
+      templateName: structured-swift5
+      output: Strings.generated.swift
+      params:
+        publicAccess: false
+        enumName: "Strings"
+        bundle: BabelResources.resourcesBundle
+        ignoreTargetModule: true
+        module: Babel

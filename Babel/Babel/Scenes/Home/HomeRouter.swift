@@ -21,7 +21,6 @@ final class HomeRouter {
 extension HomeRouter: HomeRouting {
     func perform(action: HomeAction) {
         guard let navigation = viewController?.navigationController else {
-            print("erro ao recuperar navigation")
             return
         }
         

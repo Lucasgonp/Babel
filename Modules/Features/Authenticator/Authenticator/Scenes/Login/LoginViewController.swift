@@ -39,7 +39,7 @@ final class LoginViewController: ViewController<LoginInteracting, UIView> {
     
     private lazy var emailTextField: TextField = {
         let textField = TextField()
-        textField.render(.standard(placeholder: "Email", keyboardType: .emailAddress))
+        textField.render(.standard(placeholder: Localizable.Field.Email.placeholder, keyboardType: .emailAddress))
         textField.validations = [EmailValidation()]
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -47,7 +47,7 @@ final class LoginViewController: ViewController<LoginInteracting, UIView> {
     
     private lazy var passwordTextField: TextField = {
         let textField = TextField()
-        textField.render(.standard(placeholder: "Password", isSecureTextEntry: true))
+        textField.render(.standard(placeholder: Localizable.Field.Password.placeholder, isSecureTextEntry: true))
         textField.validations = [PasswordValidation()]
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -139,9 +139,9 @@ extension LoginViewController {
 
 private extension LoginViewController {
     func showError(_ errorMessage: String) {
-        let title = "Something went wrong!"
+        let title = Strings.Error.Generic.title
         let alert = UIAlertController(title: title, message: errorMessage, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Got it!", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: Strings.Error.Generic.button, style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }
 }

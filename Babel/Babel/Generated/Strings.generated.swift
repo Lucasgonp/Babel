@@ -13,6 +13,10 @@ internal enum Strings {
   internal enum Home {
     /// Title
     internal static let title = Strings.tr("Localizable", "Home.title", fallback: "Title")
+    internal enum Navigation {
+      /// Logout
+      internal static let logout = Strings.tr("Localizable", "Home.Navigation.logout", fallback: "Logout")
+    }
   }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length

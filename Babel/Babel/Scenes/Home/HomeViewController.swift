@@ -24,9 +24,10 @@ private extension HomeViewController.Layout {
 
 final class HomeViewController: ViewController<HomeInteracting, UIView> {
     fileprivate enum Layout { }
+    typealias Localizable = Strings.Home
     
     private lazy var logoutBarButton: UIBarButtonItem = {
-        let barButton = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutAction))
+        let barButton = UIBarButtonItem(title: Localizable.Navigation.logout, style: .plain, target: self, action: #selector(logoutAction))
         return barButton
     }()
     

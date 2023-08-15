@@ -13,6 +13,8 @@
 "Register.Button.login" = "Already have an account? **Login**";
 
 // Error
+"Error.Generic.title" = "Something went wrong";
+"Error.Generic.button" = "Ok";
 "Error.Field.emailInvalid" = "Email is invalid";
 "Error.Field.emailEmpty" = "Email is invalid";
 "Error.Field.passwordEmpty" = "Password is required";

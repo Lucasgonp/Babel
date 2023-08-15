@@ -1,5 +1,4 @@
-public struct LoginUserModel: Codable {
-    let username: String
+public struct LoginUserModel {
     let email: String
     let password: String
 }

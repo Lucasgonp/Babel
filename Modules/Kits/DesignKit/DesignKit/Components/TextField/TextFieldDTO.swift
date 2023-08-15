@@ -1,5 +1,4 @@
 import UIKit
-import CoreKit
 
 public struct TextFieldDTO {
     let placeholder: String

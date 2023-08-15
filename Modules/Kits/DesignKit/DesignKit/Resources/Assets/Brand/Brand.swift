@@ -1,7 +1,7 @@
 import UIKit
 
 public enum Brand: String, CaseIterable {
-    case brandLogo = "brand-logo"
+    case brandLogo = "babel-brand-logo"
 
     var renderingMode: UIImage.RenderingMode {
         .alwaysOriginal

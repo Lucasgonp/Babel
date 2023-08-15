@@ -20,6 +20,8 @@ extension AuthenticatorPresentation: AuthPresentationProtocol {
         let login = LoginFactory.make(completion: completion)
         let loginNav = UINavigationController(rootViewController: login)
         loginNav.modalPresentationStyle = .fullScreen
-        navigation.present(loginNav, animated: false)
+        DispatchQueue.main.async {
+            navigation.present(loginNav, animated: false)
+        }
     }
 }

@@ -1,5 +1,5 @@
 protocol LoginPresenting: AnyObject {
-    func displaySomething()
+    func displayViewState(_ state: LoginViewState)
     func didNextStep(action: LoginAction)
 }
 
@@ -14,8 +14,8 @@ final class LoginPresenter {
 
 // MARK: - LoginPresenting
 extension LoginPresenter: LoginPresenting {
-    func displaySomething() {
-        viewController?.displaySomething()
+    func displayViewState(_ state: LoginViewState) {
+        viewController?.displayViewState(state)
     }
     
     func didNextStep(action: LoginAction) {

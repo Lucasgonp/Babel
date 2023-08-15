@@ -1,7 +1,8 @@
 import UIKit
 
 enum LoginAction {
-    case finishLogin
+    case didLoginSuccess
+    case presentSignUp
 }
 
 protocol LoginRouting: AnyObject {
@@ -20,10 +21,14 @@ final class LoginRouter {
 // MARK: - LoginRouting
 extension LoginRouter: LoginRouting {
     func perform(action: LoginAction) {
-        if case .finishLogin = action {
+        switch action {
+        case .didLoginSuccess:
             viewController?.dismiss(animated: true, completion: { [weak self] in
                 self?.completion?()
             })
+        case .presentSignUp:
+            let register = RegisterFactory.make()
+            viewController?.navigationController?.pushViewController(register, animated: true)
         }
     }
 }

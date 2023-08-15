@@ -38,7 +38,7 @@ final class HomeViewController: ViewController<HomeInteracting, UIView> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        interactor.checkAuthentication()
+        interactor.checkAuthentication()
     }
 
     override func buildViewHierarchy() {

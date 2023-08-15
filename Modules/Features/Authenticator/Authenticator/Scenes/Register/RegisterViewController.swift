@@ -38,7 +38,7 @@ final class RegisterViewController: ViewController<RegisterInteracting, UIView> 
 
 // MARK: - RegisterDisplaying
 extension RegisterViewController: RegisterDisplaying {
-    func displaySomething() { 
+    func displaySomething() {
         // template
     }
 }

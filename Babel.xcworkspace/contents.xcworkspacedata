@@ -53,37 +53,6 @@
          <FileRef
             location = "group:Dependencies.xcodeproj">
          </FileRef>
-         <Group
-            location = "group:Dependencies"
-            name = "Dependencies">
-            <FileRef
-               location = "group:DependencyResolving.swift">
-            </FileRef>
-            <Group
-               location = "group:DI"
-               name = "DI">
-               <FileRef
-                  location = "group:DependencyOrchestrating.swift">
-               </FileRef>
-               <FileRef
-                  location = "group:InjectorFactory.swift">
-               </FileRef>
-            </Group>
-            <FileRef
-               location = "group:Dependencies.h">
-            </FileRef>
-            <Group
-               location = "group:Dependencies.docc"
-               name = "Dependencies.docc">
-               <Group
-                  location = "group:Resources"
-                  name = "Resources">
-               </Group>
-               <FileRef
-                  location = "group:Dependencies.md">
-               </FileRef>
-            </Group>
-         </Group>
       </Group>
    </Group>
 </Workspace>

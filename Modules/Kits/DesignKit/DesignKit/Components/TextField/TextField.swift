@@ -1,8 +1,11 @@
 import UIKit
-import CoreKit
 
 public class TextField: UIView {
     public var validations = [Validation]()
+    
+    public lazy var text: String = {
+        return textFieldInput.text ?? String()
+    }()
     
     private var _state: State = .none {
         didSet {

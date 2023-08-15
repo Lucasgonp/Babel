@@ -9,14 +9,14 @@ public enum ButtonTheme {
             return ButtonDTO(
                 title: title,
                 titleColor: .white,
-                backgroundColor: .primary800,
+                backgroundColor: .primary500,
                 cornerRadius: 10,
                 font: Font.md
             )
         case .secondary(let title):
             return ButtonDTO(
                 title: title,
-                titleColor: .primary800,
+                titleColor: .primary500,
                 backgroundColor: .clear,
                 cornerRadius: 10,
                 font: Font.md

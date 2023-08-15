@@ -2,7 +2,8 @@ import UIKit
 
 enum LoginFactory {
     static func make(completion: (() -> Void)?) -> UIViewController {
-        let service = LoginService()
+        let authManager = AuthManager.shared
+        let service = LoginService(authService: authManager)
         let router = LoginRouter(completion: completion)
         let presenter = LoginPresenter(router: router)
         let interactor = LoginInteractor(service: service, presenter: presenter)

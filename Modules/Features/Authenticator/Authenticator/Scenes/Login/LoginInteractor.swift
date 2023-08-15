@@ -1,5 +1,6 @@
 protocol LoginInteracting: AnyObject {
-    func loadSomething()
+    func loginWith(userModel: LoginUserModel)
+    func signUpAction()
 }
 
 final class LoginInteractor {
@@ -14,7 +15,33 @@ final class LoginInteractor {
 
 // MARK: - LoginInteracting
 extension LoginInteractor: LoginInteracting {
-    func loadSomething() {
-        presenter.displaySomething()
+    func loginWith(userModel: LoginUserModel) {
+        showLoading()
+        service.login(userRequest: userModel) { [weak self] result in
+            guard let self else {
+                return
+            }
+            self.hideLoading()
+            switch result {
+            case .success:
+                self.presenter.didNextStep(action: .didLoginSuccess)
+            case .failure(let error):
+                self.presenter.displayViewState(.error(message: error.localizedDescription))
+            }
+        }
+    }
+    
+    func signUpAction() {
+        presenter.didNextStep(action: .presentSignUp)
+    }
+}
+
+private extension LoginInteractor {
+    func showLoading() {
+        presenter.displayViewState(.loading(isLoading: true))
+    }
+    
+    func hideLoading() {
+        presenter.displayViewState(.loading(isLoading: false))
     }
 }

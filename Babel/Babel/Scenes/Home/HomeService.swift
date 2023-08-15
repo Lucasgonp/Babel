@@ -2,7 +2,7 @@ import NetworkKit
 import Authenticator
 
 protocol HomeServicing {
-    func checkAuthentication(completion: @escaping (AuthCredentials?) -> Void)
+    func checkAuthentication(completion: @escaping (AuthCheckCredentials?) -> Void)
     func logout(completion: @escaping (Error?) -> Void)
 }
 
@@ -20,7 +20,7 @@ final class HomeService {
 
 // MARK: - HomeServicing
 extension HomeService: HomeServicing {    
-    func checkAuthentication(completion: @escaping (AuthCredentials?) -> Void) {
+    func checkAuthentication(completion: @escaping (AuthCheckCredentials?) -> Void) {
         authManager.checkAuthentication(completion: completion)
     }
     

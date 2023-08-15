@@ -6,33 +6,33 @@ public extension Color {
 
     /// Returns a color object whose values are:
     ///
-    /// - Light Mode: `#FADBD8`.
-    /// - Dark Mode: `#FADBD8`.
-    static let primary050 = Color(#colorLiteral(red: 0.9803921569, green: 0.8588235294, blue: 0.8470588235, alpha: 1), #colorLiteral(red: 0.9803921569, green: 0.8588235294, blue: 0.8470588235, alpha: 1))
+    /// - Light Mode: `#AEE1EB`.
+    /// - Dark Mode: `#AEE1EB`.
+    static let primary050 = Color(#colorLiteral(red: 0.6823529412, green: 0.8823529412, blue: 0.9215686275, alpha: 1), #colorLiteral(red: 0.6823529412, green: 0.8823529412, blue: 0.9215686275, alpha: 1))
     
     /// Returns a color object whose values are:
     ///
     /// - Light Mode: `#EC7063`.
     /// - Dark Mode: `#EC7063`.
-    static let primary200 = Color(#colorLiteral(red: 0.9481405616, green: 0.5254969597, blue: 0.4623692036, alpha: 1), #colorLiteral(red: 0.9481405616, green: 0.5254969597, blue: 0.4623692036, alpha: 1))
+    static let primary200 = Color(#colorLiteral(red: 0.537254902, green: 0.7725490196, blue: 0.8901960784, alpha: 1), #colorLiteral(red: 0.537254902, green: 0.7725490196, blue: 0.8901960784, alpha: 1))
 
     /// Returns a color object whose values are:
     ///
-    /// - Light Mode: `#E74C3C`.
-    /// - Dark Mode: `#E74C3C`.
-    static let primary500 = Color(#colorLiteral(red: 0.9058823529, green: 0.2980392157, blue: 0.2352941176, alpha: 1), #colorLiteral(red: 0.9058823529, green: 0.2980392157, blue: 0.2352941176, alpha: 1))
+    /// - Light Mode: `#3BAAE3`.
+    /// - Dark Mode: `#3BAAE3`.
+    static let primary500 = Color(#colorLiteral(red: 0.231372549, green: 0.6666666667, blue: 0.8901960784, alpha: 1), #colorLiteral(red: 0.231372549, green: 0.6666666667, blue: 0.8901960784, alpha: 1))
 
     /// Returns a color object whose values are:
     ///
     /// - Light Mode: `#CB4335`.
     /// - Dark Mode: `#CB4335`.
-    static let primary800 = Color(#colorLiteral(red: 0.7960784314, green: 0.262745098, blue: 0.2078431373, alpha: 1), #colorLiteral(red: 0.7960784314, green: 0.262745098, blue: 0.2078431373, alpha: 1))
+    static let primary800 = Color(#colorLiteral(red: 0, green: 0.4509803922, blue: 0.6666666667, alpha: 1), #colorLiteral(red: 0, green: 0.4509803922, blue: 0.6666666667, alpha: 1))
 
     /// Returns a color object whose values are:
     ///
     /// - Light Mode: `#943126`.
     /// - Dark Mode: `#943126`.
-    static let primary900 = Color(#colorLiteral(red: 0.5803921569, green: 0.1921568627, blue: 0.1490196078, alpha: 1), #colorLiteral(red: 0.5803921569, green: 0.1921568627, blue: 0.1490196078, alpha: 1))
+    static let primary900 = Color(#colorLiteral(red: 0, green: 0.2588235294, blue: 0.3803921569, alpha: 1), #colorLiteral(red: 0, green: 0.2588235294, blue: 0.3803921569, alpha: 1))
 
     // MARK: - Color Base Secondary
 

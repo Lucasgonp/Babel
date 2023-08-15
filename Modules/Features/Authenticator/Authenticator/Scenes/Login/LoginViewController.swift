@@ -1,8 +1,13 @@
 import UIKit
 import DesignKit
 
+enum LoginViewState {
+    case loading(isLoading: Bool)
+    case error(message: String)
+}
+
 protocol LoginDisplaying: AnyObject {
-    func displaySomething()
+    func displayViewState(_ state: LoginViewState)
 }
 
 private extension LoginViewController.Layout {
@@ -59,7 +64,7 @@ final class LoginViewController: ViewController<LoginInteracting, UIView> {
     private lazy var secondaryButton: Button = {
         let button = Button()
         button.render(.secondary(title: Localizable.Button.register))
-        button.addTarget(self, action: #selector(primaryButtonAction), for: .touchUpInside)
+        button.addTarget(self, action: #selector(secondaryButtonAction), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -76,14 +81,14 @@ final class LoginViewController: ViewController<LoginInteracting, UIView> {
     
     override func setupConstraints() {
         NSLayoutConstraint.activate([
-            brandImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 200),
+            brandImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
             brandImageView.heightAnchor.constraint(equalToConstant: Layout.Size.imageHeight),
             brandImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             brandImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
         
         NSLayoutConstraint.activate([
-            inputsStackView.topAnchor.constraint(equalTo: brandImageView.bottomAnchor, constant: 16),
+            inputsStackView.topAnchor.constraint(equalTo: brandImageView.bottomAnchor, constant: 22),
             inputsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             inputsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
@@ -91,26 +96,52 @@ final class LoginViewController: ViewController<LoginInteracting, UIView> {
 
     override func configureViews() {
         view.backgroundColor = Color.backgroundLogo.uiColor
-        inputsStackView.setCustomSpacing(22, after: passwordTextField)
+        inputsStackView.setCustomSpacing(32, after: passwordTextField)
     }
 }
 
 // MARK: - LoginDisplaying
 extension LoginViewController: LoginDisplaying {
-    func displaySomething() { 
-        // template
+    func displayViewState(_ state: LoginViewState) {
+        switch state {
+        case .loading(let isLoading):
+            primaryButton.setLoading(isLoading)
+        case .error(let message):
+            showError(message)
+        }
     }
 }
 
 @objc private extension LoginViewController {
     func primaryButtonAction() {
-        let _ = emailTextField.validate()
-        let _ = passwordTextField.validate()
+        let isEmailValid = emailTextField.validate()
+        let isPasswordValid = passwordTextField.validate()
+        
+        guard isEmailValid, isPasswordValid else {
+            return
+        }
+        
+        let loginModel = LoginUserModel(email: emailTextField.text, password: passwordTextField.text)
+        interactor.loginWith(userModel: loginModel)
+    }
+    
+    func secondaryButtonAction() {
+        interactor.signUpAction()
     }
 }
 
 extension LoginViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+    }
+}
+
+
+private extension LoginViewController {
+    func showError(_ errorMessage: String) {
+        let title = "Something went wrong!"
+        let alert = UIAlertController(title: title, message: errorMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Got it!", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
 }

@@ -1,23 +1,7 @@
 import FirebaseAuth
 import FirebaseFirestore
 
-public protocol CheckAuthenticationProtocol {
-    func checkAuthentication(completion: @escaping (AuthCredentials?) -> Void)
-}
-
-public protocol RegisterProtocol {
-    func registerUser(with userRequest: RegisterUserModel, completion: @escaping (Bool, Error?) -> Void)
-}
-
-public protocol LoginProtocol {
-    func login(with userRequest: LoginUserModel, completion: @escaping (Error?) -> Void)
-}
-
-public protocol LogoutProtocol {
-    func logout(completion: @escaping (Error?) -> Void)
-}
-
-public struct AuthenticatorAdapter {
+public struct AuthenticatorAdapter {    
     private let auth: Auth
     private let database: Firestore
     
@@ -28,9 +12,11 @@ public struct AuthenticatorAdapter {
 }
 
 extension AuthenticatorAdapter: CheckAuthenticationProtocol {
-    public func checkAuthentication(completion: @escaping (AuthCredentials?) -> Void) {
+    /// Check Authentication
+    /// - Parameter completion: Return with optional Credentials model, if it's nil should handle as error
+    public func checkAuthentication(completion: @escaping (AuthCheckCredentials?) -> Void) {
         if let user = Auth.auth().currentUser {
-            let credentials = AuthCredentials(user: user)
+            let credentials = AuthCheckCredentials(user: user)
             completion(credentials)
         } else {
             completion(nil)
@@ -39,6 +25,10 @@ extension AuthenticatorAdapter: CheckAuthenticationProtocol {
 }
 
 extension AuthenticatorAdapter: RegisterProtocol {
+    /// Register new user
+    /// - Parameters:
+    ///   - userRequest: User params to request sign in
+    ///   - completion: Return (Bool) if succeeded, with optional Error
     public func registerUser(with userRequest: RegisterUserModel, completion: @escaping (Bool, Error?) -> Void) {
         auth.createUser(withEmail: userRequest.email, password: userRequest.password) { (result, error) in
             print("Register user result: \(String(describing: result))")
@@ -71,18 +61,20 @@ extension AuthenticatorAdapter: RegisterProtocol {
 }
 
 extension AuthenticatorAdapter: LoginProtocol {
-    public func login(with userRequest: LoginUserModel, completion: @escaping (Error?) -> Void) {
+    /// Log In
+    /// - Parameters:
+    ///   - userRequest: User params to request log in
+    ///   - completion: Return (AuthDataResult) if succeeded, with optional Error
+    public func login(with userRequest: LoginUserModel, completion: @escaping ((AuthDataResult?, (any Error)?) -> Void)) {
         auth.signIn(withEmail: userRequest.email, password: userRequest.password) { (result, error) in
-            if let error {
-                completion(error)
-            } else {
-                completion(nil)
-            }
+            completion(result, error)
         }
     }
 }
 
 extension AuthenticatorAdapter: LogoutProtocol {
+    /// Log out
+    /// - Parameter completion: Return with optional error model, if it's nil should handle as success
     public func logout(completion: @escaping (Error?) -> Void) {
         do {
             try auth.signOut()

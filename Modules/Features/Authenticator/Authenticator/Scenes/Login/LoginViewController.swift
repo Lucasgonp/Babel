@@ -135,13 +135,3 @@ extension LoginViewController {
         view.endEditing(true)
     }
 }
-
-
-private extension LoginViewController {
-    func showError(_ errorMessage: String) {
-        let title = Strings.Error.Generic.title
-        let alert = UIAlertController(title: title, message: errorMessage, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: Strings.Error.Generic.button, style: .cancel, handler: nil))
-        present(alert, animated: true, completion: nil)
-    }
-}

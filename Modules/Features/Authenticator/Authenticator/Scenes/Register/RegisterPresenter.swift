@@ -15,7 +15,7 @@ final class RegisterPresenter {
 // MARK: - RegisterPresenting
 extension RegisterPresenter: RegisterPresenting {
     func displaySomething() {
-        viewController?.displaySomething()
+        viewController?.displayViewState(.error(message: ""))
     }
     
     func didNextStep(action: RegisterAction) {

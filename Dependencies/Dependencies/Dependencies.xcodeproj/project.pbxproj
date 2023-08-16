@@ -13,6 +13,15 @@
 		768BB5252A81585400300ECA /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 768BB5242A81585400300ECA /* FirebaseFirestore */; };
 		76BE11AE2A7AFB47009E179D /* Dependencies.docc in Sources */ = {isa = PBXBuildFile; fileRef = 76BE11AD2A7AFB47009E179D /* Dependencies.docc */; };
 		76BE11BA2A7AFB47009E179D /* Dependencies.h in Headers */ = {isa = PBXBuildFile; fileRef = 76BE11AC2A7AFB47009E179D /* Dependencies.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		76EF5CE62A8C39C800D9AE8B /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 76EF5CE52A8C39C800D9AE8B /* FirebaseStorage */; };
+		76EF5CEB2A8C3A6500D9AE8B /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 76EF5CEA2A8C3A6500D9AE8B /* ProgressHUD */; };
+		76EF5CF02A8C444100D9AE8B /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 76EF5CEF2A8C444100D9AE8B /* FirebaseMessaging */; };
+		76EF5CF22A8C444D00D9AE8B /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 76EF5CF12A8C444D00D9AE8B /* FirebaseFirestoreSwift */; };
+		76EF5CF52A8C44A900D9AE8B /* Gallery in Frameworks */ = {isa = PBXBuildFile; productRef = 76EF5CF42A8C44A900D9AE8B /* Gallery */; };
+		76EF5CF82A8C44F900D9AE8B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 76EF5CF72A8C44F900D9AE8B /* RealmSwift */; };
+		76EF5CFB2A8C454E00D9AE8B /* SKPhotoBrowser in Frameworks */ = {isa = PBXBuildFile; productRef = 76EF5CFA2A8C454E00D9AE8B /* SKPhotoBrowser */; };
+		76EF5CFE2A8C459600D9AE8B /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 76EF5CFD2A8C459600D9AE8B /* MessageKit */; };
+		76EF5D012A8C45D600D9AE8B /* InputBarAccessoryView in Frameworks */ = {isa = PBXBuildFile; productRef = 76EF5D002A8C45D600D9AE8B /* InputBarAccessoryView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,10 +35,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76EF5CF02A8C444100D9AE8B /* FirebaseMessaging in Frameworks */,
+				76EF5D012A8C45D600D9AE8B /* InputBarAccessoryView in Frameworks */,
+				76EF5CEB2A8C3A6500D9AE8B /* ProgressHUD in Frameworks */,
 				768BB5232A81585400300ECA /* FirebaseCrashlytics in Frameworks */,
+				76EF5CFE2A8C459600D9AE8B /* MessageKit in Frameworks */,
+				76EF5CF52A8C44A900D9AE8B /* Gallery in Frameworks */,
 				768BB5252A81585400300ECA /* FirebaseFirestore in Frameworks */,
 				768BB51F2A81585400300ECA /* FirebaseAnalytics in Frameworks */,
+				76EF5CFB2A8C454E00D9AE8B /* SKPhotoBrowser in Frameworks */,
+				76EF5CE62A8C39C800D9AE8B /* FirebaseStorage in Frameworks */,
 				768BB5212A81585400300ECA /* FirebaseAuth in Frameworks */,
+				76EF5CF82A8C44F900D9AE8B /* RealmSwift in Frameworks */,
+				76EF5CF22A8C444D00D9AE8B /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +59,7 @@
 			children = (
 				76BE11AB2A7AFB47009E179D /* Dependencies */,
 				76BE11AA2A7AFB47009E179D /* Products */,
+				76EF5CE42A8C39C800D9AE8B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,6 +78,13 @@
 				76BE11AD2A7AFB47009E179D /* Dependencies.docc */,
 			);
 			path = Dependencies;
+			sourceTree = "<group>";
+		};
+		76EF5CE42A8C39C800D9AE8B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -94,6 +120,15 @@
 				768BB5202A81585400300ECA /* FirebaseAuth */,
 				768BB5222A81585400300ECA /* FirebaseCrashlytics */,
 				768BB5242A81585400300ECA /* FirebaseFirestore */,
+				76EF5CE52A8C39C800D9AE8B /* FirebaseStorage */,
+				76EF5CEA2A8C3A6500D9AE8B /* ProgressHUD */,
+				76EF5CEF2A8C444100D9AE8B /* FirebaseMessaging */,
+				76EF5CF12A8C444D00D9AE8B /* FirebaseFirestoreSwift */,
+				76EF5CF42A8C44A900D9AE8B /* Gallery */,
+				76EF5CF72A8C44F900D9AE8B /* RealmSwift */,
+				76EF5CFA2A8C454E00D9AE8B /* SKPhotoBrowser */,
+				76EF5CFD2A8C459600D9AE8B /* MessageKit */,
+				76EF5D002A8C45D600D9AE8B /* InputBarAccessoryView */,
 			);
 			productName = Dependencies;
 			productReference = 76BE11A92A7AFB47009E179D /* Dependencies.framework */;
@@ -125,6 +160,12 @@
 			mainGroup = 76BE119F2A7AFB47009E179D;
 			packageReferences = (
 				768BB51D2A81585400300ECA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				76EF5CE92A8C3A6500D9AE8B /* XCRemoteSwiftPackageReference "ProgressHUD" */,
+				76EF5CF32A8C44A900D9AE8B /* XCRemoteSwiftPackageReference "Gallery" */,
+				76EF5CF62A8C44F900D9AE8B /* XCRemoteSwiftPackageReference "realm-swift" */,
+				76EF5CF92A8C454E00D9AE8B /* XCRemoteSwiftPackageReference "SKPhotoBrowser" */,
+				76EF5CFC2A8C459600D9AE8B /* XCRemoteSwiftPackageReference "MessageKit" */,
+				76EF5CFF2A8C45D600D9AE8B /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */,
 			);
 			productRefGroup = 76BE11AA2A7AFB47009E179D /* Products */;
 			projectDirPath = "";
@@ -375,6 +416,54 @@
 				minimumVersion = 10.0.0;
 			};
 		};
+		76EF5CE92A8C3A6500D9AE8B /* XCRemoteSwiftPackageReference "ProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/relatedcode/ProgressHUD";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 13.0.0;
+			};
+		};
+		76EF5CF32A8C44A900D9AE8B /* XCRemoteSwiftPackageReference "Gallery" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hyperoslo/Gallery";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		76EF5CF62A8C44F900D9AE8B /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		76EF5CF92A8C454E00D9AE8B /* XCRemoteSwiftPackageReference "SKPhotoBrowser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/suzuki-0000/SKPhotoBrowser";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		76EF5CFC2A8C459600D9AE8B /* XCRemoteSwiftPackageReference "MessageKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MessageKit/MessageKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		76EF5CFF2A8C45D600D9AE8B /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nathantannar4/InputBarAccessoryView";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -397,6 +486,51 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 768BB51D2A81585400300ECA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		76EF5CE52A8C39C800D9AE8B /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 768BB51D2A81585400300ECA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		76EF5CEA2A8C3A6500D9AE8B /* ProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76EF5CE92A8C3A6500D9AE8B /* XCRemoteSwiftPackageReference "ProgressHUD" */;
+			productName = ProgressHUD;
+		};
+		76EF5CEF2A8C444100D9AE8B /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 768BB51D2A81585400300ECA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		76EF5CF12A8C444D00D9AE8B /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 768BB51D2A81585400300ECA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		76EF5CF42A8C44A900D9AE8B /* Gallery */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76EF5CF32A8C44A900D9AE8B /* XCRemoteSwiftPackageReference "Gallery" */;
+			productName = Gallery;
+		};
+		76EF5CF72A8C44F900D9AE8B /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76EF5CF62A8C44F900D9AE8B /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		76EF5CFA2A8C454E00D9AE8B /* SKPhotoBrowser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76EF5CF92A8C454E00D9AE8B /* XCRemoteSwiftPackageReference "SKPhotoBrowser" */;
+			productName = SKPhotoBrowser;
+		};
+		76EF5CFD2A8C459600D9AE8B /* MessageKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76EF5CFC2A8C459600D9AE8B /* XCRemoteSwiftPackageReference "MessageKit" */;
+			productName = MessageKit;
+		};
+		76EF5D002A8C45D600D9AE8B /* InputBarAccessoryView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76EF5CFF2A8C45D600D9AE8B /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */;
+			productName = InputBarAccessoryView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

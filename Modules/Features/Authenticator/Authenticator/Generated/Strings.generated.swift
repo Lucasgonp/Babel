@@ -23,12 +23,6 @@ internal enum Strings {
       /// Username is required
       internal static let usernameEmpty = Strings.tr("Localizable", "Error.Field.usernameEmpty", fallback: "Username is required")
     }
-    internal enum Generic {
-      /// Ok
-      internal static let button = Strings.tr("Localizable", "Error.Generic.button", fallback: "Ok")
-      /// Something went wrong
-      internal static let title = Strings.tr("Localizable", "Error.Generic.title", fallback: "Something went wrong")
-    }
   }
   internal enum Login {
     internal enum Button {

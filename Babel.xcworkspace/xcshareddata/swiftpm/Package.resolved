@@ -28,6 +28,15 @@
       }
     },
     {
+      "identity" : "gallery",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hyperoslo/Gallery",
+      "state" : {
+        "branch" : "master",
+        "revision" : "ac4ab785951c82d9a4ab5a9f96c4649c4fc02e0b"
+      }
+    },
+    {
       "identity" : "googleappmeasurement",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleAppMeasurement.git",
@@ -73,12 +82,30 @@
       }
     },
     {
+      "identity" : "inputbaraccessoryview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/nathantannar4/InputBarAccessoryView",
+      "state" : {
+        "branch" : "master",
+        "revision" : "152b4fa45d47445b6d1af5f8de91623222347bd7"
+      }
+    },
+    {
       "identity" : "leveldb",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/leveldb.git",
       "state" : {
         "revision" : "0706abcc6b0bd9cedfbb015ba840e4a780b5159b",
         "version" : "1.22.2"
+      }
+    },
+    {
+      "identity" : "messagekit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/MessageKit/MessageKit",
+      "state" : {
+        "branch" : "main",
+        "revision" : "6f8b42754302e43f691ef7b252f8932448294aa5"
       }
     },
     {
@@ -91,12 +118,48 @@
       }
     },
     {
+      "identity" : "progresshud",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/relatedcode/ProgressHUD",
+      "state" : {
+        "revision" : "01b56b31d61512d900b58cb7ac1479509bd7170f",
+        "version" : "13.7.2"
+      }
+    },
+    {
       "identity" : "promises",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/promises.git",
       "state" : {
         "revision" : "e70e889c0196c76d22759eb50d6a0270ca9f1d9e",
         "version" : "2.3.1"
+      }
+    },
+    {
+      "identity" : "realm-core",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-core.git",
+      "state" : {
+        "revision" : "c04f5e401a1ec682e6b08b1ee157e19a0f834a5f",
+        "version" : "13.17.1"
+      }
+    },
+    {
+      "identity" : "realm-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-swift",
+      "state" : {
+        "branch" : "master",
+        "revision" : "752f8ae418f97c7e90c2c83ebeeb534c0357df4d"
+      }
+    },
+    {
+      "identity" : "skphotobrowser",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/suzuki-0000/SKPhotoBrowser",
+      "state" : {
+        "branch" : "master",
+        "revision" : "fd0e07de938e1bb961c55c7c4c6d2715d4c67d0e"
       }
     },
     {

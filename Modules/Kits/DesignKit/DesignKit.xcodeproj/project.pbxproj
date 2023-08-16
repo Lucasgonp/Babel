@@ -32,6 +32,9 @@
 		76CAA0E82A854C4A00D742E9 /* TextFieldInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA0E72A854C4A00D742E9 /* TextFieldInput.swift */; };
 		76CAA1262A85928800D742E9 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA1252A85928800D742E9 /* Validation.swift */; };
 		76CAA12B2A86D3B100D742E9 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA12A2A86D3B100D742E9 /* String+Extensions.swift */; };
+		76EF5CDE2A8C362700D9AE8B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 76EF5CDD2A8C362700D9AE8B /* Localizable.strings */; };
+		76EF5CE02A8C368800D9AE8B /* DesignKitResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5CDF2A8C368800D9AE8B /* DesignKitResources.swift */; };
+		76EF5CE32A8C37EB00D9AE8B /* Strings.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5CE22A8C37EB00D9AE8B /* Strings.generated.swift */; };
 		76F2AF6C2A81AE4500FE5966 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F2AF6B2A81AE4500FE5966 /* SpinnerViewController.swift */; };
 		76F778B02A81C89B00443E7B /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F778AF2A81C89B00443E7B /* UIApplication+Extensions.swift */; };
 		76F778C12A828FA700443E7B /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F778C02A828FA700443E7B /* TextField.swift */; };
@@ -105,6 +108,9 @@
 		76CAA0E72A854C4A00D742E9 /* TextFieldInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldInput.swift; sourceTree = "<group>"; };
 		76CAA1252A85928800D742E9 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		76CAA12A2A86D3B100D742E9 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		76EF5CDD2A8C362700D9AE8B /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		76EF5CDF2A8C368800D9AE8B /* DesignKitResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignKitResources.swift; sourceTree = "<group>"; };
+		76EF5CE22A8C37EB00D9AE8B /* Strings.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.generated.swift; sourceTree = "<group>"; };
 		76F2AF6B2A81AE4500FE5966 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		76F778AF2A81C89B00443E7B /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		76F778C02A828FA700443E7B /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
@@ -206,6 +212,8 @@
 		7695454B2A76EA7800BF114D /* DesignKit */ = {
 			isa = PBXGroup;
 			children = (
+				76EF5CDC2A8C361A00D9AE8B /* Generated */,
+				76EF5CD82A8C361400D9AE8B /* Localizable */,
 				76F778D52A82E18A00443E7B /* Utils */,
 				76F778D02A82D00500443E7B /* Resources */,
 				76F778C72A82B32700443E7B /* Tokens */,
@@ -214,6 +222,7 @@
 				769545872A76EB1600BF114D /* Components */,
 				7695454C2A76EA7800BF114D /* DesignKit.h */,
 				7695454D2A76EA7800BF114D /* DesignKit.docc */,
+				76EF5CDF2A8C368800D9AE8B /* DesignKitResources.swift */,
 			);
 			path = DesignKit;
 			sourceTree = "<group>";
@@ -269,6 +278,22 @@
 				7699BC6B2A7A01F000DC730B /* ViewController.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		76EF5CD82A8C361400D9AE8B /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				76EF5CDD2A8C362700D9AE8B /* Localizable.strings */,
+			);
+			path = Localizable;
+			sourceTree = "<group>";
+		};
+		76EF5CDC2A8C361A00D9AE8B /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				76EF5CE22A8C37EB00D9AE8B /* Strings.generated.swift */,
+			);
+			path = Generated;
 			sourceTree = "<group>";
 		};
 		76F778C22A82911700443E7B /* TextField */ = {
@@ -368,6 +393,7 @@
 				769545452A76EA7800BF114D /* Sources */,
 				769545462A76EA7800BF114D /* Frameworks */,
 				769545472A76EA7800BF114D /* Resources */,
+				76EF5CE12A8C36AA00D9AE8B /* Swiftgen Run Script */,
 			);
 			buildRules = (
 			);
@@ -469,6 +495,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				766D523B2A84085100150284 /* Icon.xcassets in Resources */,
+				76EF5CDE2A8C362700D9AE8B /* Localizable.strings in Resources */,
 				76F778D22A82D04000443E7B /* Brand.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -482,6 +509,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		76EF5CE12A8C36AA00D9AE8B /* Swiftgen Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swiftgen Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftgen >/dev/null; then\n  swiftgen\nelse\n  echo \"warning: SwiftGen not installed, download it from https://github.com/SwiftGen/SwiftGen\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		769545452A76EA7800BF114D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -490,6 +538,7 @@
 				766D523F2A8409B700150284 /* UIImageView+Extensions.swift in Sources */,
 				76F778B02A81C89B00443E7B /* UIApplication+Extensions.swift in Sources */,
 				76F778D42A82DF2800443E7B /* Brand.swift in Sources */,
+				76EF5CE32A8C37EB00D9AE8B /* Strings.generated.swift in Sources */,
 				766D523D2A84085700150284 /* Icon.swift in Sources */,
 				76CAA12B2A86D3B100D742E9 /* String+Extensions.swift in Sources */,
 				76F2AF6C2A81AE4500FE5966 /* SpinnerViewController.swift in Sources */,
@@ -503,6 +552,7 @@
 				76F778C62A82B23000443E7B /* Text.swift in Sources */,
 				76F778CC2A82B37200443E7B /* Color.swift in Sources */,
 				7699BC6C2A7A01F000DC730B /* ViewController.swift in Sources */,
+				76EF5CE02A8C368800D9AE8B /* DesignKitResources.swift in Sources */,
 				76CAA1262A85928800D742E9 /* Validation.swift in Sources */,
 				76F778C12A828FA700443E7B /* TextField.swift in Sources */,
 				7695458A2A76EB8000BF114D /* DesignView.swift in Sources */,

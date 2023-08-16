@@ -21,7 +21,7 @@ final class RegisterViewController: ViewController<RegisterInteracting, UIView> 
     typealias Localizable = Strings.Register
 
     private lazy var brandImageView: ImageView = {
-        let image = Brand.brandLogo.image
+        let image = Asset.babelBrandLogo.image
         let imageView = ImageView()
         imageView.image = image
         imageView.contentMode = .scaleAspectFit

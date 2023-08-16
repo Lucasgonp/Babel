@@ -21,7 +21,7 @@ final class LoginViewController: ViewController<LoginInteracting, UIView> {
     typealias Localizable = Strings.Login
 
     private lazy var brandImageView: ImageView = {
-        let image = Brand.brandLogo.image
+        let image = Asset.babelBrandLogo.image
         let imageView = ImageView()
         imageView.image = image
         imageView.contentMode = .scaleAspectFit

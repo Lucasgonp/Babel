@@ -4,10 +4,17 @@ strings:
   - inputs: Localizable/Localizable.strings
     outputs:
       templateName: structured-swift5
-      output: Strings.generated.swift
+      output: Strings/Strings.generated.swift
       params:
         publicAccess: false
         enumName: "Strings"
         bundle: DesignKitResources.resourcesBundle
         ignoreTargetModule: true
         module: DesignKit
+xcassets:
+- inputs: Resources/ImageAssets.xcassets
+  outputs:
+    templateName: swift5
+    output: Assets/Image.swift
+    params:
+        publicAccess: true

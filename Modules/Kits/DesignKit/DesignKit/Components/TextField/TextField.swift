@@ -21,8 +21,8 @@ public class TextField: UIView {
         return view
     }()
     
-    private lazy var hintLabel: Text = {
-        let label = Text()
+    private lazy var hintLabel: TextLabel = {
+        let label = TextLabel()
         label.font = Font.sm.uiFont
         label.textColor = Color.grayscale600.uiColor
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -71,14 +71,14 @@ public class TextField: UIView {
     }()
     
     private lazy var feedbackIcon: UIImageView = {
-        let imageView = ImageView.icon(.feedbackDanger)
+        let imageView = ImageView()
         imageView.isHidden = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
-    private lazy var feedbackText: Text = {
-        let text = Text()
+    private lazy var feedbackText: TextLabel = {
+        let text = TextLabel()
         text.font = Font.xs.uiFont
         text.textColor = Color.warning500.uiColor
         text.translatesAutoresizingMaskIntoConstraints = false

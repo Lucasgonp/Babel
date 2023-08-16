@@ -1,8 +1,8 @@
 import UIKit
 
 extension UIImageView {
-    public static func icon(_ icon: Icon, size: Icon.Size = .medium, color: Color = Color.secondary800) -> UIImageView {
-        set(imageView: .init(image: icon.image), size: size.rawValue, color: color, withRenderingMode: icon.renderingMode)
+    public static func icon(_ icon: UIImage, size: Icon.Size = .medium, color: Color = Color.secondary800) -> UIImageView {
+        set(imageView: .init(image: icon), size: size.rawValue, color: color, withRenderingMode: icon.renderingMode)
     }
     
     private static func set(imageView: UIImageView, size: CGSize, color: Color, withRenderingMode: UIImage.RenderingMode = .alwaysTemplate) -> UIImageView {

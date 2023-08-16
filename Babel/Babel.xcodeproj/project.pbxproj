@@ -158,7 +158,6 @@
 		76CAA1372A8AA1F400D742E9 /* Babel */ = {
 			isa = PBXGroup;
 			children = (
-				76CAA18F2A8AAC0100D742E9 /* GoogleService-Info.plist */,
 				76CAA17F2A8AA9ED00D742E9 /* Scenes */,
 				76CAA17A2A8AA99400D742E9 /* Managers */,
 				76CAA1772A8AA93800D742E9 /* Localizable */,
@@ -169,6 +168,7 @@
 				76CAA1412A8AA1F600D742E9 /* Assets.xcassets */,
 				76CAA1432A8AA1F600D742E9 /* LaunchScreen.storyboard */,
 				76CAA1462A8AA1F600D742E9 /* Info.plist */,
+				76CAA18F2A8AAC0100D742E9 /* GoogleService-Info.plist */,
 			);
 			path = Babel;
 			sourceTree = "<group>";

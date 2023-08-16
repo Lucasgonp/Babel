@@ -70,8 +70,9 @@ public class TextField: UIView {
         return stack
     }()
     
-    private lazy var feedbackIcon: UIImageView = {
-        let imageView = ImageView()
+    private lazy var feedbackIcon: ImageView = {
+        let icon = Icon.feedbackDanger.image
+        let imageView = ImageView(icon: icon)
         imageView.isHidden = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView

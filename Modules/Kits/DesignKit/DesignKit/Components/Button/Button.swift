@@ -3,10 +3,10 @@ import UIKit
 public class Button: UIButton {
     private struct ButtonState {
         var state: UIControl.State
-        var title: String?
+        var title: NSAttributedString?
     }
 
-    private lazy var buttonStates: [ButtonState] = []
+    private lazy var buttonState: ButtonState = .init(state: .normal)
     
     private lazy var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
@@ -39,22 +39,16 @@ public class Button: UIButton {
 
     public func showLoading() {
         activityIndicator.startAnimating()
-        var buttonStates: [ButtonState] = []
-        for state in [UIControl.State.disabled] {
-            let buttonState = ButtonState(state: state, title: title(for: state))
-            buttonStates.append(buttonState)
-            setAttributedTitle(nil, for: .normal)
-            setImage(UIImage(), for: state)
-        }
-        self.buttonStates = buttonStates
+        self.buttonState = .init(state: .disabled, title: currentAttributedTitle)
+        
+        setAttributedTitle(nil, for: .normal)
         isEnabled = false
     }
 
     public func hideLoading() {
         activityIndicator.stopAnimating()
-        for buttonState in buttonStates {
-            makeAttributes(text: buttonState.title ?? String(), for: buttonState.state)
-        }
+        
+        setAttributedTitle(buttonState.title, for: .normal)
         isEnabled = true
     }
     
@@ -93,6 +87,7 @@ private extension Button {
             string: boldText,
             attributes: [.font: Font.md.make(isBold: true)]
         ))
+        
         
         setAttributedTitle(attributedTitle, for: state)
     }

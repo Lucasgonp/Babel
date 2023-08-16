@@ -20,9 +20,9 @@ final class LoginViewController: ViewController<LoginInteracting, UIView> {
     fileprivate enum Layout { }
     typealias Localizable = Strings.Login
 
-    private lazy var brandImageView: ImageView = {
-        let image = Asset.babelBrandLogo.image
-        let imageView = ImageView()
+    private lazy var brandImageView: UIImageView = {
+        let image = Image.babelBrandLogo.image
+        let imageView = ImageView(image: image)
         imageView.image = image
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false

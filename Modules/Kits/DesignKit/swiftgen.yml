@@ -12,9 +12,21 @@ strings:
         ignoreTargetModule: true
         module: DesignKit
 xcassets:
-- inputs: Resources/ImageAssets.xcassets
+- inputs: Resources/Assets/IconAssets.xcassets
+  outputs:
+    templateName: swift5
+    output: Assets/Icon.swift
+    params:
+        publicAccess: true
+        enumName: Icon
+        imageTypeName: IconAsset
+        imageAliasName: AssetIconTypeAlias
+- inputs: Resources/Assets/ImageAssets.xcassets
   outputs:
     templateName: swift5
     output: Assets/Image.swift
     params:
         publicAccess: true
+        enumName: Image
+        imageTypeName: ImageAsset
+        imageAliasName: AssetImageTypeAlias

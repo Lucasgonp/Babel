@@ -4,6 +4,7 @@ public class Button: UIButton {
     private struct ButtonState {
         var state: UIControl.State
         var title: NSAttributedString?
+        var backgroundColor: UIColor?
     }
 
     private lazy var buttonState: ButtonState = .init(state: .normal)
@@ -11,7 +12,7 @@ public class Button: UIButton {
     private lazy var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.color = Color.black.uiColor
+        activityIndicator.color = Color.grayscale500.uiColor
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         return activityIndicator
     }()
@@ -34,13 +35,20 @@ public class Button: UIButton {
         backgroundColor = dto.backgroundColor.uiColor
         layer.cornerRadius = dto.cornerRadius
         
-        setupMinimumHeight()
+        if let minimumHeight = dto.minimumHeight {
+            setMinimumHeight(minimumHeight)
+        }
     }
 
     public func showLoading() {
         activityIndicator.startAnimating()
-        self.buttonState = .init(state: .disabled, title: currentAttributedTitle)
+        buttonState = .init(
+            state: .disabled,
+            title: currentAttributedTitle,
+            backgroundColor: backgroundColor
+        )
         
+        backgroundColor = Color.clear.uiColor
         setAttributedTitle(nil, for: .normal)
         isEnabled = false
     }
@@ -48,6 +56,7 @@ public class Button: UIButton {
     public func hideLoading() {
         activityIndicator.stopAnimating()
         
+        backgroundColor = buttonState.backgroundColor
         setAttributedTitle(buttonState.title, for: .normal)
         isEnabled = true
     }
@@ -92,9 +101,9 @@ private extension Button {
         setAttributedTitle(attributedTitle, for: state)
     }
     
-    func setupMinimumHeight() {
+    func setMinimumHeight(_ height: CGFloat) {
         NSLayoutConstraint.activate([
-            self.heightAnchor.constraint(greaterThanOrEqualToConstant: 42)
+            self.heightAnchor.constraint(greaterThanOrEqualToConstant: height)
         ])
     }
 }

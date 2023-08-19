@@ -19,8 +19,8 @@ extension HomeInteractor: HomeInteracting {
         showLoading()
         service.checkAuthentication { [weak self] authCredentials in
             self?.hideLoading()
-            if let authCredentials {
-                self?.presenter.displayViewState(.success(message: authCredentials.user.displayName ?? String()))
+            if let authCredentials, authCredentials.firebaseUser.isEmailVerified {
+                self?.presenter.displayViewState(.success(message: authCredentials.firebaseUser.displayName ?? String()))
             } else {
                 self?.presenter.didNextStep(action: .presentLogin)
             }

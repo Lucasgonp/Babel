@@ -187,6 +187,8 @@ extension TextField: ViewConfiguration {
 @objc private extension TextField {
     func textFieldDidChange() {
         _state = .none
+        text = textFieldInput.text ?? String()
+        
         if let text = textFieldInput.text, !text.isEmpty {
             hintLabel.isHidden = false
         } else {

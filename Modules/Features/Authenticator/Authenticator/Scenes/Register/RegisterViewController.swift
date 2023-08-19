@@ -2,6 +2,7 @@ import UIKit
 import DesignKit
 
 enum RegisterViewState {
+    case success
     case loading(isLoading: Bool)
     case error(message: String)
 }
@@ -30,25 +31,33 @@ final class RegisterViewController: ViewController<RegisterInteracting, UIView> 
     }()
     
     private lazy var inputsStackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, primaryButton, secondaryButton])
+        let stack = UIStackView(arrangedSubviews: [emailTextField, fullNameTextField, usernameTextField, passwordTextField, primaryButton, secondaryButton])
         stack.axis = .vertical
         stack.spacing = 16
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
     
-    private lazy var nameTextField: TextField = {
+    private lazy var emailTextField: TextField = {
         let textField = TextField()
-        textField.render(.standard(placeholder: Localizable.Field.FullName.placeholder, keyboardType: .namePhonePad))
+        textField.render(.standard(placeholder: Localizable.Field.Email.placeholder, keyboardType: .emailAddress))
         textField.validations = [EmailValidation()]
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
-    private lazy var emailTextField: TextField = {
+    private lazy var fullNameTextField: TextField = {
         let textField = TextField()
-        textField.render(.standard(placeholder: Localizable.Field.Email.placeholder, keyboardType: .emailAddress))
-        textField.validations = [EmailValidation()]
+        textField.render(.standard(placeholder: Localizable.Field.FullName.placeholder, keyboardType: .namePhonePad))
+        textField.validations = [FullNameValidation()]
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    private lazy var usernameTextField: TextField = {
+        let textField = TextField()
+        textField.render(.standard(placeholder: Localizable.Field.Username.placeholder, keyboardType: .namePhonePad))
+        textField.validations = [UsernameValidation()]
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -112,30 +121,41 @@ final class RegisterViewController: ViewController<RegisterInteracting, UIView> 
 extension RegisterViewController: RegisterDisplaying {
     func displayViewState(_ state: RegisterViewState) {
         switch state {
+        case .success:
+            interactor.emailSentToNewUser()
         case .loading(let isLoading):
             primaryButton.setLoading(isLoading)
         case .error(let message):
-            showError(message)
+            showErrorAlert(message)
         }
     }
 }
 
 @objc private extension RegisterViewController {
     func primaryButtonAction() {
-        let isFullNameValid = nameTextField.validate()
+        let isFullNameValid = fullNameTextField.validate()
+        let isUsernameValid = usernameTextField.validate()
         let isEmailValid = emailTextField.validate()
         let isPasswordValid = passwordTextField.validate()
         
-        guard isEmailValid, isPasswordValid else {
+        guard isFullNameValid,
+              isUsernameValid,
+              isEmailValid,
+              isPasswordValid else {
             return
         }
         
-        let loginModel = LoginUserModel(email: emailTextField.text, password: passwordTextField.text)
-//        interactor.loginWith(userModel: loginModel)
+        let registerModel = RegisterUserRequestModel(
+            fullName: fullNameTextField.text,
+            email: emailTextField.text,
+            username: usernameTextField.text,
+            password: passwordTextField.text
+        )
+        interactor.registerUser(registerModel)
     }
     
     func secondaryButtonAction() {
-//        interactor.signUpAction()
+        interactor.backToLoginView()
     }
 }
 

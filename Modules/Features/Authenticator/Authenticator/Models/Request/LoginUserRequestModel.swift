@@ -1,4 +1,4 @@
-public struct LoginUserModel {
+public struct LoginUserRequestModel {
     let email: String
     let password: String
 }

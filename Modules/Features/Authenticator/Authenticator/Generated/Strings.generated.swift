@@ -10,6 +10,14 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum Strings {
+  internal enum Alert {
+    /// Got it
+    internal static let gotIt = Strings.tr("Localizable", "Alert.gotIt", fallback: "Got it")
+    /// Later
+    internal static let later = Strings.tr("Localizable", "Alert.later", fallback: "Later")
+    /// Close
+    internal static let ok = Strings.tr("Localizable", "Alert.ok", fallback: "Close")
+  }
   internal enum Error {
     internal enum Field {
       /// Email is invalid
@@ -25,6 +33,24 @@ internal enum Strings {
     }
   }
   internal enum Login {
+    internal enum Alert {
+      internal enum EmailVerification {
+        internal enum Resend {
+          /// Check the email we already sent to you, if you need to resend the validation just click Resend validation
+          internal static let message = Strings.tr("Localizable", "Login.Alert.EmailVerification.Resend.message", fallback: "Check the email we already sent to you, if you need to resend the validation just click Resend validation")
+          /// Resend
+          internal static let resendButton = Strings.tr("Localizable", "Login.Alert.EmailVerification.Resend.resendButton", fallback: "Resend")
+          /// Validate you email first
+          internal static let title = Strings.tr("Localizable", "Login.Alert.EmailVerification.Resend.title", fallback: "Validate you email first")
+        }
+        internal enum Resent {
+          /// We just resent a varification to your email, please validate before login
+          internal static let message = Strings.tr("Localizable", "Login.Alert.EmailVerification.Resent.message", fallback: "We just resent a varification to your email, please validate before login")
+          /// Email sent
+          internal static let title = Strings.tr("Localizable", "Login.Alert.EmailVerification.Resent.title", fallback: "Email sent")
+        }
+      }
+    }
     internal enum Button {
       /// Login
       internal static let login = Strings.tr("Localizable", "Login.Button.login", fallback: "Login")
@@ -43,6 +69,16 @@ internal enum Strings {
     }
   }
   internal enum Register {
+    internal enum Alert {
+      internal enum EmailVerification {
+        internal enum Verify {
+          /// Please check your email inbox we just sent you, you need to validate before login
+          internal static let message = Strings.tr("Localizable", "Register.Alert.EmailVerification.Verify.message", fallback: "Please check your email inbox we just sent you, you need to validate before login")
+          /// Email verification sent
+          internal static let title = Strings.tr("Localizable", "Register.Alert.EmailVerification.Verify.title", fallback: "Email verification sent")
+        }
+      }
+    }
     internal enum Button {
       /// Already have an account? **Login**
       internal static let login = Strings.tr("Localizable", "Register.Button.login", fallback: "Already have an account? **Login**")
@@ -66,6 +102,22 @@ internal enum Strings {
         /// Username
         internal static let placeholder = Strings.tr("Localizable", "Register.Field.Username.placeholder", fallback: "Username")
       }
+    }
+  }
+  internal enum ResetPassword {
+    internal enum SendReset {
+      /// Please type your EMAIL bellow so we can send you an email with instructions to reset the password
+      internal static let message = Strings.tr("Localizable", "ResetPassword.SendReset.message", fallback: "Please type your EMAIL bellow so we can send you an email with instructions to reset the password")
+      /// Reset password
+      internal static let resetButton = Strings.tr("Localizable", "ResetPassword.SendReset.resetButton", fallback: "Reset password")
+      /// Reset password
+      internal static let title = Strings.tr("Localizable", "ResetPassword.SendReset.title", fallback: "Reset password")
+    }
+    internal enum SentReset {
+      /// Please follow the instructions we sent you by email so you you can reset your password
+      internal static let message = Strings.tr("Localizable", "ResetPassword.SentReset.message", fallback: "Please follow the instructions we sent you by email so you you can reset your password")
+      /// Reset password
+      internal static let title = Strings.tr("Localizable", "ResetPassword.SentReset.title", fallback: "Reset password")
     }
   }
 }

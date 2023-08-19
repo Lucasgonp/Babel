@@ -1,4 +1,5 @@
 import UIKit
+import ProgressHUD
 
 public protocol ViewConfiguration: AnyObject {
     func buildViewHierarchy()
@@ -79,10 +80,43 @@ extension ViewController {
         spinnerView.removeFromSuperview()
     }
     
-    public func showError(_ errorMessage: String) {
+    public func showHudLoading() {
+        ProgressHUD.show()
+    }
+    
+    public func hideHudLoading() {
+        ProgressHUD.remove()
+    }
+    
+    public func showErrorAlert(_ errorMessage: String) {
         let title = Strings.Error.Generic.title
         let alert = UIAlertController(title: title, message: errorMessage, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: Strings.Error.Generic.button, style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    public func showMessageAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Strings.Error.Generic.button, style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    public func showMessageAlert(viewModel: AlertViewModel) {
+        let alert = UIAlertController(title: viewModel.title, message: viewModel.message, preferredStyle: .alert)
+        if let placeholder = viewModel.textFieldPlaceholder {
+            alert.addTextField() { newTextField in
+                newTextField.placeholder = placeholder
+            }
+        }
+        let firstButton = UIAlertAction(title: viewModel.firstButtonTitle, style: .cancel, handler: {_ in
+            viewModel.firstButtonAction?(alert.textFields?.first?.text)
+        })
+        let secondButton = UIAlertAction(title: viewModel.secondButtonTitle, style: .default, handler: { action in
+            viewModel.secondButtonAction?(alert.textFields?.first?.text)
+        })
+        
+        alert.addAction(firstButton)
+        alert.addAction(secondButton)
         present(alert, animated: true, completion: nil)
     }
 }

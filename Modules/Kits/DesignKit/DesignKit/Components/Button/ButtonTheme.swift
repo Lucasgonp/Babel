@@ -1,25 +1,37 @@
 public enum ButtonTheme {
-    case primary(title: String)
-    case secondary(title: String)
+    case primary(title: String, titleColor: Color = .white, minimumHeight: CGFloat = 42)
+    case secondary(title: String, titleColor: Color = .primary500, minimumHeight: CGFloat = 42)
+    case tertiary(title: String, titleColor: Color = .grayscale400)
     case custom(dto: ButtonDTO)
     
     var dto: ButtonDTO {
         switch self {
-        case .primary(let title):
+        case let .primary(title, titleColor, minimumHeight):
             return ButtonDTO(
                 title: title,
-                titleColor: .white,
+                titleColor: titleColor,
                 backgroundColor: .primary500,
                 cornerRadius: 10,
-                font: Font.md
+                font: Font.md,
+                minimumHeight: minimumHeight
             )
-        case .secondary(let title):
+        case let .secondary(title, titleColor, minimumHeight):
             return ButtonDTO(
                 title: title,
-                titleColor: .primary500,
+                titleColor: titleColor,
                 backgroundColor: .clear,
                 cornerRadius: 10,
-                font: Font.md
+                font: Font.md,
+                minimumHeight: minimumHeight
+            )
+        case let .tertiary(title, titleColor):
+            return ButtonDTO(
+                title: title,
+                titleColor: titleColor,
+                backgroundColor: .clear,
+                cornerRadius: 10,
+                font: Font.md,
+                minimumHeight: nil
             )
         case .custom(let dto):
             return dto

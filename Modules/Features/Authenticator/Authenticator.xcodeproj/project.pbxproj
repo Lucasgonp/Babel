@@ -23,23 +23,35 @@
 		768BB5322A8161E900300ECA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768BB52B2A8161E800300ECA /* LoginViewController.swift */; };
 		768BB5332A8161E900300ECA /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768BB52C2A8161E800300ECA /* LoginInteractor.swift */; };
 		768BB5352A8161E900300ECA /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768BB52E2A8161E800300ECA /* LoginService.swift */; };
-		768BB53E2A8162AC00300ECA /* RegisterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768BB5372A8162AC00300ECA /* RegisterCoordinator.swift */; };
+		768BB53E2A8162AC00300ECA /* RegisterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768BB5372A8162AC00300ECA /* RegisterRouter.swift */; };
 		768BB53F2A8162AC00300ECA /* RegisterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768BB5382A8162AC00300ECA /* RegisterFactory.swift */; };
 		768BB5402A8162AC00300ECA /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768BB5392A8162AC00300ECA /* RegisterPresenter.swift */; };
 		768BB5412A8162AC00300ECA /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768BB53A2A8162AC00300ECA /* RegisterViewController.swift */; };
 		768BB5422A8162AC00300ECA /* RegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768BB53B2A8162AC00300ECA /* RegisterInteractor.swift */; };
 		768BB5442A8162AC00300ECA /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768BB53D2A8162AC00300ECA /* RegisterService.swift */; };
 		768BB5462A81643100300ECA /* AuthenticatorPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768BB5452A81643100300ECA /* AuthenticatorPresentation.swift */; };
-		7699BC772A7AECA100DC730B /* RegisterUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7699BC762A7AECA100DC730B /* RegisterUserModel.swift */; };
-		7699BC7C2A7AF48C00DC730B /* LoginUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7699BC7B2A7AF48C00DC730B /* LoginUserModel.swift */; };
+		7699BC772A7AECA100DC730B /* RegisterUserRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7699BC762A7AECA100DC730B /* RegisterUserRequestModel.swift */; };
+		7699BC7C2A7AF48C00DC730B /* LoginUserRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7699BC7B2A7AF48C00DC730B /* LoginUserRequestModel.swift */; };
 		76CAA11D2A85909F00D742E9 /* CoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76CAA11C2A85909F00D742E9 /* CoreKit.framework */; };
 		76CAA11E2A85909F00D742E9 /* CoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76CAA11C2A85909F00D742E9 /* CoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		76CAA1222A85923A00D742E9 /* PasswordValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA1212A85923A00D742E9 /* PasswordValidation.swift */; };
 		76CAA1242A85925F00D742E9 /* EmailValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA1232A85925E00D742E9 /* EmailValidation.swift */; };
 		76EF5CCF2A8C187800D9AE8B /* AuthCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5CCE2A8C187800D9AE8B /* AuthCredentials.swift */; };
-		76EF5CD22A8C1ABF00D9AE8B /* AuthenticatorProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5CD12A8C1ABF00D9AE8B /* AuthenticatorProtocols.swift */; };
 		76EF5CD42A8C1C8C00D9AE8B /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5CD32A8C1C8C00D9AE8B /* AuthManager.swift */; };
 		76EF5CD72A8C200500D9AE8B /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5CD62A8C200500D9AE8B /* AuthError.swift */; };
+		76EF5D222A8DA29500D9AE8B /* FCollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D212A8DA29500D9AE8B /* FCollectionReference.swift */; };
+		76EF5D282A8DA4FD00D9AE8B /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D272A8DA4FD00D9AE8B /* FirebaseManager.swift */; };
+		76EF5D2A2A8DA5EC00D9AE8B /* FirebaseUserListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D292A8DA5EC00D9AE8B /* FirebaseUserListener.swift */; };
+		76EF5D2D2A8DAC4800D9AE8B /* AuthenticatorLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D2C2A8DAC4800D9AE8B /* AuthenticatorLogin.swift */; };
+		76EF5D2F2A8DAC6B00D9AE8B /* AuthenticatorRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D2E2A8DAC6B00D9AE8B /* AuthenticatorRegister.swift */; };
+		76EF5D312A8DAC7300D9AE8B /* AuthenticatorLogout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D302A8DAC7200D9AE8B /* AuthenticatorLogout.swift */; };
+		76EF5D332A8DAC7D00D9AE8B /* AuthenticatorCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D322A8DAC7D00D9AE8B /* AuthenticatorCheck.swift */; };
+		76EF5D352A8DB36500D9AE8B /* FullNameValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D342A8DB36500D9AE8B /* FullNameValidation.swift */; };
+		76EF5D372A8DB3B000D9AE8B /* UsernameValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D362A8DB3B000D9AE8B /* UsernameValidation.swift */; };
+		76EF5D3A2A8ECB3600D9AE8B /* LoginUserResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D392A8ECB3600D9AE8B /* LoginUserResponseModel.swift */; };
+		76EF5D3D2A8ECB8100D9AE8B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D3C2A8ECB8100D9AE8B /* User.swift */; };
+		76EF5D462A8FE2A300D9AE8B /* AuthenticatorResendEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D452A8FE2A300D9AE8B /* AuthenticatorResendEmail.swift */; };
+		76EF5D482A8FE50100D9AE8B /* AuthenticatorResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D472A8FE50000D9AE8B /* AuthenticatorResetPassword.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,22 +104,34 @@
 		768BB52B2A8161E800300ECA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		768BB52C2A8161E800300ECA /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		768BB52E2A8161E800300ECA /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
-		768BB5372A8162AC00300ECA /* RegisterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCoordinator.swift; sourceTree = "<group>"; };
+		768BB5372A8162AC00300ECA /* RegisterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRouter.swift; sourceTree = "<group>"; };
 		768BB5382A8162AC00300ECA /* RegisterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterFactory.swift; sourceTree = "<group>"; };
 		768BB5392A8162AC00300ECA /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
 		768BB53A2A8162AC00300ECA /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		768BB53B2A8162AC00300ECA /* RegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInteractor.swift; sourceTree = "<group>"; };
 		768BB53D2A8162AC00300ECA /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
 		768BB5452A81643100300ECA /* AuthenticatorPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorPresentation.swift; sourceTree = "<group>"; };
-		7699BC762A7AECA100DC730B /* RegisterUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserModel.swift; sourceTree = "<group>"; };
-		7699BC7B2A7AF48C00DC730B /* LoginUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserModel.swift; sourceTree = "<group>"; };
+		7699BC762A7AECA100DC730B /* RegisterUserRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserRequestModel.swift; sourceTree = "<group>"; };
+		7699BC7B2A7AF48C00DC730B /* LoginUserRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserRequestModel.swift; sourceTree = "<group>"; };
 		76CAA11C2A85909F00D742E9 /* CoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76CAA1212A85923A00D742E9 /* PasswordValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordValidation.swift; sourceTree = "<group>"; };
 		76CAA1232A85925E00D742E9 /* EmailValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidation.swift; sourceTree = "<group>"; };
 		76EF5CCE2A8C187800D9AE8B /* AuthCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCredentials.swift; sourceTree = "<group>"; };
-		76EF5CD12A8C1ABF00D9AE8B /* AuthenticatorProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorProtocols.swift; sourceTree = "<group>"; };
 		76EF5CD32A8C1C8C00D9AE8B /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		76EF5CD62A8C200500D9AE8B /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
+		76EF5D212A8DA29500D9AE8B /* FCollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCollectionReference.swift; sourceTree = "<group>"; };
+		76EF5D272A8DA4FD00D9AE8B /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		76EF5D292A8DA5EC00D9AE8B /* FirebaseUserListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserListener.swift; sourceTree = "<group>"; };
+		76EF5D2C2A8DAC4800D9AE8B /* AuthenticatorLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorLogin.swift; sourceTree = "<group>"; };
+		76EF5D2E2A8DAC6B00D9AE8B /* AuthenticatorRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatorRegister.swift; sourceTree = "<group>"; };
+		76EF5D302A8DAC7200D9AE8B /* AuthenticatorLogout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatorLogout.swift; sourceTree = "<group>"; };
+		76EF5D322A8DAC7D00D9AE8B /* AuthenticatorCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatorCheck.swift; sourceTree = "<group>"; };
+		76EF5D342A8DB36500D9AE8B /* FullNameValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullNameValidation.swift; sourceTree = "<group>"; };
+		76EF5D362A8DB3B000D9AE8B /* UsernameValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameValidation.swift; sourceTree = "<group>"; };
+		76EF5D392A8ECB3600D9AE8B /* LoginUserResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserResponseModel.swift; sourceTree = "<group>"; };
+		76EF5D3C2A8ECB8100D9AE8B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		76EF5D452A8FE2A300D9AE8B /* AuthenticatorResendEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorResendEmail.swift; sourceTree = "<group>"; };
+		76EF5D472A8FE50000D9AE8B /* AuthenticatorResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorResetPassword.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +178,8 @@
 		762F747F2A77056A0004B76E /* Authenticator */ = {
 			isa = PBXGroup;
 			children = (
+				76EF5D2B2A8DABFB00D9AE8B /* Firebase */,
+				76EF5D242A8DA41D00D9AE8B /* Managers */,
 				76EF5CD02A8C1A9400D9AE8B /* Auth */,
 				76CAA11F2A8591DE00D742E9 /* Helpers */,
 				768BB5452A81643100300ECA /* AuthenticatorPresentation.swift */,
@@ -233,7 +259,7 @@
 		768BB5362A81629A00300ECA /* Register */ = {
 			isa = PBXGroup;
 			children = (
-				768BB5372A8162AC00300ECA /* RegisterCoordinator.swift */,
+				768BB5372A8162AC00300ECA /* RegisterRouter.swift */,
 				768BB5382A8162AC00300ECA /* RegisterFactory.swift */,
 				768BB5392A8162AC00300ECA /* RegisterPresenter.swift */,
 				768BB53A2A8162AC00300ECA /* RegisterViewController.swift */,
@@ -246,8 +272,9 @@
 		7699BC752A7AEC3E00DC730B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7699BC762A7AECA100DC730B /* RegisterUserModel.swift */,
-				7699BC7B2A7AF48C00DC730B /* LoginUserModel.swift */,
+				76EF5D382A8ECB2600D9AE8B /* Response */,
+				76EF5D3B2A8ECB5600D9AE8B /* Request */,
+				76EF5D3C2A8ECB8100D9AE8B /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -264,6 +291,7 @@
 		76CAA11F2A8591DE00D742E9 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				76EF5D262A8DA44A00D9AE8B /* Firebase */,
 				76CAA1202A8591E500D742E9 /* Validations */,
 				76EF5CD62A8C200500D9AE8B /* AuthError.swift */,
 			);
@@ -275,6 +303,8 @@
 			children = (
 				76CAA1212A85923A00D742E9 /* PasswordValidation.swift */,
 				76CAA1232A85925E00D742E9 /* EmailValidation.swift */,
+				76EF5D342A8DB36500D9AE8B /* FullNameValidation.swift */,
+				76EF5D362A8DB3B000D9AE8B /* UsernameValidation.swift */,
 			);
 			path = Validations;
 			sourceTree = "<group>";
@@ -283,11 +313,57 @@
 			isa = PBXGroup;
 			children = (
 				76EF5CCE2A8C187800D9AE8B /* AuthCredentials.swift */,
-				7666E5672A771346006C0560 /* AuthenticatorAdapter.swift */,
-				76EF5CD12A8C1ABF00D9AE8B /* AuthenticatorProtocols.swift */,
-				76EF5CD32A8C1C8C00D9AE8B /* AuthManager.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		76EF5D242A8DA41D00D9AE8B /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				76EF5CD32A8C1C8C00D9AE8B /* AuthManager.swift */,
+				76EF5D272A8DA4FD00D9AE8B /* FirebaseManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		76EF5D262A8DA44A00D9AE8B /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				76EF5D212A8DA29500D9AE8B /* FCollectionReference.swift */,
+				76EF5D292A8DA5EC00D9AE8B /* FirebaseUserListener.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		76EF5D2B2A8DABFB00D9AE8B /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				7666E5672A771346006C0560 /* AuthenticatorAdapter.swift */,
+				76EF5D2C2A8DAC4800D9AE8B /* AuthenticatorLogin.swift */,
+				76EF5D2E2A8DAC6B00D9AE8B /* AuthenticatorRegister.swift */,
+				76EF5D302A8DAC7200D9AE8B /* AuthenticatorLogout.swift */,
+				76EF5D322A8DAC7D00D9AE8B /* AuthenticatorCheck.swift */,
+				76EF5D452A8FE2A300D9AE8B /* AuthenticatorResendEmail.swift */,
+				76EF5D472A8FE50000D9AE8B /* AuthenticatorResetPassword.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		76EF5D382A8ECB2600D9AE8B /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				76EF5D392A8ECB3600D9AE8B /* LoginUserResponseModel.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		76EF5D3B2A8ECB5600D9AE8B /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				7699BC762A7AECA100DC730B /* RegisterUserRequestModel.swift */,
+				7699BC7B2A7AF48C00DC730B /* LoginUserRequestModel.swift */,
+			);
+			path = Request;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -443,28 +519,40 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7699BC7C2A7AF48C00DC730B /* LoginUserModel.swift in Sources */,
+				76EF5D312A8DAC7300D9AE8B /* AuthenticatorLogout.swift in Sources */,
+				7699BC7C2A7AF48C00DC730B /* LoginUserRequestModel.swift in Sources */,
+				76EF5D372A8DB3B000D9AE8B /* UsernameValidation.swift in Sources */,
 				76EF5CD42A8C1C8C00D9AE8B /* AuthManager.swift in Sources */,
 				7666E5682A771346006C0560 /* AuthenticatorAdapter.swift in Sources */,
-				768BB53E2A8162AC00300ECA /* RegisterCoordinator.swift in Sources */,
+				76EF5D282A8DA4FD00D9AE8B /* FirebaseManager.swift in Sources */,
+				768BB53E2A8162AC00300ECA /* RegisterRouter.swift in Sources */,
 				768BB5462A81643100300ECA /* AuthenticatorPresentation.swift in Sources */,
 				768BB5312A8161E900300ECA /* LoginPresenter.swift in Sources */,
 				76CAA1222A85923A00D742E9 /* PasswordValidation.swift in Sources */,
+				76EF5D482A8FE50100D9AE8B /* AuthenticatorResetPassword.swift in Sources */,
 				768BB5302A8161E900300ECA /* LoginFactory.swift in Sources */,
 				768BB5322A8161E900300ECA /* LoginViewController.swift in Sources */,
 				76EF5CD72A8C200500D9AE8B /* AuthError.swift in Sources */,
+				76EF5D3D2A8ECB8100D9AE8B /* User.swift in Sources */,
+				76EF5D332A8DAC7D00D9AE8B /* AuthenticatorCheck.swift in Sources */,
 				768BB5422A8162AC00300ECA /* RegisterInteractor.swift in Sources */,
 				768BB5352A8161E900300ECA /* LoginService.swift in Sources */,
-				76EF5CD22A8C1ABF00D9AE8B /* AuthenticatorProtocols.swift in Sources */,
 				768BB5402A8162AC00300ECA /* RegisterPresenter.swift in Sources */,
 				768BB52F2A8161E900300ECA /* LoginRouter.swift in Sources */,
+				76EF5D2F2A8DAC6B00D9AE8B /* AuthenticatorRegister.swift in Sources */,
 				768BB5412A8162AC00300ECA /* RegisterViewController.swift in Sources */,
+				76EF5D222A8DA29500D9AE8B /* FCollectionReference.swift in Sources */,
 				76CAA1242A85925F00D742E9 /* EmailValidation.swift in Sources */,
-				7699BC772A7AECA100DC730B /* RegisterUserModel.swift in Sources */,
+				76EF5D2A2A8DA5EC00D9AE8B /* FirebaseUserListener.swift in Sources */,
+				7699BC772A7AECA100DC730B /* RegisterUserRequestModel.swift in Sources */,
+				76EF5D2D2A8DAC4800D9AE8B /* AuthenticatorLogin.swift in Sources */,
 				768BB5442A8162AC00300ECA /* RegisterService.swift in Sources */,
 				766D50DA2A83D1F800150284 /* AuthenticatorResources.swift in Sources */,
 				768BB53F2A8162AC00300ECA /* RegisterFactory.swift in Sources */,
 				762F74822A77056A0004B76E /* Authenticator.docc in Sources */,
+				76EF5D3A2A8ECB3600D9AE8B /* LoginUserResponseModel.swift in Sources */,
+				76EF5D352A8DB36500D9AE8B /* FullNameValidation.swift in Sources */,
+				76EF5D462A8FE2A300D9AE8B /* AuthenticatorResendEmail.swift in Sources */,
 				766D50DD2A83D46900150284 /* Strings.generated.swift in Sources */,
 				76EF5CCF2A8C187800D9AE8B /* AuthCredentials.swift in Sources */,
 				768BB5332A8161E900300ECA /* LoginInteractor.swift in Sources */,

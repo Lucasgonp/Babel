@@ -4,4 +4,9 @@ public struct ButtonDTO {
     let backgroundColor: Color
     let cornerRadius: CGFloat
     let font: FontSystemStyle
+    let minimumHeight: CGFloat?
+    
+    struct Size {
+        let minimumHeight: CGFloat
+    }
 }

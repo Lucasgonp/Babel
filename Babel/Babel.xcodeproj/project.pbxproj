@@ -36,6 +36,8 @@
 		76CAA18C2A8AA9ED00D742E9 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA1862A8AA9ED00D742E9 /* HomeService.swift */; };
 		76CAA18E2A8AAA6800D742E9 /* BabelResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA18D2A8AAA6800D742E9 /* BabelResources.swift */; };
 		76CAA1902A8AAC0100D742E9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76CAA18F2A8AAC0100D742E9 /* GoogleService-Info.plist */; };
+		76EF5D492A905E3700D9AE8B /* DesignKit.framework in Sources */ = {isa = PBXBuildFile; fileRef = 76228DA92A8AAF7000C27C7A /* DesignKit.framework */; };
+		76EF5D4A2A905E3700D9AE8B /* Authenticator.framework in Sources */ = {isa = PBXBuildFile; fileRef = 76228DA32A8AAF6200C27C7A /* Authenticator.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -426,6 +428,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76EF5D492A905E3700D9AE8B /* DesignKit.framework in Sources */,
+				76EF5D4A2A905E3700D9AE8B /* Authenticator.framework in Sources */,
 				767E4A062A8AB87000B55980 /* Strings.generated.swift in Sources */,
 				76CAA18E2A8AAA6800D742E9 /* BabelResources.swift in Sources */,
 				76CAA17C2A8AA99F00D742E9 /* AuthManager.swift in Sources */,
@@ -625,6 +629,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = lucasgonp.Babel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -656,6 +661,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = lucasgonp.Babel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

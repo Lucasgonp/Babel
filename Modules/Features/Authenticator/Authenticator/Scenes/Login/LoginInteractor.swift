@@ -1,12 +1,15 @@
 protocol LoginInteracting: AnyObject {
-    func loginWith(userModel: LoginUserModel)
+    func loginWith(userModel: LoginUserRequestModel)
+    func resendEmailVerification()
+    func didTapOnForgotPassword()
+    func resetPassword(email: String)
     func signUpAction()
 }
 
 final class LoginInteractor {
     private let service: LoginServicing
     private let presenter: LoginPresenting
-
+    
     init(service: LoginServicing, presenter: LoginPresenting) {
         self.service = service
         self.presenter = presenter
@@ -15,18 +18,56 @@ final class LoginInteractor {
 
 // MARK: - LoginInteracting
 extension LoginInteractor: LoginInteracting {
-    func loginWith(userModel: LoginUserModel) {
-        showLoading()
+    func loginWith(userModel: LoginUserRequestModel) {
+        showButtonLoading()
         service.login(userRequest: userModel) { [weak self] result in
             guard let self else {
                 return
             }
-            self.hideLoading()
+            self.hideButtonLoading()
             switch result {
-            case .success:
-                self.presenter.didNextStep(action: .didLoginSuccess)
+            case .success(let model):
+                if model.isEmailVerified {
+                    self.presenter.didNextStep(action: .didLoginSuccess)
+                } else {
+                    self.presenter.displayResendEmailAlert()
+                }
             case .failure(let error):
                 self.presenter.displayViewState(.error(message: error.localizedDescription))
+            }
+        }
+    }
+    
+    func resendEmailVerification() {
+        showHudLoading()
+        service.resendEmailVerification { [weak self] error in
+            guard let self else {
+                return
+            }
+            self.hideHudLoading()
+            if let error {
+                self.presenter.displayViewState(.error(message: error.localizedDescription))
+            } else {
+                self.presenter.displayResentEmailFeedback()
+            }
+        }
+    }
+    
+    func didTapOnForgotPassword() {
+        presenter.displayForgotPasswordAlert()
+    }
+    
+    func resetPassword(email: String) {
+        showHudLoading()
+        service.resetPassword(email: email) { [weak self] error in
+            guard let self else {
+                return
+            }
+            self.hideHudLoading()
+            if let error {
+                self.presenter.displayViewState(.error(message: error.localizedDescription))
+            } else {
+                self.presenter.displayResetPasswordFeedback()
             }
         }
     }
@@ -37,11 +78,19 @@ extension LoginInteractor: LoginInteracting {
 }
 
 private extension LoginInteractor {
-    func showLoading() {
-        presenter.displayViewState(.loading(isLoading: true))
+    func showButtonLoading() {
+        presenter.displayViewState(.loadingButton(isLoading: true))
     }
     
-    func hideLoading() {
-        presenter.displayViewState(.loading(isLoading: false))
+    func hideButtonLoading() {
+        presenter.displayViewState(.loadingButton(isLoading: false))
+    }
+    
+    func showHudLoading() {
+        presenter.displayViewState(.loadingHud(isLoading: true))
+    }
+    
+    func hideHudLoading() {
+        presenter.displayViewState(.loadingHud(isLoading: false))
     }
 }

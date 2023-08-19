@@ -1,32 +1,40 @@
 import FirebaseAuth
 
 protocol LoginServicing {
-    func login(userRequest: LoginUserModel, completion: @escaping (Result<AuthLoginCredentials, AuthError>) -> Void)
+    func login(userRequest: LoginUserRequestModel, completion: @escaping (Result<LoginUserResponseModel, AuthError>) -> Void)
+    func resendEmailVerification(completion: @escaping (Error?) -> Void)
+    func resetPassword(email: String, completion: @escaping (Error?) -> Void)
 }
 
 final class LoginService {
-    private let authService: LoginProtocol
+    typealias AuthService = LoginProtocol &
+                            AuthenticatorResendEmailProtocol &
+                            AuthenticatorResetPasswordProtocol
+    private let authService: AuthService
     
-    init(authService: LoginProtocol) {
+    init(authService: AuthService) {
         self.authService = authService
     }
 }
 
 // MARK: - LoginServicing
 extension LoginService: LoginServicing {
-    func login(userRequest: LoginUserModel, completion: @escaping (Result<AuthLoginCredentials, AuthError>) -> Void) {
-        authService.login(with: userRequest) { (result, error) in
-            if let error {
+    func login(userRequest: LoginUserRequestModel, completion: @escaping (Result<LoginUserResponseModel, AuthError>) -> Void) {
+        authService.login(with: userRequest) { result in
+            switch result {
+            case .success(let model):
+                completion(.success(model))
+            case .failure(let error):
                 completion(.failure(.custom(error)))
-                return
             }
-            
-            guard let result else {
-                completion(.failure(.genericError))
-                return
-            }
-            
-            completion(.success(AuthLoginCredentials(authDataResult: result)))
         }
+    }
+    
+    func resendEmailVerification(completion: @escaping (Error?) -> Void) {
+        authService.resentEmailVerification(completion: completion)
+    }
+    
+    func resetPassword(email: String, completion: @escaping (Error?) -> Void) {
+        authService.resetPassword(email: email, completion: completion)
     }
 }

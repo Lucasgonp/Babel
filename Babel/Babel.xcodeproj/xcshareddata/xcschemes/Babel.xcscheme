@@ -14,6 +14,34 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "769545482A76EA7800BF114D"
+               BuildableName = "DesignKit.framework"
+               BlueprintName = "DesignKit"
+               ReferencedContainer = "container:../Modules/Kits/DesignKit/DesignKit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "762F747C2A77056A0004B76E"
+               BuildableName = "Authenticator.framework"
+               BlueprintName = "Authenticator"
+               ReferencedContainer = "container:../Modules/Features/Authenticator/Authenticator.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "76CAA1342A8AA1F400D742E9"
                BuildableName = "Babel.app"
                BlueprintName = "Babel"

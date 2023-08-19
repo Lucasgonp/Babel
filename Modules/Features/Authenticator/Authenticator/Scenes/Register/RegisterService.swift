@@ -1,14 +1,31 @@
+import FirebaseAuth
+
 protocol RegisterServicing {
-    // template
+    func register(userRequest: RegisterUserRequestModel, completion: @escaping (AuthError?) -> Void)
 }
 
 final class RegisterService {
-    init() {
-        
+    private let authService: RegisterProtocol
+    
+    init(authService: RegisterProtocol) {
+        self.authService = authService
     }
 }
 
 // MARK: - RegisterServicing
 extension RegisterService: RegisterServicing {
-    // template
+    func register(userRequest: RegisterUserRequestModel, completion: @escaping (AuthError?) -> Void) {
+        authService.registerUser(with: userRequest) { didSuccess, error in
+            if let error {
+                completion(.custom(error))
+                return
+            }
+            
+            if didSuccess {
+                completion(nil)
+            } else {
+                completion(.genericError)
+            }
+        }
+    }
 }

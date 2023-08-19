@@ -4,6 +4,22 @@
 "Login.Button.login" = "Login";
 "Login.Button.register" = "Don't have an account? **Sign Up**";
 
+// Email validation
+"Login.Alert.EmailVerification.Resend.title" = "Validate you email first";
+"Login.Alert.EmailVerification.Resend.message" = "Check the email we already sent to you, if you need to resend the validation just click Resend validation";
+"Login.Alert.EmailVerification.Resend.resendButton" = "Resend";
+
+"Login.Alert.EmailVerification.Resent.title" = "Email sent";
+"Login.Alert.EmailVerification.Resent.message" = "We just resent a varification to your email, please validate before login";
+
+// Reset password
+"ResetPassword.SendReset.title" = "Reset password";
+"ResetPassword.SendReset.message" = "Please type your EMAIL bellow so we can send you an email with instructions to reset the password";
+"ResetPassword.SendReset.resetButton" = "Reset password";
+
+"ResetPassword.SentReset.title" = "Reset password";
+"ResetPassword.SentReset.message" = "Please follow the instructions we sent you by email so you you can reset your password";
+
 // Register
 "Register.Field.FullName.placeholder" = "Full Name";
 "Register.Field.Username.placeholder" = "Username";
@@ -12,9 +28,21 @@
 "Register.Button.register" = "Register";
 "Register.Button.login" = "Already have an account? **Login**";
 
+"Register.Alert.EmailVerification.Verify.title" = "Email verification sent";
+"Register.Alert.EmailVerification.Verify.message" = "Please check your email inbox we just sent you, you need to validate before login";
+
+// Alert commons
+"Alert.ok" = "Ok";
+"Alert.ok" = "Close";
+"Alert.gotIt" = "Got it";
+"Alert.later" = "Later";
+
 // Error
 "Error.Field.emailInvalid" = "Email is invalid";
 "Error.Field.emailEmpty" = "Email is invalid";
 "Error.Field.passwordEmpty" = "Password is required";
 "Error.Field.fullnameEmpty" = "Full name is required";
 "Error.Field.usernameEmpty" = "Username is required";
+
+
+// Login

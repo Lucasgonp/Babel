@@ -38,6 +38,10 @@
 		76EF5D152A8D564700D9AE8B /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D142A8D564700D9AE8B /* UIImageView+Extensions.swift */; };
 		76EF5D172A8D58BD00D9AE8B /* IconAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76EF5D162A8D58BD00D9AE8B /* IconAssets.xcassets */; };
 		76EF5D1B2A8D5A1C00D9AE8B /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D1A2A8D5A1C00D9AE8B /* Icon.swift */; };
+		76EF5D412A8FCC5C00D9AE8B /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D402A8FCC5B00D9AE8B /* UINavigationController+Extensions.swift */; };
+		76EF5D442A8FCCC500D9AE8B /* AlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D432A8FCCC500D9AE8B /* AlertViewModel.swift */; };
+		76EF5D4C2A907D1900D9AE8B /* Dependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EF5D4B2A907D1900D9AE8B /* Dependencies.framework */; };
+		76EF5D4D2A907D1900D9AE8B /* Dependencies.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76EF5D4B2A907D1900D9AE8B /* Dependencies.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		76F2AF6C2A81AE4500FE5966 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F2AF6B2A81AE4500FE5966 /* SpinnerViewController.swift */; };
 		76F778B02A81C89B00443E7B /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F778AF2A81C89B00443E7B /* UIApplication+Extensions.swift */; };
 		76F778C12A828FA700443E7B /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F778C02A828FA700443E7B /* TextField.swift */; };
@@ -80,6 +84,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		76EF5D4E2A907D1900D9AE8B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				76EF5D4D2A907D1900D9AE8B /* Dependencies.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		7666E56E2A77169F006C0560 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/System/iOSSupport/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		766D50E12A83E81800150284 /* ButtonTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTheme.swift; sourceTree = "<group>"; };
@@ -114,6 +132,9 @@
 		76EF5D142A8D564700D9AE8B /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		76EF5D162A8D58BD00D9AE8B /* IconAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = IconAssets.xcassets; sourceTree = "<group>"; };
 		76EF5D1A2A8D5A1C00D9AE8B /* Icon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		76EF5D402A8FCC5B00D9AE8B /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
+		76EF5D432A8FCCC500D9AE8B /* AlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewModel.swift; sourceTree = "<group>"; };
+		76EF5D4B2A907D1900D9AE8B /* Dependencies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Dependencies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76F2AF6B2A81AE4500FE5966 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		76F778AF2A81C89B00443E7B /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		76F778C02A828FA700443E7B /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
@@ -131,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7666E56F2A77169F006C0560 /* UIKit.framework in Frameworks */,
+				76EF5D4C2A907D1900D9AE8B /* Dependencies.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,6 +178,7 @@
 		7666E56A2A77169F006C0560 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				76EF5D4B2A907D1900D9AE8B /* Dependencies.framework */,
 				7666E56E2A77169F006C0560 /* UIKit.framework */,
 			);
 			name = Frameworks;
@@ -194,6 +217,7 @@
 		7695454B2A76EA7800BF114D /* DesignKit */ = {
 			isa = PBXGroup;
 			children = (
+				76EF5D422A8FCCB900D9AE8B /* ViewModel */,
 				76EF5CDC2A8C361A00D9AE8B /* Generated */,
 				76EF5CD82A8C361400D9AE8B /* Localizable */,
 				76F778D02A82D00500443E7B /* Resources */,
@@ -240,6 +264,7 @@
 				76CAA12A2A86D3B100D742E9 /* String+Extensions.swift */,
 				76EF5D122A8D432D00D9AE8B /* UIImage+Extensions.swift */,
 				76EF5D142A8D564700D9AE8B /* UIImageView+Extensions.swift */,
+				76EF5D402A8FCC5B00D9AE8B /* UINavigationController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -303,6 +328,14 @@
 				76EF5D162A8D58BD00D9AE8B /* IconAssets.xcassets */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		76EF5D422A8FCCB900D9AE8B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				76EF5D432A8FCCC500D9AE8B /* AlertViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		76F778C22A82911700443E7B /* TextField */ = {
@@ -386,6 +419,7 @@
 				769545462A76EA7800BF114D /* Frameworks */,
 				769545472A76EA7800BF114D /* Resources */,
 				76EF5CE12A8C36AA00D9AE8B /* Swiftgen Run Script */,
+				76EF5D4E2A907D1900D9AE8B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -530,6 +564,7 @@
 				76F778B02A81C89B00443E7B /* UIApplication+Extensions.swift in Sources */,
 				76CAA12B2A86D3B100D742E9 /* String+Extensions.swift in Sources */,
 				76F2AF6C2A81AE4500FE5966 /* SpinnerViewController.swift in Sources */,
+				76EF5D442A8FCCC500D9AE8B /* AlertViewModel.swift in Sources */,
 				766D522A2A83F8C400150284 /* FontSystemStyle.swift in Sources */,
 				766D52412A840AB100150284 /* UILabel+Extensions.swift in Sources */,
 				766D52432A840B7500150284 /* UITextField+Extensions.swift in Sources */,
@@ -548,6 +583,7 @@
 				7695458A2A76EB8000BF114D /* DesignView.swift in Sources */,
 				766D522C2A83FA4600150284 /* UIFont+Extensions.swift in Sources */,
 				766D50E42A83E81F00150284 /* ButtonDTO.swift in Sources */,
+				76EF5D412A8FCC5C00D9AE8B /* UINavigationController+Extensions.swift in Sources */,
 				76EF5D1B2A8D5A1C00D9AE8B /* Icon.swift in Sources */,
 				766D52302A84016700150284 /* TextFieldDelegate.swift in Sources */,
 				766D52322A84033F00150284 /* Textfield+State.swift in Sources */,

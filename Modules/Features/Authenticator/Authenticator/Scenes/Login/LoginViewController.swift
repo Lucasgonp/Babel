@@ -2,12 +2,16 @@ import UIKit
 import DesignKit
 
 enum LoginViewState {
-    case loading(isLoading: Bool)
+    case loadingButton(isLoading: Bool)
+    case loadingHud(isLoading: Bool)
     case error(message: String)
 }
 
 protocol LoginDisplaying: AnyObject {
     func displayViewState(_ state: LoginViewState)
+    func displayResendEmail(viewModel: AlertViewModel)
+    func displayResetPassword(viewModel: AlertViewModel)
+    func displayFeedbackAlert(title: String, message: String)
 }
 
 private extension LoginViewController.Layout {
@@ -30,7 +34,15 @@ final class LoginViewController: ViewController<LoginInteracting, UIView> {
     }()
     
     private lazy var inputsStackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, primaryButton, secondaryButton])
+        let stack = UIStackView(arrangedSubviews: [emailTextField, passwordTextField])
+        stack.axis = .vertical
+        stack.spacing = 16
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+    
+    private lazy var buttonsStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [primaryButton, secondaryButton])
         stack.axis = .vertical
         stack.spacing = 16
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -51,6 +63,14 @@ final class LoginViewController: ViewController<LoginInteracting, UIView> {
         textField.validations = [PasswordValidation()]
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
+    }()
+    
+    private lazy var forgotPasswordButton: Button = {
+        let button = Button()
+        button.render(.tertiary(title: "**Forgot the password?**"))
+        button.addTarget(self, action: #selector(forgotPasswordButtonAction), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     private lazy var primaryButton: Button = {
@@ -77,6 +97,8 @@ final class LoginViewController: ViewController<LoginInteracting, UIView> {
     override func buildViewHierarchy() { 
         view.addSubview(brandImageView)
         view.addSubview(inputsStackView)
+        view.addSubview(forgotPasswordButton)
+        view.addSubview(buttonsStackView)
     }
     
     override func setupConstraints() {
@@ -92,11 +114,21 @@ final class LoginViewController: ViewController<LoginInteracting, UIView> {
             inputsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             inputsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
+        
+        NSLayoutConstraint.activate([
+            forgotPasswordButton.topAnchor.constraint(equalTo: inputsStackView.bottomAnchor, constant: 4),
+            forgotPasswordButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
+        ])
+        
+        NSLayoutConstraint.activate([
+            buttonsStackView.topAnchor.constraint(equalTo: forgotPasswordButton.bottomAnchor, constant: 28),
+            buttonsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            buttonsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+        ])
     }
 
     override func configureViews() {
         view.backgroundColor = Color.backgroundLogo.uiColor
-        inputsStackView.setCustomSpacing(32, after: passwordTextField)
     }
 }
 
@@ -104,11 +136,40 @@ final class LoginViewController: ViewController<LoginInteracting, UIView> {
 extension LoginViewController: LoginDisplaying {
     func displayViewState(_ state: LoginViewState) {
         switch state {
-        case .loading(let isLoading):
+        case .loadingButton(let isLoading):
             primaryButton.setLoading(isLoading)
+        case .loadingHud(let isLoading):
+            if isLoading {
+                showHudLoading()
+            } else {
+                hideHudLoading()
+            }
         case .error(let message):
-            showError(message)
+            showErrorAlert(message)
         }
+    }
+    
+    func displayResendEmail(viewModel: AlertViewModel) {
+        var viewModel = viewModel
+        viewModel.firstButtonAction = { [weak self] _ in
+            self?.interactor.resendEmailVerification()
+        }
+        showMessageAlert(viewModel: viewModel)
+    }
+    
+    func displayResetPassword(viewModel: AlertViewModel) {
+        var viewModel = viewModel
+        viewModel.firstButtonAction = { [weak self] email in
+            guard let self, let email else {
+                return
+            }
+            self.interactor.resetPassword(email: email)
+        }
+        showMessageAlert(viewModel: viewModel)
+    }
+    
+    func displayFeedbackAlert(title: String, message: String) {
+        showMessageAlert(title: title, message: message)
     }
 }
 
@@ -121,12 +182,16 @@ extension LoginViewController: LoginDisplaying {
             return
         }
         
-        let loginModel = LoginUserModel(email: emailTextField.text, password: passwordTextField.text)
+        let loginModel = LoginUserRequestModel(email: emailTextField.text, password: passwordTextField.text)
         interactor.loginWith(userModel: loginModel)
     }
     
     func secondaryButtonAction() {
         interactor.signUpAction()
+    }
+    
+    func forgotPasswordButtonAction() {
+        interactor.didTapOnForgotPassword()
     }
 }
 

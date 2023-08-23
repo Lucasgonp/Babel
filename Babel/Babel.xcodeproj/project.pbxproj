@@ -37,6 +37,24 @@
 		7620F42D2A9567B1002A4EB5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F42C2A9567B1002A4EB5 /* User.swift */; };
 		7620F4302A9568D2002A4EB5 /* SettingsButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F42F2A9568D2002A4EB5 /* SettingsButtonViewModel.swift */; };
 		7620F4332A95694B002A4EB5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4322A95694B002A4EB5 /* SettingsViewModel.swift */; };
+		7620F43E2A9592C2002A4EB5 /* EditProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4382A9592C2002A4EB5 /* EditProfileFactory.swift */; };
+		7620F43F2A9592C2002A4EB5 /* EditProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4392A9592C2002A4EB5 /* EditProfilePresenter.swift */; };
+		7620F4402A9592C2002A4EB5 /* EditProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F43A2A9592C2002A4EB5 /* EditProfileRouter.swift */; };
+		7620F4412A9592C2002A4EB5 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F43B2A9592C2002A4EB5 /* EditProfileViewController.swift */; };
+		7620F4422A9592C2002A4EB5 /* EditProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F43C2A9592C2002A4EB5 /* EditProfileInteractor.swift */; };
+		7620F4432A9592C2002A4EB5 /* EditProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F43D2A9592C2002A4EB5 /* EditProfileService.swift */; };
+		7620F44D2A9659F5002A4EB5 /* TellAFriendFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4472A9659F5002A4EB5 /* TellAFriendFactory.swift */; };
+		7620F44E2A9659F5002A4EB5 /* TellAFriendPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4482A9659F5002A4EB5 /* TellAFriendPresenter.swift */; };
+		7620F44F2A9659F5002A4EB5 /* TellAFriendRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4492A9659F5002A4EB5 /* TellAFriendRouter.swift */; };
+		7620F4502A9659F5002A4EB5 /* TellAFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F44A2A9659F5002A4EB5 /* TellAFriendViewController.swift */; };
+		7620F4512A9659F5002A4EB5 /* TellAFriendInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F44B2A9659F5002A4EB5 /* TellAFriendInteractor.swift */; };
+		7620F4522A9659F5002A4EB5 /* TellAFriendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F44C2A9659F5002A4EB5 /* TellAFriendService.swift */; };
+		7620F4592A965A09002A4EB5 /* TermsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4532A965A09002A4EB5 /* TermsFactory.swift */; };
+		7620F45A2A965A09002A4EB5 /* TermsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4542A965A09002A4EB5 /* TermsPresenter.swift */; };
+		7620F45B2A965A09002A4EB5 /* TermsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4552A965A09002A4EB5 /* TermsRouter.swift */; };
+		7620F45C2A965A09002A4EB5 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4562A965A09002A4EB5 /* TermsViewController.swift */; };
+		7620F45D2A965A09002A4EB5 /* TermsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4572A965A09002A4EB5 /* TermsInteractor.swift */; };
+		7620F45E2A965A09002A4EB5 /* TermsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4582A965A09002A4EB5 /* TermsService.swift */; };
 		76228DA42A8AAF6200C27C7A /* Authenticator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76228DA32A8AAF6200C27C7A /* Authenticator.framework */; };
 		76228DA52A8AAF6200C27C7A /* Authenticator.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76228DA32A8AAF6200C27C7A /* Authenticator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		76228DA72A8AAF6800C27C7A /* NetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76228DA62A8AAF6800C27C7A /* NetworkKit.framework */; };
@@ -136,6 +154,24 @@
 		7620F42C2A9567B1002A4EB5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7620F42F2A9568D2002A4EB5 /* SettingsButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButtonViewModel.swift; sourceTree = "<group>"; };
 		7620F4322A95694B002A4EB5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		7620F4382A9592C2002A4EB5 /* EditProfileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileFactory.swift; sourceTree = "<group>"; };
+		7620F4392A9592C2002A4EB5 /* EditProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfilePresenter.swift; sourceTree = "<group>"; };
+		7620F43A2A9592C2002A4EB5 /* EditProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileRouter.swift; sourceTree = "<group>"; };
+		7620F43B2A9592C2002A4EB5 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		7620F43C2A9592C2002A4EB5 /* EditProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileInteractor.swift; sourceTree = "<group>"; };
+		7620F43D2A9592C2002A4EB5 /* EditProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileService.swift; sourceTree = "<group>"; };
+		7620F4472A9659F5002A4EB5 /* TellAFriendFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TellAFriendFactory.swift; sourceTree = "<group>"; };
+		7620F4482A9659F5002A4EB5 /* TellAFriendPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TellAFriendPresenter.swift; sourceTree = "<group>"; };
+		7620F4492A9659F5002A4EB5 /* TellAFriendRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TellAFriendRouter.swift; sourceTree = "<group>"; };
+		7620F44A2A9659F5002A4EB5 /* TellAFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TellAFriendViewController.swift; sourceTree = "<group>"; };
+		7620F44B2A9659F5002A4EB5 /* TellAFriendInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TellAFriendInteractor.swift; sourceTree = "<group>"; };
+		7620F44C2A9659F5002A4EB5 /* TellAFriendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TellAFriendService.swift; sourceTree = "<group>"; };
+		7620F4532A965A09002A4EB5 /* TermsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsFactory.swift; sourceTree = "<group>"; };
+		7620F4542A965A09002A4EB5 /* TermsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsPresenter.swift; sourceTree = "<group>"; };
+		7620F4552A965A09002A4EB5 /* TermsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsRouter.swift; sourceTree = "<group>"; };
+		7620F4562A965A09002A4EB5 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
+		7620F4572A965A09002A4EB5 /* TermsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsInteractor.swift; sourceTree = "<group>"; };
+		7620F4582A965A09002A4EB5 /* TermsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsService.swift; sourceTree = "<group>"; };
 		76228DA32A8AAF6200C27C7A /* Authenticator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Authenticator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76228DA62A8AAF6800C27C7A /* NetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76228DA92A8AAF7000C27C7A /* DesignKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -207,15 +243,10 @@
 		7620F2AA2A92DDC2002A4EB5 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				7620F4312A956918002A4EB5 /* ViewModels */,
-				7620F42E2A9568BF002A4EB5 /* Models */,
-				7620F41E2A951210002A4EB5 /* Cells */,
-				7620F2AE2A92DE1B002A4EB5 /* SettingsFactory.swift */,
-				7620F2AF2A92DE1B002A4EB5 /* SettingsPresenter.swift */,
-				7620F2B02A92DE1B002A4EB5 /* SettingsRouter.swift */,
-				7620F2B12A92DE1B002A4EB5 /* SettingsViewController.swift */,
-				7620F2B22A92DE1B002A4EB5 /* SettingsInteractor.swift */,
-				7620F2B32A92DE1B002A4EB5 /* SettingsService.swift */,
+				7620F4462A9659E3002A4EB5 /* TermsAndConditions */,
+				7620F4452A9659D7002A4EB5 /* TellAFriend */,
+				7620F4372A9592A2002A4EB5 /* EditProfile */,
+				7620F4362A95924E002A4EB5 /* TabBar */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -290,6 +321,61 @@
 				7620F4322A95694B002A4EB5 /* SettingsViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		7620F4362A95924E002A4EB5 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				7620F4312A956918002A4EB5 /* ViewModels */,
+				7620F42E2A9568BF002A4EB5 /* Models */,
+				7620F41E2A951210002A4EB5 /* Cells */,
+				7620F2AE2A92DE1B002A4EB5 /* SettingsFactory.swift */,
+				7620F2AF2A92DE1B002A4EB5 /* SettingsPresenter.swift */,
+				7620F2B02A92DE1B002A4EB5 /* SettingsRouter.swift */,
+				7620F2B12A92DE1B002A4EB5 /* SettingsViewController.swift */,
+				7620F2B22A92DE1B002A4EB5 /* SettingsInteractor.swift */,
+				7620F2B32A92DE1B002A4EB5 /* SettingsService.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		7620F4372A9592A2002A4EB5 /* EditProfile */ = {
+			isa = PBXGroup;
+			children = (
+				7620F4382A9592C2002A4EB5 /* EditProfileFactory.swift */,
+				7620F4392A9592C2002A4EB5 /* EditProfilePresenter.swift */,
+				7620F43A2A9592C2002A4EB5 /* EditProfileRouter.swift */,
+				7620F43B2A9592C2002A4EB5 /* EditProfileViewController.swift */,
+				7620F43C2A9592C2002A4EB5 /* EditProfileInteractor.swift */,
+				7620F43D2A9592C2002A4EB5 /* EditProfileService.swift */,
+			);
+			path = EditProfile;
+			sourceTree = "<group>";
+		};
+		7620F4452A9659D7002A4EB5 /* TellAFriend */ = {
+			isa = PBXGroup;
+			children = (
+				7620F4472A9659F5002A4EB5 /* TellAFriendFactory.swift */,
+				7620F4482A9659F5002A4EB5 /* TellAFriendPresenter.swift */,
+				7620F4492A9659F5002A4EB5 /* TellAFriendRouter.swift */,
+				7620F44A2A9659F5002A4EB5 /* TellAFriendViewController.swift */,
+				7620F44B2A9659F5002A4EB5 /* TellAFriendInteractor.swift */,
+				7620F44C2A9659F5002A4EB5 /* TellAFriendService.swift */,
+			);
+			path = TellAFriend;
+			sourceTree = "<group>";
+		};
+		7620F4462A9659E3002A4EB5 /* TermsAndConditions */ = {
+			isa = PBXGroup;
+			children = (
+				7620F4532A965A09002A4EB5 /* TermsFactory.swift */,
+				7620F4542A965A09002A4EB5 /* TermsPresenter.swift */,
+				7620F4552A965A09002A4EB5 /* TermsRouter.swift */,
+				7620F4562A965A09002A4EB5 /* TermsViewController.swift */,
+				7620F4572A965A09002A4EB5 /* TermsInteractor.swift */,
+				7620F4582A965A09002A4EB5 /* TermsService.swift */,
+			);
+			path = TermsAndConditions;
 			sourceTree = "<group>";
 		};
 		76CAA12C2A8AA1F400D742E9 = {
@@ -593,14 +679,18 @@
 				7620F2CF2A92EF69002A4EB5 /* ChannelsViewController.swift in Sources */,
 				7620F2D82A92EF74002A4EB5 /* UsersFactory.swift in Sources */,
 				7620F2CE2A92EF69002A4EB5 /* ChannelsRouter.swift in Sources */,
+				7620F44E2A9659F5002A4EB5 /* TellAFriendPresenter.swift in Sources */,
 				7620F2A92A92DB70002A4EB5 /* HomeTabBarModel.swift in Sources */,
 				76EF5D492A905E3700D9AE8B /* DesignKit.framework in Sources */,
+				7620F4432A9592C2002A4EB5 /* EditProfileService.swift in Sources */,
 				76EF5D4A2A905E3700D9AE8B /* Authenticator.framework in Sources */,
 				7620F2B82A92DE1B002A4EB5 /* SettingsInteractor.swift in Sources */,
 				7620F2B62A92DE1B002A4EB5 /* SettingsRouter.swift in Sources */,
 				7620F2D12A92EF69002A4EB5 /* ChannelsService.swift in Sources */,
 				7620F2B52A92DE1B002A4EB5 /* SettingsPresenter.swift in Sources */,
+				7620F44F2A9659F5002A4EB5 /* TellAFriendRouter.swift in Sources */,
 				7620F2B72A92DE1B002A4EB5 /* SettingsViewController.swift in Sources */,
+				7620F4522A9659F5002A4EB5 /* TellAFriendService.swift in Sources */,
 				767E4A062A8AB87000B55980 /* Strings.generated.swift in Sources */,
 				76CAA18E2A8AAA6800D742E9 /* BabelResources.swift in Sources */,
 				76CAA17C2A8AA99F00D742E9 /* AuthManager.swift in Sources */,
@@ -609,28 +699,42 @@
 				7620F42A2A9541AC002A4EB5 /* SettingsUserInfoCell.swift in Sources */,
 				76CAA18B2A8AA9ED00D742E9 /* HomePresenter.swift in Sources */,
 				7620F2B92A92DE1B002A4EB5 /* SettingsService.swift in Sources */,
+				7620F45E2A965A09002A4EB5 /* TermsService.swift in Sources */,
 				7620F4332A95694B002A4EB5 /* SettingsViewModel.swift in Sources */,
+				7620F45A2A965A09002A4EB5 /* TermsPresenter.swift in Sources */,
 				76CAA1892A8AA9ED00D742E9 /* HomeViewController.swift in Sources */,
+				7620F4512A9659F5002A4EB5 /* TellAFriendInteractor.swift in Sources */,
 				7620F2B42A92DE1B002A4EB5 /* SettingsFactory.swift in Sources */,
 				76CAA1392A8AA1F400D742E9 /* AppDelegate.swift in Sources */,
 				7620F2CD2A92EF69002A4EB5 /* ChannelsPresenter.swift in Sources */,
+				7620F43E2A9592C2002A4EB5 /* EditProfileFactory.swift in Sources */,
 				7620F2CC2A92EF69002A4EB5 /* ChannelsFactory.swift in Sources */,
+				7620F4592A965A09002A4EB5 /* TermsFactory.swift in Sources */,
 				7620F2C22A92EF5D002A4EB5 /* ChatsRouter.swift in Sources */,
+				7620F45C2A965A09002A4EB5 /* TermsViewController.swift in Sources */,
 				7620F2C32A92EF5D002A4EB5 /* ChatsViewController.swift in Sources */,
 				76CAA13B2A8AA1F400D742E9 /* SceneDelegate.swift in Sources */,
 				7620F2D92A92EF74002A4EB5 /* UsersPresenter.swift in Sources */,
+				7620F4502A9659F5002A4EB5 /* TellAFriendViewController.swift in Sources */,
 				7620F4302A9568D2002A4EB5 /* SettingsButtonViewModel.swift in Sources */,
 				76CAA1872A8AA9ED00D742E9 /* HomeFactory.swift in Sources */,
+				7620F4412A9592C2002A4EB5 /* EditProfileViewController.swift in Sources */,
+				7620F4422A9592C2002A4EB5 /* EditProfileInteractor.swift in Sources */,
 				7620F2DB2A92EF74002A4EB5 /* UsersViewController.swift in Sources */,
 				7620F2C02A92EF5D002A4EB5 /* ChatsFactory.swift in Sources */,
 				7620F2C12A92EF5D002A4EB5 /* ChatsPresenter.swift in Sources */,
 				7620F2D02A92EF69002A4EB5 /* ChannelsInteractor.swift in Sources */,
 				7620F2DC2A92EF74002A4EB5 /* UsersInteractor.swift in Sources */,
+				7620F4402A9592C2002A4EB5 /* EditProfileRouter.swift in Sources */,
 				7620F4202A951280002A4EB5 /* SettingsButtonCell.swift in Sources */,
+				7620F44D2A9659F5002A4EB5 /* TellAFriendFactory.swift in Sources */,
+				7620F45B2A965A09002A4EB5 /* TermsRouter.swift in Sources */,
+				7620F45D2A965A09002A4EB5 /* TermsInteractor.swift in Sources */,
 				76CAA18C2A8AA9ED00D742E9 /* HomeService.swift in Sources */,
 				7620F2DA2A92EF74002A4EB5 /* UsersRouter.swift in Sources */,
 				76CAA18A2A8AA9ED00D742E9 /* HomeRouter.swift in Sources */,
 				7620F2C52A92EF5D002A4EB5 /* ChatsService.swift in Sources */,
+				7620F43F2A9592C2002A4EB5 /* EditProfilePresenter.swift in Sources */,
 				7620F2C42A92EF5D002A4EB5 /* ChatsInteractor.swift in Sources */,
 				76CAA1882A8AA9ED00D742E9 /* HomeInteractor.swift in Sources */,
 				7620F42D2A9567B1002A4EB5 /* User.swift in Sources */,

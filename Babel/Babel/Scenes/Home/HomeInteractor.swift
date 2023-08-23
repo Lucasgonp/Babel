@@ -1,3 +1,5 @@
+import Foundation
+
 protocol HomeInteracting: AnyObject {
     func checkAuthentication()
     func performLogout()
@@ -18,11 +20,13 @@ extension HomeInteractor: HomeInteracting {
     func checkAuthentication() {
         showLoading()
         service.checkAuthentication { [weak self] authCredentials in
-            self?.hideLoading()
-            if let authCredentials, authCredentials.firebaseUser.isEmailVerified {
-                self?.presenter.displayViewState(.success(user: authCredentials.user))
-            } else {
-                self?.presenter.didNextStep(action: .presentLogin)
+            DispatchQueue.main.async {
+                self?.hideLoading()
+                if let authCredentials, authCredentials.firebaseUser.isEmailVerified {
+                    self?.presenter.displayViewState(.success(user: authCredentials.user))
+                } else {
+                    self?.presenter.didNextStep(action: .presentLogin)
+                }
             }
         }
     }

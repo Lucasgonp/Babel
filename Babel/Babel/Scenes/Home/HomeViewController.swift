@@ -25,19 +25,13 @@ private extension HomeViewController.Layout {
 
 final class HomeViewController: TabBarViewController<HomeInteracting> {
     fileprivate enum Layout { }
-    typealias Localizable = Strings.Home
+    private var didCheckAuthentication = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        interactor.checkAuthentication()
-    }
-
-    override func buildViewHierarchy() {
-        // template
-    }
-
-    override func setupConstraints() {
-        // template
+        DispatchQueue.main.async { [unowned self] in
+            self.interactor.checkAuthentication()
+        }
     }
 
     override func configureViews() {

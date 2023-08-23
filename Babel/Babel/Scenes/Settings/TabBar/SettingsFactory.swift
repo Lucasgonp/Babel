@@ -9,8 +9,8 @@ enum SettingsFactory {
         let interactor = SettingsInteractor(service: service, presenter: presenter, user: user)
         let viewController = SettingsViewController(interactor: interactor)
 
-        router.viewController = viewController
         router.delegate = delegate
+        router.viewController = viewController
         presenter.viewController = viewController
 
         return viewController

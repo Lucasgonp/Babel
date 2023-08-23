@@ -189,6 +189,7 @@ extension RegisterViewController: RegisterDisplaying {
         let isEmailValid = emailTextField.validate()
         let isPasswordValid = passwordTextField.validate()
         
+        hideKeyboard()
         guard isFullNameValid,
               isUsernameValid,
               isEmailValid,

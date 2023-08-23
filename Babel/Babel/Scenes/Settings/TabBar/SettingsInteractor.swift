@@ -1,5 +1,8 @@
 protocol SettingsInteracting: AnyObject {
     func loadSettings()
+    func editProfile()
+    func tellAFriend()
+    func termsAndConditions()
     func logout()
 }
 
@@ -23,6 +26,18 @@ final class SettingsInteractor {
 extension SettingsInteractor: SettingsInteracting {
     func loadSettings() {
         presenter.displayViewState(.success(user: user))
+    }
+    
+    func editProfile() {
+        presenter.didNextStep(action: .pushEditProfile(user: user))
+    }
+    
+    func tellAFriend() {
+        presenter.didNextStep(action: .pushTellAFriend)
+    }
+    
+    func termsAndConditions() {
+        presenter.didNextStep(action: .pushTermsAndCondition)
     }
     
     func logout() {

@@ -230,6 +230,7 @@ extension LoginViewController: LoginDisplaying {
         let isEmailValid = emailTextField.validate()
         let isPasswordValid = passwordTextField.validate()
         
+        hideKeyboard()
         guard isEmailValid, isPasswordValid else {
             return
         }

@@ -19,9 +19,8 @@ private extension SettingsViewController.Layout {
 }
 
 final class SettingsViewController: ViewController<SettingsInteracting, UIView> {
-    fileprivate enum Layout { 
-        // template
-    }
+    fileprivate enum Layout { }
+    typealias Localizable = Strings.Settings
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
@@ -39,6 +38,12 @@ final class SettingsViewController: ViewController<SettingsInteracting, UIView> 
         super.viewDidLoad()
         interactor.loadSettings()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.largeTitleDisplayMode = .automatic
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
 
     override func buildViewHierarchy() { 
         view.fillWithSubview(subview: tableView)
@@ -48,7 +53,7 @@ final class SettingsViewController: ViewController<SettingsInteracting, UIView> 
         // template
     }
 
-    override func configureViews() { 
+    override func configureViews() {
         // template
     }
 }
@@ -76,20 +81,16 @@ private extension SettingsViewController {
         let buttons = [
             SettingsButtonViewModel(
                 icon: Icon.heartSquareIcon.image.withTintColor(Color.warning500.uiColor, renderingMode: .alwaysOriginal),
-                text: "Tell a friend",
+                text: Localizable.SecondSession.tellAFriend,
                 completionHandler: { [weak self] in
-                    let controller = UIViewController()
-                    controller.title = "Tell a friend"
-                    self?.navigationController?.pushViewController(controller, animated: true)
+                    self?.interactor.tellAFriend()
                 }
             ),
             SettingsButtonViewModel(
                 icon: Icon.infoIcon.image,
-                text: "Terms and conditions",
+                text: Localizable.SecondSession.termsAndConditions,
                 completionHandler: { [weak self] in
-                    let controller = UIViewController()
-                    controller.title = "Terms and conditions"
-                    self?.navigationController?.pushViewController(controller, animated: true)
+                    self?.interactor.termsAndConditions()
                 }
             )
         ]
@@ -104,10 +105,8 @@ extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         
-        if let cell = cell as? SettingsUserInfoCell {
-            let controller = UIViewController()
-            controller.title = "User info"
-            navigationController?.pushViewController(controller, animated: true)
+        if let _ = cell as? SettingsUserInfoCell {
+            interactor.editProfile()
         } else if let cell = cell as? SettingsButtonCell {
             cell.completionHandler?()
         } else {
@@ -126,7 +125,7 @@ extension SettingsViewController: UITableViewDataSource {
         case 0:
             return 1
         case 1:
-            return 2
+            return viewModel?.buttons.count ?? 2
         case 2:
             return 1
         default:
@@ -169,11 +168,20 @@ extension SettingsViewController: UITableViewDataSource {
             button.setTitle("Logout", for: .normal)
             button.setTitleColor(Color.warning500.uiColor, for: .normal)
             let cell = UITableViewCell()
-            cell.fillWithSubview(subview: button, spacing: .init(top: 6, left: 0, bottom: 6, right: 0))
+            cell.fillWithSubview(subview: button, spacing: .init(top: 6, left: .zero, bottom: 6, right: .zero))
             cell.selectionStyle = .none
             return cell
         default:
             return UITableViewCell()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        let version = Localizable.ThirdSection.version + "0.0.1"
+        return (section == 2) ? version : nil
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        (view as? UITableViewHeaderFooterView)?.textLabel?.textAlignment = .center
     }
 }

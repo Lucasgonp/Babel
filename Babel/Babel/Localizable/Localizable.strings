@@ -1,3 +1,17 @@
-// Feature
-"Home.title" = "Title";
-"Home.Navigation.logout" = "Logout";
+// TabBar
+"TabBar.Settings.title" = "Settings";
+"TabBar.Users.title" = "Users";
+"TabBar.Channels.title" = "Channels";
+"TabBar.Chats.title" = "Chats";
+
+// Settings
+"Settings.SecondSession.tellAFriend" = "Tell a friend";
+"Settings.SecondSession.termsAndConditions" = "Terms and conditions";
+"Settings.ThirdSection.version" = "Version ";
+"Settings.ThirdSection.logout" = "Logout";
+
+"Settings.EditProfile.title" = "Edit profile";
+
+"Settings.TellAFriend.title" = "Tell a friend";
+
+"Settings.TermsAndConditions.title" = "Terms and conditions";

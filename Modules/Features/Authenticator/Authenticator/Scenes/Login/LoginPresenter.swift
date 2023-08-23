@@ -30,8 +30,8 @@ extension LoginPresenter: LoginPresenting {
         let viewModel = AlertViewModel(
             title: Localizable.Alert.EmailVerification.Resend.title,
             message: Localizable.Alert.EmailVerification.Resend.message,
-            firstButtonTitle: Localizable.Alert.EmailVerification.Resend.resendButton,
-            secondButtonTitle: Strings.Alert.later
+            firstButton: .init(title: Localizable.Alert.EmailVerification.Resend.resendButton, style: .cancel),
+            secondButton: .init(title: Strings.Alert.later, style: .default)
         )
         viewController?.displayResendEmail(viewModel: viewModel)
     }
@@ -40,8 +40,8 @@ extension LoginPresenter: LoginPresenting {
         let viewModel = AlertViewModel(
             title: Strings.ResetPassword.SendReset.title,
             message: Strings.ResetPassword.SendReset.message,
-            firstButtonTitle: Strings.ResetPassword.SendReset.resetButton,
-            secondButtonTitle: Strings.Alert.later,
+            firstButton: .init(title: Strings.ResetPassword.SendReset.resetButton, style: .cancel),
+            secondButton: .init(title: Strings.Alert.later, style: .default),
             textFieldPlaceholder: Localizable.Field.Email.placeholder,
             textFieldKeyboardType: .emailAddress
         )

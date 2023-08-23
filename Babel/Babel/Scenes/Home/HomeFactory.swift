@@ -26,12 +26,12 @@ enum HomeTabBarFactory {
             makeChats(),
             makeChannels(),
             makeUsers(),
-            makeSettings(delegate: delegate, for: user)
+            makeSettings(delegate: delegate)
         ]
     }
     
-    static func makeSettings(delegate: HomeViewDelegate, for user: User) -> HomeTabBarModel {
-        let viewController = SettingsFactory.make(delegate: delegate, for: user)
+    static func makeSettings(delegate: HomeViewDelegate) -> HomeTabBarModel {
+        let viewController = SettingsFactory.make(delegate: delegate)
         let navigation = UINavigationController(rootViewController: viewController)
         navigation.navigationBar.prefersLargeTitles = true
         navigation.tabBarItem.title = Strings.TabBar.Settings.title

@@ -17,6 +17,7 @@ extension AuthenticatorAdapter: LoginProtocol {
                 return
             }
             
+            AccountInfo.shared.firebaseUser = result.user
             self?.syncLocalUserFromFirebase(userId: result.user.uid, email: userRequest.email)
             
             let model = UserGlobalModel(authDataResult: result)

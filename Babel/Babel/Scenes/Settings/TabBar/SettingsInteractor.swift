@@ -1,3 +1,5 @@
+import Authenticator
+
 protocol SettingsInteracting: AnyObject {
     func loadSettings()
     func editProfile()
@@ -9,26 +11,32 @@ protocol SettingsInteracting: AnyObject {
 final class SettingsInteractor {
     private let service: SettingsServicing
     private let presenter: SettingsPresenting
-    private let user: User
     
     init(
         service: SettingsServicing,
-        presenter: SettingsPresenting,
-        user: User
+        presenter: SettingsPresenting
     ) {
         self.service = service
         self.presenter = presenter
-        self.user = user
     }
 }
 
 // MARK: - SettingsInteracting
 extension SettingsInteractor: SettingsInteracting {
     func loadSettings() {
-        presenter.displayViewState(.success(user: user))
+        service.checkAuthentication { [weak self] credentials in
+            if let credentials, credentials.firebaseUser.isEmailVerified {
+                self?.presenter.displayViewState(.success(user: credentials.user))
+            } else {
+                self?.presenter.didNextStep(action: .logout)
+            }
+        }
     }
     
     func editProfile() {
+        guard let user = AccountInfo.shared.credentials?.user else {
+            return
+        }
         presenter.didNextStep(action: .pushEditProfile(user: user))
     }
     

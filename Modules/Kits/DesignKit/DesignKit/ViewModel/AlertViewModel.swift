@@ -1,10 +1,20 @@
 import UIKit
 
+public struct AlertButtonViewModel {
+    let title: String
+    let style: UIAlertAction.Style
+    
+    public init(title: String, style: UIAlertAction.Style) {
+        self.title = title
+        self.style = style
+    }
+}
+
 public struct AlertViewModel {
     let title: String
     let message: String
-    let firstButtonTitle: String
-    let secondButtonTitle: String
+    let firstButton: AlertButtonViewModel
+    let secondButton: AlertButtonViewModel
     let textFieldPlaceholder: String?
     let textFieldKeyboardType: UIKeyboardType?
     
@@ -14,15 +24,15 @@ public struct AlertViewModel {
     public init(
         title: String,
         message: String,
-        firstButtonTitle: String,
-        secondButtonTitle: String,
+        firstButton: AlertButtonViewModel,
+        secondButton: AlertButtonViewModel,
         textFieldPlaceholder: String? = nil,
         textFieldKeyboardType: UIKeyboardType? = .default
     ) {
         self.title = title
         self.message = message
-        self.firstButtonTitle = firstButtonTitle
-        self.secondButtonTitle = secondButtonTitle
+        self.firstButton = firstButton
+        self.secondButton = secondButton
         self.textFieldPlaceholder = textFieldPlaceholder
         self.textFieldKeyboardType = textFieldKeyboardType
     }

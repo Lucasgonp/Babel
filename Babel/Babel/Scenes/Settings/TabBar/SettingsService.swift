@@ -1,12 +1,22 @@
+import Authenticator
+
 protocol SettingsServicing {
-    // template
+    func checkAuthentication(completion: @escaping (AuthCheckCredentials?) -> Void)
 }
 
 final class SettingsService {
-    // template
+    typealias AuthDependencies = CheckAuthenticationProtocol
+    
+    private let authManager: AuthDependencies
+    
+    init(authManager: AuthDependencies) {
+        self.authManager = authManager
+    }
 }
 
 // MARK: - SettingsServicing
 extension SettingsService: SettingsServicing {
-    // template
+    func checkAuthentication(completion: @escaping (AuthCheckCredentials?) -> Void) {
+        authManager.checkAuthentication(completion: completion)
+    }
 }

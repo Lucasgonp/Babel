@@ -15,7 +15,7 @@ private extension EditProfileViewController.Layout {
 final class EditProfileViewController: ViewController<EditProfileInteracting, UIView> {
     fileprivate enum Layout { }
     typealias Localizable = Strings.Settings.EditProfile
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

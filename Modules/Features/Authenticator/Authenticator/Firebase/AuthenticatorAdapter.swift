@@ -19,6 +19,7 @@ extension AuthenticatorAdapter {
 
 extension AuthenticatorAdapter {
     func saveUserLocally(_ user: User) {
+        AccountInfo.shared.user = user
         StorageManager.shared.saveStorageData(user, key: .currentUser)
     }
 }

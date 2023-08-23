@@ -88,10 +88,10 @@ public extension TabBarViewController {
                 newTextField.placeholder = placeholder
             }
         }
-        let firstButton = UIAlertAction(title: viewModel.firstButtonTitle, style: .cancel, handler: {_ in
+        let firstButton = UIAlertAction(title: viewModel.firstButton.title, style: viewModel.firstButton.style, handler: {_ in
             viewModel.firstButtonAction?(alert.textFields?.first?.text)
         })
-        let secondButton = UIAlertAction(title: viewModel.secondButtonTitle, style: .default, handler: { action in
+        let secondButton = UIAlertAction(title: viewModel.secondButton.title, style: viewModel.secondButton.style, handler: { action in
             viewModel.secondButtonAction?(alert.textFields?.first?.text)
         })
         

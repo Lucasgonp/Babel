@@ -2,11 +2,12 @@ import UIKit
 import Authenticator
 
 enum SettingsFactory {
-    static func make(delegate: HomeViewDelegate, for user: User) -> UIViewController {
-        let service = SettingsService()
+    static func make(delegate: HomeViewDelegate) -> UIViewController {
+        let authManager = AuthManager.shared
+        let service = SettingsService(authManager: authManager)
         let router = SettingsRouter()
         let presenter = SettingsPresenter(router: router)
-        let interactor = SettingsInteractor(service: service, presenter: presenter, user: user)
+        let interactor = SettingsInteractor(service: service, presenter: presenter)
         let viewController = SettingsViewController(interactor: interactor)
 
         router.delegate = delegate

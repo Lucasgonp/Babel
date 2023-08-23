@@ -58,7 +58,16 @@ extension HomeViewController: HomeDisplaying {
 
 extension HomeViewController: HomeViewDelegate {
     func logout() {
-        interactor.performLogout()
+        var viewModel = AlertViewModel(
+            title: "Logout",
+            message: "Do you want to logout?",
+            firstButton: .init(title: "Logout", style: .destructive),
+            secondButton: .init(title: "Back", style: .default)
+        )
+        viewModel.firstButtonAction = { [weak self] _ in
+            self?.interactor.performLogout()
+        }
+        showMessageAlert(viewModel: viewModel)
     }
     
     func reloadData() {

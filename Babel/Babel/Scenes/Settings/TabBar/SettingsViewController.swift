@@ -33,14 +33,11 @@ final class SettingsViewController: ViewController<SettingsInteracting, UIView> 
     }()
     
     private var viewModel: SettingsViewModel?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        interactor.loadSettings()
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        interactor.loadSettings()
+        
         navigationItem.largeTitleDisplayMode = .automatic
         navigationController?.navigationBar.prefersLargeTitles = true
     }
@@ -63,7 +60,9 @@ extension SettingsViewController: SettingsDisplaying {
     func displayViewState(_ state: SettingsViewState) {
         switch state {
         case .success(let user):
-            displaySettings(for: user)
+            if user != viewModel?.user {
+                displaySettings(for: user)
+            }
         case .loading(let isLoading):
             if isLoading {
                 showLoading()
@@ -177,8 +176,8 @@ extension SettingsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        let version = Localizable.ThirdSection.version + "0.0.1"
-        return (section == 2) ? version : nil
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? String()
+        return (section == 2) ? Localizable.ThirdSection.version + version : nil
     }
     
     func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {

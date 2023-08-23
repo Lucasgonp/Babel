@@ -5,6 +5,7 @@ import CoreKit
 public final class AuthenticatorAdapter {    
     let auth = FirebaseManager.shared.auth
     let firestore = FirebaseManager.shared.firestore
+    var listener: AuthStateDidChangeListenerHandle?
     
     public init() {}
 }

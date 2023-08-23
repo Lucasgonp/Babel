@@ -13,7 +13,7 @@ public class TextField: UIView {
         }
     }
     
-    weak var delegate: TextFieldDelegate?
+    public weak var delegate: TextFieldDelegate?
     
     private lazy var hintView: UIView = {
         let view = UIView()

@@ -20,6 +20,20 @@ private extension RegisterViewController.Layout {
 final class RegisterViewController: ViewController<RegisterInteracting, UIView> {
     fileprivate enum Layout { }
     typealias Localizable = Strings.Register
+    
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.keyboardDismissMode = .onDrag
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+    
+    private lazy var containerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     private lazy var brandImageView: UIImageView = {
         let image = Image.babelBrandLogo.image
@@ -48,7 +62,7 @@ final class RegisterViewController: ViewController<RegisterInteracting, UIView> 
     
     private lazy var fullNameTextField: TextField = {
         let textField = TextField()
-        textField.render(.standard(placeholder: Localizable.Field.FullName.placeholder, keyboardType: .namePhonePad))
+        textField.render(.standard(placeholder: Localizable.Field.FullName.placeholder, autocapitalizationType: .words))
         textField.validations = [FullNameValidation()]
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -88,32 +102,47 @@ final class RegisterViewController: ViewController<RegisterInteracting, UIView> 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        configureKeyboardObservers()
     }
-
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        hideKeyboard()
+    }
+    
     override func buildViewHierarchy() {
-        view.addSubview(brandImageView)
-        view.addSubview(inputsStackView)
+        view.fillWithSubview(subview: scrollView)
+        scrollView.fillWithSubview(subview: containerView)
+        containerView.addSubview(brandImageView)
+        containerView.addSubview(inputsStackView)
     }
     
     override func setupConstraints() {
         NSLayoutConstraint.activate([
-            brandImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
+            containerView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            containerView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            brandImageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 42),
             brandImageView.heightAnchor.constraint(equalToConstant: Layout.Size.imageHeight),
-            brandImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            brandImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+            brandImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
+            brandImageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16)
         ])
         
         NSLayoutConstraint.activate([
             inputsStackView.topAnchor.constraint(equalTo: brandImageView.bottomAnchor, constant: 22),
-            inputsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            inputsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+            inputsStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
+            inputsStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20)
         ])
     }
 
     override func configureViews() {
         view.backgroundColor = Color.backgroundLogo.uiColor
         inputsStackView.setCustomSpacing(32, after: passwordTextField)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        view.addGestureRecognizer(tap)
     }
 }
 
@@ -132,6 +161,28 @@ extension RegisterViewController: RegisterDisplaying {
 }
 
 @objc private extension RegisterViewController {
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == .zero {
+                UIView.animate(withDuration: 0.5) { [weak self] in
+                    self?.view.frame.origin.y -= (keyboardSize.height/6)
+                }
+            }
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != .zero {
+            UIView.animate(withDuration: 0.5) { [weak self] in
+                self?.view.frame.origin.y = .zero
+            }
+        }
+    }
+    
+    func hideKeyboard() {
+        view.endEditing(true)
+    }
+    
     func primaryButtonAction() {
         let isFullNameValid = fullNameTextField.validate()
         let isUsernameValid = usernameTextField.validate()
@@ -159,8 +210,9 @@ extension RegisterViewController: RegisterDisplaying {
     }
 }
 
-extension RegisterViewController {
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
+private extension RegisterViewController {
+    func configureKeyboardObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }

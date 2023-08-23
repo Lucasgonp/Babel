@@ -8,6 +8,8 @@ public struct TextFieldDTO {
     let isSecureTextEntry: Bool
     let isFillFieldRequired: Bool
     let border: Border?
+    let autocorrectionType: UITextAutocorrectionType
+    let autocapitalizationType: UITextAutocapitalizationType
     
     public init(
         placeholder: String,
@@ -16,7 +18,9 @@ public struct TextFieldDTO {
         validations: [Validation] = [],
         isSecureTextEntry: Bool,
         isFillFieldRequired: Bool,
-        border: Border? = nil
+        border: Border? = nil,
+        autocorrectionType: UITextAutocorrectionType,
+        autocapitalizationType: UITextAutocapitalizationType
     ) {
         self.placeholder = placeholder
         self.hint = hint
@@ -25,6 +29,8 @@ public struct TextFieldDTO {
         self.isSecureTextEntry = isSecureTextEntry
         self.isFillFieldRequired = isFillFieldRequired
         self.border = border
+        self.autocorrectionType = autocorrectionType
+        self.autocapitalizationType = autocapitalizationType
     }
 }
 

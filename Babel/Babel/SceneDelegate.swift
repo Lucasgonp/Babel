@@ -14,11 +14,8 @@ private extension SceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         
-        let rootViewController = HomeFactory.make()
-        let navigation = UINavigationController(rootViewController: rootViewController)
-        navigation.modalPresentationStyle = .fullScreen
-        
-        window?.rootViewController = navigation
+        let viewController = HomeFactory.make()        
+        window?.rootViewController = viewController
         window?.makeKeyAndVisible()
     }
 }

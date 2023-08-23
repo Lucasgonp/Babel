@@ -23,7 +23,21 @@ private extension LoginViewController.Layout {
 final class LoginViewController: ViewController<LoginInteracting, UIView> {
     fileprivate enum Layout { }
     typealias Localizable = Strings.Login
-
+    
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.keyboardDismissMode = .onDrag
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+    
+    private lazy var containerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private lazy var brandImageView: UIImageView = {
         let image = Image.babelBrandLogo.image
         let imageView = ImageView(image: image)
@@ -67,7 +81,7 @@ final class LoginViewController: ViewController<LoginInteracting, UIView> {
     
     private lazy var forgotPasswordButton: Button = {
         let button = Button()
-        button.render(.tertiary(title: "**Forgot the password?**"))
+        button.render(.tertiary(title: Localizable.Button.forgotPassword))
         button.addTarget(self, action: #selector(forgotPasswordButtonAction), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -91,44 +105,60 @@ final class LoginViewController: ViewController<LoginInteracting, UIView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        configureKeyboardObservers()
     }
-
-    override func buildViewHierarchy() { 
-        view.addSubview(brandImageView)
-        view.addSubview(inputsStackView)
-        view.addSubview(forgotPasswordButton)
-        view.addSubview(buttonsStackView)
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        hideKeyboard()
+    }
+    
+    override func buildViewHierarchy() {
+        view.fillWithSubview(subview: scrollView)
+        scrollView.fillWithSubview(subview: containerView)
+        containerView.addSubview(brandImageView)
+        containerView.addSubview(inputsStackView)
+        containerView.addSubview(forgotPasswordButton)
+        containerView.addSubview(buttonsStackView)
     }
     
     override func setupConstraints() {
         NSLayoutConstraint.activate([
-            brandImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
+            containerView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            containerView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            brandImageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 46),
             brandImageView.heightAnchor.constraint(equalToConstant: Layout.Size.imageHeight),
-            brandImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            brandImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+            brandImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
+            brandImageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16)
         ])
         
         NSLayoutConstraint.activate([
             inputsStackView.topAnchor.constraint(equalTo: brandImageView.bottomAnchor, constant: 22),
-            inputsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            inputsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+            inputsStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
+            inputsStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20)
         ])
         
         NSLayoutConstraint.activate([
             forgotPasswordButton.topAnchor.constraint(equalTo: inputsStackView.bottomAnchor, constant: 4),
-            forgotPasswordButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
+            forgotPasswordButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20)
         ])
         
         NSLayoutConstraint.activate([
             buttonsStackView.topAnchor.constraint(equalTo: forgotPasswordButton.bottomAnchor, constant: 28),
-            buttonsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            buttonsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+            buttonsStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
+            buttonsStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
+            buttonsStackView.bottomAnchor.constraint(lessThanOrEqualTo: containerView.bottomAnchor)
         ])
     }
-
+    
     override func configureViews() {
         view.backgroundColor = Color.backgroundLogo.uiColor
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        view.addGestureRecognizer(tap)
     }
 }
 
@@ -174,6 +204,28 @@ extension LoginViewController: LoginDisplaying {
 }
 
 @objc private extension LoginViewController {
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == .zero {
+                UIView.animate(withDuration: 0.5) { [weak self] in
+                    self?.view.frame.origin.y -= (keyboardSize.height/9)
+                }
+            }
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != .zero {
+            UIView.animate(withDuration: 0.5) { [weak self] in
+                self?.view.frame.origin.y = .zero
+            }
+        }
+    }
+    
+    func hideKeyboard() {
+        view.endEditing(true)
+    }
+    
     func primaryButtonAction() {
         let isEmailValid = emailTextField.validate()
         let isPasswordValid = passwordTextField.validate()
@@ -195,8 +247,9 @@ extension LoginViewController: LoginDisplaying {
     }
 }
 
-extension LoginViewController {
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
+private extension LoginViewController {
+    func configureKeyboardObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }

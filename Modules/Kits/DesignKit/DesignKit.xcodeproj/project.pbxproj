@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7620F4222A951480002A4EB5 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4212A951480002A4EB5 /* UITableView+Extensions.swift */; };
 		7666E56F2A77169F006C0560 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7666E56E2A77169F006C0560 /* UIKit.framework */; };
 		766D50E22A83E81800150284 /* ButtonTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766D50E12A83E81800150284 /* ButtonTheme.swift */; };
 		766D50E42A83E81F00150284 /* ButtonDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766D50E32A83E81F00150284 /* ButtonDTO.swift */; };
@@ -24,6 +25,7 @@
 		7695455A2A76EA7800BF114D /* DesignKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 7695454C2A76EA7800BF114D /* DesignKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7695458A2A76EB8000BF114D /* DesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769545892A76EB8000BF114D /* DesignView.swift */; };
 		7699BC6C2A7A01F000DC730B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7699BC6B2A7A01F000DC730B /* ViewController.swift */; };
+		76C6C75E2A92D0A400E57A2F /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C6C75D2A92D0A400E57A2F /* TabBarViewController.swift */; };
 		76CAA0E42A854C0300D742E9 /* TextFieldTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA0E32A854C0300D742E9 /* TextFieldTheme.swift */; };
 		76CAA0E62A854C0B00D742E9 /* TextFieldDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA0E52A854C0B00D742E9 /* TextFieldDTO.swift */; };
 		76CAA0E82A854C4A00D742E9 /* TextFieldInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA0E72A854C4A00D742E9 /* TextFieldInput.swift */; };
@@ -42,6 +44,7 @@
 		76EF5D442A8FCCC500D9AE8B /* AlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D432A8FCCC500D9AE8B /* AlertViewModel.swift */; };
 		76EF5D4C2A907D1900D9AE8B /* Dependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EF5D4B2A907D1900D9AE8B /* Dependencies.framework */; };
 		76EF5D4D2A907D1900D9AE8B /* Dependencies.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76EF5D4B2A907D1900D9AE8B /* Dependencies.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		76EF5D502A92663100D9AE8B /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D4F2A92663100D9AE8B /* UIView+Extensions.swift */; };
 		76F2AF6C2A81AE4500FE5966 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F2AF6B2A81AE4500FE5966 /* SpinnerViewController.swift */; };
 		76F778B02A81C89B00443E7B /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F778AF2A81C89B00443E7B /* UIApplication+Extensions.swift */; };
 		76F778C12A828FA700443E7B /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F778C02A828FA700443E7B /* TextField.swift */; };
@@ -99,6 +102,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7620F4212A951480002A4EB5 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		7666E56E2A77169F006C0560 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/System/iOSSupport/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		766D50E12A83E81800150284 /* ButtonTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTheme.swift; sourceTree = "<group>"; };
 		766D50E32A83E81F00150284 /* ButtonDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonDTO.swift; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 		769545892A76EB8000BF114D /* DesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignView.swift; sourceTree = "<group>"; };
 		769545D42A76F59200BF114D /* DesignKit-SampleApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "DesignKit-SampleApp.xcodeproj"; path = "SampleApp/DesignKit-SampleApp/DesignKit-SampleApp.xcodeproj"; sourceTree = "<group>"; };
 		7699BC6B2A7A01F000DC730B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		76C6C75D2A92D0A400E57A2F /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		76CAA0E32A854C0300D742E9 /* TextFieldTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTheme.swift; sourceTree = "<group>"; };
 		76CAA0E52A854C0B00D742E9 /* TextFieldDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldDTO.swift; sourceTree = "<group>"; };
 		76CAA0E72A854C4A00D742E9 /* TextFieldInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldInput.swift; sourceTree = "<group>"; };
@@ -135,6 +140,7 @@
 		76EF5D402A8FCC5B00D9AE8B /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		76EF5D432A8FCCC500D9AE8B /* AlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewModel.swift; sourceTree = "<group>"; };
 		76EF5D4B2A907D1900D9AE8B /* Dependencies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Dependencies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		76EF5D4F2A92663100D9AE8B /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		76F2AF6B2A81AE4500FE5966 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		76F778AF2A81C89B00443E7B /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		76F778C02A828FA700443E7B /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
@@ -265,6 +271,8 @@
 				76EF5D122A8D432D00D9AE8B /* UIImage+Extensions.swift */,
 				76EF5D142A8D564700D9AE8B /* UIImageView+Extensions.swift */,
 				76EF5D402A8FCC5B00D9AE8B /* UINavigationController+Extensions.swift */,
+				76EF5D4F2A92663100D9AE8B /* UIView+Extensions.swift */,
+				7620F4212A951480002A4EB5 /* UITableView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -283,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				7699BC6B2A7A01F000DC730B /* ViewController.swift */,
+				76C6C75D2A92D0A400E57A2F /* TabBarViewController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -571,10 +580,12 @@
 				766D52262A83F79300150284 /* Font.swift in Sources */,
 				76EF5D112A8C651C00D9AE8B /* Image.swift in Sources */,
 				76CAA0E62A854C0B00D742E9 /* TextFieldDTO.swift in Sources */,
+				76C6C75E2A92D0A400E57A2F /* TabBarViewController.swift in Sources */,
 				76CAA0E42A854C0300D742E9 /* TextFieldTheme.swift in Sources */,
 				76F778C62A82B23000443E7B /* TextLabel.swift in Sources */,
 				76F778CC2A82B37200443E7B /* Color.swift in Sources */,
 				7699BC6C2A7A01F000DC730B /* ViewController.swift in Sources */,
+				7620F4222A951480002A4EB5 /* UITableView+Extensions.swift in Sources */,
 				76EF5CE02A8C368800D9AE8B /* DesignKitResources.swift in Sources */,
 				76EF5D152A8D564700D9AE8B /* UIImageView+Extensions.swift in Sources */,
 				76EF5D132A8D432D00D9AE8B /* UIImage+Extensions.swift in Sources */,
@@ -591,6 +602,7 @@
 				766D52282A83F7BF00150284 /* FontStyle.swift in Sources */,
 				766D50E22A83E81800150284 /* ButtonTheme.swift in Sources */,
 				76F778CE2A82B3B500443E7B /* UIColor+Extensions.swift in Sources */,
+				76EF5D502A92663100D9AE8B /* UIView+Extensions.swift in Sources */,
 				76EF5D0B2A8C61A400D9AE8B /* Strings.generated.swift in Sources */,
 				7695454E2A76EA7800BF114D /* DesignKit.docc in Sources */,
 				76F778DA2A82E46300443E7B /* ImageView.swift in Sources */,

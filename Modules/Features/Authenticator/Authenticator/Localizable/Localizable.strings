@@ -1,6 +1,7 @@
 // Login
 "Login.Field.Email.placeholder" = "Email";
 "Login.Field.Password.placeholder" = "Password";
+"Login.Button.forgotPassword" = "**Forgot the password?**";
 "Login.Button.login" = "Login";
 "Login.Button.register" = "Don't have an account? **Sign Up**";
 
@@ -43,6 +44,10 @@
 "Error.Field.passwordEmpty" = "Password is required";
 "Error.Field.fullnameEmpty" = "Full name is required";
 "Error.Field.usernameEmpty" = "Username is required";
+
+"Error.Field.usernameShort" = "Username is too short";
+"Error.Field.fullNameShort" = "Full name is too short";
+"Error.Field.passwordShort" = "Password is too short";
 
 
 // Login

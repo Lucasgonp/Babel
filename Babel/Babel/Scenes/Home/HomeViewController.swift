@@ -4,7 +4,7 @@ import Authenticator
 
 enum HomeViewState {
     case loading(isLoading: Bool)
-    case success(message: String)
+    case success(user: User)
     case error(message: String)
 }
 
@@ -13,6 +13,7 @@ protocol HomeDisplaying: AnyObject {
 }
 
 protocol HomeViewDelegate: AnyObject {
+    func logout()
     func reloadData()
 }
 
@@ -22,20 +23,9 @@ private extension HomeViewController.Layout {
     }
 }
 
-final class HomeViewController: ViewController<HomeInteracting, UIView> {
+final class HomeViewController: TabBarViewController<HomeInteracting> {
     fileprivate enum Layout { }
     typealias Localizable = Strings.Home
-    
-    private lazy var logoutBarButton: UIBarButtonItem = {
-        let barButton = UIBarButtonItem(title: Localizable.Navigation.logout, style: .plain, target: self, action: #selector(logoutAction))
-        return barButton
-    }()
-    
-    private lazy var textLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +42,8 @@ final class HomeViewController: ViewController<HomeInteracting, UIView> {
 
     override func configureViews() {
         view.backgroundColor = .white
-        navigationItem.rightBarButtonItem = logoutBarButton
+        tabBar.backgroundColor = Color.grayscale050.uiColor
+        tabBar.isTranslucent = true
     }
 }
 
@@ -61,8 +52,10 @@ extension HomeViewController: HomeDisplaying {
         switch state {
         case .loading(let isLoading):
             setupLoading(isLoading: isLoading)
-        case .success(let message):
-            print(message)
+        case .success(let user):
+            DispatchQueue.main.async { [unowned self] in
+                self.configureTabBar(with: user)
+            }
         case .error(let message):
             print(message)
         }
@@ -70,18 +63,24 @@ extension HomeViewController: HomeDisplaying {
 }
 
 extension HomeViewController: HomeViewDelegate {
+    func logout() {
+        interactor.performLogout()
+    }
+    
     func reloadData() {
         interactor.checkAuthentication()
     }
 }
 
-@objc private extension HomeViewController {
-    func logoutAction() {
-        interactor.performLogout()
-    }
-}
-
 private extension HomeViewController {
+    func configureTabBar(with user: User) {
+        let tabBars = HomeTabBarFactory.makeTabs(delegate: self, for: user)
+        setViewControllers(tabBars.compactMap({ $0.navigation }), animated: false)
+        tabBar.items?.enumerated().forEach({ index, item in
+            item.image = tabBars[index].icon
+        })
+    }
+    
     func setupLoading(isLoading: Bool) {
         if isLoading {
             showLoading()

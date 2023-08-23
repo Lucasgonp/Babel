@@ -1,11 +1,11 @@
 public struct User: Codable, Equatable {
-    var id = String()
-    var pushId = String()
-    var avatarLink = String()
+    public var id = String()
+    public var pushId = String()
+    public var avatarLink = String()
     
-    let name: String
-    let email: String
-    let username: String
-    let password: String
-    let status: String
+    public let name: String
+    public let email: String
+    public let username: String
+    public let password: String
+    public let status: String
 }

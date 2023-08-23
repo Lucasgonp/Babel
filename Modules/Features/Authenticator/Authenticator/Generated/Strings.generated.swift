@@ -26,10 +26,16 @@ internal enum Strings {
       internal static let emailInvalid = Strings.tr("Localizable", "Error.Field.emailInvalid", fallback: "Email is invalid")
       /// Full name is required
       internal static let fullnameEmpty = Strings.tr("Localizable", "Error.Field.fullnameEmpty", fallback: "Full name is required")
+      /// Full name is too short
+      internal static let fullNameShort = Strings.tr("Localizable", "Error.Field.fullNameShort", fallback: "Full name is too short")
       /// Password is required
       internal static let passwordEmpty = Strings.tr("Localizable", "Error.Field.passwordEmpty", fallback: "Password is required")
+      /// Password is too short
+      internal static let passwordShort = Strings.tr("Localizable", "Error.Field.passwordShort", fallback: "Password is too short")
       /// Username is required
       internal static let usernameEmpty = Strings.tr("Localizable", "Error.Field.usernameEmpty", fallback: "Username is required")
+      /// Username is too short
+      internal static let usernameShort = Strings.tr("Localizable", "Error.Field.usernameShort", fallback: "Username is too short")
     }
   }
   internal enum Login {
@@ -52,6 +58,8 @@ internal enum Strings {
       }
     }
     internal enum Button {
+      /// **Forgot the password?**
+      internal static let forgotPassword = Strings.tr("Localizable", "Login.Button.forgotPassword", fallback: "**Forgot the password?**")
       /// Login
       internal static let login = Strings.tr("Localizable", "Login.Button.login", fallback: "Login")
       /// Don't have an account? **Sign Up**

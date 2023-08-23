@@ -48,7 +48,7 @@
 		76EF5D332A8DAC7D00D9AE8B /* AuthenticatorCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D322A8DAC7D00D9AE8B /* AuthenticatorCheck.swift */; };
 		76EF5D352A8DB36500D9AE8B /* FullNameValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D342A8DB36500D9AE8B /* FullNameValidation.swift */; };
 		76EF5D372A8DB3B000D9AE8B /* UsernameValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D362A8DB3B000D9AE8B /* UsernameValidation.swift */; };
-		76EF5D3A2A8ECB3600D9AE8B /* LoginUserResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D392A8ECB3600D9AE8B /* LoginUserResponseModel.swift */; };
+		76EF5D3A2A8ECB3600D9AE8B /* UserGlobalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D392A8ECB3600D9AE8B /* UserGlobalModel.swift */; };
 		76EF5D3D2A8ECB8100D9AE8B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D3C2A8ECB8100D9AE8B /* User.swift */; };
 		76EF5D462A8FE2A300D9AE8B /* AuthenticatorResendEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D452A8FE2A300D9AE8B /* AuthenticatorResendEmail.swift */; };
 		76EF5D482A8FE50100D9AE8B /* AuthenticatorResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D472A8FE50000D9AE8B /* AuthenticatorResetPassword.swift */; };
@@ -128,7 +128,7 @@
 		76EF5D322A8DAC7D00D9AE8B /* AuthenticatorCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatorCheck.swift; sourceTree = "<group>"; };
 		76EF5D342A8DB36500D9AE8B /* FullNameValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullNameValidation.swift; sourceTree = "<group>"; };
 		76EF5D362A8DB3B000D9AE8B /* UsernameValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameValidation.swift; sourceTree = "<group>"; };
-		76EF5D392A8ECB3600D9AE8B /* LoginUserResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserResponseModel.swift; sourceTree = "<group>"; };
+		76EF5D392A8ECB3600D9AE8B /* UserGlobalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGlobalModel.swift; sourceTree = "<group>"; };
 		76EF5D3C2A8ECB8100D9AE8B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		76EF5D452A8FE2A300D9AE8B /* AuthenticatorResendEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorResendEmail.swift; sourceTree = "<group>"; };
 		76EF5D472A8FE50000D9AE8B /* AuthenticatorResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorResetPassword.swift; sourceTree = "<group>"; };
@@ -352,7 +352,7 @@
 		76EF5D382A8ECB2600D9AE8B /* Response */ = {
 			isa = PBXGroup;
 			children = (
-				76EF5D392A8ECB3600D9AE8B /* LoginUserResponseModel.swift */,
+				76EF5D392A8ECB3600D9AE8B /* UserGlobalModel.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -550,7 +550,7 @@
 				766D50DA2A83D1F800150284 /* AuthenticatorResources.swift in Sources */,
 				768BB53F2A8162AC00300ECA /* RegisterFactory.swift in Sources */,
 				762F74822A77056A0004B76E /* Authenticator.docc in Sources */,
-				76EF5D3A2A8ECB3600D9AE8B /* LoginUserResponseModel.swift in Sources */,
+				76EF5D3A2A8ECB3600D9AE8B /* UserGlobalModel.swift in Sources */,
 				76EF5D352A8DB36500D9AE8B /* FullNameValidation.swift in Sources */,
 				76EF5D462A8FE2A300D9AE8B /* AuthenticatorResendEmail.swift in Sources */,
 				766D50DD2A83D46900150284 /* Strings.generated.swift in Sources */,

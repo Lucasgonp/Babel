@@ -1,11 +1,11 @@
 import FirebaseAuth
 
 public protocol LoginProtocol {
-    func login(with userRequest: LoginUserRequestModel, completion: @escaping ((Result<LoginUserResponseModel, AuthError>)) -> Void)
+    func login(with userRequest: LoginUserRequestModel, completion: @escaping ((Result<UserGlobalModel, AuthError>)) -> Void)
 }
 
 extension AuthenticatorAdapter: LoginProtocol {
-    public func login(with userRequest: LoginUserRequestModel, completion: @escaping ((Result<LoginUserResponseModel, AuthError>) -> Void)) {
+    public func login(with userRequest: LoginUserRequestModel, completion: @escaping ((Result<UserGlobalModel, AuthError>) -> Void)) {
         auth.signIn(withEmail: userRequest.email, password: userRequest.password) { [weak self] (result, error) in
             if let error {
                 completion(.failure(.custom(error)))
@@ -19,7 +19,7 @@ extension AuthenticatorAdapter: LoginProtocol {
             
             self?.syncLocalUserFromFirebase(userId: result.user.uid, email: userRequest.email)
             
-            let model = LoginUserResponseModel(authDataResult: result)
+            let model = UserGlobalModel(authDataResult: result)
             completion(.success(model))
         }
     }

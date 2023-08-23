@@ -5,6 +5,9 @@ struct FullNameValidation: Validation {
         if text.isEmpty {
             return .error(Strings.Error.Field.fullnameEmpty)
         }
+        if text.count < 3 {
+            return .error(Strings.Error.Field.fullNameShort)
+        }
         return .success
     }
 }

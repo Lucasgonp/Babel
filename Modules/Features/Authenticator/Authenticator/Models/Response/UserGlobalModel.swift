@@ -1,6 +1,6 @@
 import FirebaseAuth
 
-public struct LoginUserResponseModel {
+public struct UserGlobalModel {
     let authDataResult: AuthDataResult
     
     var isEmailVerified: Bool {

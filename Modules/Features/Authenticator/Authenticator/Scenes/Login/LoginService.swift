@@ -1,7 +1,7 @@
 import FirebaseAuth
 
 protocol LoginServicing {
-    func login(userRequest: LoginUserRequestModel, completion: @escaping (Result<LoginUserResponseModel, AuthError>) -> Void)
+    func login(userRequest: LoginUserRequestModel, completion: @escaping (Result<UserGlobalModel, AuthError>) -> Void)
     func resendEmailVerification(completion: @escaping (Error?) -> Void)
     func resetPassword(email: String, completion: @escaping (Error?) -> Void)
 }
@@ -19,7 +19,7 @@ final class LoginService {
 
 // MARK: - LoginServicing
 extension LoginService: LoginServicing {
-    func login(userRequest: LoginUserRequestModel, completion: @escaping (Result<LoginUserResponseModel, AuthError>) -> Void) {
+    func login(userRequest: LoginUserRequestModel, completion: @escaping (Result<UserGlobalModel, AuthError>) -> Void) {
         authService.login(with: userRequest) { result in
             switch result {
             case .success(let model):

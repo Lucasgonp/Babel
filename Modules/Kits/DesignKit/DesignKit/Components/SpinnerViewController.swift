@@ -2,7 +2,7 @@ import UIKit
 
 final class SpinnerView: UIView {
     private lazy var spinner: UIActivityIndicatorView = {
-       let spinner = UIActivityIndicatorView(style: .large)
+        let spinner = UIActivityIndicatorView(style: .medium)
         spinner.translatesAutoresizingMaskIntoConstraints = false
         spinner.hidesWhenStopped = true
         spinner.startAnimating()
@@ -37,5 +37,19 @@ extension SpinnerView: ViewConfiguration {
     
     func configureViews() {
         backgroundColor = .white
+    }
+}
+
+extension SpinnerView {
+    func showLoading(style: UIActivityIndicatorView.Style) {
+        spinner.style = style
+        spinner.isHidden = false
+        reloadInputViews()
+        
+        spinner.startAnimating()
+    }
+    
+    func hideLoading() {
+        spinner.stopAnimating()
     }
 }

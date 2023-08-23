@@ -6,7 +6,11 @@ public class TextFieldInput: UITextField {
         placeholder = dto.placeholder
         keyboardType = dto.keyboardType
         isSecureTextEntry = dto.isSecureTextEntry
+        autocorrectionType = dto.autocorrectionType
+        autocapitalizationType = dto.autocapitalizationType
         
         addPadding(.both(8))
+        
+        reloadInputViews()
     }
 }

@@ -5,6 +5,9 @@ struct PasswordValidation: Validation {
         if text.isEmpty {
             return .error(Strings.Error.Field.passwordEmpty)
         }
+        if text.count <= 3 {
+            return .error(Strings.Error.Field.passwordShort)
+        }
         return .success
     }
 }

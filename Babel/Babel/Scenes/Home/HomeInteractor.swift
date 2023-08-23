@@ -6,7 +6,7 @@ protocol HomeInteracting: AnyObject {
 final class HomeInteractor {
     private let service: HomeServicing
     private let presenter: HomePresenting
-
+    
     init(service: HomeServicing, presenter: HomePresenting) {
         self.service = service
         self.presenter = presenter
@@ -20,7 +20,7 @@ extension HomeInteractor: HomeInteracting {
         service.checkAuthentication { [weak self] authCredentials in
             self?.hideLoading()
             if let authCredentials, authCredentials.firebaseUser.isEmailVerified {
-                self?.presenter.displayViewState(.success(message: authCredentials.firebaseUser.displayName ?? String()))
+                self?.presenter.displayViewState(.success(user: authCredentials.user))
             } else {
                 self?.presenter.didNextStep(action: .presentLogin)
             }

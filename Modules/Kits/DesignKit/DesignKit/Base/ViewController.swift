@@ -64,8 +64,8 @@ public extension ViewController where Interactor == Void {
     }
 }
 
-extension ViewController {
-    public func showLoading() {
+public extension ViewController {    
+    func showLoading() {
         view.addSubview(spinnerView)
         
         NSLayoutConstraint.activate([
@@ -76,32 +76,32 @@ extension ViewController {
         ])
     }
     
-    public func hideLoading() {
+    func hideLoading() {
         spinnerView.removeFromSuperview()
     }
     
-    public func showHudLoading() {
+    func showHudLoading() {
         ProgressHUD.show()
     }
     
-    public func hideHudLoading() {
+    func hideHudLoading() {
         ProgressHUD.remove()
     }
     
-    public func showErrorAlert(_ errorMessage: String) {
+    func showErrorAlert(_ errorMessage: String) {
         let title = Strings.Error.Generic.title
         let alert = UIAlertController(title: title, message: errorMessage, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: Strings.Error.Generic.button, style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     
-    public func showMessageAlert(title: String, message: String) {
+    func showMessageAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: Strings.Error.Generic.button, style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     
-    public func showMessageAlert(viewModel: AlertViewModel) {
+    func showMessageAlert(viewModel: AlertViewModel) {
         let alert = UIAlertController(title: viewModel.title, message: viewModel.message, preferredStyle: .alert)
         if let placeholder = viewModel.textFieldPlaceholder {
             alert.addTextField() { newTextField in

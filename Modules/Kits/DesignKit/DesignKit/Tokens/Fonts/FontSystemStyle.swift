@@ -18,7 +18,7 @@ public struct FontSystemStyle: FontStyle {
         self.isItalic = isItalic
     }
     
-    func make(isBold: Bool = false, isItalic: Bool = false) -> UIFont {
+    public func make(isBold: Bool = false, isItalic: Bool = false) -> UIFont {
         switch (isBold, isItalic) {
             case (false, false):
             return UIFont.systemFont(ofSize: size)

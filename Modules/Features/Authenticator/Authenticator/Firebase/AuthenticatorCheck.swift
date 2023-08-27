@@ -14,7 +14,6 @@ extension AuthenticatorAdapter: CheckAuthenticationProtocol {
                     return
                 }
                 let credentials = AuthCheckCredentials(user: user, firebaseUser: firebaseUser)
-                AccountInfo.shared.user = user
                 AccountInfo.shared.firebaseUser = firebaseUser
                 thread.async {
                     completion(credentials)

@@ -82,9 +82,9 @@ public extension Color {
 
     /// Returns a color object whose values are:
     ///
-    /// - Light Mode: `#EAECEE`.
+    /// - Light Mode: `#F2F2F2`.
     /// - Dark Mode: `#EAECEE`.
-    static let background = Color(#colorLiteral(red: 0.9176470588, green: 0.9254901961, blue: 0.9333333333, alpha: 1), #colorLiteral(red: 0.9176470588, green: 0.9254901961, blue: 0.9333333333, alpha: 1))
+    static let backgroundPrimary = Color(#colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 1), #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 1))
     
     /// Returns a color object whose values are:
     ///

@@ -10,6 +10,10 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum Strings {
+  internal enum Commons {
+    /// Done
+    internal static let done = Strings.tr("Localizable", "Commons.done", fallback: "Done")
+  }
   internal enum Settings {
     internal enum EditProfile {
       /// Full name
@@ -54,6 +58,42 @@ internal enum Strings {
     internal enum Users {
       /// Users
       internal static let title = Strings.tr("Localizable", "TabBar.Users.title", fallback: "Users")
+    }
+  }
+  internal enum UserBio {
+    /// Currently set to
+    internal static let currentTitle = Strings.tr("Localizable", "UserBio.currentTitle", fallback: "Currently set to")
+    /// Select your about
+    internal static let optionsTitle = Strings.tr("Localizable", "UserBio.optionsTitle", fallback: "Select your about")
+    /// About
+    internal static let placeholder = Strings.tr("Localizable", "UserBio.placeholder", fallback: "About")
+    /// About
+    internal static let title = Strings.tr("Localizable", "UserBio.title", fallback: "About")
+    internal enum Options {
+      /// At school
+      internal static let atSchool = Strings.tr("Localizable", "UserBio.Options.atSchool", fallback: "At school")
+      /// At the gym
+      internal static let atTheGym = Strings.tr("Localizable", "UserBio.Options.atTheGym", fallback: "At the gym")
+      /// At the movies
+      internal static let atTheMovies = Strings.tr("Localizable", "UserBio.Options.atTheMovies", fallback: "At the movies")
+      /// At work
+      internal static let atWork = Strings.tr("Localizable", "UserBio.Options.atWork", fallback: "At work")
+      /// Available
+      internal static let available = Strings.tr("Localizable", "UserBio.Options.available", fallback: "Available")
+      /// Battery about to die
+      internal static let batteryAboutToDie = Strings.tr("Localizable", "UserBio.Options.batteryAboutToDie", fallback: "Battery about to die")
+      /// Busy
+      internal static let busy = Strings.tr("Localizable", "UserBio.Options.busy", fallback: "Busy")
+      /// Can't talk
+      internal static let cantTalk = Strings.tr("Localizable", "UserBio.Options.cantTalk", fallback: "Can't talk")
+      /// In a metting
+      internal static let inAMetting = Strings.tr("Localizable", "UserBio.Options.inAMetting", fallback: "In a metting")
+      /// Sleeping
+      internal static let sleeping = Strings.tr("Localizable", "UserBio.Options.sleeping", fallback: "Sleeping")
+      /// Urgent calls only
+      internal static let urgentCallsOnly = Strings.tr("Localizable", "UserBio.Options.urgentCallsOnly", fallback: "Urgent calls only")
+      /// Hello there! I'm using Babel!
+      internal static let wellcome = Strings.tr("Localizable", "UserBio.Options.wellcome", fallback: "Hello there! I'm using Babel!")
     }
   }
 }

@@ -1,3 +1,6 @@
+// Commons
+"Commons.done" = "Done";
+
 // TabBar
 "TabBar.Settings.title" = "Settings";
 "TabBar.Users.title" = "Users";
@@ -16,3 +19,22 @@
 "Settings.TellAFriend.title" = "Tell a friend";
 
 "Settings.TermsAndConditions.title" = "Terms and conditions";
+
+// User Bio
+"UserBio.Options.wellcome" = "Hello there! I'm using Babel!";
+"UserBio.Options.available" = "Available";
+"UserBio.Options.busy" = "Busy";
+"UserBio.Options.atSchool" = "At school";
+"UserBio.Options.atTheMovies" = "At the movies";
+"UserBio.Options.atWork" = "At work";
+"UserBio.Options.batteryAboutToDie" = "Battery about to die";
+"UserBio.Options.cantTalk" = "Can't talk";
+"UserBio.Options.inAMetting" = "In a metting";
+"UserBio.Options.atTheGym" = "At the gym";
+"UserBio.Options.sleeping" = "Sleeping";
+"UserBio.Options.urgentCallsOnly" = "Urgent calls only";
+
+"UserBio.title" = "About";
+"UserBio.placeholder" = "About";
+"UserBio.currentTitle" = "Currently set to";
+"UserBio.optionsTitle" = "Select your about";

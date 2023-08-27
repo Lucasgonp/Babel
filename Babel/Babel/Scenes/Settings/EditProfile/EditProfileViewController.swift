@@ -84,7 +84,7 @@ final class EditProfileViewController: ViewController<EditProfileInteracting, UI
 
     override func configureViews() { 
         title = Localizable.title
-        view.backgroundColor = Color.grayscale050.uiColor
+        view.backgroundColor = Color.backgroundPrimary.uiColor
         configureNavigation()
     }
 }
@@ -110,10 +110,9 @@ extension EditProfileViewController: EditProfileDisplaying {
 
 extension EditProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.section == 1 {
-            let viewController = UIViewController()
-            viewController.title = "Status"
-            navigationController?.pushViewController(viewController, animated: true)
+            interactor.didTapChangeBio()
         }
     }
 }
@@ -142,26 +141,22 @@ extension EditProfileViewController: UITableViewDataSource {
         switch indexPath.section {
         case 0:
             if indexPath.row == 0 {
-                guard let cell: EditProfileHeaderCell = makeCell(tableView: tableView, indexPath: indexPath) else {
-                    return UITableViewCell()
-                }
+                let cell: EditProfileHeaderCell = tableView.makeCell(indexPath: indexPath, selectionStyle: .none)
                 cell.render(currentUser)
                 cell.delegate = self
                 headerCell = cell
                 return cell
             } else {
-                guard let cell: UITableViewCell = makeCell(tableView: tableView, indexPath: indexPath) else {
-                    return UITableViewCell()
-                }
+                let cell: UITableViewCell = tableView.makeCell(indexPath: indexPath, selectionStyle: .none)
                 fullNameTextField.text = currentUser.name
                 cell.contentView.fillWithSubview(subview: fullNameTextField, spacing: .init(top: 12, left: 4, bottom: 2, right: 4))
                 return cell
             }
         case 1:
-            guard let cell: UITableViewCell = makeCell(tableView: tableView, indexPath: indexPath, accessoryType: .disclosureIndicator) else {
-                return UITableViewCell()
-            }
-            cell.textLabel?.text = currentUser.status
+            let cell: UITableViewCell = tableView.makeCell(indexPath: indexPath, accessoryType: .disclosureIndicator)
+            var content = cell.defaultContentConfiguration()
+            content.text = currentUser.status
+            cell.contentConfiguration = content
             return cell
         default:
             return UITableViewCell()
@@ -169,21 +164,9 @@ extension EditProfileViewController: UITableViewDataSource {
     }
 }
 
-private extension EditProfileViewController {
-    func makeCell<T: UITableViewCell>(tableView: UITableView, indexPath: IndexPath, accessoryType: UITableViewCell.AccessoryType = .none) -> T? {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: T.identifier, for: indexPath) as? T else {
-            return nil
-        }
-        cell.preservesSuperviewLayoutMargins = false
-        cell.separatorInset = .zero
-        cell.layoutMargins = .zero
-        cell.selectionStyle = .none
-        cell.accessoryType = accessoryType
-        return cell
-    }
-    
+private extension EditProfileViewController {    
     func configureNavigation() {
-        let done = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTapDoneButton))
+        let done = UIBarButtonItem(title: Strings.Commons.done, style: .done, target: self, action: #selector(didTapDoneButton))
         navigationItem.setRightBarButton(done, animated: true)
         updateDoneBarButton(isHidden: true)
     }

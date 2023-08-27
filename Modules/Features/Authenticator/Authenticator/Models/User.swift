@@ -7,5 +7,5 @@ public struct User: Codable, Equatable {
     public let email: String
     public let username: String
     public let password: String
-    public let status: String
+    public var status: String
 }

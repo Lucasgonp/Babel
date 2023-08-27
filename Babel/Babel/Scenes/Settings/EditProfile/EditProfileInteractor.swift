@@ -6,6 +6,7 @@ protocol EditProfileInteracting: AnyObject {
     func getUpdatedUser()
     func saveUserToFirebase(user: User)
     func updateAvatarImage(_ image: UIImage)
+    func didTapChangeBio()
 }
 
 final class EditProfileInteractor {
@@ -66,11 +67,14 @@ extension EditProfileInteractor: EditProfileInteracting {
                     } else {
                         let imageData = image.jpegData(compressionQuality: 1.0) as? NSData ?? NSData()
                         StorageManager.shared.saveFileLocally(fileData: imageData, fileName: self.currentUser.id)
-                        AccountInfo.shared.user?.avatarLink = avatarLink
                         self.presenter.updateAvatarImage(image)
                     }
                 }
             }
         }
+    }
+    
+    func didTapChangeBio() {
+        presenter.didNextStep(action: .editBio)
     }
 }

@@ -12,6 +12,13 @@
 		7608DE512A9960DC0036027A /* StorageKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7608DE502A9960DC0036027A /* StorageKit.framework */; };
 		7608DE522A9960DC0036027A /* StorageKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7608DE502A9960DC0036027A /* StorageKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7608DE542A999F050036027A /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE532A999F050036027A /* StorageManager.swift */; };
+		7608DE672A9BAFDE0036027A /* EditBioFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE612A9BAFDE0036027A /* EditBioFactory.swift */; };
+		7608DE682A9BAFDE0036027A /* EditBioPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE622A9BAFDE0036027A /* EditBioPresenter.swift */; };
+		7608DE692A9BAFDE0036027A /* EditBioRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE632A9BAFDE0036027A /* EditBioRouter.swift */; };
+		7608DE6A2A9BAFDE0036027A /* EditBioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE642A9BAFDE0036027A /* EditBioViewController.swift */; };
+		7608DE6B2A9BAFDE0036027A /* EditBioInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE652A9BAFDE0036027A /* EditBioInteractor.swift */; };
+		7608DE6C2A9BAFDE0036027A /* EditBioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE662A9BAFDE0036027A /* EditBioService.swift */; };
+		7608DE6F2A9BAFF30036027A /* UserBio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE6E2A9BAFF30036027A /* UserBio.swift */; };
 		7620F2A92A92DB70002A4EB5 /* HomeTabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2A82A92DB70002A4EB5 /* HomeTabBarModel.swift */; };
 		7620F2B42A92DE1B002A4EB5 /* SettingsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2AE2A92DE1B002A4EB5 /* SettingsFactory.swift */; };
 		7620F2B52A92DE1B002A4EB5 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2AF2A92DE1B002A4EB5 /* SettingsPresenter.swift */; };
@@ -135,6 +142,13 @@
 		7608DE282A9945BB0036027A /* GalleryKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GalleryKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7608DE502A9960DC0036027A /* StorageKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StorageKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7608DE532A999F050036027A /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		7608DE612A9BAFDE0036027A /* EditBioFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBioFactory.swift; sourceTree = "<group>"; };
+		7608DE622A9BAFDE0036027A /* EditBioPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBioPresenter.swift; sourceTree = "<group>"; };
+		7608DE632A9BAFDE0036027A /* EditBioRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBioRouter.swift; sourceTree = "<group>"; };
+		7608DE642A9BAFDE0036027A /* EditBioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBioViewController.swift; sourceTree = "<group>"; };
+		7608DE652A9BAFDE0036027A /* EditBioInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBioInteractor.swift; sourceTree = "<group>"; };
+		7608DE662A9BAFDE0036027A /* EditBioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBioService.swift; sourceTree = "<group>"; };
+		7608DE6E2A9BAFF30036027A /* UserBio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBio.swift; sourceTree = "<group>"; };
 		7620F2A82A92DB70002A4EB5 /* HomeTabBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarModel.swift; sourceTree = "<group>"; };
 		7620F2AE2A92DE1B002A4EB5 /* SettingsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFactory.swift; sourceTree = "<group>"; };
 		7620F2AF2A92DE1B002A4EB5 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
@@ -246,6 +260,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7608DE602A9BAFCD0036027A /* EditBio */ = {
+			isa = PBXGroup;
+			children = (
+				7608DE6D2A9BAFE60036027A /* Model */,
+				7608DE612A9BAFDE0036027A /* EditBioFactory.swift */,
+				7608DE622A9BAFDE0036027A /* EditBioPresenter.swift */,
+				7608DE632A9BAFDE0036027A /* EditBioRouter.swift */,
+				7608DE642A9BAFDE0036027A /* EditBioViewController.swift */,
+				7608DE652A9BAFDE0036027A /* EditBioInteractor.swift */,
+				7608DE662A9BAFDE0036027A /* EditBioService.swift */,
+			);
+			path = EditBio;
+			sourceTree = "<group>";
+		};
+		7608DE6D2A9BAFE60036027A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7608DE6E2A9BAFF30036027A /* UserBio.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		7620F2A72A92DB51002A4EB5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,6 +293,7 @@
 		7620F2AA2A92DDC2002A4EB5 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				7608DE602A9BAFCD0036027A /* EditBio */,
 				7620F4462A9659E3002A4EB5 /* TermsAndConditions */,
 				7620F4452A9659D7002A4EB5 /* TellAFriend */,
 				7620F4372A9592A2002A4EB5 /* EditProfile */,
@@ -709,10 +746,13 @@
 				7620F2A92A92DB70002A4EB5 /* HomeTabBarModel.swift in Sources */,
 				76EF5D492A905E3700D9AE8B /* DesignKit.framework in Sources */,
 				7620F4432A9592C2002A4EB5 /* EditProfileService.swift in Sources */,
+				7608DE6F2A9BAFF30036027A /* UserBio.swift in Sources */,
+				7608DE692A9BAFDE0036027A /* EditBioRouter.swift in Sources */,
 				76EF5D4A2A905E3700D9AE8B /* Authenticator.framework in Sources */,
 				7620F2B82A92DE1B002A4EB5 /* SettingsInteractor.swift in Sources */,
 				7620F2B62A92DE1B002A4EB5 /* SettingsRouter.swift in Sources */,
 				7620F2D12A92EF69002A4EB5 /* ChannelsService.swift in Sources */,
+				7608DE6C2A9BAFDE0036027A /* EditBioService.swift in Sources */,
 				7620F2B52A92DE1B002A4EB5 /* SettingsPresenter.swift in Sources */,
 				7620F44F2A9659F5002A4EB5 /* TellAFriendRouter.swift in Sources */,
 				7620F2B72A92DE1B002A4EB5 /* SettingsViewController.swift in Sources */,
@@ -732,7 +772,9 @@
 				76CAA1892A8AA9ED00D742E9 /* HomeViewController.swift in Sources */,
 				7620F4512A9659F5002A4EB5 /* TellAFriendInteractor.swift in Sources */,
 				7620F2B42A92DE1B002A4EB5 /* SettingsFactory.swift in Sources */,
+				7608DE672A9BAFDE0036027A /* EditBioFactory.swift in Sources */,
 				76CAA1392A8AA1F400D742E9 /* AppDelegate.swift in Sources */,
+				7608DE6B2A9BAFDE0036027A /* EditBioInteractor.swift in Sources */,
 				7620F2CD2A92EF69002A4EB5 /* ChannelsPresenter.swift in Sources */,
 				7620F43E2A9592C2002A4EB5 /* EditProfileFactory.swift in Sources */,
 				7620F2CC2A92EF69002A4EB5 /* ChannelsFactory.swift in Sources */,
@@ -741,6 +783,7 @@
 				7620F45C2A965A09002A4EB5 /* TermsViewController.swift in Sources */,
 				7620F2C32A92EF5D002A4EB5 /* ChatsViewController.swift in Sources */,
 				76CAA13B2A8AA1F400D742E9 /* SceneDelegate.swift in Sources */,
+				7608DE6A2A9BAFDE0036027A /* EditBioViewController.swift in Sources */,
 				7620F2D92A92EF74002A4EB5 /* UsersPresenter.swift in Sources */,
 				7620F4502A9659F5002A4EB5 /* TellAFriendViewController.swift in Sources */,
 				7620F4302A9568D2002A4EB5 /* SettingsButtonViewModel.swift in Sources */,
@@ -766,6 +809,7 @@
 				76CAA1882A8AA9ED00D742E9 /* HomeInteractor.swift in Sources */,
 				7620F42D2A9567B1002A4EB5 /* User.swift in Sources */,
 				7608DE542A999F050036027A /* StorageManager.swift in Sources */,
+				7608DE682A9BAFDE0036027A /* EditBioPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@ public class TextField: UIView {
     }() {
         didSet {
             textFieldInput.text = text
+            updateTextLength()
         }
     }
     
@@ -67,10 +68,18 @@ public class TextField: UIView {
         return view
     }()
     
-    private lazy var componentsStackView: UIStackView = {
+    private lazy var infoStackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [inputsStackView, lineView, feedbackView])
         stack.axis = .vertical
         stack.spacing = .zero
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+    
+    private lazy var componentsStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [infoStackView, textLengthLabel])
+        stack.axis = .horizontal
+        stack.spacing = 2
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
@@ -113,11 +122,23 @@ public class TextField: UIView {
         return view
     }()
     
+    private lazy var textLengthLabel: TextLabel = {
+        let text = TextLabel()
+        text.font = Font.sm.uiFont
+        text.textColor = Color.grayscale300.uiColor
+        text.translatesAutoresizingMaskIntoConstraints = false
+        text.textAlignment = .right
+        text.isHidden = true
+        return text
+    }()
+    
     private var isHintAlwaysVisible = false {
         didSet {
             hintLabel.isHidden = !isHintAlwaysVisible
         }
     }
+    
+    private var textLength: Int?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -131,11 +152,18 @@ public class TextField: UIView {
     
     public func render(_ theme: TextFieldTheme) {
         textFieldInput.render(theme)
-        hintLabel.text = theme.dto.hint ??  theme.dto.placeholder
-        lineView.isHidden = !theme.dto.hasDividorView
-        hintView.isHidden = theme.dto.hint == nil
-        feedbackView.isHidden = !theme.dto.hasFeedback
-        isHintAlwaysVisible = theme.dto.isHintAlwaysVisible
+        
+        let dto = theme.dto
+        hintLabel.text = dto.hint ??  dto.placeholder
+        lineView.isHidden = !dto.hasDividorView
+        hintView.isHidden = dto.hint == nil
+        feedbackView.isHidden = !dto.hasFeedback
+        isHintAlwaysVisible = dto.isHintAlwaysVisible
+        
+        if let textLength = dto.textLength {
+            self.textLengthLabel.isHidden = false
+            self.textLength = textLength
+        }
         
         if let border = theme.border {
             inputsStackView.layer.cornerRadius = border.cornerRadius
@@ -198,6 +226,10 @@ extension TextField: ViewConfiguration {
         ])
         
         NSLayoutConstraint.activate([
+            textLengthLabel.widthAnchor.constraint(equalToConstant: 18)
+        ])
+        
+        NSLayoutConstraint.activate([
             hintView.heightAnchor.constraint(equalToConstant: 12)
         ])
         
@@ -226,6 +258,15 @@ extension TextField: ViewConfiguration {
             hintLabel.isHidden = true
         }
         
+        if let textLength {
+            updateTextLength()
+            
+            if text.count >= textLength {
+                textFieldInput.text?.removeLast()
+                text = textFieldInput.text ?? String()
+            }
+        }
+        
         delegate?.textFieldDidChange(textFieldInput)
     }
     
@@ -243,5 +284,13 @@ extension TextField: UITextFieldDelegate {
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         delegate?.textFieldShouldReturn(textFieldInput)
         return validate()
+    }
+}
+
+private extension TextField {
+    func updateTextLength() {
+        if let textLength {
+            self.textLengthLabel.text = "\(textLength - (text.count + 1))"
+        }
     }
 }

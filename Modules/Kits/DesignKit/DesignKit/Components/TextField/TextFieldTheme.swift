@@ -10,7 +10,8 @@ public enum TextFieldTheme {
         isSecureTextEntry: Bool = false,
         autocorrectionType: UITextAutocorrectionType = .no,
         autocapitalizationType: UITextAutocapitalizationType = .none,
-        hasDividorView: Bool = true
+        hasDividorView: Bool = true,
+        textLength: Int? = nil
     )
     case clean(
         placeholder: String,
@@ -18,12 +19,14 @@ public enum TextFieldTheme {
         isHintAlwaysVisible: Bool = false,
         keyboardType: UIKeyboardType = .default,
         autocorrectionType: UITextAutocorrectionType = .no,
-        autocapitalizationType: UITextAutocapitalizationType = .none
+        autocapitalizationType: UITextAutocapitalizationType = .none,
+        textLength: Int? = nil
     )
     case simple(
         placeholder: String,
         keyboardType: UIKeyboardType = .default,
-        autocapitalizationType: UITextAutocapitalizationType = .none
+        autocapitalizationType: UITextAutocapitalizationType = .none,
+        textLength: Int? = nil
     )
     case custom(dto: TextFieldDTO)
     
@@ -38,7 +41,8 @@ public enum TextFieldTheme {
             isSecureTextEntry,
             autocorrectionType,
             autocapitalizationType,
-            hasDividorView
+            hasDividorView,
+            textLength
         ):
             return TextFieldDTO(
                 placeholder: placeholder,
@@ -50,7 +54,8 @@ public enum TextFieldTheme {
                 autocorrectionType: autocorrectionType,
                 autocapitalizationType: autocapitalizationType,
                 hasDividorView: hasDividorView,
-                hasFeedback: true
+                hasFeedback: true,
+                textLength: textLength
             )
         case let .clean(
             placeholder,
@@ -58,7 +63,8 @@ public enum TextFieldTheme {
             isHintAlwaysVisible,
             keyboardType,
             autocorrectionType,
-            autocapitalizationType
+            autocapitalizationType,
+            textLength
         ):
             return TextFieldDTO(
                 placeholder: placeholder,
@@ -69,12 +75,14 @@ public enum TextFieldTheme {
                 autocorrectionType: autocorrectionType,
                 autocapitalizationType: autocapitalizationType,
                 hasDividorView: false,
-                hasFeedback: false
+                hasFeedback: false,
+                textLength: textLength
             )
         case let .simple(
             placeholder,
             keyboardType,
-            autocapitalizationType
+            autocapitalizationType,
+            textLength
         ):
             return TextFieldDTO(
                 placeholder: placeholder,
@@ -86,7 +94,8 @@ public enum TextFieldTheme {
                 autocorrectionType: .default,
                 autocapitalizationType: autocapitalizationType,
                 hasDividorView: false,
-                hasFeedback: false
+                hasFeedback: false,
+                textLength: textLength
             )
         case .custom(let dto):
             return dto

@@ -113,6 +113,7 @@ private extension SettingsViewController {
 extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
         
         if let _ = cell as? SettingsUserInfoCell {
             interactor.editProfile()
@@ -156,7 +157,6 @@ extension SettingsViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
             cell.render(currentUser)
-            cell.selectionStyle = .none
             userInfoCell = cell
             return cell
         case 1:
@@ -167,7 +167,6 @@ extension SettingsViewController: UITableViewDataSource {
                 return UITableViewCell()
             }
             cell.render(settingsButtons[indexPath.row])
-            cell.selectionStyle = .none
             return cell
         case 2:
             let button = Button()
@@ -175,7 +174,6 @@ extension SettingsViewController: UITableViewDataSource {
             button.setTitleColor(Color.warning500.uiColor, for: .normal)
             let cell = UITableViewCell()
             cell.fillWithSubview(subview: button, spacing: .init(top: 6, left: .zero, bottom: 6, right: .zero))
-            cell.selectionStyle = .none
             return cell
         default:
             return UITableViewCell()

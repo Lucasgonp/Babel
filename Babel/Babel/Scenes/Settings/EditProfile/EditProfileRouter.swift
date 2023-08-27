@@ -1,7 +1,7 @@
 import UIKit
 
 enum EditProfileAction {
-    // template
+    case editBio
 }
 
 protocol EditProfileRouting: AnyObject {
@@ -15,6 +15,9 @@ final class EditProfileRouter {
 // MARK: - EditProfileRouting
 extension EditProfileRouter: EditProfileRouting {
     func perform(action: EditProfileAction) {
-        // template
+        if case .editBio = action {
+            let editBio = EditBioFactory.make()
+            viewController?.navigationController?.pushViewController(editBio, animated: true)
+        }
     }
 }

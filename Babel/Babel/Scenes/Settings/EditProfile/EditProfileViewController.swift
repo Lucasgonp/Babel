@@ -92,12 +92,10 @@ final class EditProfileViewController: ViewController<EditProfileInteracting, UI
 // MARK: - EditProfileDisplaying
 extension EditProfileViewController: EditProfileDisplaying {
     func displayEditProfile() {
-//        self.user = user
         tableView.reloadData()
     }
     
     func updateEditProfile() {
-//        self.user = user
         tableView.reloadSections(IndexSet(integer: 1), with: .none)
     }
     

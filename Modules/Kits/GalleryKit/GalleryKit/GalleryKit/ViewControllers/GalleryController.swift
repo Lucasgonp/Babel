@@ -1,11 +1,15 @@
 import UIKit
 import YPImagePicker
  
-public struct GalleryController {
+public final class GalleryController {
     private let picker: YPImagePicker
     
     public init(configuration: Configuration) {
         self.picker = configuration.picker
+    }
+    
+    deinit {
+        print("deinit aqui")
     }
     
     public func showSinglePhotoPicker(from navigation: UINavigationController?, completion: @escaping (UIImage?) -> Void) {
@@ -25,9 +29,8 @@ public struct GalleryController {
             picker?.dismiss(animated: true, completion: nil)
         }
         
-        // FIXME: Check retain cycle
-        DispatchQueue.main.async {
-            navigation?.present(picker, animated: true)
+        DispatchQueue.main.async { [unowned self] in
+            navigation?.present(self.picker, animated: true)
         }
     }
 }
@@ -45,12 +48,9 @@ public extension GalleryController {
                 config.showsPhotoFilters = true
                 config.screens = [.library]
                 config.library.onlySquare = true
-//                config.library.isSquareByDefault = true
                 config.library.mediaType = .photo
                 config.library.maxNumberOfItems = 1
                 config.showsCrop = .circle
-//                config.showsCropGridOverlay = true
-//                config.library.itemOverlayType = .grid
                 return YPImagePicker(configuration: config)
             case .singlePhoto:
                 config.showsPhotoFilters = false

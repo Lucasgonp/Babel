@@ -52,6 +52,8 @@ final class EditProfileViewController: ViewController<EditProfileInteracting, UI
         AccountInfo.shared.user
     }
     
+    private lazy var galleryController = GalleryController(configuration: .avatarPhoto)
+    
     weak var delegate: SettingsViewDelegate?
     
     override func viewDidLoad() {
@@ -209,12 +211,9 @@ private extension EditProfileViewController {
     }
 }
 
-var counter = 0
-
 extension EditProfileViewController: EditProfileHeaderDelegate {    
     func didTapOnEditAvatar() {
-        let controller = GalleryController(configuration: .avatarPhoto)
-        controller.showSinglePhotoPicker(from: navigationController) { [weak self] image in
+        galleryController.showSinglePhotoPicker(from: navigationController) { [weak self] image in
             if let image {
                 self?.headerCell?.update(image)
                 self?.interactor.updateAvatarImage(image)

@@ -11,6 +11,7 @@
 "Settings.ThirdSection.logout" = "Logout";
 
 "Settings.EditProfile.title" = "Edit profile";
+"Settings.EditProfile.namePlaceholder" = "Full name";
 
 "Settings.TellAFriend.title" = "Tell a friend";
 

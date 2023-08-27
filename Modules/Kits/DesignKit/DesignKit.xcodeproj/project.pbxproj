@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7620F4222A951480002A4EB5 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4212A951480002A4EB5 /* UITableView+Extensions.swift */; };
+		7620F4632A97993D002A4EB5 /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4622A97993D002A4EB5 /* UITableViewCell+Extensions.swift */; };
 		7666E56F2A77169F006C0560 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7666E56E2A77169F006C0560 /* UIKit.framework */; };
 		766D50E22A83E81800150284 /* ButtonTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766D50E12A83E81800150284 /* ButtonTheme.swift */; };
 		766D50E42A83E81F00150284 /* ButtonDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766D50E32A83E81F00150284 /* ButtonDTO.swift */; };
@@ -103,6 +104,7 @@
 
 /* Begin PBXFileReference section */
 		7620F4212A951480002A4EB5 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
+		7620F4622A97993D002A4EB5 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
 		7666E56E2A77169F006C0560 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/System/iOSSupport/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		766D50E12A83E81800150284 /* ButtonTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTheme.swift; sourceTree = "<group>"; };
 		766D50E32A83E81F00150284 /* ButtonDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonDTO.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 				76EF5D402A8FCC5B00D9AE8B /* UINavigationController+Extensions.swift */,
 				76EF5D4F2A92663100D9AE8B /* UIView+Extensions.swift */,
 				7620F4212A951480002A4EB5 /* UITableView+Extensions.swift */,
+				7620F4622A97993D002A4EB5 /* UITableViewCell+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -605,6 +608,7 @@
 				76EF5D502A92663100D9AE8B /* UIView+Extensions.swift in Sources */,
 				76EF5D0B2A8C61A400D9AE8B /* Strings.generated.swift in Sources */,
 				7695454E2A76EA7800BF114D /* DesignKit.docc in Sources */,
+				7620F4632A97993D002A4EB5 /* UITableViewCell+Extensions.swift in Sources */,
 				76F778DA2A82E46300443E7B /* ImageView.swift in Sources */,
 				76F778CA2A82B33600443E7B /* UIColor+ColorBase.swift in Sources */,
 				76CAA0E82A854C4A00D742E9 /* TextFieldInput.swift in Sources */,

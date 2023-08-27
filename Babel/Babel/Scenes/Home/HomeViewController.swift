@@ -29,9 +29,7 @@ final class HomeViewController: TabBarViewController<HomeInteracting> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        DispatchQueue.main.async { [unowned self] in
-            self.interactor.checkAuthentication()
-        }
+        interactor.checkAuthentication()
     }
 
     override func configureViews() {
@@ -47,9 +45,7 @@ extension HomeViewController: HomeDisplaying {
         case .loading(let isLoading):
             setupLoading(isLoading: isLoading)
         case .success(let user):
-            DispatchQueue.main.async { [unowned self] in
-                self.configureTabBar(with: user)
-            }
+            configureTabBar(with: user)
         case .error(let message):
             print(message)
         }

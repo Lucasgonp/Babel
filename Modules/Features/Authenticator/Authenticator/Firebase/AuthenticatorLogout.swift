@@ -1,17 +1,21 @@
-import CoreKit
+import StorageKit
 
 public protocol LogoutProtocol {
-    func logout(completion: @escaping (Error?) -> Void)
+    func logout(thread: DispatchQueue, completion: @escaping (Error?) -> Void)
 }
 
 extension AuthenticatorAdapter: LogoutProtocol {
-    public func logout(completion: @escaping (Error?) -> Void) {
+    public func logout(thread: DispatchQueue = .main, completion: @escaping (Error?) -> Void) {
         do {
             try auth.signOut()
-            StorageManager.shared.removeStorageData(key: .currentUser)
-            completion(nil)
+            StorageLocal.shared.removeStorageData(key: .currentUser)
+            thread.async {
+                completion(nil)
+            }
         } catch let error {
-            completion(error)
+            thread.async {
+                completion(error)
+            }
         }
     }
 }

@@ -20,13 +20,11 @@ extension HomeInteractor: HomeInteracting {
     func checkAuthentication() {
         showLoading()
         service.checkAuthentication { [weak self] authCredentials in
-            DispatchQueue.main.async {
-                self?.hideLoading()
-                if let authCredentials, authCredentials.firebaseUser.isEmailVerified {
-                    self?.presenter.displayViewState(.success(user: authCredentials.user))
-                } else {
-                    self?.presenter.didNextStep(action: .presentLogin)
-                }
+            self?.hideLoading()
+            if let authCredentials, authCredentials.firebaseUser.isEmailVerified {
+                self?.presenter.displayViewState(.success(user: authCredentials.user))
+            } else {
+                self?.presenter.didNextStep(action: .presentLogin)
             }
         }
     }

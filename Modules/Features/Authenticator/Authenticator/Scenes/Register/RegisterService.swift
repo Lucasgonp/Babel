@@ -15,7 +15,7 @@ final class RegisterService {
 // MARK: - RegisterServicing
 extension RegisterService: RegisterServicing {
     func register(userRequest: RegisterUserRequestModel, completion: @escaping (AuthError?) -> Void) {
-        authService.registerUser(with: userRequest) { didSuccess, error in
+        authService.registerUser(with: userRequest, thread: .main) { didSuccess, error in
             if let error {
                 completion(.custom(error))
                 return

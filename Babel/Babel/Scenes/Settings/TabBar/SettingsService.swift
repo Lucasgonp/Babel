@@ -17,6 +17,6 @@ final class SettingsService {
 // MARK: - SettingsServicing
 extension SettingsService: SettingsServicing {
     func checkAuthentication(completion: @escaping (AuthCheckCredentials?) -> Void) {
-        authManager.checkAuthentication(completion: completion)
+        authManager.checkAuthentication(thread: .main, completion: completion)
     }
 }

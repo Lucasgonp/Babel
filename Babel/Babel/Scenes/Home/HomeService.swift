@@ -21,10 +21,10 @@ final class HomeService {
 // MARK: - HomeServicing
 extension HomeService: HomeServicing {    
     func checkAuthentication(completion: @escaping (AuthCheckCredentials?) -> Void) {
-        authManager.checkAuthentication(completion: completion)
+        authManager.checkAuthentication(thread: .main, completion: completion)
     }
     
     func logout(completion: @escaping (Error?) -> Void) {
-        authManager.logout(completion: completion)
+        authManager.logout(thread: .main, completion: completion)
     }
 }

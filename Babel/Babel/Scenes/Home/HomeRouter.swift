@@ -20,20 +20,19 @@ final class HomeRouter {
 
 extension HomeRouter: HomeRouting {
     func perform(action: HomeAction) {
-        DispatchQueue.main.async { [unowned self] in
-            guard let tabBar = self.viewController as? UITabBarController else {
-                return
-            }
-            
-            if case .presentLogin = action {
-                authPresentation.presentLogin(from: tabBar) { [weak self] in
-                    guard let delegate = self?.viewController as? HomeViewDelegate else {
-                        return
-                    }
-                    
-                    delegate.reloadData()
+        guard let tabBar = self.viewController as? UITabBarController else {
+            return
+        }
+        
+        if case .presentLogin = action {
+            authPresentation.presentLogin(from: tabBar) { [weak self] in
+                guard let delegate = self?.viewController as? HomeViewDelegate else {
+                    return
                 }
+                
+                delegate.reloadData()
             }
         }
     }
 }
+

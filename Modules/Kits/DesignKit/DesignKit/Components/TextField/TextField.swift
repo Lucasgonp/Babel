@@ -5,11 +5,31 @@ public class TextField: UIView {
     
     public lazy var text: String = {
         return textFieldInput.text ?? String()
-    }()
+    }() {
+        didSet {
+            textFieldInput.text = text
+        }
+    }
     
     private var _state: State = .none {
         didSet {
             setupFeedbackView()
+        }
+    }
+    
+    public lazy var returnKeyType: UIReturnKeyType = {
+        return textFieldInput.returnKeyType
+    }() {
+        didSet {
+            textFieldInput.returnKeyType = returnKeyType
+        }
+    }
+    
+    public lazy var enablesReturnKeyAutomatically: Bool = {
+        return textFieldInput.enablesReturnKeyAutomatically
+    }() {
+        didSet {
+            textFieldInput.enablesReturnKeyAutomatically = enablesReturnKeyAutomatically
         }
     }
     
@@ -26,7 +46,7 @@ public class TextField: UIView {
         label.font = Font.sm.uiFont
         label.textColor = Color.grayscale600.uiColor
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.isHidden = true
+        label.isHidden = false
         return label
     }()
     
@@ -35,6 +55,7 @@ public class TextField: UIView {
         textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         textField.addTarget(self, action: #selector(textFieldDidBeginEditing), for: .editingDidBegin)
         textField.addTarget(self, action: #selector(textFieldDidEndEditing), for: .editingDidEnd)
+        textField.delegate = self
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -49,7 +70,7 @@ public class TextField: UIView {
     private lazy var componentsStackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [inputsStackView, lineView, feedbackView])
         stack.axis = .vertical
-        stack.spacing = 1
+        stack.spacing = .zero
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
@@ -57,7 +78,7 @@ public class TextField: UIView {
     private lazy var inputsStackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [hintView, textFieldInput])
         stack.axis = .vertical
-        stack.spacing = 1
+        stack.spacing = .zero
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
@@ -92,6 +113,12 @@ public class TextField: UIView {
         return view
     }()
     
+    private var isHintAlwaysVisible = false {
+        didSet {
+            hintLabel.isHidden = !isHintAlwaysVisible
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         buildLayout()
@@ -105,6 +132,10 @@ public class TextField: UIView {
     public func render(_ theme: TextFieldTheme) {
         textFieldInput.render(theme)
         hintLabel.text = theme.dto.hint ??  theme.dto.placeholder
+        lineView.isHidden = !theme.dto.hasDividorView
+        hintView.isHidden = theme.dto.hint == nil
+        feedbackView.isHidden = !theme.dto.hasFeedback
+        isHintAlwaysVisible = theme.dto.isHintAlwaysVisible
         
         if let border = theme.border {
             inputsStackView.layer.cornerRadius = border.cornerRadius
@@ -191,7 +222,7 @@ extension TextField: ViewConfiguration {
         
         if let text = textFieldInput.text, !text.isEmpty {
             hintLabel.isHidden = false
-        } else {
+        } else if !isHintAlwaysVisible {
             hintLabel.isHidden = true
         }
         
@@ -204,5 +235,13 @@ extension TextField: ViewConfiguration {
     
     func textFieldDidEndEditing() {
         delegate?.textFieldDidEndEditing(textFieldInput)
+    }
+}
+
+
+extension TextField: UITextFieldDelegate {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        delegate?.textFieldShouldReturn(textFieldInput)
+        return validate()
     }
 }

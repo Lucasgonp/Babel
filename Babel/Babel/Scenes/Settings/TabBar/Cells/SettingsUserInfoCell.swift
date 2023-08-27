@@ -37,7 +37,7 @@ final class SettingsUserInfoCell: UITableViewCell, ViewConfiguration {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         buildLayout()
     }
-
+    
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -73,8 +73,17 @@ final class SettingsUserInfoCell: UITableViewCell, ViewConfiguration {
 
 extension SettingsUserInfoCell {
     func render(_ dto: User) {
-//        avatar.image = dto.avatar
         fullNameLabel.text = dto.name
         statusLabel.text = dto.status
+        
+        StorageManager.shared.downloadImage(imageUrl: dto.avatarLink) { [weak self] image in
+            DispatchQueue.main.async { [weak self] in
+                self?.avatar.image = image
+            }
+        }
+    }
+    
+    func updateAvatar(image: UIImage) {
+        avatar.image = image
     }
 }

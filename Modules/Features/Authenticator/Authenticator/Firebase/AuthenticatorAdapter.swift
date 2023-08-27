@@ -1,6 +1,5 @@
 import FirebaseAuth
 import FirebaseFirestore
-import CoreKit
 
 public final class AuthenticatorAdapter {    
     let auth = FirebaseManager.shared.auth
@@ -13,13 +12,5 @@ public final class AuthenticatorAdapter {
 extension AuthenticatorAdapter {
     public func firebaseReference(_ collectionReference: FCollectionRefence) -> CollectionReference {
         return firestore.collection(collectionReference.rawValue)
-    }
-
-}
-
-extension AuthenticatorAdapter {
-    func saveUserLocally(_ user: User) {
-        AccountInfo.shared.user = user
-        StorageManager.shared.saveStorageData(user, key: .currentUser)
     }
 }

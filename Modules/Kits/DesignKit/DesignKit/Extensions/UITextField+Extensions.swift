@@ -1,10 +1,7 @@
 import UIKit
 
-public extension UITextField {
-//    func font(_ fontStyle: FontSystemStyle) {
-//        let preferred = UIFontMetrics(forTextStyle: fontStyle.style)
-//        self.font = preferred.scaledFont(for: fontStyle.fontName)
-//    }
+public extension UITableViewCell {
+
 }
 
 public extension UITextField {

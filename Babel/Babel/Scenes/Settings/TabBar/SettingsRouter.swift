@@ -35,7 +35,10 @@ extension SettingsRouter: SettingsRouting {
 
 private extension SettingsRouter {
     func pushEditProfile(user: User) {
-        let controller = EditProfileFactory.make(user: user)
+        let controller = EditProfileFactory.make(
+            user: user,
+            delegate: viewController as? SettingsViewDelegate
+        )
         viewController?.navigationController?.pushViewController(controller, animated: true)
     }
     

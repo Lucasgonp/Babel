@@ -1,42 +1,47 @@
 import FirebaseAuth
 
 public protocol LoginProtocol {
-    func login(with userRequest: LoginUserRequestModel, completion: @escaping ((Result<UserGlobalModel, AuthError>)) -> Void)
+    func login(with userRequest: LoginUserRequestModel, thread: DispatchQueue, completion: @escaping ((Result<UserGlobalModel, AuthError>) -> Void))
 }
 
 extension AuthenticatorAdapter: LoginProtocol {
-    public func login(with userRequest: LoginUserRequestModel, completion: @escaping ((Result<UserGlobalModel, AuthError>) -> Void)) {
+    public func login(with userRequest: LoginUserRequestModel, thread: DispatchQueue = .main, completion: @escaping ((Result<UserGlobalModel, AuthError>) -> Void)) {
         auth.signIn(withEmail: userRequest.email, password: userRequest.password) { [weak self] (result, error) in
             if let error {
-                completion(.failure(.custom(error)))
-                return
+                thread.async {
+                    return completion(.failure(.custom(error)))
+                }
             }
             
             guard let result else {
-                completion(.failure(.errorLogin))
+                thread.async {
+                    completion(.failure(.errorLogin))
+                }
                 return
             }
             
             AccountInfo.shared.firebaseUser = result.user
-            self?.syncLocalUserFromFirebase(userId: result.user.uid, email: userRequest.email)
-            
-            let model = UserGlobalModel(authDataResult: result)
-            completion(.success(model))
+            self?.syncLocalUserFromFirebase(userId: result.user.uid, email: userRequest.email) { _ in
+                let model = UserGlobalModel(authDataResult: result)
+                thread.async {
+                    completion(.success(model))
+                }
+            }
         }
     }
 }
 
-private extension AuthenticatorAdapter {
-    func syncLocalUserFromFirebase(userId: String, email: String? = nil) {
-        firebaseReference(.user).document(userId).getDocument { [weak self] document, error in
+extension AuthenticatorAdapter {
+    func syncLocalUserFromFirebase(userId: String, email: String? = nil, completion: @escaping (User?) -> Void) {
+        firebaseReference(.user).document(userId).getDocument { document, error in
             if let error {
                 print("Error syncUserFromFirebase: \(error.localizedDescription)")
-                return
+                return completion(nil)
             }
             
             guard let document else {
                 print("Error get document from syncUserFromFirebase")
-                return
+                return completion(nil)
             }
             
             let result = Result {
@@ -46,12 +51,15 @@ private extension AuthenticatorAdapter {
             switch result {
             case .success(let user):
                 if let user {
-                    self?.saveUserLocally(user)
+                    AuthenticationStorage.saveUserLocally(user)
+                    completion(user)
                 } else {
                     print("Error deconding user")
+                    completion(nil)
                 }
             case .failure(let error):
                 print("Error deconding user: \(error.localizedDescription)")
+                completion(nil)
             }
         }
     }

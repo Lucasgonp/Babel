@@ -1,11 +1,13 @@
 public protocol AuthenticatorResetPasswordProtocol {
-    func resetPassword(email: String, completion: @escaping (Error?) -> Void)
+    func resetPassword(email: String, thread: DispatchQueue, completion: @escaping (Error?) -> Void)
 }
 
 extension AuthenticatorAdapter: AuthenticatorResetPasswordProtocol {
-    public func resetPassword(email: String, completion: @escaping (Error?) -> Void) {
+    public func resetPassword(email: String, thread: DispatchQueue = .main, completion: @escaping (Error?) -> Void) {
         auth.sendPasswordReset(withEmail: email) { error in
-            completion(error)
+            thread.async {
+                completion(error)
+            }
         }
     }
 }

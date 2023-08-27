@@ -1,28 +1,34 @@
-import CoreKit
 import FirebaseFirestoreSwift
 
 public protocol RegisterProtocol {
-    func registerUser(with userRequest: RegisterUserRequestModel, completion: @escaping (Bool, Error?) -> Void)
+    func registerUser(with userRequest: RegisterUserRequestModel, thread: DispatchQueue, completion: @escaping (Bool, Error?) -> Void)
 }
 
 extension AuthenticatorAdapter: RegisterProtocol {
-    public func registerUser(with userRequest: RegisterUserRequestModel, completion: @escaping (Bool, Error?) -> Void) {
+    public func registerUser(with userRequest: RegisterUserRequestModel, thread: DispatchQueue = .main, completion: @escaping (Bool, Error?) -> Void) {
         auth.createUser(withEmail: userRequest.email, password: userRequest.password) { [weak self] (result, error) in
             print("Register user result: \(String(describing: result))")
             print("Error: \(String(describing: error))")
             
             if let error {
-                return completion(false, error)
+                thread.async {
+                    return completion(false, error)
+                }
             }
             
             guard let resultUser = result?.user else {
-                return completion(false, nil)
+                thread.async {
+                    completion(false, nil)
+                }
+                return
             }
             
             resultUser.sendEmailVerification { (error) in
                 print("Sent user verification")
                 if let error {
-                    completion(false, error)
+                    thread.async {
+                        completion(false, error)
+                    }
                 }
             }
             
@@ -36,27 +42,13 @@ extension AuthenticatorAdapter: RegisterProtocol {
                 password: userRequest.password,
                 status: "Hello there! I'm using Babel!"
             )
-            self?.saveUserLocally(user)
-            self?.saveUserToFirestore(user) { error in
+            self?.saveUserToFirestore(user, thread: thread) { error in
                 if let error {
-                    print(error.localizedDescription, "Error in saveUserToFirestore")
+                    completion(false, error)
                 } else {
                     completion(true, nil)
                 }
             }
-        }
-    }
-}
-
-private extension AuthenticatorAdapter {    
-    func saveUserToFirestore(_ user: User, completion: @escaping (Error?) -> Void) {
-        do {
-            try firebaseReference(.user).document(user.id).setData(from: user, completion: { error in
-                completion(error)
-            })
-        } catch let error {
-            print(error.localizedDescription, "Error in saveUserToFirestore")
-            completion(error)
         }
     }
 }

@@ -1,21 +1,30 @@
-import CoreKit
-
 public protocol CheckAuthenticationProtocol {
-    func checkAuthentication(completion: @escaping (AuthCheckCredentials?) -> Void)
+    func checkAuthentication(thread: DispatchQueue, completion: @escaping (AuthCheckCredentials?) -> Void)
 }
 
 extension AuthenticatorAdapter: CheckAuthenticationProtocol {
-    public func checkAuthentication(completion: @escaping (AuthCheckCredentials?) -> Void) {
+    public func checkAuthentication(thread: DispatchQueue = DispatchQueue.main, completion: @escaping (AuthCheckCredentials?) -> Void) {
         if let firebaseUser = auth.currentUser,
-           let user: User = StorageManager.shared.getStorageObject(for: .currentUser),
            firebaseUser.isEmailVerified {
-            let credentials = AuthCheckCredentials(user: user, firebaseUser: firebaseUser)
-            AccountInfo.shared.user = user
-            AccountInfo.shared.firebaseUser = firebaseUser
-            completion(credentials)
+            syncLocalUserFromFirebase(userId: firebaseUser.uid, email: firebaseUser.email) { user in
+                guard let user else {
+                    thread.async {
+                        completion(nil)
+                    }
+                    return
+                }
+                let credentials = AuthCheckCredentials(user: user, firebaseUser: firebaseUser)
+                AccountInfo.shared.user = user
+                AccountInfo.shared.firebaseUser = firebaseUser
+                thread.async {
+                    completion(credentials)
+                }
+            }
         } else {
             logout { _ in
-                completion(nil)
+                thread.async {
+                    completion(nil)
+                }
             }
         }
     }

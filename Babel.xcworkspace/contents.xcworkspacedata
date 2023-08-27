@@ -22,6 +22,20 @@
          location = "group:Kits"
          name = "Kits">
          <Group
+            location = "container:"
+            name = "StorageKit">
+            <FileRef
+               location = "group:Modules/Kits/StorageKit/StorageKit/StorageKit.xcodeproj">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:GalleryKit"
+            name = "GalleryKit">
+            <FileRef
+               location = "group:GalleryKit/GalleryKit.xcodeproj">
+            </FileRef>
+         </Group>
+         <Group
             location = "group:CoreKit"
             name = "CoreKit">
             <FileRef

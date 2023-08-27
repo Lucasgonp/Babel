@@ -1,7 +1,10 @@
-public struct StorageManager {
-    public static let shared = StorageManager()
+public struct StorageLocal {
+    public static let shared = StorageLocal()
+    private let storage: UserDefaults
     
-    private init() {}
+    private init(storage: UserDefaults = .standard) {
+        self.storage = storage
+    }
     
     public func getStorageObject<T: Decodable>(for key: StorageKey) -> T? {
         guard let data = UserDefaults.standard.data(forKey: key.rawValue) else {

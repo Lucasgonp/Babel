@@ -133,6 +133,12 @@ public extension Color {
     /// - Light Mode: `#E62320`.
     /// - Dark Mode: `#E62320`.
     static let backgroundLogo = Color(#colorLiteral(red: 0.9843137255, green: 0.9803921569, blue: 0.9843137255, alpha: 1), #colorLiteral(red: 0.9843137255, green: 0.9803921569, blue: 0.9843137255, alpha: 1))
+    
+    /// Returns a color object whose values are:
+    ///
+    /// - Light Mode: `#3478F6`.
+    /// - Dark Mode: `#3478F6`.
+    static let blueNative = Color(#colorLiteral(red: 0, green: 0.4780646563, blue: 0.9985368848, alpha: 1), #colorLiteral(red: 0.2039215686, green: 0.4705882353, blue: 0.9647058824, alpha: 1))
 }
 
 public extension Color {

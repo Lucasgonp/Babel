@@ -1,7 +1,7 @@
 import DesignKit
 
-struct FullNameValidation: Validation {
-    func run(_ text: String) -> ValidationResult {
+public struct FullNameValidation: Validation {
+    public func run(_ text: String) -> ValidationResult {
         if text.isEmpty {
             return .error(Strings.Error.Field.fullnameEmpty)
         }
@@ -10,4 +10,6 @@ struct FullNameValidation: Validation {
         }
         return .success
     }
+    
+    public init() { }
 }

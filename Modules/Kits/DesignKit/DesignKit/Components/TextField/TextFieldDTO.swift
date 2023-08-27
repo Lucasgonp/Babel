@@ -3,34 +3,40 @@ import UIKit
 public struct TextFieldDTO {
     let placeholder: String
     let hint: String?
+    let isHintAlwaysVisible: Bool
     let keyboardType: UIKeyboardType
     let validations: [Validation]
     let isSecureTextEntry: Bool
-    let isFillFieldRequired: Bool
     let border: Border?
     let autocorrectionType: UITextAutocorrectionType
     let autocapitalizationType: UITextAutocapitalizationType
+    let hasDividorView: Bool
+    let hasFeedback: Bool
     
     public init(
         placeholder: String,
         hint: String?,
+        isHintAlwaysVisible: Bool,
         keyboardType: UIKeyboardType = .default,
         validations: [Validation] = [],
         isSecureTextEntry: Bool,
-        isFillFieldRequired: Bool,
         border: Border? = nil,
         autocorrectionType: UITextAutocorrectionType,
-        autocapitalizationType: UITextAutocapitalizationType
+        autocapitalizationType: UITextAutocapitalizationType,
+        hasDividorView: Bool,
+        hasFeedback: Bool
     ) {
         self.placeholder = placeholder
         self.hint = hint
+        self.isHintAlwaysVisible = isHintAlwaysVisible
         self.keyboardType = keyboardType
         self.validations = validations
         self.isSecureTextEntry = isSecureTextEntry
-        self.isFillFieldRequired = isFillFieldRequired
         self.border = border
         self.autocorrectionType = autocorrectionType
         self.autocapitalizationType = autocapitalizationType
+        self.hasDividorView = hasDividorView
+        self.hasFeedback = hasFeedback
     }
 }
 

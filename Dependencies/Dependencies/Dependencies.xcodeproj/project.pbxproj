@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7608DE222A99421E0036027A /* YPImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 7608DE212A99421E0036027A /* YPImagePicker */; };
 		768BB51F2A81585400300ECA /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 768BB51E2A81585400300ECA /* FirebaseAnalytics */; };
 		768BB5212A81585400300ECA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 768BB5202A81585400300ECA /* FirebaseAuth */; };
 		768BB5232A81585400300ECA /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 768BB5222A81585400300ECA /* FirebaseCrashlytics */; };
@@ -17,7 +18,6 @@
 		76EF5CEB2A8C3A6500D9AE8B /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 76EF5CEA2A8C3A6500D9AE8B /* ProgressHUD */; };
 		76EF5CF02A8C444100D9AE8B /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 76EF5CEF2A8C444100D9AE8B /* FirebaseMessaging */; };
 		76EF5CF22A8C444D00D9AE8B /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 76EF5CF12A8C444D00D9AE8B /* FirebaseFirestoreSwift */; };
-		76EF5CF52A8C44A900D9AE8B /* Gallery in Frameworks */ = {isa = PBXBuildFile; productRef = 76EF5CF42A8C44A900D9AE8B /* Gallery */; };
 		76EF5CF82A8C44F900D9AE8B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 76EF5CF72A8C44F900D9AE8B /* RealmSwift */; };
 		76EF5CFB2A8C454E00D9AE8B /* SKPhotoBrowser in Frameworks */ = {isa = PBXBuildFile; productRef = 76EF5CFA2A8C454E00D9AE8B /* SKPhotoBrowser */; };
 		76EF5CFE2A8C459600D9AE8B /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 76EF5CFD2A8C459600D9AE8B /* MessageKit */; };
@@ -40,10 +40,10 @@
 				76EF5CEB2A8C3A6500D9AE8B /* ProgressHUD in Frameworks */,
 				768BB5232A81585400300ECA /* FirebaseCrashlytics in Frameworks */,
 				76EF5CFE2A8C459600D9AE8B /* MessageKit in Frameworks */,
-				76EF5CF52A8C44A900D9AE8B /* Gallery in Frameworks */,
 				768BB5252A81585400300ECA /* FirebaseFirestore in Frameworks */,
 				768BB51F2A81585400300ECA /* FirebaseAnalytics in Frameworks */,
 				76EF5CFB2A8C454E00D9AE8B /* SKPhotoBrowser in Frameworks */,
+				7608DE222A99421E0036027A /* YPImagePicker in Frameworks */,
 				76EF5CE62A8C39C800D9AE8B /* FirebaseStorage in Frameworks */,
 				768BB5212A81585400300ECA /* FirebaseAuth in Frameworks */,
 				76EF5CF82A8C44F900D9AE8B /* RealmSwift in Frameworks */,
@@ -124,11 +124,11 @@
 				76EF5CEA2A8C3A6500D9AE8B /* ProgressHUD */,
 				76EF5CEF2A8C444100D9AE8B /* FirebaseMessaging */,
 				76EF5CF12A8C444D00D9AE8B /* FirebaseFirestoreSwift */,
-				76EF5CF42A8C44A900D9AE8B /* Gallery */,
 				76EF5CF72A8C44F900D9AE8B /* RealmSwift */,
 				76EF5CFA2A8C454E00D9AE8B /* SKPhotoBrowser */,
 				76EF5CFD2A8C459600D9AE8B /* MessageKit */,
 				76EF5D002A8C45D600D9AE8B /* InputBarAccessoryView */,
+				7608DE212A99421E0036027A /* YPImagePicker */,
 			);
 			productName = Dependencies;
 			productReference = 76BE11A92A7AFB47009E179D /* Dependencies.framework */;
@@ -161,11 +161,11 @@
 			packageReferences = (
 				768BB51D2A81585400300ECA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				76EF5CE92A8C3A6500D9AE8B /* XCRemoteSwiftPackageReference "ProgressHUD" */,
-				76EF5CF32A8C44A900D9AE8B /* XCRemoteSwiftPackageReference "Gallery" */,
 				76EF5CF62A8C44F900D9AE8B /* XCRemoteSwiftPackageReference "realm-swift" */,
 				76EF5CF92A8C454E00D9AE8B /* XCRemoteSwiftPackageReference "SKPhotoBrowser" */,
 				76EF5CFC2A8C459600D9AE8B /* XCRemoteSwiftPackageReference "MessageKit" */,
 				76EF5CFF2A8C45D600D9AE8B /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */,
+				7608DE202A99421E0036027A /* XCRemoteSwiftPackageReference "YPImagePicker" */,
 			);
 			productRefGroup = 76BE11AA2A7AFB47009E179D /* Products */;
 			projectDirPath = "";
@@ -408,6 +408,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7608DE202A99421E0036027A /* XCRemoteSwiftPackageReference "YPImagePicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Yummypets/YPImagePicker";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		768BB51D2A81585400300ECA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -422,14 +430,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 13.0.0;
-			};
-		};
-		76EF5CF32A8C44A900D9AE8B /* XCRemoteSwiftPackageReference "Gallery" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/hyperoslo/Gallery";
-			requirement = {
-				branch = master;
-				kind = branch;
 			};
 		};
 		76EF5CF62A8C44F900D9AE8B /* XCRemoteSwiftPackageReference "realm-swift" */ = {
@@ -467,6 +467,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7608DE212A99421E0036027A /* YPImagePicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7608DE202A99421E0036027A /* XCRemoteSwiftPackageReference "YPImagePicker" */;
+			productName = YPImagePicker;
+		};
 		768BB51E2A81585400300ECA /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 768BB51D2A81585400300ECA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -506,11 +511,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 768BB51D2A81585400300ECA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
-		};
-		76EF5CF42A8C44A900D9AE8B /* Gallery */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 76EF5CF32A8C44A900D9AE8B /* XCRemoteSwiftPackageReference "Gallery" */;
-			productName = Gallery;
 		};
 		76EF5CF72A8C44F900D9AE8B /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;

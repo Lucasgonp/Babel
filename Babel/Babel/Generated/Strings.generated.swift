@@ -12,6 +12,8 @@ import Foundation
 internal enum Strings {
   internal enum Settings {
     internal enum EditProfile {
+      /// Full name
+      internal static let namePlaceholder = Strings.tr("Localizable", "Settings.EditProfile.namePlaceholder", fallback: "Full name")
       /// Edit profile
       internal static let title = Strings.tr("Localizable", "Settings.EditProfile.title", fallback: "Edit profile")
     }

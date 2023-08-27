@@ -7,6 +7,10 @@ enum SettingsViewState {
     case error(message: String)
 }
 
+protocol SettingsViewDelegate: AnyObject {
+    func updateAvatar(image: UIImage)
+}
+
 protocol SettingsDisplaying: AnyObject {
     func displayViewState(_ state: SettingsViewState)
 }
@@ -29,10 +33,29 @@ final class SettingsViewController: ViewController<SettingsInteracting, UIView> 
         tableView.delegate = self
         tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.isHidden = true
         return tableView
     }()
     
-    private var viewModel: SettingsViewModel?
+    private lazy var settingsButtons = [
+        SettingsButtonViewModel(
+            icon: Icon.heartSquareIcon.image.withTintColor(Color.warning500.uiColor, renderingMode: .alwaysOriginal),
+            text: Localizable.SecondSession.tellAFriend,
+            completionHandler: { [weak self] in
+                self?.interactor.tellAFriend()
+            }
+        ),
+        SettingsButtonViewModel(
+            icon: Icon.infoIcon.image,
+            text: Localizable.SecondSession.termsAndConditions,
+            completionHandler: { [weak self] in
+                self?.interactor.termsAndConditions()
+            }
+        )
+    ]
+    
+    private var userInfoCell: SettingsUserInfoCell?
+    private var currentUser: User?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -60,9 +83,7 @@ extension SettingsViewController: SettingsDisplaying {
     func displayViewState(_ state: SettingsViewState) {
         switch state {
         case .success(let user):
-            if user != viewModel?.user {
-                displaySettings(for: user)
-            }
+            displaySettings(for: user)
         case .loading(let isLoading):
             if isLoading {
                 showLoading()
@@ -75,28 +96,17 @@ extension SettingsViewController: SettingsDisplaying {
     }
 }
 
+extension SettingsViewController: SettingsViewDelegate {
+    func updateAvatar(image: UIImage) {
+        userInfoCell?.updateAvatar(image: image)
+    }
+}
+
 private extension SettingsViewController {
     func displaySettings(for user: User) {
-        let buttons = [
-            SettingsButtonViewModel(
-                icon: Icon.heartSquareIcon.image.withTintColor(Color.warning500.uiColor, renderingMode: .alwaysOriginal),
-                text: Localizable.SecondSession.tellAFriend,
-                completionHandler: { [weak self] in
-                    self?.interactor.tellAFriend()
-                }
-            ),
-            SettingsButtonViewModel(
-                icon: Icon.infoIcon.image,
-                text: Localizable.SecondSession.termsAndConditions,
-                completionHandler: { [weak self] in
-                    self?.interactor.termsAndConditions()
-                }
-            )
-        ]
-        viewModel = SettingsViewModel(user: user, buttons: buttons)
-        DispatchQueue.main.async { [unowned self] in
-            self.tableView.reloadData()
-        }
+        currentUser = user
+        tableView.reloadData()
+        tableView.isHidden = false
     }
 }
 
@@ -124,7 +134,7 @@ extension SettingsViewController: UITableViewDataSource {
         case 0:
             return 1
         case 1:
-            return viewModel?.buttons.count ?? 2
+            return settingsButtons.count
         case 2:
             return 1
         default:
@@ -133,7 +143,7 @@ extension SettingsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let viewModel else {
+        guard let currentUser else {
             return UITableViewCell()
         }
         
@@ -145,10 +155,9 @@ extension SettingsViewController: UITableViewDataSource {
             ) as? SettingsUserInfoCell else {
                 return UITableViewCell()
             }
-            DispatchQueue.main.async {
-                cell.render(viewModel.user)
-            }
+            cell.render(currentUser)
             cell.selectionStyle = .none
+            userInfoCell = cell
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(
@@ -157,9 +166,7 @@ extension SettingsViewController: UITableViewDataSource {
             ) as? SettingsButtonCell else {
                 return UITableViewCell()
             }
-            DispatchQueue.main.async {
-                cell.render(viewModel.buttons[indexPath.row])
-            }
+            cell.render(settingsButtons[indexPath.row])
             cell.selectionStyle = .none
             return cell
         case 2:

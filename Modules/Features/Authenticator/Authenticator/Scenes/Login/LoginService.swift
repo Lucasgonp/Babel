@@ -20,7 +20,7 @@ final class LoginService {
 // MARK: - LoginServicing
 extension LoginService: LoginServicing {
     func login(userRequest: LoginUserRequestModel, completion: @escaping (Result<UserGlobalModel, AuthError>) -> Void) {
-        authService.login(with: userRequest) { result in
+        authService.login(with: userRequest, thread: .main) { result in
             switch result {
             case .success(let model):
                 completion(.success(model))
@@ -31,10 +31,10 @@ extension LoginService: LoginServicing {
     }
     
     func resendEmailVerification(completion: @escaping (Error?) -> Void) {
-        authService.resentEmailVerification(completion: completion)
+        authService.resentEmailVerification(thread: .main, completion: completion)
     }
     
     func resetPassword(email: String, completion: @escaping (Error?) -> Void) {
-        authService.resetPassword(email: email, completion: completion)
+        authService.resetPassword(email: email, thread: .main, completion: completion)
     }
 }

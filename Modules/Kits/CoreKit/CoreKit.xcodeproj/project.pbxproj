@@ -13,8 +13,6 @@
 		76CAA1092A858E7600D742E9 /* CoreKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 76CAA0FB2A858E7600D742E9 /* CoreKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		76EF5CC52A8C15B600D9AE8B /* Dependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EF5CC42A8C15B600D9AE8B /* Dependencies.framework */; };
 		76EF5CC62A8C15B600D9AE8B /* Dependencies.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76EF5CC42A8C15B600D9AE8B /* Dependencies.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		76EF5D1E2A8D7FE300D9AE8B /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D1D2A8D7FE300D9AE8B /* StorageManager.swift */; };
-		76EF5D202A8D8CA900D9AE8B /* StorageKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D1F2A8D8CA900D9AE8B /* StorageKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,8 +46,6 @@
 		76CAA1022A858E7600D742E9 /* CoreKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		76CAA1072A858E7600D742E9 /* CoreKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreKitTests.swift; sourceTree = "<group>"; };
 		76EF5CC42A8C15B600D9AE8B /* Dependencies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Dependencies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		76EF5D1D2A8D7FE300D9AE8B /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
-		76EF5D1F2A8D8CA900D9AE8B /* StorageKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +90,6 @@
 		76CAA0FA2A858E7600D742E9 /* CoreKit */ = {
 			isa = PBXGroup;
 			children = (
-				76EF5D1C2A8D7FB400D9AE8B /* Storage */,
 				76CAA0FB2A858E7600D742E9 /* CoreKit.h */,
 				76CAA0FC2A858E7600D742E9 /* CoreKit.docc */,
 			);
@@ -115,15 +110,6 @@
 				76EF5CC42A8C15B600D9AE8B /* Dependencies.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		76EF5D1C2A8D7FB400D9AE8B /* Storage */ = {
-			isa = PBXGroup;
-			children = (
-				76EF5D1D2A8D7FE300D9AE8B /* StorageManager.swift */,
-				76EF5D1F2A8D8CA900D9AE8B /* StorageKey.swift */,
-			);
-			path = Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,9 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76EF5D202A8D8CA900D9AE8B /* StorageKey.swift in Sources */,
 				76CAA0FD2A858E7600D742E9 /* CoreKit.docc in Sources */,
-				76EF5D1E2A8D7FE300D9AE8B /* StorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,7 +430,6 @@
 		76CAA1102A858E7600D742E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VZDNH969CP;
@@ -463,7 +446,6 @@
 		76CAA1112A858E7600D742E9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VZDNH969CP;

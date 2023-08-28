@@ -11,6 +11,7 @@
 		7608DE1F2A99416C0036027A /* GalleryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE1E2A99416C0036027A /* GalleryController.swift */; };
 		7608DE252A99427D0036027A /* Dependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7608DE242A99427D0036027A /* Dependencies.framework */; };
 		7608DE262A99427D0036027A /* Dependencies.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7608DE242A99427D0036027A /* Dependencies.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7608DE712A9C0AA30036027A /* ViewImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE702A9C0AA30036027A /* ViewImageController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,6 +33,7 @@
 		7608DE162A99413B0036027A /* GalleryKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GalleryKit.h; sourceTree = "<group>"; };
 		7608DE1E2A99416C0036027A /* GalleryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryController.swift; sourceTree = "<group>"; };
 		7608DE242A99427D0036027A /* Dependencies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Dependencies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7608DE702A9C0AA30036027A /* ViewImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewImageController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,18 +68,19 @@
 		7608DE152A99413B0036027A /* GalleryKit */ = {
 			isa = PBXGroup;
 			children = (
-				7608DE1D2A99414A0036027A /* ViewControllers */,
+				7608DE1D2A99414A0036027A /* Controllers */,
 				7608DE162A99413B0036027A /* GalleryKit.h */,
 			);
 			path = GalleryKit;
 			sourceTree = "<group>";
 		};
-		7608DE1D2A99414A0036027A /* ViewControllers */ = {
+		7608DE1D2A99414A0036027A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				7608DE1E2A99416C0036027A /* GalleryController.swift */,
+				7608DE702A9C0AA30036027A /* ViewImageController.swift */,
 			);
-			path = ViewControllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		7608DE232A99427D0036027A /* Frameworks */ = {
@@ -169,6 +172,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7608DE712A9C0AA30036027A /* ViewImageController.swift in Sources */,
 				7608DE1F2A99416C0036027A /* GalleryController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

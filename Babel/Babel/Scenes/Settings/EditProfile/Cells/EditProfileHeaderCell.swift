@@ -3,6 +3,7 @@ import DesignKit
 
 protocol EditProfileHeaderDelegate: AnyObject {
     func didTapOnEditAvatar()
+    func didTapOnAvatar(image: UIImage)
 }
 
 final class EditProfileHeaderCell: UITableViewCell, ViewConfiguration {
@@ -61,7 +62,9 @@ final class EditProfileHeaderCell: UITableViewCell, ViewConfiguration {
     }
     
     func configureViews() {
-        // template
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapOnAvatar))
+        avatar.isUserInteractionEnabled = true
+        avatar.addGestureRecognizer(tap)
     }
 }
 
@@ -82,5 +85,12 @@ extension EditProfileHeaderCell {
 @objc private extension EditProfileHeaderCell {
     func didTapEditAvatarButton() {
         delegate?.didTapOnEditAvatar()
+    }
+    
+    func didTapOnAvatar() {
+        guard let image = avatar.image else {
+            return
+        }
+        delegate?.didTapOnAvatar(image: image)
     }
 }

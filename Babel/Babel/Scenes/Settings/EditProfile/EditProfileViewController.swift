@@ -46,6 +46,8 @@ final class EditProfileViewController: ViewController<EditProfileInteracting, UI
         return textField
     }()
     
+//    private lazy var previewImageView: PreviewAvatarViewController? = nil
+    
     private var headerCell: EditProfileHeaderCell?
     private var shouldUpdateInto = false
     private var currentUser: User? {
@@ -200,6 +202,13 @@ extension EditProfileViewController: EditProfileHeaderDelegate {
                 self?.interactor.updateAvatarImage(image)
             }
         }
+    }
+    
+    func didTapOnAvatar(image: UIImage) {
+        let previewImageView = PreviewAvatarViewController(image: image)
+        previewImageView.modalTransitionStyle = .crossDissolve
+        previewImageView.modalPresentationStyle = .overFullScreen
+        present(previewImageView, animated: true)
     }
 }
 

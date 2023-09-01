@@ -43,7 +43,6 @@
 		76EF5CD72A8C200500D9AE8B /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5CD62A8C200500D9AE8B /* AuthError.swift */; };
 		76EF5D222A8DA29500D9AE8B /* FCollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D212A8DA29500D9AE8B /* FCollectionReference.swift */; };
 		76EF5D282A8DA4FD00D9AE8B /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D272A8DA4FD00D9AE8B /* FirebaseManager.swift */; };
-		76EF5D2A2A8DA5EC00D9AE8B /* FirebaseUserListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D292A8DA5EC00D9AE8B /* FirebaseUserListener.swift */; };
 		76EF5D2D2A8DAC4800D9AE8B /* AuthenticatorLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D2C2A8DAC4800D9AE8B /* AuthenticatorLogin.swift */; };
 		76EF5D2F2A8DAC6B00D9AE8B /* AuthenticatorRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D2E2A8DAC6B00D9AE8B /* AuthenticatorRegister.swift */; };
 		76EF5D312A8DAC7300D9AE8B /* AuthenticatorLogout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D302A8DAC7200D9AE8B /* AuthenticatorLogout.swift */; };
@@ -126,7 +125,6 @@
 		76EF5CD62A8C200500D9AE8B /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
 		76EF5D212A8DA29500D9AE8B /* FCollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCollectionReference.swift; sourceTree = "<group>"; };
 		76EF5D272A8DA4FD00D9AE8B /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
-		76EF5D292A8DA5EC00D9AE8B /* FirebaseUserListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserListener.swift; sourceTree = "<group>"; };
 		76EF5D2C2A8DAC4800D9AE8B /* AuthenticatorLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatorLogin.swift; sourceTree = "<group>"; };
 		76EF5D2E2A8DAC6B00D9AE8B /* AuthenticatorRegister.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatorRegister.swift; sourceTree = "<group>"; };
 		76EF5D302A8DAC7200D9AE8B /* AuthenticatorLogout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatorLogout.swift; sourceTree = "<group>"; };
@@ -345,7 +343,6 @@
 			isa = PBXGroup;
 			children = (
 				76EF5D212A8DA29500D9AE8B /* FCollectionReference.swift */,
-				76EF5D292A8DA5EC00D9AE8B /* FirebaseUserListener.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -560,7 +557,6 @@
 				768BB5412A8162AC00300ECA /* RegisterViewController.swift in Sources */,
 				76EF5D222A8DA29500D9AE8B /* FCollectionReference.swift in Sources */,
 				76CAA1242A85925F00D742E9 /* EmailValidation.swift in Sources */,
-				76EF5D2A2A8DA5EC00D9AE8B /* FirebaseUserListener.swift in Sources */,
 				7699BC772A7AECA100DC730B /* RegisterUserRequestModel.swift in Sources */,
 				7608DE072A9938F30036027A /* AuthenticatorSaveUser.swift in Sources */,
 				76EF5D2D2A8DAC4800D9AE8B /* AuthenticatorLogin.swift in Sources */,

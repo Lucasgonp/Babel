@@ -1,4 +1,4 @@
-import FirebaseFirestoreSwift
+import NetworkKit
 
 public protocol AuthenticatorSaveUserProtocol: AnyObject {
     func saveUserToFirestore(_ user: User, thread: DispatchQueue, completion: @escaping (Error?) -> Void)
@@ -9,7 +9,7 @@ extension AuthenticatorAdapter: AuthenticatorSaveUserProtocol {
         AuthenticationStorage.saveUserLocally(user)
         
         do {
-            try firebaseReference(.user).document(user.id).setData(from: user, completion: { error in
+            try FirebaseClient.shared.firebaseReference(.user).document(user.id).setData(from: user, completion: { error in
                 thread.async {
                     completion(error)
                 }

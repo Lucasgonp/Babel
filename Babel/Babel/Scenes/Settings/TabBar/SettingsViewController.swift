@@ -150,22 +150,12 @@ extension SettingsViewController: UITableViewDataSource {
         
         switch indexPath.section {
         case 0:
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: SettingsUserInfoCell.identifier,
-                for: indexPath
-            ) as? SettingsUserInfoCell else {
-                return UITableViewCell()
-            }
+            let cell: SettingsUserInfoCell = tableView.makeCell(indexPath: indexPath)
             cell.render(currentUser)
             userInfoCell = cell
             return cell
         case 1:
-            guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: SettingsButtonCell.identifier,
-                for: indexPath
-            ) as? SettingsButtonCell else {
-                return UITableViewCell()
-            }
+            let cell: SettingsButtonCell = tableView.makeCell(indexPath: indexPath)
             cell.render(settingsButtons[indexPath.row])
             return cell
         case 2:

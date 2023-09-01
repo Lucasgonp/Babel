@@ -37,7 +37,7 @@ final class EditProfileHeaderCell: UITableViewCell, ViewConfiguration {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         buildLayout()
     }
-
+    
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -71,7 +71,7 @@ final class EditProfileHeaderCell: UITableViewCell, ViewConfiguration {
 extension EditProfileHeaderCell {
     func render(_ dto: User) {
         StorageManager.shared.downloadImage(imageUrl: dto.avatarLink) { [weak self] image in
-            DispatchQueue.main.async { [weak self] in
+            if let image {
                 self?.avatar.image = image
             }
         }

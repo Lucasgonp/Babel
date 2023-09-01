@@ -1,5 +1,5 @@
 protocol UsersPresenting: AnyObject {
-    func displaySomething()
+    func displayViewState(_ state: UsersViewState)
     func didNextStep(action: UsersAction)
 }
 
@@ -14,8 +14,8 @@ final class UsersPresenter {
 
 // MARK: - UsersPresenting
 extension UsersPresenter: UsersPresenting {
-    func displaySomething() {
-        viewController?.displaySomething()
+    func displayViewState(_ state: UsersViewState) {
+        viewController?.displayViewState(state)
     }
     
     func didNextStep(action: UsersAction) {

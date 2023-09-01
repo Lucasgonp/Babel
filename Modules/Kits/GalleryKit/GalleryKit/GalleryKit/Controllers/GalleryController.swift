@@ -8,10 +8,6 @@ public final class GalleryController {
         self.picker = configuration.picker
     }
     
-    deinit {
-        print("deinit aqui")
-    }
-    
     public func showSinglePhotoPicker(from navigation: UINavigationController?, completion: @escaping (UIImage?) -> Void) {
         picker.didFinishPicking { [weak picker] items, cancelled in
             if cancelled {

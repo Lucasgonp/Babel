@@ -6,29 +6,31 @@ public protocol StorageDownloadImageProtocol {
 
 extension StorageRemoteAdapter: StorageDownloadImageProtocol {
     public func downloadImage(imageUrl: String, completion: @escaping (UIImage?) -> Void) {
-        let imageFileName = fileNameFrom(fileUrl: imageUrl)
+        guard let imageFileName = fileNameFrom(fileUrl: imageUrl) else {
+            DispatchQueue.main.async { completion(nil) }
+            return
+        }
+        
+        
         if fileExistsAtPath(path: imageFileName) {
             if let contentsOfFile = UIImage(contentsOfFile: fileInDocumentsDirectory(fileName: imageFileName)) {
-                completion(contentsOfFile)
+                DispatchQueue.main.async { completion(contentsOfFile) }
             } else {
                 fatalError("Could't convert local image")
             }
         } else {
-            if let documentUrl = URL(string: imageUrl), !imageUrl.isEmpty {
-                let downloadQueue = DispatchQueue(label: "ImageDownloadQueue")
-                downloadQueue.async { [weak self] in
-                    if let data = NSData(contentsOf: documentUrl) {
-                        self?.saveFileLocally(fileData: data, fileName: imageFileName)
-                        DispatchQueue.main.async {
-                            print("downloaded image")
-                            completion(UIImage(data: data as Data))
-                        }
-                    } else {
-                        print("No document in database")
-                        DispatchQueue.main.async {
-                            completion(nil)
-                        }
-                    }
+            guard let documentUrl = URL(string: imageUrl) else {
+                DispatchQueue.main.async { completion(nil) }
+                return
+            }
+            
+            DispatchQueue.global().async { [weak self] in
+                if let data = NSData(contentsOf: documentUrl) {
+                    self?.saveFileLocally(fileData: data, fileName: imageFileName)
+                    let image = UIImage(data: data as Data)
+                    DispatchQueue.main.async { completion(image) }
+                } else {
+                    DispatchQueue.main.async { completion(nil) }
                 }
             }
         }

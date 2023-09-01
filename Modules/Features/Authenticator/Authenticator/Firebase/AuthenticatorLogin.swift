@@ -1,4 +1,5 @@
 import FirebaseAuth
+import NetworkKit
 
 public protocol LoginProtocol {
     func login(with userRequest: LoginUserRequestModel, thread: DispatchQueue, completion: @escaping ((Result<UserGlobalModel, AuthError>) -> Void))
@@ -33,7 +34,7 @@ extension AuthenticatorAdapter: LoginProtocol {
 
 extension AuthenticatorAdapter {
     func syncLocalUserFromFirebase(userId: String, email: String? = nil, completion: @escaping (User?) -> Void) {
-        firebaseReference(.user).document(userId).getDocument { document, error in
+        FirebaseClient.shared.firebaseReference(.user).document(userId).getDocument { document, error in
             if let error {
                 print("Error syncUserFromFirebase: \(error.localizedDescription)")
                 return completion(nil)

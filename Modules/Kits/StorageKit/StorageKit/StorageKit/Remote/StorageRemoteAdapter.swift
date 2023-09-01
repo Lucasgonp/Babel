@@ -28,11 +28,11 @@ extension StorageRemoteAdapter {
 }
 
 extension StorageRemoteAdapter {
-    func fileNameFrom(fileUrl: String) -> String {
+    func fileNameFrom(fileUrl: String) -> String? {
         let fileName = fileUrl
             .components(separatedBy: "_").last?
             .components(separatedBy: "?").first?
-            .components(separatedBy: ".").first
-        return fileName ?? String()
+            .components(separatedBy: ".").first ?? String()
+        return fileName.isEmpty ? nil : fileName
     }
 }

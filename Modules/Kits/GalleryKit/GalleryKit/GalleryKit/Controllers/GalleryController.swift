@@ -41,7 +41,7 @@ public extension GalleryController {
             
             switch self {
             case .avatarPhoto:
-                config.showsPhotoFilters = true
+                config.showsPhotoFilters = false
                 config.screens = [.library]
                 config.library.onlySquare = true
                 config.library.mediaType = .photo

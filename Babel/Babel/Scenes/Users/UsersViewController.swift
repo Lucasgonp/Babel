@@ -33,61 +33,28 @@ final class UsersViewController: ViewController<UsersInteracting, UIView> {
         tableView.register(cellType: UserCell.self)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.refreshControl = refreshControl
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
-    
-    private var contacts: [UserContact] = []
-    
-    //    private let contacts: [UserContact] = [
-    //        UserContact(
-    //            name: "Amendoim corajoso",
-    //            about: "Olá sou o amendoim corajoso",
-    //            image: Image.avatarPlaceholder.image
-    //        ),
-    //        UserContact(
-    //            name: "Leonardo Pimentel",
-    //            about: "Olá estou usando o Babelzinho",
-    //            image: Image.avatarPlaceholder.image
-    //        ),
-    //        UserContact(
-    //            name: "Tayná Paulino",
-    //            about: "Olá estou usando o Babelzinho",
-    //            image: Image.avatarPlaceholder.image
-    //        ),
-    //        UserContact(
-    //            name: "Goku Michael Jackson",
-    //            about: "Olá estou usando o Babelzinho",
-    //            image: Image.avatarPlaceholder.image
-    //        ),
-    //        UserContact(
-    //            name: "Leonardo da Vinci",
-    //            about: "Olá estou usando o Babelzinho",
-    //            image: Image.avatarPlaceholder.image
-    //        ),
-    //        UserContact(
-    //            name: "Felipe Neto",
-    //            about: "Olá estou usando o Babelzinho",
-    //            image: Image.avatarPlaceholder.image
-    //        ),
-    //        UserContact(
-    //            name: "Felipe Castanhari",
-    //            about: "Olá estou usando o Babelzinho",
-    //            image: Image.avatarPlaceholder.image
-    //        ),
-    //    ]
-    
-    private var filteredContacts = [UserContact]()
     
     private lazy var searchController: UISearchController = {
         let controller = UISearchController(searchResultsController: nil)
         controller.obscuresBackgroundDuringPresentation = false
         controller.searchBar.placeholder = "Search user"
         controller.searchResultsUpdater = self
+        controller.definesPresentationContext = true
         return controller
     }()
     
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        return refreshControl
+    }()
+    
     private var sections = [Section]()
+    private var allContacts = [UserContact]()
+    private var filteredContacts = [UserContact]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,6 +64,8 @@ final class UsersViewController: ViewController<UsersInteracting, UIView> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         interactor.loadAllUsers()
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     override func buildViewHierarchy() {
@@ -110,6 +79,9 @@ final class UsersViewController: ViewController<UsersInteracting, UIView> {
     override func configureViews() {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = true
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
 
@@ -118,13 +90,14 @@ extension UsersViewController: UsersDisplaying {
     func displayViewState(_ state: UsersViewState) {
         switch state {
         case .success(let users):
-            self.contacts = users.compactMap({
+            allContacts = users.compactMap({
                 UserContact(
                     name: $0.name,
                     about: $0.status,
-                    image: Image.avatarPlaceholder.image
+                    avatarLink: $0.avatarLink
                 )
-            })
+            }).sorted(by: { $0.name.lowercased() < $1.name.lowercased() })
+            refreshControl.endRefreshing()
             setupContactsList()
         case .error(let message):
             showErrorAlert(message)
@@ -139,22 +112,15 @@ extension UsersViewController: UsersDisplaying {
     }
 }
 
-private extension UsersViewController {
-    func setupContactsList() {
-        let names = contacts.compactMap({ $0 })
-        let groupedDictionary = Dictionary(grouping: names, by: { $0.name.prefix(1) })
-        let keys = groupedDictionary.keys.sorted()
-        sections = keys.map{ Section(letter: String($0), contacts: groupedDictionary[$0]!.sorted()) }
-        
-        UIView.performWithoutAnimation { [unowned self] in
-            self.tableView.reloadData()
-        }
-    }
-}
-
 extension UsersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if refreshControl.isRefreshing {
+            interactor.refreshAllUsers()
+        }
     }
 }
 
@@ -164,7 +130,15 @@ extension UsersViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchController.isActive ? filteredContacts.count : sections[section].contacts.count
+        if searchController.isActive {
+            if let text = searchController.searchBar.text, text.isEmpty {
+                return allContacts.count
+            } else {
+                return filteredContacts.count
+            }
+        } else {
+            return sections[section].contacts.count
+        }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -175,10 +149,16 @@ extension UsersViewController: UITableViewDataSource {
         let cell: UserCell = tableView.makeCell(indexPath: indexPath)
         
         if searchController.isActive {
-            let contacts = filteredContacts.sorted()
-            let contact = contacts[indexPath.row]
-            cell.render(contact)
-            return cell
+            if let text = searchController.searchBar.text, !text.isEmpty {
+                let contacts = filteredContacts.sorted()
+                let contact = contacts[indexPath.row]
+                cell.render(contact)
+                return cell
+            } else {
+                let contact = allContacts[indexPath.row]
+                cell.render(contact)
+                return cell
+            }
         } else {
             let section = sections[indexPath.section]
             let contact = section.contacts[indexPath.row]
@@ -190,6 +170,36 @@ extension UsersViewController: UITableViewDataSource {
 
 extension UsersViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        //
+        let text = searchController.searchBar.text ?? String()
+        filterContentForSearchText(searchText: text)
+    }
+}
+
+private extension UsersViewController {
+    func setupContactsList() {
+        let names = allContacts.compactMap({ $0 })
+        let groupedDictionary = Dictionary(grouping: names, by: { $0.name.lowercased().prefix(1) })
+        let keys = groupedDictionary.keys.sorted()
+        sections = keys.map{ Section(letter: String($0), contacts: groupedDictionary[$0]!.sorted()) }
+        
+        tableView.reloadData()
+    }
+    
+    func filterContentForSearchText(searchText: String) {
+        filteredContacts = allContacts.filter({ $0.name.lowercased().contains(searchText.lowercased()) })
+        
+        tableView.reloadData()
+    }
+}
+
+@objc private extension UsersViewController {
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height - 90, right: 0)
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        tableView.contentInset = .zero
     }
 }

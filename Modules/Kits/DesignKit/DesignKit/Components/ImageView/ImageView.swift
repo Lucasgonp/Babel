@@ -11,6 +11,10 @@ public class ImageView: UIImageView {
         set(uiImage: icon, size: size.rawValue, color: color, withRenderingMode: icon.renderingMode)
     }
     
+    public init() {
+        super.init(frame: .zero)
+    }
+    
     public override init(image: UIImage?) {
         super.init(image: image)
     }

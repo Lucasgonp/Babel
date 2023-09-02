@@ -8,7 +8,7 @@ protocol EditProfileHeaderDelegate: AnyObject {
 
 final class EditProfileHeaderCell: UITableViewCell, ViewConfiguration {
     private lazy var avatar: ImageView = {
-        let imageView = ImageView(image: Image.avatarPlaceholder.image)
+        let imageView = ImageView()
         imageView.layer.cornerRadius = 60
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -70,11 +70,7 @@ final class EditProfileHeaderCell: UITableViewCell, ViewConfiguration {
 
 extension EditProfileHeaderCell {
     func render(_ dto: User) {
-        StorageManager.shared.downloadImage(imageUrl: dto.avatarLink) { [weak self] image in
-            if let image {
-                self?.avatar.image = image
-            }
-        }
+        avatar.setAvatar(imageUrl: dto.avatarLink)
     }
     
     func update(_ image: UIImage) {

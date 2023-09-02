@@ -3,7 +3,7 @@ import DesignKit
 
 final class UserCell: UITableViewCell, ViewConfiguration {
     private lazy var avatar: ImageView = {
-        let imageView = ImageView(image: Image.avatarPlaceholder.image)
+        let imageView = ImageView()
         imageView.layer.cornerRadius = 23
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -76,12 +76,11 @@ extension UserCell {
     func render(_ contact: UserContact) {
         fullNameLabel.text = contact.name
         statusLabel.text = contact.about
-        avatar.image = contact.image
         
-//        StorageManager.shared.downloadImage(imageUrl: dto.avatarLink) { [weak self] image in
-//            DispatchQueue.main.async { [weak self] in
-//                self?.avatar.image = image
-//            }
-//        }
+        if !contact.avatarLink.isEmpty {
+            avatar.setAvatar(imageUrl: contact.avatarLink)
+        } else {
+            avatar.image = Image.avatarPlaceholder.image
+        }
     }
 }

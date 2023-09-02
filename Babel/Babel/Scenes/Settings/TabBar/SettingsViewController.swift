@@ -150,12 +150,12 @@ extension SettingsViewController: UITableViewDataSource {
         
         switch indexPath.section {
         case 0:
-            let cell: SettingsUserInfoCell = tableView.makeCell(indexPath: indexPath)
+            let cell: SettingsUserInfoCell = tableView.makeCell(indexPath: indexPath, accessoryType: .disclosureIndicator)
             cell.render(currentUser)
             userInfoCell = cell
             return cell
         case 1:
-            let cell: SettingsButtonCell = tableView.makeCell(indexPath: indexPath)
+            let cell: SettingsButtonCell = tableView.makeCell(indexPath: indexPath, accessoryType: .disclosureIndicator)
             cell.render(settingsButtons[indexPath.row])
             return cell
         case 2:

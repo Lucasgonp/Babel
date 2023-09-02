@@ -154,6 +154,15 @@
       }
     },
     {
+      "identity" : "sdwebimage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SDWebImage/SDWebImage",
+      "state" : {
+        "branch" : "master",
+        "revision" : "36e484b317522667a4b2de9b50daaa01dfa30809"
+      }
+    },
+    {
       "identity" : "skphotobrowser",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/suzuki-0000/SKPhotoBrowser",

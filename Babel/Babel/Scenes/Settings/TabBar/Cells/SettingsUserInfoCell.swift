@@ -3,7 +3,7 @@ import DesignKit
 
 final class SettingsUserInfoCell: UITableViewCell, ViewConfiguration {
     private lazy var avatar: ImageView = {
-        let imageView = ImageView(image: Image.avatarPlaceholder.image)
+        let imageView = ImageView()
         imageView.layer.cornerRadius = 30
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -76,11 +76,7 @@ extension SettingsUserInfoCell {
         fullNameLabel.text = dto.name
         statusLabel.text = dto.status
         
-        StorageManager.shared.downloadImage(imageUrl: dto.avatarLink) { [weak self] image in
-            if let image {
-                self?.avatar.image = image
-            }
-        }
+        avatar.setAvatar(imageUrl: dto.avatarLink)
     }
     
     func updateAvatar(image: UIImage) {

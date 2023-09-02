@@ -65,8 +65,6 @@ extension EditProfileInteractor: EditProfileInteracting {
                     if let error {
                         self.presenter.displayErrorMessage(message: error.localizedDescription)
                     } else {
-                        let imageData = image.jpegData(compressionQuality: 1.0) as? NSData ?? NSData()
-                        StorageManager.shared.saveFileLocally(fileData: imageData, fileName: self.currentUser.id)
                         self.presenter.updateAvatarImage(image)
                     }
                 }

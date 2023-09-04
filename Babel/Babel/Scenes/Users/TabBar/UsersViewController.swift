@@ -21,7 +21,7 @@ private extension UsersViewController.Layout {
 final class UsersViewController: ViewController<UsersInteracting, UIView> {
     private struct Section {
         let letter : String
-        let contacts : [UserContact]
+        let contacts : [User]
     }
     
     fileprivate enum Layout {
@@ -53,8 +53,8 @@ final class UsersViewController: ViewController<UsersInteracting, UIView> {
     }()
     
     private var sections = [Section]()
-    private var allContacts = [UserContact]()
-    private var filteredContacts = [UserContact]()
+    private var allContacts = [User]()
+    private var filteredContacts = [User]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,13 +90,7 @@ extension UsersViewController: UsersDisplaying {
     func displayViewState(_ state: UsersViewState) {
         switch state {
         case .success(let users):
-            allContacts = users.compactMap({
-                UserContact(
-                    name: $0.name,
-                    about: $0.status,
-                    avatarLink: $0.avatarLink
-                )
-            }).sorted(by: { $0.name.lowercased() < $1.name.lowercased() })
+            allContacts = users.sorted(by: { $0.name.lowercased() < $1.name.lowercased() })
             refreshControl.endRefreshing()
             setupContactsList()
         case .error(let message):
@@ -115,6 +109,18 @@ extension UsersViewController: UsersDisplaying {
 extension UsersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        if searchController.isActive {
+            let contact = filteredContacts[indexPath.row]
+            let viewController = ContactInfoFactory.make(contactInfo: contact)
+            navigationController?.pushViewController(viewController, animated: true)
+        } else {
+            let section = sections[indexPath.section]
+            let contact = section.contacts[indexPath.row]
+            let viewController = ContactInfoFactory.make(contactInfo: contact)
+            navigationController?.pushViewController(viewController, animated: true)
+        }
+        
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -150,7 +156,7 @@ extension UsersViewController: UITableViewDataSource {
         
         if searchController.isActive {
             if let text = searchController.searchBar.text, !text.isEmpty {
-                let contacts = filteredContacts.sorted()
+                let contacts = filteredContacts.sorted(by: { $0.name.lowercased() < $1.name.lowercased() })
                 let contact = contacts[indexPath.row]
                 cell.render(contact)
                 return cell
@@ -180,13 +186,22 @@ private extension UsersViewController {
         let names = allContacts.compactMap({ $0 })
         let groupedDictionary = Dictionary(grouping: names, by: { $0.name.lowercased().prefix(1) })
         let keys = groupedDictionary.keys.sorted()
-        sections = keys.map{ Section(letter: String($0), contacts: groupedDictionary[$0]!.sorted()) }
+        sections = keys.map{
+            Section(
+                letter: String($0),
+                contacts: groupedDictionary[$0]!.sorted(by: { $0.name.lowercased() < $1.name.lowercased()
+            }))
+        }
         
         tableView.reloadData()
     }
     
     func filterContentForSearchText(searchText: String) {
-        filteredContacts = allContacts.filter({ $0.name.lowercased().contains(searchText.lowercased()) })
+        if !searchText.isEmpty {
+            filteredContacts = allContacts.filter({ $0.name.lowercased().contains(searchText.lowercased()) })
+        } else {
+            filteredContacts = allContacts
+        }
         
         tableView.reloadData()
     }

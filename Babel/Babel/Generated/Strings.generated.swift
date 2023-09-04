@@ -14,6 +14,10 @@ internal enum Strings {
     /// Done
     internal static let done = Strings.tr("Localizable", "Commons.done", fallback: "Done")
   }
+  internal enum ContactInfo {
+    /// Contact Info
+    internal static let title = Strings.tr("Localizable", "ContactInfo.title", fallback: "Contact Info")
+  }
   internal enum Settings {
     internal enum EditProfile {
       /// Full name

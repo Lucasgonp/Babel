@@ -66,19 +66,15 @@ final class UserCell: UITableViewCell, ViewConfiguration {
             textsStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16)
         ])
     }
-    
-    func configureViews() {
-        accessoryType = .disclosureIndicator
-    }
 }
 
 extension UserCell {
-    func render(_ contact: UserContact) {
-        fullNameLabel.text = contact.name
-        statusLabel.text = contact.about
+    func render(_ dto: User) {
+        fullNameLabel.text = dto.name
+        statusLabel.text = dto.status
         
-        if !contact.avatarLink.isEmpty {
-            avatar.setAvatar(imageUrl: contact.avatarLink)
+        if !dto.avatarLink.isEmpty {
+            avatar.setAvatar(imageUrl: dto.avatarLink)
         } else {
             avatar.image = Image.avatarPlaceholder.image
         }

@@ -15,6 +15,10 @@ public class ImageView: UIImageView {
         super.init(frame: .zero)
     }
     
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
     public override init(image: UIImage?) {
         super.init(image: image)
     }

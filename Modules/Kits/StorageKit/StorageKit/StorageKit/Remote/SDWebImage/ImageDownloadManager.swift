@@ -2,7 +2,7 @@ import UIKit
 import SDWebImage
 
 extension UIImageView {
-    public func setAvatar(imageUrl: String, completion: (() -> Void)? = nil) {
+    public func setAvatar(imageUrl: String, placeholderImage: UIImage? = nil, completion: (() -> Void)? = nil) {
         let activityIndicator = makeLoadingIndicator()
         activityIndicator.startAnimating()
         
@@ -12,6 +12,7 @@ extension UIImageView {
                 activityIndicator.stopAnimating()
             }
         } else {
+            image = placeholderImage
             completion?()
             activityIndicator.stopAnimating()
         }
@@ -26,17 +27,11 @@ private extension UIImageView {
         addSubview(activityIndicator)
         
         NSLayoutConstraint.activate([
-            activityIndicator.topAnchor.constraint(greaterThanOrEqualTo: topAnchor),
-            activityIndicator.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor),
-            activityIndicator.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),
-            activityIndicator.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor),
             activityIndicator.heightAnchor.constraint(equalToConstant: 45),
             activityIndicator.widthAnchor.constraint(equalToConstant: 45),
             activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
-        
-        layoutIfNeeded()
         
         return activityIndicator
     }

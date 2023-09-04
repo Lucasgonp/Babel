@@ -38,3 +38,6 @@
 "UserBio.placeholder" = "About";
 "UserBio.currentTitle" = "Currently set to";
 "UserBio.optionsTitle" = "Select your about";
+
+// Contact Info
+"ContactInfo.title" = "Contact Info";

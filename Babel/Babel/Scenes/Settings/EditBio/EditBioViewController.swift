@@ -43,8 +43,6 @@ final class EditBioViewController: ViewController<EditBioInteracting, UIView> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        interactor.loadSomething()
         tableView.reloadData()
     }
 

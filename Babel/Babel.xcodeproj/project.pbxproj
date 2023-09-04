@@ -79,6 +79,13 @@
 		76228DB02A8AB03700C27C7A /* CoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76228DAF2A8AB03700C27C7A /* CoreKit.framework */; };
 		76228DB12A8AB03700C27C7A /* CoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76228DAF2A8AB03700C27C7A /* CoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		767E4A062A8AB87000B55980 /* Strings.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767E4A052A8AB84700B55980 /* Strings.generated.swift */; };
+		769E972D2AA3C4FC004FC6B4 /* ContactInfoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E97272AA3C4FC004FC6B4 /* ContactInfoFactory.swift */; };
+		769E972E2AA3C4FC004FC6B4 /* ContactInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E97282AA3C4FC004FC6B4 /* ContactInfoPresenter.swift */; };
+		769E972F2AA3C4FC004FC6B4 /* ContactInfoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E97292AA3C4FC004FC6B4 /* ContactInfoRouter.swift */; };
+		769E97302AA3C4FC004FC6B4 /* ContactInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E972A2AA3C4FC004FC6B4 /* ContactInfoViewController.swift */; };
+		769E97312AA3C4FC004FC6B4 /* ContactInfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E972B2AA3C4FC004FC6B4 /* ContactInfoInteractor.swift */; };
+		769E97322AA3C4FC004FC6B4 /* ContactInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E972C2AA3C4FC004FC6B4 /* ContactInfoService.swift */; };
+		769E97352AA3CA1B004FC6B4 /* ContactInfoHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E97342AA3CA1B004FC6B4 /* ContactInfoHeaderCell.swift */; };
 		76CAA1392A8AA1F400D742E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA1382A8AA1F400D742E9 /* AppDelegate.swift */; };
 		76CAA13B2A8AA1F400D742E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA13A2A8AA1F400D742E9 /* SceneDelegate.swift */; };
 		76CAA1422A8AA1F600D742E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76CAA1412A8AA1F600D742E9 /* Assets.xcassets */; };
@@ -207,6 +214,13 @@
 		76228DA92A8AAF7000C27C7A /* DesignKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76228DAF2A8AB03700C27C7A /* CoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		767E4A052A8AB84700B55980 /* Strings.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.generated.swift; sourceTree = "<group>"; };
+		769E97272AA3C4FC004FC6B4 /* ContactInfoFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoFactory.swift; sourceTree = "<group>"; };
+		769E97282AA3C4FC004FC6B4 /* ContactInfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoPresenter.swift; sourceTree = "<group>"; };
+		769E97292AA3C4FC004FC6B4 /* ContactInfoRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoRouter.swift; sourceTree = "<group>"; };
+		769E972A2AA3C4FC004FC6B4 /* ContactInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoViewController.swift; sourceTree = "<group>"; };
+		769E972B2AA3C4FC004FC6B4 /* ContactInfoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoInteractor.swift; sourceTree = "<group>"; };
+		769E972C2AA3C4FC004FC6B4 /* ContactInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoService.swift; sourceTree = "<group>"; };
+		769E97342AA3CA1B004FC6B4 /* ContactInfoHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoHeaderCell.swift; sourceTree = "<group>"; };
 		76CAA1352A8AA1F400D742E9 /* Babel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Babel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76CAA1382A8AA1F400D742E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76CAA13A2A8AA1F400D742E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -325,14 +339,8 @@
 		7620F2AB2A92DDDA002A4EB5 /* Users */ = {
 			isa = PBXGroup;
 			children = (
-				7608DE7B2A9D247E0036027A /* UserContact */,
-				7608DE782A9D008C0036027A /* Cells */,
-				7620F2D22A92EF74002A4EB5 /* UsersFactory.swift */,
-				7620F2D32A92EF74002A4EB5 /* UsersPresenter.swift */,
-				7620F2D42A92EF74002A4EB5 /* UsersRouter.swift */,
-				7620F2D52A92EF74002A4EB5 /* UsersViewController.swift */,
-				7620F2D62A92EF74002A4EB5 /* UsersInteractor.swift */,
-				7620F2D72A92EF74002A4EB5 /* UsersService.swift */,
+				769E97262AA3C4E7004FC6B4 /* ContactInfo */,
+				769E97252AA3C4D8004FC6B4 /* TabBar */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -456,6 +464,43 @@
 			isa = PBXGroup;
 			children = (
 				7620F4602A96B31C002A4EB5 /* EditProfileHeaderCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		769E97252AA3C4D8004FC6B4 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				7608DE7B2A9D247E0036027A /* UserContact */,
+				7608DE782A9D008C0036027A /* Cells */,
+				7620F2D22A92EF74002A4EB5 /* UsersFactory.swift */,
+				7620F2D32A92EF74002A4EB5 /* UsersPresenter.swift */,
+				7620F2D42A92EF74002A4EB5 /* UsersRouter.swift */,
+				7620F2D52A92EF74002A4EB5 /* UsersViewController.swift */,
+				7620F2D62A92EF74002A4EB5 /* UsersInteractor.swift */,
+				7620F2D72A92EF74002A4EB5 /* UsersService.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		769E97262AA3C4E7004FC6B4 /* ContactInfo */ = {
+			isa = PBXGroup;
+			children = (
+				769E97332AA3C9F8004FC6B4 /* Cells */,
+				769E97272AA3C4FC004FC6B4 /* ContactInfoFactory.swift */,
+				769E97282AA3C4FC004FC6B4 /* ContactInfoPresenter.swift */,
+				769E97292AA3C4FC004FC6B4 /* ContactInfoRouter.swift */,
+				769E972A2AA3C4FC004FC6B4 /* ContactInfoViewController.swift */,
+				769E972B2AA3C4FC004FC6B4 /* ContactInfoInteractor.swift */,
+				769E972C2AA3C4FC004FC6B4 /* ContactInfoService.swift */,
+			);
+			path = ContactInfo;
+			sourceTree = "<group>";
+		};
+		769E97332AA3C9F8004FC6B4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				769E97342AA3CA1B004FC6B4 /* ContactInfoHeaderCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -764,6 +809,7 @@
 				7620F2CF2A92EF69002A4EB5 /* ChannelsViewController.swift in Sources */,
 				7620F2D82A92EF74002A4EB5 /* UsersFactory.swift in Sources */,
 				7620F2CE2A92EF69002A4EB5 /* ChannelsRouter.swift in Sources */,
+				769E97302AA3C4FC004FC6B4 /* ContactInfoViewController.swift in Sources */,
 				7620F44E2A9659F5002A4EB5 /* TellAFriendPresenter.swift in Sources */,
 				7620F2A92A92DB70002A4EB5 /* HomeTabBarModel.swift in Sources */,
 				76EF5D492A905E3700D9AE8B /* DesignKit.framework in Sources */,
@@ -776,6 +822,7 @@
 				7620F2D12A92EF69002A4EB5 /* ChannelsService.swift in Sources */,
 				7608DE6C2A9BAFDE0036027A /* EditBioService.swift in Sources */,
 				7620F2B52A92DE1B002A4EB5 /* SettingsPresenter.swift in Sources */,
+				769E972F2AA3C4FC004FC6B4 /* ContactInfoRouter.swift in Sources */,
 				7620F44F2A9659F5002A4EB5 /* TellAFriendRouter.swift in Sources */,
 				7620F2B72A92DE1B002A4EB5 /* SettingsViewController.swift in Sources */,
 				7620F4522A9659F5002A4EB5 /* TellAFriendService.swift in Sources */,
@@ -786,16 +833,19 @@
 				76CAA17E2A8AA9B700D742E9 /* NetworkManager.swift in Sources */,
 				7620F2DD2A92EF74002A4EB5 /* UsersService.swift in Sources */,
 				7620F42A2A9541AC002A4EB5 /* SettingsUserInfoCell.swift in Sources */,
+				769E97322AA3C4FC004FC6B4 /* ContactInfoService.swift in Sources */,
 				76CAA18B2A8AA9ED00D742E9 /* HomePresenter.swift in Sources */,
 				7620F2B92A92DE1B002A4EB5 /* SettingsService.swift in Sources */,
 				7620F45E2A965A09002A4EB5 /* TermsService.swift in Sources */,
 				7620F4332A95694B002A4EB5 /* SettingsViewModel.swift in Sources */,
 				7620F45A2A965A09002A4EB5 /* TermsPresenter.swift in Sources */,
+				769E972E2AA3C4FC004FC6B4 /* ContactInfoPresenter.swift in Sources */,
 				76CAA1892A8AA9ED00D742E9 /* HomeViewController.swift in Sources */,
 				7608DE7D2A9D248E0036027A /* UserContact.swift in Sources */,
 				7620F4512A9659F5002A4EB5 /* TellAFriendInteractor.swift in Sources */,
 				7608DE7A2A9D00A60036027A /* UserCell.swift in Sources */,
 				7620F2B42A92DE1B002A4EB5 /* SettingsFactory.swift in Sources */,
+				769E97352AA3CA1B004FC6B4 /* ContactInfoHeaderCell.swift in Sources */,
 				7608DE672A9BAFDE0036027A /* EditBioFactory.swift in Sources */,
 				76CAA1392A8AA1F400D742E9 /* AppDelegate.swift in Sources */,
 				7608DE6B2A9BAFDE0036027A /* EditBioInteractor.swift in Sources */,
@@ -804,6 +854,7 @@
 				7620F2CC2A92EF69002A4EB5 /* ChannelsFactory.swift in Sources */,
 				7620F4592A965A09002A4EB5 /* TermsFactory.swift in Sources */,
 				7620F2C22A92EF5D002A4EB5 /* ChatsRouter.swift in Sources */,
+				769E972D2AA3C4FC004FC6B4 /* ContactInfoFactory.swift in Sources */,
 				7620F45C2A965A09002A4EB5 /* TermsViewController.swift in Sources */,
 				7620F2C32A92EF5D002A4EB5 /* ChatsViewController.swift in Sources */,
 				76CAA13B2A8AA1F400D742E9 /* SceneDelegate.swift in Sources */,
@@ -818,6 +869,7 @@
 				7620F2C02A92EF5D002A4EB5 /* ChatsFactory.swift in Sources */,
 				7620F2C12A92EF5D002A4EB5 /* ChatsPresenter.swift in Sources */,
 				7620F2D02A92EF69002A4EB5 /* ChannelsInteractor.swift in Sources */,
+				769E97312AA3C4FC004FC6B4 /* ContactInfoInteractor.swift in Sources */,
 				7620F2DC2A92EF74002A4EB5 /* UsersInteractor.swift in Sources */,
 				7620F4402A9592C2002A4EB5 /* EditProfileRouter.swift in Sources */,
 				7620F4202A951280002A4EB5 /* SettingsButtonCell.swift in Sources */,

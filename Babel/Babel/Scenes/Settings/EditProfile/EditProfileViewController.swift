@@ -46,8 +46,6 @@ final class EditProfileViewController: ViewController<EditProfileInteracting, UI
         return textField
     }()
     
-//    private lazy var previewImageView: PreviewAvatarViewController? = nil
-    
     private var headerCell: EditProfileHeaderCell?
     private var shouldUpdateInto = false
     private var currentUser: User? {
@@ -196,6 +194,7 @@ private extension EditProfileViewController {
 
 extension EditProfileViewController: EditProfileHeaderDelegate {    
     func didTapOnEditAvatar() {
+        fullNameTextField.text = currentUser?.name ?? String()
         galleryController.showSinglePhotoPicker(from: navigationController) { [weak self] image in
             if let image {
                 self?.headerCell?.update(image)

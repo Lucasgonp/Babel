@@ -3,7 +3,7 @@ import DesignKit
 
 final class SettingsUserInfoCell: UITableViewCell, ViewConfiguration {
     private lazy var avatar: ImageView = {
-        let imageView = ImageView()
+        let imageView = ImageView(image: Image.avatarPlaceholder.image)
         imageView.layer.cornerRadius = 30
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -44,25 +44,24 @@ final class SettingsUserInfoCell: UITableViewCell, ViewConfiguration {
     }
     
     func buildViewHierarchy() {
-        addSubview(avatar)
-        addSubview(textsStackView)
+        contentView.addSubview(avatar)
+        contentView.addSubview(textsStackView)
     }
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            avatar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            avatar.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             avatar.heightAnchor.constraint(equalToConstant: 60),
             avatar.widthAnchor.constraint(equalToConstant: 60),
-            avatar.topAnchor.constraint(equalTo: bottomAnchor, constant: 16),
-            avatar.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
-            avatar.centerYAnchor.constraint(equalTo: centerYAnchor)
+            avatar.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 16),
+            avatar.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
+            avatar.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            textsStackView.topAnchor.constraint(equalTo: topAnchor, constant: 20),
             textsStackView.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 16),
-            textsStackView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -12),
-            textsStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -4)
+            textsStackView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            textsStackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }
     
@@ -76,7 +75,8 @@ extension SettingsUserInfoCell {
         fullNameLabel.text = dto.name
         statusLabel.text = dto.status
         
-        avatar.setAvatar(imageUrl: dto.avatarLink)
+        avatar.image = nil
+        avatar.setAvatar(imageUrl: dto.avatarLink, placeholderImage: Image.avatarPlaceholder.image)
     }
     
     func updateAvatar(image: UIImage) {

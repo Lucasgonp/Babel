@@ -13,6 +13,7 @@ final class UserCell: UITableViewCell, ViewConfiguration {
     private lazy var fullNameLabel: TextLabel = {
         let font = Font.md.make(isBold: true)
         let label = TextLabel(font: font)
+        label.numberOfLines = 1
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -45,25 +46,24 @@ final class UserCell: UITableViewCell, ViewConfiguration {
     }
     
     func buildViewHierarchy() {
-        addSubview(avatar)
-        addSubview(textsStackView)
+        contentView.addSubview(avatar)
+        contentView.addSubview(textsStackView)
     }
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            avatar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
+            avatar.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
             avatar.heightAnchor.constraint(equalToConstant: 46),
             avatar.widthAnchor.constraint(equalToConstant: 46),
-            avatar.topAnchor.constraint(equalTo: bottomAnchor, constant: 6),
-            avatar.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -6),
-            avatar.centerYAnchor.constraint(equalTo: centerYAnchor)
+            avatar.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 6),
+            avatar.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -6),
+            avatar.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            textsStackView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            textsStackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             textsStackView.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 16),
-            textsStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
-            textsStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16)
+            textsStackView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -16)
         ])
     }
 }

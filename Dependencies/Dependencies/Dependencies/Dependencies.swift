@@ -1,0 +1,3 @@
+import FirebaseFirestoreSwift
+
+public typealias ServerTimestampAdapter = ServerTimestamp

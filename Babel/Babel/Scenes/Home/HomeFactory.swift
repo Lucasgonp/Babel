@@ -61,7 +61,7 @@ enum HomeTabBarFactory {
     }
     
     static func makeChats() -> HomeTabBarModel {
-        let viewController = ChatsFactory.make()
+        let viewController = RecentChatsFactory.make()
         let navigation = UINavigationController(rootViewController: viewController)
         navigation.navigationBar.prefersLargeTitles = true
         navigation.tabBarItem.title = Strings.TabBar.Chats.title

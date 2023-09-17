@@ -15,6 +15,7 @@
 		768BB5252A81585400300ECA /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 768BB5242A81585400300ECA /* FirebaseFirestore */; };
 		76BE11AE2A7AFB47009E179D /* Dependencies.docc in Sources */ = {isa = PBXBuildFile; fileRef = 76BE11AD2A7AFB47009E179D /* Dependencies.docc */; };
 		76BE11BA2A7AFB47009E179D /* Dependencies.h in Headers */ = {isa = PBXBuildFile; fileRef = 76BE11AC2A7AFB47009E179D /* Dependencies.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		76DA7EA72AB7897600106731 /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DA7EA62AB7897600106731 /* Dependencies.swift */; };
 		76EF5CE62A8C39C800D9AE8B /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 76EF5CE52A8C39C800D9AE8B /* FirebaseStorage */; };
 		76EF5CEB2A8C3A6500D9AE8B /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 76EF5CEA2A8C3A6500D9AE8B /* ProgressHUD */; };
 		76EF5CF02A8C444100D9AE8B /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 76EF5CEF2A8C444100D9AE8B /* FirebaseMessaging */; };
@@ -29,6 +30,7 @@
 		76BE11A92A7AFB47009E179D /* Dependencies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dependencies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76BE11AC2A7AFB47009E179D /* Dependencies.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dependencies.h; sourceTree = "<group>"; };
 		76BE11AD2A7AFB47009E179D /* Dependencies.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Dependencies.docc; sourceTree = "<group>"; };
+		76DA7EA62AB7897600106731 /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 			children = (
 				76BE11AC2A7AFB47009E179D /* Dependencies.h */,
 				76BE11AD2A7AFB47009E179D /* Dependencies.docc */,
+				76DA7EA62AB7897600106731 /* Dependencies.swift */,
 			);
 			path = Dependencies;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76DA7EA72AB7897600106731 /* Dependencies.swift in Sources */,
 				76BE11AE2A7AFB47009E179D /* Dependencies.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

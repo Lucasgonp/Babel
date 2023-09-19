@@ -107,6 +107,7 @@
 		76DA7EBF2AB78D1F00106731 /* RecentChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DA7EB92AB78D1F00106731 /* RecentChatsViewController.swift */; };
 		76DA7EC02AB78D1F00106731 /* RecentChatsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DA7EBA2AB78D1F00106731 /* RecentChatsInteractor.swift */; };
 		76DA7EC12AB78D1F00106731 /* RecentChatsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DA7EBB2AB78D1F00106731 /* RecentChatsService.swift */; };
+		76DA7EC42AB78E7400106731 /* RecentChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DA7EC32AB78E7400106731 /* RecentChatCell.swift */; };
 		76EF5D492A905E3700D9AE8B /* DesignKit.framework in Sources */ = {isa = PBXBuildFile; fileRef = 76228DA92A8AAF7000C27C7A /* DesignKit.framework */; };
 		76EF5D4A2A905E3700D9AE8B /* Authenticator.framework in Sources */ = {isa = PBXBuildFile; fileRef = 76228DA32A8AAF6200C27C7A /* Authenticator.framework */; };
 /* End PBXBuildFile section */
@@ -246,6 +247,7 @@
 		76DA7EB92AB78D1F00106731 /* RecentChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatsViewController.swift; sourceTree = "<group>"; };
 		76DA7EBA2AB78D1F00106731 /* RecentChatsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatsInteractor.swift; sourceTree = "<group>"; };
 		76DA7EBB2AB78D1F00106731 /* RecentChatsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatsService.swift; sourceTree = "<group>"; };
+		76DA7EC32AB78E7400106731 /* RecentChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -363,6 +365,7 @@
 		7620F2AD2A92DDFB002A4EB5 /* Chats */ = {
 			isa = PBXGroup;
 			children = (
+				76DA7EC22AB78E6800106731 /* Cells */,
 				76DA7EA02AB787B700106731 /* Models */,
 				76DA7EB62AB78D1F00106731 /* RecentChatsFactory.swift */,
 				76DA7EB72AB78D1F00106731 /* RecentChatsPresenter.swift */,
@@ -639,6 +642,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		76DA7EC22AB78E6800106731 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				76DA7EC32AB78E7400106731 /* RecentChatCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -895,6 +906,7 @@
 				76CAA18A2A8AA9ED00D742E9 /* HomeRouter.swift in Sources */,
 				7620F43F2A9592C2002A4EB5 /* EditProfilePresenter.swift in Sources */,
 				76CAA1882A8AA9ED00D742E9 /* HomeInteractor.swift in Sources */,
+				76DA7EC42AB78E7400106731 /* RecentChatCell.swift in Sources */,
 				7620F42D2A9567B1002A4EB5 /* User.swift in Sources */,
 				7608DE542A999F050036027A /* StorageManager.swift in Sources */,
 				7608DE682A9BAFDE0036027A /* EditBioPresenter.swift in Sources */,

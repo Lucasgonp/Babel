@@ -1,203 +1,196 @@
 {
-  "pins" : [
-    {
-      "identity" : "abseil-cpp-binary",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/google/abseil-cpp-binary.git",
-      "state" : {
-        "revision" : "bfc0b6f81adc06ce5121eb23f628473638d67c5c",
-        "version" : "1.2022062300.0"
+  "object": {
+    "pins": [
+      {
+        "package": "abseil",
+        "repositoryURL": "https://github.com/google/abseil-cpp-binary.git",
+        "state": {
+          "branch": null,
+          "revision": "bfc0b6f81adc06ce5121eb23f628473638d67c5c",
+          "version": "1.2022062300.0"
+        }
+      },
+      {
+        "package": "Alamofire",
+        "repositoryURL": "https://github.com/Alamofire/Alamofire",
+        "state": {
+          "branch": null,
+          "revision": "bc268c28fb170f494de9e9927c371b8342979ece",
+          "version": "5.7.1"
+        }
+      },
+      {
+        "package": "Firebase",
+        "repositoryURL": "https://github.com/firebase/firebase-ios-sdk.git",
+        "state": {
+          "branch": null,
+          "revision": "df2171b0c6afb9e9d4f7e07669d558c510b9f6be",
+          "version": "10.13.0"
+        }
+      },
+      {
+        "package": "GoogleAppMeasurement",
+        "repositoryURL": "https://github.com/google/GoogleAppMeasurement.git",
+        "state": {
+          "branch": null,
+          "revision": "03b9beee1a61f62d32c521e172e192a1663a5e8b",
+          "version": "10.13.0"
+        }
+      },
+      {
+        "package": "GoogleDataTransport",
+        "repositoryURL": "https://github.com/google/GoogleDataTransport.git",
+        "state": {
+          "branch": null,
+          "revision": "aae45a320fd0d11811820335b1eabc8753902a40",
+          "version": "9.2.5"
+        }
+      },
+      {
+        "package": "GoogleUtilities",
+        "repositoryURL": "https://github.com/google/GoogleUtilities.git",
+        "state": {
+          "branch": null,
+          "revision": "c38ce365d77b04a9a300c31061c5227589e5597b",
+          "version": "7.11.5"
+        }
+      },
+      {
+        "package": "gRPC",
+        "repositoryURL": "https://github.com/google/grpc-binary.git",
+        "state": {
+          "branch": null,
+          "revision": "f1b366129d1125be7db83247e003fc333104b569",
+          "version": "1.50.2"
+        }
+      },
+      {
+        "package": "GTMSessionFetcher",
+        "repositoryURL": "https://github.com/google/gtm-session-fetcher.git",
+        "state": {
+          "branch": null,
+          "revision": "d415594121c9e8a4f9d79cecee0965cf35e74dbd",
+          "version": "3.1.1"
+        }
+      },
+      {
+        "package": "InputBarAccessoryView",
+        "repositoryURL": "https://github.com/nathantannar4/InputBarAccessoryView",
+        "state": {
+          "branch": "master",
+          "revision": "152b4fa45d47445b6d1af5f8de91623222347bd7",
+          "version": null
+        }
+      },
+      {
+        "package": "leveldb",
+        "repositoryURL": "https://github.com/firebase/leveldb.git",
+        "state": {
+          "branch": null,
+          "revision": "0706abcc6b0bd9cedfbb015ba840e4a780b5159b",
+          "version": "1.22.2"
+        }
+      },
+      {
+        "package": "MessageKit",
+        "repositoryURL": "https://github.com/MessageKit/MessageKit",
+        "state": {
+          "branch": "main",
+          "revision": "6f8b42754302e43f691ef7b252f8932448294aa5",
+          "version": null
+        }
+      },
+      {
+        "package": "nanopb",
+        "repositoryURL": "https://github.com/firebase/nanopb.git",
+        "state": {
+          "branch": null,
+          "revision": "819d0a2173aff699fb8c364b6fb906f7cdb1a692",
+          "version": "2.30909.0"
+        }
+      },
+      {
+        "package": "ProgressHUD",
+        "repositoryURL": "https://github.com/relatedcode/ProgressHUD",
+        "state": {
+          "branch": null,
+          "revision": "01b56b31d61512d900b58cb7ac1479509bd7170f",
+          "version": "13.7.2"
+        }
+      },
+      {
+        "package": "Promises",
+        "repositoryURL": "https://github.com/google/promises.git",
+        "state": {
+          "branch": null,
+          "revision": "e70e889c0196c76d22759eb50d6a0270ca9f1d9e",
+          "version": "2.3.1"
+        }
+      },
+      {
+        "package": "PryntTrimmerView",
+        "repositoryURL": "https://github.com/HHK1/PryntTrimmerView",
+        "state": {
+          "branch": null,
+          "revision": "ac1b60a22c7e6a6514de7a66d2f3d5b537c956d5",
+          "version": "4.0.2"
+        }
+      },
+      {
+        "package": "RealmDatabase",
+        "repositoryURL": "https://github.com/realm/realm-core.git",
+        "state": {
+          "branch": null,
+          "revision": "c04f5e401a1ec682e6b08b1ee157e19a0f834a5f",
+          "version": "13.17.1"
+        }
+      },
+      {
+        "package": "Realm",
+        "repositoryURL": "https://github.com/realm/realm-swift",
+        "state": {
+          "branch": "master",
+          "revision": "752f8ae418f97c7e90c2c83ebeeb534c0357df4d",
+          "version": null
+        }
+      },
+      {
+        "package": "SDWebImage",
+        "repositoryURL": "https://github.com/SDWebImage/SDWebImage",
+        "state": {
+          "branch": "master",
+          "revision": "36e484b317522667a4b2de9b50daaa01dfa30809",
+          "version": null
+        }
+      },
+      {
+        "package": "SKPhotoBrowser",
+        "repositoryURL": "https://github.com/suzuki-0000/SKPhotoBrowser",
+        "state": {
+          "branch": "master",
+          "revision": "fd0e07de938e1bb961c55c7c4c6d2715d4c67d0e",
+          "version": null
+        }
+      },
+      {
+        "package": "Stevia",
+        "repositoryURL": "https://github.com/freshOS/Stevia",
+        "state": {
+          "branch": null,
+          "revision": "cfb1a1d2159277bb553c3dc46f3f742c0275566d",
+          "version": "5.1.2"
+        }
+      },
+      {
+        "package": "SwiftProtobuf",
+        "repositoryURL": "https://github.com/apple/swift-protobuf.git",
+        "state": {
+          "branch": null,
+          "revision": "ce20dc083ee485524b802669890291c0d8090170",
+          "version": "1.22.1"
+        }
       }
-    },
-    {
-      "identity" : "alamofire",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Alamofire/Alamofire",
-      "state" : {
-        "revision" : "bc268c28fb170f494de9e9927c371b8342979ece",
-        "version" : "5.7.1"
-      }
-    },
-    {
-      "identity" : "firebase-ios-sdk",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/firebase/firebase-ios-sdk.git",
-      "state" : {
-        "revision" : "df2171b0c6afb9e9d4f7e07669d558c510b9f6be",
-        "version" : "10.13.0"
-      }
-    },
-    {
-      "identity" : "googleappmeasurement",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/google/GoogleAppMeasurement.git",
-      "state" : {
-        "revision" : "03b9beee1a61f62d32c521e172e192a1663a5e8b",
-        "version" : "10.13.0"
-      }
-    },
-    {
-      "identity" : "googledatatransport",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/google/GoogleDataTransport.git",
-      "state" : {
-        "revision" : "aae45a320fd0d11811820335b1eabc8753902a40",
-        "version" : "9.2.5"
-      }
-    },
-    {
-      "identity" : "googleutilities",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/google/GoogleUtilities.git",
-      "state" : {
-        "revision" : "c38ce365d77b04a9a300c31061c5227589e5597b",
-        "version" : "7.11.5"
-      }
-    },
-    {
-      "identity" : "grpc-binary",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/google/grpc-binary.git",
-      "state" : {
-        "revision" : "f1b366129d1125be7db83247e003fc333104b569",
-        "version" : "1.50.2"
-      }
-    },
-    {
-      "identity" : "gtm-session-fetcher",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/google/gtm-session-fetcher.git",
-      "state" : {
-        "revision" : "d415594121c9e8a4f9d79cecee0965cf35e74dbd",
-        "version" : "3.1.1"
-      }
-    },
-    {
-      "identity" : "inputbaraccessoryview",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/nathantannar4/InputBarAccessoryView",
-      "state" : {
-        "branch" : "master",
-        "revision" : "152b4fa45d47445b6d1af5f8de91623222347bd7"
-      }
-    },
-    {
-      "identity" : "leveldb",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/firebase/leveldb.git",
-      "state" : {
-        "revision" : "0706abcc6b0bd9cedfbb015ba840e4a780b5159b",
-        "version" : "1.22.2"
-      }
-    },
-    {
-      "identity" : "messagekit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/MessageKit/MessageKit",
-      "state" : {
-        "branch" : "main",
-        "revision" : "6f8b42754302e43f691ef7b252f8932448294aa5"
-      }
-    },
-    {
-      "identity" : "nanopb",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/firebase/nanopb.git",
-      "state" : {
-        "revision" : "819d0a2173aff699fb8c364b6fb906f7cdb1a692",
-        "version" : "2.30909.0"
-      }
-    },
-    {
-      "identity" : "progresshud",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/relatedcode/ProgressHUD",
-      "state" : {
-        "revision" : "01b56b31d61512d900b58cb7ac1479509bd7170f",
-        "version" : "13.7.2"
-      }
-    },
-    {
-      "identity" : "promises",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/google/promises.git",
-      "state" : {
-        "revision" : "e70e889c0196c76d22759eb50d6a0270ca9f1d9e",
-        "version" : "2.3.1"
-      }
-    },
-    {
-      "identity" : "prynttrimmerview",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/HHK1/PryntTrimmerView",
-      "state" : {
-        "revision" : "ac1b60a22c7e6a6514de7a66d2f3d5b537c956d5",
-        "version" : "4.0.2"
-      }
-    },
-    {
-      "identity" : "realm-core",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/realm/realm-core.git",
-      "state" : {
-        "revision" : "c04f5e401a1ec682e6b08b1ee157e19a0f834a5f",
-        "version" : "13.17.1"
-      }
-    },
-    {
-      "identity" : "realm-swift",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/realm/realm-swift",
-      "state" : {
-        "branch" : "master",
-        "revision" : "752f8ae418f97c7e90c2c83ebeeb534c0357df4d"
-      }
-    },
-    {
-      "identity" : "sdwebimage",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SDWebImage/SDWebImage",
-      "state" : {
-        "branch" : "master",
-        "revision" : "36e484b317522667a4b2de9b50daaa01dfa30809"
-      }
-    },
-    {
-      "identity" : "skphotobrowser",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/suzuki-0000/SKPhotoBrowser",
-      "state" : {
-        "branch" : "master",
-        "revision" : "fd0e07de938e1bb961c55c7c4c6d2715d4c67d0e"
-      }
-    },
-    {
-      "identity" : "stevia",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/freshOS/Stevia",
-      "state" : {
-        "revision" : "cfb1a1d2159277bb553c3dc46f3f742c0275566d",
-        "version" : "5.1.2"
-      }
-    },
-    {
-      "identity" : "swift-protobuf",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-protobuf.git",
-      "state" : {
-        "revision" : "ce20dc083ee485524b802669890291c0d8090170",
-        "version" : "1.22.1"
-      }
-    },
-    {
-      "identity" : "ypimagepicker",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Yummypets/YPImagePicker",
-      "state" : {
-        "branch" : "master",
-        "revision" : "6f3c3d6f6d10d8fea76afce93410bca7e5bcaf8a"
-      }
-    }
-  ],
-  "version" : 2
+    ]
+  },
+  "version": 1
 }

@@ -11,6 +11,13 @@
          location = "group:Features"
          name = "Features">
          <Group
+            location = "container:"
+            name = "ImagePicker">
+            <FileRef
+               location = "group:Modules/Features/ImagePicker">
+            </FileRef>
+         </Group>
+         <Group
             location = "group:Authenticator"
             name = "Authenticator">
             <FileRef

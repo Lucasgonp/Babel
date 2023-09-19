@@ -3,12 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7608DE222A99421E0036027A /* YPImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 7608DE212A99421E0036027A /* YPImagePicker */; };
 		7608DE932AA381F80036027A /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 7608DE922AA381F80036027A /* SDWebImage */; };
+		764A8F072AB92C0200ECEB1F /* YPImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 764A8F062AB92C0200ECEB1F /* YPImagePicker */; };
 		768BB51F2A81585400300ECA /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 768BB51E2A81585400300ECA /* FirebaseAnalytics */; };
 		768BB5212A81585400300ECA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 768BB5202A81585400300ECA /* FirebaseAuth */; };
 		768BB5232A81585400300ECA /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 768BB5222A81585400300ECA /* FirebaseCrashlytics */; };
@@ -46,10 +46,10 @@
 				768BB5252A81585400300ECA /* FirebaseFirestore in Frameworks */,
 				768BB51F2A81585400300ECA /* FirebaseAnalytics in Frameworks */,
 				76EF5CFB2A8C454E00D9AE8B /* SKPhotoBrowser in Frameworks */,
-				7608DE222A99421E0036027A /* YPImagePicker in Frameworks */,
 				76EF5CE62A8C39C800D9AE8B /* FirebaseStorage in Frameworks */,
 				7608DE932AA381F80036027A /* SDWebImage in Frameworks */,
 				768BB5212A81585400300ECA /* FirebaseAuth in Frameworks */,
+				764A8F072AB92C0200ECEB1F /* YPImagePicker in Frameworks */,
 				76EF5CF82A8C44F900D9AE8B /* RealmSwift in Frameworks */,
 				76EF5CF22A8C444D00D9AE8B /* FirebaseFirestoreSwift in Frameworks */,
 			);
@@ -133,8 +133,8 @@
 				76EF5CFA2A8C454E00D9AE8B /* SKPhotoBrowser */,
 				76EF5CFD2A8C459600D9AE8B /* MessageKit */,
 				76EF5D002A8C45D600D9AE8B /* InputBarAccessoryView */,
-				7608DE212A99421E0036027A /* YPImagePicker */,
 				7608DE922AA381F80036027A /* SDWebImage */,
+				764A8F062AB92C0200ECEB1F /* YPImagePicker */,
 			);
 			productName = Dependencies;
 			productReference = 76BE11A92A7AFB47009E179D /* Dependencies.framework */;
@@ -171,8 +171,8 @@
 				76EF5CF92A8C454E00D9AE8B /* XCRemoteSwiftPackageReference "SKPhotoBrowser" */,
 				76EF5CFC2A8C459600D9AE8B /* XCRemoteSwiftPackageReference "MessageKit" */,
 				76EF5CFF2A8C45D600D9AE8B /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */,
-				7608DE202A99421E0036027A /* XCRemoteSwiftPackageReference "YPImagePicker" */,
 				7608DE912AA381F70036027A /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				764A8F052AB92C0200ECEB1F /* XCLocalSwiftPackageReference "../../Modules/Features/ImagePicker" */,
 			);
 			productRefGroup = 76BE11AA2A7AFB47009E179D /* Products */;
 			projectDirPath = "";
@@ -415,15 +415,14 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		7608DE202A99421E0036027A /* XCRemoteSwiftPackageReference "YPImagePicker" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Yummypets/YPImagePicker";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
+/* Begin XCLocalSwiftPackageReference section */
+		764A8F052AB92C0200ECEB1F /* XCLocalSwiftPackageReference "../../Modules/Features/ImagePicker" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../Modules/Features/ImagePicker;
 		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCRemoteSwiftPackageReference section */
 		7608DE912AA381F70036027A /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
@@ -483,15 +482,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7608DE212A99421E0036027A /* YPImagePicker */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7608DE202A99421E0036027A /* XCRemoteSwiftPackageReference "YPImagePicker" */;
-			productName = YPImagePicker;
-		};
 		7608DE922AA381F80036027A /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7608DE912AA381F70036027A /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
+		};
+		764A8F062AB92C0200ECEB1F /* YPImagePicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = YPImagePicker;
 		};
 		768BB51E2A81585400300ECA /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;

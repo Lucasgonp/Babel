@@ -19,9 +19,9 @@ final class RecentChatsViewController: ViewController<RecentChatsInteracting, UI
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(cellType: UserCell.self)
-//        tableView.delegate = self
-//        tableView.dataSource = self
+        tableView.register(cellType: RecentChatCell.self)
+        tableView.delegate = self
+        tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -49,5 +49,23 @@ final class RecentChatsViewController: ViewController<RecentChatsInteracting, UI
 extension RecentChatsViewController: RecentChatsDisplaying {
     func displaySomething() { 
         // template
+    }
+}
+
+extension RecentChatsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+extension RecentChatsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: RecentChatCell = tableView.makeCell(indexPath: indexPath)
+        cell.render()
+        return cell
     }
 }

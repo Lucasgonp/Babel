@@ -70,8 +70,6 @@
 		76228DA82A8AAF6800C27C7A /* NetworkKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76228DA62A8AAF6800C27C7A /* NetworkKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		76228DAA2A8AAF7000C27C7A /* DesignKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76228DA92A8AAF7000C27C7A /* DesignKit.framework */; };
 		76228DAB2A8AAF7000C27C7A /* DesignKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76228DA92A8AAF7000C27C7A /* DesignKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		76228DB02A8AB03700C27C7A /* CoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76228DAF2A8AB03700C27C7A /* CoreKit.framework */; };
-		76228DB12A8AB03700C27C7A /* CoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76228DAF2A8AB03700C27C7A /* CoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		767E4A062A8AB87000B55980 /* Strings.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767E4A052A8AB84700B55980 /* Strings.generated.swift */; };
 		769E972D2AA3C4FC004FC6B4 /* ContactInfoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E97272AA3C4FC004FC6B4 /* ContactInfoFactory.swift */; };
 		769E972E2AA3C4FC004FC6B4 /* ContactInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E97282AA3C4FC004FC6B4 /* ContactInfoPresenter.swift */; };
@@ -141,7 +139,6 @@
 				76CAA1742A8AA8F400D742E9 /* Dependencies.framework in Embed Frameworks */,
 				76228DA82A8AAF6800C27C7A /* NetworkKit.framework in Embed Frameworks */,
 				7608DE2A2A9945BB0036027A /* GalleryKit.framework in Embed Frameworks */,
-				76228DB12A8AB03700C27C7A /* CoreKit.framework in Embed Frameworks */,
 				7608DE522A9960DC0036027A /* StorageKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -260,7 +257,6 @@
 				76CAA1732A8AA8F400D742E9 /* Dependencies.framework in Frameworks */,
 				76228DA72A8AAF6800C27C7A /* NetworkKit.framework in Frameworks */,
 				7608DE292A9945BB0036027A /* GalleryKit.framework in Frameworks */,
-				76228DB02A8AB03700C27C7A /* CoreKit.framework in Frameworks */,
 				7608DE512A9960DC0036027A /* StorageKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1083,15 +1079,14 @@
 				DEVELOPMENT_TEAM = VZDNH969CP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Babel/Info.plist;
-				INFOPLIST_KEY_NSAppleMusicUsageDescription = "$(PRODUCT_NAME) requires to access your Media library";
-				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_NAME) requires to access your Camera";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "$(PRODUCT_NAME) requires to access your Photo library";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Babel requires to access your Media library";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Babel requires to access your Camera";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Babel requires to access your Photo library";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = H;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1120,15 +1115,14 @@
 				DEVELOPMENT_TEAM = VZDNH969CP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Babel/Info.plist;
-				INFOPLIST_KEY_NSAppleMusicUsageDescription = "$(PRODUCT_NAME) requires to access your Media library";
-				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_NAME) requires to access your Camera";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "$(PRODUCT_NAME) requires to access your Photo library";
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Babel requires to access your Media library";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Babel requires to access your Camera";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Babel requires to access your Photo library";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = H;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

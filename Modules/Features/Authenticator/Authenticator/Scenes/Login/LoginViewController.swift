@@ -155,7 +155,7 @@ final class LoginViewController: ViewController<LoginInteracting, UIView> {
     }
     
     override func configureViews() {
-        view.backgroundColor = Color.backgroundLogo.uiColor
+        view.backgroundColor = Color.backgroundPrimary.uiColor
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         view.addGestureRecognizer(tap)

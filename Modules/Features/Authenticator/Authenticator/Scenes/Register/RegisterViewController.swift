@@ -138,7 +138,7 @@ final class RegisterViewController: ViewController<RegisterInteracting, UIView> 
     }
 
     override func configureViews() {
-        view.backgroundColor = Color.backgroundLogo.uiColor
+        view.backgroundColor = Color.backgroundPrimary.uiColor
         inputsStackView.setCustomSpacing(32, after: passwordTextField)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))

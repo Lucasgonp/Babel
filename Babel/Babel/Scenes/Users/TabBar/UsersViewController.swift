@@ -58,12 +58,11 @@ final class UsersViewController: ViewController<UsersInteracting, UIView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        interactor.loadAllUsers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        interactor.loadAllUsers()
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
     }
@@ -193,7 +192,9 @@ private extension UsersViewController {
             }))
         }
         
-        tableView.reloadData()
+        DispatchQueue.main.async { [unowned self] in
+            self.tableView.reloadData()
+        }
     }
     
     func filterContentForSearchText(searchText: String) {

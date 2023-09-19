@@ -9,7 +9,7 @@ extension TextField {
         var background: Color {
             switch self {
             case .none:
-                return Color.secondary050
+                return Color.grayscale200
             case .success:
                 return Color.success500
             case .error:
@@ -20,7 +20,7 @@ extension TextField {
         var cursor: Color {
             switch self {
             case .none:
-                return Color.secondary800
+                return Color.grayscale800
             case .success:
                 return Color.success500
             case .error:

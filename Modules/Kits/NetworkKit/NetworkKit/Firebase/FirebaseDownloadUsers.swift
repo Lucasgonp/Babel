@@ -1,3 +1,4 @@
+import Foundation
 import FirebaseFirestoreSwift
 
 public protocol FirebaseUsersProtocol {

@@ -43,13 +43,6 @@
             </FileRef>
          </Group>
          <Group
-            location = "group:CoreKit"
-            name = "CoreKit">
-            <FileRef
-               location = "group:CoreKit.xcodeproj">
-            </FileRef>
-         </Group>
-         <Group
             location = "group:DesignKit"
             name = "DesignKit">
             <FileRef

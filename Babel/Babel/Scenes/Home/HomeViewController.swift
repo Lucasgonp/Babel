@@ -25,17 +25,18 @@ private extension HomeViewController.Layout {
 
 final class HomeViewController: TabBarViewController<HomeInteracting> {
     fileprivate enum Layout { }
-    private var didCheckAuthentication = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        showLoading()
         interactor.checkAuthentication()
     }
 
     override func configureViews() {
-        view.backgroundColor = .white
-        tabBar.backgroundColor = Color.grayscale050.uiColor
+        view.backgroundColor = Color.backgroundPrimary.uiColor
+//        tabBar.backgroundColor = Color.backgroundPrimary.uiColor
         tabBar.isTranslucent = true
+        tabBar.isHidden = true
     }
 }
 
@@ -77,6 +78,11 @@ private extension HomeViewController {
         setViewControllers(tabBars.compactMap({ $0.navigation }), animated: false)
         tabBar.items?.enumerated().forEach({ index, item in
             item.image = tabBars[index].icon
+            
+            if index == (tabBars.count - 1) {
+                tabBar.isHidden = false
+                hideLoading()
+            }
         })
     }
     

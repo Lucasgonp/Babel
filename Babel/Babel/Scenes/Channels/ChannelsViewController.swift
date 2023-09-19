@@ -32,7 +32,7 @@ final class ChannelsViewController: ViewController<ChannelsInteracting, UIView> 
     }
 
     override func configureViews() { 
-        // template
+        view.backgroundColor = Color.backgroundPrimary.uiColor
     }
 }
 

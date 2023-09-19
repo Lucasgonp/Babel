@@ -18,7 +18,7 @@ extension UsersService: UsersServicing {
         firebaseClient.downloadAllUsers { (result: Result<[User], FirebaseError>) in
             switch result {
             case .success(let users):
-                var users = users.filter({ $0.id != AccountInfo.shared.user?.id })
+                let users = users.filter({ $0.id != AccountInfo.shared.user?.id })
                 completion(.success(users))
             case .failure(let failure):
                 completion(.failure(failure))

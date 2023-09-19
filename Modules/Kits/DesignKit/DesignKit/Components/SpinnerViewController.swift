@@ -36,7 +36,7 @@ extension SpinnerView: ViewConfiguration {
     }
     
     func configureViews() {
-        backgroundColor = .white
+        backgroundColor = Color.backgroundPrimary.uiColor
     }
 }
 

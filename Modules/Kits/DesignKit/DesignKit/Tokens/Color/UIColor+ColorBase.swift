@@ -33,38 +33,6 @@ public extension Color {
     /// - Light Mode: `#943126`.
     /// - Dark Mode: `#943126`.
     static let primary900 = Color(#colorLiteral(red: 0, green: 0.2588235294, blue: 0.3803921569, alpha: 1), #colorLiteral(red: 0, green: 0.2588235294, blue: 0.3803921569, alpha: 1))
-
-    // MARK: - Color Base Secondary
-
-    /// Returns a color object whose values are:
-    ///
-    /// - Light Mode: `#D5D8DC`.
-    /// - Dark Mode: `#D5D8DC`.
-    static let secondary050 = Color(#colorLiteral(red: 0.8352941176, green: 0.8470588235, blue: 0.862745098, alpha: 1), #colorLiteral(red: 0.8352941176, green: 0.8470588235, blue: 0.862745098, alpha: 1))
-
-    /// Returns a color object whose values are:
-    ///
-    /// - Light Mode: `#808B96`.
-    /// - Dark Mode: `#808B96`.
-    static let secondary200 = Color(#colorLiteral(red: 0.5019607843, green: 0.5450980392, blue: 0.5882352941, alpha: 1), #colorLiteral(red: 0.5019607843, green: 0.5450980392, blue: 0.5882352941, alpha: 1))
-
-    /// Returns a color object whose values are:
-    ///
-    /// - Light Mode: `#2C3E50`.
-    /// - Dark Mode: `#2C3E50`.
-    static let secondary500 = Color(#colorLiteral(red: 0.1725490196, green: 0.2431372549, blue: 0.3137254902, alpha: 1), #colorLiteral(red: 0.1725490196, green: 0.2431372549, blue: 0.3137254902, alpha: 1))
-
-    /// Returns a color object whose values are:
-    ///
-    /// - Light Mode: `#212F3D`.
-    /// - Dark Mode: `#212F3D`.
-    static let secondary800 = Color(#colorLiteral(red: 0.1294117647, green: 0.1843137255, blue: 0.2392156863, alpha: 1), #colorLiteral(red: 0.1294117647, green: 0.1843137255, blue: 0.2392156863, alpha: 1))
-
-    /// Returns a color object whose values are:
-    ///
-    /// - Light Mode: `#17202A`.
-    /// - Dark Mode: `#17202A`.
-    static let secondary900 = Color(#colorLiteral(red: 0.09019607843, green: 0.1254901961, blue: 0.1647058824, alpha: 1), #colorLiteral(red: 0.09019607843, green: 0.1254901961, blue: 0.1647058824, alpha: 1))
     
     // MARK: - Others
 
@@ -83,8 +51,8 @@ public extension Color {
     /// Returns a color object whose values are:
     ///
     /// - Light Mode: `#F2F2F2`.
-    /// - Dark Mode: `#EAECEE`.
-    static let backgroundPrimary = Color(#colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 1), #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 1))
+    /// - Dark Mode: `#060B0D`.
+    static let backgroundPrimary = Color(#colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 1), #colorLiteral(red: 0.02352941176, green: 0.0431372549, blue: 0.05098039216, alpha: 1))
     
     /// Returns a color object whose values are:
     ///
@@ -127,12 +95,6 @@ public extension Color {
     /// - Light Mode: `transparent`.
     /// - Dark Mode: `transparent`.
     static let clear = Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), opacity: .zero)
-    
-    /// Returns a color object whose values are:
-    ///
-    /// - Light Mode: `#E62320`.
-    /// - Dark Mode: `#E62320`.
-    static let backgroundLogo = Color(#colorLiteral(red: 0.9843137255, green: 0.9803921569, blue: 0.9843137255, alpha: 1), #colorLiteral(red: 0.9843137255, green: 0.9803921569, blue: 0.9843137255, alpha: 1))
     
     /// Returns a color object whose values are:
     ///
@@ -179,5 +141,5 @@ public extension Color {
     static let grayscale100 = Color(lightColor: #colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.8980392157, alpha: 1), darkColor: #colorLiteral(red: 0.2235294118, green: 0.2745098039, blue: 0.3019607843, alpha: 1))
 
     /// Grayscale050, default value light color `#F2F2F2` and dark color `#39464D`
-    static let grayscale050 = Color(lightColor: #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 1), darkColor: #colorLiteral(red: 0.2235294118, green: 0.2745098039, blue: 0.3019607843, alpha: 1))
+    static let grayscale050 = Color(lightColor: #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 1), darkColor: #colorLiteral(red: 0.05490196078, green: 0.0862745098, blue: 0.1019607843, alpha: 1))
 }

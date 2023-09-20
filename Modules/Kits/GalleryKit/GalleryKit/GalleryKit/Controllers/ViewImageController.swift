@@ -24,7 +24,6 @@ public final class PreviewAvatarViewController: UIViewController {
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(dragGestureFinish)
         imageView.frame.size = Layout.ImageView.size
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -77,8 +76,8 @@ private extension PreviewAvatarViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissView))
         view.addGestureRecognizer(tap)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) { [unowned self] in
-            self.animate()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) { [weak self] in
+            self?.animate()
         }
     }
     

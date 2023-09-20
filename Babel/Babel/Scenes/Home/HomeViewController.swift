@@ -34,7 +34,6 @@ final class HomeViewController: TabBarViewController<HomeInteracting> {
 
     override func configureViews() {
         view.backgroundColor = Color.backgroundPrimary.uiColor
-//        tabBar.backgroundColor = Color.backgroundPrimary.uiColor
         tabBar.isTranslucent = true
         tabBar.isHidden = true
     }

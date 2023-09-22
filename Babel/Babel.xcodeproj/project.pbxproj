@@ -358,7 +358,7 @@
 			path = Channels;
 			sourceTree = "<group>";
 		};
-		7620F2AD2A92DDFB002A4EB5 /* Chats */ = {
+		7620F2AD2A92DDFB002A4EB5 /* RecentChats */ = {
 			isa = PBXGroup;
 			children = (
 				76DA7EC22AB78E6800106731 /* Cells */,
@@ -370,7 +370,7 @@
 				76DA7EBA2AB78D1F00106731 /* RecentChatsInteractor.swift */,
 				76DA7EBB2AB78D1F00106731 /* RecentChatsService.swift */,
 			);
-			path = Chats;
+			path = RecentChats;
 			sourceTree = "<group>";
 		};
 		7620F41E2A951210002A4EB5 /* Cells */ = {
@@ -607,7 +607,7 @@
 		76CAA17F2A8AA9ED00D742E9 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				7620F2AD2A92DDFB002A4EB5 /* Chats */,
+				7620F2AD2A92DDFB002A4EB5 /* RecentChats */,
 				7620F2AC2A92DDEF002A4EB5 /* Channels */,
 				7620F2AB2A92DDDA002A4EB5 /* Users */,
 				7620F2AA2A92DDC2002A4EB5 /* Settings */,

@@ -49,7 +49,7 @@ final class RecentChatCell: UITableViewCell, ViewConfiguration {
     private lazy var unreadCountLabel: TextLabel = {
         let font = Font.sm.uiFont
         let label = TextLabel(font: font)
-        label.textColor = Color.white.uiColor
+        label.textColor = Color.black.uiColor
         label.numberOfLines = 1
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -73,7 +73,7 @@ final class RecentChatCell: UITableViewCell, ViewConfiguration {
         contentView.addSubview(timeLabel)
         contentView.addSubview(unreadCountView)
         
-        unreadCountView.fillWithSubview(subview: unreadCountLabel)
+        unreadCountView.fillWithSubview(subview: unreadCountLabel, spacing: .init(top: 2, left: 4, bottom: 2, right: 4))
     }
     
     func setupConstraints() {
@@ -81,13 +81,13 @@ final class RecentChatCell: UITableViewCell, ViewConfiguration {
             avatarImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
             avatarImageView.heightAnchor.constraint(equalToConstant: 56),
             avatarImageView.widthAnchor.constraint(equalToConstant: 56),
-            avatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            avatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 14),
             avatarImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
             avatarImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            fullNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            fullNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
             fullNameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16)
         ])
         
@@ -95,18 +95,16 @@ final class RecentChatCell: UITableViewCell, ViewConfiguration {
             lastMassageLabel.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant: 4),
             lastMassageLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
             lastMassageLabel.trailingAnchor.constraint(equalTo: unreadCountView.leadingAnchor, constant: -8),
-            lastMassageLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -4)
+            lastMassageLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -8)
         ])
         
         NSLayoutConstraint.activate([
-            timeLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            timeLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
             timeLabel.leadingAnchor.constraint(equalTo: fullNameLabel.trailingAnchor, constant: 4),
             timeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
         ])
         
         NSLayoutConstraint.activate([
-            unreadCountView.heightAnchor.constraint(equalToConstant: 22),
-            unreadCountView.widthAnchor.constraint(equalToConstant: 22),
             unreadCountView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             unreadCountView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
         ])
@@ -118,7 +116,7 @@ extension RecentChatCell {
         fullNameLabel.text = "Leonardo Pimentel"
         lastMassageLabel.text = "Oi meu amigo! que saudade de voce! Como voce está? Me liga assim que receber essa mensagem"
         timeLabel.text = "12:51"
-        unreadCountLabel.text = "5"
+        unreadCountLabel.text = "100+"
 //        if !dto.avatarLink.isEmpty {
 //            avatarImageView.setAvatar(imageUrl: dto.avatarLink)
 //        } else {

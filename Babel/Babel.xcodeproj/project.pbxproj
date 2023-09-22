@@ -70,6 +70,7 @@
 		76228DA82A8AAF6800C27C7A /* NetworkKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76228DA62A8AAF6800C27C7A /* NetworkKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		76228DAA2A8AAF7000C27C7A /* DesignKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76228DA92A8AAF7000C27C7A /* DesignKit.framework */; };
 		76228DAB2A8AAF7000C27C7A /* DesignKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76228DA92A8AAF7000C27C7A /* DesignKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7669BA2A2ABDD3550002AD4C /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669BA292ABDD3550002AD4C /* Date+Extensions.swift */; };
 		767E4A062A8AB87000B55980 /* Strings.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767E4A052A8AB84700B55980 /* Strings.generated.swift */; };
 		769E972D2AA3C4FC004FC6B4 /* ContactInfoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E97272AA3C4FC004FC6B4 /* ContactInfoFactory.swift */; };
 		769E972E2AA3C4FC004FC6B4 /* ContactInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E97282AA3C4FC004FC6B4 /* ContactInfoPresenter.swift */; };
@@ -206,6 +207,7 @@
 		76228DA62A8AAF6800C27C7A /* NetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76228DA92A8AAF7000C27C7A /* DesignKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76228DAF2A8AB03700C27C7A /* CoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7669BA292ABDD3550002AD4C /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		767E4A052A8AB84700B55980 /* Strings.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.generated.swift; sourceTree = "<group>"; };
 		769E97272AA3C4FC004FC6B4 /* ContactInfoFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoFactory.swift; sourceTree = "<group>"; };
 		769E97282AA3C4FC004FC6B4 /* ContactInfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoPresenter.swift; sourceTree = "<group>"; };
@@ -327,11 +329,15 @@
 		7620F2AA2A92DDC2002A4EB5 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				7608DE602A9BAFCD0036027A /* EditBio */,
-				7620F4462A9659E3002A4EB5 /* TermsAndConditions */,
-				7620F4452A9659D7002A4EB5 /* TellAFriend */,
-				7620F4372A9592A2002A4EB5 /* EditProfile */,
-				7620F4362A95924E002A4EB5 /* TabBar */,
+				7620F4312A956918002A4EB5 /* ViewModels */,
+				7620F42E2A9568BF002A4EB5 /* Models */,
+				7620F41E2A951210002A4EB5 /* Cells */,
+				7620F2AE2A92DE1B002A4EB5 /* SettingsFactory.swift */,
+				7620F2AF2A92DE1B002A4EB5 /* SettingsPresenter.swift */,
+				7620F2B02A92DE1B002A4EB5 /* SettingsRouter.swift */,
+				7620F2B12A92DE1B002A4EB5 /* SettingsViewController.swift */,
+				7620F2B22A92DE1B002A4EB5 /* SettingsInteractor.swift */,
+				7620F2B32A92DE1B002A4EB5 /* SettingsService.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -339,8 +345,14 @@
 		7620F2AB2A92DDDA002A4EB5 /* Users */ = {
 			isa = PBXGroup;
 			children = (
-				769E97262AA3C4E7004FC6B4 /* ContactInfo */,
-				769E97252AA3C4D8004FC6B4 /* TabBar */,
+				7608DE7B2A9D247E0036027A /* UserContact */,
+				7608DE782A9D008C0036027A /* Cells */,
+				7620F2D22A92EF74002A4EB5 /* UsersFactory.swift */,
+				7620F2D32A92EF74002A4EB5 /* UsersPresenter.swift */,
+				7620F2D42A92EF74002A4EB5 /* UsersRouter.swift */,
+				7620F2D52A92EF74002A4EB5 /* UsersViewController.swift */,
+				7620F2D62A92EF74002A4EB5 /* UsersInteractor.swift */,
+				7620F2D72A92EF74002A4EB5 /* UsersService.swift */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -406,22 +418,6 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		7620F4362A95924E002A4EB5 /* TabBar */ = {
-			isa = PBXGroup;
-			children = (
-				7620F4312A956918002A4EB5 /* ViewModels */,
-				7620F42E2A9568BF002A4EB5 /* Models */,
-				7620F41E2A951210002A4EB5 /* Cells */,
-				7620F2AE2A92DE1B002A4EB5 /* SettingsFactory.swift */,
-				7620F2AF2A92DE1B002A4EB5 /* SettingsPresenter.swift */,
-				7620F2B02A92DE1B002A4EB5 /* SettingsRouter.swift */,
-				7620F2B12A92DE1B002A4EB5 /* SettingsViewController.swift */,
-				7620F2B22A92DE1B002A4EB5 /* SettingsInteractor.swift */,
-				7620F2B32A92DE1B002A4EB5 /* SettingsService.swift */,
-			);
-			path = TabBar;
-			sourceTree = "<group>";
-		};
 		7620F4372A9592A2002A4EB5 /* EditProfile */ = {
 			isa = PBXGroup;
 			children = (
@@ -470,17 +466,21 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		769E97252AA3C4D8004FC6B4 /* TabBar */ = {
+		7669BA282ABDD33D0002AD4C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				7608DE7B2A9D247E0036027A /* UserContact */,
-				7608DE782A9D008C0036027A /* Cells */,
-				7620F2D22A92EF74002A4EB5 /* UsersFactory.swift */,
-				7620F2D32A92EF74002A4EB5 /* UsersPresenter.swift */,
-				7620F2D42A92EF74002A4EB5 /* UsersRouter.swift */,
-				7620F2D52A92EF74002A4EB5 /* UsersViewController.swift */,
-				7620F2D62A92EF74002A4EB5 /* UsersInteractor.swift */,
-				7620F2D72A92EF74002A4EB5 /* UsersService.swift */,
+				7669BA292ABDD3550002AD4C /* Date+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7669BA2B2ABDD8670002AD4C /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				7620F2AD2A92DDFB002A4EB5 /* RecentChats */,
+				7620F2AC2A92DDEF002A4EB5 /* Channels */,
+				7620F2AB2A92DDDA002A4EB5 /* Users */,
+				7620F2AA2A92DDC2002A4EB5 /* Settings */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -531,6 +531,7 @@
 		76CAA1372A8AA1F400D742E9 /* Babel */ = {
 			isa = PBXGroup;
 			children = (
+				7669BA282ABDD33D0002AD4C /* Extensions */,
 				7620F42B2A9567A3002A4EB5 /* Helpers */,
 				76CAA17F2A8AA9ED00D742E9 /* Scenes */,
 				76CAA17A2A8AA99400D742E9 /* Managers */,
@@ -607,11 +608,13 @@
 		76CAA17F2A8AA9ED00D742E9 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				7620F2AD2A92DDFB002A4EB5 /* RecentChats */,
-				7620F2AC2A92DDEF002A4EB5 /* Channels */,
-				7620F2AB2A92DDDA002A4EB5 /* Users */,
-				7620F2AA2A92DDC2002A4EB5 /* Settings */,
 				76CAA1802A8AA9ED00D742E9 /* Home */,
+				7608DE602A9BAFCD0036027A /* EditBio */,
+				7620F4462A9659E3002A4EB5 /* TermsAndConditions */,
+				7620F4452A9659D7002A4EB5 /* TellAFriend */,
+				7620F4372A9592A2002A4EB5 /* EditProfile */,
+				769E97262AA3C4E7004FC6B4 /* ContactInfo */,
+				7669BA2B2ABDD8670002AD4C /* TabBar */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -836,6 +839,7 @@
 				76DA7EA22AB787C700106731 /* RecentChat.swift in Sources */,
 				7608DE692A9BAFDE0036027A /* EditBioRouter.swift in Sources */,
 				76EF5D4A2A905E3700D9AE8B /* Authenticator.framework in Sources */,
+				7669BA2A2ABDD3550002AD4C /* Date+Extensions.swift in Sources */,
 				7620F2B82A92DE1B002A4EB5 /* SettingsInteractor.swift in Sources */,
 				7620F2B62A92DE1B002A4EB5 /* SettingsRouter.swift in Sources */,
 				7620F2D12A92EF69002A4EB5 /* ChannelsService.swift in Sources */,

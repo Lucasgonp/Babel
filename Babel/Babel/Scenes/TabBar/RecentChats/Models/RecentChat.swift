@@ -1,7 +1,7 @@
 import Foundation
 import typealias Dependencies.ServerTimestampAdapter
 
-struct RecentChat: Codable {
+struct RecentChatModel: Codable {
     let id: String
     var chatRoomId: String
     

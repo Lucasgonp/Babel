@@ -43,6 +43,7 @@ final class RecentChatCell: UITableViewCell, ViewConfiguration {
         view.layer.cornerRadius = 11
         view.clipsToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.isHidden = true
         return view
     }()
     
@@ -105,6 +106,8 @@ final class RecentChatCell: UITableViewCell, ViewConfiguration {
         ])
         
         NSLayoutConstraint.activate([
+            unreadCountView.heightAnchor.constraint(greaterThanOrEqualToConstant: 22),
+            unreadCountView.widthAnchor.constraint(equalToConstant: 22),
             unreadCountView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             unreadCountView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
         ])
@@ -112,15 +115,16 @@ final class RecentChatCell: UITableViewCell, ViewConfiguration {
 }
 
 extension RecentChatCell {
-    func render() {
-        fullNameLabel.text = "Leonardo Pimentel"
-        lastMassageLabel.text = "Oi meu amigo! que saudade de voce! Como voce está? Me liga assim que receber essa mensagem"
-        timeLabel.text = "12:51"
-        unreadCountLabel.text = "100+"
-//        if !dto.avatarLink.isEmpty {
-//            avatarImageView.setAvatar(imageUrl: dto.avatarLink)
-//        } else {
-            avatarImageView.image = Image.avatarPlaceholder.image
-//        }
+    func render(dto: RecentChatModel) {
+        fullNameLabel.text = dto.receiverName
+        lastMassageLabel.text = dto.lastMassage
+        timeLabel.text = (dto.date ?? Date()).lastMessageDate()
+        
+        if dto.unreadCounter != 0 {
+            unreadCountView.isHidden = false
+            unreadCountLabel.text = String(dto.unreadCounter)
+        }
+        
+        avatarImageView.setAvatar(imageUrl: dto.avatarLink, placeholderImage: Image.avatarPlaceholder.image)
     }
 }

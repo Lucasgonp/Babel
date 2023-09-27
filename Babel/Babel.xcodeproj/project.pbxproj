@@ -71,6 +71,7 @@
 		76228DAA2A8AAF7000C27C7A /* DesignKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76228DA92A8AAF7000C27C7A /* DesignKit.framework */; };
 		76228DAB2A8AAF7000C27C7A /* DesignKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76228DA92A8AAF7000C27C7A /* DesignKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7669BA2A2ABDD3550002AD4C /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669BA292ABDD3550002AD4C /* Date+Extensions.swift */; };
+		7669BA2D2ABDDA650002AD4C /* StartChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669BA2C2ABDDA650002AD4C /* StartChat.swift */; };
 		767E4A062A8AB87000B55980 /* Strings.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767E4A052A8AB84700B55980 /* Strings.generated.swift */; };
 		769E972D2AA3C4FC004FC6B4 /* ContactInfoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E97272AA3C4FC004FC6B4 /* ContactInfoFactory.swift */; };
 		769E972E2AA3C4FC004FC6B4 /* ContactInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E97282AA3C4FC004FC6B4 /* ContactInfoPresenter.swift */; };
@@ -208,6 +209,7 @@
 		76228DA92A8AAF7000C27C7A /* DesignKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76228DAF2A8AB03700C27C7A /* CoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7669BA292ABDD3550002AD4C /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		7669BA2C2ABDDA650002AD4C /* StartChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartChat.swift; sourceTree = "<group>"; };
 		767E4A052A8AB84700B55980 /* Strings.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.generated.swift; sourceTree = "<group>"; };
 		769E97272AA3C4FC004FC6B4 /* ContactInfoFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoFactory.swift; sourceTree = "<group>"; };
 		769E97282AA3C4FC004FC6B4 /* ContactInfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoPresenter.swift; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 			isa = PBXGroup;
 			children = (
 				7620F42C2A9567B1002A4EB5 /* User.swift */,
+				7669BA2C2ABDDA650002AD4C /* StartChat.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -855,6 +858,7 @@
 				76CAA18E2A8AAA6800D742E9 /* BabelResources.swift in Sources */,
 				76DA7EBD2AB78D1F00106731 /* RecentChatsPresenter.swift in Sources */,
 				76CAA17C2A8AA99F00D742E9 /* AuthManager.swift in Sources */,
+				7669BA2D2ABDDA650002AD4C /* StartChat.swift in Sources */,
 				76CAA17E2A8AA9B700D742E9 /* NetworkManager.swift in Sources */,
 				76DA7EC12AB78D1F00106731 /* RecentChatsService.swift in Sources */,
 				7620F2DD2A92EF74002A4EB5 /* UsersService.swift in Sources */,

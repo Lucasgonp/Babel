@@ -1,8 +1,9 @@
 import UIKit
+import NetworkKit
 
 enum RecentChatsFactory {
     static func make() -> UIViewController {
-        let service = RecentChatsService()
+        let service = RecentChatsService(client: FirebaseClient.shared)
         let router = RecentChatsRouter()
         let presenter = RecentChatsPresenter(router: router)
         let interactor = RecentChatsInteractor(service: service, presenter: presenter)

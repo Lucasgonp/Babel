@@ -1,5 +1,5 @@
 protocol RecentChatsPresenting: AnyObject {
-    func displaySomething()
+    func displayViewState(_ state: RecentChatsViewState)
     func didNextStep(action: RecentChatsAction)
 }
 
@@ -14,8 +14,8 @@ final class RecentChatsPresenter {
 
 // MARK: - RecentChatsPresenting
 extension RecentChatsPresenter: RecentChatsPresenting {
-    func displaySomething() {
-        viewController?.displaySomething()
+    func displayViewState(_ state: RecentChatsViewState) {
+        viewController?.displayViewState(state)
     }
     
     func didNextStep(action: RecentChatsAction) {

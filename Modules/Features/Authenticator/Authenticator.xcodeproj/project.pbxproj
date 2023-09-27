@@ -38,6 +38,8 @@
 		7699BC7C2A7AF48C00DC730B /* LoginUserRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7699BC7B2A7AF48C00DC730B /* LoginUserRequestModel.swift */; };
 		76CAA1222A85923A00D742E9 /* PasswordValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA1212A85923A00D742E9 /* PasswordValidation.swift */; };
 		76CAA1242A85925F00D742E9 /* EmailValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA1232A85925E00D742E9 /* EmailValidation.swift */; };
+		76D246702AC3468D00FDA81E /* DesignKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76D2466F2AC3468D00FDA81E /* DesignKit.framework */; };
+		76D246712AC3468D00FDA81E /* DesignKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76D2466F2AC3468D00FDA81E /* DesignKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		76EF5CCF2A8C187800D9AE8B /* AuthCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5CCE2A8C187800D9AE8B /* AuthCredentials.swift */; };
 		76EF5CD42A8C1C8C00D9AE8B /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5CD32A8C1C8C00D9AE8B /* AuthManager.swift */; };
 		76EF5CD72A8C200500D9AE8B /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5CD62A8C200500D9AE8B /* AuthError.swift */; };
@@ -79,6 +81,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				76D246712AC3468D00FDA81E /* DesignKit.framework in Embed Frameworks */,
 				768BB3D72A8137F100300ECA /* Dependencies.framework in Embed Frameworks */,
 				7608DE4F2A9960C40036027A /* StorageKit.framework in Embed Frameworks */,
 			);
@@ -120,6 +123,7 @@
 		76CAA11C2A85909F00D742E9 /* CoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76CAA1212A85923A00D742E9 /* PasswordValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordValidation.swift; sourceTree = "<group>"; };
 		76CAA1232A85925E00D742E9 /* EmailValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidation.swift; sourceTree = "<group>"; };
+		76D2466F2AC3468D00FDA81E /* DesignKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76EF5CCE2A8C187800D9AE8B /* AuthCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCredentials.swift; sourceTree = "<group>"; };
 		76EF5CD32A8C1C8C00D9AE8B /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		76EF5CD62A8C200500D9AE8B /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76D246702AC3468D00FDA81E /* DesignKit.framework in Frameworks */,
 				768BB3D62A8137F100300ECA /* Dependencies.framework in Frameworks */,
 				7608DE4E2A9960C40036027A /* StorageKit.framework in Frameworks */,
 			);
@@ -294,6 +299,7 @@
 		7699BC782A7AEEC600DC730B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				76D2466F2AC3468D00FDA81E /* DesignKit.framework */,
 				7608DE4D2A9960C40036027A /* StorageKit.framework */,
 				76CAA11C2A85909F00D742E9 /* CoreKit.framework */,
 				768BB3D52A8137F100300ECA /* Dependencies.framework */,

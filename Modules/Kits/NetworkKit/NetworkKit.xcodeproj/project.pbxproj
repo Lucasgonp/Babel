@@ -19,10 +19,12 @@
 		7637C5632A79D7A700EB7688 /* HttpGetProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637C5622A79D7A700EB7688 /* HttpGetProtocol.swift */; };
 		7637C5652A79D7ED00EB7688 /* HttpPostProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637C5642A79D7ED00EB7688 /* HttpPostProtocol.swift */; };
 		7637C5672A79D82100EB7688 /* HttpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637C5662A79D82100EB7688 /* HttpError.swift */; };
+		7669BA2F2ABDDCE40002AD4C /* FirebaseCreateRecentChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669BA2E2ABDDCE40002AD4C /* FirebaseCreateRecentChat.swift */; };
 		769545722A76EAEA00BF114D /* NetworkKit.docc in Sources */ = {isa = PBXBuildFile; fileRef = 769545712A76EAEA00BF114D /* NetworkKit.docc */; };
 		769545782A76EAEA00BF114D /* NetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7695456D2A76EAEA00BF114D /* NetworkKit.framework */; };
 		7695457D2A76EAEA00BF114D /* NetworkKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7695457C2A76EAEA00BF114D /* NetworkKitTests.swift */; };
 		7695457E2A76EAEA00BF114D /* NetworkKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 769545702A76EAEA00BF114D /* NetworkKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		76D246742AC355C700FDA81E /* FirebaseDownloadRecentChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D246732AC355C700FDA81E /* FirebaseDownloadRecentChat.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,11 +70,13 @@
 		7637C5622A79D7A700EB7688 /* HttpGetProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpGetProtocol.swift; sourceTree = "<group>"; };
 		7637C5642A79D7ED00EB7688 /* HttpPostProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpPostProtocol.swift; sourceTree = "<group>"; };
 		7637C5662A79D82100EB7688 /* HttpError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpError.swift; sourceTree = "<group>"; };
+		7669BA2E2ABDDCE40002AD4C /* FirebaseCreateRecentChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCreateRecentChat.swift; sourceTree = "<group>"; };
 		7695456D2A76EAEA00BF114D /* NetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		769545702A76EAEA00BF114D /* NetworkKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkKit.h; sourceTree = "<group>"; };
 		769545712A76EAEA00BF114D /* NetworkKit.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = NetworkKit.docc; sourceTree = "<group>"; };
 		769545772A76EAEA00BF114D /* NetworkKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7695457C2A76EAEA00BF114D /* NetworkKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkKitTests.swift; sourceTree = "<group>"; };
+		76D246732AC355C700FDA81E /* FirebaseDownloadRecentChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDownloadRecentChat.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,8 @@
 			children = (
 				7608DE7E2A9FC2810036027A /* FirebaseClient.swift */,
 				7608DE8C2A9FCE0F0036027A /* FirebaseDownloadUsers.swift */,
+				7669BA2E2ABDDCE40002AD4C /* FirebaseCreateRecentChat.swift */,
+				76D246732AC355C700FDA81E /* FirebaseDownloadRecentChat.swift */,
 				7608DE8B2A9FCDDE0036027A /* Error */,
 				7608DE8A2A9FCDD10036027A /* References */,
 			);
@@ -347,10 +353,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7608DE892A9FCBAB0036027A /* FirebaseError.swift in Sources */,
+				7669BA2F2ABDDCE40002AD4C /* FirebaseCreateRecentChat.swift in Sources */,
 				760B3EEE2A79B22C000CBDB5 /* SessionAdapter.swift in Sources */,
 				7637C5672A79D82100EB7688 /* HttpError.swift in Sources */,
 				7608DE7F2A9FC2810036027A /* FirebaseClient.swift in Sources */,
 				760B3EEB2A79AE50000CBDB5 /* ExtensionHelpers.swift in Sources */,
+				76D246742AC355C700FDA81E /* FirebaseDownloadRecentChat.swift in Sources */,
 				7637C5632A79D7A700EB7688 /* HttpGetProtocol.swift in Sources */,
 				7608DE872A9FC5020036027A /* FCollectionReference.swift in Sources */,
 				7637C5652A79D7ED00EB7688 /* HttpPostProtocol.swift in Sources */,

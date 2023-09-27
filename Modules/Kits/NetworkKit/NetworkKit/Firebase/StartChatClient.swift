@@ -1,6 +1,6 @@
 import FirebaseFirestore.FIRQuerySnapshot
 
-public struct CreateRecentChatDTO {
+public struct StartChatDTO {
     let chatRoomId: String
     let chatRoomKey: String
     let membersIdsToCreateRecent: [String]
@@ -14,13 +14,14 @@ public struct CreateRecentChatDTO {
     }
 }
 
-public protocol CreateRecentChatProtocol {
-    func makeRecentChats(dto: CreateRecentChatDTO, completion: @escaping ([String]) -> Void)
-    func addRecent<T: Codable>(id: String, recentChat: T)
+public protocol StartChatClientProtocol {
+    func makeRecentChats(dto: StartChatDTO, completion: @escaping ([String]) -> Void)
+    func saveRecent<T: Codable>(id: String, recentChat: T)
+    func downloadUsers<T: Decodable>(withIds: [String], completion: @escaping ((Result<[T], FirebaseError>) -> Void))
 }
 
-extension FirebaseClient: CreateRecentChatProtocol {
-    public func makeRecentChats(dto: CreateRecentChatDTO, completion: @escaping ([String]) -> Void) {
+extension FirebaseClient: StartChatClientProtocol {
+    public func makeRecentChats(dto: StartChatDTO, completion: @escaping ([String]) -> Void) {
         firebaseReference(.recent).whereField(dto.chatRoomKey, isEqualTo: dto.chatRoomId).getDocuments { [weak self] snapshot, error in
             guard let self, let snapshot else {
                 completion([])
@@ -35,12 +36,8 @@ extension FirebaseClient: CreateRecentChatProtocol {
         }
     }
     
-    public func addRecent<T: Codable>(id: String, recentChat: T) {
-        do {
-            try firebaseReference(.recent).document(id).setData(from: recentChat)
-        } catch {
-            print("erro saving recent chat", error.localizedDescription)
-        }
+    public func saveRecent<T: Codable>(id: String, recentChat: T) {
+        saveRecentChat(id: id, recentChat: recentChat)
     }
 }
 

@@ -14,8 +14,7 @@ extension AuthenticatorAdapter: AuthenticatorSaveUserProtocol {
                     completion(error)
                 }
             })
-        } catch let error {
-            print(error.localizedDescription, "Error in saveUserToFirestore")
+        } catch {
             thread.async {
                 completion(error)
             }

@@ -5,9 +5,9 @@ protocol UsersServicing {
 }
 
 final class UsersService {
-    private let firebaseClient: FirebaseUsersProtocol
+    private let firebaseClient: UsersClientProtocol
     
-    init(firebaseClient: FirebaseUsersProtocol) {
+    init(firebaseClient: UsersClientProtocol) {
         self.firebaseClient = firebaseClient
     }
 }

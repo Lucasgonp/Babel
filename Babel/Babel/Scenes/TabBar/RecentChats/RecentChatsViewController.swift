@@ -38,6 +38,7 @@ final class RecentChatsViewController: ViewController<RecentChatsInteracting, UI
         controller.obscuresBackgroundDuringPresentation = false
         controller.searchBar.placeholder = "Search user"
         controller.searchResultsUpdater = self
+        controller.definesPresentationContext = true
         return controller
     }()
     
@@ -61,7 +62,9 @@ final class RecentChatsViewController: ViewController<RecentChatsInteracting, UI
     override func configureViews() { 
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = true
-        definesPresentationContext = true
+        
+        let newChatButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(didTapOnNewChat))
+        navigationItem.setRightBarButton(newChatButton, animated: true)
     }
 }
 
@@ -92,6 +95,22 @@ extension RecentChatsViewController: UISearchResultsUpdating {
 extension RecentChatsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let chat = searchController.isActive ? filteredRecentChats[indexPath.row] : allRecentChats[indexPath.row]
+        didTapOnChat(chat)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let recent = searchController.isActive ? filteredRecentChats[indexPath.row] : allRecentChats[indexPath.row]
+            allRecentChats.removeAll(where: { $0 == recent })
+            filteredRecentChats.removeAll(where: { $0 == recent })
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            interactor.deleteRecentChat(recent)
+        }
     }
 }
 
@@ -124,5 +143,15 @@ private extension RecentChatsViewController {
         }
         
         tableView.reloadData()
+    }
+    
+    func didTapOnChat(_ chat: RecentChatModel) {
+        interactor.didTapOnChat(chat)
+    }
+}
+
+@objc private extension RecentChatsViewController {
+    func didTapOnNewChat() {
+        interactor.didTapOnNewChat()
     }
 }

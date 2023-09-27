@@ -1,12 +1,12 @@
 import Foundation
 import FirebaseFirestoreSwift
 
-public protocol FirebaseUsersProtocol {
+public protocol UsersClientProtocol {
     func downloadAllUsers<T: Decodable>(completion: @escaping ((Result<[T], FirebaseError>) -> Void))
     func downloadUsers<T: Decodable>(withIds: [String], completion: @escaping ((Result<[T], FirebaseError>) -> Void))
 }
 
-extension FirebaseClient: FirebaseUsersProtocol {
+extension FirebaseClient: UsersClientProtocol {
     public func downloadAllUsers<T: Decodable>(completion: @escaping ((Result<[T], FirebaseError>) -> Void)) {
         firebaseReference(.user).limit(to: 500).getDocuments { (querySnapshot, error) in
             if let error {

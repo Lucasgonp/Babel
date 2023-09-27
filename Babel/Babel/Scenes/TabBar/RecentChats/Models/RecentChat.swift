@@ -1,7 +1,7 @@
 import Foundation
 import typealias Dependencies.ServerTimestampAdapter
 
-struct RecentChatModel: Codable {
+struct RecentChatModel: Codable, Equatable {
     let id: String
     var chatRoomId: String
     
@@ -16,7 +16,7 @@ struct RecentChatModel: Codable {
     let membersId: [String]
     
     let lastMassage: String
-    let unreadCounter: Int
+    var unreadCounter: Int
     
     let avatarLink: String
 }

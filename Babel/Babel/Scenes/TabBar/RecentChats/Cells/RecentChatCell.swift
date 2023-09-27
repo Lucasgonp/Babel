@@ -119,10 +119,12 @@ extension RecentChatCell {
         fullNameLabel.text = dto.receiverName
         lastMassageLabel.text = dto.lastMassage
         timeLabel.text = (dto.date ?? Date()).lastMessageDate()
+        unreadCountLabel.text = String(dto.unreadCounter)
         
         if dto.unreadCounter != 0 {
             unreadCountView.isHidden = false
-            unreadCountLabel.text = String(dto.unreadCounter)
+        } else {
+            unreadCountView.isHidden = true
         }
         
         avatarImageView.setAvatar(imageUrl: dto.avatarLink, placeholderImage: Image.avatarPlaceholder.image)

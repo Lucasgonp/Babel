@@ -100,6 +100,14 @@
 		76CAA18C2A8AA9ED00D742E9 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA1862A8AA9ED00D742E9 /* HomeService.swift */; };
 		76CAA18E2A8AAA6800D742E9 /* BabelResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA18D2A8AAA6800D742E9 /* BabelResources.swift */; };
 		76CAA1902A8AAC0100D742E9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76CAA18F2A8AAC0100D742E9 /* GoogleService-Info.plist */; };
+		76D246762AC4A2CF00FDA81E /* ChatHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D246752AC4A2CF00FDA81E /* ChatHelper.swift */; };
+		76D246802AC4AE7000FDA81E /* ChatFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D2467A2AC4AE7000FDA81E /* ChatFactory.swift */; };
+		76D246812AC4AE7000FDA81E /* ChatPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D2467B2AC4AE7000FDA81E /* ChatPresenter.swift */; };
+		76D246822AC4AE7000FDA81E /* ChatRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D2467C2AC4AE7000FDA81E /* ChatRouter.swift */; };
+		76D246832AC4AE7000FDA81E /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D2467D2AC4AE7000FDA81E /* ChatViewController.swift */; };
+		76D246842AC4AE7000FDA81E /* ChatInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D2467E2AC4AE7000FDA81E /* ChatInteractor.swift */; };
+		76D246852AC4AE7000FDA81E /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D2467F2AC4AE7000FDA81E /* ChatService.swift */; };
+		76D246882AC4B4A000FDA81E /* ChatDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D246872AC4B4A000FDA81E /* ChatDTO.swift */; };
 		76DA7EA22AB787C700106731 /* RecentChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DA7EA12AB787C700106731 /* RecentChat.swift */; };
 		76DA7EBC2AB78D1F00106731 /* RecentChatsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DA7EB62AB78D1F00106731 /* RecentChatsFactory.swift */; };
 		76DA7EBD2AB78D1F00106731 /* RecentChatsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DA7EB72AB78D1F00106731 /* RecentChatsPresenter.swift */; };
@@ -241,6 +249,14 @@
 		76CAA1862A8AA9ED00D742E9 /* HomeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		76CAA18D2A8AAA6800D742E9 /* BabelResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabelResources.swift; sourceTree = "<group>"; };
 		76CAA18F2A8AAC0100D742E9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		76D246752AC4A2CF00FDA81E /* ChatHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHelper.swift; sourceTree = "<group>"; };
+		76D2467A2AC4AE7000FDA81E /* ChatFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatFactory.swift; sourceTree = "<group>"; };
+		76D2467B2AC4AE7000FDA81E /* ChatPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPresenter.swift; sourceTree = "<group>"; };
+		76D2467C2AC4AE7000FDA81E /* ChatRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRouter.swift; sourceTree = "<group>"; };
+		76D2467D2AC4AE7000FDA81E /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		76D2467E2AC4AE7000FDA81E /* ChatInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInteractor.swift; sourceTree = "<group>"; };
+		76D2467F2AC4AE7000FDA81E /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
+		76D246872AC4B4A000FDA81E /* ChatDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDTO.swift; sourceTree = "<group>"; };
 		76DA7EA12AB787C700106731 /* RecentChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChat.swift; sourceTree = "<group>"; };
 		76DA7EB62AB78D1F00106731 /* RecentChatsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatsFactory.swift; sourceTree = "<group>"; };
 		76DA7EB72AB78D1F00106731 /* RecentChatsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatsPresenter.swift; sourceTree = "<group>"; };
@@ -401,6 +417,7 @@
 			children = (
 				7620F42C2A9567B1002A4EB5 /* User.swift */,
 				7669BA2C2ABDDA650002AD4C /* StartChat.swift */,
+				76D246752AC4A2CF00FDA81E /* ChatHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -611,6 +628,7 @@
 		76CAA17F2A8AA9ED00D742E9 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				76D246792AC4AE5F00FDA81E /* Chat */,
 				76CAA1802A8AA9ED00D742E9 /* Home */,
 				7608DE602A9BAFCD0036027A /* EditBio */,
 				7620F4462A9659E3002A4EB5 /* TermsAndConditions */,
@@ -634,6 +652,28 @@
 				76CAA1862A8AA9ED00D742E9 /* HomeService.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		76D246792AC4AE5F00FDA81E /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				76D246862AC4B49200FDA81E /* ViewModels */,
+				76D2467A2AC4AE7000FDA81E /* ChatFactory.swift */,
+				76D2467B2AC4AE7000FDA81E /* ChatPresenter.swift */,
+				76D2467C2AC4AE7000FDA81E /* ChatRouter.swift */,
+				76D2467D2AC4AE7000FDA81E /* ChatViewController.swift */,
+				76D2467E2AC4AE7000FDA81E /* ChatInteractor.swift */,
+				76D2467F2AC4AE7000FDA81E /* ChatService.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		76D246862AC4B49200FDA81E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				76D246872AC4B4A000FDA81E /* ChatDTO.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		76DA7EA02AB787B700106731 /* Models */ = {
@@ -836,6 +876,7 @@
 				769E97302AA3C4FC004FC6B4 /* ContactInfoViewController.swift in Sources */,
 				7620F44E2A9659F5002A4EB5 /* TellAFriendPresenter.swift in Sources */,
 				7620F2A92A92DB70002A4EB5 /* HomeTabBarModel.swift in Sources */,
+				76D246882AC4B4A000FDA81E /* ChatDTO.swift in Sources */,
 				76EF5D492A905E3700D9AE8B /* DesignKit.framework in Sources */,
 				7620F4432A9592C2002A4EB5 /* EditProfileService.swift in Sources */,
 				7608DE6F2A9BAFF30036027A /* UserBio.swift in Sources */,
@@ -848,6 +889,7 @@
 				7620F2D12A92EF69002A4EB5 /* ChannelsService.swift in Sources */,
 				7608DE6C2A9BAFDE0036027A /* EditBioService.swift in Sources */,
 				7620F2B52A92DE1B002A4EB5 /* SettingsPresenter.swift in Sources */,
+				76D246802AC4AE7000FDA81E /* ChatFactory.swift in Sources */,
 				769E972F2AA3C4FC004FC6B4 /* ContactInfoRouter.swift in Sources */,
 				7620F44F2A9659F5002A4EB5 /* TellAFriendRouter.swift in Sources */,
 				7620F2B72A92DE1B002A4EB5 /* SettingsViewController.swift in Sources */,
@@ -856,14 +898,17 @@
 				7620F4612A96B31C002A4EB5 /* EditProfileHeaderCell.swift in Sources */,
 				767E4A062A8AB87000B55980 /* Strings.generated.swift in Sources */,
 				76CAA18E2A8AAA6800D742E9 /* BabelResources.swift in Sources */,
+				76D246812AC4AE7000FDA81E /* ChatPresenter.swift in Sources */,
 				76DA7EBD2AB78D1F00106731 /* RecentChatsPresenter.swift in Sources */,
 				76CAA17C2A8AA99F00D742E9 /* AuthManager.swift in Sources */,
+				76D246852AC4AE7000FDA81E /* ChatService.swift in Sources */,
 				7669BA2D2ABDDA650002AD4C /* StartChat.swift in Sources */,
 				76CAA17E2A8AA9B700D742E9 /* NetworkManager.swift in Sources */,
 				76DA7EC12AB78D1F00106731 /* RecentChatsService.swift in Sources */,
 				7620F2DD2A92EF74002A4EB5 /* UsersService.swift in Sources */,
 				7620F42A2A9541AC002A4EB5 /* SettingsUserInfoCell.swift in Sources */,
 				769E97322AA3C4FC004FC6B4 /* ContactInfoService.swift in Sources */,
+				76D246822AC4AE7000FDA81E /* ChatRouter.swift in Sources */,
 				76CAA18B2A8AA9ED00D742E9 /* HomePresenter.swift in Sources */,
 				7620F2B92A92DE1B002A4EB5 /* SettingsService.swift in Sources */,
 				7620F45E2A965A09002A4EB5 /* TermsService.swift in Sources */,
@@ -889,6 +934,7 @@
 				76CAA13B2A8AA1F400D742E9 /* SceneDelegate.swift in Sources */,
 				76DA7EBC2AB78D1F00106731 /* RecentChatsFactory.swift in Sources */,
 				7608DE6A2A9BAFDE0036027A /* EditBioViewController.swift in Sources */,
+				76D246762AC4A2CF00FDA81E /* ChatHelper.swift in Sources */,
 				7620F2D92A92EF74002A4EB5 /* UsersPresenter.swift in Sources */,
 				7620F4502A9659F5002A4EB5 /* TellAFriendViewController.swift in Sources */,
 				7620F4302A9568D2002A4EB5 /* SettingsButtonViewModel.swift in Sources */,
@@ -898,6 +944,7 @@
 				7620F2DB2A92EF74002A4EB5 /* UsersViewController.swift in Sources */,
 				7620F2D02A92EF69002A4EB5 /* ChannelsInteractor.swift in Sources */,
 				769E97312AA3C4FC004FC6B4 /* ContactInfoInteractor.swift in Sources */,
+				76D246842AC4AE7000FDA81E /* ChatInteractor.swift in Sources */,
 				7620F2DC2A92EF74002A4EB5 /* UsersInteractor.swift in Sources */,
 				7620F4402A9592C2002A4EB5 /* EditProfileRouter.swift in Sources */,
 				7620F4202A951280002A4EB5 /* SettingsButtonCell.swift in Sources */,
@@ -911,6 +958,7 @@
 				7620F43F2A9592C2002A4EB5 /* EditProfilePresenter.swift in Sources */,
 				76CAA1882A8AA9ED00D742E9 /* HomeInteractor.swift in Sources */,
 				76DA7EC42AB78E7400106731 /* RecentChatCell.swift in Sources */,
+				76D246832AC4AE7000FDA81E /* ChatViewController.swift in Sources */,
 				7620F42D2A9567B1002A4EB5 /* User.swift in Sources */,
 				7608DE542A999F050036027A /* StorageManager.swift in Sources */,
 				7608DE682A9BAFDE0036027A /* EditBioPresenter.swift in Sources */,

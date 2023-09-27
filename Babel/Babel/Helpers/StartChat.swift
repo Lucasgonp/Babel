@@ -3,8 +3,10 @@ import StorageKit
 
 final class StartChat {
     static let shared = StartChat()
-    private let client: CreateRecentChatProtocol = FirebaseClient.shared
-    private let currentUser = AccountInfo.shared.user!
+    private let client: StartChatClientProtocol = FirebaseClient.shared
+    private var currentUser: User {
+        AccountInfo.shared.user!
+    }
     
     private init() {}
     
@@ -13,11 +15,22 @@ final class StartChat {
         createRecentItems(chatRoomId: chatRoomId, users: [user1, user2])
         return chatRoomId
     }
+    
+    func restartChat(chatRoomId: String, memberIds: [String]) {
+        client.downloadUsers(withIds: memberIds) { [weak self] (result: Result<[User], FirebaseError>) in
+            if case .success(let users) = result {
+                let users = users.filter({ $0.id != AccountInfo.shared.user?.id })
+                if !users.isEmpty {
+                    self?.createRecentItems(chatRoomId: chatRoomId, users: users)
+                }
+            }
+        }
+    }
 }
 
 private extension StartChat {
     func createRecentItems(chatRoomId: String, users: [User]) {
-        let dto = CreateRecentChatDTO(
+        let dto = StartChatDTO(
             chatRoomId: chatRoomId,
             chatRoomKey: StorageKey.chatRoomId.rawValue,
             membersIdsToCreateRecent: users.compactMap({ $0.id }),
@@ -40,11 +53,11 @@ private extension StartChat {
                     receiverId: receiverUser.id,
                     receiverName: receiverUser.name,
                     membersId: [senderUser.id, receiverUser.id],
-                    lastMassage: "",
-                    unreadCounter: 0,
+                    lastMassage: "Do i have to die to hear you miss me? Do i have to die to hear you say goodbye, i don't wanna act like there's tomorrow, i don't wanna wait to do this one more time",
+                    unreadCounter: 5,
                     avatarLink: receiverUser.avatarLink
                 )
-                self.client.addRecent(id: recentObject.id, recentChat: recentObject)
+                self.client.saveRecent(id: recentObject.id, recentChat: recentObject)
             }
         }
     }

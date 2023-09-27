@@ -2,6 +2,9 @@ import StorageKit
 
 protocol RecentChatsInteracting: AnyObject {
     func loadRecentChats()
+    func deleteRecentChat(_ chat: RecentChatModel)
+    func didTapOnNewChat()
+    func didTapOnChat(_ chat: RecentChatModel)
 }
 
 final class RecentChatsInteractor {
@@ -23,5 +26,24 @@ extension RecentChatsInteractor: RecentChatsInteracting {
         service.downloadRecentChats(key: StorageKey.senderId.rawValue, currentUserId: currentUser.id) { [weak self] recentChats in
             self?.presenter.displayViewState(.success(recentChats: recentChats))
         }
+    }
+    
+    func deleteRecentChat(_ chat: RecentChatModel) {
+        service.deleteRecentChat(chat)
+    }
+    
+    func didTapOnNewChat() {
+        presenter.didNextStep(action: .pushToAllUsersView)
+    }
+    
+    func didTapOnChat(_ chat: RecentChatModel) {
+        ChatHelper.shared.clearUnreadCounter(for: chat)
+        StartChat.shared.restartChat(chatRoomId: chat.chatRoomId, memberIds: chat.membersId)
+        let dto = ChatDTO(
+            chatId: chat.chatRoomId,
+            recipientId: chat.receiverId,
+            recipientName: chat.receiverName
+        )
+        presenter.didNextStep(action: .pushToChatView(dto: dto))
     }
 }

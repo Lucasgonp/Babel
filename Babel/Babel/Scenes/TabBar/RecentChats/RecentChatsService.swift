@@ -2,12 +2,14 @@ import NetworkKit
 
 protocol RecentChatsServicing {
     func downloadRecentChats(key: String, currentUserId: String, completion: @escaping ([RecentChatModel]) -> Void)
+    func deleteRecentChat(_ chat: RecentChatModel)
+    func updateRecentChat(_ chat: RecentChatModel)
 }
 
 final class RecentChatsService {
-    private let client: DownloadRecentChatProtocol
+    private let client: RecentChatClientProtocol
     
-    init(client: DownloadRecentChatProtocol) {
+    init(client: RecentChatClientProtocol) {
         self.client = client
     }
 }
@@ -28,5 +30,13 @@ extension RecentChatsService: RecentChatsServicing {
                 completion(recentChats)
             }
         }
+    }
+    
+    func deleteRecentChat(_ chat: RecentChatModel) {
+        client.deleteRecentChat(chat.id)
+    }
+    
+    func updateRecentChat(_ chat: RecentChatModel) {
+        client.updateRecentChat(id: chat.id, recentChat: chat)
     }
 }

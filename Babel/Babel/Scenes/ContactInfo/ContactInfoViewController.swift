@@ -88,10 +88,7 @@ extension ContactInfoViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.section == 1 {
-            if let currentUser = AccountInfo.shared.user, let contactUser {
-                let chatId = StartChat.shared.startChat(user1: currentUser, user2: contactUser)
-                print("chat room id is \(chatId)")
-            }
+            interactor.startChat()
         }
     }
 }

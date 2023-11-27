@@ -51,7 +51,7 @@ extension ChatViewController: ViewConfiguration {
     }
 
     func configureViews() {
-        // template
+        title = dto.recipientName
     }
 }
 

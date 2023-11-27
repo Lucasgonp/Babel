@@ -1,7 +1,7 @@
 import UIKit
 
 enum ContactInfoAction {
-    // template
+    case pushChatView(dto: ChatDTO)
 }
 
 protocol ContactInfoRouting: AnyObject {
@@ -15,6 +15,10 @@ final class ContactInfoRouter {
 // MARK: - ContactInfoRouting
 extension ContactInfoRouter: ContactInfoRouting {
     func perform(action: ContactInfoAction) {
-        // template
+        if case .pushChatView(let dto) = action {
+            let chatController = ChatFactory.make(dto: dto)
+            chatController.hidesBottomBarWhenPushed = true
+            viewController?.navigationController?.pushViewController(chatController, animated: true)
+        }
     }
 }

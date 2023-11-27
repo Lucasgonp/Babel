@@ -5,7 +5,7 @@ enum ContactInfoFactory {
         let service = ContactInfoService()
         let router = ContactInfoRouter()
         let presenter = ContactInfoPresenter(router: router)
-        let interactor = ContactInfoInteractor(service: service, presenter: presenter, contactInfo: contactInfo)
+        let interactor = ContactInfoInteractor(service: service, presenter: presenter, contactUser: contactInfo)
         let viewController = ContactInfoViewController(interactor: interactor)
 
         router.viewController = viewController

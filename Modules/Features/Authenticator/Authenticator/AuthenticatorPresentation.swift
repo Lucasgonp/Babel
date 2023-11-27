@@ -1,5 +1,6 @@
 import UIKit
 import FirebaseAuth
+import DesignKit
 
 public protocol AuthPresentationProtocol {
     func presentRegister(from navigation: UINavigationController, completion: (() -> Void)?)

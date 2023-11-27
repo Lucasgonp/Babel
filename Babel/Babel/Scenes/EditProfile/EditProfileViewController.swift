@@ -75,7 +75,7 @@ final class EditProfileViewController: ViewController<EditProfileInteracting, UI
     }
 
     override func buildViewHierarchy() { 
-        view.fillWithSubview(subview: tableView, navigationSafeArea: true)
+        view.fillWithSubview(subview: tableView)
     }
     
     override func setupConstraints() { 

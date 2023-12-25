@@ -39,6 +39,11 @@ final class ChatViewController: MessagesViewController {
         buildLayout()
         interactor.loadSomething()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.largeTitleDisplayMode =  .never
+    }
 }
 
 extension ChatViewController: ViewConfiguration {

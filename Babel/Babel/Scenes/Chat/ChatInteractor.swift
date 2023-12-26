@@ -55,7 +55,7 @@ private extension ChatInteractor {
         RealmManager.shared.saveToRealm(message)
         
         for memberId in memberIds {
-            print("sabe message for \(memberId)")
+            service.addMessage(message, memberId: memberId)
         }
     }
 }

@@ -1,6 +1,6 @@
 import FirebaseFirestore
 
-public final class FirebaseClient {
+public class FirebaseClient {
     public static var shared = FirebaseClient()
     
     private let firestore: Firestore = .firestore()

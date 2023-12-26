@@ -21,6 +21,16 @@
 		7608DE6F2A9BAFF30036027A /* UserBio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE6E2A9BAFF30036027A /* UserBio.swift */; };
 		7608DE7A2A9D00A60036027A /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE792A9D00A60036027A /* UserCell.swift */; };
 		7608DE7D2A9D248E0036027A /* UserContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE7C2A9D248E0036027A /* UserContact.swift */; };
+		7610118F2B3A0128004639C4 /* MessageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7610118E2B3A0128004639C4 /* MessageDataSource.swift */; };
+		761011912B3A0137004639C4 /* MessageCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761011902B3A0137004639C4 /* MessageCellDelegate.swift */; };
+		761011932B3A0147004639C4 /* MessageDisplayDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761011922B3A0147004639C4 /* MessageDisplayDelegate.swift */; };
+		761011952B3A0156004639C4 /* MessageLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761011942B3A0156004639C4 /* MessageLayoutDelegate.swift */; };
+		761011972B3A0168004639C4 /* InputBarAccessoryViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761011962B3A0168004639C4 /* InputBarAccessoryViewDelegate.swift */; };
+		761011992B3A0351004639C4 /* MessageKitDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761011982B3A0351004639C4 /* MessageKitDefaults.swift */; };
+		7610119B2B3A15CD004639C4 /* MKMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7610119A2B3A15CD004639C4 /* MKMessage.swift */; };
+		7610119D2B3A1768004639C4 /* LocalMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7610119C2B3A1768004639C4 /* LocalMessage.swift */; };
+		761011A02B3A1C52004639C4 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7610119F2B3A1C52004639C4 /* RealmManager.swift */; };
+		761011A22B3A2002004639C4 /* OutgoingMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761011A12B3A2002004639C4 /* OutgoingMessage.swift */; };
 		7620F2A92A92DB70002A4EB5 /* HomeTabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2A82A92DB70002A4EB5 /* HomeTabBarModel.swift */; };
 		7620F2B42A92DE1B002A4EB5 /* SettingsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2AE2A92DE1B002A4EB5 /* SettingsFactory.swift */; };
 		7620F2B52A92DE1B002A4EB5 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2AF2A92DE1B002A4EB5 /* SettingsPresenter.swift */; };
@@ -169,6 +179,16 @@
 		7608DE6E2A9BAFF30036027A /* UserBio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBio.swift; sourceTree = "<group>"; };
 		7608DE792A9D00A60036027A /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		7608DE7C2A9D248E0036027A /* UserContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContact.swift; sourceTree = "<group>"; };
+		7610118E2B3A0128004639C4 /* MessageDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDataSource.swift; sourceTree = "<group>"; };
+		761011902B3A0137004639C4 /* MessageCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellDelegate.swift; sourceTree = "<group>"; };
+		761011922B3A0147004639C4 /* MessageDisplayDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDisplayDelegate.swift; sourceTree = "<group>"; };
+		761011942B3A0156004639C4 /* MessageLayoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageLayoutDelegate.swift; sourceTree = "<group>"; };
+		761011962B3A0168004639C4 /* InputBarAccessoryViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBarAccessoryViewDelegate.swift; sourceTree = "<group>"; };
+		761011982B3A0351004639C4 /* MessageKitDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageKitDefaults.swift; sourceTree = "<group>"; };
+		7610119A2B3A15CD004639C4 /* MKMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMessage.swift; sourceTree = "<group>"; };
+		7610119C2B3A1768004639C4 /* LocalMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalMessage.swift; sourceTree = "<group>"; };
+		7610119F2B3A1C52004639C4 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		761011A12B3A2002004639C4 /* OutgoingMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingMessage.swift; sourceTree = "<group>"; };
 		7620F2A82A92DB70002A4EB5 /* HomeTabBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarModel.swift; sourceTree = "<group>"; };
 		7620F2AE2A92DE1B002A4EB5 /* SettingsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFactory.swift; sourceTree = "<group>"; };
 		7620F2AF2A92DE1B002A4EB5 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
@@ -336,6 +356,27 @@
 			path = UserContact;
 			sourceTree = "<group>";
 		};
+		7610118D2B3A010D004639C4 /* ChatViewExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				7610118E2B3A0128004639C4 /* MessageDataSource.swift */,
+				761011902B3A0137004639C4 /* MessageCellDelegate.swift */,
+				761011922B3A0147004639C4 /* MessageDisplayDelegate.swift */,
+				761011942B3A0156004639C4 /* MessageLayoutDelegate.swift */,
+				761011962B3A0168004639C4 /* InputBarAccessoryViewDelegate.swift */,
+			);
+			path = ChatViewExtensions;
+			sourceTree = "<group>";
+		};
+		7610119E2B3A1773004639C4 /* RealmMessages */ = {
+			isa = PBXGroup;
+			children = (
+				7610119C2B3A1768004639C4 /* LocalMessage.swift */,
+				7610119F2B3A1C52004639C4 /* RealmManager.swift */,
+			);
+			path = RealmMessages;
+			sourceTree = "<group>";
+		};
 		7620F2A72A92DB51002A4EB5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -418,6 +459,7 @@
 				7620F42C2A9567B1002A4EB5 /* User.swift */,
 				7669BA2C2ABDDA650002AD4C /* StartChat.swift */,
 				76D246752AC4A2CF00FDA81E /* ChatHelper.swift */,
+				761011982B3A0351004639C4 /* MessageKitDefaults.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -657,7 +699,8 @@
 		76D246792AC4AE5F00FDA81E /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				76D246862AC4B49200FDA81E /* ViewModels */,
+				7610118D2B3A010D004639C4 /* ChatViewExtensions */,
+				76D246862AC4B49200FDA81E /* Models */,
 				76D2467A2AC4AE7000FDA81E /* ChatFactory.swift */,
 				76D2467B2AC4AE7000FDA81E /* ChatPresenter.swift */,
 				76D2467C2AC4AE7000FDA81E /* ChatRouter.swift */,
@@ -668,12 +711,15 @@
 			path = Chat;
 			sourceTree = "<group>";
 		};
-		76D246862AC4B49200FDA81E /* ViewModels */ = {
+		76D246862AC4B49200FDA81E /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				76D246872AC4B4A000FDA81E /* ChatDTO.swift */,
+				7610119A2B3A15CD004639C4 /* MKMessage.swift */,
+				761011A12B3A2002004639C4 /* OutgoingMessage.swift */,
+				7610119E2B3A1773004639C4 /* RealmMessages */,
 			);
-			path = ViewModels;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		76DA7EA02AB787B700106731 /* Models */ = {
@@ -878,6 +924,7 @@
 				7620F2A92A92DB70002A4EB5 /* HomeTabBarModel.swift in Sources */,
 				76D246882AC4B4A000FDA81E /* ChatDTO.swift in Sources */,
 				76EF5D492A905E3700D9AE8B /* DesignKit.framework in Sources */,
+				761011912B3A0137004639C4 /* MessageCellDelegate.swift in Sources */,
 				7620F4432A9592C2002A4EB5 /* EditProfileService.swift in Sources */,
 				7608DE6F2A9BAFF30036027A /* UserBio.swift in Sources */,
 				76DA7EA22AB787C700106731 /* RecentChat.swift in Sources */,
@@ -890,9 +937,11 @@
 				7608DE6C2A9BAFDE0036027A /* EditBioService.swift in Sources */,
 				7620F2B52A92DE1B002A4EB5 /* SettingsPresenter.swift in Sources */,
 				76D246802AC4AE7000FDA81E /* ChatFactory.swift in Sources */,
+				761011A22B3A2002004639C4 /* OutgoingMessage.swift in Sources */,
 				769E972F2AA3C4FC004FC6B4 /* ContactInfoRouter.swift in Sources */,
 				7620F44F2A9659F5002A4EB5 /* TellAFriendRouter.swift in Sources */,
 				7620F2B72A92DE1B002A4EB5 /* SettingsViewController.swift in Sources */,
+				761011992B3A0351004639C4 /* MessageKitDefaults.swift in Sources */,
 				7620F4522A9659F5002A4EB5 /* TellAFriendService.swift in Sources */,
 				76DA7EBE2AB78D1F00106731 /* RecentChatsRouter.swift in Sources */,
 				7620F4612A96B31C002A4EB5 /* EditProfileHeaderCell.swift in Sources */,
@@ -904,6 +953,7 @@
 				76D246852AC4AE7000FDA81E /* ChatService.swift in Sources */,
 				7669BA2D2ABDDA650002AD4C /* StartChat.swift in Sources */,
 				76CAA17E2A8AA9B700D742E9 /* NetworkManager.swift in Sources */,
+				761011972B3A0168004639C4 /* InputBarAccessoryViewDelegate.swift in Sources */,
 				76DA7EC12AB78D1F00106731 /* RecentChatsService.swift in Sources */,
 				7620F2DD2A92EF74002A4EB5 /* UsersService.swift in Sources */,
 				7620F42A2A9541AC002A4EB5 /* SettingsUserInfoCell.swift in Sources */,
@@ -921,8 +971,10 @@
 				7608DE7A2A9D00A60036027A /* UserCell.swift in Sources */,
 				7620F2B42A92DE1B002A4EB5 /* SettingsFactory.swift in Sources */,
 				76DA7EBF2AB78D1F00106731 /* RecentChatsViewController.swift in Sources */,
+				761011952B3A0156004639C4 /* MessageLayoutDelegate.swift in Sources */,
 				769E97352AA3CA1B004FC6B4 /* ContactInfoHeaderCell.swift in Sources */,
 				7608DE672A9BAFDE0036027A /* EditBioFactory.swift in Sources */,
+				761011A02B3A1C52004639C4 /* RealmManager.swift in Sources */,
 				76CAA1392A8AA1F400D742E9 /* AppDelegate.swift in Sources */,
 				7608DE6B2A9BAFDE0036027A /* EditBioInteractor.swift in Sources */,
 				7620F2CD2A92EF69002A4EB5 /* ChannelsPresenter.swift in Sources */,
@@ -935,8 +987,10 @@
 				76DA7EBC2AB78D1F00106731 /* RecentChatsFactory.swift in Sources */,
 				7608DE6A2A9BAFDE0036027A /* EditBioViewController.swift in Sources */,
 				76D246762AC4A2CF00FDA81E /* ChatHelper.swift in Sources */,
+				7610119D2B3A1768004639C4 /* LocalMessage.swift in Sources */,
 				7620F2D92A92EF74002A4EB5 /* UsersPresenter.swift in Sources */,
 				7620F4502A9659F5002A4EB5 /* TellAFriendViewController.swift in Sources */,
+				7610119B2B3A15CD004639C4 /* MKMessage.swift in Sources */,
 				7620F4302A9568D2002A4EB5 /* SettingsButtonViewModel.swift in Sources */,
 				76CAA1872A8AA9ED00D742E9 /* HomeFactory.swift in Sources */,
 				7620F4412A9592C2002A4EB5 /* EditProfileViewController.swift in Sources */,
@@ -951,6 +1005,7 @@
 				7620F44D2A9659F5002A4EB5 /* TellAFriendFactory.swift in Sources */,
 				76DA7EC02AB78D1F00106731 /* RecentChatsInteractor.swift in Sources */,
 				7620F45B2A965A09002A4EB5 /* TermsRouter.swift in Sources */,
+				7610118F2B3A0128004639C4 /* MessageDataSource.swift in Sources */,
 				7620F45D2A965A09002A4EB5 /* TermsInteractor.swift in Sources */,
 				76CAA18C2A8AA9ED00D742E9 /* HomeService.swift in Sources */,
 				7620F2DA2A92EF74002A4EB5 /* UsersRouter.swift in Sources */,
@@ -959,6 +1014,7 @@
 				76CAA1882A8AA9ED00D742E9 /* HomeInteractor.swift in Sources */,
 				76DA7EC42AB78E7400106731 /* RecentChatCell.swift in Sources */,
 				76D246832AC4AE7000FDA81E /* ChatViewController.swift in Sources */,
+				761011932B3A0147004639C4 /* MessageDisplayDelegate.swift in Sources */,
 				7620F42D2A9567B1002A4EB5 /* User.swift in Sources */,
 				7608DE542A999F050036027A /* StorageManager.swift in Sources */,
 				7608DE682A9BAFDE0036027A /* EditBioPresenter.swift in Sources */,

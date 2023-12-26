@@ -15,6 +15,8 @@
 		7608DE8D2A9FCE0F0036027A /* UsersClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE8C2A9FCE0F0036027A /* UsersClient.swift */; };
 		760B3EEB2A79AE50000CBDB5 /* ExtensionHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760B3EEA2A79AE50000CBDB5 /* ExtensionHelpers.swift */; };
 		760B3EEE2A79B22C000CBDB5 /* SessionAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760B3EED2A79B22C000CBDB5 /* SessionAdapter.swift */; };
+		761011A52B3A2206004639C4 /* OutgoingMessageRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761011A42B3A2206004639C4 /* OutgoingMessageRemote.swift */; };
+		761011A82B3A27F3004639C4 /* ChatUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761011A72B3A27F3004639C4 /* ChatUser.swift */; };
 		7637C55F2A79D6EC00EB7688 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 7637C55E2A79D6EC00EB7688 /* Alamofire */; };
 		7637C5632A79D7A700EB7688 /* HttpGetProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637C5622A79D7A700EB7688 /* HttpGetProtocol.swift */; };
 		7637C5652A79D7ED00EB7688 /* HttpPostProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7637C5642A79D7ED00EB7688 /* HttpPostProtocol.swift */; };
@@ -67,6 +69,8 @@
 		7608DE8C2A9FCE0F0036027A /* UsersClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersClient.swift; sourceTree = "<group>"; };
 		760B3EEA2A79AE50000CBDB5 /* ExtensionHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionHelpers.swift; sourceTree = "<group>"; };
 		760B3EED2A79B22C000CBDB5 /* SessionAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionAdapter.swift; sourceTree = "<group>"; };
+		761011A42B3A2206004639C4 /* OutgoingMessageRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingMessageRemote.swift; sourceTree = "<group>"; };
+		761011A72B3A27F3004639C4 /* ChatUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUser.swift; sourceTree = "<group>"; };
 		7619B6442A76F6E500A841F0 /* NetworkKit-SampleApp.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "NetworkKit-SampleApp.xcodeproj"; path = "SampleApp/NetworkKit-SampleApp/NetworkKit-SampleApp.xcodeproj"; sourceTree = "<group>"; };
 		7637C5622A79D7A700EB7688 /* HttpGetProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpGetProtocol.swift; sourceTree = "<group>"; };
 		7637C5642A79D7ED00EB7688 /* HttpPostProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpPostProtocol.swift; sourceTree = "<group>"; };
@@ -113,6 +117,7 @@
 		7608DE852A9FC4F50036027A /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
+				761011A32B3A218D004639C4 /* ChatMessage */,
 				7608DE7E2A9FC2810036027A /* FirebaseClient.swift */,
 				7608DE8C2A9FCE0F0036027A /* UsersClient.swift */,
 				7669BA2E2ABDDCE40002AD4C /* StartChatClient.swift */,
@@ -154,6 +159,23 @@
 				760B3EED2A79B22C000CBDB5 /* SessionAdapter.swift */,
 			);
 			path = Adapters;
+			sourceTree = "<group>";
+		};
+		761011A32B3A218D004639C4 /* ChatMessage */ = {
+			isa = PBXGroup;
+			children = (
+				761011A62B3A27EC004639C4 /* Models */,
+				761011A42B3A2206004639C4 /* OutgoingMessageRemote.swift */,
+			);
+			path = ChatMessage;
+			sourceTree = "<group>";
+		};
+		761011A62B3A27EC004639C4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				761011A72B3A27F3004639C4 /* ChatUser.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		7619B6452A76F6E500A841F0 /* Products */ = {
@@ -356,6 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7608DE892A9FCBAB0036027A /* FirebaseError.swift in Sources */,
+				761011A52B3A2206004639C4 /* OutgoingMessageRemote.swift in Sources */,
 				7669BA2F2ABDDCE40002AD4C /* StartChatClient.swift in Sources */,
 				760B3EEE2A79B22C000CBDB5 /* SessionAdapter.swift in Sources */,
 				7637C5672A79D82100EB7688 /* HttpError.swift in Sources */,
@@ -363,6 +386,7 @@
 				760B3EEB2A79AE50000CBDB5 /* ExtensionHelpers.swift in Sources */,
 				76D246742AC355C700FDA81E /* RecentChatClient.swift in Sources */,
 				7637C5632A79D7A700EB7688 /* HttpGetProtocol.swift in Sources */,
+				761011A82B3A27F3004639C4 /* ChatUser.swift in Sources */,
 				7608DE872A9FC5020036027A /* FCollectionReference.swift in Sources */,
 				7637C5652A79D7ED00EB7688 /* HttpPostProtocol.swift in Sources */,
 				76D246782AC4A34600FDA81E /* ChatHelperClient.swift in Sources */,

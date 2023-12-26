@@ -144,3 +144,13 @@ public extension Color {
     /// Grayscale050, default value light color `#F2F2F2` and dark color `#39464D`
     static let grayscale050 = Color(lightColor: #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 1), darkColor: #colorLiteral(red: 0.05490196078, green: 0.0862745098, blue: 0.1019607843, alpha: 1))
 }
+
+public extension Color {
+    enum ChatView {
+        /// Grayscale200, default value light color `#CCCCCC` and dark color `#525F66`
+        public static let incomingBubble = Color(lightColor: #colorLiteral(red: 0.8, green: 0.8, blue: 0.8, alpha: 1), darkColor: #colorLiteral(red: 0.3215686275, green: 0.3725490196, blue: 0.4, alpha: 1))
+        
+        /// Grayscale200, default value light color `#CCCCCC` and dark color `#525F66`
+        public static let outgoingBubble = Color(lightColor: #colorLiteral(red: 0.6823529412, green: 0.8823529412, blue: 0.9215686275, alpha: 1), darkColor: #colorLiteral(red: 0, green: 0.4509803922, blue: 0.6666666667, alpha: 1))
+    }
+}

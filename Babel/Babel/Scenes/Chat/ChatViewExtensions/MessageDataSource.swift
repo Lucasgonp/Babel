@@ -1,5 +1,7 @@
 import Foundation
 import MessageKit
+import DesignKit
+import UIKit
 
 extension ChatViewController: MessagesDataSource {
     var currentSender: SenderType {
@@ -12,5 +14,46 @@ extension ChatViewController: MessagesDataSource {
     
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
         return mkMessages.count
+    }
+    
+    func cellTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        if indexPath.section % 3 == 0 {
+            let shouldLoadMore = false
+            let text = shouldLoadMore ? "Pull to load more" : MessageKitDateFormatter.shared.string(from: message.sentDate)
+            let font = shouldLoadMore ? Font.sm.make(isBold: true) : Font.xs.make(isBold: true)
+            let color = shouldLoadMore ? UIColor.systemBlue : UIColor.darkGray
+            
+            return NSAttributedString(
+                string: text,
+                attributes: [.font: font, .foregroundColor: color]
+            )
+        }
+        
+        return nil
+    }
+    
+    func cellBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        if isFromCurrentSender(message: message) {
+            let message = mkMessages[indexPath.section]
+            if indexPath.section == mkMessages.count - 1 {
+                return NSAttributedString(
+                    string: message.status,
+                    attributes: [
+                        .font: Font.xs.make(isBold: true),
+                        .foregroundColor: UIColor.darkGray
+                    ]
+                )
+            }
+        }
+        
+        return nil
+    }
+    
+    func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        let font = Font.xs.make(isBold: true)
+        return NSAttributedString(
+            string: message.sentDate.time(),
+            attributes: [.font: font, .foregroundColor: UIColor.darkGray]
+        )
     }
 }

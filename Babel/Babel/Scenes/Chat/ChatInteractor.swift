@@ -1,27 +1,45 @@
 import Foundation
+import RealmSwift
 
 protocol ChatInteracting: AnyObject {
-    func loadSomething()
+    func loadChatMessages()
     func sendMessage(message: OutgoingMessage)
 }
 
 final class ChatInteractor {
     private let service: ChatServicing
     private let presenter: ChatPresenting
+    private let dto: ChatDTO
     private var currentUser: User {
         AccountInfo.shared.user!
     }
+    private var allLocalMessages: Results<LocalMessage>?
+    private var notificationToken: NotificationToken?
 
-    init(service: ChatServicing, presenter: ChatPresenting) {
+    init(service: ChatServicing, presenter: ChatPresenting, dto: ChatDTO) {
         self.service = service
         self.presenter = presenter
+        self.dto = dto
     }
 }
 
 // MARK: - ChatInteracting
 extension ChatInteractor: ChatInteracting {
-    func loadSomething() {
-        presenter.displaySomething()
+    func loadChatMessages() {
+        let predicate = NSPredicate(format: "chatRoomId = %@", dto.chatId)
+        allLocalMessages = RealmManager.shared.realm.objects(LocalMessage.self).filter(predicate).sorted(byKeyPath: kDATE, ascending: true)
+        notificationToken = allLocalMessages?.observe({ [weak self] (changes: RealmCollectionChange) in
+            switch changes {
+            case .initial:
+                self?.insertMessages()
+            case let .update(_, _, insertions, _):
+                for index in insertions {
+                    self?.presenter.displayMessage(self!.allLocalMessages![index])
+                }
+            case let .error(error):
+                fatalError("Error on new insertion \(error.localizedDescription)")
+            }
+        })
     }
     
     func sendMessage(message: OutgoingMessage) {
@@ -56,6 +74,12 @@ private extension ChatInteractor {
         
         for memberId in memberIds {
             service.addMessage(message, memberId: memberId)
+        }
+    }
+    
+    func insertMessages() {
+        for localMessage in allLocalMessages! {
+            presenter.displayMessage(localMessage)
         }
     }
 }

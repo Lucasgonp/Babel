@@ -31,6 +31,8 @@
 		7610119D2B3A1768004639C4 /* LocalMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7610119C2B3A1768004639C4 /* LocalMessage.swift */; };
 		761011A02B3A1C52004639C4 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7610119F2B3A1C52004639C4 /* RealmManager.swift */; };
 		761011A22B3A2002004639C4 /* OutgoingMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761011A12B3A2002004639C4 /* OutgoingMessage.swift */; };
+		761011AA2B3A6172004639C4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761011A92B3A6172004639C4 /* Constants.swift */; };
+		761011AC2B3A688F004639C4 /* IncomingMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761011AB2B3A688F004639C4 /* IncomingMessage.swift */; };
 		7620F2A92A92DB70002A4EB5 /* HomeTabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2A82A92DB70002A4EB5 /* HomeTabBarModel.swift */; };
 		7620F2B42A92DE1B002A4EB5 /* SettingsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2AE2A92DE1B002A4EB5 /* SettingsFactory.swift */; };
 		7620F2B52A92DE1B002A4EB5 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2AF2A92DE1B002A4EB5 /* SettingsPresenter.swift */; };
@@ -80,6 +82,7 @@
 		76228DA82A8AAF6800C27C7A /* NetworkKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76228DA62A8AAF6800C27C7A /* NetworkKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		76228DAA2A8AAF7000C27C7A /* DesignKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76228DA92A8AAF7000C27C7A /* DesignKit.framework */; };
 		76228DAB2A8AAF7000C27C7A /* DesignKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76228DA92A8AAF7000C27C7A /* DesignKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7661CA292B40CD8D006E52EC /* BarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7661CA282B40CD8D006E52EC /* BarButtonView.swift */; };
 		7669BA2A2ABDD3550002AD4C /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669BA292ABDD3550002AD4C /* Date+Extensions.swift */; };
 		7669BA2D2ABDDA650002AD4C /* StartChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669BA2C2ABDDA650002AD4C /* StartChat.swift */; };
 		767E4A062A8AB87000B55980 /* Strings.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767E4A052A8AB84700B55980 /* Strings.generated.swift */; };
@@ -189,6 +192,8 @@
 		7610119C2B3A1768004639C4 /* LocalMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalMessage.swift; sourceTree = "<group>"; };
 		7610119F2B3A1C52004639C4 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		761011A12B3A2002004639C4 /* OutgoingMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingMessage.swift; sourceTree = "<group>"; };
+		761011A92B3A6172004639C4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		761011AB2B3A688F004639C4 /* IncomingMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingMessage.swift; sourceTree = "<group>"; };
 		7620F2A82A92DB70002A4EB5 /* HomeTabBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarModel.swift; sourceTree = "<group>"; };
 		7620F2AE2A92DE1B002A4EB5 /* SettingsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFactory.swift; sourceTree = "<group>"; };
 		7620F2AF2A92DE1B002A4EB5 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
@@ -236,6 +241,7 @@
 		76228DA62A8AAF6800C27C7A /* NetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76228DA92A8AAF7000C27C7A /* DesignKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76228DAF2A8AB03700C27C7A /* CoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7661CA282B40CD8D006E52EC /* BarButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarButtonView.swift; sourceTree = "<group>"; };
 		7669BA292ABDD3550002AD4C /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		7669BA2C2ABDDA650002AD4C /* StartChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartChat.swift; sourceTree = "<group>"; };
 		767E4A052A8AB84700B55980 /* Strings.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.generated.swift; sourceTree = "<group>"; };
@@ -372,7 +378,6 @@
 			isa = PBXGroup;
 			children = (
 				7610119C2B3A1768004639C4 /* LocalMessage.swift */,
-				7610119F2B3A1C52004639C4 /* RealmManager.swift */,
 			);
 			path = RealmMessages;
 			sourceTree = "<group>";
@@ -460,6 +465,7 @@
 				7669BA2C2ABDDA650002AD4C /* StartChat.swift */,
 				76D246752AC4A2CF00FDA81E /* ChatHelper.swift */,
 				761011982B3A0351004639C4 /* MessageKitDefaults.swift */,
+				761011A92B3A6172004639C4 /* Constants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -526,6 +532,14 @@
 				7620F4602A96B31C002A4EB5 /* EditProfileHeaderCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		7661CA272B40CD73006E52EC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7661CA282B40CD8D006E52EC /* BarButtonView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		7669BA282ABDD33D0002AD4C /* Extensions */ = {
@@ -660,6 +674,7 @@
 		76CAA17A2A8AA99400D742E9 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				7610119F2B3A1C52004639C4 /* RealmManager.swift */,
 				76CAA17B2A8AA99F00D742E9 /* AuthManager.swift */,
 				76CAA17D2A8AA9B700D742E9 /* NetworkManager.swift */,
 				7608DE532A999F050036027A /* StorageManager.swift */,
@@ -699,6 +714,7 @@
 		76D246792AC4AE5F00FDA81E /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				7661CA272B40CD73006E52EC /* Views */,
 				7610118D2B3A010D004639C4 /* ChatViewExtensions */,
 				76D246862AC4B49200FDA81E /* Models */,
 				76D2467A2AC4AE7000FDA81E /* ChatFactory.swift */,
@@ -717,6 +733,7 @@
 				76D246872AC4B4A000FDA81E /* ChatDTO.swift */,
 				7610119A2B3A15CD004639C4 /* MKMessage.swift */,
 				761011A12B3A2002004639C4 /* OutgoingMessage.swift */,
+				761011AB2B3A688F004639C4 /* IncomingMessage.swift */,
 				7610119E2B3A1773004639C4 /* RealmMessages */,
 			);
 			path = Models;
@@ -965,6 +982,7 @@
 				7620F4332A95694B002A4EB5 /* SettingsViewModel.swift in Sources */,
 				7620F45A2A965A09002A4EB5 /* TermsPresenter.swift in Sources */,
 				769E972E2AA3C4FC004FC6B4 /* ContactInfoPresenter.swift in Sources */,
+				761011AC2B3A688F004639C4 /* IncomingMessage.swift in Sources */,
 				76CAA1892A8AA9ED00D742E9 /* HomeViewController.swift in Sources */,
 				7608DE7D2A9D248E0036027A /* UserContact.swift in Sources */,
 				7620F4512A9659F5002A4EB5 /* TellAFriendInteractor.swift in Sources */,
@@ -999,6 +1017,7 @@
 				7620F2D02A92EF69002A4EB5 /* ChannelsInteractor.swift in Sources */,
 				769E97312AA3C4FC004FC6B4 /* ContactInfoInteractor.swift in Sources */,
 				76D246842AC4AE7000FDA81E /* ChatInteractor.swift in Sources */,
+				7661CA292B40CD8D006E52EC /* BarButtonView.swift in Sources */,
 				7620F2DC2A92EF74002A4EB5 /* UsersInteractor.swift in Sources */,
 				7620F4402A9592C2002A4EB5 /* EditProfileRouter.swift in Sources */,
 				7620F4202A951280002A4EB5 /* SettingsButtonCell.swift in Sources */,
@@ -1014,6 +1033,7 @@
 				76CAA1882A8AA9ED00D742E9 /* HomeInteractor.swift in Sources */,
 				76DA7EC42AB78E7400106731 /* RecentChatCell.swift in Sources */,
 				76D246832AC4AE7000FDA81E /* ChatViewController.swift in Sources */,
+				761011AA2B3A6172004639C4 /* Constants.swift in Sources */,
 				761011932B3A0147004639C4 /* MessageDisplayDelegate.swift in Sources */,
 				7620F42D2A9567B1002A4EB5 /* User.swift in Sources */,
 				7608DE542A999F050036027A /* StorageManager.swift in Sources */,

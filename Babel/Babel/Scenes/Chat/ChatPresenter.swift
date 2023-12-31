@@ -1,5 +1,5 @@
 protocol ChatPresenting: AnyObject {
-    func displaySomething()
+    func displayMessage(_ localMessage: LocalMessage)
     func didNextStep(action: ChatAction)
 }
 
@@ -14,8 +14,8 @@ final class ChatPresenter {
 
 // MARK: - ChatPresenting
 extension ChatPresenter: ChatPresenting {
-    func displaySomething() {
-        viewController?.displaySomething()
+    func displayMessage(_ localMessage: LocalMessage) {
+        viewController?.displayMessage(localMessage)
     }
     
     func didNextStep(action: ChatAction) {

@@ -15,11 +15,17 @@ extension Date {
             elapsed = formatter.string(from: self)
         } else {
             let formatter = DateFormatter()
-            formatter.dateFormat = "dd/MM/yy"
+            formatter.dateFormat = "dd/MM/yyyy"
             elapsed = formatter.string(from: self)
         }
         
         
         return elapsed
+    }
+    
+    func time() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        return formatter.string(from: Date())
     }
 }

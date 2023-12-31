@@ -6,7 +6,7 @@ import GalleryKit
 import RealmSwift
 
 protocol ChatDisplaying: AnyObject {
-    func displaySomething()
+    func displayMessage(_ localMessage: LocalMessage)
 }
 
 private extension ChatViewController.Layout {
@@ -21,6 +21,32 @@ final class ChatViewController: MessagesViewController {
         // template
     }
     
+    private lazy var titleLabel: TextLabel = {
+        let label = TextLabel()
+        label.text = dto.recipientName
+        label.textAlignment = .center
+        label.font = Font.md.make(isBold: true)
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    
+    private lazy var descriptionLabel: TextLabel = {
+        let label = TextLabel()
+        label.textAlignment = .center
+        label.font = Font.sm.uiFont
+        label.adjustsFontSizeToFitWidth = true
+        label.isHidden = true
+        
+        return label
+    }()
+    
+    private lazy var stackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
+        stack.axis = .vertical
+        stack.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapOnContactInfo)))
+        return stack
+    }()
+    
     private lazy var refreshController: UIRefreshControl = {
         let refreshController = UIRefreshControl()
         return refreshController
@@ -28,7 +54,7 @@ final class ChatViewController: MessagesViewController {
     
     private lazy var micButtonItem: InputBarButtonItem = {
         let micButtonItem = InputBarButtonItem()
-        micButtonItem.image = UIImage(systemName: "mic.fill")
+        micButtonItem.image = UIImage(systemName: "mic.fill")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 30))
         micButtonItem.setSize(CGSize(width: 30, height: 30), animated: false)
 //        micButtonItem.addGestureRecognizer()
         return micButtonItem
@@ -48,6 +74,8 @@ final class ChatViewController: MessagesViewController {
     private let interactor: ChatInteracting
     private let dto: ChatDTO
     
+    var testing = true
+    
     init(interactor: ChatInteracting, dto: ChatDTO) {
         self.interactor = interactor
         self.dto = dto
@@ -61,7 +89,20 @@ final class ChatViewController: MessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         buildLayout()
-        interactor.loadSomething()
+        interactor.loadChatMessages()
+        
+        Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
+            UIView.animate(withDuration: 0.3) {
+                if self.testing {
+                    self.descriptionLabel.text = "adasdasdasd"
+                    self.descriptionLabel.isHidden = false
+                    self.testing = false
+                } else {
+                    self.descriptionLabel.isHidden = true
+                    self.testing = true
+                }
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -93,15 +134,14 @@ final class ChatViewController: MessagesViewController {
 
 extension ChatViewController: ViewConfiguration {
     func buildViewHierarchy() {
-        // template
+        navigationItem.titleView = stackView
     }
     
     func setupConstraints() {
-        // template
+        
     }
 
     func configureViews() {
-        title = dto.recipientName
         configureMessageCollectionView()
         configureMessageInputBar()
     }
@@ -109,8 +149,17 @@ extension ChatViewController: ViewConfiguration {
 
 // MARK: - ChatDisplaying
 extension ChatViewController: ChatDisplaying {
-    func displaySomething() { 
-        // template
+    func displayMessage(_ localMessage: LocalMessage) {
+        let incoming = IncomingMessage(messagesViewController: self)
+        mkMessages.append(incoming.createMessage(localMessage: localMessage)!)
+        messagesCollectionView.reloadData()
+        messagesCollectionView.scrollToLastItem(animated: true)
+    }
+}
+
+@objc private extension ChatViewController {
+    func didTapOnContactInfo() {
+        print("asdasdasdasdasd")
     }
 }
 
@@ -139,7 +188,7 @@ private extension ChatViewController {
     
     func configureAttachButton() {
         let attachButton = InputBarButtonItem()
-        attachButton.image = UIImage(systemName: "plus")
+        attachButton.image = UIImage(systemName: "plus")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 30))
         attachButton.setSize(CGSize(width: 30, height: 30), animated: false)
         attachButton.onTouchUpInside { item in
             print("button pressed")

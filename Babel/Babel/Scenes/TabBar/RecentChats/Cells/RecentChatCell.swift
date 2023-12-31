@@ -50,7 +50,7 @@ final class RecentChatCell: UITableViewCell, ViewConfiguration {
     private lazy var unreadCountLabel: TextLabel = {
         let font = Font.sm.uiFont
         let label = TextLabel(font: font)
-        label.textColor = Color.black.uiColor
+        label.textColor = Color.backgroundPrimary.uiColor
         label.numberOfLines = 1
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false

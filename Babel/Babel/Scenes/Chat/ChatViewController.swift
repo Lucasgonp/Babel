@@ -17,6 +17,8 @@ private extension ChatViewController.Layout {
 }
 
 final class ChatViewController: MessagesViewController {
+    typealias Localizable = Strings.ChatView
+    
     fileprivate enum Layout {
         // template
     }
@@ -36,7 +38,6 @@ final class ChatViewController: MessagesViewController {
         label.font = Font.sm.uiFont
         label.adjustsFontSizeToFitWidth = true
         label.isHidden = true
-        
         return label
     }()
     
@@ -74,8 +75,6 @@ final class ChatViewController: MessagesViewController {
     private let interactor: ChatInteracting
     private let dto: ChatDTO
     
-    var testing = true
-    
     init(interactor: ChatInteracting, dto: ChatDTO) {
         self.interactor = interactor
         self.dto = dto
@@ -90,19 +89,7 @@ final class ChatViewController: MessagesViewController {
         super.viewDidLoad()
         buildLayout()
         interactor.loadChatMessages()
-        
-        Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
-            UIView.animate(withDuration: 0.3) {
-                if self.testing {
-                    self.descriptionLabel.text = "adasdasdasd"
-                    self.descriptionLabel.isHidden = false
-                    self.testing = false
-                } else {
-                    self.descriptionLabel.isHidden = true
-                    self.testing = true
-                }
-            }
-        }
+        interactor.listenForNewChats()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -129,6 +116,14 @@ final class ChatViewController: MessagesViewController {
             memberIds: [currentUser.id, dto.recipientId]
         )
         interactor.sendMessage(message: message)
+    }
+    
+    func updateMicButtonStatus(show: Bool) {
+        if show {
+            addMicrophoneButton()
+        } else {
+            addSendButton()
+        }
     }
 }
 
@@ -159,7 +154,7 @@ extension ChatViewController: ChatDisplaying {
 
 @objc private extension ChatViewController {
     func didTapOnContactInfo() {
-        print("asdasdasdasdasd")
+        print("didTapOnContactInfo")
     }
 }
 
@@ -183,7 +178,7 @@ private extension ChatViewController {
         messageInputBar.inputTextView.backgroundColor = Color.backgroundPrimary.uiColor
         
         configureAttachButton()
-//        configureMicrophoneButton()
+        addMicrophoneButton()
     }
     
     func configureAttachButton() {
@@ -197,8 +192,31 @@ private extension ChatViewController {
         messageInputBar.setLeftStackViewWidthConstant(to: 36, animated: false)
     }
     
-    func configureMicrophoneButton() {
+    func addMicrophoneButton() {
         messageInputBar.setStackViewItems([micButtonItem], forStack: .right, animated: false)
-        messageInputBar.setRightStackViewWidthConstant(to: 36, animated: false)
+        messageInputBar.setRightStackViewWidthConstant(to: 30, animated: false)
+    }
+    
+    func addSendButton() {
+        let sendButton = messageInputBar.sendButton
+        sendButton.setTitle(Localizable.send, for: .normal)
+        messageInputBar.setStackViewItems([sendButton], forStack: .right, animated: false)
+        messageInputBar.setRightStackViewWidthConstant(to: 55, animated: false)
+    }
+    
+    func updateTypingIndicator(_ show: Bool) {
+        descriptionLabel.text = Localizable.typing
+        animateDescription(show: show)
+    }
+    
+    func animateDescription(show: Bool) {
+        UIView.animate(withDuration: 0.2) {
+            if show {
+                self.descriptionLabel.isHidden = false
+                self.stackView.layoutIfNeeded()
+            } else {
+                self.descriptionLabel.isHidden = true
+            }
+        }
     }
 }

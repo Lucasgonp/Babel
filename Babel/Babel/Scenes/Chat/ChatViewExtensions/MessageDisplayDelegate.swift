@@ -1,5 +1,27 @@
+import UIKit
 import MessageKit
 
 extension ChatViewController: MessagesDisplayDelegate {
+    func textColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
+        return .label
+    }
     
+    func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
+        return isFromCurrentSender(message: message) ? MessageDefaults.bubbleColorOutgoingColor : MessageDefaults.bubbleColorIncomingColor
+    }
+    
+    func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
+        let currentUserLastMessage = mkMessages.filter({ $0.sender.senderId == currentSender.senderId }).last
+        let receiverUserLastMessage = mkMessages.filter({ $0.sender.senderId != currentSender.senderId }).last
+        
+        if mkMessages[indexPath.section] == currentUserLastMessage {
+            return .bubbleTail(.bottomRight, .curved)
+        }
+        
+        if mkMessages[indexPath.section] == receiverUserLastMessage {
+            return .bubbleTail(.bottomLeft, .curved)
+        }
+        
+        return .bubble
+    }
 }

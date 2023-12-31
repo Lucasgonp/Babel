@@ -10,6 +10,16 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum Strings {
+  internal enum ChatView {
+    /// Send
+    internal static let send = Strings.tr("Localizable", "ChatView.send", fallback: "Send")
+    /// Typing...
+    internal static let typing = Strings.tr("Localizable", "ChatView.typing", fallback: "Typing...")
+    internal enum MessageStatus {
+      /// Sent
+      internal static let sent = Strings.tr("Localizable", "ChatView.MessageStatus.sent", fallback: "Sent")
+    }
+  }
   internal enum Commons {
     /// Done
     internal static let done = Strings.tr("Localizable", "Commons.done", fallback: "Done")

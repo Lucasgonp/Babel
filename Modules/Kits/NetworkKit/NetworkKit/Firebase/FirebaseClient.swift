@@ -3,6 +3,9 @@ import FirebaseFirestore
 public class FirebaseClient {
     public static var shared = FirebaseClient()
     
+    var newChatListener: ListenerRegistration?
+    var updatedChatListener: ListenerRegistration?
+    
     private let firestore: Firestore = .firestore()
     
     private init() {}

@@ -41,3 +41,8 @@
 
 // Contact Info
 "ContactInfo.title" = "Contact Info";
+
+// Chat View
+"ChatView.typing" = "Typing...";
+"ChatView.send" = "Send";
+"ChatView.MessageStatus.sent" = "Sent";

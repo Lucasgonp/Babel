@@ -3,10 +3,13 @@ import RealmSwift
 
 protocol ChatInteracting: AnyObject {
     func loadChatMessages()
+    func listenForNewChats()
     func sendMessage(message: OutgoingMessage)
 }
 
 final class ChatInteractor {
+    typealias Localizable = Strings.ChatView
+    
     private let service: ChatServicing
     private let presenter: ChatPresenting
     private let dto: ChatDTO
@@ -28,6 +31,11 @@ extension ChatInteractor: ChatInteracting {
     func loadChatMessages() {
         let predicate = NSPredicate(format: "chatRoomId = %@", dto.chatId)
         allLocalMessages = RealmManager.shared.realm.objects(LocalMessage.self).filter(predicate).sorted(byKeyPath: kDATE, ascending: true)
+        
+        if allLocalMessages?.isEmpty == true {
+            checkForOldChats()
+        }
+        
         notificationToken = allLocalMessages?.observe({ [weak self] (changes: RealmCollectionChange) in
             switch changes {
             case .initial:
@@ -42,6 +50,21 @@ extension ChatInteractor: ChatInteracting {
         })
     }
     
+    func listenForNewChats() {
+        let date = allLocalMessages?.last?.date ?? Date()
+        let lastMessageDate = Calendar.current.date(byAdding: .second, value: 1, to: date) ?? date
+        service.listenForNewChats(documentId: currentUser.id, collectionId: dto.chatId, lastMessageDate: lastMessageDate) { result in
+            switch result {
+            case var .success(message):
+                RealmManager.shared.saveToRealm(message)
+                
+            case let .failure(error):
+                print("Error listening to chat: \(error.localizedDescription)")
+                return
+            }
+        }
+    }
+    
     func sendMessage(message: OutgoingMessage) {
         let localMessage = LocalMessage()
         localMessage.id = UUID().uuidString
@@ -50,7 +73,7 @@ extension ChatInteractor: ChatInteracting {
         localMessage.senderName = currentUser.name
         localMessage.senderInitials = "\(currentUser.username.first!)"
         localMessage.date = Date()
-        localMessage.status = "Sent"
+        localMessage.status = Localizable.MessageStatus.sent
         
         if let text = message.text {
             sendTextMessage(message: localMessage, text: text, memberIds: message.memberIds)
@@ -80,6 +103,20 @@ private extension ChatInteractor {
     func insertMessages() {
         for localMessage in allLocalMessages! {
             presenter.displayMessage(localMessage)
+        }
+    }
+    
+    func checkForOldChats() {
+        service.getOldChats(documentId: currentUser.id, collectionId: dto.chatId) { result in
+            switch result {
+            case var .success(messages):
+                messages.sort(by: { $0.date < $1.date })
+                messages.forEach({ RealmManager.shared.saveToRealm($0) })
+                
+            case let .failure(error):
+                print("Error getting older chat: \(error.localizedDescription)")
+                return
+            }
         }
     }
 }

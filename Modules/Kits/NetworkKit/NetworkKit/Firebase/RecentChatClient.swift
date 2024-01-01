@@ -22,6 +22,6 @@ extension FirebaseClient: RecentChatClientProtocol {
     }
     
     public func updateRecentChat<T: Codable>(id: String, recentChat: T) {
-        saveRecentChat(id: id, recentChat: recentChat)
+        saveRecent(id: id, recentChat: recentChat)
     }
 }

@@ -1,9 +1,11 @@
+import StorageKit
 import FirebaseFirestoreSwift
 
 public protocol FirebaseMessageProtocol {
     func listenForNewChats<T: Decodable>(documentId: String, collectionId: String, lastMessageDate: Date, completion: @escaping (Result<T, FirebaseError>) -> Void)
     func getOldChats<T: Decodable>(documentId: String, collectionId: String, completion: @escaping (Result<[T], FirebaseError>) -> Void)
     func addMessage<T: Encodable>(_ message: T, memberId: String, chatRoomId: String, messageId: String)
+    func getRecentChatsFrom<T: Decodable>(chatRoomId: String, completion: @escaping (_ recents: [T]) -> Void)
 }
 
 extension FirebaseClient: FirebaseMessageProtocol {
@@ -54,6 +56,17 @@ extension FirebaseClient: FirebaseMessageProtocol {
                 .setData(from: message)
         } catch {
             fatalError("Error saving message to firebase: \(error.localizedDescription)")
+        }
+    }
+    
+    public func getRecentChatsFrom<T: Decodable>(chatRoomId: String, completion: @escaping (_ recents: [T]) -> Void) {
+        firebaseReference(.recent).whereField(StorageKey.chatRoomId.rawValue, isEqualTo: chatRoomId).getDocuments { querySnapshot, error in
+            guard let documents = querySnapshot?.documents else {
+                return
+            }
+            
+            let recents = documents.compactMap({ try? $0.data(as: T.self) })
+            completion(recents)
         }
     }
 }

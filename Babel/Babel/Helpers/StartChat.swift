@@ -3,6 +3,7 @@ import StorageKit
 
 final class StartChat {
     static let shared = StartChat()
+    
     private let client: StartChatClientProtocol = FirebaseClient.shared
     private let currentUser = UserSafe.shared.user
     

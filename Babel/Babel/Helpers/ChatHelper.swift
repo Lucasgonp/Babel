@@ -25,6 +25,10 @@ final class ChatHelper {
     func clearUnreadCounter(for chat: RecentChatModel) {
         var recent = chat
         recent.unreadCounter = 0
-        client.saveRecentChat(id: recent.id, recentChat: recent)
+        saveRecent(id: recent.id, recentChat: recent)
+    }
+    
+    func saveRecent(id: String, recentChat: RecentChatModel) {
+        client.saveRecent(id: id, recentChat: recentChat)
     }
 }

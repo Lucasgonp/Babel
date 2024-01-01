@@ -14,7 +14,7 @@ public struct ChatHelperDTO {
 
 public protocol ChatHelperClientProtocol {
     func resetRecentCounter<T: Codable>(dto: ChatHelperDTO, completion: @escaping ([T]) -> Void)
-    func saveRecentChat<T: Codable>(id: String, recentChat: T)
+    func saveRecent<T: Codable>(id: String, recentChat: T)
 }
 
 extension FirebaseClient: ChatHelperClientProtocol {

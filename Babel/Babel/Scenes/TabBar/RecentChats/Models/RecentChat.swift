@@ -15,7 +15,7 @@ struct RecentChatModel: Codable, Equatable {
     
     let membersId: [String]
     
-    let lastMassage: String
+    var lastMassage: String
     var unreadCounter: Int
     
     let avatarLink: String

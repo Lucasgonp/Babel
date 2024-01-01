@@ -40,10 +40,6 @@ extension FirebaseClient: StartChatClientProtocol {
             }
         }
     }
-    
-    public func saveRecent<T: Codable>(id: String, recentChat: T) {
-        saveRecentChat(id: id, recentChat: recentChat)
-    }
 }
 
 private extension FirebaseClient {

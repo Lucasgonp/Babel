@@ -7,6 +7,7 @@ protocol ChatServicing {
     func createTypingObserver(chatRoomId: String, completion: @escaping (_ isTyping: Bool) -> Void)
     func saveTypingCounter(isTyping: Bool, chatRoomId: String)
     func removeListeners()
+    func getRecentChats(chatRoomId: String, completion: @escaping (_ recents: [RecentChatModel]) -> Void)
 }
 
 final class ChatService {
@@ -45,5 +46,9 @@ extension ChatService: ChatServicing {
     
     func removeListeners() {
         client.removeListeners()
+    }
+    
+    func getRecentChats(chatRoomId: String, completion: @escaping (_ recents: [RecentChatModel]) -> Void) {
+        client.getRecentChatsFrom(chatRoomId: chatRoomId, completion: completion)
     }
 }

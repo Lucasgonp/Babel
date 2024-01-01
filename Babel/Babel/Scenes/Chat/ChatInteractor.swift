@@ -94,7 +94,8 @@ extension ChatInteractor: ChatInteracting {
         }
         
         // TODO: Send push notification
-        // TODO: Update recent chat
+        
+        updateRecents(chatRoomId: dto.chatId, lastMessage: localMessage.message)
     }
     
     func refreshNewMessages() {
@@ -197,5 +198,25 @@ private extension ChatInteractor {
         if typingCounter == .zero {
             service.saveTypingCounter(isTyping: false, chatRoomId: dto.chatId)
         }
+    }
+    
+    func updateRecents(chatRoomId: String, lastMessage: String) {
+        service.getRecentChats(chatRoomId: chatRoomId) { [weak self] recents in
+            for recent in recents {
+                self?.updateRecentItemWithNewMessage(recent: recent, lastMessage: lastMessage)
+            }
+        }
+    }
+    
+    func updateRecentItemWithNewMessage(recent: RecentChatModel, lastMessage: String) {
+        var tempRecent = recent
+        if tempRecent.senderId != UserSafe.shared.user.id {
+            tempRecent.unreadCounter += 1
+        }
+        
+        tempRecent.lastMassage = lastMessage
+        tempRecent.date = Date()
+        
+        ChatHelper.shared.saveRecent(id: tempRecent.id, recentChat: tempRecent)
     }
 }

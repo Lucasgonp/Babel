@@ -42,7 +42,8 @@ extension RecentChatsInteractor: RecentChatsInteracting {
         let dto = ChatDTO(
             chatId: chat.chatRoomId,
             recipientId: chat.receiverId,
-            recipientName: chat.receiverName
+            recipientName: chat.receiverName,
+            recipientAvatarURL: chat.avatarLink
         )
         presenter.didNextStep(action: .pushToChatView(dto: dto))
     }

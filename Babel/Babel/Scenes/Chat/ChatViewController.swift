@@ -7,6 +7,9 @@ import RealmSwift
 
 protocol ChatDisplaying: AnyObject {
     func displayMessage(_ localMessage: LocalMessage)
+    func displayRefreshedMessages(_ localMessage: LocalMessage)
+    func refreshNewMessages()
+    func endRefreshing()
 }
 
 private extension ChatViewController.Layout {
@@ -37,15 +40,28 @@ final class ChatViewController: MessagesViewController {
         label.textAlignment = .center
         label.font = Font.sm.uiFont
         label.adjustsFontSizeToFitWidth = true
+        label.text = "Typing..."
+        label.textAlignment = .left
         label.isHidden = true
         return label
     }()
     
     private lazy var stackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
-        stack.axis = .vertical
-        stack.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapOnContactInfo)))
-        return stack
+        let labelsStack = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
+        labelsStack.axis = .vertical
+        let stackView = UIStackView(arrangedSubviews: [titleViewAvatar, labelsStack])
+        stackView.axis = .horizontal
+        stackView.spacing = 6
+        stackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTapOnContactInfo)))
+        return stackView
+    }()
+    
+    private lazy var titleViewAvatar: ImageView = {
+        let imageView = ImageView(frame: CGRect(x: .zero, y: .zero, width: 38, height: 38))
+        imageView.layer.cornerRadius = 19
+        imageView.clipsToBounds = true
+        imageView.setAvatar(imageUrl: dto.recipientAvatarURL)
+        return imageView
     }()
     
     private lazy var refreshController: UIRefreshControl = {
@@ -68,12 +84,10 @@ final class ChatViewController: MessagesViewController {
     
     private(set) lazy var mkMessages = [MKMessage]()
     
-    private var currentUser: User {
-        AccountInfo.shared.user!
-    }
-    
-    private let interactor: ChatInteracting
+    private var currentUser: User { AccountInfo.shared.user! }
     private let dto: ChatDTO
+    
+    let interactor: ChatInteracting
     
     init(interactor: ChatInteracting, dto: ChatDTO) {
         self.interactor = interactor
@@ -85,11 +99,22 @@ final class ChatViewController: MessagesViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    var asdasd = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         buildLayout()
         interactor.loadChatMessages()
         interactor.listenForNewChats()
+        
+        Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
+            self.animateDescription(show: self.asdasd)
+            if self.asdasd {
+                self.asdasd = false
+            } else {
+                self.asdasd = true
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -125,6 +150,12 @@ final class ChatViewController: MessagesViewController {
             addSendButton()
         }
     }
+    
+    override func scrollViewDidEndDecelerating(_: UIScrollView) {
+        if refreshController.isRefreshing {
+            interactor.refreshNewMessages()
+        }
+    }
 }
 
 extension ChatViewController: ViewConfiguration {
@@ -149,6 +180,22 @@ extension ChatViewController: ChatDisplaying {
         mkMessages.append(incoming.createMessage(localMessage: localMessage)!)
         messagesCollectionView.reloadData()
         messagesCollectionView.scrollToLastItem(animated: true)
+    }
+    
+    func displayRefreshedMessages(_ localMessage: LocalMessage) {
+        let incoming = IncomingMessage(messagesViewController: self)
+        mkMessages.insert(incoming.createMessage(localMessage: localMessage)!, at: 0)
+        messagesCollectionView.reloadData()
+        messagesCollectionView.scrollToLastItem(animated: true)
+    }
+    
+    func refreshNewMessages() {
+        messagesCollectionView.reloadDataAndKeepOffset()
+        refreshController.endRefreshing()
+    }
+    
+    func endRefreshing() {
+        
     }
 }
 

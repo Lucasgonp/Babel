@@ -19,10 +19,7 @@ extension RecentChatsRouter: RecentChatsRouting {
         switch action {
         case .pushToAllUsersView:
             let usersController = UsersFactory.make()
-            viewController?.navigationController?.pushViewController(usersController, animated: true) {
-//                usersController.navigationItem.largeTitleDisplayMode = .never
-//                usersController.navigationController?.navigationBar.prefersLargeTitles = false
-            }
+            viewController?.navigationController?.pushViewController(usersController, animated: true)
         case .pushToChatView(let dto):
             let chatController = ChatFactory.make(dto: dto)
             chatController.hidesBottomBarWhenPushed = true

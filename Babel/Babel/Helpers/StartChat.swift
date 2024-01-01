@@ -53,7 +53,7 @@ private extension StartChat {
                     receiverId: receiverUser.id,
                     receiverName: receiverUser.name,
                     membersId: [senderUser.id, receiverUser.id],
-                    lastMassage: "Do i have to die to hear you miss me? Do i have to die to hear you say goodbye, i don't wanna act like there's tomorrow, i don't wanna wait to do this one more time",
+                    lastMassage: "Qualquer msg",
                     unreadCounter: 5,
                     avatarLink: receiverUser.avatarLink
                 )

@@ -1,5 +1,8 @@
 protocol ChatPresenting: AnyObject {
     func displayMessage(_ localMessage: LocalMessage)
+    func displayRefreshedMessages(_ refreshedMessege: LocalMessage)
+    func refreshNewMessages()
+    func endRefreshing()
     func didNextStep(action: ChatAction)
 }
 
@@ -16,6 +19,18 @@ final class ChatPresenter {
 extension ChatPresenter: ChatPresenting {
     func displayMessage(_ localMessage: LocalMessage) {
         viewController?.displayMessage(localMessage)
+    }
+    
+    func displayRefreshedMessages(_ refreshedMessege: LocalMessage) {
+        viewController?.displayRefreshedMessages(refreshedMessege)
+    }
+    
+    func refreshNewMessages() {
+        viewController?.refreshNewMessages()
+    }
+    
+    func endRefreshing() {
+        viewController?.endRefreshing()
     }
     
     func didNextStep(action: ChatAction) {

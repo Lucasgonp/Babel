@@ -5,6 +5,12 @@ protocol ChatInteracting: AnyObject {
     func loadChatMessages()
     func listenForNewChats()
     func sendMessage(message: OutgoingMessage)
+    func refreshNewMessages()
+    
+    var allLocalMessages: Results<LocalMessage>? { get }
+    var displayingMessagesCount: Int { get }
+    var maxMessageNumber: Int { get }
+    var minMessageNumber: Int { get }
 }
 
 final class ChatInteractor {
@@ -16,9 +22,13 @@ final class ChatInteractor {
     private var currentUser: User {
         AccountInfo.shared.user!
     }
-    private var allLocalMessages: Results<LocalMessage>?
     private var notificationToken: NotificationToken?
-
+    
+    private(set) var allLocalMessages: Results<LocalMessage>?
+    private(set) var displayingMessagesCount = 0
+    private(set) var maxMessageNumber = 0
+    private(set) var minMessageNumber = 0
+    
     init(service: ChatServicing, presenter: ChatPresenting, dto: ChatDTO) {
         self.service = service
         self.presenter = presenter
@@ -82,6 +92,15 @@ extension ChatInteractor: ChatInteracting {
         // TODO: Send push notification
         // TODO: Update recent chat
     }
+    
+    func refreshNewMessages() {
+        if displayingMessagesCount < allLocalMessages?.count ?? 0 {
+            loadMoreMessages(maxNumber: maxMessageNumber, minNumber: minMessageNumber)
+            presenter.refreshNewMessages()
+        } else {
+            presenter.endRefreshing()
+        }
+    }
 }
 
 private extension ChatInteractor {
@@ -101,8 +120,18 @@ private extension ChatInteractor {
     }
     
     func insertMessages() {
-        for localMessage in allLocalMessages! {
-            presenter.displayMessage(localMessage)
+        guard let allLocalMessages else { return }
+        
+        maxMessageNumber = (allLocalMessages.count) - displayingMessagesCount
+        minMessageNumber = maxMessageNumber - kNUMBEROFMESSAGES
+        
+        if minMessageNumber < 0 {
+            minMessageNumber = 0
+        }
+        
+        for i in minMessageNumber ..< maxMessageNumber {
+            displayingMessagesCount += 1
+            presenter.displayMessage(allLocalMessages[i])
         }
     }
     
@@ -117,6 +146,20 @@ private extension ChatInteractor {
                 print("Error getting older chat: \(error.localizedDescription)")
                 return
             }
+        }
+    }
+    
+    func loadMoreMessages(maxNumber: Int, minNumber: Int) {
+        maxMessageNumber = minNumber - 1
+        minMessageNumber = maxMessageNumber - kNUMBEROFMESSAGES
+        
+        if minMessageNumber < 0 {
+            minMessageNumber = 0
+        }
+        
+        for i in (minMessageNumber ... maxMessageNumber).reversed() {
+            displayingMessagesCount += 1
+            presenter.displayRefreshedMessages(allLocalMessages![i])
         }
     }
 }

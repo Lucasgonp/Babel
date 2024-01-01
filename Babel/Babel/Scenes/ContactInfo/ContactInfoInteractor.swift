@@ -30,7 +30,7 @@ extension ContactInfoInteractor: ContactInfoInteracting {
     
     func startChat() {
         let chatId = StartChat.shared.startChat(user1: currentUser, user2: contactUser)
-        let chatDTO = ChatDTO(chatId: chatId, recipientId: contactUser.id, recipientName: contactUser.name)
+        let chatDTO = ChatDTO(chatId: chatId, recipientId: contactUser.id, recipientName: contactUser.name, recipientAvatarURL: contactUser.avatarLink)
         presenter.didNextStep(action: .pushChatView(dto: chatDTO))
     }
 }

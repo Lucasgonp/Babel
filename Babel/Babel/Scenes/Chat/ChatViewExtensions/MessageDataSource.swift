@@ -4,9 +4,7 @@ import DesignKit
 import UIKit
 
 extension ChatViewController: MessagesDataSource {
-    var currentSender: SenderType {
-        mkSender
-    }
+    var currentSender: SenderType { mkSender }
     
     func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
         return mkMessages[indexPath.section]
@@ -18,8 +16,8 @@ extension ChatViewController: MessagesDataSource {
     
     func cellTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
         if indexPath.section % 3 == 0 {
-            let shouldLoadMore = false
-            let text = shouldLoadMore ? "Pull to load more" : MessageKitDateFormatter.shared.string(from: message.sentDate)
+            let shouldLoadMore = indexPath.section == 0 && (interactor.allLocalMessages?.count ?? 0) > interactor.displayingMessagesCount
+            let text = shouldLoadMore ? Localizable.pullToLoad : MessageKitDateFormatter.shared.string(from: message.sentDate)
             let font = shouldLoadMore ? Font.sm.make(isBold: true) : Font.xs.make(isBold: true)
             let color = shouldLoadMore ? UIColor.systemBlue : UIColor.darkGray
             

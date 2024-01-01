@@ -1,5 +1,3 @@
-import UIKit
-import Firebase
 import FirebaseFirestoreSwift
 
 public protocol FirebaseMessageProtocol {

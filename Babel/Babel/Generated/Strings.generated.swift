@@ -11,6 +11,8 @@ import Foundation
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum Strings {
   internal enum ChatView {
+    /// Pull to load more
+    internal static let pullToLoad = Strings.tr("Localizable", "ChatView.pullToLoad", fallback: "Pull to load more")
     /// Send
     internal static let send = Strings.tr("Localizable", "ChatView.send", fallback: "Send")
     /// Typing...

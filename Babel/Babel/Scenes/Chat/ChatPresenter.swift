@@ -3,6 +3,7 @@ protocol ChatPresenting: AnyObject {
     func displayRefreshedMessages(_ refreshedMessege: LocalMessage)
     func refreshNewMessages()
     func endRefreshing()
+    func updateTypingIndicator(_ isTyping: Bool)
     func didNextStep(action: ChatAction)
 }
 
@@ -31,6 +32,10 @@ extension ChatPresenter: ChatPresenting {
     
     func endRefreshing() {
         viewController?.endRefreshing()
+    }
+    
+    func updateTypingIndicator(_ isTyping: Bool) {
+        viewController?.updateTypingIndicator(isTyping)
     }
     
     func didNextStep(action: ChatAction) {

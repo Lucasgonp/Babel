@@ -7,9 +7,7 @@ final class ContactInfoInteractor {
     private let service: ContactInfoServicing
     private let presenter: ContactInfoPresenting
     private let contactUser: User
-    private var currentUser: User {
-        AccountInfo.shared.user!
-    }
+    private let currentUser = UserSafe.shared.user
 
     init(
         service: ContactInfoServicing,

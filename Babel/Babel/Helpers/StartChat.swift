@@ -4,9 +4,7 @@ import StorageKit
 final class StartChat {
     static let shared = StartChat()
     private let client: StartChatClientProtocol = FirebaseClient.shared
-    private var currentUser: User {
-        AccountInfo.shared.user!
-    }
+    private let currentUser = UserSafe.shared.user
     
     private init() {}
     

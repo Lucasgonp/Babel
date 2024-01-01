@@ -10,9 +10,7 @@ protocol RecentChatsInteracting: AnyObject {
 final class RecentChatsInteractor {
     private let service: RecentChatsServicing
     private let presenter: RecentChatsPresenting
-    private var currentUser: User {
-        AccountInfo.shared.user!
-    }
+    private let currentUser = UserSafe.shared.user
 
     init(service: RecentChatsServicing, presenter: RecentChatsPresenting) {
         self.service = service

@@ -14,8 +14,8 @@
             filePath = "Babel/Babel/Helpers/StartChat.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "createRecentItems(chatRoomId:users:)"
             landmarkType = "7">
             <Locations>
@@ -49,6 +49,21 @@
                   endingLineNumber = "56"
                   offsetFromSymbolStart = "3675">
                </Location>
+               <Location
+                  uuid = "257D115B-69A8-42E3-921D-5065738E34DB - 43e34c47b7320e06"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Array&lt;Swift.String&gt;) -&gt; () in Babel.StartChat.createRecentItems(chatRoomId: Swift.String, users: Swift.Array&lt;Authenticator.User&gt;) -&gt; ()"
+                  moduleName = "Babel"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucaspereira/Workspace/Personal/Apps/Babel/Babel/Babel/Babel/Helpers/StartChat.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "3916">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -62,8 +77,8 @@
             filePath = "Babel/Babel/Scenes/TabBar/RecentChats/RecentChatsInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
             landmarkName = "loadRecentChats()"
             landmarkType = "7">
          </BreakpointContent>

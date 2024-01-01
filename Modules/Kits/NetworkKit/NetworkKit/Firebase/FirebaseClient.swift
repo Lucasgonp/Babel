@@ -4,11 +4,11 @@ public class FirebaseClient {
     public static var shared = FirebaseClient()
     
     // MessagesClient
-    var newChatListener: ListenerRegistration?
-    var updatedChatListener: ListenerRegistration?
+    weak var newChatListener: ListenerRegistration?
+    weak var updatedChatListener: ListenerRegistration?
     
     // TypingClient
-    var typingListener: ListenerRegistration?
+    weak var typingListener: ListenerRegistration?
     
     private let firestore: Firestore = .firestore()
     

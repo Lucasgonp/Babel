@@ -1,7 +1,7 @@
 import UIKit
 
 enum ChatAction {
-    // template
+    case popViewController
 }
 
 protocol ChatRouting: AnyObject {
@@ -15,6 +15,8 @@ final class ChatRouter {
 // MARK: - ChatRouting
 extension ChatRouter: ChatRouting {
     func perform(action: ChatAction) {
-        // template
+        if case .popViewController = action {
+            viewController?.navigationController?.popViewController(animated: true)
+        }
     }
 }

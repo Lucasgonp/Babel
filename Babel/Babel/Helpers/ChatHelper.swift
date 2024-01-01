@@ -4,9 +4,7 @@ import StorageKit
 final class ChatHelper {
     static let shared = ChatHelper()
     private let client: ChatHelperClientProtocol = FirebaseClient.shared
-    private var currentUser: User {
-        AccountInfo.shared.user!
-    }
+    private let currentUser = UserSafe.shared.user
     
     private init() {}
     

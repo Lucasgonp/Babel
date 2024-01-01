@@ -10,10 +10,10 @@ protocol ChatDisplaying: AnyObject {
     func displayRefreshedMessages(_ localMessage: LocalMessage)
     func refreshNewMessages()
     func endRefreshing()
+    func updateTypingIndicator(_ isTyping: Bool)
 }
 
 private extension ChatViewController.Layout {
-    // example
     enum Size {
         static let imageHeight: CGFloat = 90.0
     }
@@ -40,7 +40,7 @@ final class ChatViewController: MessagesViewController {
         label.textAlignment = .center
         label.font = Font.sm.uiFont
         label.adjustsFontSizeToFitWidth = true
-        label.text = "Typing..."
+        label.text = Localizable.typing
         label.textAlignment = .left
         label.isHidden = true
         return label
@@ -78,13 +78,13 @@ final class ChatViewController: MessagesViewController {
     }()
     
     private(set) lazy var mkSender = MKSender(
-        senderId: AccountInfo.shared.user!.id,
-        displayName: AccountInfo.shared.user!.name
+        senderId: currentUser.id,
+        displayName: currentUser.name
     )
     
     private(set) lazy var mkMessages = [MKMessage]()
     
-    private var currentUser: User { AccountInfo.shared.user! }
+    private let currentUser = UserSafe.shared.user
     private let dto: ChatDTO
     
     let interactor: ChatInteracting
@@ -99,27 +99,22 @@ final class ChatViewController: MessagesViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var asdasd = false
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         buildLayout()
         interactor.loadChatMessages()
         interactor.listenForNewChats()
-        
-        Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
-            self.animateDescription(show: self.asdasd)
-            if self.asdasd {
-                self.asdasd = false
-            } else {
-                self.asdasd = true
-            }
-        }
+        interactor.createTypingObserver()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.largeTitleDisplayMode =  .never
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        interactor.removeListeners()
     }
     
     func messageSend(
@@ -168,6 +163,9 @@ extension ChatViewController: ViewConfiguration {
     }
 
     func configureViews() {
+        let backButton = UIBarButtonItem(title: String(), style: .plain, target: self, action: #selector(didTapOnBackButton))
+        navigationItem.backBarButtonItem = backButton
+        
         configureMessageCollectionView()
         configureMessageInputBar()
     }
@@ -195,13 +193,21 @@ extension ChatViewController: ChatDisplaying {
     }
     
     func endRefreshing() {
-        
+        refreshController.endRefreshing()
+    }
+    
+    func updateTypingIndicator(_ isTyping: Bool) {
+        updateTypingIndicator(show: isTyping)
     }
 }
 
 @objc private extension ChatViewController {
     func didTapOnContactInfo() {
         print("didTapOnContactInfo")
+    }
+    
+    func didTapOnBackButton() {
+        interactor.didTapOnBackButton()
     }
 }
 
@@ -251,7 +257,7 @@ private extension ChatViewController {
         messageInputBar.setRightStackViewWidthConstant(to: 55, animated: false)
     }
     
-    func updateTypingIndicator(_ show: Bool) {
+    func updateTypingIndicator(show: Bool) {
         descriptionLabel.text = Localizable.typing
         animateDescription(show: show)
     }

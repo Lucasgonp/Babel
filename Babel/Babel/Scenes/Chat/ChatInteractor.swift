@@ -6,6 +6,10 @@ protocol ChatInteracting: AnyObject {
     func listenForNewChats()
     func sendMessage(message: OutgoingMessage)
     func refreshNewMessages()
+    func createTypingObserver()
+    func updateTypingObserver()
+    func removeListeners()
+    func didTapOnBackButton()
     
     var allLocalMessages: Results<LocalMessage>? { get }
     var displayingMessagesCount: Int { get }
@@ -19,10 +23,10 @@ final class ChatInteractor {
     private let service: ChatServicing
     private let presenter: ChatPresenting
     private let dto: ChatDTO
-    private var currentUser: User {
-        AccountInfo.shared.user!
-    }
+    private let currentUser = UserSafe.shared.user
     private var notificationToken: NotificationToken?
+    
+    private var typingCounter = 0
     
     private(set) var allLocalMessages: Results<LocalMessage>?
     private(set) var displayingMessagesCount = 0
@@ -101,6 +105,31 @@ extension ChatInteractor: ChatInteracting {
             presenter.endRefreshing()
         }
     }
+    
+    func createTypingObserver() {
+        service.createTypingObserver(chatRoomId: dto.chatId) { [weak self] isTyping in
+            DispatchQueue.main.async { [weak self] in
+                self?.presenter.updateTypingIndicator(isTyping)
+            }
+        }
+    }
+    
+    func updateTypingObserver() {
+        typingCounter += 1
+        service.saveTypingCounter(isTyping: true, chatRoomId: dto.chatId)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
+            self?.typingCounterStop()
+        }
+    }
+    
+    func removeListeners() {
+        service.removeListeners()
+    }
+    
+    func didTapOnBackButton() {
+        presenter.didNextStep(action: .popViewController)
+    }
 }
 
 private extension ChatInteractor {
@@ -160,6 +189,13 @@ private extension ChatInteractor {
         for i in (minMessageNumber ... maxMessageNumber).reversed() {
             displayingMessagesCount += 1
             presenter.displayRefreshedMessages(allLocalMessages![i])
+        }
+    }
+    
+    func typingCounterStop() {
+        typingCounter -= 1
+        if typingCounter == .zero {
+            service.saveTypingCounter(isTyping: false, chatRoomId: dto.chatId)
         }
     }
 }

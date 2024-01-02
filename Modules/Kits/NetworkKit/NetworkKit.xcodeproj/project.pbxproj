@@ -27,6 +27,8 @@
 		7695457E2A76EAEA00BF114D /* NetworkKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 769545702A76EAEA00BF114D /* NetworkKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		76D246742AC355C700FDA81E /* RecentChatClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D246732AC355C700FDA81E /* RecentChatClient.swift */; };
 		76D246782AC4A34600FDA81E /* ChatHelperClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D246772AC4A34600FDA81E /* ChatHelperClient.swift */; };
+		76D4013F2B44CCE300CAEC23 /* StorageKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76D4013E2B44CCE300CAEC23 /* StorageKit.framework */; };
+		76D401402B44CCE300CAEC23 /* StorageKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76D4013E2B44CCE300CAEC23 /* StorageKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		76E1707B2B447A32003801AF /* ContactInfoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E1707A2B447A32003801AF /* ContactInfoClient.swift */; };
 		76EB85432B41E1F10090CE1C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EB85422B41E1F10090CE1C /* Constants.swift */; };
 		76EB85452B4341F40090CE1C /* TypingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EB85442B4341F40090CE1C /* TypingClient.swift */; };
@@ -59,6 +61,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				7608DE832A9FC31F0036027A /* Dependencies.framework in Embed Frameworks */,
+				76D401402B44CCE300CAEC23 /* StorageKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,6 +89,7 @@
 		7695457C2A76EAEA00BF114D /* NetworkKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkKitTests.swift; sourceTree = "<group>"; };
 		76D246732AC355C700FDA81E /* RecentChatClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatClient.swift; sourceTree = "<group>"; };
 		76D246772AC4A34600FDA81E /* ChatHelperClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHelperClient.swift; sourceTree = "<group>"; };
+		76D4013E2B44CCE300CAEC23 /* StorageKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StorageKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76E1707A2B447A32003801AF /* ContactInfoClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoClient.swift; sourceTree = "<group>"; };
 		76EB85422B41E1F10090CE1C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		76EB85442B4341F40090CE1C /* TypingClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingClient.swift; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 			files = (
 				7637C55F2A79D6EC00EB7688 /* Alamofire in Frameworks */,
 				7608DE822A9FC31F0036027A /* Dependencies.framework in Frameworks */,
+				76D4013F2B44CCE300CAEC23 /* StorageKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +122,7 @@
 		7608DE802A9FC31F0036027A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				76D4013E2B44CCE300CAEC23 /* StorageKit.framework */,
 				7608DE812A9FC31F0036027A /* Dependencies.framework */,
 			);
 			name = Frameworks;

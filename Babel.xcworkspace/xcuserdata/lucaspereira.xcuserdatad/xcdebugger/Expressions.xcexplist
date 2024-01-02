@@ -3,12 +3,7 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "closure #1 in LoginViewController.keyboardWillShow(notification:):LoginViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "textField.endOfDocument">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "ChatViewController.isLastInSet(_:):MessageLayoutDelegate.swift">
       </ContextState>
       <ContextState
          contextName = "LoginViewController.keyboardWillShow2(notification:):LoginViewController.swift">
@@ -17,6 +12,34 @@
                value = "scrollView">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in ChatInteractor.loadChatMessages():ChatInteractor.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.allLocalMessages">
+            </PersistentString>
+            <PersistentString
+               value = "allLocalMessages">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChatViewController.displayMessage(_:):ChatViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ChatViewController.cellBottomLabelHeight(for:at:in:):MessageLayoutDelegate.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in LoginViewController.keyboardWillShow(notification:):LoginViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "textField.endOfDocument">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChatViewController.cellBottomLabelAttributedText(for:at:):MessageDataSource.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

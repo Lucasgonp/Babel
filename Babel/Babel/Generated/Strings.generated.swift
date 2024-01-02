@@ -13,14 +13,14 @@ internal enum Strings {
   internal enum ChatView {
     /// Pull to load more
     internal static let pullToLoad = Strings.tr("Localizable", "ChatView.pullToLoad", fallback: "Pull to load more")
+    /// Read
+    internal static let read = Strings.tr("Localizable", "ChatView.read", fallback: "Read")
     /// Send
     internal static let send = Strings.tr("Localizable", "ChatView.send", fallback: "Send")
+    /// Sent
+    internal static let sent = Strings.tr("Localizable", "ChatView.sent", fallback: "Sent")
     /// Typing...
     internal static let typing = Strings.tr("Localizable", "ChatView.typing", fallback: "Typing...")
-    internal enum MessageStatus {
-      /// Sent
-      internal static let sent = Strings.tr("Localizable", "ChatView.MessageStatus.sent", fallback: "Sent")
-    }
   }
   internal enum Commons {
     /// Done

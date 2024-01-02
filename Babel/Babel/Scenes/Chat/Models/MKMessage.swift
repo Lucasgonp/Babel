@@ -11,8 +11,8 @@ final class MKMessage: NSObject, MessageType {
         return mkSender
     }
     let senderInitials: String
-    let status: String
-    let readDate: Date
+    var status: String
+    var readDate: Date
     
     init(message: LocalMessage) {
         self.messageId = message.id

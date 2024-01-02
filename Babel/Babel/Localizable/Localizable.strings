@@ -46,4 +46,5 @@
 "ChatView.pullToLoad" = "Pull to load more";
 "ChatView.typing" = "Typing...";
 "ChatView.send" = "Send";
-"ChatView.MessageStatus.sent" = "Sent";
+"ChatView.sent" = "Sent";
+"ChatView.read" = "Read";

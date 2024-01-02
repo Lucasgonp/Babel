@@ -8,11 +8,13 @@ protocol ChatServicing {
     func saveTypingCounter(isTyping: Bool, chatRoomId: String)
     func removeListeners()
     func getRecentChats(chatRoomId: String, completion: @escaping (_ recents: [RecentChatModel]) -> Void)
+    func updateMessageInFirebase(message: LocalMessage, dto: ChatMessageDTO)
+    func listenForReadStatusChange(_ documentId: String, collectionId: String, completion: @escaping (_ localMessage: LocalMessage) -> Void)
 }
 
 final class ChatService {
     typealias ChatClientProtocol = FirebaseMessageProtocol &
-                               FirebaseTypingProtocol
+                                   FirebaseTypingProtocol
     
     private let currentUser = UserSafe.shared.user
     private let client: ChatClientProtocol
@@ -50,5 +52,13 @@ extension ChatService: ChatServicing {
     
     func getRecentChats(chatRoomId: String, completion: @escaping (_ recents: [RecentChatModel]) -> Void) {
         client.getRecentChatsFrom(chatRoomId: chatRoomId, completion: completion)
+    }
+    
+    func updateMessageInFirebase(message: LocalMessage, dto: ChatMessageDTO) {
+        client.updateMessageInFirebase(message: message, dto: dto)
+    }
+    
+    func listenForReadStatusChange(_ documentId: String, collectionId: String, completion: @escaping (_ localMessage: LocalMessage) -> Void) {
+        client.listenForReadStatusChange(documentId, collectionId: collectionId, completion: completion)
     }
 }

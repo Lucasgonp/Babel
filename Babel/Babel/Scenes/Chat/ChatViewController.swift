@@ -11,6 +11,7 @@ protocol ChatDisplaying: AnyObject {
     func refreshNewMessages()
     func endRefreshing()
     func updateTypingIndicator(_ isTyping: Bool)
+    func updateMessage(_ localMessage: LocalMessage)
 }
 
 private extension ChatViewController.Layout {
@@ -82,7 +83,7 @@ final class ChatViewController: MessagesViewController {
         displayName: currentUser.name
     )
     
-    private(set) lazy var mkMessages = [MKMessage]()
+    private(set) var mkMessages = [MKMessage]()
     
     private let currentUser = UserSafe.shared.user
     private let dto: ChatDTO
@@ -103,8 +104,7 @@ final class ChatViewController: MessagesViewController {
         super.viewDidLoad()
         buildLayout()
         interactor.loadChatMessages()
-        interactor.listenForNewChats()
-        interactor.createTypingObserver()
+        interactor.registerObservers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -198,6 +198,22 @@ extension ChatViewController: ChatDisplaying {
     
     func updateTypingIndicator(_ isTyping: Bool) {
         updateTypingIndicator(show: isTyping)
+    }
+    
+    func updateMessage(_ localMessage: LocalMessage) {
+        for index in 0 ..< mkMessages.count {
+            let tempMessage = mkMessages[index]
+            if localMessage.id == tempMessage.messageId {
+                mkMessages[index].status = localMessage.status
+                mkMessages[index].readDate = localMessage.readDate
+                
+                RealmManager.shared.saveToRealm(localMessage)
+            }
+            
+            if mkMessages[index].status == Localizable.read {
+                self.messagesCollectionView.reloadData()
+            }
+        }
     }
 }
 

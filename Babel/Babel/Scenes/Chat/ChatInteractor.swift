@@ -3,13 +3,12 @@ import RealmSwift
 
 protocol ChatInteracting: AnyObject {
     func loadChatMessages()
-    func listenForNewChats()
     func sendMessage(message: OutgoingMessage)
     func refreshNewMessages()
-    func createTypingObserver()
     func updateTypingObserver()
-    func removeListeners()
     func didTapOnBackButton()
+    func registerObservers()
+    func removeListeners()
     
     var allLocalMessages: Results<LocalMessage>? { get }
     var displayingMessagesCount: Int { get }
@@ -51,32 +50,18 @@ extension ChatInteractor: ChatInteracting {
         }
         
         notificationToken = allLocalMessages?.observe({ [weak self] (changes: RealmCollectionChange) in
+            guard let self else { return }
             switch changes {
             case .initial:
-                self?.insertMessages()
+                self.insertMessages()
             case let .update(_, _, insertions, _):
                 for index in insertions {
-                    self?.presenter.displayMessage(self!.allLocalMessages![index])
+                    self.insertMessage(self.allLocalMessages![index])
                 }
             case let .error(error):
                 fatalError("Error on new insertion \(error.localizedDescription)")
             }
         })
-    }
-    
-    func listenForNewChats() {
-        let date = allLocalMessages?.last?.date ?? Date()
-        let lastMessageDate = Calendar.current.date(byAdding: .second, value: 1, to: date) ?? date
-        service.listenForNewChats(documentId: currentUser.id, collectionId: dto.chatId, lastMessageDate: lastMessageDate) { result in
-            switch result {
-            case var .success(message):
-                RealmManager.shared.saveToRealm(message)
-                
-            case let .failure(error):
-                print("Error listening to chat: \(error.localizedDescription)")
-                return
-            }
-        }
     }
     
     func sendMessage(message: OutgoingMessage) {
@@ -87,7 +72,7 @@ extension ChatInteractor: ChatInteracting {
         localMessage.senderName = currentUser.name
         localMessage.senderInitials = "\(currentUser.username.first!)"
         localMessage.date = Date()
-        localMessage.status = Localizable.MessageStatus.sent
+        localMessage.status = Localizable.sent
         
         if let text = message.text {
             sendTextMessage(message: localMessage, text: text, memberIds: message.memberIds)
@@ -107,14 +92,6 @@ extension ChatInteractor: ChatInteracting {
         }
     }
     
-    func createTypingObserver() {
-        service.createTypingObserver(chatRoomId: dto.chatId) { [weak self] isTyping in
-            DispatchQueue.main.async { [weak self] in
-                self?.presenter.updateTypingIndicator(isTyping)
-            }
-        }
-    }
-    
     func updateTypingObserver() {
         typingCounter += 1
         service.saveTypingCounter(isTyping: true, chatRoomId: dto.chatId)
@@ -131,9 +108,41 @@ extension ChatInteractor: ChatInteracting {
     func didTapOnBackButton() {
         presenter.didNextStep(action: .popViewController)
     }
+    
+    func registerObservers() {
+        listenForNewChats()
+        createTypingObserver()
+        listenForReadStatusChange()
+    }
 }
 
 private extension ChatInteractor {
+    func listenForNewChats() {
+        let date = allLocalMessages?.last?.date ?? Date()
+        let lastMessageDate = Calendar.current.date(byAdding: .second, value: 1, to: date) ?? date
+        service.listenForNewChats(documentId: currentUser.id, collectionId: dto.chatId, lastMessageDate: lastMessageDate) { [weak self] result in
+            switch result {
+            case let .success(message):
+                
+                if message.senderId != self?.currentUser.id {
+                    RealmManager.shared.saveToRealm(message)
+                }
+                
+            case let .failure(error):
+                print("Error listening to chat: \(error.localizedDescription)")
+                return
+            }
+        }
+    }
+    
+    func createTypingObserver() {
+        service.createTypingObserver(chatRoomId: dto.chatId) { [weak self] isTyping in
+            DispatchQueue.main.async { [weak self] in
+                self?.presenter.updateTypingIndicator(isTyping)
+            }
+        }
+    }
+    
     func sendTextMessage(message: LocalMessage, text: String, memberIds: [String]) {
         message.message = text
         message.type = ChatMessageType.text.rawValue
@@ -160,8 +169,17 @@ private extension ChatInteractor {
         }
         
         for i in minMessageNumber ..< maxMessageNumber {
-            displayingMessagesCount += 1
-            presenter.displayMessage(allLocalMessages[i])
+            insertMessage(allLocalMessages[i])
+        }
+    }
+    
+    //MARK: Read message
+    func listenForReadStatusChange() {
+        service.listenForReadStatusChange(currentUser.id, collectionId: dto.chatId) { [weak self] updatedMessage in
+            if updatedMessage.status != Localizable.sent {
+                self?.resetUnreadCount()
+                self?.presenter.updateMessage(updatedMessage)
+            }
         }
     }
     
@@ -193,6 +211,27 @@ private extension ChatInteractor {
         }
     }
     
+    func insertMessage(_ localMessage: LocalMessage) {
+        if localMessage.senderId != currentUser.id && localMessage.status != Localizable.read {
+            markMessageAsRead(localMessage)
+        }
+        
+        displayingMessagesCount += 1
+        presenter.displayMessage(localMessage)
+    }
+    
+    func markMessageAsRead(_ localMessage: LocalMessage) {
+        service.updateMessageInFirebase(
+            message: localMessage,
+            dto: .init(
+                chatRoomId: dto.chatId,
+                messageId: localMessage.id,
+                memberIds: [currentUser.id, dto.recipientId],
+                status: [kSTATUS: Localizable.read, kREADDATE: Date()]
+            )
+        )
+    }
+    
     func typingCounterStop() {
         typingCounter -= 1
         if typingCounter == .zero {
@@ -218,5 +257,18 @@ private extension ChatInteractor {
         tempRecent.date = Date()
         
         ChatHelper.shared.saveRecent(id: tempRecent.id, recentChat: tempRecent)
+    }
+    
+    func resetUnreadCount() {
+        service.getRecentChats(chatRoomId: dto.chatId) { recents in
+            for recent in recents {
+                var recent = recent
+                if recent.senderId != UserSafe.shared.user.id {
+                    recent.unreadCounter = 0
+                }
+                
+                ChatHelper.shared.saveRecent(id: recent.id, recentChat: recent)
+            }
+        }
     }
 }

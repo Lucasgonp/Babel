@@ -6,6 +6,8 @@ public protocol FirebaseMessageProtocol {
     func getOldChats<T: Decodable>(documentId: String, collectionId: String, completion: @escaping (Result<[T], FirebaseError>) -> Void)
     func addMessage<T: Encodable>(_ message: T, memberId: String, chatRoomId: String, messageId: String)
     func getRecentChatsFrom<T: Decodable>(chatRoomId: String, completion: @escaping (_ recents: [T]) -> Void)
+    func updateMessageInFirebase(message: Encodable, dto: ChatMessageDTO)
+    func listenForReadStatusChange<T: Decodable>(_ documentId: String, collectionId: String, completion: @escaping (T) -> Void)
 }
 
 extension FirebaseClient: FirebaseMessageProtocol {
@@ -34,7 +36,6 @@ extension FirebaseClient: FirebaseMessageProtocol {
                 }
             }
         }
-//        var updatedChatListener: ListenerRegistration?
     }
     
     public func getOldChats<T: Decodable>(documentId: String, collectionId: String, completion: @escaping (Result<[T], FirebaseError>) -> Void) {
@@ -68,5 +69,38 @@ extension FirebaseClient: FirebaseMessageProtocol {
             let recents = documents.compactMap({ try? $0.data(as: T.self) })
             completion(recents)
         }
+    }
+    
+    public func updateMessageInFirebase(message: Encodable, dto: ChatMessageDTO) {
+        for userId in dto.memberIds {
+            firebaseReference(.messages).document(userId).collection(dto.chatRoomId).document(dto.messageId).updateData(dto.status)
+        }
+    }
+    
+    public func listenForReadStatusChange<T: Decodable>(_ documentId: String, collectionId: String, completion: @escaping (T) -> Void) {
+        updatedChatListener = firebaseReference(.messages).document(documentId).collection(collectionId).addSnapshotListener({ querySnapshot, error in
+            guard let querySnapshot else {
+                return
+            }
+            
+            for change in querySnapshot.documentChanges {
+                if change.type == .modified {
+                    let result = Result {
+                        try? change.document.data(as: T.self)
+                    }
+                    
+                    switch result {
+                    case let .success(message):
+                        if let message {
+                            completion(message)
+                        } else {
+                            print("document doesnt exist")
+                        }
+                    case let .failure(error):
+                        print("error listening for update chat: \(error.localizedDescription)")
+                    }
+                }
+            }
+        })
     }
 }

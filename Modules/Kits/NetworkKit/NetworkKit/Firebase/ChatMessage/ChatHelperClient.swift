@@ -1,17 +1,3 @@
-public struct ChatHelperDTO {
-    let chatRoomId: String
-    let chatRoomKey: String
-    let senderKey: String
-    let currentUserId: String
-    
-    public init(chatRoomId: String, chatRoomKey: String, senderKey: String, currentUserId: String) {
-        self.chatRoomId = chatRoomId
-        self.chatRoomKey = chatRoomKey
-        self.senderKey = senderKey
-        self.currentUserId = currentUserId
-    }
-}
-
 public protocol ChatHelperClientProtocol {
     func resetRecentCounter<T: Codable>(dto: ChatHelperDTO, completion: @escaping ([T]) -> Void)
     func saveRecent<T: Codable>(id: String, recentChat: T)

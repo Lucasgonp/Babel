@@ -169,6 +169,21 @@ extension ChatViewController: ViewConfiguration {
         configureMessageCollectionView()
         configureMessageInputBar()
     }
+    
+    func shouldDisplayHeader(for message: MessageType, at indexPath: IndexPath) -> Bool {
+        if indexPath.section == 0 {
+            return true
+        }
+        
+        let previousIndexPath = IndexPath(row: 0, section: indexPath.section - 1)
+        let previousMessage = messageForItem(at: previousIndexPath, in: messagesCollectionView)
+        
+        if message.sentDate.isInSameDayOf(date: previousMessage.sentDate) {
+            return false
+        }
+        
+        return true
+    }
 }
 
 // MARK: - ChatDisplaying

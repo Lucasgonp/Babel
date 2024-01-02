@@ -3,7 +3,7 @@ import Foundation
 
 extension ChatViewController: MessagesLayoutDelegate {    
     func cellTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
-        if indexPath.section % 3 == 0 {
+        if shouldDisplayHeader(for: message, at: indexPath) {
             if indexPath.section == 0 && (interactor.allLocalMessages?.count ?? 0) > interactor.displayingMessagesCount {
                 return 40
             }

@@ -26,6 +26,16 @@ extension Date {
     func time() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
-        return formatter.string(from: Date())
+        return formatter.string(from: self)
+    }
+    
+    func date() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy"
+        return formatter.string(from: self)
+    }
+    
+    func isInSameDayOf(date: Date) -> Bool {
+        self.date() == date.date()
     }
 }

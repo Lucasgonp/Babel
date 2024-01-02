@@ -21,6 +21,16 @@ internal enum Strings {
     internal static let sent = Strings.tr("Localizable", "ChatView.sent", fallback: "Sent")
     /// Typing...
     internal static let typing = Strings.tr("Localizable", "ChatView.typing", fallback: "Typing...")
+    internal enum ActionSheet {
+      /// Camera
+      internal static let camera = Strings.tr("Localizable", "ChatView.ActionSheet.camera", fallback: "Camera")
+      /// Cancel
+      internal static let cancel = Strings.tr("Localizable", "ChatView.ActionSheet.cancel", fallback: "Cancel")
+      /// Library
+      internal static let library = Strings.tr("Localizable", "ChatView.ActionSheet.library", fallback: "Library")
+      /// Share location
+      internal static let shareLocation = Strings.tr("Localizable", "ChatView.ActionSheet.shareLocation", fallback: "Share location")
+    }
   }
   internal enum Commons {
     /// Done

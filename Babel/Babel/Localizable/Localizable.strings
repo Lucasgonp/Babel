@@ -48,3 +48,7 @@
 "ChatView.send" = "Send";
 "ChatView.sent" = "Sent";
 "ChatView.read" = "Read";
+"ChatView.ActionSheet.camera" = "Camera";
+"ChatView.ActionSheet.library" = "Library";
+"ChatView.ActionSheet.shareLocation" = "Share location";
+"ChatView.ActionSheet.cancel" = "Cancel";

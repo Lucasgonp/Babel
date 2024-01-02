@@ -308,26 +308,26 @@ private extension ChatViewController {
     }
     
     func makeAttachActionSheet() -> UIAlertController {
-        let cameraImage = UIImage(named: "camera")?.withRenderingMode(.alwaysTemplate)
-        let cameraAction = UIAlertAction(title: "Camera", style: .default, image: cameraImage, handler: { _ in
+        let cameraImage = UIImage(systemName: "camera")?.withRenderingMode(.alwaysTemplate)
+        let cameraAction = UIAlertAction(title: Localizable.ActionSheet.camera, style: .default, image: cameraImage, handler: { _ in
             print("didTapOnCamera")
         })
         
-        let mediaImage = UIImage(named: "photo")?.withRenderingMode(.alwaysTemplate)
-        let mediaAction = UIAlertAction(title: "Library", style: .default, image: mediaImage, handler: { _ in
+        let libraryImage = UIImage(systemName: "photo")?.withRenderingMode(.alwaysTemplate)
+        let libraryAction = UIAlertAction(title: Localizable.ActionSheet.library, style: .default, image: libraryImage, handler: { _ in
             print("didTapOnLibrary")
         })
         
-        let locationImage = UIImage(named: "mappin.and.ellipse")?.withRenderingMode(.alwaysTemplate)
-        let locationAction = UIAlertAction(title: "Share location", style: .default, image: locationImage, handler: { _ in
+        let locationImage = UIImage(systemName: "mappin.and.ellipse")?.withRenderingMode(.alwaysTemplate)
+        let locationAction = UIAlertAction(title: Localizable.ActionSheet.shareLocation, style: .default, image: locationImage, handler: { _ in
             print("didTapOnShareLocation")
         })
         
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         actionSheet.addAction(cameraAction)
-        actionSheet.addAction(mediaAction)
+        actionSheet.addAction(libraryAction)
         actionSheet.addAction(locationAction)
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        actionSheet.addAction(UIAlertAction(title: Localizable.ActionSheet.cancel, style: .cancel, handler: nil))
         
         return actionSheet
     }

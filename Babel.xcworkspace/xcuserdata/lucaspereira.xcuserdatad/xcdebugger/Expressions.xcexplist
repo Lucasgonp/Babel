@@ -6,6 +6,17 @@
          contextName = "ChatViewController.isLastInSet(_:):MessageLayoutDelegate.swift">
       </ContextState>
       <ContextState
+         contextName = "ContactInfoInteractor.loadContactInfo():ContactInfoInteractor.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "contactUserId">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ChatViewController.shouldDisplayHeader(for:at:):MessageDataSource.swift">
+      </ContextState>
+      <ContextState
          contextName = "LoginViewController.keyboardWillShow2(notification:):LoginViewController.swift">
          <PersistentStrings>
             <PersistentString

@@ -1,12 +1,20 @@
+import NetworkKit
+
 protocol ContactInfoServicing {
-    // template
+    func getContactUser(from id: String, completion: @escaping (Result<User, FirebaseError>) -> Void)
 }
 
 final class ContactInfoService {
-    // template
+    private let client: ContactInfoClientProtocol
+    
+    init(client: ContactInfoClientProtocol) {
+        self.client = client
+    }
 }
 
 // MARK: - ContactInfoServicing
 extension ContactInfoService: ContactInfoServicing {
-    // template
+    func getContactUser(from id: String, completion: @escaping (Result<User, FirebaseError>) -> Void) {
+        client.downloadUser(id: id, completion: completion)
+    }
 }

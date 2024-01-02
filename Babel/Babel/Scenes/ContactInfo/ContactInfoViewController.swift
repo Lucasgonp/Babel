@@ -7,7 +7,7 @@ protocol ContactInfoDisplaying: AnyObject {
 }
 
 enum ContactInfoViewState {
-    case success(contact: User)
+    case success(contact: User, shouldDisplayStartChat: Bool)
     case error(message: String)
     case setLoading(isLoading: Bool)
 }
@@ -39,6 +39,7 @@ final class ContactInfoViewController: ViewController<ContactInfoInteracting, UI
     weak var delegate: SettingsViewDelegate?
     
     private var contactUser: User?
+    private var shouldDisplayStartChat = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +60,9 @@ final class ContactInfoViewController: ViewController<ContactInfoInteracting, UI
     }
 
     override func configureViews() {
+        let backButton = UIBarButtonItem(title: String(), style: .plain, target: nil, action: nil)
+        navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        
         title = Localizable.title
         view.backgroundColor = Color.backgroundPrimary.uiColor
     }
@@ -68,8 +72,9 @@ final class ContactInfoViewController: ViewController<ContactInfoInteracting, UI
 extension ContactInfoViewController: ContactInfoDisplaying {
     func displayViewState(_ state: ContactInfoViewState) {
         switch state {
-        case let .success(contact):
+        case let .success(contact, shouldDisplayStartChat):
             self.contactUser = contact
+            self.shouldDisplayStartChat = shouldDisplayStartChat
             tableView.reloadData()
         case let .error(message):
             showErrorAlert(message)
@@ -95,7 +100,7 @@ extension ContactInfoViewController: UITableViewDelegate {
 
 extension ContactInfoViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return shouldDisplayStartChat ? 2 : 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

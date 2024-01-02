@@ -163,8 +163,8 @@ extension ChatViewController: ViewConfiguration {
     }
 
     func configureViews() {
-        let backButton = UIBarButtonItem(title: String(), style: .plain, target: self, action: #selector(didTapOnBackButton))
-        navigationItem.backBarButtonItem = backButton
+        let backButton = UIBarButtonItem(title: String(), style: .plain, target: nil, action: nil)
+        navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         
         configureMessageCollectionView()
         configureMessageInputBar()
@@ -234,7 +234,7 @@ extension ChatViewController: ChatDisplaying {
 
 @objc private extension ChatViewController {
     func didTapOnContactInfo() {
-        print("didTapOnContactInfo")
+        interactor.didTapOnContactInfo()
     }
     
     func didTapOnBackButton() {

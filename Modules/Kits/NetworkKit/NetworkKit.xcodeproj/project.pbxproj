@@ -27,6 +27,7 @@
 		7695457E2A76EAEA00BF114D /* NetworkKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 769545702A76EAEA00BF114D /* NetworkKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		76D246742AC355C700FDA81E /* RecentChatClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D246732AC355C700FDA81E /* RecentChatClient.swift */; };
 		76D246782AC4A34600FDA81E /* ChatHelperClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D246772AC4A34600FDA81E /* ChatHelperClient.swift */; };
+		76E1707B2B447A32003801AF /* ContactInfoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E1707A2B447A32003801AF /* ContactInfoClient.swift */; };
 		76EB85432B41E1F10090CE1C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EB85422B41E1F10090CE1C /* Constants.swift */; };
 		76EB85452B4341F40090CE1C /* TypingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EB85442B4341F40090CE1C /* TypingClient.swift */; };
 		76EB85482B436B9F0090CE1C /* ChatHelperDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EB85472B436B9F0090CE1C /* ChatHelperDTO.swift */; };
@@ -85,6 +86,7 @@
 		7695457C2A76EAEA00BF114D /* NetworkKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkKitTests.swift; sourceTree = "<group>"; };
 		76D246732AC355C700FDA81E /* RecentChatClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatClient.swift; sourceTree = "<group>"; };
 		76D246772AC4A34600FDA81E /* ChatHelperClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHelperClient.swift; sourceTree = "<group>"; };
+		76E1707A2B447A32003801AF /* ContactInfoClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoClient.swift; sourceTree = "<group>"; };
 		76EB85422B41E1F10090CE1C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		76EB85442B4341F40090CE1C /* TypingClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingClient.swift; sourceTree = "<group>"; };
 		76EB85472B436B9F0090CE1C /* ChatHelperDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHelperDTO.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 		7608DE852A9FC4F50036027A /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
+				76E170792B447A23003801AF /* ContactInfo */,
 				761011A32B3A218D004639C4 /* ChatMessage */,
 				7608DE7E2A9FC2810036027A /* FirebaseClient.swift */,
 				7608DE8C2A9FCE0F0036027A /* UsersClient.swift */,
@@ -243,6 +246,14 @@
 				7695457C2A76EAEA00BF114D /* NetworkKitTests.swift */,
 			);
 			path = NetworkKitTests;
+			sourceTree = "<group>";
+		};
+		76E170792B447A23003801AF /* ContactInfo */ = {
+			isa = PBXGroup;
+			children = (
+				76E1707A2B447A32003801AF /* ContactInfoClient.swift */,
+			);
+			path = ContactInfo;
 			sourceTree = "<group>";
 		};
 		76EB85462B436B8F0090CE1C /* Models */ = {
@@ -395,6 +406,7 @@
 				76EB85432B41E1F10090CE1C /* Constants.swift in Sources */,
 				7608DE7F2A9FC2810036027A /* FirebaseClient.swift in Sources */,
 				76EB85452B4341F40090CE1C /* TypingClient.swift in Sources */,
+				76E1707B2B447A32003801AF /* ContactInfoClient.swift in Sources */,
 				760B3EEB2A79AE50000CBDB5 /* ExtensionHelpers.swift in Sources */,
 				76D246742AC355C700FDA81E /* RecentChatClient.swift in Sources */,
 				7637C5632A79D7A700EB7688 /* HttpGetProtocol.swift in Sources */,

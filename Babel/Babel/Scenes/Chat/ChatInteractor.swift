@@ -7,6 +7,7 @@ protocol ChatInteracting: AnyObject {
     func refreshNewMessages()
     func updateTypingObserver()
     func didTapOnBackButton()
+    func didTapOnContactInfo()
     func registerObservers()
     func removeListeners()
     
@@ -107,6 +108,10 @@ extension ChatInteractor: ChatInteracting {
     
     func didTapOnBackButton() {
         presenter.didNextStep(action: .popViewController)
+    }
+    
+    func didTapOnContactInfo() {
+        presenter.didNextStep(action: .showContactInfo(dto.recipientId))
     }
     
     func registerObservers() {

@@ -70,6 +70,8 @@ final class ChatViewController: MessagesViewController {
         return refreshController
     }()
     
+    private lazy var attachActionSheet = makeAttachActionSheet()
+    
     private lazy var micButtonItem: InputBarButtonItem = {
         let micButtonItem = InputBarButtonItem()
         micButtonItem.image = UIImage(systemName: "mic.fill")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 30))
@@ -269,8 +271,9 @@ private extension ChatViewController {
         let attachButton = InputBarButtonItem()
         attachButton.image = UIImage(systemName: "plus")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 30))
         attachButton.setSize(CGSize(width: 30, height: 30), animated: false)
-        attachButton.onTouchUpInside { item in
-            print("button pressed")
+        attachButton.onTouchUpInside { [weak self] item in
+            guard let self else { return }
+            present(self.attachActionSheet, animated: true)
         }
         messageInputBar.setStackViewItems([attachButton], forStack: .left, animated: false)
         messageInputBar.setLeftStackViewWidthConstant(to: 36, animated: false)
@@ -302,5 +305,30 @@ private extension ChatViewController {
                 self.descriptionLabel.isHidden = true
             }
         }
+    }
+    
+    func makeAttachActionSheet() -> UIAlertController {
+        let cameraImage = UIImage(named: "camera")?.withRenderingMode(.alwaysTemplate)
+        let cameraAction = UIAlertAction(title: "Camera", style: .default, image: cameraImage, handler: { _ in
+            print("didTapOnCamera")
+        })
+        
+        let mediaImage = UIImage(named: "photo")?.withRenderingMode(.alwaysTemplate)
+        let mediaAction = UIAlertAction(title: "Library", style: .default, image: mediaImage, handler: { _ in
+            print("didTapOnLibrary")
+        })
+        
+        let locationImage = UIImage(named: "mappin.and.ellipse")?.withRenderingMode(.alwaysTemplate)
+        let locationAction = UIAlertAction(title: "Share location", style: .default, image: locationImage, handler: { _ in
+            print("didTapOnShareLocation")
+        })
+        
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        actionSheet.addAction(cameraAction)
+        actionSheet.addAction(mediaAction)
+        actionSheet.addAction(locationAction)
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        return actionSheet
     }
 }

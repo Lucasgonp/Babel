@@ -120,6 +120,7 @@
 		76D246842AC4AE7000FDA81E /* ChatInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D2467E2AC4AE7000FDA81E /* ChatInteractor.swift */; };
 		76D246852AC4AE7000FDA81E /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D2467F2AC4AE7000FDA81E /* ChatService.swift */; };
 		76D246882AC4B4A000FDA81E /* ChatDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D246872AC4B4A000FDA81E /* ChatDTO.swift */; };
+		76DA757E2B44C5B2000B7FD7 /* UIAlertAction+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DA757D2B44C5B2000B7FD7 /* UIAlertAction+Extensions.swift */; };
 		76DA7EA22AB787C700106731 /* RecentChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DA7EA12AB787C700106731 /* RecentChat.swift */; };
 		76DA7EBC2AB78D1F00106731 /* RecentChatsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DA7EB62AB78D1F00106731 /* RecentChatsFactory.swift */; };
 		76DA7EBD2AB78D1F00106731 /* RecentChatsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DA7EB72AB78D1F00106731 /* RecentChatsPresenter.swift */; };
@@ -281,6 +282,7 @@
 		76D2467E2AC4AE7000FDA81E /* ChatInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInteractor.swift; sourceTree = "<group>"; };
 		76D2467F2AC4AE7000FDA81E /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
 		76D246872AC4B4A000FDA81E /* ChatDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDTO.swift; sourceTree = "<group>"; };
+		76DA757D2B44C5B2000B7FD7 /* UIAlertAction+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction+Extensions.swift"; sourceTree = "<group>"; };
 		76DA7EA12AB787C700106731 /* RecentChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChat.swift; sourceTree = "<group>"; };
 		76DA7EB62AB78D1F00106731 /* RecentChatsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatsFactory.swift; sourceTree = "<group>"; };
 		76DA7EB72AB78D1F00106731 /* RecentChatsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatsPresenter.swift; sourceTree = "<group>"; };
@@ -536,6 +538,7 @@
 			isa = PBXGroup;
 			children = (
 				7669BA292ABDD3550002AD4C /* Date+Extensions.swift */,
+				76DA757D2B44C5B2000B7FD7 /* UIAlertAction+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -936,6 +939,7 @@
 				76DA7EA22AB787C700106731 /* RecentChat.swift in Sources */,
 				7608DE692A9BAFDE0036027A /* EditBioRouter.swift in Sources */,
 				76EF5D4A2A905E3700D9AE8B /* Authenticator.framework in Sources */,
+				76DA757E2B44C5B2000B7FD7 /* UIAlertAction+Extensions.swift in Sources */,
 				7669BA2A2ABDD3550002AD4C /* Date+Extensions.swift in Sources */,
 				7620F2B82A92DE1B002A4EB5 /* SettingsInteractor.swift in Sources */,
 				7620F2B62A92DE1B002A4EB5 /* SettingsRouter.swift in Sources */,

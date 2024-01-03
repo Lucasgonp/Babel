@@ -315,8 +315,10 @@ private extension ChatViewController {
         
         let libraryImage = UIImage(systemName: "photo")?.withRenderingMode(.alwaysTemplate)
         let libraryAction = UIAlertAction(title: Localizable.ActionSheet.library, style: .default, image: libraryImage, handler: { [weak self] _ in
-            self?.galleryController.showSingleMediaPicker(from: self?.navigationController, completion: { data in
-                print("done")
+            self?.galleryController.showSingleMediaPicker(from: self?.navigationController, completion: { [weak self] data in
+                DispatchQueue.main.async { [weak self] in
+                    self?.printTest()
+                }
             })
         })
         
@@ -332,5 +334,9 @@ private extension ChatViewController {
         actionSheet.addAction(UIAlertAction(title: Localizable.ActionSheet.cancel, style: .cancel, handler: nil))
         
         return actionSheet
+    }
+    
+    func printTest() {
+        print("done")
     }
 }

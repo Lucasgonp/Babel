@@ -10,7 +10,7 @@ public final class GalleryController {
     }
     
     public func showSinglePhotoPicker(from navigation: UINavigationController?, completion: @escaping (UIImage?) -> Void) {
-        picker.didFinishPicking { [weak picker] items, cancelled in
+        picker.didFinishPicking { [unowned picker] items, cancelled in
             if cancelled {
                 DispatchQueue.main.async {
                     completion(nil)
@@ -23,35 +23,35 @@ public final class GalleryController {
                 }
             }
             
-            picker?.dismiss(animated: true, completion: nil)
+            picker.dismiss(animated: true, completion: nil)
         }
         
-        DispatchQueue.main.async { [unowned self] in
-            navigation?.present(self.picker, animated: true)
+        DispatchQueue.main.async { [unowned picker] in
+            navigation?.present(picker, animated: true)
         }
     }
     
     public func showSingleMediaPicker(from navigation: UINavigationController?, completion: @escaping (Data?) -> Void) {
-        picker.didFinishPicking { items, cancelled in
-            DispatchQueue.main.async {
-                if cancelled {
+        picker.didFinishPicking { [unowned picker] items, cancelled in
+            if cancelled {
+                picker.dismiss(animated: true) {
                     completion(nil)
-                }
-                
-                if let item = items.singlePhoto {
-//                    print("fromCamera: \(item.fromCamera)") // Image source (camera or library)
-//                    print("image: \(item.image)") // Final image selected by the user
-//                    print("originalImage: \(item.originalImage)") // original image selected by the user, unfiltered
-//                    print("modifiedImage: \(item.modifiedImage)") // Transformed image, can be nil
-//                    print("exifMeta: \(item.exifMeta!)") // Print exif meta data of original image.
-                    completion(item.image.pngData())
                 }
             }
             
+            if let item = items.singlePhoto {
+                //                    print("fromCamera: \(item.fromCamera)") // Image source (camera or library)
+                //                    print("image: \(item.image)") // Final image selected by the user
+                //                    print("originalImage: \(item.originalImage)") // original image selected by the user, unfiltered
+                //                    print("modifiedImage: \(item.modifiedImage)") // Transformed image, can be nil
+                //                    print("exifMeta: \(item.exifMeta!)") // Print exif meta data of original image.
+                completion(item.image.pngData())
+            }
+            
             if let item = items.singleVideo {
-                print("fromCamera: \(item.fromCamera)")
-                print("thumbnail: \(item.thumbnail)")
-                print("url: \(item.url)")
+                //                print("fromCamera: \(item.fromCamera)")
+                //                print("thumbnail: \(item.thumbnail)")
+                //                print("url: \(item.url)")
                 item.fetchData(completion: completion)
             }
         }
@@ -65,7 +65,6 @@ public final class GalleryController {
 public extension GalleryController {
     enum Configuration {
         case avatarPhoto
-        case singlePhoto
         case singlemedia
         
         var picker: YPImagePicker {
@@ -79,12 +78,6 @@ public extension GalleryController {
                 config.library.mediaType = .photo
                 config.library.maxNumberOfItems = 1
                 config.showsCrop = .circle
-                
-                return YPImagePicker(configuration: config)
-            case .singlePhoto:
-                config.showsPhotoFilters = false
-                config.screens = [.library]
-                config.library.maxNumberOfItems = 1
                 
                 return YPImagePicker(configuration: config)
             case .singlemedia:

@@ -3,7 +3,6 @@ import DesignKit
 import MessageKit
 import InputBarAccessoryView
 import GalleryKit
-import RealmSwift
 
 protocol ChatDisplaying: AnyObject {
     func displayMessage(_ localMessage: LocalMessage)
@@ -70,8 +69,6 @@ final class ChatViewController: MessagesViewController {
         return refreshController
     }()
     
-    private lazy var attachActionSheet = makeAttachActionSheet()
-    
     private lazy var micButtonItem: InputBarButtonItem = {
         let micButtonItem = InputBarButtonItem()
         micButtonItem.image = UIImage(systemName: "mic.fill")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 30))
@@ -79,6 +76,9 @@ final class ChatViewController: MessagesViewController {
 //        micButtonItem.addGestureRecognizer()
         return micButtonItem
     }()
+    
+    private lazy var attachActionSheet = makeAttachActionSheet()
+    private lazy var galleryController = GalleryController(configuration: .singlemedia)
     
     private(set) lazy var mkSender = MKSender(
         senderId: currentUser.id,
@@ -314,8 +314,10 @@ private extension ChatViewController {
         })
         
         let libraryImage = UIImage(systemName: "photo")?.withRenderingMode(.alwaysTemplate)
-        let libraryAction = UIAlertAction(title: Localizable.ActionSheet.library, style: .default, image: libraryImage, handler: { _ in
-            print("didTapOnLibrary")
+        let libraryAction = UIAlertAction(title: Localizable.ActionSheet.library, style: .default, image: libraryImage, handler: { [weak self] _ in
+            self?.galleryController.showSingleMediaPicker(from: self?.navigationController, completion: { data in
+                print("done")
+            })
         })
         
         let locationImage = UIImage(systemName: "mappin.and.ellipse")?.withRenderingMode(.alwaysTemplate)

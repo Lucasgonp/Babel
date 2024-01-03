@@ -46,11 +46,10 @@ final class EditProfileViewController: ViewController<EditProfileInteracting, UI
         return textField
     }()
     
+    private var currentUser = UserSafe.shared.user
+    
     private var headerCell: EditProfileHeaderCell?
     private var shouldUpdateInto = false
-    private var currentUser: User? {
-        AccountInfo.shared.user
-    }
     
     private lazy var galleryController = GalleryController(configuration: .avatarPhoto)
     
@@ -134,10 +133,6 @@ extension EditProfileViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let currentUser else {
-            return UITableViewCell()
-        }
-        
         switch indexPath.section {
         case 0:
             if indexPath.row == 0 {
@@ -183,10 +178,6 @@ private extension EditProfileViewController {
 @objc private extension EditProfileViewController {
     func didTapDoneButton() {
         view.endEditing(true)
-        
-        guard var currentUser else {
-            return
-        }
         currentUser.name = fullNameTextField.text
         interactor.saveUserToFirebase(user: currentUser)
     }
@@ -194,7 +185,7 @@ private extension EditProfileViewController {
 
 extension EditProfileViewController: EditProfileHeaderDelegate {    
     func didTapOnEditAvatar() {
-        fullNameTextField.text = currentUser?.name ?? String()
+        fullNameTextField.text = currentUser.name
         galleryController.showSinglePhotoPicker(from: navigationController) { [weak self] image in
             if let image {
                 self?.headerCell?.update(image)

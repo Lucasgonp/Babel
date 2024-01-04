@@ -356,11 +356,13 @@ private extension ChatViewController {
     }
     
     func showGalleryView() {
-        galleryController.showSingleMediaPicker(
+        galleryController.showMediaPicker(
             from: navigationController,
             loadingViewDelegate: self,
-            completion: { data in
-                print("done")
+            completion: { [weak self] items in
+                if let singlePhoto = items.singlePhoto {
+                    self?.messageSend(photo: singlePhoto.image)
+                }
             })
     }
 }

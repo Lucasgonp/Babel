@@ -51,7 +51,7 @@ extension EditProfileInteractor: EditProfileInteracting {
     }
     
     func updateAvatarImage(_ image: UIImage) {
-        let directory = "Avatars/" + "_\(currentUser.id)" + ".jpg"
+        let directory = FileDirectory.avatars.format(currentUser.id)
         service.updateAvatarImage(image, directory: directory) { [weak self] avatarLink in
             guard let self else {
                 return

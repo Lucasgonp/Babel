@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 import RealmSwift
 
 protocol ChatInteracting: AnyObject {
@@ -79,6 +79,10 @@ extension ChatInteractor: ChatInteracting {
             sendTextMessage(message: localMessage, text: text, memberIds: message.memberIds)
         }
         
+        if let data = message.photo, let photo = UIImage(data: data) {
+            sendPhotoMessage(message: localMessage, image: photo, memberIds: message.memberIds)
+        }
+        
         // TODO: Send push notification
         
         updateRecents(chatRoomId: dto.chatId, lastMessage: localMessage.message)
@@ -145,21 +149,6 @@ private extension ChatInteractor {
             DispatchQueue.main.async { [weak self] in
                 self?.presenter.updateTypingIndicator(isTyping)
             }
-        }
-    }
-    
-    func sendTextMessage(message: LocalMessage, text: String, memberIds: [String]) {
-        message.message = text
-        message.type = ChatMessageType.text.rawValue
-        
-        sendMessage(message: message, memberIds: memberIds)
-    }
-    
-    func sendMessage(message: LocalMessage, memberIds: [String]) {
-        RealmManager.shared.saveToRealm(message)
-        
-        for memberId in memberIds {
-            service.addMessage(message, memberId: memberId)
         }
     }
     
@@ -274,6 +263,40 @@ private extension ChatInteractor {
                 
                 ChatHelper.shared.saveRecent(id: recent.id, recentChat: recent)
             }
+        }
+    }
+}
+
+// MARK: Send Messages
+private extension ChatInteractor {
+    func sendTextMessage(message: LocalMessage, text: String, memberIds: [String]) {
+        message.message = text
+        message.type = ChatMessageType.text.rawValue
+        
+        sendMessage(message: message, memberIds: memberIds)
+    }
+    
+    func sendPhotoMessage(message: LocalMessage, image: UIImage, memberIds: [String]) {
+        message.message = kPICTUREMESSAGE
+        message.type = ChatMessageType.photo.rawValue
+        
+        let fileName = Date().stringDate()
+        let directory = FileDirectory.uploadNewImage.format(message.chatRoomId, fileName)
+        print("saving image successfully")
+        StorageManager.shared.uploadImage(image, directory: directory) { [weak self] imageURL in
+            if let imageURL {
+                message.pictureUrl = imageURL
+                print("saved image successfully")
+                self?.sendMessage(message: message, memberIds: memberIds)
+            }
+        }
+    }
+    
+    func sendMessage(message: LocalMessage, memberIds: [String]) {
+        RealmManager.shared.saveToRealm(message)
+        
+        for memberId in memberIds {
+            service.addMessage(message, memberId: memberId)
         }
     }
 }

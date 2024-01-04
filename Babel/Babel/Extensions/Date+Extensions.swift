@@ -38,4 +38,10 @@ extension Date {
     func isInSameDayOf(date: Date) -> Bool {
         self.date() == date.date()
     }
+    
+    func stringDate() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "ddMMMyyyyHHmmss"
+        return formatter.string(from: self)
+    }
 }

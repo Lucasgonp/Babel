@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7620F4222A951480002A4EB5 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4212A951480002A4EB5 /* UITableView+Extensions.swift */; };
 		7620F4632A97993D002A4EB5 /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4622A97993D002A4EB5 /* UITableViewCell+Extensions.swift */; };
+		764303822B45BB420037721A /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764303812B45BB420037721A /* UIViewController+Extensions.swift */; };
 		7666E56F2A77169F006C0560 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7666E56E2A77169F006C0560 /* UIKit.framework */; };
 		766D50E22A83E81800150284 /* ButtonTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766D50E12A83E81800150284 /* ButtonTheme.swift */; };
 		766D50E42A83E81F00150284 /* ButtonDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766D50E32A83E81F00150284 /* ButtonDTO.swift */; };
@@ -46,7 +47,7 @@
 		76EF5D4C2A907D1900D9AE8B /* Dependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EF5D4B2A907D1900D9AE8B /* Dependencies.framework */; };
 		76EF5D4D2A907D1900D9AE8B /* Dependencies.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76EF5D4B2A907D1900D9AE8B /* Dependencies.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		76EF5D502A92663100D9AE8B /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EF5D4F2A92663100D9AE8B /* UIView+Extensions.swift */; };
-		76F2AF6C2A81AE4500FE5966 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F2AF6B2A81AE4500FE5966 /* SpinnerViewController.swift */; };
+		76F2AF6C2A81AE4500FE5966 /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F2AF6B2A81AE4500FE5966 /* SpinnerView.swift */; };
 		76F778B02A81C89B00443E7B /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F778AF2A81C89B00443E7B /* UIApplication+Extensions.swift */; };
 		76F778C12A828FA700443E7B /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F778C02A828FA700443E7B /* TextField.swift */; };
 		76F778C62A82B23000443E7B /* TextLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F778C52A82B23000443E7B /* TextLabel.swift */; };
@@ -105,6 +106,7 @@
 /* Begin PBXFileReference section */
 		7620F4212A951480002A4EB5 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		7620F4622A97993D002A4EB5 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
+		764303812B45BB420037721A /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		7666E56E2A77169F006C0560 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/System/iOSSupport/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		766D50E12A83E81800150284 /* ButtonTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTheme.swift; sourceTree = "<group>"; };
 		766D50E32A83E81F00150284 /* ButtonDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonDTO.swift; sourceTree = "<group>"; };
@@ -143,7 +145,7 @@
 		76EF5D432A8FCCC500D9AE8B /* AlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewModel.swift; sourceTree = "<group>"; };
 		76EF5D4B2A907D1900D9AE8B /* Dependencies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Dependencies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76EF5D4F2A92663100D9AE8B /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
-		76F2AF6B2A81AE4500FE5966 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
+		76F2AF6B2A81AE4500FE5966 /* SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		76F778AF2A81C89B00443E7B /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		76F778C02A828FA700443E7B /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		76F778C52A82B23000443E7B /* TextLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLabel.swift; sourceTree = "<group>"; };
@@ -255,7 +257,7 @@
 				76F778D82A82E45A00443E7B /* ImageView */,
 				76F778C22A82911700443E7B /* TextField */,
 				769545892A76EB8000BF114D /* DesignView.swift */,
-				76F2AF6B2A81AE4500FE5966 /* SpinnerViewController.swift */,
+				76F2AF6B2A81AE4500FE5966 /* SpinnerView.swift */,
 				76F778C52A82B23000443E7B /* TextLabel.swift */,
 			);
 			path = Components;
@@ -276,6 +278,7 @@
 				76EF5D4F2A92663100D9AE8B /* UIView+Extensions.swift */,
 				7620F4212A951480002A4EB5 /* UITableView+Extensions.swift */,
 				7620F4622A97993D002A4EB5 /* UITableViewCell+Extensions.swift */,
+				764303812B45BB420037721A /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -575,7 +578,7 @@
 			files = (
 				76F778B02A81C89B00443E7B /* UIApplication+Extensions.swift in Sources */,
 				76CAA12B2A86D3B100D742E9 /* String+Extensions.swift in Sources */,
-				76F2AF6C2A81AE4500FE5966 /* SpinnerViewController.swift in Sources */,
+				76F2AF6C2A81AE4500FE5966 /* SpinnerView.swift in Sources */,
 				76EF5D442A8FCCC500D9AE8B /* AlertViewModel.swift in Sources */,
 				766D522A2A83F8C400150284 /* FontSystemStyle.swift in Sources */,
 				766D52412A840AB100150284 /* UILabel+Extensions.swift in Sources */,
@@ -585,6 +588,7 @@
 				76CAA0E62A854C0B00D742E9 /* TextFieldDTO.swift in Sources */,
 				76C6C75E2A92D0A400E57A2F /* TabBarViewController.swift in Sources */,
 				76CAA0E42A854C0300D742E9 /* TextFieldTheme.swift in Sources */,
+				764303822B45BB420037721A /* UIViewController+Extensions.swift in Sources */,
 				76F778C62A82B23000443E7B /* TextLabel.swift in Sources */,
 				76F778CC2A82B37200443E7B /* Color.swift in Sources */,
 				7699BC6C2A7A01F000DC730B /* ViewController.swift in Sources */,

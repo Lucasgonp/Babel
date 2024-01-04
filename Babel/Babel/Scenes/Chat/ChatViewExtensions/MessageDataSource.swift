@@ -30,13 +30,20 @@ extension ChatViewController: MessagesDataSource {
         return nil
     }
     
+    func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        let font = Font.xs.make(isBold: true)
+        return NSAttributedString(
+            string: message.sentDate.time(),
+            attributes: [.font: font, .foregroundColor: UIColor.darkGray]
+        )
+    }
+    
     func cellBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
         if isFromCurrentSender(message: message) {
             let message = mkMessages[indexPath.section]
-            let status = "\(message.status) at \(message.readDate.time())"
             if indexPath.section == mkMessages.count - 1 {
                 return NSAttributedString(
-                    string: status,
+                    string: message.status,
                     attributes: [
                         .font: Font.xs.make(isBold: true),
                         .foregroundColor: UIColor.darkGray
@@ -46,13 +53,5 @@ extension ChatViewController: MessagesDataSource {
         }
         
         return nil
-    }
-    
-    func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
-        let font = Font.xs.make(isBold: true)
-        return NSAttributedString(
-            string: message.sentDate.time(),
-            attributes: [.font: font, .foregroundColor: UIColor.darkGray]
-        )
     }
 }

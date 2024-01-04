@@ -1,4 +1,5 @@
 import UIKit
+import DesignKit
 import YPImagePicker
 import AVFoundation
 
@@ -31,7 +32,11 @@ public final class GalleryController {
         }
     }
     
-    public func showSingleMediaPicker(from navigation: UINavigationController?, completion: @escaping (Data?) -> Void) {
+    public func showSingleMediaPicker(
+        from navigation: UINavigationController?,
+        loadingViewDelegate: LoadingViewDelegate? = nil,
+        completion: @escaping (Data?) -> Void
+    ) {
         picker.didFinishPicking { [unowned picker] items, cancelled in
             if cancelled {
                 picker.dismiss(animated: true) {
@@ -57,7 +62,9 @@ public final class GalleryController {
         }
         
         DispatchQueue.main.async { [unowned picker] in
-            navigation?.present(picker, animated: true)
+            navigation?.present(picker, animated: true) { [weak loadingViewDelegate] in
+                loadingViewDelegate?.dismissLoadingView()
+            }
         }
     }
 }

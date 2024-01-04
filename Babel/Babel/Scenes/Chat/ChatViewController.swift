@@ -69,6 +69,13 @@ final class ChatViewController: MessagesViewController {
         return refreshController
     }()
     
+    private lazy var spinnerView: SpinnerView = {
+        let spinnerView = SpinnerView(backgroundColor: .clear, shouldBlur: true)
+        spinnerView.delegate = self
+        spinnerView.translatesAutoresizingMaskIntoConstraints = false
+        return spinnerView
+    }()
+    
     private lazy var micButtonItem: InputBarButtonItem = {
         let micButtonItem = InputBarButtonItem()
         micButtonItem.image = UIImage(systemName: "mic.fill")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 30))
@@ -234,6 +241,12 @@ extension ChatViewController: ChatDisplaying {
     }
 }
 
+extension ChatViewController: LoadingViewDelegate {
+    func dismissLoadingView() {
+        spinnerView.removeFromSuperview()
+    }
+}
+
 @objc private extension ChatViewController {
     func didTapOnContactInfo() {
         interactor.didTapOnContactInfo()
@@ -315,11 +328,8 @@ private extension ChatViewController {
         
         let libraryImage = UIImage(systemName: "photo")?.withRenderingMode(.alwaysTemplate)
         let libraryAction = UIAlertAction(title: Localizable.ActionSheet.library, style: .default, image: libraryImage, handler: { [weak self] _ in
-            self?.galleryController.showSingleMediaPicker(from: self?.navigationController, completion: { [weak self] data in
-                DispatchQueue.main.async { [weak self] in
-                    self?.printTest()
-                }
-            })
+            self?.showLoadingView()
+            self?.showGalleryView()
         })
         
         let locationImage = UIImage(systemName: "mappin.and.ellipse")?.withRenderingMode(.alwaysTemplate)
@@ -338,5 +348,19 @@ private extension ChatViewController {
     
     func printTest() {
         print("done")
+    }
+    
+    func showLoadingView() {
+        view.addSubview(spinnerView)
+        view.fillWithSubview(subview: spinnerView)
+    }
+    
+    func showGalleryView() {
+        galleryController.showSingleMediaPicker(
+            from: navigationController,
+            loadingViewDelegate: self,
+            completion: { data in
+                print("done")
+            })
     }
 }

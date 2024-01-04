@@ -1,23 +1,17 @@
 import UIKit
 
-public protocol UserInterfaceDetectorProtocol {
-    func getInterfaceStyle() -> UIUserInterfaceStyle?
-}
-
-public struct DefaultUserInterfaceDetector: UserInterfaceDetectorProtocol {
-    public init () { }
-    
-    public func getInterfaceStyle() -> UIUserInterfaceStyle? {
+public struct UserInterface {
+    static public var style: UIUserInterfaceStyle? {
         UIApplication.shared.keyWindow?.rootViewController?.traitCollection.userInterfaceStyle
     }
 }
 
 public struct Color {
+    private let style = UserInterface.style
     private var storage: AnyStorage
-    private let userInterfaceDetector: UserInterfaceDetectorProtocol
     
     public var hex: String {
-        return userInterfaceDetector.getInterfaceStyle() == .dark ? storage.dark.hex : storage.light.hex
+        return UserInterface.style == .dark ? storage.dark.hex : storage.light.hex
     }
     
     public var uiColor: UIColor {
@@ -33,28 +27,25 @@ public struct Color {
         }
     }
     
-    public init(_ light: String, _ dark: String, opacity: CGFloat = 1, detector: UserInterfaceDetectorProtocol = DefaultUserInterfaceDetector()) {
+    init(_ light: String, _ dark: String, opacity: CGFloat = 1) {
         self.storage = AnyStorage(
             light: light.isEmpty ? .clear : .init(hex: light).withAlphaComponent(opacity),
             dark: dark.isEmpty ? .clear : .init(hex: dark).withAlphaComponent(opacity)
         )
-        self.userInterfaceDetector = detector
     }
     
-    public init(lightColor: UIColor, darkColor: UIColor, opacity: CGFloat = 1, detector: UserInterfaceDetectorProtocol = DefaultUserInterfaceDetector()) {
+    init(lightColor: UIColor, darkColor: UIColor, opacity: CGFloat = 1) {
         self.storage = AnyStorage(
             light: .init(hex: lightColor.hex).withAlphaComponent(opacity),
             dark: .init(hex: darkColor.hex).withAlphaComponent(opacity)
         )
-        self.userInterfaceDetector = detector
     }
     
-    public init(_ light: UIColor, _ dark: UIColor, opacity: CGFloat = 1, detector: UserInterfaceDetectorProtocol = DefaultUserInterfaceDetector()) {
+    init(_ light: UIColor, _ dark: UIColor, opacity: CGFloat = 1) {
         self.storage = AnyStorage(
             light: .init(hex: light.hex).withAlphaComponent(opacity),
             dark: .init(hex: dark.hex).withAlphaComponent(opacity)
         )
-        self.userInterfaceDetector = detector
     }
     
     struct AnyStorage {

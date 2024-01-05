@@ -282,11 +282,9 @@ private extension ChatInteractor {
         
         let fileName = Date().stringDate()
         let directory = FileDirectory.uploadNewImage.format(message.chatRoomId, fileName)
-        print("saving image successfully")
         StorageManager.shared.uploadImage(image, directory: directory) { [weak self] imageURL in
             if let imageURL {
                 message.pictureUrl = imageURL
-                print("saved image successfully")
                 self?.sendMessage(message: message, memberIds: memberIds)
             }
         }

@@ -74,7 +74,7 @@ extension UserCell {
         statusLabel.text = dto.status
         
         if !dto.avatarLink.isEmpty {
-            avatar.setAvatar(imageUrl: dto.avatarLink)
+            avatar.setImage(with: dto.avatarLink, placeholderImage: Image.avatarPlaceholder.image)
         } else {
             avatar.image = Image.avatarPlaceholder.image
         }

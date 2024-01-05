@@ -1,4 +1,3 @@
-import Foundation
 import MessageKit
 import DesignKit
 import UIKit
@@ -54,4 +53,6 @@ extension ChatViewController: MessagesDataSource {
         
         return nil
     }
+    
+    // TODO: messageTimestampLabelAttributedText
 }

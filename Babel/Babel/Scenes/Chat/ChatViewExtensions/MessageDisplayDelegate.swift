@@ -1,5 +1,7 @@
 import UIKit
 import MessageKit
+import SDWebImage
+import DesignKit
 
 extension ChatViewController: MessagesDisplayDelegate {
     func textColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
@@ -23,5 +25,11 @@ extension ChatViewController: MessagesDisplayDelegate {
         }
         
         return .bubble
+    }
+    
+    func configureMediaMessageImageView(_ imageView: UIImageView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
+        if case .photo(let media) = message.kind, let imageURL = media.url {
+            imageView.setImage(with: imageURL, placeholderImage: Image.photoPlaceholder.image)
+        }
     }
 }

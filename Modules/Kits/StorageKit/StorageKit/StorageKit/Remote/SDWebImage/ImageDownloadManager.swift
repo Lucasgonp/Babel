@@ -2,7 +2,23 @@ import UIKit
 import SDWebImage
 
 extension UIImageView {
-    public func setAvatar(imageUrl: String, placeholderImage: UIImage? = nil, completion: (() -> Void)? = nil) {
+    public func setImage(with url: URL?, placeholderImage: UIImage? = nil, completion: (() -> Void)? = nil) {
+        let activityIndicator = makeLoadingIndicator()
+        activityIndicator.startAnimating()
+        
+        if let url {
+            sd_setImage(with: url) { _, _, _, _ in
+                completion?()
+                activityIndicator.stopAnimating()
+            }
+        } else {
+            image = placeholderImage
+            completion?()
+            activityIndicator.stopAnimating()
+        }
+    }
+    
+    public func setImage(with imageUrl: String, placeholderImage: UIImage? = nil, completion: (() -> Void)? = nil) {
         let activityIndicator = makeLoadingIndicator()
         activityIndicator.startAnimating()
         

@@ -3,10 +3,6 @@ import DesignKit
 import YPImagePicker
 import AVFoundation
 
-enum MediaType {
-    
-}
-
 public final class GalleryController {
     private let picker: YPImagePicker
     

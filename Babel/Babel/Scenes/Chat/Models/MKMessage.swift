@@ -10,6 +10,7 @@ final class MKMessage: NSObject, MessageType {
     var sender: SenderType {
         return mkSender
     }
+    var photoItem: PhotoMessage?
     let senderInitials: String
     var status: String
     var readDate: Date
@@ -23,5 +24,16 @@ final class MKMessage: NSObject, MessageType {
         self.sentDate = message.date
         self.readDate = message.readDate
         self.incoming = AccountInfo.shared.user?.id == mkSender.senderId
+        
+        switch ChatMessageType(rawValue: message.type) {
+        case .text:
+            self.kind = .text(message.message)
+        case .photo:
+            let photoItem = PhotoMessage(path: message.pictureUrl)
+            self.kind = .photo(photoItem)
+            self.photoItem = photoItem
+        default:
+            fatalError("unkown message type")
+        }
     }
 }

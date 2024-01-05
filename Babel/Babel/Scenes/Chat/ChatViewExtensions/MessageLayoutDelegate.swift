@@ -7,7 +7,7 @@ extension ChatViewController: MessagesLayoutDelegate {
             if indexPath.section == 0 && (interactor.allLocalMessages?.count ?? 0) > interactor.displayingMessagesCount {
                 return 40
             }
-            return 18
+            return 24
         }
         return .zero
     }
@@ -17,7 +17,7 @@ extension ChatViewController: MessagesLayoutDelegate {
         removeStatusMessageSpace()
         
         if isFromCurrentSender(message: message) {
-            return isLastInSet(indexPath) ? 16 : .zero
+            return (indexPath.section == mkMessages.count - 1) ? 16 : .zero
         }
         
         return .zero
@@ -58,11 +58,11 @@ private extension ChatViewController {
         )
     }
     
-    func isLastInSet(_ indexPath: IndexPath) -> Bool {
-         if indexPath.section == mkMessages.count - 1 {
-           return true
-         } else {
-             return mkMessages[indexPath.section].sender.senderId != mkMessages[indexPath.section + 1].sender.senderId
-         }
-     }
+//    func isLastInSet(_ indexPath: IndexPath) -> Bool {
+//         if indexPath.section == mkMessages.count - 1 {
+//           return true
+//         } else {
+//             return mkMessages[indexPath.section].sender.senderId != mkMessages[indexPath.section + 1].sender.senderId
+//         }
+//     }
 }

@@ -60,7 +60,7 @@ final class ChatViewController: MessagesViewController {
         let imageView = ImageView(frame: CGRect(x: .zero, y: .zero, width: 38, height: 38))
         imageView.layer.cornerRadius = 19
         imageView.clipsToBounds = true
-        imageView.setAvatar(imageUrl: dto.recipientAvatarURL)
+        imageView.setImage(with: dto.recipientAvatarURL, placeholderImage: Image.avatarPlaceholder.image)
         return imageView
     }()
     
@@ -155,6 +155,21 @@ final class ChatViewController: MessagesViewController {
         }
     }
     
+    func shouldDisplayHeader(for message: MessageType, at indexPath: IndexPath) -> Bool {
+        if indexPath.section == 0 {
+            return true
+        }
+        
+        let previousIndexPath = IndexPath(row: 0, section: indexPath.section - 1)
+        let previousMessage = messageForItem(at: previousIndexPath, in: messagesCollectionView)
+        
+        if message.sentDate.isInSameDayOf(date: previousMessage.sentDate) {
+            return false
+        }
+        
+        return true
+    }
+    
     override func scrollViewDidEndDecelerating(_: UIScrollView) {
         if refreshController.isRefreshing {
             interactor.refreshNewMessages()
@@ -177,21 +192,8 @@ extension ChatViewController: ViewConfiguration {
         
         configureMessageCollectionView()
         configureMessageInputBar()
-    }
-    
-    func shouldDisplayHeader(for message: MessageType, at indexPath: IndexPath) -> Bool {
-        if indexPath.section == 0 {
-            return true
-        }
         
-        let previousIndexPath = IndexPath(row: 0, section: indexPath.section - 1)
-        let previousMessage = messageForItem(at: previousIndexPath, in: messagesCollectionView)
-        
-        if message.sentDate.isInSameDayOf(date: previousMessage.sentDate) {
-            return false
-        }
-        
-        return true
+        // TODO: showMessageTimestampOnSwipeLeft = true
     }
 }
 

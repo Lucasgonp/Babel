@@ -85,7 +85,7 @@ extension ContactInfoHeaderCell {
         bioLabel.text = dto.status
         
         if !dto.avatarLink.isEmpty {
-            avatarImageView.setAvatar(imageUrl: dto.avatarLink)
+            avatarImageView.setImage(with: dto.avatarLink)
         } else {
             avatarImageView.image = Image.avatarPlaceholder.image
         }

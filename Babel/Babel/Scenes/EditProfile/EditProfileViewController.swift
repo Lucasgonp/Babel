@@ -51,7 +51,11 @@ final class EditProfileViewController: ViewController<EditProfileInteracting, UI
     private var headerCell: EditProfileHeaderCell?
     private var shouldUpdateInto = false
     
-    private lazy var galleryController = GalleryController(configuration: .avatarPhoto)
+    private lazy var galleryController: GalleryController = {
+        let gallery = GalleryController()
+        gallery.configuration = .avatarPhoto
+        return gallery
+    }()
     
     weak var delegate: SettingsViewDelegate?
     

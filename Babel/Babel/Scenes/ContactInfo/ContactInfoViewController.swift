@@ -34,8 +34,6 @@ final class ContactInfoViewController: ViewController<ContactInfoInteracting, UI
         return tableView
     }()
     
-    private lazy var galleryController = GalleryController(configuration: .avatarPhoto)
-    
     weak var delegate: SettingsViewDelegate?
     
     private var contactUser: User?

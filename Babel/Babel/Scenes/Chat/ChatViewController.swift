@@ -85,7 +85,11 @@ final class ChatViewController: MessagesViewController {
     }()
     
     private lazy var attachActionSheet = makeAttachActionSheet()
-    private lazy var galleryController = GalleryController(configuration: .singlemedia)
+    private lazy var galleryController: GalleryController = {
+        let gallery = GalleryController()
+        gallery.configuration = .multimedia
+        return gallery
+    }()
     
     private(set) lazy var mkSender = MKSender(
         senderId: currentUser.id,

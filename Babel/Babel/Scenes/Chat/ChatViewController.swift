@@ -95,7 +95,7 @@ final class ChatViewController: MessagesViewController {
     private(set) var mkMessages = [MKMessage]()
     
     private let currentUser = UserSafe.shared.user
-    private let dto: ChatDTO
+    private(set) var dto: ChatDTO
     
     let interactor: ChatInteracting
     

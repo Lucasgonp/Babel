@@ -82,6 +82,10 @@
 		76228DA82A8AAF6800C27C7A /* NetworkKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76228DA62A8AAF6800C27C7A /* NetworkKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		76228DAA2A8AAF7000C27C7A /* DesignKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76228DA92A8AAF7000C27C7A /* DesignKit.framework */; };
 		76228DAB2A8AAF7000C27C7A /* DesignKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76228DA92A8AAF7000C27C7A /* DesignKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		76371F9A2B488F96007C9E7E /* ChatListenersWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76371F992B488F96007C9E7E /* ChatListenersWorker.swift */; };
+		76371F9C2B488FFB007C9E7E /* FetchMessageWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76371F9B2B488FFB007C9E7E /* FetchMessageWorker.swift */; };
+		76371F9E2B489020007C9E7E /* SendMessageWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76371F9D2B489020007C9E7E /* SendMessageWorker.swift */; };
+		76371FA22B48931D007C9E7E /* ChatTypingWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76371FA12B48931D007C9E7E /* ChatTypingWorker.swift */; };
 		764303882B4650F20037721A /* FilesDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764303872B4650F20037721A /* FilesDirectory.swift */; };
 		7643038A2B4654B10037721A /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764303892B4654B10037721A /* String+Extensions.swift */; };
 		7669BA2A2ABDD3550002AD4C /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669BA292ABDD3550002AD4C /* Date+Extensions.swift */; };
@@ -244,6 +248,10 @@
 		76228DA62A8AAF6800C27C7A /* NetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76228DA92A8AAF7000C27C7A /* DesignKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76228DAF2A8AB03700C27C7A /* CoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		76371F992B488F96007C9E7E /* ChatListenersWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListenersWorker.swift; sourceTree = "<group>"; };
+		76371F9B2B488FFB007C9E7E /* FetchMessageWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMessageWorker.swift; sourceTree = "<group>"; };
+		76371F9D2B489020007C9E7E /* SendMessageWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageWorker.swift; sourceTree = "<group>"; };
+		76371FA12B48931D007C9E7E /* ChatTypingWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTypingWorker.swift; sourceTree = "<group>"; };
 		764303872B4650F20037721A /* FilesDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesDirectory.swift; sourceTree = "<group>"; };
 		764303892B4654B10037721A /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		7669BA292ABDD3550002AD4C /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
@@ -541,6 +549,17 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		76371F982B488F6D007C9E7E /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				76371F992B488F96007C9E7E /* ChatListenersWorker.swift */,
+				76371FA12B48931D007C9E7E /* ChatTypingWorker.swift */,
+				76371F9B2B488FFB007C9E7E /* FetchMessageWorker.swift */,
+				76371F9D2B489020007C9E7E /* SendMessageWorker.swift */,
+			);
+			path = Workers;
+			sourceTree = "<group>";
+		};
 		7669BA282ABDD33D0002AD4C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -715,6 +734,7 @@
 		76D246792AC4AE5F00FDA81E /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				76371F982B488F6D007C9E7E /* Workers */,
 				7610118D2B3A010D004639C4 /* ChatViewExtensions */,
 				76D246862AC4B49200FDA81E /* Models */,
 				76D2467A2AC4AE7000FDA81E /* ChatFactory.swift */,
@@ -936,6 +956,7 @@
 			files = (
 				7620F2CF2A92EF69002A4EB5 /* ChannelsViewController.swift in Sources */,
 				7620F2D82A92EF74002A4EB5 /* UsersFactory.swift in Sources */,
+				76371F9E2B489020007C9E7E /* SendMessageWorker.swift in Sources */,
 				7620F2CE2A92EF69002A4EB5 /* ChannelsRouter.swift in Sources */,
 				769E97302AA3C4FC004FC6B4 /* ContactInfoViewController.swift in Sources */,
 				7620F44E2A9659F5002A4EB5 /* TellAFriendPresenter.swift in Sources */,
@@ -1019,6 +1040,7 @@
 				7620F4412A9592C2002A4EB5 /* EditProfileViewController.swift in Sources */,
 				7620F4422A9592C2002A4EB5 /* EditProfileInteractor.swift in Sources */,
 				7620F2DB2A92EF74002A4EB5 /* UsersViewController.swift in Sources */,
+				76371FA22B48931D007C9E7E /* ChatTypingWorker.swift in Sources */,
 				7620F2D02A92EF69002A4EB5 /* ChannelsInteractor.swift in Sources */,
 				769E97312AA3C4FC004FC6B4 /* ContactInfoInteractor.swift in Sources */,
 				76D246842AC4AE7000FDA81E /* ChatInteractor.swift in Sources */,
@@ -1028,6 +1050,7 @@
 				7620F44D2A9659F5002A4EB5 /* TellAFriendFactory.swift in Sources */,
 				76DA7EC02AB78D1F00106731 /* RecentChatsInteractor.swift in Sources */,
 				7620F45B2A965A09002A4EB5 /* TermsRouter.swift in Sources */,
+				76371F9C2B488FFB007C9E7E /* FetchMessageWorker.swift in Sources */,
 				7610118F2B3A0128004639C4 /* MessageDataSource.swift in Sources */,
 				7620F45D2A965A09002A4EB5 /* TermsInteractor.swift in Sources */,
 				76CAA18C2A8AA9ED00D742E9 /* HomeService.swift in Sources */,
@@ -1038,6 +1061,7 @@
 				76DA7EC42AB78E7400106731 /* RecentChatCell.swift in Sources */,
 				76D246832AC4AE7000FDA81E /* ChatViewController.swift in Sources */,
 				761011AA2B3A6172004639C4 /* Constants.swift in Sources */,
+				76371F9A2B488F96007C9E7E /* ChatListenersWorker.swift in Sources */,
 				761011932B3A0147004639C4 /* MessageDisplayDelegate.swift in Sources */,
 				7620F42D2A9567B1002A4EB5 /* User.swift in Sources */,
 				7608DE542A999F050036027A /* StorageManager.swift in Sources */,

@@ -15,7 +15,7 @@ extension ChatViewController: MessagesDataSource {
     
     func cellTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
         if shouldDisplayHeader(for: message, at: indexPath) {
-            let shouldLoadMore = indexPath.section == 0 && (interactor.allLocalMessages?.count ?? 0) > interactor.displayingMessagesCount
+            let shouldLoadMore = indexPath.section == 0 && (dto.allLocalMessages?.count ?? 0) > dto.displayingMessagesCount
             let text = shouldLoadMore ? Localizable.pullToLoad : MessageKitDateFormatter.shared.string(from: message.sentDate)
             let font = shouldLoadMore ? Font.sm.make(isBold: true) : Font.xs.make(isBold: true)
             let color = shouldLoadMore ? UIColor.systemBlue : UIColor.darkGray

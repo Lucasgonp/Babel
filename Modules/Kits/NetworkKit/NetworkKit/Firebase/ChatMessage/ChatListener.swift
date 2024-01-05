@@ -1,16 +1,11 @@
-import StorageKit
-import FirebaseFirestoreSwift
-
-public protocol FirebaseMessageProtocol {
+public protocol ChatListenerProtocol {
     func listenForNewChats<T: Decodable>(documentId: String, collectionId: String, lastMessageDate: Date, completion: @escaping (Result<T, FirebaseError>) -> Void)
-    func getOldChats<T: Decodable>(documentId: String, collectionId: String, completion: @escaping (Result<[T], FirebaseError>) -> Void)
-    func addMessage<T: Encodable>(_ message: T, memberId: String, chatRoomId: String, messageId: String)
-    func getRecentChatsFrom<T: Decodable>(chatRoomId: String, completion: @escaping (_ recents: [T]) -> Void)
-    func updateMessageInFirebase(message: Encodable, dto: ChatMessageDTO)
     func listenForReadStatusChange<T: Decodable>(_ documentId: String, collectionId: String, completion: @escaping (T) -> Void)
+    func createTypingObserver(chatRoomId: String, currentUserId: String, completion: @escaping (_ isTyping: Bool) -> Void)
+    func removeListeners()
 }
 
-extension FirebaseClient: FirebaseMessageProtocol {
+extension FirebaseClient: ChatListenerProtocol {
     public func listenForNewChats<T: Decodable>(documentId: String, collectionId: String, lastMessageDate: Date, completion: @escaping (Result<T, FirebaseError>) -> Void) {
         newChatListener = firebaseReference(.messages).document(documentId).collection(collectionId).whereField(kDATE, isGreaterThan: lastMessageDate).addSnapshotListener { querySnapshot, error in
             guard let querySnapshot else {
@@ -35,45 +30,6 @@ extension FirebaseClient: FirebaseMessageProtocol {
                     }
                 }
             }
-        }
-    }
-    
-    public func getOldChats<T: Decodable>(documentId: String, collectionId: String, completion: @escaping (Result<[T], FirebaseError>) -> Void) {
-        firebaseReference(.messages).document(documentId).collection(collectionId).getDocuments { querySnapshot, error in
-            guard let documents = querySnapshot?.documents else {
-                return completion(.failure(.noDocumentFound))
-            }
-            
-            let oldMessages = documents.compactMap({ try? $0.data(as: T.self) })
-            completion(.success(oldMessages))
-        }
-    }
-    
-    public func addMessage<T: Encodable>(_ message: T, memberId: String, chatRoomId: String, messageId: String) {
-        do {
-            try firebaseReference(.messages)
-                .document(memberId).collection(chatRoomId)
-                .document(messageId)
-                .setData(from: message)
-        } catch {
-            fatalError("Error saving message to firebase: \(error.localizedDescription)")
-        }
-    }
-    
-    public func getRecentChatsFrom<T: Decodable>(chatRoomId: String, completion: @escaping (_ recents: [T]) -> Void) {
-        firebaseReference(.recent).whereField(StorageKey.chatRoomId.rawValue, isEqualTo: chatRoomId).getDocuments { querySnapshot, error in
-            guard let documents = querySnapshot?.documents else {
-                return
-            }
-            
-            let recents = documents.compactMap({ try? $0.data(as: T.self) })
-            completion(recents)
-        }
-    }
-    
-    public func updateMessageInFirebase(message: Encodable, dto: ChatMessageDTO) {
-        for userId in dto.memberIds {
-            firebaseReference(.messages).document(userId).collection(dto.chatRoomId).document(dto.messageId).updateData(dto.status)
         }
     }
     
@@ -102,5 +58,11 @@ extension FirebaseClient: FirebaseMessageProtocol {
                 }
             }
         })
+    }
+    
+    public func removeListeners() {
+        typingListener?.remove()
+        newChatListener?.remove()
+        updatedChatListener?.remove()
     }
 }

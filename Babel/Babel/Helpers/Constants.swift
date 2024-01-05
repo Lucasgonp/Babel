@@ -2,4 +2,4 @@ let kDATE = "date"
 let kNUMBEROFMESSAGES = 12
 let kSTATUS = "status"
 let kREADDATE = "readDate"
-let kPICTUREMESSAGE = "Picture Message"
+let kPICTUREMESSAGE = "📷 Photo"

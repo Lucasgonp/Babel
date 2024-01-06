@@ -1,3 +1,4 @@
+import UIKit
 import MessageKit
 import CoreLocation
 import struct GalleryKit.MediaVideo
@@ -8,9 +9,7 @@ final class MKMessage: NSObject, MessageType {
     var sentDate: Date
     var incoming: Bool
     let mkSender: MKSender
-    var sender: SenderType {
-        return mkSender
-    }
+    var sender: SenderType { mkSender }
     var photoItem: PhotoMessage?
     var videoItem: VideoMessage?
     let senderInitials: String
@@ -26,7 +25,11 @@ final class MKMessage: NSObject, MessageType {
         self.sentDate = message.date
         self.readDate = message.readDate
         self.incoming = AccountInfo.shared.user?.id == mkSender.senderId
-        
+    }
+}
+
+extension MKMessage {
+    func setup(from message: LocalMessage) {
         switch ChatMessageType(rawValue: message.type) {
         case .text:
             self.kind = .text(message.message)
@@ -38,7 +41,6 @@ final class MKMessage: NSObject, MessageType {
             let videoItem = VideoMessage(url: URL(string: message.videoUrl), thumbailUrl: message.pictureUrl)
             self.kind = MessageKind.video(videoItem)
             self.videoItem = videoItem
-            
         default:
             fatalError("unkown message type")
         }

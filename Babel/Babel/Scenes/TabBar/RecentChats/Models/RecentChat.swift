@@ -1,5 +1,5 @@
 import Foundation
-import typealias Dependencies.ServerTimestampAdapter
+import FirebaseFirestoreSwift
 
 struct RecentChatModel: Codable, Equatable {
     let id: String
@@ -11,7 +11,7 @@ struct RecentChatModel: Codable, Equatable {
     let receiverId: String
     let receiverName: String
     
-    @ServerTimestampAdapter var date = Date()
+    @ServerTimestamp var date = Date()
     
     let membersId: [String]
     

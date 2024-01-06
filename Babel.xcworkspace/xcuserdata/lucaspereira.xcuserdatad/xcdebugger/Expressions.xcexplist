@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "__pthread_kill:(null)">
+      </ContextState>
+      <ContextState
+         contextName = "SpinnerView.configureViews():SpinnerViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "blurStyle">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in IncomingMessage.createMessage(localMessage:):IncomingMessage.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ChatViewController.displayMessage(_:):ChatViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "messagesCollectionView">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

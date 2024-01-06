@@ -10,6 +10,7 @@ final class IncomingMessage {
     
     func createMessage(localMessage: LocalMessage) -> MKMessage? {
         let mkMessage = MKMessage(message: localMessage)
+        mkMessage.setup(from: localMessage)
         return mkMessage
     }
 }

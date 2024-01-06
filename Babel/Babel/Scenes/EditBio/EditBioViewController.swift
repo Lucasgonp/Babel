@@ -149,7 +149,13 @@ private extension EditBioViewController {
     }
     
     func updateDoneBarButton(isHidden: Bool) {
-        navigationItem.rightBarButtonItem?.isHidden = isHidden
+        // TODO: Check if is hiding correctly
+        if isHidden {
+            navigationItem.rightBarButtonItem = nil
+        } else {
+            let done = UIBarButtonItem(title: Strings.Commons.done, style: .done, target: self, action: #selector(didTapDoneButton))
+            navigationItem.rightBarButtonItem = done
+        }
     }
 }
 

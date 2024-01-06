@@ -1,7 +1,7 @@
-import NetworkKit
-
-struct NetworkManager {
-    static let session = SessionAdapter()
-    
-    private init() {}
-}
+//import NetworkKit
+//
+//struct NetworkManager {
+//    static let session = SessionAdapter()
+//    
+//    private init() {}
+//}

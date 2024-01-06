@@ -29,13 +29,28 @@ extension ChatViewController: MessagesDisplayDelegate {
     
     func configureMediaMessageImageView(_ imageView: UIImageView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
         if case .photo(let media) = message.kind, let imageURL = media.url {
-            imageView.setImage(with: imageURL, placeholderImage: Image.photoPlaceholder.image)
+            imageView.setImage(with: imageURL, placeholderImage: Image.photoPlaceholder.image) { image in
+                let mediaItem = PhotoMessage(path: imageURL.absoluteString, image: image)
+                self.mkMessages[indexPath.section].kind = .photo(mediaItem)
+            }
         }
         
-        if case let .video(videoItem) = message.kind {
+        if case .video = message.kind {
             let mkMessage = mkMessages[indexPath.section]
             let videoMessage = mkMessage.videoItem
             imageView.setImage(with: videoMessage?.thumbailUrl)
+            
+            StorageManager.shared.downloadVideo(mkMessage.videoItem!.url!) { [weak self] isReadyToPlay, videoFileName, fileDirectory in
+                let videoUrl: URL
+                if #available(iOS 16.0, *) {
+                    videoUrl = URL(filePath: fileDirectory)
+                } else {
+                    videoUrl = URL(fileURLWithPath: fileDirectory)
+                }
+                
+                let videoItem = VideoMessage(url: videoUrl, thumbailUrl: videoMessage!.thumbailUrl)
+                self?.mkMessages[indexPath.section].kind = .video(videoItem)
+            }
         }
     }
 }

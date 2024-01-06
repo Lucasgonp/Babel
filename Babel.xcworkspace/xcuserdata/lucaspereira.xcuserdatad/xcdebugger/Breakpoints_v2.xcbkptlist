@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "0560DC37-CF3D-48AD-9E32-51B2A5E6C3B9"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "145A189B-2BF7-42A1-89B8-61F9306798B9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../../Library/Developer/Xcode/DerivedData/Babel-ebifscwkmkhibfajlkyztfsnnhpb/SourcePackages/checkouts/MessageKit/Example/Sources/View Controllers/AdvancedExampleViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "429"
+            endingLineNumber = "429"
+            landmarkName = "configureMediaMessageImageView(_:for:at:in:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A9423C2B-16B2-4F1F-883F-7D5667EF15CE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../../Library/Developer/Xcode/DerivedData/Babel-ebifscwkmkhibfajlkyztfsnnhpb/SourcePackages/checkouts/MessageKit/Sources/Views/Cells/MediaMessageCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "configure(with:at:and:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AB375023-B1CF-40E5-9309-4CF2FA43E86A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../../Library/Developer/Xcode/DerivedData/Babel-ebifscwkmkhibfajlkyztfsnnhpb/SourcePackages/checkouts/MessageKit/Sources/Controllers/MessagesViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8207F2BB-10CA-4ED7-AFEA-2962A59EEE21"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Babel/Babel/Scenes/Chat/ChatViewExtensions/MessageDisplayDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "configureMediaMessageImageView(_:for:at:in:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8207F2BB-10CA-4ED7-AFEA-2962A59EEE21 - ee9b17970e9aea1c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Babel.ChatViewController.configureMediaMessageImageView(_: __C.UIImageView, for: MessageKit.MessageType, at: Foundation.IndexPath, in: MessageKit.MessagesCollectionView) -&gt; ()"
+                  moduleName = "Babel"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucaspereira/Workspace/Personal/Apps/Babel/Babel/Babel/Babel/Scenes/Chat/ChatViewExtensions/MessageDisplayDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "355">
+               </Location>
+               <Location
+                  uuid = "8207F2BB-10CA-4ED7-AFEA-2962A59EEE21 - ee9b17970e9aea1c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Babel.ChatViewController.configureMediaMessageImageView(_: __C.UIImageView, for: MessageKit.MessageType, at: Foundation.IndexPath, in: MessageKit.MessagesCollectionView) -&gt; ()"
+                  moduleName = "Babel"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucaspereira/Workspace/Personal/Apps/Babel/Babel/Babel/Babel/Scenes/Chat/ChatViewExtensions/MessageDisplayDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "578">
+               </Location>
+               <Location
+                  uuid = "8207F2BB-10CA-4ED7-AFEA-2962A59EEE21 - ee9b17970e9aea1c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Babel.ChatViewController.configureMediaMessageImageView(_: __C.UIImageView, for: MessageKit.MessageType, at: Foundation.IndexPath, in: MessageKit.MessagesCollectionView) -&gt; ()"
+                  moduleName = "Babel"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucaspereira/Workspace/Personal/Apps/Babel/Babel/Babel/Babel/Scenes/Chat/ChatViewExtensions/MessageDisplayDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "805">
+               </Location>
+               <Location
+                  uuid = "8207F2BB-10CA-4ED7-AFEA-2962A59EEE21 - ee9b17970e9aea1c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Babel.ChatViewController.configureMediaMessageImageView(_: __C.UIImageView, for: MessageKit.MessageType, at: Foundation.IndexPath, in: MessageKit.MessagesCollectionView) -&gt; ()"
+                  moduleName = "Babel"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucaspereira/Workspace/Personal/Apps/Babel/Babel/Babel/Babel/Scenes/Chat/ChatViewExtensions/MessageDisplayDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "452">
+               </Location>
+               <Location
+                  uuid = "8207F2BB-10CA-4ED7-AFEA-2962A59EEE21 - ee9b17970e9aea1c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Babel.ChatViewController.configureMediaMessageImageView(_: __C.UIImageView, for: MessageKit.MessageType, at: Foundation.IndexPath, in: MessageKit.MessagesCollectionView) -&gt; ()"
+                  moduleName = "Babel"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucaspereira/Workspace/Personal/Apps/Babel/Babel/Babel/Babel/Scenes/Chat/ChatViewExtensions/MessageDisplayDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "712">
+               </Location>
+               <Location
+                  uuid = "8207F2BB-10CA-4ED7-AFEA-2962A59EEE21 - ee9b17970e9aea1c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Babel.ChatViewController.configureMediaMessageImageView(_: __C.UIImageView, for: MessageKit.MessageType, at: Foundation.IndexPath, in: MessageKit.MessagesCollectionView) -&gt; ()"
+                  moduleName = "Babel"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucaspereira/Workspace/Personal/Apps/Babel/Babel/Babel/Babel/Scenes/Chat/ChatViewExtensions/MessageDisplayDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "976">
+               </Location>
+               <Location
+                  uuid = "8207F2BB-10CA-4ED7-AFEA-2962A59EEE21 - ee9b17970e9aea1c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Babel.ChatViewController.configureMediaMessageImageView(_: __C.UIImageView, for: MessageKit.MessageType, at: Foundation.IndexPath, in: MessageKit.MessagesCollectionView) -&gt; ()"
+                  moduleName = "Babel"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucaspereira/Workspace/Personal/Apps/Babel/Babel/Babel/Babel/Scenes/Chat/ChatViewExtensions/MessageDisplayDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "675">
+               </Location>
+               <Location
+                  uuid = "8207F2BB-10CA-4ED7-AFEA-2962A59EEE21 - ee9b17970e9aea1c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Babel.ChatViewController.configureMediaMessageImageView(_: __C.UIImageView, for: MessageKit.MessageType, at: Foundation.IndexPath, in: MessageKit.MessagesCollectionView) -&gt; ()"
+                  moduleName = "Babel"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucaspereira/Workspace/Personal/Apps/Babel/Babel/Babel/Babel/Scenes/Chat/ChatViewExtensions/MessageDisplayDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "902">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "835B88CE-E64C-40BB-A4E5-59AAB96F3DAE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Babel/Babel/Scenes/TabBar/RecentChats/Cells/RecentChatCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "render(dto:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

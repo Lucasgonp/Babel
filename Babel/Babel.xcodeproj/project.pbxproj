@@ -81,6 +81,7 @@
 		7643038A2B4654B10037721A /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764303892B4654B10037721A /* String+Extensions.swift */; };
 		7669BA2A2ABDD3550002AD4C /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669BA292ABDD3550002AD4C /* Date+Extensions.swift */; };
 		7669BA2D2ABDDA650002AD4C /* StartChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669BA2C2ABDDA650002AD4C /* StartChat.swift */; };
+		766DA46E2B49D8E600A9BAC1 /* YPImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 766DA46D2B49D8E600A9BAC1 /* YPImagePicker */; };
 		767E4A062A8AB87000B55980 /* Strings.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767E4A052A8AB84700B55980 /* Strings.generated.swift */; };
 		7691DAF92B499409007D52B3 /* Authenticator.docc in Sources */ = {isa = PBXBuildFile; fileRef = 7691DAF82B499409007D52B3 /* Authenticator.docc */; };
 		7691DAFF2B49940A007D52B3 /* Authenticator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7691DAF52B499409007D52B3 /* Authenticator.framework */; };
@@ -251,7 +252,6 @@
 		76B487A92B49CC0B001FC465 /* SKPhotoBrowser in Frameworks */ = {isa = PBXBuildFile; productRef = 76B487A82B49CC0B001FC465 /* SKPhotoBrowser */; };
 		76B487AB2B49CDCA001FC465 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 76B487AA2B49CDCA001FC465 /* SDWebImage */; };
 		76B487AD2B49CDCA001FC465 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 76B487AC2B49CDCA001FC465 /* SDWebImageMapKit */; };
-		76B487B12B49CF40001FC465 /* YPImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 76B487B02B49CF40001FC465 /* YPImagePicker */; };
 		76B5040C2B47600300966DB6 /* PhotoMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B5040B2B47600300966DB6 /* PhotoMessage.swift */; };
 		76CAA1392A8AA1F400D742E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA1382A8AA1F400D742E9 /* AppDelegate.swift */; };
 		76CAA13B2A8AA1F400D742E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA13A2A8AA1F400D742E9 /* SceneDelegate.swift */; };
@@ -518,6 +518,7 @@
 		764303892B4654B10037721A /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		7669BA292ABDD3550002AD4C /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		7669BA2C2ABDDA650002AD4C /* StartChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartChat.swift; sourceTree = "<group>"; };
+		766DA46C2B49D8DA00A9BAC1 /* ImagePicker */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ImagePicker; sourceTree = "<group>"; };
 		767E4A052A8AB84700B55980 /* Strings.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.generated.swift; sourceTree = "<group>"; };
 		7691DAF52B499409007D52B3 /* Authenticator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Authenticator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7691DAF72B499409007D52B3 /* Authenticator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Authenticator.h; sourceTree = "<group>"; };
@@ -648,7 +649,6 @@
 		7691DCA12B49A410007D52B3 /* AlertViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewModel.swift; sourceTree = "<group>"; };
 		7691DCA32B49A410007D52B3 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7691DCA42B49A410007D52B3 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
-		7691DCD42B49A56D007D52B3 /* ImagePicker */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ImagePicker; path = ../../../../../../../Playground/ImagePicker; sourceTree = "<group>"; };
 		769E97272AA3C4FC004FC6B4 /* ContactInfoFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoFactory.swift; sourceTree = "<group>"; };
 		769E97282AA3C4FC004FC6B4 /* ContactInfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoPresenter.swift; sourceTree = "<group>"; };
 		769E97292AA3C4FC004FC6B4 /* ContactInfoRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoRouter.swift; sourceTree = "<group>"; };
@@ -757,7 +757,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76B487982B49CB3B001FC465 /* FirebaseMessaging in Frameworks */,
-				76B487B12B49CF40001FC465 /* YPImagePicker in Frameworks */,
+				766DA46E2B49D8E600A9BAC1 /* YPImagePicker in Frameworks */,
 				76B4879D2B49CB99001FC465 /* ProgressHUD in Frameworks */,
 				76B487962B49CB3B001FC465 /* FirebaseFirestoreSwift in Frameworks */,
 				76B487A62B49CBE6001FC465 /* InputBarAccessoryView in Frameworks */,
@@ -1605,7 +1605,7 @@
 		7691DCCF2B49A43B007D52B3 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				7691DCD42B49A56D007D52B3 /* ImagePicker */,
+				766DA46C2B49D8DA00A9BAC1 /* ImagePicker */,
 			);
 			path = Packages;
 			sourceTree = "<group>";
@@ -2028,7 +2028,7 @@
 				76B487A82B49CC0B001FC465 /* SKPhotoBrowser */,
 				76B487AA2B49CDCA001FC465 /* SDWebImage */,
 				76B487AC2B49CDCA001FC465 /* SDWebImageMapKit */,
-				76B487B02B49CF40001FC465 /* YPImagePicker */,
+				766DA46D2B49D8E600A9BAC1 /* YPImagePicker */,
 			);
 			productName = Dependencies;
 			productReference = 76B4877D2B49CA95001FC465 /* Dependencies.framework */;
@@ -3702,6 +3702,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		766DA46D2B49D8E600A9BAC1 /* YPImagePicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = YPImagePicker;
+		};
 		76B4878D2B49CB3B001FC465 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7691DC1E2B49A0E6007D52B3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -3771,10 +3775,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7691DCDB2B49A6F5007D52B3 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImageMapKit;
-		};
-		76B487B02B49CF40001FC465 /* YPImagePicker */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = YPImagePicker;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

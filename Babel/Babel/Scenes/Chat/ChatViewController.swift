@@ -133,7 +133,7 @@ final class ChatViewController: MessagesViewController {
     func messageSend(
         text: String? = nil,
         photo: UIImage? = nil,
-        video: String? = nil,
+        video: MediaVideo? = nil,
         audio: String? = nil,
         audioDuration: Float = 0.0,
         location: String? = nil
@@ -205,9 +205,26 @@ extension ChatViewController: ViewConfiguration {
 extension ChatViewController: ChatDisplaying {
     func displayMessage(_ localMessage: LocalMessage) {
         let incoming = IncomingMessage(messagesViewController: self)
-        mkMessages.append(incoming.createMessage(localMessage: localMessage)!)
-        messagesCollectionView.reloadData()
-        messagesCollectionView.scrollToLastItem(animated: true)
+        let mkMessage = incoming.createMessage(localMessage: localMessage)!
+        mkMessages.append(mkMessage)
+        
+        if case let .video(item) = mkMessage.kind {
+            StorageManager.shared.downloadVideo(localMessage.pictureUrl) { [weak self] isReadyToPlay, videoFileName, fileDirectory  in
+                let videoUrl = URL(filePath: fileDirectory)
+                let videoItem = VideoMessage(url: videoUrl, thumbailUrl: mkMessage.videoItem!.thumbailUrl)
+                
+                mkMessage.videoItem = videoItem
+                mkMessage.kind = MessageKind.video(videoItem)
+                
+                self?.messagesCollectionView.reloadData()
+                self?.messagesCollectionView.scrollToLastItem(animated: true)
+                
+                print("is ready to play? \(isReadyToPlay)")
+            }
+        } else {
+            messagesCollectionView.reloadData()
+            messagesCollectionView.scrollToLastItem(animated: true)
+        }
     }
     
     func displayRefreshedMessages(_ localMessage: LocalMessage) {
@@ -368,6 +385,10 @@ private extension ChatViewController {
             completion: { [weak self] items in
                 if let singlePhoto = items.singlePhoto {
                     self?.messageSend(photo: singlePhoto.image)
+                }
+                
+                if let singleVideo = items.singleVideo {
+                    self?.messageSend(video: singleVideo)
                 }
             })
     }

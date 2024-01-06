@@ -4,9 +4,13 @@ import YPImagePicker
 import AVFoundation
 
 public final class GalleryController {
-    private var picker: YPImagePicker { configuration.picker }
+    private lazy var picker = configuration.picker
     
-    public var configuration: Configuration = .default
+    public var configuration: Configuration = .default {
+        didSet {
+            picker = configuration.picker
+        }
+    }
     
     public init() { }
     
@@ -29,11 +33,12 @@ public final class GalleryController {
     public func showMediaPicker(
         from navigation: UINavigationController?,
         loadingViewDelegate: LoadingViewDelegate? = nil,
-        completion: @escaping ([YPMediaItem]) -> Void
+        completion: @escaping ([MediaItem]) -> Void
     ) {
-        picker.didFinishPicking { [unowned picker] items, isCancelled in
+        picker.didFinishPicking { [unowned picker, self] items, isCancelled in
             DispatchQueue.main.async {
-                completion(items)
+                let mediaItems = self.makeMediaItems(from: items)
+                completion(mediaItems)
                 picker.dismiss(animated: true)
             }
         }
@@ -82,5 +87,30 @@ public extension GalleryController {
                 return YPImagePicker(configuration: config)
             }
         }
+    }
+}
+
+private extension GalleryController {
+    func makeMediaItems(from ypMediaItems: [YPMediaItem]) -> [MediaItem] {
+        return ypMediaItems.compactMap({
+            switch $0 {
+            case let .photo(mediaPhoto):
+                return .photo(MediaPhoto(
+                    originalImage: mediaPhoto.originalImage,
+                    modifiedImage: mediaPhoto.modifiedImage,
+                    fromCamera: mediaPhoto.fromCamera,
+                    exifMeta: mediaPhoto.exifMeta,
+                    asset: mediaPhoto.asset,
+                    url: mediaPhoto.url
+                ))
+            case let .video(mediaVideo):
+                return .video(MediaVideo(
+                    thumbnail: mediaVideo.thumbnail,
+                    videoURL: mediaVideo.url,
+                    fromCamera: mediaVideo.fromCamera,
+                    asset: mediaVideo.asset
+                ))
+            }
+        })
     }
 }

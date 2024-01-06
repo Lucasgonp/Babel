@@ -3,3 +3,4 @@ let kNUMBEROFMESSAGES = 12
 let kSTATUS = "status"
 let kREADDATE = "readDate"
 let kPICTUREMESSAGE = "📷 Photo"
+let kVIDEOMESSAGE = "🎥 Video"

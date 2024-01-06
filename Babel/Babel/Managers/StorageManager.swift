@@ -1,7 +1,7 @@
 import StorageKit
 
 struct StorageManager {
-    static let shared = StorageRemoteAdapter()
+    static let shared = StorageAdapter()
     
     private init() {}
 }

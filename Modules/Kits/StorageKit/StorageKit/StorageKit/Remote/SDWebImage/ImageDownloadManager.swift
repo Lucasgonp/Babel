@@ -18,11 +18,11 @@ extension UIImageView {
         }
     }
     
-    public func setImage(with imageUrl: String, placeholderImage: UIImage? = nil, completion: (() -> Void)? = nil) {
+    public func setImage(with link: String?, placeholderImage: UIImage? = nil, completion: (() -> Void)? = nil) {
         let activityIndicator = makeLoadingIndicator()
         activityIndicator.startAnimating()
         
-        if let url = URL(string: imageUrl) {
+        if let link, let url = URL(string: link) {
             sd_setImage(with: url) { _, _, _, _ in
                 completion?()
                 activityIndicator.stopAnimating()

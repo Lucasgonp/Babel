@@ -31,5 +31,11 @@ extension ChatViewController: MessagesDisplayDelegate {
         if case .photo(let media) = message.kind, let imageURL = media.url {
             imageView.setImage(with: imageURL, placeholderImage: Image.photoPlaceholder.image)
         }
+        
+        if case let .video(videoItem) = message.kind {
+            let mkMessage = mkMessages[indexPath.section]
+            let videoMessage = mkMessage.videoItem
+            imageView.setImage(with: videoMessage?.thumbailUrl)
+        }
     }
 }

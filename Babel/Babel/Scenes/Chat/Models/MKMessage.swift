@@ -1,5 +1,6 @@
 import MessageKit
 import CoreLocation
+import struct GalleryKit.MediaVideo
 
 final class MKMessage: NSObject, MessageType {
     var messageId: String
@@ -11,6 +12,7 @@ final class MKMessage: NSObject, MessageType {
         return mkSender
     }
     var photoItem: PhotoMessage?
+    var videoItem: VideoMessage?
     let senderInitials: String
     var status: String
     var readDate: Date
@@ -32,6 +34,11 @@ final class MKMessage: NSObject, MessageType {
             let photoItem = PhotoMessage(path: message.pictureUrl)
             self.kind = .photo(photoItem)
             self.photoItem = photoItem
+        case .video:
+            let videoItem = VideoMessage(url: URL(string: message.videoUrl), thumbailUrl: message.pictureUrl)
+            self.kind = MessageKind.video(videoItem)
+            self.videoItem = videoItem
+            
         default:
             fatalError("unkown message type")
         }

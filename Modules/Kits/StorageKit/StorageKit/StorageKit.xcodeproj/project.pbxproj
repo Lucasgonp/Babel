@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		7608DE3C2A995E120036027A /* StorageKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 7608DE3B2A995E120036027A /* StorageKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7608DE432A995E260036027A /* StorageRemoteAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE422A995E260036027A /* StorageRemoteAdapter.swift */; };
+		7608DE432A995E260036027A /* StorageAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE422A995E260036027A /* StorageAdapter.swift */; };
 		7608DE462A995E480036027A /* Dependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7608DE452A995E470036027A /* Dependencies.framework */; };
 		7608DE472A995E480036027A /* Dependencies.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7608DE452A995E470036027A /* Dependencies.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7608DE4A2A9960190036027A /* StorageLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE492A9960190036027A /* StorageLocal.swift */; };
 		7608DE4C2A9960590036027A /* StorageKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE4B2A9960590036027A /* StorageKey.swift */; };
-		7608DE5B2A99A67D0036027A /* StorageRemoteUploadImageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE5A2A99A67D0036027A /* StorageRemoteUploadImageProtocol.swift */; };
+		7608DE5B2A99A67D0036027A /* StorageUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE5A2A99A67D0036027A /* StorageUpload.swift */; };
 		7608DE962AA382BA0036027A /* ImageDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE952AA382BA0036027A /* ImageDownloadManager.swift */; };
+		76371FBC2B48C909007C9E7E /* StorageLocalVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76371FBB2B48C909007C9E7E /* StorageLocalVideo.swift */; };
+		76371FC02B48E477007C9E7E /* StorageDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76371FBF2B48E477007C9E7E /* StorageDownload.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,12 +36,14 @@
 /* Begin PBXFileReference section */
 		7608DE382A995E120036027A /* StorageKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7608DE3B2A995E120036027A /* StorageKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StorageKit.h; sourceTree = "<group>"; };
-		7608DE422A995E260036027A /* StorageRemoteAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageRemoteAdapter.swift; sourceTree = "<group>"; };
+		7608DE422A995E260036027A /* StorageAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageAdapter.swift; sourceTree = "<group>"; };
 		7608DE452A995E470036027A /* Dependencies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Dependencies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7608DE492A9960190036027A /* StorageLocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageLocal.swift; sourceTree = "<group>"; };
 		7608DE4B2A9960590036027A /* StorageKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKey.swift; sourceTree = "<group>"; };
-		7608DE5A2A99A67D0036027A /* StorageRemoteUploadImageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageRemoteUploadImageProtocol.swift; sourceTree = "<group>"; };
+		7608DE5A2A99A67D0036027A /* StorageUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageUpload.swift; sourceTree = "<group>"; };
 		7608DE952AA382BA0036027A /* ImageDownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadManager.swift; sourceTree = "<group>"; };
+		76371FBB2B48C909007C9E7E /* StorageLocalVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageLocalVideo.swift; sourceTree = "<group>"; };
+		76371FBF2B48E477007C9E7E /* StorageDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDownload.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +98,9 @@
 			isa = PBXGroup;
 			children = (
 				7608DE942AA382500036027A /* SDWebImage */,
-				7608DE422A995E260036027A /* StorageRemoteAdapter.swift */,
-				7608DE5A2A99A67D0036027A /* StorageRemoteUploadImageProtocol.swift */,
+				7608DE422A995E260036027A /* StorageAdapter.swift */,
+				7608DE5A2A99A67D0036027A /* StorageUpload.swift */,
+				76371FBF2B48E477007C9E7E /* StorageDownload.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -104,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				7608DE492A9960190036027A /* StorageLocal.swift */,
+				76371FBB2B48C909007C9E7E /* StorageLocalVideo.swift */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -197,9 +203,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7608DE5B2A99A67D0036027A /* StorageRemoteUploadImageProtocol.swift in Sources */,
-				7608DE432A995E260036027A /* StorageRemoteAdapter.swift in Sources */,
+				7608DE5B2A99A67D0036027A /* StorageUpload.swift in Sources */,
+				7608DE432A995E260036027A /* StorageAdapter.swift in Sources */,
 				7608DE962AA382BA0036027A /* ImageDownloadManager.swift in Sources */,
+				76371FC02B48E477007C9E7E /* StorageDownload.swift in Sources */,
+				76371FBC2B48C909007C9E7E /* StorageLocalVideo.swift in Sources */,
 				7608DE4C2A9960590036027A /* StorageKey.swift in Sources */,
 				7608DE4A2A9960190036027A /* StorageLocal.swift in Sources */,
 			);

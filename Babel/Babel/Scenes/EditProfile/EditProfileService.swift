@@ -13,11 +13,9 @@ final class EditProfileService {
                                  AuthenticatorSaveUserProtocol
     
     private let authManager: AuthDependencies
-    private let storage: StorageRemoteUploadImageProtocol
     
-    init(authManager: AuthDependencies, storage: StorageRemoteUploadImageProtocol) {
+    init(authManager: AuthDependencies) {
         self.authManager = authManager
-        self.storage = storage
     }
 }
 
@@ -32,6 +30,6 @@ extension EditProfileService: EditProfileServicing {
     }
     
     func updateAvatarImage(_ image: UIImage, directory: String, completion: @escaping (String?) -> Void) {
-        storage.uploadImage(image, directory: directory, callbackThread: .main, completion: completion)
+        StorageManager.shared.uploadImage(image, directory: directory, callbackThread: .main, completion: completion)
     }
 }

@@ -1,4 +1,5 @@
 import UIKit
+import struct GalleryKit.MediaVideo
 import RealmSwift
 
 protocol ChatInteracting: AnyObject {
@@ -85,6 +86,10 @@ extension ChatInteractor: ChatInteracting {
         
         if let data = message.photo, let photo = UIImage(data: data) {
             sendPhotoMessage(message: localMessage, image: photo, memberIds: message.memberIds)
+        }
+        
+        if let video = message.video {
+            sendVideoMessage(message: localMessage, video: video, memberIds: message.memberIds)
         }
         
         // TODO: Send push notification
@@ -288,6 +293,51 @@ private extension ChatInteractor {
                 message.pictureUrl = imageURL
                 self?.sendMessageWorker.addMessage(message, memberIds: memberIds)
             }
+        }
+    }
+    
+    func sendVideoMessage(message: LocalMessage, video: MediaVideo, memberIds: [String]) {
+        message.message = kVIDEOMESSAGE
+        message.type = ChatMessageType.video.rawValue
+        
+        let fileName = Date().stringDate()
+        let thumbnailDirectory = FileDirectory.videoThumbnail.format(message.chatRoomId, fileName)
+        
+        let thumbnail = video.makeYPMediaVideo().thumbnail
+        
+        StorageManager.shared.uploadImage(thumbnail, directory: thumbnailDirectory) { [weak self] thumbnailLink in
+            if let thumbnailLink {
+                self?.uploadVideo(
+                    video,
+                    thumbnailLink: thumbnailLink,
+                    message: message,
+                    fileName: fileName,
+                    memberIds: memberIds
+                )
+            }
+        }
+    }
+    
+    func uploadVideo(
+        _ video: MediaVideo,
+        thumbnailLink: String,
+        message: LocalMessage,
+        fileName: String,
+        memberIds: [String]
+    ) {
+        let videoDirectory = FileDirectory.video.format(message.chatRoomId, fileName)
+        
+        do {
+            let videoData = try Data(contentsOf: video.videoURL)
+            StorageManager.shared.saveFileLocally(fileData: videoData, fileName: fileName)
+            StorageManager.shared.uploadVideo(videoData, directory: videoDirectory) { [weak self] videoLink in
+                message.pictureUrl = thumbnailLink
+                message.videoUrl = videoLink!
+                
+                self?.sendMessageWorker.addMessage(message, memberIds: memberIds)
+            }
+        } catch let error {
+            fatalError("error trying to convert videoURL to Data: \(error.localizedDescription)")
         }
     }
 }

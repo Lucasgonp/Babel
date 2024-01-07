@@ -57,6 +57,12 @@ public extension Color {
     
     /// Returns a color object whose values are:
     ///
+    /// - Light Mode: `#F2F2F2`.
+    /// - Dark Mode: `#060B0D`.
+    static let backgroundSecondary = Color(#colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 1), #colorLiteral(red: 0.1294117647, green: 0.1764705882, blue: 0.2, alpha: 1))
+    
+    /// Returns a color object whose values are:
+    ///
     /// - Light Mode: `#E1FAF0`.
     /// - Dark Mode: `#E1FAF0`.
     static let success050 = Color(#colorLiteral(red: 0.8823529412, green: 0.9803921569, blue: 0.9411764706, alpha: 1), #colorLiteral(red: 0.8823529412, green: 0.9803921569, blue: 0.9411764706, alpha: 1))

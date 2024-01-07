@@ -123,6 +123,7 @@ final class ChatViewController: MessagesViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.largeTitleDisplayMode =  .never
+        configureNavigationAppearance()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -265,6 +266,14 @@ extension ChatViewController: LoadingViewDelegate {
 }
 
 private extension ChatViewController {
+    func configureNavigationAppearance() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = Color.backgroundSecondary.uiColor
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+    }
+    
     func configureMessageCollectionView() {
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messageCellDelegate = self

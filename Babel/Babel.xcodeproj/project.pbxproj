@@ -255,6 +255,8 @@
 		76C6B7472B4AFEBB00285EE2 /* YPImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 76C6B7462B4AFEBB00285EE2 /* YPImagePicker */; };
 		76C6B7492B4B040000285EE2 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C6B7482B4B03FF00285EE2 /* LocationManager.swift */; };
 		76C6B74C2B4B1F1300285EE2 /* LocationMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C6B74B2B4B1F1300285EE2 /* LocationMessage.swift */; };
+		76C6B75B2B4B22E900285EE2 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C6B75A2B4B22E900285EE2 /* MapViewController.swift */; };
+		76C6B75D2B4B24AE00285EE2 /* MapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C6B75C2B4B24AE00285EE2 /* MapAnnotation.swift */; };
 		76CAA1392A8AA1F400D742E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA1382A8AA1F400D742E9 /* AppDelegate.swift */; };
 		76CAA13B2A8AA1F400D742E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA13A2A8AA1F400D742E9 /* SceneDelegate.swift */; };
 		76CAA1422A8AA1F600D742E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76CAA1412A8AA1F600D742E9 /* Assets.xcassets */; };
@@ -663,6 +665,8 @@
 		76C6B7452B4AFEA200285EE2 /* ImagePicker */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ImagePicker; sourceTree = "<group>"; };
 		76C6B7482B4B03FF00285EE2 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		76C6B74B2B4B1F1300285EE2 /* LocationMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMessage.swift; sourceTree = "<group>"; };
+		76C6B75A2B4B22E900285EE2 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		76C6B75C2B4B24AE00285EE2 /* MapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotation.swift; sourceTree = "<group>"; };
 		76CAA1352A8AA1F400D742E9 /* Babel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Babel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76CAA1382A8AA1F400D742E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76CAA13A2A8AA1F400D742E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -1656,6 +1660,8 @@
 		76C6B74D2B4B228500285EE2 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				76C6B75A2B4B22E900285EE2 /* MapViewController.swift */,
+				76C6B75C2B4B24AE00285EE2 /* MapAnnotation.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -2571,10 +2577,12 @@
 				76C6B7492B4B040000285EE2 /* LocationManager.swift in Sources */,
 				76D246762AC4A2CF00FDA81E /* ChatHelper.swift in Sources */,
 				7610119D2B3A1768004639C4 /* LocalMessage.swift in Sources */,
+				76C6B75B2B4B22E900285EE2 /* MapViewController.swift in Sources */,
 				7620F2D92A92EF74002A4EB5 /* UsersPresenter.swift in Sources */,
 				7620F4502A9659F5002A4EB5 /* TellAFriendViewController.swift in Sources */,
 				7643038A2B4654B10037721A /* String+Extensions.swift in Sources */,
 				76B5040C2B47600300966DB6 /* PhotoMessage.swift in Sources */,
+				76C6B75D2B4B24AE00285EE2 /* MapAnnotation.swift in Sources */,
 				7610119B2B3A15CD004639C4 /* MKMessage.swift in Sources */,
 				7620F4302A9568D2002A4EB5 /* SettingsButtonViewModel.swift in Sources */,
 				76CAA1872A8AA9ED00D742E9 /* HomeFactory.swift in Sources */,

@@ -50,6 +50,11 @@ final class RecentChatsViewController: ViewController<RecentChatsInteracting, UI
 
         interactor.loadRecentChats()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureNavigationAppearance()
+    }
 
     override func buildViewHierarchy() { 
         view.fillWithSubview(subview: tableView)
@@ -135,6 +140,11 @@ extension RecentChatsViewController: UITableViewDataSource {
 }
 
 private extension RecentChatsViewController {
+    func configureNavigationAppearance() {
+        navigationController?.navigationBar.standardAppearance = UINavigationBar.appearance().standardAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = UINavigationBar.appearance().scrollEdgeAppearance
+    }
+    
     func filterContentForSearchText(searchText: String) {
         if !searchText.isEmpty {
             filteredRecentChats = allRecentChats.filter({ $0.receiverName.lowercased().contains(searchText.lowercased()) })

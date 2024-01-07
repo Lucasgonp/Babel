@@ -40,6 +40,10 @@ internal enum Strings {
     /// Contact Info
     internal static let title = Strings.tr("Localizable", "ContactInfo.title", fallback: "Contact Info")
   }
+  internal enum MapView {
+    /// Map view
+    internal static let title = Strings.tr("Localizable", "MapView.title", fallback: "Map view")
+  }
   internal enum MessageType {
     /// Audio
     internal static let audio = Strings.tr("Localizable", "MessageType.audio", fallback: "Audio")

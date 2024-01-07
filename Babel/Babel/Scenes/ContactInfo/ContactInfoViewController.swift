@@ -47,6 +47,7 @@ final class ContactInfoViewController: ViewController<ContactInfoInteracting, UI
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.largeTitleDisplayMode = .never
+        configureNavigationAppearance()
     }
 
     override func buildViewHierarchy() {
@@ -133,5 +134,12 @@ extension ContactInfoViewController: ContactInfoHeaderDelegate {
         previewImageView.modalTransitionStyle = .crossDissolve
         previewImageView.modalPresentationStyle = .overFullScreen
         present(previewImageView, animated: true)
+    }
+}
+
+private extension ContactInfoViewController {
+    func configureNavigationAppearance() {
+        navigationController?.navigationBar.standardAppearance = UINavigationBar.appearance().standardAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = UINavigationBar.appearance().scrollEdgeAppearance
     }
 }

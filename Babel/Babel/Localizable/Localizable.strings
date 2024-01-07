@@ -57,3 +57,6 @@
 "MessageType.video" = "Video";
 "MessageType.location" = "Location";
 "MessageType.audio" = "Audio";
+
+// Map
+"MapView.title" = "Map view";

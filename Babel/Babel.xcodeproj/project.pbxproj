@@ -81,7 +81,6 @@
 		7643038A2B4654B10037721A /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764303892B4654B10037721A /* String+Extensions.swift */; };
 		7669BA2A2ABDD3550002AD4C /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669BA292ABDD3550002AD4C /* Date+Extensions.swift */; };
 		7669BA2D2ABDDA650002AD4C /* StartChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669BA2C2ABDDA650002AD4C /* StartChat.swift */; };
-		766DA46E2B49D8E600A9BAC1 /* YPImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 766DA46D2B49D8E600A9BAC1 /* YPImagePicker */; };
 		767E4A062A8AB87000B55980 /* Strings.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767E4A052A8AB84700B55980 /* Strings.generated.swift */; };
 		7691DAF92B499409007D52B3 /* Authenticator.docc in Sources */ = {isa = PBXBuildFile; fileRef = 7691DAF82B499409007D52B3 /* Authenticator.docc */; };
 		7691DAFF2B49940A007D52B3 /* Authenticator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7691DAF52B499409007D52B3 /* Authenticator.framework */; };
@@ -253,6 +252,7 @@
 		76B487AB2B49CDCA001FC465 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 76B487AA2B49CDCA001FC465 /* SDWebImage */; };
 		76B487AD2B49CDCA001FC465 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 76B487AC2B49CDCA001FC465 /* SDWebImageMapKit */; };
 		76B5040C2B47600300966DB6 /* PhotoMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B5040B2B47600300966DB6 /* PhotoMessage.swift */; };
+		76C6B7472B4AFEBB00285EE2 /* YPImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 76C6B7462B4AFEBB00285EE2 /* YPImagePicker */; };
 		76CAA1392A8AA1F400D742E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA1382A8AA1F400D742E9 /* AppDelegate.swift */; };
 		76CAA13B2A8AA1F400D742E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA13A2A8AA1F400D742E9 /* SceneDelegate.swift */; };
 		76CAA1422A8AA1F600D742E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76CAA1412A8AA1F600D742E9 /* Assets.xcassets */; };
@@ -518,7 +518,6 @@
 		764303892B4654B10037721A /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		7669BA292ABDD3550002AD4C /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		7669BA2C2ABDDA650002AD4C /* StartChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartChat.swift; sourceTree = "<group>"; };
-		766DA46C2B49D8DA00A9BAC1 /* ImagePicker */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ImagePicker; sourceTree = "<group>"; };
 		767E4A052A8AB84700B55980 /* Strings.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.generated.swift; sourceTree = "<group>"; };
 		7691DAF52B499409007D52B3 /* Authenticator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Authenticator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7691DAF72B499409007D52B3 /* Authenticator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Authenticator.h; sourceTree = "<group>"; };
@@ -659,6 +658,7 @@
 		76B4877D2B49CA95001FC465 /* Dependencies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dependencies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76B4877F2B49CA95001FC465 /* Dependencies.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dependencies.h; sourceTree = "<group>"; };
 		76B5040B2B47600300966DB6 /* PhotoMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMessage.swift; sourceTree = "<group>"; };
+		76C6B7452B4AFEA200285EE2 /* ImagePicker */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ImagePicker; sourceTree = "<group>"; };
 		76CAA1352A8AA1F400D742E9 /* Babel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Babel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76CAA1382A8AA1F400D742E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76CAA13A2A8AA1F400D742E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -740,6 +740,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76B487892B49CAC8001FC465 /* Dependencies.framework in Frameworks */,
+				76C6B7472B4AFEBB00285EE2 /* YPImagePicker in Frameworks */,
 				7691DCE82B49A83D007D52B3 /* DesignKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -757,7 +758,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				76B487982B49CB3B001FC465 /* FirebaseMessaging in Frameworks */,
-				766DA46E2B49D8E600A9BAC1 /* YPImagePicker in Frameworks */,
 				76B4879D2B49CB99001FC465 /* ProgressHUD in Frameworks */,
 				76B487962B49CB3B001FC465 /* FirebaseFirestoreSwift in Frameworks */,
 				76B487A62B49CBE6001FC465 /* InputBarAccessoryView in Frameworks */,
@@ -1078,7 +1078,6 @@
 		7691DB122B4994FF007D52B3 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				7691DCCF2B49A43B007D52B3 /* Packages */,
 				7691DB142B49954A007D52B3 /* Kits */,
 				7691DB132B499542007D52B3 /* Features */,
 			);
@@ -1602,14 +1601,6 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		7691DCCF2B49A43B007D52B3 /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				766DA46C2B49D8DA00A9BAC1 /* ImagePicker */,
-			);
-			path = Packages;
-			sourceTree = "<group>";
-		};
 		769E97262AA3C4E7004FC6B4 /* ContactInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -1640,6 +1631,14 @@
 			path = Dependencies;
 			sourceTree = "<group>";
 		};
+		76C6B7422B4AFE8200285EE2 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				76C6B7452B4AFEA200285EE2 /* ImagePicker */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
 		76CAA12C2A8AA1F400D742E9 = {
 			isa = PBXGroup;
 			children = (
@@ -1650,6 +1649,7 @@
 				76CAA1362A8AA1F400D742E9 /* Products */,
 				76CAA1712A8AA8F400D742E9 /* Frameworks */,
 				7691DB122B4994FF007D52B3 /* Modules */,
+				76C6B7422B4AFE8200285EE2 /* Packages */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1974,6 +1974,7 @@
 			);
 			name = GalleryKit;
 			packageProductDependencies = (
+				76C6B7462B4AFEBB00285EE2 /* YPImagePicker */,
 			);
 			productName = GalleryKit;
 			productReference = 7691DC402B49A35C007D52B3 /* GalleryKit.framework */;
@@ -2028,7 +2029,6 @@
 				76B487A82B49CC0B001FC465 /* SKPhotoBrowser */,
 				76B487AA2B49CDCA001FC465 /* SDWebImage */,
 				76B487AC2B49CDCA001FC465 /* SDWebImageMapKit */,
-				766DA46D2B49D8E600A9BAC1 /* YPImagePicker */,
 			);
 			productName = Dependencies;
 			productReference = 76B4877D2B49CA95001FC465 /* Dependencies.framework */;
@@ -3702,10 +3702,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		766DA46D2B49D8E600A9BAC1 /* YPImagePicker */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = YPImagePicker;
-		};
 		76B4878D2B49CB3B001FC465 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7691DC1E2B49A0E6007D52B3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -3775,6 +3771,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7691DCDB2B49A6F5007D52B3 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImageMapKit;
+		};
+		76C6B7462B4AFEBB00285EE2 /* YPImagePicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = YPImagePicker;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

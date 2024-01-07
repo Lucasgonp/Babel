@@ -72,7 +72,7 @@ public extension GalleryController {
             case .multimedia:
                 config.library.mediaType = .photoAndVideo
                 config.screens = [.library]
-                config.maxNumberOfItems = 5
+                config.library.maxNumberOfItems = 5
                 config.video.compression = AVAssetExportPresetHighestQuality
                 config.showsVideoTrimmer = true
                 //                config.albumName = "Babel Images"

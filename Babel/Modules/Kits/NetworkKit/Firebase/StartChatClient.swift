@@ -22,7 +22,6 @@ public struct StartChatDTO {
 public protocol StartChatClientProtocol {
     func makeRecentChats(dto: StartChatDTO, completion: @escaping ([String]) -> Void)
     func saveRecent<T: Codable>(id: String, recentChat: T)
-    func downloadUsers<T: Decodable>(withIds: [String], completion: @escaping ((Result<[T], FirebaseError>) -> Void))
 }
 
 extension FirebaseClient: StartChatClientProtocol {

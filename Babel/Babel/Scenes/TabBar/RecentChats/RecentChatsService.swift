@@ -20,9 +20,9 @@ extension RecentChatsService: RecentChatsServicing {
         client.downloadRecentChats(key: key, currentUserId: currentUserId) { (allRecents: [RecentChatModel]) in
             var recentChats = [RecentChatModel]()
             for recent in allRecents {
-//                if !recent.lastMassage.isEmpty {
+                if !recent.lastMassage.isEmpty {
                     recentChats.append(recent)
-//                }
+                }
             }
             
             recentChats.sort(by: { $0.date! > $1.date! })

@@ -40,6 +40,16 @@ internal enum Strings {
     /// Contact Info
     internal static let title = Strings.tr("Localizable", "ContactInfo.title", fallback: "Contact Info")
   }
+  internal enum MessageType {
+    /// Audio
+    internal static let audio = Strings.tr("Localizable", "MessageType.audio", fallback: "Audio")
+    /// Location
+    internal static let location = Strings.tr("Localizable", "MessageType.location", fallback: "Location")
+    /// Photo
+    internal static let photo = Strings.tr("Localizable", "MessageType.photo", fallback: "Photo")
+    /// Video
+    internal static let video = Strings.tr("Localizable", "MessageType.video", fallback: "Video")
+  }
   internal enum Settings {
     internal enum EditProfile {
       /// Full name

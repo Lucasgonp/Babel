@@ -340,8 +340,11 @@ private extension ChatViewController {
         })
         
         let locationImage = UIImage(systemName: "mappin.and.ellipse")?.withRenderingMode(.alwaysTemplate)
-        let locationAction = UIAlertAction(title: Localizable.ActionSheet.shareLocation, style: .default, image: locationImage, handler: { _ in
-            print("didTapOnShareLocation")
+        let locationAction = UIAlertAction(title: Localizable.ActionSheet.shareLocation, style: .default, image: locationImage, handler: { [weak self] _ in
+            LocationManager.shared.authorizeLocationAccess { [weak self] in
+                LocationManager.shared.startUpdating()
+                self?.messageSend(location: kLOCATION)
+            }
         })
         
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)

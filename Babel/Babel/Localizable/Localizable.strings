@@ -52,3 +52,8 @@
 "ChatView.ActionSheet.library" = "Library";
 "ChatView.ActionSheet.shareLocation" = "Share location";
 "ChatView.ActionSheet.cancel" = "Cancel";
+
+"MessageType.photo" = "Photo";
+"MessageType.video" = "Video";
+"MessageType.location" = "Location";
+"MessageType.audio" = "Audio";

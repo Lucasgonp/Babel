@@ -12,6 +12,7 @@ final class MKMessage: NSObject, MessageType {
     var sender: SenderType { mkSender }
     var photoItem: PhotoMessage?
     var videoItem: VideoMessage?
+    var locationItem: LocationMessage?
     let senderInitials: String
     var status: String
     var readDate: Date
@@ -41,6 +42,10 @@ extension MKMessage {
             let videoItem = VideoMessage(url: URL(string: message.videoUrl), thumbailUrl: message.pictureUrl)
             self.kind = MessageKind.video(videoItem)
             self.videoItem = videoItem
+        case .location:
+            let locationItem = LocationMessage(location: CLLocation(latitude: message.latitude, longitude: message.longitude))
+            self.kind = MessageKind.location(locationItem)
+            self.locationItem = locationItem
         default:
             fatalError("unkown message type")
         }

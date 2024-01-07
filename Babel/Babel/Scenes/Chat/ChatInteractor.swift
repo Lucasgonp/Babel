@@ -92,6 +92,10 @@ extension ChatInteractor: ChatInteracting {
             sendVideoMessage(message: localMessage, video: video, memberIds: message.memberIds)
         }
         
+        if let _ = message.location {
+            sendLocationMessage(message: localMessage, memberIds: message.memberIds)
+        }
+        
         // TODO: Send push notification
         
         updateRecents(chatRoomId: dto.chatId, lastMessage: localMessage.message)
@@ -339,5 +343,16 @@ private extension ChatInteractor {
         } catch let error {
             fatalError("error trying to convert videoURL to Data: \(error.localizedDescription)")
         }
+    }
+    
+    func sendLocationMessage(message: LocalMessage, memberIds: [String]) {
+        let currentLocation = LocationManager.shared.currentLocation!
+        
+        message.message = kLOCATIONMESSAGE
+        message.type = ChatMessageType.location.rawValue
+        message.latitude = currentLocation.latitude
+        message.longitude = currentLocation.longitude
+        
+        sendMessageWorker.addMessage(message, memberIds: memberIds)
     }
 }

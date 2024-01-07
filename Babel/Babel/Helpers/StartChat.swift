@@ -4,7 +4,7 @@ import StorageKit
 final class StartChat {
     static let shared = StartChat()
     
-    private let client: StartChatClientProtocol = FirebaseClient.shared
+    private let client: StartChatClientProtocol & UsersClientProtocol = FirebaseClient.shared
     private let currentUser = UserSafe.shared.user
     
     private init() {}
@@ -52,8 +52,8 @@ private extension StartChat {
                     receiverId: receiverUser.id,
                     receiverName: receiverUser.name,
                     membersId: [senderUser.id, receiverUser.id],
-                    lastMassage: "Qualquer msg",
-                    unreadCounter: 5,
+                    lastMassage: String(),
+                    unreadCounter: 0,
                     avatarLink: receiverUser.avatarLink
                 )
                 self.client.saveRecent(id: recentObject.id, recentChat: recentObject)

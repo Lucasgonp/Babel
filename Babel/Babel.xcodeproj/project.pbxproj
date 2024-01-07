@@ -253,6 +253,8 @@
 		76B487AD2B49CDCA001FC465 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 76B487AC2B49CDCA001FC465 /* SDWebImageMapKit */; };
 		76B5040C2B47600300966DB6 /* PhotoMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B5040B2B47600300966DB6 /* PhotoMessage.swift */; };
 		76C6B7472B4AFEBB00285EE2 /* YPImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 76C6B7462B4AFEBB00285EE2 /* YPImagePicker */; };
+		76C6B7492B4B040000285EE2 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C6B7482B4B03FF00285EE2 /* LocationManager.swift */; };
+		76C6B74C2B4B1F1300285EE2 /* LocationMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C6B74B2B4B1F1300285EE2 /* LocationMessage.swift */; };
 		76CAA1392A8AA1F400D742E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA1382A8AA1F400D742E9 /* AppDelegate.swift */; };
 		76CAA13B2A8AA1F400D742E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA13A2A8AA1F400D742E9 /* SceneDelegate.swift */; };
 		76CAA1422A8AA1F600D742E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76CAA1412A8AA1F600D742E9 /* Assets.xcassets */; };
@@ -659,6 +661,8 @@
 		76B4877F2B49CA95001FC465 /* Dependencies.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dependencies.h; sourceTree = "<group>"; };
 		76B5040B2B47600300966DB6 /* PhotoMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMessage.swift; sourceTree = "<group>"; };
 		76C6B7452B4AFEA200285EE2 /* ImagePicker */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ImagePicker; sourceTree = "<group>"; };
+		76C6B7482B4B03FF00285EE2 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		76C6B74B2B4B1F1300285EE2 /* LocationMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMessage.swift; sourceTree = "<group>"; };
 		76CAA1352A8AA1F400D742E9 /* Babel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Babel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76CAA1382A8AA1F400D742E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76CAA13A2A8AA1F400D742E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -1639,6 +1643,23 @@
 			path = Packages;
 			sourceTree = "<group>";
 		};
+		76C6B74A2B4B1EFB00285EE2 /* MediaMessages */ = {
+			isa = PBXGroup;
+			children = (
+				76B5040B2B47600300966DB6 /* PhotoMessage.swift */,
+				76371FBD2B48E201007C9E7E /* VideoMessage.swift */,
+				76C6B74B2B4B1F1300285EE2 /* LocationMessage.swift */,
+			);
+			path = MediaMessages;
+			sourceTree = "<group>";
+		};
+		76C6B74D2B4B228500285EE2 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		76CAA12C2A8AA1F400D742E9 = {
 			isa = PBXGroup;
 			children = (
@@ -1742,6 +1763,7 @@
 				76CAA17B2A8AA99F00D742E9 /* AuthManager.swift */,
 				76CAA17D2A8AA9B700D742E9 /* NetworkManager.swift */,
 				7608DE532A999F050036027A /* StorageManager.swift */,
+				76C6B7482B4B03FF00285EE2 /* LocationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1749,6 +1771,7 @@
 		76CAA17F2A8AA9ED00D742E9 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				76C6B74D2B4B228500285EE2 /* Map */,
 				76D246792AC4AE5F00FDA81E /* Chat */,
 				76CAA1802A8AA9ED00D742E9 /* Home */,
 				7608DE602A9BAFCD0036027A /* EditBio */,
@@ -1793,12 +1816,11 @@
 		76D246862AC4B49200FDA81E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				76C6B74A2B4B1EFB00285EE2 /* MediaMessages */,
 				76D246872AC4B4A000FDA81E /* ChatDTO.swift */,
 				7610119A2B3A15CD004639C4 /* MKMessage.swift */,
 				761011A12B3A2002004639C4 /* OutgoingMessage.swift */,
 				761011AB2B3A688F004639C4 /* IncomingMessage.swift */,
-				76B5040B2B47600300966DB6 /* PhotoMessage.swift */,
-				76371FBD2B48E201007C9E7E /* VideoMessage.swift */,
 				7610119E2B3A1773004639C4 /* RealmMessages */,
 			);
 			path = Models;
@@ -2545,6 +2567,8 @@
 				76CAA13B2A8AA1F400D742E9 /* SceneDelegate.swift in Sources */,
 				76DA7EBC2AB78D1F00106731 /* RecentChatsFactory.swift in Sources */,
 				7608DE6A2A9BAFDE0036027A /* EditBioViewController.swift in Sources */,
+				76C6B74C2B4B1F1300285EE2 /* LocationMessage.swift in Sources */,
+				76C6B7492B4B040000285EE2 /* LocationManager.swift in Sources */,
 				76D246762AC4A2CF00FDA81E /* ChatHelper.swift in Sources */,
 				7610119D2B3A1768004639C4 /* LocalMessage.swift in Sources */,
 				7620F2D92A92EF74002A4EB5 /* UsersPresenter.swift in Sources */,
@@ -3377,9 +3401,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Babel/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
-				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Babel requires to access your Media library";
-				INFOPLIST_KEY_NSCameraUsageDescription = "Babel requires to access your Camera";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Babel requires to access your Photo library";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -3419,9 +3440,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Babel/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
-				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Babel requires to access your Media library";
-				INFOPLIST_KEY_NSCameraUsageDescription = "Babel requires to access your Camera";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Babel requires to access your Photo library";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";

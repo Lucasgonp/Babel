@@ -60,7 +60,6 @@ final class ChatViewController: MessagesViewController {
         let imageView = ImageView(frame: CGRect(x: .zero, y: .zero, width: 38, height: 38))
         imageView.layer.cornerRadius = 19
         imageView.clipsToBounds = true
-        imageView.setImage(with: dto.recipientAvatarURL, placeholderImage: Image.avatarPlaceholder.image)
         return imageView
     }()
     
@@ -123,7 +122,6 @@ final class ChatViewController: MessagesViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.largeTitleDisplayMode =  .never
-        configureNavigationAppearance()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -198,6 +196,11 @@ extension ChatViewController: ViewConfiguration {
         configureMessageCollectionView()
         configureMessageInputBar()
         
+        titleViewAvatar.setImage(with: dto.recipientAvatarURL, placeholderImage: Image.avatarPlaceholder.image) { [weak self] image in
+            self?.titleViewAvatar.image = image
+            self?.stackView.layoutIfNeeded()
+        }
+        
         // TODO: showMessageTimestampOnSwipeLeft = true
     }
 }
@@ -266,14 +269,6 @@ extension ChatViewController: LoadingViewDelegate {
 }
 
 private extension ChatViewController {
-    func configureNavigationAppearance() {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = Color.backgroundSecondary.uiColor
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-    }
-    
     func configureMessageCollectionView() {
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messageCellDelegate = self

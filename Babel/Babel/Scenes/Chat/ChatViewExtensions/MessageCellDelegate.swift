@@ -42,7 +42,7 @@ extension ChatViewController: MessageCellDelegate {
         
         let mkMessage = mkMessages[indexPath.section]
         if let locationItem = mkMessage.locationItem {
-            let mapView = MapViewController(location: locationItem.location)
+            let mapView = MapViewController(location: locationItem.location, userName: mkMessage.sender.displayName)
             
             navigationController?.pushViewController(mapView, animated: true)
         }

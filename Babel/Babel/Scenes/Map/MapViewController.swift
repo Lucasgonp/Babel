@@ -4,16 +4,18 @@ import MapKit
 final class MapViewController: UIViewController {
     typealias Localizable = Strings
     
-    private let location: CLLocation
-    
     private lazy var mapView: MKMapView = {
         let mapView = MKMapView()
-        mapView.addAnnotation(MapAnnotation(title: nil, coordinate: location.coordinate))
+        mapView.addAnnotation(MapAnnotation(title: userName, coordinate: location.coordinate))
         return mapView
     }()
     
-    init(location: CLLocation) {
+    private let location: CLLocation
+    private let userName: String?
+    
+    init(location: CLLocation, userName: String? = nil) {
         self.location = location
+        self.userName = userName
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -41,6 +43,8 @@ extension MapViewController: ViewConfiguration {
         navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         
         title = Localizable.MapView.title
+        
+        view.backgroundColor = Color.backgroundSecondary.uiColor
     }
 }
 

@@ -165,7 +165,7 @@ extension ChatInteractor: ChatInteracting {
             AudioRecorderManager.shared.finishRecording()
             if StorageManager.shared.fileExistsAtPath(path: "\(audioFileName).m4a") {
                 let audioDuration = audioDuration.interval(ofComponent: .second, from: Date())
-                let message = OutgoingMessage(chatId: dto.chatId, audio: audioFileName, audioDuration: audioDuration)
+                let message = OutgoingMessage(chatId: dto.chatId, audio: audioFileName, audioDuration: audioDuration, memberIds: [currentUser.id, dto.recipientId])
                 sendMessage(message: message)
             } else {
                 print("no audio file")

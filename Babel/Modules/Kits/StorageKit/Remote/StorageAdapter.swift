@@ -8,19 +8,19 @@ public final class StorageAdapter {
         self.storage = storage
         self.fileManager = fileManager
     }
+    
+    public func fileExistsAtPath(path: String) -> Bool {
+        fileManager.fileExists(atPath: fileInDocumentsDirectory(fileName: path))
+    }
+    
+    public func getDocumentsURL() -> URL {
+        fileManager.urls(for: .documentDirectory, in: .userDomainMask).last!
+    }
 }
 
 extension StorageAdapter {
-    func getDocumentsURL() -> URL {
-        fileManager.urls(for: .documentDirectory, in: .userDomainMask).last!
-    }
-    
     func fileInDocumentsDirectory(fileName: String) -> String {
         getDocumentsURL().appendingPathComponent(fileName).path
-    }
-    
-    func fileExistsAtPath(path: String) -> Bool {
-        fileManager.fileExists(atPath: fileInDocumentsDirectory(fileName: path))
     }
     
     func fileNameFrom(fileUrl: String) -> String {

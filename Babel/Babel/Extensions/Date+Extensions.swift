@@ -44,4 +44,15 @@ extension Date {
         formatter.dateFormat = "ddMMMyyyyHHmmss"
         return formatter.string(from: self)
     }
+    
+    func interval(ofComponent comp: Calendar.Component, from date: Date) -> Float {
+        guard  let start = Calendar.current.ordinality(of: comp, in: .era, for: date) else { 
+            return 0
+        }
+        guard  let end = Calendar.current.ordinality(of: comp, in: .era, for: self) else {
+            return 0
+        }
+
+        return Float(start - end)
+    }
 }

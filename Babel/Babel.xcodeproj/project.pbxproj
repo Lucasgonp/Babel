@@ -81,6 +81,9 @@
 		7643038A2B4654B10037721A /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764303892B4654B10037721A /* String+Extensions.swift */; };
 		7669BA2A2ABDD3550002AD4C /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669BA292ABDD3550002AD4C /* Date+Extensions.swift */; };
 		7669BA2D2ABDDA650002AD4C /* StartChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669BA2C2ABDDA650002AD4C /* StartChat.swift */; };
+		767082592B4B81C20024EF41 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C6B7622B4B7BE100285EE2 /* HttpMethod.swift */; };
+		7670825B2B4B89480024EF41 /* AudioMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670825A2B4B89480024EF41 /* AudioMessage.swift */; };
+		7670825E2B4B96E10024EF41 /* BasicAudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670825D2B4B96E10024EF41 /* BasicAudioController.swift */; };
 		767E4A062A8AB87000B55980 /* Strings.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767E4A052A8AB84700B55980 /* Strings.generated.swift */; };
 		7691DAF92B499409007D52B3 /* Authenticator.docc in Sources */ = {isa = PBXBuildFile; fileRef = 7691DAF82B499409007D52B3 /* Authenticator.docc */; };
 		7691DAFF2B49940A007D52B3 /* Authenticator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7691DAF52B499409007D52B3 /* Authenticator.framework */; };
@@ -257,6 +260,7 @@
 		76C6B74C2B4B1F1300285EE2 /* LocationMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C6B74B2B4B1F1300285EE2 /* LocationMessage.swift */; };
 		76C6B75B2B4B22E900285EE2 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C6B75A2B4B22E900285EE2 /* MapViewController.swift */; };
 		76C6B75D2B4B24AE00285EE2 /* MapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C6B75C2B4B24AE00285EE2 /* MapAnnotation.swift */; };
+		76C6B7612B4B507000285EE2 /* AudioRecorderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C6B7602B4B507000285EE2 /* AudioRecorderManager.swift */; };
 		76CAA1392A8AA1F400D742E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA1382A8AA1F400D742E9 /* AppDelegate.swift */; };
 		76CAA13B2A8AA1F400D742E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA13A2A8AA1F400D742E9 /* SceneDelegate.swift */; };
 		76CAA1422A8AA1F600D742E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76CAA1412A8AA1F600D742E9 /* Assets.xcassets */; };
@@ -522,6 +526,8 @@
 		764303892B4654B10037721A /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		7669BA292ABDD3550002AD4C /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		7669BA2C2ABDDA650002AD4C /* StartChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartChat.swift; sourceTree = "<group>"; };
+		7670825A2B4B89480024EF41 /* AudioMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioMessage.swift; sourceTree = "<group>"; };
+		7670825D2B4B96E10024EF41 /* BasicAudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAudioController.swift; sourceTree = "<group>"; };
 		767E4A052A8AB84700B55980 /* Strings.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.generated.swift; sourceTree = "<group>"; };
 		7691DAF52B499409007D52B3 /* Authenticator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Authenticator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7691DAF72B499409007D52B3 /* Authenticator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Authenticator.h; sourceTree = "<group>"; };
@@ -667,6 +673,8 @@
 		76C6B74B2B4B1F1300285EE2 /* LocationMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMessage.swift; sourceTree = "<group>"; };
 		76C6B75A2B4B22E900285EE2 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		76C6B75C2B4B24AE00285EE2 /* MapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotation.swift; sourceTree = "<group>"; };
+		76C6B7602B4B507000285EE2 /* AudioRecorderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorderManager.swift; sourceTree = "<group>"; };
+		76C6B7622B4B7BE100285EE2 /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
 		76CAA1352A8AA1F400D742E9 /* Babel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Babel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76CAA1382A8AA1F400D742E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76CAA13A2A8AA1F400D742E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -955,6 +963,7 @@
 				761011982B3A0351004639C4 /* MessageKitDefaults.swift */,
 				761011A92B3A6172004639C4 /* Constants.swift */,
 				764303872B4650F20037721A /* FilesDirectory.swift */,
+				7670825D2B4B96E10024EF41 /* BasicAudioController.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1396,6 +1405,7 @@
 				7691DBEB2B499A29007D52B3 /* HttpGetProtocol.swift */,
 				7691DBEC2B499A29007D52B3 /* HttpError.swift */,
 				7691DBED2B499A29007D52B3 /* HttpPostProtocol.swift */,
+				76C6B7622B4B7BE100285EE2 /* HttpMethod.swift */,
 			);
 			path = Http;
 			sourceTree = "<group>";
@@ -1653,6 +1663,7 @@
 				76B5040B2B47600300966DB6 /* PhotoMessage.swift */,
 				76371FBD2B48E201007C9E7E /* VideoMessage.swift */,
 				76C6B74B2B4B1F1300285EE2 /* LocationMessage.swift */,
+				7670825A2B4B89480024EF41 /* AudioMessage.swift */,
 			);
 			path = MediaMessages;
 			sourceTree = "<group>";
@@ -1770,6 +1781,7 @@
 				76CAA17D2A8AA9B700D742E9 /* NetworkManager.swift */,
 				7608DE532A999F050036027A /* StorageManager.swift */,
 				76C6B7482B4B03FF00285EE2 /* LocationManager.swift */,
+				76C6B7602B4B507000285EE2 /* AudioRecorderManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1822,12 +1834,12 @@
 		76D246862AC4B49200FDA81E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7610119E2B3A1773004639C4 /* RealmMessages */,
 				76C6B74A2B4B1EFB00285EE2 /* MediaMessages */,
 				76D246872AC4B4A000FDA81E /* ChatDTO.swift */,
 				7610119A2B3A15CD004639C4 /* MKMessage.swift */,
 				761011A12B3A2002004639C4 /* OutgoingMessage.swift */,
 				761011AB2B3A688F004639C4 /* IncomingMessage.swift */,
-				7610119E2B3A1773004639C4 /* RealmMessages */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2393,6 +2405,7 @@
 				7691DB7D2B499861007D52B3 /* NetworkKit.docc in Sources */,
 				7691DC032B499A2A007D52B3 /* HttpPostProtocol.swift in Sources */,
 				7691DBF62B499A2A007D52B3 /* ChatTyping.swift in Sources */,
+				767082592B4B81C20024EF41 /* HttpMethod.swift in Sources */,
 				7691DBFE2B499A2A007D52B3 /* RecentChatClient.swift in Sources */,
 				7691DBF82B499A2A007D52B3 /* SendMessage.swift in Sources */,
 				7691DBFC2B499A2A007D52B3 /* ContactInfoClient.swift in Sources */,
@@ -2521,6 +2534,7 @@
 				7620F2D12A92EF69002A4EB5 /* ChannelsService.swift in Sources */,
 				7608DE6C2A9BAFDE0036027A /* EditBioService.swift in Sources */,
 				7620F2B52A92DE1B002A4EB5 /* SettingsPresenter.swift in Sources */,
+				76C6B7612B4B507000285EE2 /* AudioRecorderManager.swift in Sources */,
 				76D246802AC4AE7000FDA81E /* ChatFactory.swift in Sources */,
 				761011A22B3A2002004639C4 /* OutgoingMessage.swift in Sources */,
 				769E972F2AA3C4FC004FC6B4 /* ContactInfoRouter.swift in Sources */,
@@ -2590,12 +2604,14 @@
 				7620F4422A9592C2002A4EB5 /* EditProfileInteractor.swift in Sources */,
 				7620F2DB2A92EF74002A4EB5 /* UsersViewController.swift in Sources */,
 				76371FA22B48931D007C9E7E /* ChatTypingWorker.swift in Sources */,
+				7670825B2B4B89480024EF41 /* AudioMessage.swift in Sources */,
 				7620F2D02A92EF69002A4EB5 /* ChannelsInteractor.swift in Sources */,
 				769E97312AA3C4FC004FC6B4 /* ContactInfoInteractor.swift in Sources */,
 				76D246842AC4AE7000FDA81E /* ChatInteractor.swift in Sources */,
 				7620F2DC2A92EF74002A4EB5 /* UsersInteractor.swift in Sources */,
 				7620F4402A9592C2002A4EB5 /* EditProfileRouter.swift in Sources */,
 				7620F4202A951280002A4EB5 /* SettingsButtonCell.swift in Sources */,
+				7670825E2B4B96E10024EF41 /* BasicAudioController.swift in Sources */,
 				7620F44D2A9659F5002A4EB5 /* TellAFriendFactory.swift in Sources */,
 				76DA7EC02AB78D1F00106731 /* RecentChatsInteractor.swift in Sources */,
 				7620F45B2A965A09002A4EB5 /* TermsRouter.swift in Sources */,

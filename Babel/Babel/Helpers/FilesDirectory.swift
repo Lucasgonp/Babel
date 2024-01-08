@@ -5,4 +5,5 @@ struct FileDirectory {
     static let uploadNewImage = "MediaMessages/Photo/%@/_%@.jpg"
     static let videoThumbnail = "MediaMessages/Thumbnail/%@/_%@.jpg"
     static let video = "MediaMessages/Video/%@/_%@.mov"
+    static let audio = "MediaMessages/Audio/%@/_%@.m4a"
 }

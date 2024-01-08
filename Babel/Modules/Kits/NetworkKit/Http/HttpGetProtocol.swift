@@ -1,3 +1,8 @@
 public protocol HttpGetProtocol {
-    func get(to url: URL, with data: Data?, completion: @escaping (Result<Data?,HttpError>) -> Void)
+    func get<T: Decodable>(
+        to url: URL,
+        parameters: Encodable?,
+        headers: [String: String]?,
+        completion: @escaping (Result<T?, HttpError>) -> Void
+    )
 }

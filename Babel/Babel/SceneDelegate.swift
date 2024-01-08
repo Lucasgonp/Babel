@@ -7,16 +7,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         setupWindow(scene)
     }
-    
-    func sceneWillResignActive(_ scene: UIScene) {
-        // TODO: If share live location remove this
-        LocationManager.shared.stopUpdating()
-    }
-    
-    func sceneDidEnterBackground(_ scene: UIScene) {
-        // TODO: If share live location remove this
-        LocationManager.shared.stopUpdating()
-    }
 }
 
 private extension SceneDelegate {

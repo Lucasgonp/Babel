@@ -79,8 +79,15 @@ final class ChatViewController: MessagesViewController {
         let micButtonItem = InputBarButtonItem()
         micButtonItem.image = UIImage(systemName: "mic.fill")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 30))
         micButtonItem.setSize(CGSize(width: 30, height: 30), animated: false)
-//        micButtonItem.addGestureRecognizer()
+        micButtonItem.addGestureRecognizer(longPressRecognizer)
         return micButtonItem
+    }()
+    
+    private lazy var longPressRecognizer: UILongPressGestureRecognizer = {
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(recordAudio))
+        longPressRecognizer.minimumPressDuration = 0.5
+        longPressRecognizer.delaysTouchesBegan = true
+        return longPressRecognizer
     }()
     
     private lazy var attachActionSheet = makeAttachActionSheet()
@@ -90,6 +97,8 @@ final class ChatViewController: MessagesViewController {
         return gallery
     }()
     
+    private(set) lazy var audioController = AudioController(messageCollectionView: messagesCollectionView)
+    
     private(set) lazy var mkSender = MKSender(
         senderId: currentUser.id,
         displayName: currentUser.name
@@ -98,9 +107,9 @@ final class ChatViewController: MessagesViewController {
     private(set) var mkMessages = [MKMessage]()
     
     private let currentUser = UserSafe.shared.user
-    private(set) var dto: ChatDTO
+    private let interactor: ChatInteracting
     
-    let interactor: ChatInteracting
+    private(set) var dto: ChatDTO
     
     init(interactor: ChatInteracting, dto: ChatDTO) {
         self.interactor = interactor
@@ -127,6 +136,10 @@ final class ChatViewController: MessagesViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         interactor.removeListeners()
+        
+        //CHECK: if its necessary
+//        FirebaseRecentListener.shared.resetRecentCounter(chatRoomId: chatId)
+//        audioController.stopAnyOngoingPlaying()
     }
     
     func messageSend(
@@ -178,8 +191,13 @@ final class ChatViewController: MessagesViewController {
             interactor.refreshNewMessages()
         }
     }
+    
+    func updateTypingObserver() {
+        interactor.updateTypingObserver()
+    }
 }
 
+//MARK: - ViewConfiguration
 extension ChatViewController: ViewConfiguration {
     func buildViewHierarchy() {
         navigationItem.titleView = stackView
@@ -188,7 +206,7 @@ extension ChatViewController: ViewConfiguration {
     func setupConstraints() {
         
     }
-
+    
     func configureViews() {
         let backButton = UIBarButtonItem(title: String(), style: .plain, target: nil, action: nil)
         navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
@@ -252,12 +270,14 @@ extension ChatViewController: ChatDisplaying {
     }
 }
 
+//MARK: - LoadingViewDelegate
 extension ChatViewController: LoadingViewDelegate {
     func dismissLoadingView() {
         spinnerView.removeFromSuperview()
     }
 }
 
+//MARK: - Actions
 @objc private extension ChatViewController {
     func didTapOnContactInfo() {
         interactor.didTapOnContactInfo()
@@ -266,8 +286,20 @@ extension ChatViewController: LoadingViewDelegate {
     func didTapOnBackButton() {
         interactor.didTapOnBackButton()
     }
+    
+    @objc func recordAudio() {
+        switch longPressRecognizer.state {
+        case .began:
+            interactor.audioRecording(.start)
+        case .ended:
+            interactor.audioRecording(.stop)
+        default:
+            return
+        }
+    }
 }
 
+//MARK: - Private methods
 private extension ChatViewController {
     func configureMessageCollectionView() {
         messagesCollectionView.messagesDataSource = self

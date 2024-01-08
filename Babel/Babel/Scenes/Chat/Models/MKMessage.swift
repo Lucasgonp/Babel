@@ -13,6 +13,7 @@ final class MKMessage: NSObject, MessageType {
     var photoItem: PhotoMessage?
     var videoItem: VideoMessage?
     var locationItem: LocationMessage?
+    var audioItem: AudioMessage?
     let senderInitials: String
     var status: String
     var readDate: Date
@@ -40,12 +41,17 @@ extension MKMessage {
             self.photoItem = photoItem
         case .video:
             let videoItem = VideoMessage(url: URL(string: message.videoUrl), thumbailUrl: message.pictureUrl)
-            self.kind = MessageKind.video(videoItem)
+            self.kind = .video(videoItem)
             self.videoItem = videoItem
         case .location:
             let locationItem = LocationMessage(location: CLLocation(latitude: message.latitude, longitude: message.longitude))
-            self.kind = MessageKind.location(locationItem)
+            self.kind = .location(locationItem)
             self.locationItem = locationItem
+        case .audio:
+            let url = URL(string: message.audioUrl) ?? URL(fileURLWithPath: String())
+            let audioItem = AudioMessage(url: url, duration: Float(message.audioDuration))
+            self.kind = .audio(audioItem)
+            self.audioItem = audioItem
         default:
             fatalError("unkown message type")
         }

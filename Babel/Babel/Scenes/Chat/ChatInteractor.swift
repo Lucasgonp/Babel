@@ -11,23 +11,32 @@ protocol ChatInteracting: AnyObject {
     func didTapOnContactInfo()
     func registerObservers()
     func removeListeners()
+    
+    func audioRecording(_ status: RecordingState)
 }
 
 final class ChatInteractor {
     typealias Localizable = Strings.ChatView
     
-    private let presenter: ChatPresenting
-    private let dto: ChatDTO
     private let currentUser = UserSafe.shared.user
     private var notificationToken: NotificationToken?
+    
+    //MARK: Typing
+    private var typingCounter = 0
+    
+    //MARK: Audio
+    private var audioFileName = String()
+    private var audioDuration = Date()
+    
+    //MARK: Init
+    private let presenter: ChatPresenting
+    private let dto: ChatDTO
     
     //MARK: Workers
     private let chatListenerWorker: ChatListenersWorkerProtocol
     private let chatTypingWorker: ChatTypingWorkerProtocol
     private let fetchMessageWorker: FetchMessageWorkerProtocol
     private let sendMessageWorker: SendMessageWorkerProtocol
-    
-    private var typingCounter = 0
     
     init(
         chatListenerWorker: ChatListenersWorkerProtocol = ChatListenersWorker(),
@@ -96,6 +105,12 @@ extension ChatInteractor: ChatInteracting {
             sendLocationMessage(message: localMessage, memberIds: message.memberIds)
         }
         
+        if let audio = message.audio {
+            let audioDuration = Double(audioDuration.interval(ofComponent: .second, from: Date()))
+            localMessage.audioDuration = audioDuration
+            sendAudioMessage(message: localMessage, audioFileName: audio, audioDuration: audioDuration, memberIds: message.memberIds)
+        }
+        
         // TODO: Send push notification
         
         updateRecents(chatRoomId: dto.chatId, lastMessage: localMessage.message)
@@ -135,6 +150,27 @@ extension ChatInteractor: ChatInteracting {
         listenForNewChats()
         createTypingObserver()
         listenForReadStatusChange()
+    }
+    
+    func audioRecording(_ status: RecordingState) {
+        switch status {
+        case .start:
+            AudioRecorderManager.shared.authorizeMicrophoneAccess { [weak self] in
+                guard let self else { return }
+                self.audioDuration = Date()
+                self.audioFileName = Date().stringDate()
+                AudioRecorderManager.shared.startRecording(fileName: self.audioFileName)
+            }
+        case .stop:
+            AudioRecorderManager.shared.finishRecording()
+            if StorageManager.shared.fileExistsAtPath(path: "\(audioFileName).m4a") {
+                let audioDuration = audioDuration.interval(ofComponent: .second, from: Date())
+                let message = OutgoingMessage(chatId: dto.chatId, audio: audioFileName, audioDuration: audioDuration)
+                sendMessage(message: message)
+            } else {
+                print("no audio file")
+            }
+        }
     }
 }
 
@@ -353,6 +389,22 @@ private extension ChatInteractor {
         message.latitude = currentLocation.latitude
         message.longitude = currentLocation.longitude
         
+        LocationManager.shared.stopUpdating()
         sendMessageWorker.addMessage(message, memberIds: memberIds)
+    }
+    
+    func sendAudioMessage(message: LocalMessage, audioFileName: String, audioDuration: Double, memberIds: [String]) {
+        message.message = kAUDIOMESSAGE
+        message.type = ChatMessageType.audio.rawValue
+        
+        let fireDirectory = FileDirectory.audio.format(dto.chatId, audioFileName)
+        StorageManager.shared.uploadAudio(audioFileName, directory: fireDirectory) { [weak self] audioLink in
+            if let audioLink {
+                message.audioUrl = audioLink
+                message.audioDuration = audioDuration
+                
+                self?.sendMessageWorker.addMessage(message, memberIds: memberIds)
+            }
+        }
     }
 }

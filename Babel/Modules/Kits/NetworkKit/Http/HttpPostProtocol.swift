@@ -1,3 +1,8 @@
 public protocol HttpPostProtocol {
-    func post(to url: URL, with data: Data?, completion: @escaping (Result<Data?,HttpError>) -> Void)
+    func post<T: Decodable>(
+        to url: URL,
+        parameters: Encodable?,
+        headers: [String: String]?,
+        completion: @escaping (Result<T?, HttpError>) -> Void
+    )
 }

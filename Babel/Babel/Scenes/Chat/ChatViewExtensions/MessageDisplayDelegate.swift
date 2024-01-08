@@ -52,5 +52,22 @@ extension ChatViewController: MessagesDisplayDelegate {
                 self?.mkMessages[indexPath.section].kind = .video(videoItem)
             }
         }
+        
+        if case .audio = message.kind {
+            let mkMessage = mkMessages[indexPath.section]
+            let audioItem = mkMessage.audioItem
+            
+            StorageManager.shared.downloadAudio(mkMessage.audioItem!.url.absoluteString) { [weak self] audioFileUrl in
+                let audioUrl: URL
+                if #available(iOS 16.0, *) {
+                    audioUrl = URL(filePath: audioFileUrl)
+                } else {
+                    audioUrl = URL(fileURLWithPath: audioFileUrl)
+                }
+                
+                let audioMessage = AudioMessage(url: audioUrl, duration: Float(audioItem!.duration))
+                self?.mkMessages[indexPath.section].kind = .audio(audioMessage)
+            }
+        }
     }
 }

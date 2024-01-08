@@ -9,13 +9,13 @@ import Foundation
 
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
-internal enum Strings {
-  internal enum Error {
-    internal enum Generic {
+public enum Strings {
+  public enum Error {
+    public enum Generic {
       /// Ok
-      internal static let button = Strings.tr("Localizable", "Error.Generic.button", fallback: "Ok")
+      public static let button = Strings.tr("Localizable", "Error.Generic.button", fallback: "Ok")
       /// Something went wrong
-      internal static let title = Strings.tr("Localizable", "Error.Generic.title", fallback: "Something went wrong")
+      public static let title = Strings.tr("Localizable", "Error.Generic.title", fallback: "Something went wrong")
     }
   }
 }
@@ -26,7 +26,19 @@ internal enum Strings {
 
 extension Strings {
   private static func tr(_ table: String, _ key: String, _ args: CVarArg..., fallback value: String) -> String {
-    let format = DesignKitResources.resourcesBundle.localizedString(forKey: key, value: value, table: table)
+    let format = BundleToken.bundle.localizedString(forKey: key, value: value, table: table)
     return String(format: format, locale: Locale.current, arguments: args)
   }
 }
+
+// swiftlint:disable convenience_type
+private final class BundleToken {
+  static let bundle: Bundle = {
+    #if SWIFT_PACKAGE
+    return Bundle.module
+    #else
+    return Bundle(for: BundleToken.self)
+    #endif
+  }()
+}
+// swiftlint:enable convenience_type

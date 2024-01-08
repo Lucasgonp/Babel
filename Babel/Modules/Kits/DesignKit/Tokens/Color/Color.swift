@@ -24,8 +24,12 @@ public struct Color {
                     return storage.light
                 }
             }
+        } else {
+            return storage.light
         }
     }
+    
+    public var cgColor: CGColor { uiColor.cgColor }
     
     init(_ light: String, _ dark: String, opacity: CGFloat = 1) {
         self.storage = AnyStorage(

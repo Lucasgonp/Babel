@@ -39,14 +39,14 @@ final class SettingsViewController: ViewController<SettingsInteracting, UIView> 
     
     private lazy var settingsButtons = [
         SettingsButtonViewModel(
-            icon: Icon.heartSquareIcon.image.withTintColor(Color.warning500.uiColor, renderingMode: .alwaysOriginal),
+            icon: Icon.heartSquare.image.withTintColor(Color.warning500.uiColor, renderingMode: .alwaysOriginal),
             text: Localizable.SecondSession.tellAFriend,
             completionHandler: { [weak self] in
                 self?.interactor.tellAFriend()
             }
         ),
         SettingsButtonViewModel(
-            icon: Icon.infoIcon.image,
+            icon: Icon.info.image,
             text: Localizable.SecondSession.termsAndConditions,
             completionHandler: { [weak self] in
                 self?.interactor.termsAndConditions()

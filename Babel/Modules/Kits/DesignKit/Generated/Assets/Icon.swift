@@ -23,8 +23,9 @@ public typealias AssetIconTypeAlias = IconAsset.Image
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 public enum Icon {
   public static let feedbackDanger = IconAsset(name: "feedback-danger")
-  public static let heartSquareIcon = IconAsset(name: "heart-square-icon")
-  public static let infoIcon = IconAsset(name: "info_icon")
+  public static let heartSquare = IconAsset(name: "heart-square")
+  public static let info = IconAsset(name: "info")
+  public static let send = IconAsset(name: "send")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 

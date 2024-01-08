@@ -13,18 +13,8 @@ protocol ChatDisplaying: AnyObject {
     func updateMessage(_ localMessage: LocalMessage)
 }
 
-private extension ChatViewController.Layout {
-    enum Size {
-        static let imageHeight: CGFloat = 90.0
-    }
-}
-
 final class ChatViewController: MessagesViewController {
     typealias Localizable = Strings.ChatView
-    
-    fileprivate enum Layout {
-        // template
-    }
     
     private lazy var titleLabel: TextLabel = {
         let label = TextLabel()
@@ -35,7 +25,7 @@ final class ChatViewController: MessagesViewController {
         return label
     }()
     
-    private lazy var descriptionLabel: TextLabel = {
+    private let descriptionLabel: TextLabel = {
         let label = TextLabel()
         label.textAlignment = .center
         label.font = Font.sm.uiFont
@@ -56,16 +46,11 @@ final class ChatViewController: MessagesViewController {
         return stackView
     }()
     
-    private lazy var titleViewAvatar: ImageView = {
+    private let titleViewAvatar: ImageView = {
         let imageView = ImageView(frame: CGRect(x: .zero, y: .zero, width: 38, height: 38))
         imageView.layer.cornerRadius = 19
         imageView.clipsToBounds = true
         return imageView
-    }()
-    
-    private lazy var refreshController: UIRefreshControl = {
-        let refreshController = UIRefreshControl()
-        return refreshController
     }()
     
     private lazy var spinnerView: SpinnerView = {
@@ -75,21 +60,6 @@ final class ChatViewController: MessagesViewController {
         return spinnerView
     }()
     
-    private lazy var micButtonItem: InputBarButtonItem = {
-        let micButtonItem = InputBarButtonItem()
-        micButtonItem.image = UIImage(systemName: "mic.fill")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 30))
-        micButtonItem.setSize(CGSize(width: 30, height: 30), animated: false)
-        micButtonItem.addGestureRecognizer(longPressRecognizer)
-        return micButtonItem
-    }()
-    
-    private lazy var longPressRecognizer: UILongPressGestureRecognizer = {
-        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(recordAudio))
-        longPressRecognizer.minimumPressDuration = 0.5
-        longPressRecognizer.delaysTouchesBegan = true
-        return longPressRecognizer
-    }()
-    
     private lazy var attachActionSheet = makeAttachActionSheet()
     private lazy var galleryController: GalleryController = {
         let gallery = GalleryController()
@@ -97,15 +67,22 @@ final class ChatViewController: MessagesViewController {
         return gallery
     }()
     
+    private lazy var inputBar: InputBarAccessoryView = {
+        let inputBar = MessageInputBarView()
+        inputBar.delegate = self
+        inputBar.actionDelegate = self
+        return inputBar
+    }()
+    
     private(set) lazy var audioController = AudioController(messageCollectionView: messagesCollectionView)
     
-    private(set) lazy var mkSender = MKSender(
-        senderId: currentUser.id,
-        displayName: currentUser.name
-    )
+    var mkSender: MKSender {
+        MKSender(senderId: currentUser.id, displayName: currentUser.name)
+    }
     
     private(set) var mkMessages = [MKMessage]()
     
+    private let refreshController = UIRefreshControl()
     private let currentUser = UserSafe.shared.user
     private let interactor: ChatInteracting
     
@@ -115,6 +92,7 @@ final class ChatViewController: MessagesViewController {
         self.interactor = interactor
         self.dto = dto
         super.init(nibName: nil, bundle: nil)
+        self.messageInputBar = inputBar
     }
     
     required init?(coder: NSCoder) {
@@ -137,7 +115,7 @@ final class ChatViewController: MessagesViewController {
         super.viewWillDisappear(animated)
         interactor.removeListeners()
         
-        //CHECK: if its necessary
+        //TODO: check if its necessary
 //        FirebaseRecentListener.shared.resetRecentCounter(chatRoomId: chatId)
 //        audioController.stopAnyOngoingPlaying()
     }
@@ -203,9 +181,7 @@ extension ChatViewController: ViewConfiguration {
         navigationItem.titleView = stackView
     }
     
-    func setupConstraints() {
-        
-    }
+    func setupConstraints() { }
     
     func configureViews() {
         let backButton = UIBarButtonItem(title: String(), style: .plain, target: nil, action: nil)
@@ -277,6 +253,17 @@ extension ChatViewController: LoadingViewDelegate {
     }
 }
 
+//MARK: - MessageInputBarDelegate
+extension ChatViewController: MessageInputBarDelegate {
+    func openAttachActionSheet() {
+        present(attachActionSheet, animated: true)
+    }
+    
+    func audioRecording(_ state: RecordingState) {
+        interactor.audioRecording(state)
+    }
+}
+
 //MARK: - Actions
 @objc private extension ChatViewController {
     func didTapOnContactInfo() {
@@ -285,17 +272,6 @@ extension ChatViewController: LoadingViewDelegate {
     
     func didTapOnBackButton() {
         interactor.didTapOnBackButton()
-    }
-    
-    @objc func recordAudio() {
-        switch longPressRecognizer.state {
-        case .began:
-            interactor.audioRecording(.start)
-        case .ended:
-            interactor.audioRecording(.stop)
-        default:
-            return
-        }
     }
 }
 
@@ -324,27 +300,18 @@ private extension ChatViewController {
     }
     
     func configureAttachButton() {
-        let attachButton = InputBarButtonItem()
-        attachButton.image = UIImage(systemName: "plus")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 30))
-        attachButton.setSize(CGSize(width: 30, height: 30), animated: false)
-        attachButton.onTouchUpInside { [weak self] item in
-            guard let self else { return }
-            present(self.attachActionSheet, animated: true)
-        }
-        messageInputBar.setStackViewItems([attachButton], forStack: .left, animated: false)
-        messageInputBar.setLeftStackViewWidthConstant(to: 36, animated: false)
+        let inputBar = messageInputBar as? MessageInputBarView
+        inputBar?.addAttachButton()
     }
     
     func addMicrophoneButton() {
-        messageInputBar.setStackViewItems([micButtonItem], forStack: .right, animated: false)
-        messageInputBar.setRightStackViewWidthConstant(to: 30, animated: false)
+        let inputBar = messageInputBar as? MessageInputBarView
+        inputBar?.addMicButton()
     }
     
     func addSendButton() {
-        let sendButton = messageInputBar.sendButton
-        sendButton.setTitle(Localizable.send, for: .normal)
-        messageInputBar.setStackViewItems([sendButton], forStack: .right, animated: false)
-        messageInputBar.setRightStackViewWidthConstant(to: 55, animated: false)
+        let inputBar = messageInputBar as? MessageInputBarView
+        inputBar?.addSendButton()
     }
     
     func updateTypingIndicator(show: Bool) {
@@ -390,10 +357,6 @@ private extension ChatViewController {
         actionSheet.addAction(UIAlertAction(title: Localizable.ActionSheet.cancel, style: .cancel, handler: nil))
         
         return actionSheet
-    }
-    
-    func printTest() {
-        print("done")
     }
     
     func showLoadingView() {

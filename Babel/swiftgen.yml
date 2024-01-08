@@ -1,13 +1,42 @@
-input_dir: Babel
-output_dir: Babel/Generated/
 strings:
-  - inputs: Localizable/Localizable.strings
+  - inputs: Babel/Localizable/Localizable.strings
     outputs:
       templateName: structured-swift5
-      output: Strings.generated.swift
+      output: Babel/Generated/Strings/Strings.generated.swift
       params:
         publicAccess: false
         enumName: "Strings"
         bundle: BabelResources.resourcesBundle
         ignoreTargetModule: true
         module: Babel
+  - inputs: Modules/Kits/DesignKit/Localizable/Localizable.strings
+    outputs:
+      templateName: structured-swift5
+      output: Modules/Kits/DesignKit/Generated/Strings/Strings.generated.swift
+      params:
+        publicAccess: true
+        enumName: "Strings"
+
+        
+xcassets:
+  - inputs: Modules/Kits/DesignKit/Resources/Assets/IconAssets.xcassets
+    outputs:
+        templateName: swift5
+        output: Modules/Kits/DesignKit/Generated/Assets/Icon.swift
+        params:
+            publicAccess: true
+            enumName: Icon
+            imageTypeName: IconAsset
+            imageAliasName: AssetIconTypeAlias
+  - inputs: Modules/Kits/DesignKit/Resources/Assets/ImageAssets.xcassets
+    outputs:
+        templateName: swift5
+        output: Modules/Kits/DesignKit/Generated/Assets/Image.swift
+        params:
+            publicAccess: true
+            enumName: Image
+            imageTypeName: ImageAsset
+            imageAliasName: AssetImageTypeAlias
+
+
+

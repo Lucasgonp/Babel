@@ -84,6 +84,7 @@
 		767082592B4B81C20024EF41 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C6B7622B4B7BE100285EE2 /* HttpMethod.swift */; };
 		7670825B2B4B89480024EF41 /* AudioMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670825A2B4B89480024EF41 /* AudioMessage.swift */; };
 		7670825E2B4B96E10024EF41 /* BasicAudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670825D2B4B96E10024EF41 /* BasicAudioController.swift */; };
+		767082622B4C4F4D0024EF41 /* MessageInputBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767082612B4C4F4D0024EF41 /* MessageInputBarView.swift */; };
 		767E4A062A8AB87000B55980 /* Strings.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767E4A052A8AB84700B55980 /* Strings.generated.swift */; };
 		7691DAF92B499409007D52B3 /* Authenticator.docc in Sources */ = {isa = PBXBuildFile; fileRef = 7691DAF82B499409007D52B3 /* Authenticator.docc */; };
 		7691DAFF2B49940A007D52B3 /* Authenticator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7691DAF52B499409007D52B3 /* Authenticator.framework */; };
@@ -528,6 +529,7 @@
 		7669BA2C2ABDDA650002AD4C /* StartChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartChat.swift; sourceTree = "<group>"; };
 		7670825A2B4B89480024EF41 /* AudioMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioMessage.swift; sourceTree = "<group>"; };
 		7670825D2B4B96E10024EF41 /* BasicAudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAudioController.swift; sourceTree = "<group>"; };
+		767082612B4C4F4D0024EF41 /* MessageInputBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputBarView.swift; sourceTree = "<group>"; };
 		767E4A052A8AB84700B55980 /* Strings.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.generated.swift; sourceTree = "<group>"; };
 		7691DAF52B499409007D52B3 /* Authenticator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Authenticator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7691DAF72B499409007D52B3 /* Authenticator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Authenticator.h; sourceTree = "<group>"; };
@@ -1062,6 +1064,22 @@
 				7620F2AA2A92DDC2002A4EB5 /* Settings */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		7670825F2B4C4F210024EF41 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				767082602B4C4F300024EF41 /* Views */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
+		767082602B4C4F300024EF41 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				767082612B4C4F4D0024EF41 /* MessageInputBarView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		7691DAF62B499409007D52B3 /* Authenticator */ = {
@@ -1711,6 +1729,7 @@
 		76CAA1372A8AA1F400D742E9 /* Babel */ = {
 			isa = PBXGroup;
 			children = (
+				7670825F2B4C4F210024EF41 /* Commons */,
 				7669BA282ABDD33D0002AD4C /* Extensions */,
 				7620F42B2A9567A3002A4EB5 /* Helpers */,
 				76CAA17F2A8AA9ED00D742E9 /* Scenes */,
@@ -2594,6 +2613,7 @@
 				76C6B75B2B4B22E900285EE2 /* MapViewController.swift in Sources */,
 				7620F2D92A92EF74002A4EB5 /* UsersPresenter.swift in Sources */,
 				7620F4502A9659F5002A4EB5 /* TellAFriendViewController.swift in Sources */,
+				767082622B4C4F4D0024EF41 /* MessageInputBarView.swift in Sources */,
 				7643038A2B4654B10037721A /* String+Extensions.swift in Sources */,
 				76B5040C2B47600300966DB6 /* PhotoMessage.swift in Sources */,
 				76C6B75D2B4B24AE00285EE2 /* MapAnnotation.swift in Sources */,

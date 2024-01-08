@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "closure #1 in StartChat.restartChat(chatRoomId:memberIds:):StartChat.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "memberIds">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LocationManager.didAuthorizeLocationAccess():LocationManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "locationManager.authorizationStatus">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MessageInputBarView.shortPressRecognizer2():MessageInputBarView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "shortPressRecognizer.state">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LocationManager.startUpdating():LocationManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "currentLocation">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RecentChatsViewController.configureNavigationAppearance():RecentChatsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "navigationController?.navigationBar.standardAppearance">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RecentChatsInteractor.didTapOnChat(_:):RecentChatsInteractor.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

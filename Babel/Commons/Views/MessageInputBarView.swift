@@ -218,6 +218,7 @@ final class MessageInputBarView: InputBarAccessoryView {
 @objc private extension MessageInputBarView {
     func panRecognizer() {
         let position = panGestureRecognizer.location(in: self)
+        
         let trashPosition = cancelAudioAnimation.frame.origin
         
         let xDist = (trashPosition.x - position.x)
@@ -230,16 +231,26 @@ final class MessageInputBarView: InputBarAccessoryView {
         cancelRecordingLabel.textColor = mixWhiteAndRed(redAmount: redAmount)
         
         if distance < 178 {
-            cancelRecordingLabel.textColor = Color.grayscale600.uiColor
-            
-            feedbackHaptic.impactOccurred()
-            
-            resetAllInteractions()
-            holdUserInteraction(for: 0.4)
-            displayCancelRecordingLabel(show: false)
-            cancelAudioRecordingAnimation()
-            AudioRecorderManager.shared.cancelRecording()
+            cancelAudio()
         }
+        
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { [weak self] _ in
+            if self?.isRecording == false {
+                self?.cancelAudio()
+            }
+        }
+    }
+    
+    func cancelAudio() {
+        cancelRecordingLabel.textColor = Color.grayscale600.uiColor
+        
+        feedbackHaptic.impactOccurred()
+        
+        resetAllInteractions()
+        holdUserInteraction(for: 0.4)
+        displayCancelRecordingLabel(show: false)
+        cancelAudioRecordingAnimation()
+        AudioRecorderManager.shared.cancelRecording()
     }
     
     func shortPressRecognizer() {
@@ -328,8 +339,8 @@ extension MessageInputBarView: UIGestureRecognizerDelegate {
 private extension MessageInputBarView {
     func holdUserInteraction(for seconds: Double) {
         micButtonItem.isUserInteractionEnabled = false
-        Timer.scheduledTimer(withTimeInterval: seconds, repeats: false) { _ in
-            self.micButtonItem.isUserInteractionEnabled = true
+        Timer.scheduledTimer(withTimeInterval: seconds, repeats: false) { [weak self] _ in
+            self?.micButtonItem.isUserInteractionEnabled = true
         }
     }
     

@@ -60,6 +60,12 @@ final class MessageInputBarView: InputBarAccessoryView {
         return longPressRecognizer
     }()
     
+    private lazy var bottomTrashConstraint: NSLayoutConstraint = {
+        let constraint = cancelAudioAnimation.bottomAnchor.constraint(equalTo: bottomAnchor)
+        constraint.isActive = true
+        return constraint
+    }()
+    
     private lazy var middleContentViewPaddingOriginal = UIEdgeInsets()
     
     weak var actionDelegate: MessageInputBarDelegate?
@@ -69,6 +75,7 @@ final class MessageInputBarView: InputBarAccessoryView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
+        setupRecognizers()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -76,12 +83,6 @@ final class MessageInputBarView: InputBarAccessoryView {
     }
     
     func configure() {
-        // GestureRecognizers
-        shortGestureRecognizer.delegate = self
-        longGestureRecognizer.delegate = self
-        panGestureRecognizer.delegate = self
-        
-        
         //TextView
         inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 36)
         inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 8, left: 20, bottom: 8, right: 36)
@@ -151,16 +152,11 @@ final class MessageInputBarView: InputBarAccessoryView {
             cancelAudioAnimation.widthAnchor.constraint(equalToConstant: 82)
         ])
         
-        // Always false
-//        if keyboardListener.isVisible {
-//            NSLayoutConstraint.activate([
-//                cancelAudioAnimation.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -2)
-//            ])
-//        } else {
-            NSLayoutConstraint.activate([
-                cancelAudioAnimation.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
-            ])
-//        }
+        if KeyboardManager.shared.isKeyboardVisible {
+            bottomTrashConstraint.constant = 16
+        } else {
+            bottomTrashConstraint.constant = -16
+        }
     }
     
     private func cancelAudioRecordingAnimation() {
@@ -243,9 +239,7 @@ final class MessageInputBarView: InputBarAccessoryView {
         case .began:
             feedbackHaptic.impactOccurred()
             isRecording = true
-            
-            return
-//                actionDelegate?.audioRecording(.start)
+//            actionDelegate?.audioRecording(.start)
         case .ended:
             if isRecording {
                 isRecording = false
@@ -284,20 +278,17 @@ private extension MessageInputBarView {
     
     func resetAllInteractions() {
         longGestureRecognizer.isEnabled = false
-        longGestureRecognizer.isEnabled = true
         panGestureRecognizer.isEnabled = false
-        panGestureRecognizer.isEnabled = true
         shortGestureRecognizer.isEnabled = false
+        
+        longGestureRecognizer.isEnabled = true
+        panGestureRecognizer.isEnabled = true
         shortGestureRecognizer.isEnabled = true
     }
+    
+    func setupRecognizers() {
+        shortGestureRecognizer.delegate = self
+        longGestureRecognizer.delegate = self
+        panGestureRecognizer.delegate = self
+    }
 }
-
-//extension UIApplication {
-//    var isKeyboardPresented: Bool {
-//        if let keyboardWindowClass = NSClassFromString("UIRemoteKeyboardWindow"), self.windows.contains(where: { $0.isKind(of: keyboardWindowClass) }) {
-//            return true
-//        } else {
-//            return false
-//        }
-//    }
-//}

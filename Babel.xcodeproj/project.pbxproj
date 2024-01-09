@@ -79,6 +79,8 @@
 		76371FBE2B48E201007C9E7E /* VideoMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76371FBD2B48E201007C9E7E /* VideoMessage.swift */; };
 		764303882B4650F20037721A /* FilesDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764303872B4650F20037721A /* FilesDirectory.swift */; };
 		7643038A2B4654B10037721A /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764303892B4654B10037721A /* String+Extensions.swift */; };
+		7667DC742B4CDF1D00938D6F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 7667DC732B4CDF1D00938D6F /* Lottie */; };
+		7667DC782B4CDF5900938D6F /* TrashAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 7667DC772B4CDF5900938D6F /* TrashAnimation.json */; };
 		7669BA2A2ABDD3550002AD4C /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669BA292ABDD3550002AD4C /* Date+Extensions.swift */; };
 		7669BA2D2ABDDA650002AD4C /* StartChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669BA2C2ABDDA650002AD4C /* StartChat.swift */; };
 		767082592B4B81C20024EF41 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C6B7622B4B7BE100285EE2 /* HttpMethod.swift */; };
@@ -525,6 +527,7 @@
 		76371FBD2B48E201007C9E7E /* VideoMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoMessage.swift; sourceTree = "<group>"; };
 		764303872B4650F20037721A /* FilesDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesDirectory.swift; sourceTree = "<group>"; };
 		764303892B4654B10037721A /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		7667DC772B4CDF5900938D6F /* TrashAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TrashAnimation.json; sourceTree = "<group>"; };
 		7669BA292ABDD3550002AD4C /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		7669BA2C2ABDDA650002AD4C /* StartChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartChat.swift; sourceTree = "<group>"; };
 		7670825A2B4B89480024EF41 /* AudioMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioMessage.swift; sourceTree = "<group>"; };
@@ -797,6 +800,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76B487832B49CA95001FC465 /* Dependencies.framework in Frameworks */,
+				7667DC742B4CDF1D00938D6F /* Lottie in Frameworks */,
 				7691DB8E2B499862007D52B3 /* NetworkKit.framework in Frameworks */,
 				7691DCE02B49A75B007D52B3 /* DesignKit.framework in Frameworks */,
 				7691DCE42B49A766007D52B3 /* GalleryKit.framework in Frameworks */,
@@ -1043,6 +1047,22 @@
 				76371F9D2B489020007C9E7E /* SendMessageWorker.swift */,
 			);
 			path = Workers;
+			sourceTree = "<group>";
+		};
+		7667DC752B4CDF3200938D6F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7667DC762B4CDF3A00938D6F /* Lottie */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		7667DC762B4CDF3A00938D6F /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				7667DC772B4CDF5900938D6F /* TrashAnimation.json */,
+			);
+			path = Lottie;
 			sourceTree = "<group>";
 		};
 		7669BA282ABDD33D0002AD4C /* Extensions */ = {
@@ -1729,6 +1749,7 @@
 		76CAA1372A8AA1F400D742E9 /* Babel */ = {
 			isa = PBXGroup;
 			children = (
+				7667DC752B4CDF3200938D6F /* Resources */,
 				7670825F2B4C4F210024EF41 /* Commons */,
 				7669BA282ABDD33D0002AD4C /* Extensions */,
 				7620F42B2A9567A3002A4EB5 /* Helpers */,
@@ -2116,6 +2137,7 @@
 			);
 			name = Babel;
 			packageProductDependencies = (
+				7667DC732B4CDF1D00938D6F /* Lottie */,
 			);
 			productName = Babel;
 			productReference = 76CAA1352A8AA1F400D742E9 /* Babel.app */;
@@ -2219,6 +2241,7 @@
 				76B487A12B49CBD5001FC465 /* XCRemoteSwiftPackageReference "MessageKit" */,
 				76B487A42B49CBE6001FC465 /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */,
 				76B487A72B49CC0B001FC465 /* XCRemoteSwiftPackageReference "SKPhotoBrowser" */,
+				7667DC722B4CDF1D00938D6F /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 76CAA1362A8AA1F400D742E9 /* Products */;
 			projectDirPath = "";
@@ -2298,6 +2321,7 @@
 			files = (
 				76CAA1452A8AA1F600D742E9 /* LaunchScreen.storyboard in Resources */,
 				76CAA1902A8AAC0100D742E9 /* GoogleService-Info.plist in Resources */,
+				7667DC782B4CDF5900938D6F /* TrashAnimation.json in Resources */,
 				76CAA1792A8AA94B00D742E9 /* Localizable.strings in Resources */,
 				76CAA1422A8AA1F600D742E9 /* Assets.xcassets in Resources */,
 			);
@@ -3441,7 +3465,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = VZDNH969CP;
+				DEVELOPMENT_TEAM = 7FD6NAZC3R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Babel/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
@@ -3480,7 +3504,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VZDNH969CP;
+				DEVELOPMENT_TEAM = 7FD6NAZC3R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Babel/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
@@ -3705,6 +3729,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7667DC722B4CDF1D00938D6F /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.3.4;
+			};
+		};
 		7691DC1E2B49A0E6007D52B3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -3764,6 +3796,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7667DC732B4CDF1D00938D6F /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7667DC722B4CDF1D00938D6F /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
 		76B4878D2B49CB3B001FC465 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7691DC1E2B49A0E6007D52B3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

@@ -1,6 +1,7 @@
 import UIKit
 import DesignKit
 import InputBarAccessoryView
+import Lottie
 
 protocol MessageInputBarDelegate: AnyObject {
     func openAttachActionSheet()
@@ -8,6 +9,16 @@ protocol MessageInputBarDelegate: AnyObject {
 }
 
 final class MessageInputBarView: InputBarAccessoryView {
+    private let cancelAudioAnimation: LottieAnimationView = {
+        let animationView = LottieAnimationView(name: "TrashAnimation")
+        animationView.frame = CGRect(x: 0, y: 0, width: 82, height: 82)
+        animationView.contentMode = .scaleToFill
+        animationView.loopMode = .playOnce
+        animationView.animationSpeed = 1.0
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        return animationView
+    }()
+    
     private lazy var micButtonItem: InputBarButtonItem = {
         let micButtonItem = InputBarButtonItem()
         micButtonItem.image = UIImage(systemName: "mic.fill")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 30))
@@ -49,16 +60,11 @@ final class MessageInputBarView: InputBarAccessoryView {
         return longPressRecognizer
     }()
     
-    private let trashButtonItem: InputBarButtonItem = {
-        let trashButton = InputBarButtonItem()
-        trashButton.image = UIImage(systemName: "trash")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 30))
-        trashButton.setSize(CGSize(width: 30, height: 30), animated: false)
-        return trashButton
-    }()
-    
     private lazy var middleContentViewPaddingOriginal = UIEdgeInsets()
     
     weak var actionDelegate: MessageInputBarDelegate?
+    
+    private let feedbackHaptic = UIImpactFeedbackGenerator(style: .heavy)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -111,7 +117,7 @@ final class MessageInputBarView: InputBarAccessoryView {
     func addAttachButton() {
         setStackViewItems([attachButtonItem], forStack: .left, animated: false)
         attachButtonItem.alpha = 1
-        trashButtonItem.alpha = 0
+        cancelAudioAnimation.alpha = 0
         
     }
     
@@ -134,79 +140,128 @@ final class MessageInputBarView: InputBarAccessoryView {
     }
     
     private func addRecordingTrashIcon() {
-//        let infoCancelButton = InputBarButtonItem()
-//        infoCancelButton.image = UIImage(systemName: "chevron.left")
-//        infoCancelButton.setTitle("Swipe to cancel", for: .normal)
-        setStackViewItems([trashButtonItem], forStack: .left, animated: false)
-        trashButtonItem.alpha = 1
         attachButtonItem.alpha = 0
+        cancelAudioAnimation.alpha = 1
+        
+        addSubview(cancelAudioAnimation)
+        
+        NSLayoutConstraint.activate([
+            cancelAudioAnimation.leadingAnchor.constraint(equalTo: leadingAnchor, constant: -16),
+            cancelAudioAnimation.heightAnchor.constraint(equalToConstant: 82),
+            cancelAudioAnimation.widthAnchor.constraint(equalToConstant: 82)
+        ])
+        
+        // Always false
+//        if keyboardListener.isVisible {
+//            NSLayoutConstraint.activate([
+//                cancelAudioAnimation.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -2)
+//            ])
+//        } else {
+            NSLayoutConstraint.activate([
+                cancelAudioAnimation.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
+            ])
+//        }
     }
     
-    private var shouldCancelAudio = false
+    private func cancelAudioRecordingAnimation() {
+        UIView.animate(withDuration: 0.2) {
+            self.micButtonItem.tintColor = .tintColor
+            self.middleContentViewPadding.right = self.middleContentViewPaddingOriginal.right
+            self.middleContentView?.alpha = 1
+            self.contentView.layoutIfNeeded()
+        }
+        
+        cancelAudioAnimation.play { completed in
+            if completed {
+                self.isRecording = false
+                UIView.animate(withDuration: 0.2) {
+                    self.cancelAudioAnimation.alpha = 0
+                    self.addAttachButton()
+                }
+            }
+        }
+    }
     
     @objc private func panRecognizer() {
         let position = panGestureRecognizer.location(in: contentView)
-        shouldCancelAudio = position.x < 163.0 && position.y > -42.33
+        if position.x < 163.0 && position.y > -42.33 {
+            // Cancel audio
+            feedbackHaptic.impactOccurred()
+            
+            resetAllInteractions()
+            holdUserInteraction(for: 0.4)
+            cancelAudioRecordingAnimation()
+//          AudioRecorderManager.shared.cancelRecording()
+            print("cancelar audio")
+        }
     }
     
     @objc private func shortPressRecognizer() {
-        let generator = UIImpactFeedbackGenerator(style: .heavy)
-        
         switch shortGestureRecognizer.state {
         case .began:
-            generator.impactOccurred()
+            feedbackHaptic.impactOccurred()
             
-            UIView.animate(withDuration: 0.2) {
+            UIView.animate(withDuration: 0.1) {
                 self.micButtonItem.tintColor = .red
-                self.middleContentViewPadding.right = self.middleContentView?.frame.width ?? .zero + 12
-                self.middleContentView?.alpha = 0.5
-                self.addRecordingTrashIcon()
+                self.middleContentViewPadding.right = self.middleContentView?.frame.width ?? .zero
                 self.contentView.layoutIfNeeded()
+            } completion: { _ in
+                self.middleContentView?.alpha = 0
+                
+                UIView.animate(withDuration: 0.1) {
+                    self.addRecordingTrashIcon()
+                }
             }
         case .ended:
-            generator.impactOccurred()
-            
-            UIView.animate(withDuration: 0.2) {
-                self.micButtonItem.tintColor = .tintColor
-                self.middleContentViewPadding.right = self.middleContentViewPaddingOriginal.right
-                self.middleContentView?.alpha = 1
-                self.addAttachButton()
-                self.contentView.layoutIfNeeded()
+                micButtonItem.tintColor = .tintColor
+                middleContentView?.alpha = 1
+                
+            if !isRecording {
+                holdUserInteraction(for: 0.4)
+                feedbackHaptic.impactOccurred()
+                UIView.animate(withDuration: 0.1) {
+                    self.middleContentViewPadding.right = self.middleContentViewPaddingOriginal.right
+                    self.middleContentView?.alpha = 1
+                    self.contentView.layoutIfNeeded()
+                } completion: { _ in
+                    self.middleContentView?.alpha = 1
+                    
+                    UIView.animate(withDuration: 0.1) {
+                        self.addAttachButton()
+                    }
+                }
             }
         default:
             return
         }
     }
     
+    private var isRecording = false
+    
     @objc private func recordAudio() {
-        let generator = UIImpactFeedbackGenerator(style: .heavy)
-        
         switch longGestureRecognizer.state {
         case .began:
-            generator.impactOccurred()
+            feedbackHaptic.impactOccurred()
+            isRecording = true
+            
             return
-            //                actionDelegate?.audioRecording(.start)
+//                actionDelegate?.audioRecording(.start)
         case .ended:
-            generator.impactOccurred()
-            
-            UIView.animate(withDuration: 0.2) {
-                //                    self.micButtonItem.tintColor = .tintColor
-                self.middleContentViewPadding.right = self.middleContentViewPaddingOriginal.right
-                self.middleContentView?.alpha = 1
-                self.addAttachButton()
-                self.contentView.layoutIfNeeded()
+            if isRecording {
+                isRecording = false
+                feedbackHaptic.impactOccurred()
+                
+                UIView.animate(withDuration: 0.4) {
+                    self.middleContentViewPadding.right = self.middleContentViewPaddingOriginal.right
+                    
+                    self.addAttachButton()
+                    self.contentView.layoutIfNeeded()
+                }
+                
+                resetAllInteractions()
+                holdUserInteraction(for: 0.6)
+                print("send audio")
             }
-            
-            if shouldCancelAudio {
-                shouldCancelAudio = false
-                print("cancelar audio")
-//                AudioRecorderManager.shared.cancelRecording()
-            } else {
-                print("mandar audio")
-            }
-            //            DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
-            //                self.actionDelegate?.audioRecording(.stop)
-            //            }
         default:
             return
         }
@@ -218,3 +273,31 @@ extension MessageInputBarView: UIGestureRecognizerDelegate {
         return true
     }
 }
+
+private extension MessageInputBarView {
+    func holdUserInteraction(for seconds: Double) {
+        micButtonItem.isUserInteractionEnabled = false
+        Timer.scheduledTimer(withTimeInterval: seconds, repeats: false) { _ in
+            self.micButtonItem.isUserInteractionEnabled = true
+        }
+    }
+    
+    func resetAllInteractions() {
+        longGestureRecognizer.isEnabled = false
+        longGestureRecognizer.isEnabled = true
+        panGestureRecognizer.isEnabled = false
+        panGestureRecognizer.isEnabled = true
+        shortGestureRecognizer.isEnabled = false
+        shortGestureRecognizer.isEnabled = true
+    }
+}
+
+//extension UIApplication {
+//    var isKeyboardPresented: Bool {
+//        if let keyboardWindowClass = NSClassFromString("UIRemoteKeyboardWindow"), self.windows.contains(where: { $0.isKind(of: keyboardWindowClass) }) {
+//            return true
+//        } else {
+//            return false
+//        }
+//    }
+//}

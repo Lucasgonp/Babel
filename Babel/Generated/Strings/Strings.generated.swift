@@ -87,13 +87,13 @@ internal enum Strings {
     }
   }
   internal enum TabBar {
-    internal enum Channels {
-      /// Channels
-      internal static let title = Strings.tr("Localizable", "TabBar.Channels.title", fallback: "Channels")
-    }
     internal enum Chats {
       /// Chats
       internal static let title = Strings.tr("Localizable", "TabBar.Chats.title", fallback: "Chats")
+    }
+    internal enum Groups {
+      /// Groups
+      internal static let title = Strings.tr("Localizable", "TabBar.Groups.title", fallback: "Groups")
     }
     internal enum Settings {
       /// Settings

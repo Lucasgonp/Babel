@@ -276,5 +276,53 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0E0FEDF8-C12A-428F-890B-5FB93E4DC36A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Babel/Commons/Views/MessageInputBarView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
+            landmarkName = "shortPressRecognizer()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0E0FEDF8-C12A-428F-890B-5FB93E4DC36A - 9cdc48564ea36657"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Babel.MessageInputBarView.shortPressRecognizer() -&gt; ()"
+                  moduleName = "Babel"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucaspereira/Workspace/Personal/Apps/Babel/Babel/Babel/Commons/Views/MessageInputBarView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "262"
+                  endingLineNumber = "262"
+                  offsetFromSymbolStart = "168">
+               </Location>
+               <Location
+                  uuid = "0E0FEDF8-C12A-428F-890B-5FB93E4DC36A - df4e4a561371bf43"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in Babel.MessageInputBarView.shortPressRecognizer() -&gt; ()"
+                  moduleName = "Babel"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucaspereira/Workspace/Personal/Apps/Babel/Babel/Babel/Commons/Views/MessageInputBarView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "262"
+                  endingLineNumber = "262"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

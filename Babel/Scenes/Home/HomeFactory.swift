@@ -23,7 +23,7 @@ enum HomeTabBarFactory {
     static func makeTabs(delegate: HomeViewDelegate,for user: User) -> [HomeTabBarModel] {
         return [
             makeChats(),
-            makeChannels(),
+            makeGroupsTab(),
             makeUsers(),
             makeSettings(delegate: delegate, user: user)
         ]
@@ -49,12 +49,12 @@ enum HomeTabBarFactory {
         return HomeTabBarModel(icon: icon, navigation: navigation)
     }
     
-    static func makeChannels() -> HomeTabBarModel {
-        let viewController = ChannelsFactory.make()
+    static func makeGroupsTab() -> HomeTabBarModel {
+        let viewController = GroupsTabFactory.make()
         let navigation = UINavigationController(rootViewController: viewController)
         navigation.navigationBar.prefersLargeTitles = true
-        navigation.tabBarItem.title = Strings.TabBar.Channels.title
-        viewController.navigationItem.title = Strings.TabBar.Channels.title
+        navigation.tabBarItem.title = Strings.TabBar.Groups.title
+        viewController.navigationItem.title = Strings.TabBar.Groups.title
         let icon = ImageAsset.Image(systemName: "quote.bubble")?.withRenderingMode(.alwaysTemplate)
         return HomeTabBarModel(icon: icon, navigation: navigation)
     }

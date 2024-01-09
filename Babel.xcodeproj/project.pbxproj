@@ -36,12 +36,6 @@
 		7620F2B72A92DE1B002A4EB5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2B12A92DE1B002A4EB5 /* SettingsViewController.swift */; };
 		7620F2B82A92DE1B002A4EB5 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2B22A92DE1B002A4EB5 /* SettingsInteractor.swift */; };
 		7620F2B92A92DE1B002A4EB5 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2B32A92DE1B002A4EB5 /* SettingsService.swift */; };
-		7620F2CC2A92EF69002A4EB5 /* ChannelsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2C62A92EF69002A4EB5 /* ChannelsFactory.swift */; };
-		7620F2CD2A92EF69002A4EB5 /* ChannelsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2C72A92EF69002A4EB5 /* ChannelsPresenter.swift */; };
-		7620F2CE2A92EF69002A4EB5 /* ChannelsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2C82A92EF69002A4EB5 /* ChannelsRouter.swift */; };
-		7620F2CF2A92EF69002A4EB5 /* ChannelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2C92A92EF69002A4EB5 /* ChannelsViewController.swift */; };
-		7620F2D02A92EF69002A4EB5 /* ChannelsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2CA2A92EF69002A4EB5 /* ChannelsInteractor.swift */; };
-		7620F2D12A92EF69002A4EB5 /* ChannelsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2CB2A92EF69002A4EB5 /* ChannelsService.swift */; };
 		7620F2D82A92EF74002A4EB5 /* UsersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2D22A92EF74002A4EB5 /* UsersFactory.swift */; };
 		7620F2D92A92EF74002A4EB5 /* UsersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2D32A92EF74002A4EB5 /* UsersPresenter.swift */; };
 		7620F2DA2A92EF74002A4EB5 /* UsersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2D42A92EF74002A4EB5 /* UsersRouter.swift */; };
@@ -89,6 +83,12 @@
 		767082622B4C4F4D0024EF41 /* MessageInputBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767082612B4C4F4D0024EF41 /* MessageInputBarView.swift */; };
 		768E40DA2B4D9A5B009F8F7C /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768E40D92B4D9A5B009F8F7C /* KeyboardManager.swift */; };
 		768E40DD2B4DC94C009F8F7C /* Strings.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768E40DC2B4DC94C009F8F7C /* Strings.generated.swift */; };
+		768E40E52B4DD1EB009F8F7C /* GroupsTabFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768E40DF2B4DD1EB009F8F7C /* GroupsTabFactory.swift */; };
+		768E40E62B4DD1EB009F8F7C /* GroupsTabPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768E40E02B4DD1EB009F8F7C /* GroupsTabPresenter.swift */; };
+		768E40E72B4DD1EB009F8F7C /* GroupsTabRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768E40E12B4DD1EB009F8F7C /* GroupsTabRouter.swift */; };
+		768E40E82B4DD1EB009F8F7C /* GroupsTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768E40E22B4DD1EB009F8F7C /* GroupsTabViewController.swift */; };
+		768E40E92B4DD1EB009F8F7C /* GroupsTabInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768E40E32B4DD1EB009F8F7C /* GroupsTabInteractor.swift */; };
+		768E40EA2B4DD1EB009F8F7C /* GroupsTabService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768E40E42B4DD1EB009F8F7C /* GroupsTabService.swift */; };
 		7691DAF92B499409007D52B3 /* Authenticator.docc in Sources */ = {isa = PBXBuildFile; fileRef = 7691DAF82B499409007D52B3 /* Authenticator.docc */; };
 		7691DAFF2B49940A007D52B3 /* Authenticator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7691DAF52B499409007D52B3 /* Authenticator.framework */; };
 		7691DB062B49940A007D52B3 /* AuthenticatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691DB052B49940A007D52B3 /* AuthenticatorTests.swift */; };
@@ -482,12 +482,6 @@
 		7620F2B12A92DE1B002A4EB5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7620F2B22A92DE1B002A4EB5 /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
 		7620F2B32A92DE1B002A4EB5 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
-		7620F2C62A92EF69002A4EB5 /* ChannelsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsFactory.swift; sourceTree = "<group>"; };
-		7620F2C72A92EF69002A4EB5 /* ChannelsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsPresenter.swift; sourceTree = "<group>"; };
-		7620F2C82A92EF69002A4EB5 /* ChannelsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsRouter.swift; sourceTree = "<group>"; };
-		7620F2C92A92EF69002A4EB5 /* ChannelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsViewController.swift; sourceTree = "<group>"; };
-		7620F2CA2A92EF69002A4EB5 /* ChannelsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsInteractor.swift; sourceTree = "<group>"; };
-		7620F2CB2A92EF69002A4EB5 /* ChannelsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsService.swift; sourceTree = "<group>"; };
 		7620F2D22A92EF74002A4EB5 /* UsersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersFactory.swift; sourceTree = "<group>"; };
 		7620F2D32A92EF74002A4EB5 /* UsersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersPresenter.swift; sourceTree = "<group>"; };
 		7620F2D42A92EF74002A4EB5 /* UsersRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRouter.swift; sourceTree = "<group>"; };
@@ -536,6 +530,12 @@
 		767082612B4C4F4D0024EF41 /* MessageInputBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputBarView.swift; sourceTree = "<group>"; };
 		768E40D92B4D9A5B009F8F7C /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
 		768E40DC2B4DC94C009F8F7C /* Strings.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.generated.swift; sourceTree = "<group>"; };
+		768E40DF2B4DD1EB009F8F7C /* GroupsTabFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTabFactory.swift; sourceTree = "<group>"; };
+		768E40E02B4DD1EB009F8F7C /* GroupsTabPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTabPresenter.swift; sourceTree = "<group>"; };
+		768E40E12B4DD1EB009F8F7C /* GroupsTabRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTabRouter.swift; sourceTree = "<group>"; };
+		768E40E22B4DD1EB009F8F7C /* GroupsTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTabViewController.swift; sourceTree = "<group>"; };
+		768E40E32B4DD1EB009F8F7C /* GroupsTabInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTabInteractor.swift; sourceTree = "<group>"; };
+		768E40E42B4DD1EB009F8F7C /* GroupsTabService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTabService.swift; sourceTree = "<group>"; };
 		7691DAF52B499409007D52B3 /* Authenticator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Authenticator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7691DAF72B499409007D52B3 /* Authenticator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Authenticator.h; sourceTree = "<group>"; };
 		7691DAF82B499409007D52B3 /* Authenticator.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Authenticator.docc; sourceTree = "<group>"; };
@@ -925,19 +925,6 @@
 			path = Users;
 			sourceTree = "<group>";
 		};
-		7620F2AC2A92DDEF002A4EB5 /* Channels */ = {
-			isa = PBXGroup;
-			children = (
-				7620F2C62A92EF69002A4EB5 /* ChannelsFactory.swift */,
-				7620F2C72A92EF69002A4EB5 /* ChannelsPresenter.swift */,
-				7620F2C82A92EF69002A4EB5 /* ChannelsRouter.swift */,
-				7620F2C92A92EF69002A4EB5 /* ChannelsViewController.swift */,
-				7620F2CA2A92EF69002A4EB5 /* ChannelsInteractor.swift */,
-				7620F2CB2A92EF69002A4EB5 /* ChannelsService.swift */,
-			);
-			path = Channels;
-			sourceTree = "<group>";
-		};
 		7620F2AD2A92DDFB002A4EB5 /* RecentChats */ = {
 			isa = PBXGroup;
 			children = (
@@ -1080,8 +1067,8 @@
 		7669BA2B2ABDD8670002AD4C /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
+				768E40DE2B4DD1C6009F8F7C /* Groups */,
 				7620F2AD2A92DDFB002A4EB5 /* RecentChats */,
-				7620F2AC2A92DDEF002A4EB5 /* Channels */,
 				7620F2AB2A92DDDA002A4EB5 /* Users */,
 				7620F2AA2A92DDC2002A4EB5 /* Settings */,
 			);
@@ -1110,6 +1097,19 @@
 				768E40DC2B4DC94C009F8F7C /* Strings.generated.swift */,
 			);
 			path = Strings;
+			sourceTree = "<group>";
+		};
+		768E40DE2B4DD1C6009F8F7C /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				768E40DF2B4DD1EB009F8F7C /* GroupsTabFactory.swift */,
+				768E40E02B4DD1EB009F8F7C /* GroupsTabPresenter.swift */,
+				768E40E12B4DD1EB009F8F7C /* GroupsTabRouter.swift */,
+				768E40E22B4DD1EB009F8F7C /* GroupsTabViewController.swift */,
+				768E40E32B4DD1EB009F8F7C /* GroupsTabInteractor.swift */,
+				768E40E42B4DD1EB009F8F7C /* GroupsTabService.swift */,
+			);
+			path = Groups;
 			sourceTree = "<group>";
 		};
 		7691DAF62B499409007D52B3 /* Authenticator */ = {
@@ -2565,10 +2565,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7620F2CF2A92EF69002A4EB5 /* ChannelsViewController.swift in Sources */,
 				7620F2D82A92EF74002A4EB5 /* UsersFactory.swift in Sources */,
 				76371F9E2B489020007C9E7E /* SendMessageWorker.swift in Sources */,
-				7620F2CE2A92EF69002A4EB5 /* ChannelsRouter.swift in Sources */,
 				769E97302AA3C4FC004FC6B4 /* ContactInfoViewController.swift in Sources */,
 				7620F44E2A9659F5002A4EB5 /* TellAFriendPresenter.swift in Sources */,
 				7620F2A92A92DB70002A4EB5 /* HomeTabBarModel.swift in Sources */,
@@ -2585,7 +2583,7 @@
 				7620F2B82A92DE1B002A4EB5 /* SettingsInteractor.swift in Sources */,
 				768E40DA2B4D9A5B009F8F7C /* KeyboardManager.swift in Sources */,
 				7620F2B62A92DE1B002A4EB5 /* SettingsRouter.swift in Sources */,
-				7620F2D12A92EF69002A4EB5 /* ChannelsService.swift in Sources */,
+				768E40E82B4DD1EB009F8F7C /* GroupsTabViewController.swift in Sources */,
 				7608DE6C2A9BAFDE0036027A /* EditBioService.swift in Sources */,
 				7620F2B52A92DE1B002A4EB5 /* SettingsPresenter.swift in Sources */,
 				76C6B7612B4B507000285EE2 /* AudioRecorderManager.swift in Sources */,
@@ -2608,6 +2606,7 @@
 				76CAA17E2A8AA9B700D742E9 /* NetworkManager.swift in Sources */,
 				761011972B3A0168004639C4 /* InputBarAccessoryViewDelegate.swift in Sources */,
 				76DA7EC12AB78D1F00106731 /* RecentChatsService.swift in Sources */,
+				768E40E52B4DD1EB009F8F7C /* GroupsTabFactory.swift in Sources */,
 				7620F2DD2A92EF74002A4EB5 /* UsersService.swift in Sources */,
 				7620F42A2A9541AC002A4EB5 /* SettingsUserInfoCell.swift in Sources */,
 				769E97322AA3C4FC004FC6B4 /* ContactInfoService.swift in Sources */,
@@ -2623,6 +2622,7 @@
 				7608DE7D2A9D248E0036027A /* UserContact.swift in Sources */,
 				7620F4512A9659F5002A4EB5 /* TellAFriendInteractor.swift in Sources */,
 				7608DE7A2A9D00A60036027A /* UserCell.swift in Sources */,
+				768E40E72B4DD1EB009F8F7C /* GroupsTabRouter.swift in Sources */,
 				7620F2B42A92DE1B002A4EB5 /* SettingsFactory.swift in Sources */,
 				76DA7EBF2AB78D1F00106731 /* RecentChatsViewController.swift in Sources */,
 				761011952B3A0156004639C4 /* MessageLayoutDelegate.swift in Sources */,
@@ -2631,10 +2631,8 @@
 				761011A02B3A1C52004639C4 /* RealmManager.swift in Sources */,
 				76CAA1392A8AA1F400D742E9 /* AppDelegate.swift in Sources */,
 				7608DE6B2A9BAFDE0036027A /* EditBioInteractor.swift in Sources */,
-				7620F2CD2A92EF69002A4EB5 /* ChannelsPresenter.swift in Sources */,
 				7620F43E2A9592C2002A4EB5 /* EditProfileFactory.swift in Sources */,
 				764303882B4650F20037721A /* FilesDirectory.swift in Sources */,
-				7620F2CC2A92EF69002A4EB5 /* ChannelsFactory.swift in Sources */,
 				7620F4592A965A09002A4EB5 /* TermsFactory.swift in Sources */,
 				769E972D2AA3C4FC004FC6B4 /* ContactInfoFactory.swift in Sources */,
 				7620F45C2A965A09002A4EB5 /* TermsViewController.swift in Sources */,
@@ -2654,17 +2652,19 @@
 				76C6B75D2B4B24AE00285EE2 /* MapAnnotation.swift in Sources */,
 				7610119B2B3A15CD004639C4 /* MKMessage.swift in Sources */,
 				7620F4302A9568D2002A4EB5 /* SettingsButtonViewModel.swift in Sources */,
+				768E40EA2B4DD1EB009F8F7C /* GroupsTabService.swift in Sources */,
 				76CAA1872A8AA9ED00D742E9 /* HomeFactory.swift in Sources */,
 				7620F4412A9592C2002A4EB5 /* EditProfileViewController.swift in Sources */,
 				7620F4422A9592C2002A4EB5 /* EditProfileInteractor.swift in Sources */,
 				7620F2DB2A92EF74002A4EB5 /* UsersViewController.swift in Sources */,
 				76371FA22B48931D007C9E7E /* ChatTypingWorker.swift in Sources */,
 				7670825B2B4B89480024EF41 /* AudioMessage.swift in Sources */,
-				7620F2D02A92EF69002A4EB5 /* ChannelsInteractor.swift in Sources */,
 				769E97312AA3C4FC004FC6B4 /* ContactInfoInteractor.swift in Sources */,
+				768E40E92B4DD1EB009F8F7C /* GroupsTabInteractor.swift in Sources */,
 				76D246842AC4AE7000FDA81E /* ChatInteractor.swift in Sources */,
 				7620F2DC2A92EF74002A4EB5 /* UsersInteractor.swift in Sources */,
 				7620F4402A9592C2002A4EB5 /* EditProfileRouter.swift in Sources */,
+				768E40E62B4DD1EB009F8F7C /* GroupsTabPresenter.swift in Sources */,
 				7620F4202A951280002A4EB5 /* SettingsButtonCell.swift in Sources */,
 				7670825E2B4B96E10024EF41 /* BasicAudioController.swift in Sources */,
 				7620F44D2A9659F5002A4EB5 /* TellAFriendFactory.swift in Sources */,

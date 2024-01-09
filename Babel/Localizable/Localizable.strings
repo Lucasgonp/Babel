@@ -4,7 +4,7 @@
 // TabBar
 "TabBar.Settings.title" = "Settings";
 "TabBar.Users.title" = "Users";
-"TabBar.Channels.title" = "Channels";
+"TabBar.Groups.title" = "Groups";
 "TabBar.Chats.title" = "Chats";
 
 // Settings

@@ -49,7 +49,8 @@ final class MessageInputBarView: InputBarAccessoryView {
     
     private lazy var longGestureRecognizer: UILongPressGestureRecognizer = {
         let longPressRecognizer = UILongPressGestureRecognizer()
-        longPressRecognizer.minimumPressDuration = 0.5
+        longPressRecognizer.minimumPressDuration = 0.4
+        longPressRecognizer.allowableMovement = 100
         longPressRecognizer.delaysTouchesBegan = true
         longPressRecognizer.addTarget(self, action: #selector(recordAudio))
         return longPressRecognizer
@@ -79,7 +80,8 @@ final class MessageInputBarView: InputBarAccessoryView {
     
     weak var actionDelegate: MessageInputBarDelegate?
     
-    private let feedbackHaptic = UIImpactFeedbackGenerator(style: .heavy)
+    private let feedbackHapticLight = UIImpactFeedbackGenerator(style: .light)
+    private let feedbackHapticMedium = UIImpactFeedbackGenerator(style: .medium)
     private let keyboardManager = KeyboardManager.shared
     
     private var isRecording = false
@@ -189,7 +191,7 @@ final class MessageInputBarView: InputBarAccessoryView {
         }
     }
     
-    func mixWhiteAndRed(redAmount: CGFloat) -> UIColor {
+    private func mixWhiteAndRed(redAmount: CGFloat) -> UIColor {
         let redAmount = redAmount < 0 ? 0 : redAmount
         return UIColor(
             red: Color.grayscale600.uiColor.redValue + redAmount,
@@ -234,7 +236,7 @@ final class MessageInputBarView: InputBarAccessoryView {
             cancelAudio()
         }
         
-        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { [weak self] _ in
+        Timer.scheduledTimer(withTimeInterval: 0.4, repeats: false) { [weak self] _ in
             if self?.isRecording == false {
                 self?.cancelAudio()
             }
@@ -244,10 +246,11 @@ final class MessageInputBarView: InputBarAccessoryView {
     func cancelAudio() {
         cancelRecordingLabel.textColor = Color.grayscale600.uiColor
         
-        feedbackHaptic.impactOccurred()
+        feedbackHapticMedium.prepare()
+        feedbackHapticMedium.impactOccurred()
         
         resetAllInteractions()
-        holdUserInteraction(for: 0.4)
+        holdUserInteraction(for: 0.8)
         displayCancelRecordingLabel(show: false)
         cancelAudioRecordingAnimation()
         AudioRecorderManager.shared.cancelRecording()
@@ -256,7 +259,6 @@ final class MessageInputBarView: InputBarAccessoryView {
     func shortPressRecognizer() {
         switch shortGestureRecognizer.state {
         case .began:
-            feedbackHaptic.impactOccurred()
             
             UIView.animate(withDuration: 0.1) {
                 self.micButtonItem.tintColor = .red
@@ -278,7 +280,8 @@ final class MessageInputBarView: InputBarAccessoryView {
                 
             if !isRecording {
                 holdUserInteraction(for: 0.4)
-                feedbackHaptic.impactOccurred()
+                feedbackHapticLight.prepare()
+                feedbackHapticLight.impactOccurred()
                 
                 UIView.animate(withDuration: 0.1) {
                     self.middleContentViewPadding.right = self.middleContentViewPaddingOriginal.right
@@ -302,15 +305,18 @@ final class MessageInputBarView: InputBarAccessoryView {
     }
     
     func recordAudio() {
+        let feedbackHapticLight2 = UIImpactFeedbackGenerator(style: .medium)
         switch longGestureRecognizer.state {
         case .began:
-            feedbackHaptic.impactOccurred()
+            feedbackHapticLight2.prepare()
+            feedbackHapticLight2.impactOccurred()
             isRecording = true
             actionDelegate?.audioRecording(.start)
         case .ended:
             if isRecording {
                 isRecording = false
-                feedbackHaptic.impactOccurred()
+                feedbackHapticLight.prepare()
+                feedbackHapticLight.impactOccurred()
                 
                 UIView.animate(withDuration: 0.4) {
                     self.middleContentViewPadding.right = self.middleContentViewPaddingOriginal.right

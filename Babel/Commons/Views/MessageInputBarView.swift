@@ -70,6 +70,7 @@ final class MessageInputBarView: InputBarAccessoryView {
     weak var actionDelegate: MessageInputBarDelegate?
     
     private let feedbackHaptic = UIImpactFeedbackGenerator(style: .heavy)
+    private let keyboardManager = KeyboardManager.shared
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -150,7 +151,7 @@ final class MessageInputBarView: InputBarAccessoryView {
             cancelAudioAnimation.widthAnchor.constraint(equalToConstant: 82)
         ])
         
-        if KeyboardManager.shared.isKeyboardVisible {
+        if keyboardManager.isKeyboardVisible {
             bottomTrashConstraint.constant = 16
         } else {
             bottomTrashConstraint.constant = -16

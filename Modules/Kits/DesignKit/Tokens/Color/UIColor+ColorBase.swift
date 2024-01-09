@@ -130,7 +130,7 @@ public extension Color {
     static let grayscale700 = Color(lightColor: #colorLiteral(red: 0.2235294118, green: 0.2745098039, blue: 0.3019607843, alpha: 1), darkColor: #colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.8980392157, alpha: 1))
 
     /// Grayscale600, default value light color `#525F66` and dark color `#CCCCCC`
-    static let grayscale600 = Color(lightColor: #colorLiteral(red: 0.3215686275, green: 0.3725490196, blue: 0.4, alpha: 1), darkColor: #colorLiteral(red: 0.8, green: 0.8, blue: 0.8, alpha: 1))
+    static let grayscale600 = Color(lightColor: #colorLiteral(red: 0.3215686275, green: 0.3725490196, blue: 0.4, alpha: 1), darkColor: #colorLiteral(red: 0.7512497873, green: 0.7512497873, blue: 0.7512497873, alpha: 1))
 
     /// Grayscale500, default value light color `#6C7980` and dark color `#AAB0B2`
     static let grayscale500 = Color(lightColor: #colorLiteral(red: 0.4235294118, green: 0.4745098039, blue: 0.5019607843, alpha: 1), darkColor: #colorLiteral(red: 0.6666666667, green: 0.6901960784, blue: 0.6980392157, alpha: 1))

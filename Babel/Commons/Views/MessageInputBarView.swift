@@ -11,7 +11,6 @@ protocol MessageInputBarDelegate: AnyObject {
 final class MessageInputBarView: InputBarAccessoryView {
     private let cancelAudioAnimation: LottieAnimationView = {
         let animationView = LottieAnimationView(name: "TrashAnimation")
-        animationView.frame = CGRect(x: 0, y: 0, width: 82, height: 82)
         animationView.contentMode = .scaleToFill
         animationView.loopMode = .playOnce
         animationView.animationSpeed = 1.0
@@ -119,7 +118,6 @@ final class MessageInputBarView: InputBarAccessoryView {
         setStackViewItems([attachButtonItem], forStack: .left, animated: false)
         attachButtonItem.alpha = 1
         cancelAudioAnimation.alpha = 0
-        
     }
     
     func addSendButton() {
@@ -178,17 +176,82 @@ final class MessageInputBarView: InputBarAccessoryView {
         }
     }
     
+    func mixWhiteAndRed(redAmount: CGFloat) -> UIColor {
+        var redAmount = redAmount < 0 ? 0 : redAmount
+        return UIColor(
+            red: Color.grayscale600.uiColor.redValue + redAmount,
+            green: (Color.grayscale600.uiColor.greenValue - redAmount),
+            blue: (Color.grayscale600.uiColor.blueValue - redAmount),
+            alpha: 1.0
+        )
+    }
+    
     @objc private func panRecognizer() {
         let position = panGestureRecognizer.location(in: contentView)
+        let position2 = panGestureRecognizer.location(in: self)
+        
+        let trashPosition = cancelAudioAnimation.frame.origin
+        
+        let xDist = (trashPosition.x - position2.x)
+        let yDist = (trashPosition.y - position2.y)
+        let distance = sqrt((xDist * xDist) + (yDist * yDist))
+        
+        print("distance: \(distance)")
+        
+        let proportionalDistance = 315 - distance
+        let redAmount = proportionalDistance / 100
+        
+        print("red amount: \(redAmount)")
+        
+        cancelRecordingLabel.textColor = mixWhiteAndRed(redAmount: redAmount)
+        
+        //315
+        //191
+//            let positionX = (position.x / 320) * 2
+//            let positionY = (position.y) / 20
+//            
+//            let redAmount = (positionX + positionY) / 4
+//            
+//            print("red amount: \(redAmount)")
+//            
+//            cancelRecordingLabel.textColor = mixWhiteAndRed(redAmount: redAmount)
+        
         if position.x < 163.0 && position.y > -42.33 {
+            
+            cancelRecordingLabel.textColor = Color.grayscale600.uiColor
+            
             // Cancel audio
             feedbackHaptic.impactOccurred()
             
             resetAllInteractions()
             holdUserInteraction(for: 0.4)
+            displayCancelRecordingLabel(show: false)
             cancelAudioRecordingAnimation()
 //          AudioRecorderManager.shared.cancelRecording()
             print("cancelar audio")
+        }
+    }
+    
+    private var cancelRecordingLabel: TextLabel = {
+        let text = TextLabel(font: Font.lg.make(isBold: true))
+        text.textColor = Color.grayscale600.uiColor
+        text.text = "〈 Swipe to cancel"
+        text.alpha = 0
+        return text
+    }()
+    
+    private func displayCancelRecordingLabel(show: Bool) {
+        if show {
+            contentView.fillWithSubview(subview: cancelRecordingLabel, spacing: .init(top: 0, left: 42, bottom: 0, right: 42))
+            UIView.animate(withDuration: 0.2) {
+                self.cancelRecordingLabel.alpha = 1
+            }
+        } else {
+            UIView.animate(withDuration: 0.2) {
+                self.cancelRecordingLabel.alpha = 0
+            } completion: { _ in
+                self.cancelRecordingLabel.removeFromSuperview()
+            }
         }
     }
     
@@ -203,14 +266,18 @@ final class MessageInputBarView: InputBarAccessoryView {
                 self.contentView.layoutIfNeeded()
             } completion: { _ in
                 self.middleContentView?.alpha = 0
+                self.displayCancelRecordingLabel(show: true)
                 
                 UIView.animate(withDuration: 0.1) {
                     self.addRecordingTrashIcon()
+                    // func show message
                 }
             }
         case .ended:
-                micButtonItem.tintColor = .tintColor
-                middleContentView?.alpha = 1
+            micButtonItem.tintColor = .tintColor
+            middleContentView?.alpha = 1
+            displayCancelRecordingLabel(show: false)
+            cancelRecordingLabel.textColor = Color.grayscale600.uiColor
                 
             if !isRecording {
                 holdUserInteraction(for: 0.4)
@@ -223,6 +290,10 @@ final class MessageInputBarView: InputBarAccessoryView {
                     self.middleContentView?.alpha = 1
                     
                     UIView.animate(withDuration: 0.1) {
+                        if self.cancelRecordingLabel.alpha == 1 {
+                            self.displayCancelRecordingLabel(show: false)
+                            self.cancelRecordingLabel.textColor = Color.grayscale600.uiColor
+                        }
                         self.addAttachButton()
                     }
                 }
@@ -252,6 +323,8 @@ final class MessageInputBarView: InputBarAccessoryView {
                     self.contentView.layoutIfNeeded()
                 }
                 
+                cancelRecordingLabel.textColor = Color.grayscale600.uiColor
+                displayCancelRecordingLabel(show: false)
                 resetAllInteractions()
                 holdUserInteraction(for: 0.6)
                 print("send audio")
@@ -291,4 +364,11 @@ private extension MessageInputBarView {
         longGestureRecognizer.delegate = self
         panGestureRecognizer.delegate = self
     }
+}
+
+extension UIColor {
+    var redValue: CGFloat{ return CIColor(color: self).red }
+    var greenValue: CGFloat{ return CIColor(color: self).green }
+    var blueValue: CGFloat{ return CIColor(color: self).blue }
+    var alphaValue: CGFloat{ return CIColor(color: self).alpha }
 }

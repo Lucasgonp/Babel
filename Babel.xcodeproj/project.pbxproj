@@ -87,8 +87,8 @@
 		7670825B2B4B89480024EF41 /* AudioMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670825A2B4B89480024EF41 /* AudioMessage.swift */; };
 		7670825E2B4B96E10024EF41 /* BasicAudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670825D2B4B96E10024EF41 /* BasicAudioController.swift */; };
 		767082622B4C4F4D0024EF41 /* MessageInputBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767082612B4C4F4D0024EF41 /* MessageInputBarView.swift */; };
-		767E4A062A8AB87000B55980 /* Strings.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767E4A052A8AB84700B55980 /* Strings.generated.swift */; };
 		768E40DA2B4D9A5B009F8F7C /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768E40D92B4D9A5B009F8F7C /* KeyboardManager.swift */; };
+		768E40DD2B4DC94C009F8F7C /* Strings.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768E40DC2B4DC94C009F8F7C /* Strings.generated.swift */; };
 		7691DAF92B499409007D52B3 /* Authenticator.docc in Sources */ = {isa = PBXBuildFile; fileRef = 7691DAF82B499409007D52B3 /* Authenticator.docc */; };
 		7691DAFF2B49940A007D52B3 /* Authenticator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7691DAF52B499409007D52B3 /* Authenticator.framework */; };
 		7691DB062B49940A007D52B3 /* AuthenticatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691DB052B49940A007D52B3 /* AuthenticatorTests.swift */; };
@@ -534,8 +534,8 @@
 		7670825A2B4B89480024EF41 /* AudioMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioMessage.swift; sourceTree = "<group>"; };
 		7670825D2B4B96E10024EF41 /* BasicAudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAudioController.swift; sourceTree = "<group>"; };
 		767082612B4C4F4D0024EF41 /* MessageInputBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputBarView.swift; sourceTree = "<group>"; };
-		767E4A052A8AB84700B55980 /* Strings.generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.generated.swift; sourceTree = "<group>"; };
 		768E40D92B4D9A5B009F8F7C /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
+		768E40DC2B4DC94C009F8F7C /* Strings.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.generated.swift; sourceTree = "<group>"; };
 		7691DAF52B499409007D52B3 /* Authenticator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Authenticator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7691DAF72B499409007D52B3 /* Authenticator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Authenticator.h; sourceTree = "<group>"; };
 		7691DAF82B499409007D52B3 /* Authenticator.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Authenticator.docc; sourceTree = "<group>"; };
@@ -1102,6 +1102,14 @@
 				767082612B4C4F4D0024EF41 /* MessageInputBarView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		768E40DB2B4DC94C009F8F7C /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				768E40DC2B4DC94C009F8F7C /* Strings.generated.swift */,
+			);
+			path = Strings;
 			sourceTree = "<group>";
 		};
 		7691DAF62B499409007D52B3 /* Authenticator */ = {
@@ -1802,7 +1810,7 @@
 		76CAA1762A8AA92F00D742E9 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
-				767E4A052A8AB84700B55980 /* Strings.generated.swift */,
+				768E40DB2B4DC94C009F8F7C /* Strings */,
 			);
 			path = Generated;
 			sourceTree = "<group>";
@@ -2370,7 +2378,6 @@
 		};
 		76CAA1912A8AACA100D742E9 /* Swiftgen Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -2585,6 +2592,7 @@
 				76D246802AC4AE7000FDA81E /* ChatFactory.swift in Sources */,
 				761011A22B3A2002004639C4 /* OutgoingMessage.swift in Sources */,
 				769E972F2AA3C4FC004FC6B4 /* ContactInfoRouter.swift in Sources */,
+				768E40DD2B4DC94C009F8F7C /* Strings.generated.swift in Sources */,
 				76371FBE2B48E201007C9E7E /* VideoMessage.swift in Sources */,
 				7620F44F2A9659F5002A4EB5 /* TellAFriendRouter.swift in Sources */,
 				7620F2B72A92DE1B002A4EB5 /* SettingsViewController.swift in Sources */,
@@ -2592,7 +2600,6 @@
 				7620F4522A9659F5002A4EB5 /* TellAFriendService.swift in Sources */,
 				76DA7EBE2AB78D1F00106731 /* RecentChatsRouter.swift in Sources */,
 				7620F4612A96B31C002A4EB5 /* EditProfileHeaderCell.swift in Sources */,
-				767E4A062A8AB87000B55980 /* Strings.generated.swift in Sources */,
 				76CAA18E2A8AAA6800D742E9 /* BabelResources.swift in Sources */,
 				76D246812AC4AE7000FDA81E /* ChatPresenter.swift in Sources */,
 				76DA7EBD2AB78D1F00106731 /* RecentChatsPresenter.swift in Sources */,

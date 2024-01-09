@@ -60,3 +60,6 @@
 
 // Map
 "MapView.title" = "Map view";
+
+// MessageInputBarView
+"MessageInputBar.swipeToCancel" = "Swipe to cancel";

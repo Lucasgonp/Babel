@@ -14,7 +14,7 @@ strings:
       templateName: structured-swift5
       output: Modules/Kits/DesignKit/Generated/Strings/Strings.generated.swift
       params:
-        publicAccess: true
+        publicAccess: false
         enumName: "Strings"
 
         

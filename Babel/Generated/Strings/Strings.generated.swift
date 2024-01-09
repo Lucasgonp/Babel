@@ -44,6 +44,10 @@ internal enum Strings {
     /// Map view
     internal static let title = Strings.tr("Localizable", "MapView.title", fallback: "Map view")
   }
+  internal enum MessageInputBar {
+    /// Swipe to cancel
+    internal static let swipeToCancel = Strings.tr("Localizable", "MessageInputBar.swipeToCancel", fallback: "Swipe to cancel")
+  }
   internal enum MessageType {
     /// Audio
     internal static let audio = Strings.tr("Localizable", "MessageType.audio", fallback: "Audio")

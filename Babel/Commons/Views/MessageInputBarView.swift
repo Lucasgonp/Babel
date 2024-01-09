@@ -9,6 +9,8 @@ protocol MessageInputBarDelegate: AnyObject {
 }
 
 final class MessageInputBarView: InputBarAccessoryView {
+    typealias Localizable = Strings.MessageInputBar
+    
     private let cancelAudioAnimation: LottieAnimationView = {
         let animationView = LottieAnimationView(name: "TrashAnimation")
         animationView.contentMode = .scaleToFill
@@ -65,12 +67,22 @@ final class MessageInputBarView: InputBarAccessoryView {
         return constraint
     }()
     
+    private var cancelRecordingLabel: TextLabel = {
+        let text = TextLabel(font: Font.lg.make(isBold: true))
+        text.textColor = Color.grayscale600.uiColor
+        text.text = "〈 \(Localizable.swipeToCancel)"
+        text.alpha = 0
+        return text
+    }()
+    
     private lazy var middleContentViewPaddingOriginal = UIEdgeInsets()
     
     weak var actionDelegate: MessageInputBarDelegate?
     
     private let feedbackHaptic = UIImpactFeedbackGenerator(style: .heavy)
     private let keyboardManager = KeyboardManager.shared
+    
+    private var isRecording = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -178,7 +190,7 @@ final class MessageInputBarView: InputBarAccessoryView {
     }
     
     func mixWhiteAndRed(redAmount: CGFloat) -> UIColor {
-        var redAmount = redAmount < 0 ? 0 : redAmount
+        let redAmount = redAmount < 0 ? 0 : redAmount
         return UIColor(
             red: Color.grayscale600.uiColor.redValue + redAmount,
             green: (Color.grayscale600.uiColor.greenValue - redAmount),
@@ -186,60 +198,6 @@ final class MessageInputBarView: InputBarAccessoryView {
             alpha: 1.0
         )
     }
-    
-    @objc private func panRecognizer() {
-        let position = panGestureRecognizer.location(in: contentView)
-        let position2 = panGestureRecognizer.location(in: self)
-        
-        let trashPosition = cancelAudioAnimation.frame.origin
-        
-        let xDist = (trashPosition.x - position2.x)
-        let yDist = (trashPosition.y - position2.y)
-        let distance = sqrt((xDist * xDist) + (yDist * yDist))
-        
-        print("distance: \(distance)")
-        
-        let proportionalDistance = 315 - distance
-        let redAmount = proportionalDistance / 100
-        
-        print("red amount: \(redAmount)")
-        
-        cancelRecordingLabel.textColor = mixWhiteAndRed(redAmount: redAmount)
-        
-        //315
-        //191
-//            let positionX = (position.x / 320) * 2
-//            let positionY = (position.y) / 20
-//            
-//            let redAmount = (positionX + positionY) / 4
-//            
-//            print("red amount: \(redAmount)")
-//            
-//            cancelRecordingLabel.textColor = mixWhiteAndRed(redAmount: redAmount)
-        
-        if position.x < 163.0 && position.y > -42.33 {
-            
-            cancelRecordingLabel.textColor = Color.grayscale600.uiColor
-            
-            // Cancel audio
-            feedbackHaptic.impactOccurred()
-            
-            resetAllInteractions()
-            holdUserInteraction(for: 0.4)
-            displayCancelRecordingLabel(show: false)
-            cancelAudioRecordingAnimation()
-//          AudioRecorderManager.shared.cancelRecording()
-            print("cancelar audio")
-        }
-    }
-    
-    private var cancelRecordingLabel: TextLabel = {
-        let text = TextLabel(font: Font.lg.make(isBold: true))
-        text.textColor = Color.grayscale600.uiColor
-        text.text = "〈 Swipe to cancel"
-        text.alpha = 0
-        return text
-    }()
     
     private func displayCancelRecordingLabel(show: Bool) {
         if show {
@@ -255,8 +213,36 @@ final class MessageInputBarView: InputBarAccessoryView {
             }
         }
     }
+}
+
+@objc private extension MessageInputBarView {
+    func panRecognizer() {
+        let position = panGestureRecognizer.location(in: self)
+        let trashPosition = cancelAudioAnimation.frame.origin
+        
+        let xDist = (trashPosition.x - position.x)
+        let yDist = (trashPosition.y - position.y)
+        let distance = sqrt((xDist * xDist) + (yDist * yDist))
+        
+        let proportionalDistance = 315 - distance
+        let redAmount = proportionalDistance / 100
+        
+        cancelRecordingLabel.textColor = mixWhiteAndRed(redAmount: redAmount)
+        
+        if distance < 178 {
+            cancelRecordingLabel.textColor = Color.grayscale600.uiColor
+            
+            feedbackHaptic.impactOccurred()
+            
+            resetAllInteractions()
+            holdUserInteraction(for: 0.4)
+            displayCancelRecordingLabel(show: false)
+            cancelAudioRecordingAnimation()
+            AudioRecorderManager.shared.cancelRecording()
+        }
+    }
     
-    @objc private func shortPressRecognizer() {
+    func shortPressRecognizer() {
         switch shortGestureRecognizer.state {
         case .began:
             feedbackHaptic.impactOccurred()
@@ -271,7 +257,6 @@ final class MessageInputBarView: InputBarAccessoryView {
                 
                 UIView.animate(withDuration: 0.1) {
                     self.addRecordingTrashIcon()
-                    // func show message
                 }
             }
         case .ended:
@@ -283,6 +268,7 @@ final class MessageInputBarView: InputBarAccessoryView {
             if !isRecording {
                 holdUserInteraction(for: 0.4)
                 feedbackHaptic.impactOccurred()
+                
                 UIView.animate(withDuration: 0.1) {
                     self.middleContentViewPadding.right = self.middleContentViewPaddingOriginal.right
                     self.middleContentView?.alpha = 1
@@ -304,14 +290,12 @@ final class MessageInputBarView: InputBarAccessoryView {
         }
     }
     
-    private var isRecording = false
-    
-    @objc private func recordAudio() {
+    func recordAudio() {
         switch longGestureRecognizer.state {
         case .began:
             feedbackHaptic.impactOccurred()
             isRecording = true
-//            actionDelegate?.audioRecording(.start)
+            actionDelegate?.audioRecording(.start)
         case .ended:
             if isRecording {
                 isRecording = false
@@ -319,7 +303,6 @@ final class MessageInputBarView: InputBarAccessoryView {
                 
                 UIView.animate(withDuration: 0.4) {
                     self.middleContentViewPadding.right = self.middleContentViewPaddingOriginal.right
-                    
                     self.addAttachButton()
                     self.contentView.layoutIfNeeded()
                 }
@@ -328,7 +311,7 @@ final class MessageInputBarView: InputBarAccessoryView {
                 displayCancelRecordingLabel(show: false)
                 resetAllInteractions()
                 holdUserInteraction(for: 0.6)
-                print("send audio")
+                actionDelegate?.audioRecording(.stop)
             }
         default:
             return
@@ -365,11 +348,4 @@ private extension MessageInputBarView {
         longGestureRecognizer.delegate = self
         panGestureRecognizer.delegate = self
     }
-}
-
-extension UIColor {
-    var redValue: CGFloat{ return CIColor(color: self).red }
-    var greenValue: CGFloat{ return CIColor(color: self).green }
-    var blueValue: CGFloat{ return CIColor(color: self).blue }
-    var alphaValue: CGFloat{ return CIColor(color: self).alpha }
 }

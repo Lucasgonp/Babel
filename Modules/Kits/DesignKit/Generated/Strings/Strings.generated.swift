@@ -9,13 +9,13 @@ import Foundation
 
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
-public enum Strings {
-  public enum Error {
-    public enum Generic {
+internal enum Strings {
+  internal enum Error {
+    internal enum Generic {
       /// Ok
-      public static let button = Strings.tr("Localizable", "Error.Generic.button", fallback: "Ok")
+      internal static let button = Strings.tr("Localizable", "Error.Generic.button", fallback: "Ok")
       /// Something went wrong
-      public static let title = Strings.tr("Localizable", "Error.Generic.title", fallback: "Something went wrong")
+      internal static let title = Strings.tr("Localizable", "Error.Generic.title", fallback: "Something went wrong")
     }
   }
 }

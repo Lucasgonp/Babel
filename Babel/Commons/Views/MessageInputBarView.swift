@@ -134,6 +134,9 @@ final class MessageInputBarView: InputBarAccessoryView {
     }
     
     private func addRecordingTrashIcon() {
+//        let infoCancelButton = InputBarButtonItem()
+//        infoCancelButton.image = UIImage(systemName: "chevron.left")
+//        infoCancelButton.setTitle("Swipe to cancel", for: .normal)
         setStackViewItems([trashButtonItem], forStack: .left, animated: false)
         trashButtonItem.alpha = 1
         attachButtonItem.alpha = 0

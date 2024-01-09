@@ -93,4 +93,12 @@ final class AudioRecorderManager: NSObject, AVAudioRecorderDelegate {
             self.audioRecorder = nil
         }
     }
+    
+    func cancelRecording() {
+        if let audioRecorder {
+            audioRecorder.stop()
+            audioRecorder.deleteRecording()
+            self.audioRecorder = nil
+        }
+    }
 }

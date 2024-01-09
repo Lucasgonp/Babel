@@ -12,16 +12,10 @@ final class MessageInputBarView: InputBarAccessoryView {
         let micButtonItem = InputBarButtonItem()
         micButtonItem.image = UIImage(systemName: "mic.fill")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 30))
         micButtonItem.setSize(CGSize(width: 30, height: 30), animated: false)
-        micButtonItem.addGestureRecognizer(shortPressRecognizer)
-        micButtonItem.addGestureRecognizer(longPressRecognizer)
+        micButtonItem.addGestureRecognizer(shortGestureRecognizer)
+        micButtonItem.addGestureRecognizer(longGestureRecognizer)
+        micButtonItem.addGestureRecognizer(panGestureRecognizer)
         return micButtonItem
-    }()
-    
-    private let trashButtonItem: InputBarButtonItem = {
-        let trashButton = InputBarButtonItem()
-        trashButton.image = UIImage(systemName: "trash")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 30))
-        trashButton.setSize(CGSize(width: 30, height: 30), animated: false)
-        return trashButton
     }()
     
     private lazy var attachButtonItem: InputBarButtonItem = {
@@ -34,20 +28,35 @@ final class MessageInputBarView: InputBarAccessoryView {
         return attachButton
     }()
     
-    
-    private lazy var shortPressRecognizer: UILongPressGestureRecognizer = {
+    private lazy var shortGestureRecognizer: UILongPressGestureRecognizer = {
         let longPressRecognizer = UILongPressGestureRecognizer()
         longPressRecognizer.minimumPressDuration = 0
-        longPressRecognizer.delaysTouchesBegan = true
+        longPressRecognizer.addTarget(self, action: #selector(shortPressRecognizer))
         return longPressRecognizer
     }()
     
-    private lazy var longPressRecognizer: UILongPressGestureRecognizer = {
+    private lazy var longGestureRecognizer: UILongPressGestureRecognizer = {
         let longPressRecognizer = UILongPressGestureRecognizer()
         longPressRecognizer.minimumPressDuration = 0.5
         longPressRecognizer.delaysTouchesBegan = true
+        longPressRecognizer.addTarget(self, action: #selector(recordAudio))
         return longPressRecognizer
     }()
+    
+    private lazy var panGestureRecognizer: UIPanGestureRecognizer = {
+        let longPressRecognizer = UIPanGestureRecognizer()
+        longPressRecognizer.addTarget(self, action: #selector(panRecognizer))
+        return longPressRecognizer
+    }()
+    
+    private let trashButtonItem: InputBarButtonItem = {
+        let trashButton = InputBarButtonItem()
+        trashButton.image = UIImage(systemName: "trash")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 30))
+        trashButton.setSize(CGSize(width: 30, height: 30), animated: false)
+        return trashButton
+    }()
+    
+    private lazy var middleContentViewPaddingOriginal = UIEdgeInsets()
     
     weak var actionDelegate: MessageInputBarDelegate?
     
@@ -61,9 +70,10 @@ final class MessageInputBarView: InputBarAccessoryView {
     }
     
     func configure() {
-        
-        shortPressRecognizer.delegate = self
-        longPressRecognizer.delegate = self
+        // GestureRecognizers
+        shortGestureRecognizer.delegate = self
+        longGestureRecognizer.delegate = self
+        panGestureRecognizer.delegate = self
         
         
         //TextView
@@ -95,18 +105,13 @@ final class MessageInputBarView: InputBarAccessoryView {
         
         isTranslucent = true
         
-        self.middleContentViewPadding2 = middleContentViewPadding
+        middleContentViewPaddingOriginal = middleContentViewPadding
     }
-    
-    var middleContentViewPadding2: UIEdgeInsets?
     
     func addAttachButton() {
         setStackViewItems([attachButtonItem], forStack: .left, animated: false)
-        
-        
-        
-            self.attachButtonItem.alpha = 1
-            self.trashButtonItem.alpha = 0
+        attachButtonItem.alpha = 1
+        trashButtonItem.alpha = 0
         
     }
     
@@ -130,59 +135,75 @@ final class MessageInputBarView: InputBarAccessoryView {
     
     private func addRecordingTrashIcon() {
         setStackViewItems([trashButtonItem], forStack: .left, animated: false)
-        
-        
-        self.trashButtonItem.alpha = 1
-        self.attachButtonItem.alpha = 0
-        
+        trashButtonItem.alpha = 1
+        attachButtonItem.alpha = 0
     }
     
-    @objc private func shortPressRecognizer2() {
-        switch shortPressRecognizer.state {
+    private var shouldCancelAudio = false
+    
+    @objc private func panRecognizer() {
+        let position = panGestureRecognizer.location(in: contentView)
+        shouldCancelAudio = position.x < 163.0 && position.y > -42.33
+    }
+    
+    @objc private func shortPressRecognizer() {
+        let generator = UIImpactFeedbackGenerator(style: .heavy)
+        
+        switch shortGestureRecognizer.state {
         case .began:
-            let generator = UIImpactFeedbackGenerator(style: .heavy)
             generator.impactOccurred()
             
             UIView.animate(withDuration: 0.2) {
-                self.middleContentViewPadding.right = self.middleContentView?.frame.width ?? .zero
+                self.micButtonItem.tintColor = .red
+                self.middleContentViewPadding.right = self.middleContentView?.frame.width ?? .zero + 12
+                self.middleContentView?.alpha = 0.5
                 self.addRecordingTrashIcon()
                 self.contentView.layoutIfNeeded()
             }
-        default:
-            let generator = UIImpactFeedbackGenerator(style: .heavy)
+        case .ended:
             generator.impactOccurred()
             
             UIView.animate(withDuration: 0.2) {
-                self.middleContentViewPadding.right = self.middleContentViewPadding2!.right
-//                self.middleContentViewPadding.left = self.middleContentViewPadding.left
+                self.micButtonItem.tintColor = .tintColor
+                self.middleContentViewPadding.right = self.middleContentViewPaddingOriginal.right
+                self.middleContentView?.alpha = 1
                 self.addAttachButton()
                 self.contentView.layoutIfNeeded()
             }
-            
-            UIView.animate(withDuration: 1) {
-                self.micButtonItem.tintColor = .tintColor
-//                self.micButtonItem.frame = .init(x: 0, y: 0, width: 36, height: 36)
-            }
+        default:
+            return
         }
     }
     
     @objc private func recordAudio() {
-        switch longPressRecognizer.state {
+        let generator = UIImpactFeedbackGenerator(style: .heavy)
+        
+        switch longGestureRecognizer.state {
         case .began:
-            UIView.animate(withDuration: 0.2) {
-                self.micButtonItem.tintColor = .red
-//                self.micButtonItem.frame = .init(x: 0, y: 0, width: 60, height: 60)
-            }
-            actionDelegate?.audioRecording(.start)
-        case .ended:
-            UIView.animate(withDuration: 0.2) {
-                self.micButtonItem.tintColor = .tintColor
-//                self.micButtonItem.frame = .init(x: 0, y: 0, width: 60, height: 60)
-            }
+            generator.impactOccurred()
             return
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
-//                self.actionDelegate?.audioRecording(.stop)
-//            }
+            //                actionDelegate?.audioRecording(.start)
+        case .ended:
+            generator.impactOccurred()
+            
+            UIView.animate(withDuration: 0.2) {
+                //                    self.micButtonItem.tintColor = .tintColor
+                self.middleContentViewPadding.right = self.middleContentViewPaddingOriginal.right
+                self.middleContentView?.alpha = 1
+                self.addAttachButton()
+                self.contentView.layoutIfNeeded()
+            }
+            
+            if shouldCancelAudio {
+                shouldCancelAudio = false
+                print("cancelar audio")
+//                AudioRecorderManager.shared.cancelRecording()
+            } else {
+                print("mandar audio")
+            }
+            //            DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
+            //                self.actionDelegate?.audioRecording(.stop)
+            //            }
         default:
             return
         }
@@ -191,13 +212,6 @@ final class MessageInputBarView: InputBarAccessoryView {
 
 extension MessageInputBarView: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        if gestureRecognizer === longPressRecognizer {
-            recordAudio()
-        } else {
-            shortPressRecognizer2()
-        }
-        
         return true
-
     }
 }

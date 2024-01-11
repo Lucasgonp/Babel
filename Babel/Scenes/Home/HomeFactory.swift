@@ -50,7 +50,7 @@ enum HomeTabBarFactory {
     }
     
     static func makeGroupsTab() -> HomeTabBarModel {
-        let viewController = GroupsTabFactory.make()
+        let viewController = GroupsFactory.make()
         let navigation = UINavigationController(rootViewController: viewController)
         navigation.navigationBar.prefersLargeTitles = true
         navigation.tabBarItem.title = Strings.TabBar.Groups.title

@@ -7,8 +7,13 @@ extension UIImageView {
         activityIndicator.startAnimating()
         
         if let url {
-            sd_setImage(with: url) { image, _, _, _ in
-                completion?(image)
+            sd_setImage(with: url) { [weak self] image, _, _, _ in
+                if let image {
+                    completion?(image)
+                } else {
+                    self?.image = placeholderImage
+                    completion?(placeholderImage)
+                }
                 activityIndicator.stopAnimating()
             }
         } else {
@@ -23,8 +28,13 @@ extension UIImageView {
         activityIndicator.startAnimating()
         
         if let link, let url = URL(string: link) {
-            sd_setImage(with: url) { image, _, _, _ in
-                completion?(image)
+            sd_setImage(with: url) { [weak self] image, _, _, _ in
+                if let image {
+                    completion?(image)
+                } else {
+                    self?.image = placeholderImage
+                    completion?(placeholderImage)
+                }
                 activityIndicator.stopAnimating()
             }
         } else {

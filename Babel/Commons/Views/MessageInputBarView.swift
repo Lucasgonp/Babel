@@ -152,8 +152,10 @@ final class MessageInputBarView: InputBarAccessoryView {
             self.micButtonItem.alpha = 1
         }
     }
-    
-    private func addRecordingTrashIcon() {
+}
+
+private extension MessageInputBarView {
+    func addRecordingTrashIcon() {
         attachButtonItem.alpha = 0
         cancelAudioAnimation.alpha = 1
         
@@ -172,7 +174,7 @@ final class MessageInputBarView: InputBarAccessoryView {
         }
     }
     
-    private func cancelAudioRecordingAnimation() {
+    func cancelAudioRecordingAnimation() {
         UIView.animate(withDuration: 0.2) {
             self.micButtonItem.tintColor = .tintColor
             self.middleContentViewPadding.right = self.middleContentViewPaddingOriginal.right
@@ -191,7 +193,7 @@ final class MessageInputBarView: InputBarAccessoryView {
         }
     }
     
-    private func mixWhiteAndRed(redAmount: CGFloat) -> UIColor {
+    func mixWhiteAndRed(redAmount: CGFloat) -> UIColor {
         let redAmount = redAmount < 0 ? 0 : redAmount
         return UIColor(
             red: Color.grayscale600.uiColor.redValue + redAmount,
@@ -201,7 +203,7 @@ final class MessageInputBarView: InputBarAccessoryView {
         )
     }
     
-    private func displayCancelRecordingLabel(show: Bool) {
+    func displayCancelRecordingLabel(show: Bool) {
         if show {
             contentView.fillWithSubview(subview: cancelRecordingLabel, spacing: .init(top: 0, left: 42, bottom: 0, right: 42))
             UIView.animate(withDuration: 0.2) {
@@ -220,7 +222,6 @@ final class MessageInputBarView: InputBarAccessoryView {
 @objc private extension MessageInputBarView {
     func panRecognizer() {
         let position = panGestureRecognizer.location(in: self)
-        
         let trashPosition = cancelAudioAnimation.frame.origin
         
         let xDist = (trashPosition.x - position.x)

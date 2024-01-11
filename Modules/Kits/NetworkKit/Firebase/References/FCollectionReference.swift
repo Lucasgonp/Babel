@@ -3,4 +3,5 @@ public enum FCollectionReference: String {
     case recent
     case messages
     case typing
+    case group
 }

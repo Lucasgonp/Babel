@@ -16,7 +16,8 @@ public extension UITableView {
     final func makeCell<T: UITableViewCell>(
         indexPath: IndexPath,
         accessoryType: UITableViewCell.AccessoryType = .none,
-        selectionStyle: UITableViewCell.SelectionStyle = .default
+        selectionStyle: UITableViewCell.SelectionStyle = .default,
+        accessoryView: UIView? = nil
     ) -> T {
         guard let cell = dequeueReusableCell(withIdentifier: T.identifier, for: indexPath) as? T else {
             return T()
@@ -26,6 +27,7 @@ public extension UITableView {
         cell.layoutMargins = .zero
         cell.selectionStyle = selectionStyle
         cell.accessoryType = accessoryType
+        cell.accessoryView = accessoryView
         return cell
     }
 }

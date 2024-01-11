@@ -4,4 +4,5 @@ public enum StorageKey: String {
     case fileReference = "gs://babel-fedd5.appspot.com"
     case chatRoomId
     case senderId
+    case group
 }

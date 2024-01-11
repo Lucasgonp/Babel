@@ -47,14 +47,11 @@ final class UsersViewController: ViewController<UsersInteracting, UIView> {
         return controller
     }()
     
-    private lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        return refreshControl
-    }()
-    
     private var sections = [Section]()
     private var allContacts = [User]()
     private var filteredContacts = [User]()
+    
+    private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -3,6 +3,25 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "MessageInputBarView.shortPressRecognizer2():MessageInputBarView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "shortPressRecognizer.state">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RecentChatsInteractor.didTapOnChat(_:):RecentChatsInteractor.swift">
+      </ContextState>
+      <ContextState
+         contextName = "LocationManager.startUpdating():LocationManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "currentLocation">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in StartChat.restartChat(chatRoomId:memberIds:):StartChat.swift">
          <PersistentStrings>
             <PersistentString
@@ -19,18 +38,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MessageInputBarView.shortPressRecognizer2():MessageInputBarView.swift">
+         contextName = "MyGroupsView.scrollViewDidScroll(_:):MyGroupsView.swift">
          <PersistentStrings>
             <PersistentString
-               value = "shortPressRecognizer.state">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "LocationManager.startUpdating():LocationManager.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "currentLocation">
+               value = "self.navigation">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -41,9 +52,6 @@
                value = "navigationController?.navigationBar.standardAppearance">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "RecentChatsInteractor.didTapOnChat(_:):RecentChatsInteractor.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

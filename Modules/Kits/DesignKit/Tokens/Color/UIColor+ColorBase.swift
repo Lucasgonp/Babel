@@ -53,13 +53,19 @@ public extension Color {
     /// - Light Mode: `#F2F2F2`.
     /// - Dark Mode: `#060B0D`.
 //    static let backgroundPrimary = Color(#colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 1), #colorLiteral(red: 0.02352941176, green: 0.0431372549, blue: 0.05098039216, alpha: 1))
-    static let backgroundPrimary = Color(#colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 1), #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1))
+    static let backgroundPrimary = Color(#colorLiteral(red: 0.964175978, green: 0.964175978, blue: 0.964175978, alpha: 1), #colorLiteral(red: 0.05349515664, green: 0.05349515664, blue: 0.05349515664, alpha: 1))
     
     /// Returns a color object whose values are:
     ///
     /// - Light Mode: `#F2F2F2`.
     /// - Dark Mode: `#060B0D`.
-    static let backgroundSecondary = Color(#colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 1), #colorLiteral(red: 0.1294117647, green: 0.1764705882, blue: 0.2, alpha: 1))
+    static let backgroundSecondary = Color(#colorLiteral(red: 0.8777228388, green: 0.8777228388, blue: 0.8777228388, alpha: 1), #colorLiteral(red: 0.09517483945, green: 0.1033819771, blue: 0.1087461992, alpha: 1))
+    
+    /// Returns a color object whose values are:
+    ///
+    /// - Light Mode: `#F2F2F2`.
+    /// - Dark Mode: `#060B0D`.
+    static let backgroundTertiary = Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), #colorLiteral(red: 0.2289852275, green: 0.2285818003, blue: 0.2360058101, alpha: 1))
     
     /// Returns a color object whose values are:
     ///

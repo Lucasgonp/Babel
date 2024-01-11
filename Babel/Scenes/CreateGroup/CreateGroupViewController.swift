@@ -29,7 +29,7 @@ final class CreateGroupViewController: ViewController<CreateGroupInteracting, UI
         return tableView
     }()
     
-    private lazy var fullNameTextField: TextField = {
+    private lazy var groupNameTextField: TextField = {
         let textField = TextField()
         textField.render(.clean(
             placeholder: "Group name",
@@ -50,13 +50,22 @@ final class CreateGroupViewController: ViewController<CreateGroupInteracting, UI
         return gallery
     }()
     
+    private lazy var groupDescNavigation: UINavigationController = {
+        let controller = EditGroupDescViewController(description: groupDescription)
+        let navigation = UINavigationController(rootViewController: controller)
+        controller.completion = { [weak self] description in
+            self?.groupDescription = description
+            self?.tableView.reloadSections(IndexSet(integer: 1), with: .none)
+        }
+        return navigation
+    }()
+    
     private var currentUser = UserSafe.shared.user
     private var headerCell: CreateGroupHeaderCell?
     
     private var allUsers = [User]()
     private var selectedUsers = [User]()
     
-    private var groupName = String()
     private var groupDescription = String()
     
     weak var delegate: SettingsViewDelegate?
@@ -82,6 +91,9 @@ final class CreateGroupViewController: ViewController<CreateGroupInteracting, UI
     override func configureViews() {
         title = "Create new group"
         view.backgroundColor = Color.backgroundPrimary.uiColor
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
         configureNavigation()
     }
 }
@@ -115,18 +127,20 @@ extension CreateGroupViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         switch indexPath.section {
+        case 1:
+            present(groupDescNavigation, animated: true)
         case 2:
             let user = allUsers[indexPath.row]
-            let cell = tableView.cellForRow(at: indexPath) as? UserCell
             
             if selectedUsers.contains(user) {
-                cell?.accessoryType = .none
+                selectedUsers.removeAll(where: { $0 == user })
+                tableView.cellForRow(at: indexPath)?.accessoryType = .none
             } else {
                 selectedUsers.append(user)
-                cell?.accessoryType = .checkmark
+                tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
             }
             
-            cell?.accessoryType = .checkmark
+            checkCreateButtonState()
         default:
             return
         }
@@ -172,7 +186,7 @@ extension CreateGroupViewController: UITableViewDataSource {
                 return cell
             } else if indexPath.row == 1 {
                 let cell: UITableViewCell = tableView.makeCell(indexPath: indexPath, selectionStyle: .none)
-                cell.contentView.fillWithSubview(subview: fullNameTextField, spacing: .init(top: 8, left: 4, bottom: 2, right: 4))
+                cell.contentView.fillWithSubview(subview: groupNameTextField, spacing: .init(top: 8, left: 4, bottom: 2, right: 4))
                 return cell
             }
             let celula = UITableViewCell()
@@ -198,26 +212,21 @@ extension CreateGroupViewController: UITableViewDataSource {
 
 private extension CreateGroupViewController {
     func configureNavigation() {
-        let done = UIBarButtonItem(title: Strings.Commons.done, style: .done, target: self, action: #selector(didTapDoneButton))
-        navigationItem.setRightBarButton(done, animated: true)
-        updateDoneBarButton(isHidden: true)
+        let done = UIBarButtonItem(title: Strings.CreateGroup.createButton, style: .done, target: self, action: #selector(didTapDoneButton))
+        done.isEnabled = false
+        navigationItem.setRightBarButton(done, animated: false)
     }
     
-    func updateDoneBarButton(isEnabled: Bool) {
-        navigationItem.rightBarButtonItem?.isEnabled = isEnabled
-    }
-    
-    func updateDoneBarButton(isHidden: Bool) {
-        if isHidden {
-            navigationItem.rightBarButtonItem = nil
-        } else {
-            let done = UIBarButtonItem(title: Strings.Commons.done, style: .done, target: self, action: #selector(didTapDoneButton))
-            navigationItem.rightBarButtonItem = done
-        }
+    func checkCreateButtonState() {
+        navigationItem.rightBarButtonItem?.isEnabled = !groupNameTextField.text.isEmpty && selectedUsers.count > 0
     }
 }
 
 @objc private extension CreateGroupViewController {
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     func didTapDoneButton() {
         view.endEditing(true)
     }
@@ -242,16 +251,8 @@ extension CreateGroupViewController: EditProfileHeaderDelegate {
 }
 
 extension CreateGroupViewController: TextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: TextFieldInput) {
-        updateDoneBarButton(isHidden: true)
-    }
-    
-    func textFieldDidBeginEditing(_ textField: TextFieldInput) {
-        updateDoneBarButton(isHidden: false)
-    }
-    
     func textFieldDidChange(_ textField: TextFieldInput) {
-        updateDoneBarButton(isEnabled: !fullNameTextField.text.isEmpty)
+        checkCreateButtonState()
     }
     
     func textFieldShouldReturn(_ textField: TextFieldInput) {

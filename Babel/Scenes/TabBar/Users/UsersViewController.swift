@@ -110,11 +110,13 @@ extension UsersViewController: UITableViewDelegate {
         if searchController.isActive {
             let contact = filteredContacts[indexPath.row]
             let viewController = ContactInfoFactory.make(contactInfo: contact, shouldDisplayStartChat: true)
+            viewController.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(viewController, animated: true)
         } else {
             let section = sections[indexPath.section]
             let contact = section.contacts[indexPath.row]
             let viewController = ContactInfoFactory.make(contactInfo: contact, shouldDisplayStartChat: true)
+            viewController.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(viewController, animated: true)
         }
         

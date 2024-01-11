@@ -45,10 +45,36 @@ final class RecentChatsViewController: ViewController<RecentChatsInteracting, UI
     private var allRecentChats = [RecentChatModel]()
     private var filteredRecentChats = [RecentChatModel]()
 
+//    var counter = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         interactor.loadRecentChats()
+        
+//        Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
+//            self.counter += 1
+//            switch self.counter {
+//            case 1:
+//                print("light")
+//                UIImpactFeedbackGenerator(style: .light).impactOccurred()
+//            case 2:
+//                print("medium")
+//                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+//            case 3:
+//                print("heavy")
+//                UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+//            case 4:
+//                print("soft")
+//                UIImpactFeedbackGenerator(style: .soft).impactOccurred()
+//            case 5:
+//                print("rigid")
+//                UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+//            default:
+//                self.counter = 0
+//                UIImpactFeedbackGenerator().impactOccurred()
+//            }
+//        }
     }
 
     override func buildViewHierarchy() { 

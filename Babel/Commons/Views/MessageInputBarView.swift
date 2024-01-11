@@ -80,7 +80,6 @@ final class MessageInputBarView: InputBarAccessoryView {
     
     weak var actionDelegate: MessageInputBarDelegate?
     
-    private let feedbackHapticLight = UIImpactFeedbackGenerator(style: .light)
     private let feedbackHapticMedium = UIImpactFeedbackGenerator(style: .medium)
     private let keyboardManager = KeyboardManager.shared
     
@@ -247,8 +246,8 @@ private extension MessageInputBarView {
     func cancelAudio() {
         cancelRecordingLabel.textColor = Color.grayscale600.uiColor
         
-        feedbackHapticMedium.prepare()
-        feedbackHapticMedium.impactOccurred()
+        UIImpactFeedbackGenerator(style: .soft).prepare()
+        UIImpactFeedbackGenerator(style: .soft).impactOccurred()
         
         resetAllInteractions()
         holdUserInteraction(for: 0.8)
@@ -281,8 +280,8 @@ private extension MessageInputBarView {
                 
             if !isRecording {
                 holdUserInteraction(for: 0.4)
-                feedbackHapticLight.prepare()
-                feedbackHapticLight.impactOccurred()
+                UIImpactFeedbackGenerator(style: .soft).prepare()
+                UIImpactFeedbackGenerator(style: .soft).impactOccurred()
                 
                 UIView.animate(withDuration: 0.1) {
                     self.middleContentViewPadding.right = self.middleContentViewPaddingOriginal.right
@@ -309,15 +308,15 @@ private extension MessageInputBarView {
         let feedbackHapticLight2 = UIImpactFeedbackGenerator(style: .medium)
         switch longGestureRecognizer.state {
         case .began:
-            feedbackHapticLight2.prepare()
-            feedbackHapticLight2.impactOccurred()
+            feedbackHapticMedium.prepare()
+            feedbackHapticMedium.impactOccurred()
             isRecording = true
             actionDelegate?.audioRecording(.start)
         case .ended:
             if isRecording {
                 isRecording = false
-                feedbackHapticLight.prepare()
-                feedbackHapticLight.impactOccurred()
+                feedbackHapticMedium.prepare()
+                feedbackHapticMedium.impactOccurred()
                 
                 UIView.animate(withDuration: 0.4) {
                     self.middleContentViewPadding.right = self.middleContentViewPaddingOriginal.right

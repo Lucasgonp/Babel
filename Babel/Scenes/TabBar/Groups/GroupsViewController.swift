@@ -190,6 +190,7 @@ private extension GroupsViewController {
 @objc private extension GroupsViewController {
     func didTapOnNewGroup() {
         let createGroup = CreateGroupFactory.make()
+        createGroup.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(createGroup, animated: true)
     }
 }

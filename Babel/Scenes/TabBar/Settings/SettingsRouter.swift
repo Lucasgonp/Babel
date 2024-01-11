@@ -39,6 +39,7 @@ private extension SettingsRouter {
             user: user,
             delegate: viewController as? SettingsViewDelegate
         )
+        controller.hidesBottomBarWhenPushed = true
         viewController?.navigationController?.pushViewController(controller, animated: true)
     }
     

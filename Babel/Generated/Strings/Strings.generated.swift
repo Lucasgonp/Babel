@@ -33,12 +33,18 @@ internal enum Strings {
     }
   }
   internal enum Commons {
+    /// Cancel
+    internal static let cancel = Strings.tr("Localizable", "Commons.cancel", fallback: "Cancel")
     /// Done
     internal static let done = Strings.tr("Localizable", "Commons.done", fallback: "Done")
   }
   internal enum ContactInfo {
     /// Contact Info
     internal static let title = Strings.tr("Localizable", "ContactInfo.title", fallback: "Contact Info")
+  }
+  internal enum CreateGroup {
+    /// Create
+    internal static let createButton = Strings.tr("Localizable", "CreateGroup.createButton", fallback: "Create")
   }
   internal enum MapView {
     /// Map view

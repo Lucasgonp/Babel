@@ -11,15 +11,15 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "RecentChatsInteractor.didTapOnChat(_:):RecentChatsInteractor.swift">
-      </ContextState>
-      <ContextState
          contextName = "LocationManager.startUpdating():LocationManager.swift">
          <PersistentStrings>
             <PersistentString
                value = "currentLocation">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RecentChatsInteractor.didTapOnChat(_:):RecentChatsInteractor.swift">
       </ContextState>
       <ContextState
          contextName = "closure #1 in StartChat.restartChat(chatRoomId:memberIds:):StartChat.swift">
@@ -34,6 +34,14 @@
          <PersistentStrings>
             <PersistentString
                value = "locationManager.authorizationStatus">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CreateGroupViewController.tableView(_:didSelectRowAt:):CreateGroupViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "selectedUsers">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

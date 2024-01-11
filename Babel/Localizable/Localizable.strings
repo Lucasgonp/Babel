@@ -1,5 +1,6 @@
 // Commons
 "Commons.done" = "Done";
+"Commons.cancel" = "Cancel";
 
 // TabBar
 "TabBar.Settings.title" = "Settings";
@@ -63,3 +64,6 @@
 
 // MessageInputBarView
 "MessageInputBar.swipeToCancel" = "Swipe to cancel";
+
+// Create group
+"CreateGroup.createButton" = "Create";

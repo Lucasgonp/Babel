@@ -76,6 +76,15 @@ final class MessageInputBarView: InputBarAccessoryView {
         return text
     }()
     
+    private let stopWatchView: StopWatchView = {
+        let view = StopWatchView()
+        view.layer.cornerRadius = 6
+        view.clipsToBounds = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private lazy var timerViewLeftAnchor = stopWatchView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: -80)
     private lazy var middleContentViewPaddingOriginal = UIEdgeInsets()
     
     weak var actionDelegate: MessageInputBarDelegate?
@@ -126,6 +135,8 @@ final class MessageInputBarView: InputBarAccessoryView {
         isTranslucent = true
         
         middleContentViewPaddingOriginal = middleContentViewPadding
+        
+        configureStopWatch()
     }
     
     func addAttachButton() {
@@ -249,6 +260,7 @@ private extension MessageInputBarView {
         UIImpactFeedbackGenerator(style: .soft).prepare()
         UIImpactFeedbackGenerator(style: .soft).impactOccurred()
         
+        stopTimer()
         resetAllInteractions()
         holdUserInteraction(for: 0.8)
         displayCancelRecordingLabel(show: false)
@@ -311,9 +323,14 @@ private extension MessageInputBarView {
             feedbackHapticMedium.prepare()
             feedbackHapticMedium.impactOccurred()
             isRecording = true
-            actionDelegate?.audioRecording(.start)
+            startTimer()
+            
+//            Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
+//                self.actionDelegate?.audioRecording(.start)
+//            }
         case .ended:
             if isRecording {
+                stopTimer()
                 isRecording = false
                 feedbackHapticMedium.prepare()
                 feedbackHapticMedium.impactOccurred()
@@ -328,7 +345,7 @@ private extension MessageInputBarView {
                 displayCancelRecordingLabel(show: false)
                 resetAllInteractions()
                 holdUserInteraction(for: 0.6)
-                actionDelegate?.audioRecording(.stop)
+//                actionDelegate?.audioRecording(.stop)
             }
         default:
             return
@@ -364,5 +381,32 @@ private extension MessageInputBarView {
         shortGestureRecognizer.delegate = self
         longGestureRecognizer.delegate = self
         panGestureRecognizer.delegate = self
+    }
+    
+    func configureStopWatch() {
+        addSubview(stopWatchView)
+        
+        NSLayoutConstraint.activate([
+            stopWatchView.bottomAnchor.constraint(equalTo: contentView.topAnchor, constant: -32),
+            stopWatchView.heightAnchor.constraint(equalToConstant: 32),
+            stopWatchView.widthAnchor.constraint(equalToConstant: 80),
+            timerViewLeftAnchor
+        ])
+    }
+    
+    func startTimer() {
+        stopWatchView.startCounter()
+        UIView.animate(withDuration: 0.2) {
+            self.timerViewLeftAnchor.constant = -6
+            self.layoutIfNeeded()
+        }
+    }
+    
+    func stopTimer() {
+        stopWatchView.stopCounter()
+        UIView.animate(withDuration: 0.2) {
+            self.timerViewLeftAnchor.constant = -80
+            self.layoutIfNeeded()
+        }
     }
 }

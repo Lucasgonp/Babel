@@ -316,6 +316,7 @@
 		76DA7EC42AB78E7400106731 /* RecentChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DA7EC32AB78E7400106731 /* RecentChatCell.swift */; };
 		76EF5D492A905E3700D9AE8B /* DesignKit.framework in Sources */ = {isa = PBXBuildFile; fileRef = 76228DA92A8AAF7000C27C7A /* DesignKit.framework */; };
 		76EF5D4A2A905E3700D9AE8B /* Authenticator.framework in Sources */ = {isa = PBXBuildFile; fileRef = 76228DA32A8AAF6200C27C7A /* Authenticator.framework */; };
+		76FA5D2C2B50B438004D86A5 /* StopWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FA5D2B2B50B438004D86A5 /* StopWatchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -748,6 +749,7 @@
 		76DA7EBA2AB78D1F00106731 /* RecentChatsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatsInteractor.swift; sourceTree = "<group>"; };
 		76DA7EBB2AB78D1F00106731 /* RecentChatsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatsService.swift; sourceTree = "<group>"; };
 		76DA7EC32AB78E7400106731 /* RecentChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatCell.swift; sourceTree = "<group>"; };
+		76FA5D2B2B50B438004D86A5 /* StopWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1171,6 +1173,7 @@
 			isa = PBXGroup;
 			children = (
 				767082612B4C4F4D0024EF41 /* MessageInputBarView.swift */,
+				76FA5D2B2B50B438004D86A5 /* StopWatchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2737,6 +2740,7 @@
 				763B03C82B4F7C830022E145 /* CreateGroupHeaderCell.swift in Sources */,
 				7620F45C2A965A09002A4EB5 /* TermsViewController.swift in Sources */,
 				76CAA13B2A8AA1F400D742E9 /* SceneDelegate.swift in Sources */,
+				76FA5D2C2B50B438004D86A5 /* StopWatchView.swift in Sources */,
 				76DA7EBC2AB78D1F00106731 /* RecentChatsFactory.swift in Sources */,
 				763B03A82B4F54C50022E145 /* GroupCell.swift in Sources */,
 				7608DE6A2A9BAFDE0036027A /* EditBioViewController.swift in Sources */,

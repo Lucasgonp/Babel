@@ -6,7 +6,7 @@ protocol CreateGroupDelegate {
 }
 
 protocol GroupsDisplaying: AnyObject {
-    func displaySomething()
+    func displayAllGroups(_ groups: [Group])
 }
 
 final class GroupsViewController: ViewController<GroupsInteracting, UIView> {
@@ -35,25 +35,12 @@ final class GroupsViewController: ViewController<GroupsInteracting, UIView> {
     }()
     
     private var sections = [Section]()
-    private var allGroups = [
-        Group(
-            id: "",
-            name: "Teste",
-            description: "asdasd",
-            avatarLink: "",
-            memberIds: [],
-            adminId: "",
-            createdDate: Date()
-        )
-    ]
-    
     private var filteredGroups = [Group]()
-    
+    private var allGroups = [Group]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        interactor.loadAllGroups()
+        interactor.fetchAllGroups()
     }
     
     override func buildViewHierarchy() {
@@ -78,14 +65,16 @@ final class GroupsViewController: ViewController<GroupsInteracting, UIView> {
 }
 
 extension GroupsViewController: GroupsDisplaying {
-    func displaySomething() {
-        // template
+    func displayAllGroups(_ groups: [Group]) {
+        allGroups = groups
+        setupGroupsList()
+        tableView.reloadData()
     }
 }
 
 extension GroupsViewController: CreateGroupDelegate {
     func didCreateNewGroup() {
-        interactor.loadAllGroups()
+        interactor.fetchAllGroups()
     }
 }
 

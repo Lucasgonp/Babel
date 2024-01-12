@@ -1,5 +1,5 @@
 protocol GroupsPresenting: AnyObject {
-    func displaySomething()
+    func displayAllGroups(_ groups: [Group])
     func didNextStep(action: GroupsAction)
 }
 
@@ -14,8 +14,8 @@ final class GroupsPresenter {
 
 // MARK: - GroupsPresenting
 extension GroupsPresenter: GroupsPresenting {
-    func displaySomething() {
-        viewController?.displaySomething()
+    func displayAllGroups(_ groups: [Group]) {
+        viewController?.displayAllGroups(groups)
     }
     
     func didNextStep(action: GroupsAction) {

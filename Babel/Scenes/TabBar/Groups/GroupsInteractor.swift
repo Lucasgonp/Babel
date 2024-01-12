@@ -1,5 +1,5 @@
 protocol GroupsInteracting: AnyObject {
-    func loadAllGroups()
+    func fetchAllGroups()
     func didTapCreateNewGroup()
 }
 
@@ -15,8 +15,15 @@ final class GroupsInteractor {
 
 // MARK: - GroupsInteracting
 extension GroupsInteractor: GroupsInteracting {
-    func loadAllGroups() {
-        presenter.displaySomething()
+    func fetchAllGroups() {
+        worker.fetchAllGroups { [weak self] result in
+            switch result {
+            case let .success(groups):
+                self?.presenter.displayAllGroups(groups)
+            case let .failure(error):
+                fatalError(error.localizedDescription)
+            }
+        }
     }
     
     func didTapCreateNewGroup() {

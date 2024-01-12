@@ -1,6 +1,6 @@
 import NetworkKit
 protocol GroupsWorkerProtocol {
-    func getAllGroups()
+    func fetchAllGroups(completion: @escaping ((Result<[Group], FirebaseError>) -> Void))
 }
 
 final class GroupsWorker {
@@ -12,7 +12,7 @@ final class GroupsWorker {
 }
 
 extension GroupsWorker: GroupsWorkerProtocol {
-    func getAllGroups() {
-//        client.downloadAllGroups(completion: <#T##((Result<[Decodable], FirebaseError>) -> Void)##((Result<[Decodable], FirebaseError>) -> Void)##(Result<[Decodable], FirebaseError>) -> Void#>)
+    func fetchAllGroups(completion: @escaping ((Result<[Group], FirebaseError>) -> Void)) {
+        client.downloadAllGroups(completion: completion)
     }
 }

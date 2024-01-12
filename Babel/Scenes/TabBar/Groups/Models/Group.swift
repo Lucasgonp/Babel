@@ -1,7 +1,7 @@
 import FirebaseFirestoreSwift
 import Foundation
 
-struct Group: Encodable {
+struct Group: Codable {
     let id: String
     let name: String
     let description: String

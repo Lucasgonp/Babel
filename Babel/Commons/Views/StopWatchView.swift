@@ -58,8 +58,6 @@ extension StopWatchView: ViewConfiguration {
         fillWithSubview(subview: timeRecordingLabel, spacing: .init(top: 2, left: 6, bottom: 2, right: 6))
     }
     
-    func setupConstraints() { }
-    
     func configureViews() {
         backgroundColor = Color.backgroundTertiary.uiColor
     }

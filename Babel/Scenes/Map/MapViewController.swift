@@ -36,8 +36,6 @@ extension MapViewController: ViewConfiguration {
         view.fillWithSubview(subview: mapView, navigationSafeArea: true)
     }
     
-    func setupConstraints() { }
-    
     func configureViews() {
         let backButton = UIBarButtonItem(title: String(), style: .plain, target: nil, action: nil)
         navigationController?.navigationBar.topItem?.backBarButtonItem = backButton

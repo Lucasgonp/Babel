@@ -16,6 +16,8 @@ public extension ViewConfiguration {
         configureViews()
         configureStyles()
     }
+    
+    func setupConstraints() { }
 
     func configureViews() { }
 

@@ -47,19 +47,15 @@ final class GroupsViewController: ViewController<GroupsInteracting, UIView> {
         view.fillWithSubview(subview: tableView)
     }
     
-    override func setupConstraints() {
-        // template
-    }
-    
     override func configureViews() {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = true
         
-        allGroups.sort(by: { $0.name.lowercased() < $1.name.lowercased() })
-        setupGroupsList()
-        
         let newGroupButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapOnNewGroup))
         navigationItem.setRightBarButton(newGroupButton, animated: true)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
 }
@@ -183,5 +179,15 @@ private extension GroupsViewController {
 @objc private extension GroupsViewController {
     func didTapOnNewGroup() {
         interactor.didTapCreateNewGroup()
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height - 90, right: 0)
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        tableView.contentInset = .zero
     }
 }

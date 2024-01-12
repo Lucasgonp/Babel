@@ -1,5 +1,6 @@
 protocol GroupsInteracting: AnyObject {
     func loadAllGroups()
+    func didTapCreateNewGroup()
 }
 
 final class GroupsInteractor {
@@ -16,5 +17,9 @@ final class GroupsInteractor {
 extension GroupsInteractor: GroupsInteracting {
     func loadAllGroups() {
         presenter.displaySomething()
+    }
+    
+    func didTapCreateNewGroup() {
+        presenter.didNextStep(action: .pushCreateNewGroup)
     }
 }

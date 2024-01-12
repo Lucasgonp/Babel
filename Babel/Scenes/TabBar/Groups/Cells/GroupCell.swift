@@ -71,7 +71,7 @@ final class GroupCell: UITableViewCell, ViewConfiguration {
 extension GroupCell {
     func render(_ dto: Group) {
         fullNameLabel.text = dto.name
-        statusLabel.text = dto.status
+        statusLabel.text = dto.description
         
         if !dto.avatarLink.isEmpty {
             avatar.setImage(with: dto.avatarLink, placeholderImage: Image.avatarPlaceholder.image)

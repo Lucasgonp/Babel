@@ -90,6 +90,7 @@ final class MessageInputBarView: InputBarAccessoryView {
     weak var actionDelegate: MessageInputBarDelegate?
     
     private let feedbackHapticMedium = UIImpactFeedbackGenerator(style: .medium)
+    private let feedbackHapticSoft = UIImpactFeedbackGenerator(style: .soft)
     private let keyboardManager = KeyboardManager.shared
     
     private var isRecording = false
@@ -257,8 +258,8 @@ private extension MessageInputBarView {
     func cancelAudio() {
         cancelRecordingLabel.textColor = Color.grayscale600.uiColor
         
-        UIImpactFeedbackGenerator(style: .soft).prepare()
-        UIImpactFeedbackGenerator(style: .soft).impactOccurred()
+        feedbackHapticSoft.prepare()
+        feedbackHapticSoft.impactOccurred()
         
         stopTimer()
         resetAllInteractions()
@@ -292,8 +293,8 @@ private extension MessageInputBarView {
                 
             if !isRecording {
                 holdUserInteraction(for: 0.4)
-                UIImpactFeedbackGenerator(style: .soft).prepare()
-                UIImpactFeedbackGenerator(style: .soft).impactOccurred()
+                feedbackHapticSoft.prepare()
+                feedbackHapticSoft.impactOccurred()
                 
                 UIView.animate(withDuration: 0.1) {
                     self.middleContentViewPadding.right = self.middleContentViewPaddingOriginal.right
@@ -317,17 +318,13 @@ private extension MessageInputBarView {
     }
     
     func recordAudio() {
-        let feedbackHapticLight2 = UIImpactFeedbackGenerator(style: .medium)
         switch longGestureRecognizer.state {
         case .began:
             feedbackHapticMedium.prepare()
             feedbackHapticMedium.impactOccurred()
             isRecording = true
             startTimer()
-            
-//            Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
-//                self.actionDelegate?.audioRecording(.start)
-//            }
+            actionDelegate?.audioRecording(.start)
         case .ended:
             if isRecording {
                 stopTimer()
@@ -345,7 +342,7 @@ private extension MessageInputBarView {
                 displayCancelRecordingLabel(show: false)
                 resetAllInteractions()
                 holdUserInteraction(for: 0.6)
-//                actionDelegate?.audioRecording(.stop)
+                actionDelegate?.audioRecording(.stop)
             }
         default:
             return

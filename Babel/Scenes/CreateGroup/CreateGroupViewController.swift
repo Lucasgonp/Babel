@@ -2,18 +2,10 @@ import UIKit
 import DesignKit
 import GalleryKit
 
-struct UserInfo2 {
-    let name: String
-    let description: String
-    let avatarLink: String
-}
-
 protocol CreateGroupDisplaying: AnyObject {
+    func setLoading(isLoading: Bool)
     func displayAllUsers(_ users: [User])
-//    func displayEditProfile()
-//    func updateEditProfile()
-//    func updateAvatarImage(_ image: UIImage)
-//    func displayErrorMessage(message: String)
+    func displayErrorMessage(message: String)
 }
 
 final class CreateGroupViewController: ViewController<CreateGroupInteracting, UIView> {
@@ -66,6 +58,7 @@ final class CreateGroupViewController: ViewController<CreateGroupInteracting, UI
     private var allUsers = [User]()
     private var selectedUsers = [User]()
     
+    private var groupAvatar = Image.avatarPlaceholder.image
     private var groupDescription = String()
     
     weak var delegate: SettingsViewDelegate?
@@ -105,16 +98,12 @@ extension CreateGroupViewController: CreateGroupDisplaying {
         tableView.reloadData()
     }
     
-    func displayEditProfile() {
-        tableView.reloadData()
-    }
-    
-    func updateEditProfile() {
-        tableView.reloadSections(IndexSet(integer: 1), with: .none)
-    }
-    
-    func updateAvatarImage(_ image: UIImage) {
-        delegate?.updateAvatar(image: image)
+    func setLoading(isLoading: Bool) {
+        if isLoading {
+            showLoading()
+        } else {
+            hideLoading()
+        }
     }
     
     func displayErrorMessage(message: String) {
@@ -229,6 +218,18 @@ private extension CreateGroupViewController {
     
     func didTapDoneButton() {
         view.endEditing(true)
+        var selectedUsers = selectedUsers.compactMap({ $0.id })
+        
+        guard selectedUsers.count > 0 else { return }
+        
+        selectedUsers.append(currentUser.id)
+        let group = CreateGroupDTO(
+            name: groupNameTextField.text,
+            description: groupDescription,
+            memberIds: selectedUsers,
+            avatarImage: groupAvatar
+        )
+        interactor.createGroup(group)
     }
 }
 
@@ -236,8 +237,8 @@ extension CreateGroupViewController: EditProfileHeaderDelegate {
     func didTapOnEditAvatar() {
         galleryController.showSinglePhotoPicker(from: navigationController) { [weak self] image in
             if let image {
+                self?.groupAvatar = image
                 self?.headerCell?.update(image)
-//                self?.interactor.updateAvatarImage(image)
             }
         }
     }
@@ -256,6 +257,6 @@ extension CreateGroupViewController: TextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: TextFieldInput) {
-        didTapDoneButton()
+        view.endEditing(true)
     }
 }

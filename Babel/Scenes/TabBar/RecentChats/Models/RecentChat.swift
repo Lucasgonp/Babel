@@ -19,4 +19,7 @@ struct RecentChatModel: Codable, Equatable {
     var unreadCounter: Int
     
     let avatarLink: String
+    
+    // group or chat
+    let type: RecentChatType?
 }

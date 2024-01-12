@@ -10,6 +10,9 @@ public class FirebaseClient {
     // TypingClient
     weak var typingListener: ListenerRegistration?
     
+    // GroupListenner
+    weak var groupListenner: ListenerRegistration?
+    
     private let firestore: Firestore = .firestore()
     
     private init() {}

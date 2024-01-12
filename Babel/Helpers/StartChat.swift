@@ -11,16 +11,16 @@ final class StartChat {
     
     func startChat(user1: User, user2: User) -> String {
         let chatRoomId = chatRoomIdFrom(user1Id: user1.id, user2Id: user2.id)
-        createRecentItems(chatRoomId: chatRoomId, users: [user1, user2])
+        createRecentItems(chatRoomId: chatRoomId, users: [user1, user2], type: .chat)
         return chatRoomId
     }
     
-    func restartChat(chatRoomId: String, memberIds: [String]) {
+    func restartChat(chatRoomId: String, memberIds: [String], type: RecentChatType) {
         client.downloadUsers(withIds: memberIds) { [weak self] (result: Result<[User], FirebaseError>) in
             if case .success(let users) = result {
                 let users = users.filter({ $0.id != AccountInfo.shared.user?.id })
                 if !users.isEmpty {
-                    self?.createRecentItems(chatRoomId: chatRoomId, users: users)
+                    self?.createRecentItems(chatRoomId: chatRoomId, users: users, type: type)
                 }
             }
         }
@@ -28,7 +28,7 @@ final class StartChat {
 }
 
 private extension StartChat {
-    func createRecentItems(chatRoomId: String, users: [User]) {
+    func createRecentItems(chatRoomId: String, users: [User], type: RecentChatType) {
         let dto = StartChatDTO(
             chatRoomId: chatRoomId,
             chatRoomKey: StorageKey.chatRoomId.rawValue,
@@ -54,7 +54,8 @@ private extension StartChat {
                     membersId: [senderUser.id, receiverUser.id],
                     lastMassage: String(),
                     unreadCounter: 0,
-                    avatarLink: receiverUser.avatarLink
+                    avatarLink: receiverUser.avatarLink,
+                    type: type
                 )
                 self.client.saveRecent(id: recentObject.id, recentChat: recentObject)
             }

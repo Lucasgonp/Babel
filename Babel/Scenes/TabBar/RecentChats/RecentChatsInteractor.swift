@@ -36,7 +36,7 @@ extension RecentChatsInteractor: RecentChatsInteracting {
     
     func didTapOnChat(_ chat: RecentChatModel) {
         ChatHelper.shared.clearUnreadCounter(for: chat)
-        StartChat.shared.restartChat(chatRoomId: chat.chatRoomId, memberIds: chat.membersId)
+        StartChat.shared.restartChat(chatRoomId: chat.chatRoomId, memberIds: chat.membersId, type: .chat)
         let dto = ChatDTO(
             chatId: chat.chatRoomId,
             recipientId: chat.receiverId,

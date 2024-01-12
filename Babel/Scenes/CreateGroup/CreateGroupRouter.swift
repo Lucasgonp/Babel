@@ -1,7 +1,7 @@
 import UIKit
 
 enum CreateGroupAction {
-    // template
+    case finishGroupCreation
 }
 
 protocol CreateGroupRouting: AnyObject {
@@ -9,12 +9,18 @@ protocol CreateGroupRouting: AnyObject {
 }
 
 final class CreateGroupRouter {
+    var completion: (() -> Void)?
+    
     weak var viewController: UIViewController?
 }
 
 // MARK: - CreateGroupRouting
 extension CreateGroupRouter: CreateGroupRouting {
     func perform(action: CreateGroupAction) {
-        // template
+        if case .finishGroupCreation = action {
+            viewController?.navigationController?.popViewController { [weak self] in
+                self?.completion?()
+            }
+        }
     }
 }

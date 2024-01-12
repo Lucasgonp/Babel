@@ -1,6 +1,10 @@
 import UIKit
 import DesignKit
 
+protocol CreateGroupDelegate {
+    func didCreateNewGroup()
+}
+
 protocol GroupsDisplaying: AnyObject {
     func displaySomething()
 }
@@ -33,19 +37,13 @@ final class GroupsViewController: ViewController<GroupsInteracting, UIView> {
     private var sections = [Section]()
     private var allGroups = [
         Group(
-            name: "Grupo 1",
-            status: "receiverName",
-            avatarLink: "lastMassage"
-        ),
-        Group(
-            name: "Grupo 2",
-            status: "receiverName",
-            avatarLink: "lastMassage"
-        ),
-        Group(
-            name: "Grupo 3",
-            status: "receiverName",
-            avatarLink: "lastMassage"
+            id: "",
+            name: "Teste",
+            description: "asdasd",
+            avatarLink: "",
+            memberIds: [],
+            adminId: "",
+            createdDate: Date()
         )
     ]
     
@@ -82,6 +80,12 @@ final class GroupsViewController: ViewController<GroupsInteracting, UIView> {
 extension GroupsViewController: GroupsDisplaying {
     func displaySomething() {
         // template
+    }
+}
+
+extension GroupsViewController: CreateGroupDelegate {
+    func didCreateNewGroup() {
+        interactor.loadAllGroups()
     }
 }
 
@@ -189,9 +193,6 @@ private extension GroupsViewController {
 
 @objc private extension GroupsViewController {
     func didTapOnNewGroup() {
-        let createGroup = CreateGroupFactory.make()
-        createGroup.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(createGroup, animated: true)
+        interactor.didTapCreateNewGroup()
     }
 }
-

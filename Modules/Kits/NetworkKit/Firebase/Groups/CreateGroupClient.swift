@@ -1,37 +1,25 @@
-import class FirebaseFirestore.QuerySnapshot
-import StorageKit
+import UIKit
 
 public protocol CreateGroupClientProtocol {
-    func createGroup(dto: StartGroupDTO, completion: @escaping (Error?) -> Void)
-    func saveRecent<T: Codable>(id: String, recentChat: T)
+    func addGroup<T: Encodable>(_ group: T, groupId: String, completion: @escaping (FirebaseError?) -> Void)
 }
 
 extension FirebaseClient: CreateGroupClientProtocol {
-    public func createGroup(dto: StartGroupDTO, completion: @escaping (Error?) -> Void) {
-        StorageLocal.shared.saveStorageData(dto, key: .group)
-        
+    public func addGroup<T: Encodable>(_ group: T, groupId: String, completion: @escaping (FirebaseError?) -> Void) {
         do {
-            try firebaseReference(.group).document(dto.id).setData(from: dto, completion: { error in
-                completion(error)
-            })
+            try firebaseReference(.group).document(groupId).setData(from: group) { error in
+                if let error {
+                    completion(.custom(error))
+                } else {
+                    completion(nil)
+                }
+            }
         } catch {
-            completion(error)
+            completion(.custom(error))
         }
     }
 }
 
 private extension FirebaseClient {
-    func removeMemberWhoHasRecent(snapshot: QuerySnapshot, memberIds: [String], storageKey: String) -> [String] {
-        var membersIdsToCreateRecent = memberIds
-        for recentData in snapshot.documents {
-            let currentRecent = recentData.data() as Dictionary
-            if let currentUserId = currentRecent[storageKey] as? String {
-                if membersIdsToCreateRecent.contains(currentUserId) {
-                    membersIdsToCreateRecent.remove(at: membersIdsToCreateRecent.firstIndex(of: currentUserId)!)
-                }
-            }
-        }
-        return membersIdsToCreateRecent
-    }
 }
 

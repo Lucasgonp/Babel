@@ -1,7 +1,7 @@
 import UIKit
 
 enum GroupsAction {
-    // template
+    case pushCreateNewGroup
 }
 
 protocol GroupsRouting: AnyObject {
@@ -15,6 +15,15 @@ final class GroupsRouter {
 // MARK: - GroupsRouting
 extension GroupsRouter: GroupsRouting {
     func perform(action: GroupsAction) {
-        // template
+        if case .pushCreateNewGroup = action {
+            let createGroup = CreateGroupFactory.make { [weak self] in
+                guard let viewController = self?.viewController as? CreateGroupDelegate else {
+                    return
+                }
+                viewController.didCreateNewGroup()
+            }
+            createGroup.hidesBottomBarWhenPushed = true
+            viewController?.navigationController?.pushViewController(createGroup, animated: true)
+        }
     }
 }

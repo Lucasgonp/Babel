@@ -317,6 +317,8 @@
 		76EF5D492A905E3700D9AE8B /* DesignKit.framework in Sources */ = {isa = PBXBuildFile; fileRef = 76228DA92A8AAF7000C27C7A /* DesignKit.framework */; };
 		76EF5D4A2A905E3700D9AE8B /* Authenticator.framework in Sources */ = {isa = PBXBuildFile; fileRef = 76228DA32A8AAF6200C27C7A /* Authenticator.framework */; };
 		76FA5D2C2B50B438004D86A5 /* StopWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FA5D2B2B50B438004D86A5 /* StopWatchView.swift */; };
+		76FA5D2F2B50CA75004D86A5 /* CreateGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FA5D2E2B50CA75004D86A5 /* CreateGroup.swift */; };
+		76FA5D312B50DD8A004D86A5 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FA5D302B50DD8A004D86A5 /* Data+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -750,6 +752,8 @@
 		76DA7EBB2AB78D1F00106731 /* RecentChatsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatsService.swift; sourceTree = "<group>"; };
 		76DA7EC32AB78E7400106731 /* RecentChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatCell.swift; sourceTree = "<group>"; };
 		76FA5D2B2B50B438004D86A5 /* StopWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchView.swift; sourceTree = "<group>"; };
+		76FA5D2E2B50CA75004D86A5 /* CreateGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroup.swift; sourceTree = "<group>"; };
+		76FA5D302B50DD8A004D86A5 /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1096,6 +1100,7 @@
 		763B03B72B4F74B40022E145 /* CreateGroup */ = {
 			isa = PBXGroup;
 			children = (
+				76FA5D2D2B50CA6A004D86A5 /* Models */,
 				763B03C92B4F8DA70022E145 /* ViewControllers */,
 				763B03C62B4F7C6C0022E145 /* Cells */,
 				763B03BA2B4F74EB0022E145 /* CreateGroupFactory.swift */,
@@ -1146,6 +1151,7 @@
 				7669BA292ABDD3550002AD4C /* Date+Extensions.swift */,
 				76DA757D2B44C5B2000B7FD7 /* UIAlertAction+Extensions.swift */,
 				764303892B4654B10037721A /* String+Extensions.swift */,
+				76FA5D302B50DD8A004D86A5 /* Data+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2004,6 +2010,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		76FA5D2D2B50CA6A004D86A5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				76FA5D2E2B50CA75004D86A5 /* CreateGroup.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -2715,6 +2729,7 @@
 				76CAA18B2A8AA9ED00D742E9 /* HomePresenter.swift in Sources */,
 				7620F2B92A92DE1B002A4EB5 /* SettingsService.swift in Sources */,
 				7620F45E2A965A09002A4EB5 /* TermsService.swift in Sources */,
+				76FA5D312B50DD8A004D86A5 /* Data+Extensions.swift in Sources */,
 				7620F4332A95694B002A4EB5 /* SettingsViewModel.swift in Sources */,
 				7620F45A2A965A09002A4EB5 /* TermsPresenter.swift in Sources */,
 				763B03C12B4F74EB0022E145 /* CreateGroupPresenter.swift in Sources */,
@@ -2787,6 +2802,7 @@
 				7620F43F2A9592C2002A4EB5 /* EditProfilePresenter.swift in Sources */,
 				76CAA1882A8AA9ED00D742E9 /* HomeInteractor.swift in Sources */,
 				76DA7EC42AB78E7400106731 /* RecentChatCell.swift in Sources */,
+				76FA5D2F2B50CA75004D86A5 /* CreateGroup.swift in Sources */,
 				76D246832AC4AE7000FDA81E /* ChatViewController.swift in Sources */,
 				761011AA2B3A6172004639C4 /* Constants.swift in Sources */,
 				76371F9A2B488F96007C9E7E /* ChatListenersWorker.swift in Sources */,

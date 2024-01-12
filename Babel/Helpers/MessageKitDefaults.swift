@@ -18,3 +18,8 @@ enum ChatMessageType: String {
     case video
     case location
 }
+
+enum RecentChatType: String, Codable {
+    case chat
+    case group
+}

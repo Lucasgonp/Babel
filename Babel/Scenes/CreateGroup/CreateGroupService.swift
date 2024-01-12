@@ -1,13 +1,18 @@
+import UIKit
 import NetworkKit
 
 protocol CreateGroupWorkerProtocol {
     func getAllUsers(completion: @escaping (Result<[User], Error>) -> Void)
+    func uploadAvatarImage(_ image: UIImage, directory: String, completion: (@escaping (_ documentLink: String?) -> Void))
+    func addGroup(_ group: Group, completion: @escaping (FirebaseError?) -> Void)
 }
 
 final class CreateGroupWorker {
-    private let client: UsersClientProtocol
+    typealias ClientProtocol = UsersClientProtocol & CreateGroupClientProtocol
     
-    init(client: UsersClientProtocol = FirebaseClient.shared) {
+    private let client: ClientProtocol
+    
+    init(client: ClientProtocol = FirebaseClient.shared) {
         self.client = client
     }
 }
@@ -23,5 +28,13 @@ extension CreateGroupWorker: CreateGroupWorkerProtocol {
                 completion(.failure(failure))
             }
         }
+    }
+    
+    func uploadAvatarImage(_ image: UIImage, directory: String, completion: (@escaping (_ documentLink: String?) -> Void)) {
+        StorageManager.shared.uploadImage(image, directory: directory, completion: completion)
+    }
+    
+    func addGroup(_ group: Group, completion: @escaping (FirebaseError?) -> Void) {
+        client.addGroup(group, groupId: group.id, completion: completion)
     }
 }

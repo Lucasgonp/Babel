@@ -63,7 +63,7 @@ final class ChatViewController: MessagesViewController {
     private lazy var attachActionSheet = makeAttachActionSheet()
     private lazy var galleryController: GalleryController = {
         let gallery = GalleryController()
-        gallery.configuration = .multimedia
+        gallery.configuration = .library
         return gallery
     }()
     
@@ -332,13 +332,16 @@ private extension ChatViewController {
     
     func makeAttachActionSheet() -> UIAlertController {
         let cameraImage = UIImage(systemName: "camera")?.withRenderingMode(.alwaysTemplate)
-        let cameraAction = UIAlertAction(title: Localizable.ActionSheet.camera, style: .default, image: cameraImage, handler: { _ in
-            print("didTapOnCamera")
+        let cameraAction = UIAlertAction(title: Localizable.ActionSheet.camera, style: .default, image: cameraImage, handler: { [weak self] _ in
+            self?.showLoadingView()
+            self?.galleryController.configuration = .camera
+            self?.showGalleryView()
         })
         
         let libraryImage = UIImage(systemName: "photo")?.withRenderingMode(.alwaysTemplate)
         let libraryAction = UIAlertAction(title: Localizable.ActionSheet.library, style: .default, image: libraryImage, handler: { [weak self] _ in
             self?.showLoadingView()
+            self?.galleryController.configuration = .library
             self?.showGalleryView()
         })
         

@@ -1,6 +1,7 @@
 protocol GroupsInteracting: AnyObject {
     func fetchAllGroups()
     func didTapCreateNewGroup()
+    func didTapOnGroup(id: String)
 }
 
 final class GroupsInteractor {
@@ -13,7 +14,6 @@ final class GroupsInteractor {
     }
 }
 
-// MARK: - GroupsInteracting
 extension GroupsInteractor: GroupsInteracting {
     func fetchAllGroups() {
         worker.fetchAllGroups { [weak self] result in
@@ -28,5 +28,9 @@ extension GroupsInteractor: GroupsInteracting {
     
     func didTapCreateNewGroup() {
         presenter.didNextStep(action: .pushCreateNewGroup)
+    }
+    
+    func didTapOnGroup(id: String) {
+        presenter.didNextStep(action: .pushGroupInfo(id: id))
     }
 }

@@ -173,14 +173,11 @@ extension CreateGroupViewController: UITableViewDataSource {
                 cell.delegate = self
                 headerCell = cell
                 return cell
-            } else if indexPath.row == 1 {
+            } else {
                 let cell: UITableViewCell = tableView.makeCell(indexPath: indexPath, selectionStyle: .none)
                 cell.contentView.fillWithSubview(subview: groupNameTextField, spacing: .init(top: 8, left: 4, bottom: 2, right: 4))
                 return cell
             }
-            let celula = UITableViewCell()
-            celula.backgroundColor = .red
-            return celula
         case 1:
             let cell: UITableViewCell = tableView.makeCell(indexPath: indexPath, accessoryType: .disclosureIndicator)
             var content = cell.defaultContentConfiguration()

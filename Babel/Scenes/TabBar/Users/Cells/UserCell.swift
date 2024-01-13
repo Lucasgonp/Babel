@@ -27,10 +27,28 @@ final class UserCell: UITableViewCell, ViewConfiguration {
         return label
     }()
     
+    private lazy var adminLabel: TextLabel = {
+        let font = Font.sm.uiFont
+        let label = TextLabel(font: font)
+        label.textColor = Color.grayscale400.uiColor
+        label.numberOfLines = 1
+        label.textAlignment = .left
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private lazy var textsStackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [fullNameLabel, statusLabel])
         stack.axis = .vertical
         stack.spacing = 2
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+    
+    private lazy var allStackViews: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [textsStackView])
+        stack.axis = .horizontal
+        stack.distribution = .equalSpacing
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
@@ -47,7 +65,7 @@ final class UserCell: UITableViewCell, ViewConfiguration {
     
     func buildViewHierarchy() {
         contentView.addSubview(avatar)
-        contentView.addSubview(textsStackView)
+        contentView.addSubview(allStackViews)
     }
     
     func setupConstraints() {
@@ -61,17 +79,23 @@ final class UserCell: UITableViewCell, ViewConfiguration {
         ])
         
         NSLayoutConstraint.activate([
-            textsStackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            textsStackView.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 16),
-            textsStackView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -16)
+            allStackViews.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            allStackViews.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 16),
+            allStackViews.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -16)
         ])
     }
 }
 
 extension UserCell {
-    func render(_ dto: User) {
+    func render(_ dto: User, isAdmin: Bool = false) {
         fullNameLabel.text = dto.name
         statusLabel.text = dto.status
+        
+        if isAdmin {
+            adminLabel.text = "Admin"
+            allStackViews.addArrangedSubview(adminLabel)
+            adminLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 43).isActive = true
+        }
         
         if !dto.avatarLink.isEmpty {
             avatar.setImage(with: dto.avatarLink, placeholderImage: Image.avatarPlaceholder.image)

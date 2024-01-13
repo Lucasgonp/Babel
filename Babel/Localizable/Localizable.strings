@@ -1,6 +1,7 @@
 // Commons
 "Commons.done" = "Done";
 "Commons.cancel" = "Cancel";
+"Commons.edit" = "Edit";
 
 // TabBar
 "TabBar.Settings.title" = "Settings";
@@ -67,3 +68,7 @@
 
 // Create group
 "CreateGroup.createButton" = "Create";
+
+// Group info
+"GroupInfo.groupNamePlaceholder" = "Group name";
+"GroupInfo.title" = "Group info";

@@ -29,7 +29,8 @@ final class EditProfileViewController: ViewController<EditProfileInteracting, UI
             placeholder: Localizable.namePlaceholder,
             hint: Localizable.namePlaceholder,
             isHintAlwaysVisible: true,
-            autocapitalizationType: .words
+            autocapitalizationType: .words,
+            textLength: 32
         ))
         textField.returnKeyType = .done
         textField.enablesReturnKeyAutomatically = true

@@ -76,7 +76,7 @@ public extension GalleryController {
                 return YPImagePicker(configuration: config)
                 
             case .avatarPhoto:
-                config.screens = [.library]
+                config.screens = [.photo, .library]
                 config.library.onlySquare = true
                 config.library.mediaType = .photo
                 config.library.maxNumberOfItems = 1

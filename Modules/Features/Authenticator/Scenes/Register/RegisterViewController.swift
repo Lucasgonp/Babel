@@ -70,7 +70,7 @@ final class RegisterViewController: ViewController<RegisterInteracting, UIView> 
     
     private lazy var usernameTextField: TextField = {
         let textField = TextField()
-        textField.render(.standard(placeholder: Localizable.Field.Username.placeholder))
+        textField.render(.standard(placeholder: Localizable.Field.Username.placeholder, textLength: 32))
         textField.validations = [UsernameValidation()]
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField

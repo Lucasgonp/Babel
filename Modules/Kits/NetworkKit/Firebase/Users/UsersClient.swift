@@ -37,11 +37,13 @@ extension FirebaseClient: UsersClientProtocol {
                 do {
                     let user = try document.data(as: T.self)
                     users.append(user)
+                    if users.count == withIds.count {
+                        completion(.success(users))
+                    }
                 } catch {
-                    return
+                    completion(.failure(.errorDecodeUser))
                 }
             }
         }
-        completion(.success(users))
     }
 }

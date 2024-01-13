@@ -5,15 +5,7 @@ protocol EditBioDisplaying: AnyObject {
     func displayErrorMessage(message: String)
 }
 
-private extension EditBioViewController.Layout {
-    // example
-    enum Size {
-        static let imageHeight: CGFloat = 90.0
-    }
-}
-
 final class EditBioViewController: ViewController<EditBioInteracting, UIView> {
-    fileprivate enum Layout { }
     typealias Localizable = Strings.UserBio
     
     private lazy var tableView: UITableView = {

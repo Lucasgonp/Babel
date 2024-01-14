@@ -97,7 +97,7 @@ extension EditBioViewController: UITableViewDataSource {
         if indexPath.section == 0 {
             let cell: UITableViewCell = tableView.makeCell(indexPath: indexPath, selectionStyle: .none)
             aboutTextField.text = currentUser.status
-            cell.contentView.fillWithSubview(subview: aboutTextField, spacing: .init(top: 2, left: 4, bottom: 2, right: 16))
+            cell.contentView.fillWithSubview(subview: aboutTextField, spacing: .init(top: 2, left: 4, bottom: 2, right: 4))
             return cell
         } else {
             let cell: UITableViewCell = tableView.makeCell(indexPath: indexPath, accessoryType: .disclosureIndicator)

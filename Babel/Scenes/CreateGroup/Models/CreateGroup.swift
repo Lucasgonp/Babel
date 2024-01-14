@@ -4,6 +4,6 @@ struct CreateGroupDTO {
     let id = UUID().uuidString
     let name: String
     let description: String?
-    let memberIds: [String]
+    let members: [User]
     let avatarImage: UIImage
 }

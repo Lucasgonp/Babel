@@ -33,7 +33,7 @@ final class EditGroupViewController: UIViewController {
     
     private lazy var groupNameTextField: TextField = {
         let textField = TextField()
-        textField.render(.clean(placeholder: Localizable.groupNamePlaceholder, textLength: 32))
+        textField.render(.simple(placeholder: Localizable.groupNamePlaceholder, autocapitalizationType: .words, textLength: 35))
         textField.backgroundColor = Color.backgroundTertiary.uiColor
         textField.layer.cornerRadius = 8
         textField.clipsToBounds = true

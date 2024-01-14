@@ -98,7 +98,7 @@ extension GroupInfoViewController: GroupInfoDisplaying {
             self.shouldDisplayStartChat = shouldDisplayStartChat
             self.groupDescription = groupInfo.description
             
-            if currentUser.id == groupInfo.adminId {
+            if groupInfo.adminIds.contains(currentUser.id) {
                 configureEditButton()
             }
             
@@ -170,10 +170,12 @@ extension GroupInfoViewController: UITableViewDataSource {
             let cell: UITableViewCell = tableView.makeCell(indexPath: indexPath, accessoryType: .disclosureIndicator)
             var content = cell.defaultContentConfiguration()
             content.text = groupDescription.isEmpty ? "Add group description" : groupDescription
-            if currentUser.id == groupInfo.adminId {
+            if groupInfo.adminIds.contains(currentUser.id) {
                 content.textProperties.color = groupDescription.isEmpty ? Color.blueNative.uiColor : cell.defaultContentConfiguration().textProperties.color
             } else {
                 cell.isUserInteractionEnabled = false
+                cell.accessoryType = .none
+                content.textProperties.color = cell.defaultContentConfiguration().textProperties.color
             }
             cell.contentConfiguration = content
             return cell
@@ -208,7 +210,7 @@ private extension GroupInfoViewController {
         guard members.count > 0 else { return UITableViewCell() }
         let cell: UserCell = tableView.makeCell(indexPath: indexPath, accessoryType: .none)
         let contact = members[indexPath.row]
-        cell.render(contact, isAdmin: contact.id == groupInfo?.adminId)
+        cell.render(contact, isAdmin: groupInfo?.adminIds.contains(contact.id) ?? false)
         return cell
     }
     

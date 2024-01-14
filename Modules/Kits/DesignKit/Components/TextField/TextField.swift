@@ -214,7 +214,7 @@ extension TextField: ViewConfiguration {
         NSLayoutConstraint.activate([
             componentsStackView.topAnchor.constraint(equalTo: topAnchor),
             componentsStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            componentsStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            componentsStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
             componentsStackView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         

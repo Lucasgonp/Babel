@@ -34,7 +34,8 @@ extension GroupInfoInteractor: GroupInfoInteracting {
                 switch result {
                 case let .success(group):
                     self?.group = group
-                    self?.fetchGroupMembers(ids: group.memberIds) { [weak self] users in
+                    let memberIds = group.members.compactMap({ $0.id })
+                    self?.fetchGroupMembers(ids: memberIds) { [weak self] users in
                         DispatchQueue.main.async {
                             self?.presenter.displayLoading(isLoading: false)
                             self?.presenter.displayGroup(with: group, members: users, shouldDisplayStartChat: true)

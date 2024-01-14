@@ -215,15 +215,13 @@ private extension CreateGroupViewController {
     
     func didTapDoneButton() {
         view.endEditing(true)
-        var selectedUsers = selectedUsers.compactMap({ $0.id })
-        
         guard selectedUsers.count > 0 else { return }
         
-        selectedUsers.append(currentUser.id)
+        selectedUsers.append(currentUser)
         let group = CreateGroupDTO(
             name: groupNameTextField.text,
             description: groupDescription,
-            memberIds: selectedUsers,
+            members: selectedUsers,
             avatarImage: groupAvatar
         )
         interactor.createGroup(group)

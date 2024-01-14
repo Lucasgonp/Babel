@@ -2,6 +2,7 @@
 "Commons.done" = "Done";
 "Commons.cancel" = "Cancel";
 "Commons.edit" = "Edit";
+"Commons.add" = "Add";
 
 // TabBar
 "TabBar.Settings.title" = "Settings";
@@ -72,3 +73,7 @@
 // Group info
 "GroupInfo.groupNamePlaceholder" = "Group name";
 "GroupInfo.title" = "Group info";
+"GroupInfo.ActionSheet.userInfo" = "User info";
+"GroupInfo.ActionSheet.makeAdmin" = "Make admin";
+"GroupInfo.ActionSheet.removeAdmin" = "Remove admin";
+"GroupInfo.ActionSheet.removeUser" = "Remove user";

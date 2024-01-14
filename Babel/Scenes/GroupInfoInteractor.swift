@@ -4,6 +4,9 @@ protocol GroupInfoInteracting: AnyObject {
     func fetchGroupData()
     func updateGroupInfo(dto: EditGroupDTO)
     func updateGroupDesc(_ description: String)
+    func addMembers(_ users: [User])
+    func removeMember(_ user: User)
+    func updatePrivileges(for member: User, isAdmin: Bool)
 }
 
 final class GroupInfoInteractor {
@@ -16,7 +19,7 @@ final class GroupInfoInteractor {
     
     private var group: Group?
     private let groupId: String
-    private var shouldDisplayStartChat = true
+    private var members = [User]()
 
     init(worker: GroupInfoWorkerProtocol, presenter: GroupInfoPresenting, groupId: String) {
         self.worker = worker
@@ -28,22 +31,14 @@ final class GroupInfoInteractor {
 extension GroupInfoInteractor: GroupInfoInteracting {
     func fetchGroupData() {
         presenter.displayLoading(isLoading: true)
-        DispatchQueue.global().async { [weak self] in
-            guard let self else { return }
-            self.worker.fetchGroup(from: self.groupId) { [weak self] result in
-                switch result {
-                case let .success(group):
-                    self?.group = group
-                    let memberIds = group.members.compactMap({ $0.id })
-                    self?.fetchGroupMembers(ids: memberIds) { [weak self] users in
-                        DispatchQueue.main.async {
-                            self?.presenter.displayLoading(isLoading: false)
-                            self?.presenter.displayGroup(with: group, members: users, shouldDisplayStartChat: true)
-                        }
-                    }
-                case let .failure(error):
+        fetchGroupData { [weak self] group in
+            self?.group = group
+            let memberIds = group.members.compactMap({ $0.id })
+            self?.fetchGroupMembers(ids: memberIds) { [weak self] users in
+                self?.members = users
+                DispatchQueue.main.async {
                     self?.presenter.displayLoading(isLoading: false)
-                    self?.presenter.displayError(message: error.localizedDescription)
+                    self?.presenter.displayGroup(with: group, members: users)
                 }
             }
         }
@@ -80,9 +75,69 @@ extension GroupInfoInteractor: GroupInfoInteracting {
             }
         }
     }
+    
+    func addMembers(_ users: [User]) {
+        let members = users.compactMap({ Group.Member(id: $0.id, name: $0.name) })
+        worker.addMembers(members, groupId: groupId) { [weak self] error in
+            guard let self else { return }
+            if let error {
+                self.presenter.displayError(message: error.localizedDescription)
+            } else {
+                self.members.append(contentsOf: users)
+                self.fetchGroupMembers(ids: self.members.compactMap({ $0.id })) { [weak self] users in
+                    guard let self else { return }
+                    self.presenter.displayGroup(with: self.group!, members: users)
+                }
+            }
+        }
+    }
+    
+    func removeMember(_ user: User) {
+        let member = Group.Member(id: user.id, name: user.name)
+        worker.removeMember(member, groupId: groupId) { [weak self] error in
+            guard let self else { return }
+            if let error {
+                self.presenter.displayError(message: error.localizedDescription)
+            } else {
+                self.members.removeAll(where: { $0 == user })
+                self.presenter.displayGroup(with: self.group!, members: self.members)
+            }
+        }
+    }
+    
+    func updatePrivileges(for member: User, isAdmin: Bool) {
+        worker.updatePrivileges(isAdmin: isAdmin, groupId: groupId, for: member.id) { [weak self] error in
+            guard let self else { return }
+            if let error {
+                self.presenter.displayError(message: error.localizedDescription)
+            } else {
+                self.fetchGroupData { [weak self] group in
+                    guard let self else { return }
+                    self.group = group
+                    self.presenter.displayGroup(with: group, members: self.members)
+                }
+            }
+        }
+    }
 }
 
 private extension GroupInfoInteractor {
+    func fetchGroupData(completion: @escaping (_ group: Group) -> Void) {
+        DispatchQueue.global().async { [weak self] in
+            guard let self else { return }
+            self.worker.fetchGroup(from: self.groupId) { [weak self] result in
+                switch result {
+                case let .success(group):
+                    completion(group)
+                    
+                case let .failure(error):
+                    self?.presenter.displayLoading(isLoading: false)
+                    self?.presenter.displayError(message: error.localizedDescription)
+                }
+            }
+        }
+    }
+    
     func fetchGroupMembers(ids: [String], completion: @escaping ([User]) -> Void) {
         worker.downloadUsers(with: ids) { [weak self] result in
             switch result {

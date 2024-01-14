@@ -1,7 +1,7 @@
 import UIKit
 
 protocol GroupInfoPresenting: AnyObject {
-    func displayGroup(with groupInfo: Group, members: [User], shouldDisplayStartChat: Bool)
+    func displayGroup(with groupInfo: Group, members: [User])
     func updateGroupInfo(dto: EditGroupDTO)
     func updateGroupDesc(_ description: String)
     func displayLoading(isLoading: Bool)
@@ -19,8 +19,8 @@ final class GroupInfoPresenter {
 }
 
 extension GroupInfoPresenter: GroupInfoPresenting {
-    func displayGroup(with groupInfo: Group, members: [User], shouldDisplayStartChat: Bool) {
-        viewController?.displayViewState(.success(groupInfo: groupInfo, members: members, shouldDisplayStartChat: shouldDisplayStartChat))
+    func displayGroup(with groupInfo: Group, members: [User]) {
+        viewController?.displayViewState(.success(groupInfo: groupInfo, members: members))
     }
     
     func updateGroupInfo(dto: EditGroupDTO) {

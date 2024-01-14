@@ -33,6 +33,8 @@ internal enum Strings {
     }
   }
   internal enum Commons {
+    /// Add
+    internal static let add = Strings.tr("Localizable", "Commons.add", fallback: "Add")
     /// Cancel
     internal static let cancel = Strings.tr("Localizable", "Commons.cancel", fallback: "Cancel")
     /// Done
@@ -53,6 +55,16 @@ internal enum Strings {
     internal static let groupNamePlaceholder = Strings.tr("Localizable", "GroupInfo.groupNamePlaceholder", fallback: "Group name")
     /// Group info
     internal static let title = Strings.tr("Localizable", "GroupInfo.title", fallback: "Group info")
+    internal enum ActionSheet {
+      /// Make admin
+      internal static let makeAdmin = Strings.tr("Localizable", "GroupInfo.ActionSheet.makeAdmin", fallback: "Make admin")
+      /// Remove admin
+      internal static let removeAdmin = Strings.tr("Localizable", "GroupInfo.ActionSheet.removeAdmin", fallback: "Remove admin")
+      /// Remove user
+      internal static let removeUser = Strings.tr("Localizable", "GroupInfo.ActionSheet.removeUser", fallback: "Remove user")
+      /// User info
+      internal static let userInfo = Strings.tr("Localizable", "GroupInfo.ActionSheet.userInfo", fallback: "User info")
+    }
   }
   internal enum MapView {
     /// Map view

@@ -82,7 +82,7 @@
 		763B03C22B4F74EB0022E145 /* CreateGroupRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763B03BC2B4F74EB0022E145 /* CreateGroupRouter.swift */; };
 		763B03C32B4F74EB0022E145 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763B03BD2B4F74EB0022E145 /* CreateGroupViewController.swift */; };
 		763B03C42B4F74EB0022E145 /* CreateGroupInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763B03BE2B4F74EB0022E145 /* CreateGroupInteractor.swift */; };
-		763B03C52B4F74EB0022E145 /* CreateGroupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763B03BF2B4F74EB0022E145 /* CreateGroupService.swift */; };
+		763B03C52B4F74EB0022E145 /* CreateGroupWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763B03BF2B4F74EB0022E145 /* CreateGroupWorker.swift */; };
 		763B03C82B4F7C830022E145 /* CreateGroupHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763B03C72B4F7C830022E145 /* CreateGroupHeaderCell.swift */; };
 		763B03CB2B4F8DB50022E145 /* EditGroupDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763B03CA2B4F8DB50022E145 /* EditGroupDescriptionView.swift */; };
 		764303882B4650F20037721A /* FilesDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764303872B4650F20037721A /* FilesDirectory.swift */; };
@@ -95,6 +95,12 @@
 		7670825B2B4B89480024EF41 /* AudioMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670825A2B4B89480024EF41 /* AudioMessage.swift */; };
 		7670825E2B4B96E10024EF41 /* BasicAudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670825D2B4B96E10024EF41 /* BasicAudioController.swift */; };
 		767082622B4C4F4D0024EF41 /* MessageInputBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767082612B4C4F4D0024EF41 /* MessageInputBarView.swift */; };
+		7686A88C2B545C0F0025FBD3 /* AddMembersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7686A8862B545C0F0025FBD3 /* AddMembersFactory.swift */; };
+		7686A88D2B545C0F0025FBD3 /* AddMembersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7686A8872B545C0F0025FBD3 /* AddMembersPresenter.swift */; };
+		7686A88E2B545C0F0025FBD3 /* AddMembersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7686A8882B545C0F0025FBD3 /* AddMembersRouter.swift */; };
+		7686A88F2B545C0F0025FBD3 /* AddMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7686A8892B545C0F0025FBD3 /* AddMembersViewController.swift */; };
+		7686A8902B545C0F0025FBD3 /* AddMembersInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7686A88A2B545C0F0025FBD3 /* AddMembersInteractor.swift */; };
+		7686A8912B545C0F0025FBD3 /* AddMembersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7686A88B2B545C0F0025FBD3 /* AddMembersService.swift */; };
 		768E40DA2B4D9A5B009F8F7C /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768E40D92B4D9A5B009F8F7C /* KeyboardManager.swift */; };
 		768E40DD2B4DC94C009F8F7C /* Strings.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768E40DC2B4DC94C009F8F7C /* Strings.generated.swift */; };
 		768F4EB12B4F4AD80051E970 /* GroupsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768F4EAB2B4F4AD80051E970 /* GroupsFactory.swift */; };
@@ -255,7 +261,7 @@
 		76AF8DC42B51EDF400E21CD5 /* GroupInfoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AF8DBE2B51EDF400E21CD5 /* GroupInfoRouter.swift */; };
 		76AF8DC52B51EDF400E21CD5 /* GroupInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AF8DBF2B51EDF400E21CD5 /* GroupInfoViewController.swift */; };
 		76AF8DC62B51EDF400E21CD5 /* GroupInfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AF8DC02B51EDF400E21CD5 /* GroupInfoInteractor.swift */; };
-		76AF8DC72B51EDF400E21CD5 /* GroupInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AF8DC12B51EDF400E21CD5 /* GroupInfoService.swift */; };
+		76AF8DC72B51EDF400E21CD5 /* GroupInfoWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AF8DC12B51EDF400E21CD5 /* GroupInfoWorker.swift */; };
 		76AF8DCA2B51EE8F00E21CD5 /* GroupInfoHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AF8DC92B51EE8F00E21CD5 /* GroupInfoHeaderCell.swift */; };
 		76AF8DCD2B51F06F00E21CD5 /* GroupClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AF8DCB2B51F04500E21CD5 /* GroupClient.swift */; };
 		76AF8DD12B52384800E21CD5 /* EditGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AF8DD02B52384800E21CD5 /* EditGroupViewController.swift */; };
@@ -558,7 +564,7 @@
 		763B03BC2B4F74EB0022E145 /* CreateGroupRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupRouter.swift; sourceTree = "<group>"; };
 		763B03BD2B4F74EB0022E145 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
 		763B03BE2B4F74EB0022E145 /* CreateGroupInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupInteractor.swift; sourceTree = "<group>"; };
-		763B03BF2B4F74EB0022E145 /* CreateGroupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupService.swift; sourceTree = "<group>"; };
+		763B03BF2B4F74EB0022E145 /* CreateGroupWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupWorker.swift; sourceTree = "<group>"; };
 		763B03C72B4F7C830022E145 /* CreateGroupHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupHeaderCell.swift; sourceTree = "<group>"; };
 		763B03CA2B4F8DB50022E145 /* EditGroupDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupDescriptionView.swift; sourceTree = "<group>"; };
 		764303872B4650F20037721A /* FilesDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesDirectory.swift; sourceTree = "<group>"; };
@@ -569,6 +575,12 @@
 		7670825A2B4B89480024EF41 /* AudioMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioMessage.swift; sourceTree = "<group>"; };
 		7670825D2B4B96E10024EF41 /* BasicAudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAudioController.swift; sourceTree = "<group>"; };
 		767082612B4C4F4D0024EF41 /* MessageInputBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputBarView.swift; sourceTree = "<group>"; };
+		7686A8862B545C0F0025FBD3 /* AddMembersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMembersFactory.swift; sourceTree = "<group>"; };
+		7686A8872B545C0F0025FBD3 /* AddMembersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMembersPresenter.swift; sourceTree = "<group>"; };
+		7686A8882B545C0F0025FBD3 /* AddMembersRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMembersRouter.swift; sourceTree = "<group>"; };
+		7686A8892B545C0F0025FBD3 /* AddMembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMembersViewController.swift; sourceTree = "<group>"; };
+		7686A88A2B545C0F0025FBD3 /* AddMembersInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMembersInteractor.swift; sourceTree = "<group>"; };
+		7686A88B2B545C0F0025FBD3 /* AddMembersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMembersService.swift; sourceTree = "<group>"; };
 		768E40D92B4D9A5B009F8F7C /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
 		768E40DC2B4DC94C009F8F7C /* Strings.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.generated.swift; sourceTree = "<group>"; };
 		768F4EAB2B4F4AD80051E970 /* GroupsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsFactory.swift; sourceTree = "<group>"; };
@@ -718,7 +730,7 @@
 		76AF8DBE2B51EDF400E21CD5 /* GroupInfoRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoRouter.swift; sourceTree = "<group>"; };
 		76AF8DBF2B51EDF400E21CD5 /* GroupInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoViewController.swift; sourceTree = "<group>"; };
 		76AF8DC02B51EDF400E21CD5 /* GroupInfoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoInteractor.swift; sourceTree = "<group>"; };
-		76AF8DC12B51EDF400E21CD5 /* GroupInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoService.swift; sourceTree = "<group>"; };
+		76AF8DC12B51EDF400E21CD5 /* GroupInfoWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoWorker.swift; sourceTree = "<group>"; };
 		76AF8DC92B51EE8F00E21CD5 /* GroupInfoHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoHeaderCell.swift; sourceTree = "<group>"; };
 		76AF8DCB2B51F04500E21CD5 /* GroupClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupClient.swift; sourceTree = "<group>"; };
 		76AF8DD02B52384800E21CD5 /* EditGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupViewController.swift; sourceTree = "<group>"; };
@@ -1129,7 +1141,7 @@
 				763B03BC2B4F74EB0022E145 /* CreateGroupRouter.swift */,
 				763B03BD2B4F74EB0022E145 /* CreateGroupViewController.swift */,
 				763B03BE2B4F74EB0022E145 /* CreateGroupInteractor.swift */,
-				763B03BF2B4F74EB0022E145 /* CreateGroupService.swift */,
+				763B03BF2B4F74EB0022E145 /* CreateGroupWorker.swift */,
 			);
 			path = CreateGroup;
 			sourceTree = "<group>";
@@ -1203,6 +1215,19 @@
 				76FA5D2B2B50B438004D86A5 /* StopWatchView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		7686A8852B545BE50025FBD3 /* AddMember */ = {
+			isa = PBXGroup;
+			children = (
+				7686A8862B545C0F0025FBD3 /* AddMembersFactory.swift */,
+				7686A8872B545C0F0025FBD3 /* AddMembersPresenter.swift */,
+				7686A8882B545C0F0025FBD3 /* AddMembersRouter.swift */,
+				7686A8892B545C0F0025FBD3 /* AddMembersViewController.swift */,
+				7686A88A2B545C0F0025FBD3 /* AddMembersInteractor.swift */,
+				7686A88B2B545C0F0025FBD3 /* AddMembersService.swift */,
+			);
+			path = AddMember;
 			sourceTree = "<group>";
 		};
 		768E40DB2B4DC94C009F8F7C /* Strings */ = {
@@ -1819,7 +1844,7 @@
 				76AF8DBE2B51EDF400E21CD5 /* GroupInfoRouter.swift */,
 				76AF8DBF2B51EDF400E21CD5 /* GroupInfoViewController.swift */,
 				76AF8DC02B51EDF400E21CD5 /* GroupInfoInteractor.swift */,
-				76AF8DC12B51EDF400E21CD5 /* GroupInfoService.swift */,
+				76AF8DC12B51EDF400E21CD5 /* GroupInfoWorker.swift */,
 			);
 			name = GroupInfo;
 			sourceTree = "<group>";
@@ -2007,6 +2032,7 @@
 		76CAA17F2A8AA9ED00D742E9 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				7686A8852B545BE50025FBD3 /* AddMember */,
 				76AF8DBB2B51EDE100E21CD5 /* GroupInfo */,
 				763B03B72B4F74B40022E145 /* CreateGroup */,
 				76C6B74D2B4B228500285EE2 /* Map */,
@@ -2749,12 +2775,13 @@
 			files = (
 				7620F2D82A92EF74002A4EB5 /* UsersFactory.swift in Sources */,
 				76371F9E2B489020007C9E7E /* SendMessageWorker.swift in Sources */,
-				763B03C52B4F74EB0022E145 /* CreateGroupService.swift in Sources */,
+				763B03C52B4F74EB0022E145 /* CreateGroupWorker.swift in Sources */,
 				769E97302AA3C4FC004FC6B4 /* ContactInfoViewController.swift in Sources */,
 				7620F44E2A9659F5002A4EB5 /* TellAFriendPresenter.swift in Sources */,
 				7620F2A92A92DB70002A4EB5 /* HomeTabBarModel.swift in Sources */,
 				76D246882AC4B4A000FDA81E /* ChatDTO.swift in Sources */,
 				76EF5D492A905E3700D9AE8B /* DesignKit.framework in Sources */,
+				7686A88C2B545C0F0025FBD3 /* AddMembersFactory.swift in Sources */,
 				761011912B3A0137004639C4 /* MessageCellDelegate.swift in Sources */,
 				7620F4432A9592C2002A4EB5 /* EditProfileService.swift in Sources */,
 				7608DE6F2A9BAFF30036027A /* UserBio.swift in Sources */,
@@ -2767,6 +2794,7 @@
 				7669BA2A2ABDD3550002AD4C /* Date+Extensions.swift in Sources */,
 				7620F2B82A92DE1B002A4EB5 /* SettingsInteractor.swift in Sources */,
 				768E40DA2B4D9A5B009F8F7C /* KeyboardManager.swift in Sources */,
+				7686A88F2B545C0F0025FBD3 /* AddMembersViewController.swift in Sources */,
 				7620F2B62A92DE1B002A4EB5 /* SettingsRouter.swift in Sources */,
 				7608DE6C2A9BAFDE0036027A /* EditBioService.swift in Sources */,
 				7620F2B52A92DE1B002A4EB5 /* SettingsPresenter.swift in Sources */,
@@ -2794,12 +2822,14 @@
 				7669BA2D2ABDDA650002AD4C /* StartChat.swift in Sources */,
 				76AF8DC52B51EDF400E21CD5 /* GroupInfoViewController.swift in Sources */,
 				76CAA17E2A8AA9B700D742E9 /* NetworkManager.swift in Sources */,
+				7686A8912B545C0F0025FBD3 /* AddMembersService.swift in Sources */,
 				761011972B3A0168004639C4 /* InputBarAccessoryViewDelegate.swift in Sources */,
 				76DA7EC12AB78D1F00106731 /* RecentChatsService.swift in Sources */,
 				7620F2DD2A92EF74002A4EB5 /* UsersService.swift in Sources */,
 				7620F42A2A9541AC002A4EB5 /* SettingsUserInfoCell.swift in Sources */,
 				76AF8DC62B51EDF400E21CD5 /* GroupInfoInteractor.swift in Sources */,
 				769E97322AA3C4FC004FC6B4 /* ContactInfoService.swift in Sources */,
+				7686A88E2B545C0F0025FBD3 /* AddMembersRouter.swift in Sources */,
 				76D246822AC4AE7000FDA81E /* ChatRouter.swift in Sources */,
 				76CAA18B2A8AA9ED00D742E9 /* HomePresenter.swift in Sources */,
 				7620F2B92A92DE1B002A4EB5 /* SettingsService.swift in Sources */,
@@ -2814,6 +2844,7 @@
 				7608DE7D2A9D248E0036027A /* UserContact.swift in Sources */,
 				7620F4512A9659F5002A4EB5 /* TellAFriendInteractor.swift in Sources */,
 				7608DE7A2A9D00A60036027A /* UserCell.swift in Sources */,
+				7686A8902B545C0F0025FBD3 /* AddMembersInteractor.swift in Sources */,
 				7620F2B42A92DE1B002A4EB5 /* SettingsFactory.swift in Sources */,
 				76DA7EBF2AB78D1F00106731 /* RecentChatsViewController.swift in Sources */,
 				761011952B3A0156004639C4 /* MessageLayoutDelegate.swift in Sources */,
@@ -2863,6 +2894,7 @@
 				7620F4202A951280002A4EB5 /* SettingsButtonCell.swift in Sources */,
 				7670825E2B4B96E10024EF41 /* BasicAudioController.swift in Sources */,
 				768F4EB42B4F4AD80051E970 /* GroupsViewController.swift in Sources */,
+				7686A88D2B545C0F0025FBD3 /* AddMembersPresenter.swift in Sources */,
 				76AF8DD12B52384800E21CD5 /* EditGroupViewController.swift in Sources */,
 				7620F44D2A9659F5002A4EB5 /* TellAFriendFactory.swift in Sources */,
 				76DA7EC02AB78D1F00106731 /* RecentChatsInteractor.swift in Sources */,
@@ -2885,7 +2917,7 @@
 				761011AA2B3A6172004639C4 /* Constants.swift in Sources */,
 				76371F9A2B488F96007C9E7E /* ChatListenersWorker.swift in Sources */,
 				761011932B3A0147004639C4 /* MessageDisplayDelegate.swift in Sources */,
-				76AF8DC72B51EDF400E21CD5 /* GroupInfoService.swift in Sources */,
+				76AF8DC72B51EDF400E21CD5 /* GroupInfoWorker.swift in Sources */,
 				76AF8DC32B51EDF400E21CD5 /* GroupInfoPresenter.swift in Sources */,
 				7620F42D2A9567B1002A4EB5 /* User.swift in Sources */,
 				7608DE542A999F050036027A /* StorageManager.swift in Sources */,

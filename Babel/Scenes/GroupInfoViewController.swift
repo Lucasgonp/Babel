@@ -7,7 +7,7 @@ protocol GroupInfoDisplaying: AnyObject {
 }
 
 enum GroupInfoViewState {
-    case success(groupInfo: Group, members: [User], shouldDisplayStartChat: Bool)
+    case success(groupInfo: Group, members: [User])
     case updateInfo(_ dto: EditGroupDTO)
     case updateDesc(_ description: String)
     case error(message: String)
@@ -49,18 +49,26 @@ final class GroupInfoViewController: ViewController<GroupInfoInteracting, UIView
         return navigation
     }()
     
+    private lazy var addMemberNavigation: UINavigationController = {
+        let controller = AddMembersFactory.make(groupMembers: members) { [weak self] users in
+            self?.interactor.addMembers(users)
+        }
+        let navigation = UINavigationController(rootViewController: controller)
+        return navigation
+    }()
+    
     private var groupDescription = String()
     
     private var headerCell: GroupInfoHeaderCell?
-    
     private var currentUser: User { UserSafe.shared.user }
+    private var isAdmin: Bool {
+        groupInfo?.adminIds.contains(currentUser.id) == true
+    }
     
     private var groupInfo: Group?
-    private var members = [User]()
+    private lazy var members = [User]()
     
     weak var delegate: SettingsViewDelegate?
-    
-    private var shouldDisplayStartChat = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,11 +100,13 @@ final class GroupInfoViewController: ViewController<GroupInfoInteracting, UIView
 extension GroupInfoViewController: GroupInfoDisplaying {
     func displayViewState(_ state: GroupInfoViewState) {
         switch state {
-        case let .success(groupInfo, members, shouldDisplayStartChat):
+        case let .success(groupInfo, members):
             self.groupInfo = groupInfo
-            self.members = members
-            self.shouldDisplayStartChat = shouldDisplayStartChat
             self.groupDescription = groupInfo.description
+            
+            self.members = members
+                .sorted { $0.name.lowercased() < $1.name.lowercased() }
+                .sorted { isUserAdmin($0) && !isUserAdmin($1) }
             
             if groupInfo.adminIds.contains(currentUser.id) {
                 configureEditButton()
@@ -129,20 +139,41 @@ extension GroupInfoViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if indexPath.section == 1 {
+        switch indexPath.section {
+        case 1:
             present(groupDescNavigation, animated: true)
+        case 3:
+            if isAdmin {
+                if indexPath.row == 0 {
+                    present(addMemberNavigation, animated: true)
+                } else {
+                    let actionSheet = makeMemberActionSheet(user: members[indexPath.row - 1])
+                    present(actionSheet, animated: true)
+                }
+            } else {
+                let actionSheet = makeMemberActionSheet(user: members[indexPath.row])
+                present(actionSheet, animated: true)
+            }
+        default:
+            return
         }
     }
 }
 
 extension GroupInfoViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return shouldDisplayStartChat ? 4 : 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if shouldDisplayStartChat { return section == 3 ? members.count : 1 }
-        return section == 2 ? members.count : 1
+        switch section {
+        case 2:
+            return isAdmin ? 2 : 1
+        case 3:
+            return isAdmin ? members.count + 1 : members.count
+        default:
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -180,19 +211,45 @@ extension GroupInfoViewController: UITableViewDataSource {
             cell.contentConfiguration = content
             return cell
         case 2:
-            if shouldDisplayStartChat {
+            if indexPath.row == 0 {
                 let cell: SettingsButtonCell = tableView.makeCell(indexPath: indexPath, accessoryType: .disclosureIndicator)
                 let image = Icon.send.image.withTintColor(Color.primary500.uiColor)
                 cell.render(.init(icon: image, text: "Start chat"))
                 return cell
             } else {
-                return makeMembersCell(from: tableView, indexPath: indexPath)
+                let cell: UITableViewCell = tableView.makeCell(indexPath: indexPath, accessoryType: .disclosureIndicator)
+                var content = cell.defaultContentConfiguration()
+                content.text = "Requests to join"
+                content.textProperties.color = Color.blueNative.uiColor
+                cell.contentConfiguration = content
+                return cell
             }
         case 3:
-            return makeMembersCell(from: tableView, indexPath: indexPath)
+            if isAdmin {
+                if indexPath.row == 0 {
+                    let cell: UITableViewCell = tableView.makeCell(indexPath: indexPath)
+                    var content = cell.defaultContentConfiguration()
+                    content.text = "Add new member"
+                    content.image = UIImage(systemName: "person.crop.circle.fill.badge.plus")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 28)).withTintColor(Color.blueNative.uiColor)
+                    content.imageToTextPadding = 17
+                    content.imageProperties.reservedLayoutSize = CGSize(width: 42, height: 42)
+                    content.textProperties.color = Color.blueNative.uiColor
+                    cell.contentConfiguration = content
+                    return cell
+                }
+                return makeMembersCell(from: tableView, indexPath: indexPath, row: indexPath.row - 1)
+            }
+            return makeMembersCell(from: tableView, indexPath: indexPath, row: indexPath.row)
         default:
             return UITableViewCell()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if isAdmin {
+            return (indexPath.section == 3 && indexPath.row == 0) ? 52 : UITableView.automaticDimension
+        }
+        return UITableView.automaticDimension
     }
 }
 
@@ -206,17 +263,59 @@ extension GroupInfoViewController: GroupInfoHeaderDelegate {
 }
 
 private extension GroupInfoViewController {
-    func makeMembersCell(from tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+    func makeMembersCell(from tableView: UITableView, indexPath: IndexPath, row: Int) -> UITableViewCell {
         guard members.count > 0 else { return UITableViewCell() }
         let cell: UserCell = tableView.makeCell(indexPath: indexPath, accessoryType: .none)
-        let contact = members[indexPath.row]
-        cell.render(contact, isAdmin: groupInfo?.adminIds.contains(contact.id) ?? false)
+        let contact = members[row]
+        cell.render(contact, isAdmin: isUserAdmin(contact))
         return cell
     }
     
     func configureEditButton() {
         let done = UIBarButtonItem(title: Strings.Commons.edit, style: .done, target: self, action: #selector(didTapEditButton))
         navigationItem.setRightBarButton(done, animated: false)
+    }
+    
+    func isUserAdmin(_ user: User) -> Bool {
+        groupInfo?.adminIds.contains(user.id) == true
+    }
+    
+    func makeMemberActionSheet(user: User) -> UIAlertController {
+        let isUserAdmin = isUserAdmin(user)
+        
+        let userInfoAction = UIAlertAction(title: Localizable.ActionSheet.userInfo, style: .default, handler: { [weak self] _ in
+            let controller = ContactInfoFactory.make(contactInfo: user, shouldDisplayStartChat: true)
+            self?.navigationController?.pushViewController(controller, animated: true)
+        })
+        
+        let makeAdminAction = UIAlertAction(title: Localizable.ActionSheet.makeAdmin, style: .default, handler: { [weak self] _ in
+            self?.interactor.updatePrivileges(for: user, isAdmin: true)
+        })
+        
+        let removeAdminAction = UIAlertAction(title: Localizable.ActionSheet.removeAdmin, style: .default, handler: { [weak self] _ in
+            self?.interactor.updatePrivileges(for: user, isAdmin: false)
+        })
+        
+        let removeUserAction = UIAlertAction(title: Localizable.ActionSheet.removeUser, style: .destructive, handler: { [weak self] _ in
+            self?.interactor.removeMember(user)
+        })
+        
+        let actionSheet = UIAlertController(title: user.name, message: nil, preferredStyle: .actionSheet)
+        actionSheet.addAction(userInfoAction)
+        
+        if isAdmin {
+            if isUserAdmin {
+                actionSheet.addAction(removeAdminAction)
+            } else {
+                actionSheet.addAction(makeAdminAction)
+            }
+            
+            actionSheet.addAction(removeUserAction)
+        }
+        
+        actionSheet.addAction(UIAlertAction(title: Strings.Commons.cancel, style: .cancel, handler: nil))
+        
+        return actionSheet
     }
 }
 

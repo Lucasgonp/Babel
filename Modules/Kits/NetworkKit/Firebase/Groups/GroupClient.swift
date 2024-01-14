@@ -1,8 +1,12 @@
+import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 public protocol GroupClientProtocol {
     func downloadGroup<T: Decodable>(id: String, completion: @escaping ((Result<T, FirebaseError>) -> Void))
     func updateGroupInfo<T: Encodable>(id: String, dto: T, completion: @escaping (Error?) -> Void)
+    func addMembers<T: Encodable>(_ members: [T], groupId: String, completion: @escaping (Error?) -> Void)
+    func removeMember<T: Encodable>(_ member: T, groupId: String, completion: @escaping (Error?) -> Void)
+    func updatePrivileges(isAdmin: Bool, groupId: String, for userId: String, completion: @escaping (Error?) -> Void)
 }
 
 extension FirebaseClient: GroupClientProtocol {
@@ -32,5 +36,36 @@ extension FirebaseClient: GroupClientProtocol {
             print(error.localizedDescription)
             completion(error)
         }
+    }
+    
+    public func addMembers<T: Encodable>(_ members: [T], groupId: String, completion: @escaping (Error?) -> Void) {
+        do {
+            let encodedMembers = try members.compactMap({ try Firestore.Encoder().encode($0) })
+            let fields = [kMEMBERS: FieldValue.arrayUnion(encodedMembers)]
+            firebaseReference(.group).document(groupId).updateData(fields, completion: completion)
+        } catch {
+            completion(error)
+        }
+    }
+    
+    public func removeMember<T: Encodable>(_ member: T, groupId: String, completion: @escaping (Error?) -> Void) {
+        do {
+            let encodedMember = try Firestore.Encoder().encode(member)
+            let fields = [kMEMBERS: FieldValue.arrayRemove([encodedMember])]
+            firebaseReference(.group).document(groupId).updateData(fields, completion: completion)
+        } catch {
+            completion(error)
+        }
+    }
+    
+    public func updatePrivileges(isAdmin: Bool, groupId: String, for userId: String, completion: @escaping (Error?) -> Void) {
+        let fields: [AnyHashable: Any]
+        if isAdmin {
+            fields = [kADMINIDS: FieldValue.arrayUnion([userId])]
+        } else {
+            fields = [kADMINIDS: FieldValue.arrayRemove([userId])]
+        }
+        
+        firebaseReference(.group).document(groupId).updateData(fields, completion: completion)
     }
 }

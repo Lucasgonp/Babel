@@ -7,13 +7,13 @@ struct Group: Codable {
     var description: String
     var avatarLink: String
     let members: [Member]
-    let adminIds: [String]
+    var adminIds: [String]
     var removedMembers: [Member] = []
+    var requestToJoinMemberIds: [String] = []
     @ServerTimestamp var createdDate = Date()
     
     struct Member: Codable {
         let id: String
         let name: String
-        @ServerTimestamp var date = Date()
     }
 }

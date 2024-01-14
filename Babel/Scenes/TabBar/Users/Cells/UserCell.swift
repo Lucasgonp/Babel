@@ -95,6 +95,9 @@ extension UserCell {
             adminLabel.text = "Admin"
             allStackViews.addArrangedSubview(adminLabel)
             adminLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 43).isActive = true
+        } else {
+            adminLabel.text = String()
+            allStackViews.removeArrangedSubview(adminLabel)
         }
         
         if !dto.avatarLink.isEmpty {

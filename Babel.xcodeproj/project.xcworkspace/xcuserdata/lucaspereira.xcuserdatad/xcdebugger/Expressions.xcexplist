@@ -3,10 +3,27 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "MessageInputBarView.shortPressRecognizer2():MessageInputBarView.swift">
+         contextName = "StartChat.getReceiverFrom(users:):StartChat.swift">
+      </ContextState>
+      <ContextState
+         contextName = "GroupInfoViewController.makeMembersCell(from:indexPath:row:):GroupInfoViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "shortPressRecognizer.state">
+               value = "self.groupInfo">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RecentChatsInteractor.didTapOnChat(_:):RecentChatsInteractor.swift">
+      </ContextState>
+      <ContextState
+         contextName = "FirebaseClient.addMembers&lt;&#x3c4;_0_0&gt;(_:groupId:completion:):GroupClient.swift">
+      </ContextState>
+      <ContextState
+         contextName = "CreateGroupViewController.tableView(_:didSelectRowAt:):CreateGroupViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "selectedUsers">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -19,7 +36,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "RecentChatsInteractor.didTapOnChat(_:):RecentChatsInteractor.swift">
+         contextName = "closure #1 in ContactInfoRouter.perform(action:):ContactInfoRouter.swift">
       </ContextState>
       <ContextState
          contextName = "closure #1 in StartChat.restartChat(chatRoomId:memberIds:):StartChat.swift">
@@ -38,20 +55,23 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "CreateGroupViewController.tableView(_:didSelectRowAt:):CreateGroupViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "selectedUsers">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "MyGroupsView.scrollViewDidScroll(_:):MyGroupsView.swift">
          <PersistentStrings>
             <PersistentString
                value = "self.navigation">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MessageInputBarView.shortPressRecognizer2():MessageInputBarView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "shortPressRecognizer.state">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "GroupsViewController.tableView(_:didSelectRowAt:):GroupsViewController.swift">
       </ContextState>
       <ContextState
          contextName = "RecentChatsViewController.configureNavigationAppearance():RecentChatsViewController.swift">

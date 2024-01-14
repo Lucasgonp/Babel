@@ -1,5 +1,8 @@
+import FirebaseFirestoreSwift
+
 public protocol GroupClientProtocol {
     func downloadGroup<T: Decodable>(id: String, completion: @escaping ((Result<T, FirebaseError>) -> Void))
+    func updateGroupInfo<T: Encodable>(id: String, dto: T, completion: @escaping (Error?) -> Void)
 }
 
 extension FirebaseClient: GroupClientProtocol {
@@ -19,6 +22,15 @@ extension FirebaseClient: GroupClientProtocol {
             } catch {
                 return completion(.failure(.errorDecodeUser))
             }
+        }
+    }
+    
+    public func updateGroupInfo<T: Encodable>(id: String, dto: T, completion: @escaping (Error?) -> Void) {
+        do {
+            try firebaseReference(.group).document(id).setData(from: dto, merge: true, completion: completion)
+        } catch {
+            print(error.localizedDescription)
+            completion(error)
         }
     }
 }

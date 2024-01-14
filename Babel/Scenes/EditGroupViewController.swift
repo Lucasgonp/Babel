@@ -18,8 +18,17 @@ final class EditGroupViewController: UIViewController {
         let button = Button()
         button.render(.tertiary(title: "Edit", titleColor: Color.blueNative))
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(didTapEditAvatarButton), for: .touchUpInside)
         return button
+    }()
+    
+    private lazy var avatarStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [avatarImageView, editAvatarButton])
+        stack.axis = .vertical
+        stack.spacing = 6
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapEditAvatarButton))
+        stack.addGestureRecognizer(tap)
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        return stack
     }()
     
     private lazy var groupNameTextField: TextField = {
@@ -77,23 +86,19 @@ final class EditGroupViewController: UIViewController {
 
 extension EditGroupViewController: ViewConfiguration {
     func buildViewHierarchy() {
-        view.addSubview(avatarImageView)
-        view.addSubview(editAvatarButton)
+        view.addSubview(avatarStackView)
         view.addSubview(groupNameTextField)
     }
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            avatarImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            avatarImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 12),
             avatarImageView.heightAnchor.constraint(equalToConstant: 120),
             avatarImageView.widthAnchor.constraint(equalToConstant: 120)
         ])
         
         NSLayoutConstraint.activate([
-            editAvatarButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            editAvatarButton.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 6),
-            editAvatarButton.heightAnchor.constraint(equalToConstant: 42)
+            avatarStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            avatarStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 12)
         ])
         
         NSLayoutConstraint.activate([
@@ -119,7 +124,7 @@ extension EditGroupViewController: ViewConfiguration {
         view.endEditing(true)
         dismiss(animated: true) { [weak self] in
             guard let self else { return }
-            let dto = EditGroupDTO(name: self.groupNameTextField.text, image: avatarImageView.image)
+            let dto = EditGroupDTO(name: self.groupNameTextField.text, image: avatarImageView.image ?? Image.photoPlaceholder.image)
             self.completion?(dto)
         }
     }

@@ -8,6 +8,8 @@ protocol GroupInfoDisplaying: AnyObject {
 
 enum GroupInfoViewState {
     case success(groupInfo: Group, members: [User], shouldDisplayStartChat: Bool)
+    case updateInfo(_ dto: EditGroupDTO)
+    case updateDesc(_ description: String)
     case error(message: String)
     case setLoading(isLoading: Bool)
 }
@@ -32,7 +34,7 @@ final class GroupInfoViewController: ViewController<GroupInfoInteracting, UIView
     private lazy var editGroupNavigation: UINavigationController = {
         let editGroupController = EditGroupViewController(name: groupInfo?.name, imageLink: groupInfo?.avatarLink)
         editGroupController.completion = { [weak self] dto in
-            self?.headerCell?.update(dto)
+            self?.interactor.updateGroupInfo(dto: dto)
         }
         let navigation = UINavigationController(rootViewController: editGroupController)
         return navigation
@@ -42,8 +44,7 @@ final class GroupInfoViewController: ViewController<GroupInfoInteracting, UIView
         let controller = EditGroupDescViewController(description: groupDescription)
         let navigation = UINavigationController(rootViewController: controller)
         controller.completion = { [weak self] description in
-            self?.groupDescription = description
-            self?.tableView.reloadSections(IndexSet(integer: 1), with: .none)
+            self?.interactor.updateGroupDesc(description)
         }
         return navigation
     }()
@@ -102,8 +103,18 @@ extension GroupInfoViewController: GroupInfoDisplaying {
             }
             
             tableView.reloadData()
+            
+        case let .updateInfo(dto):
+            let dto = EditGroupDTO(name: dto.name, image: dto.image)
+            headerCell?.update(dto)
+            
+        case let .updateDesc(description):
+            groupDescription = description
+            tableView.reloadSections(IndexSet(integer: 1), with: .none)
+            
         case let .error(message):
             showErrorAlert(message)
+            
         case let .setLoading(isLoading):
             if isLoading {
                 showLoading()

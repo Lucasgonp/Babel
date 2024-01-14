@@ -3,9 +3,9 @@ import Foundation
 
 struct Group: Codable {
     let id: String
-    let name: String
-    let description: String
-    let avatarLink: String
+    var name: String
+    var description: String
+    var avatarLink: String
     let memberIds: [String]
     let adminId: String
     @ServerTimestamp var createdDate = Date()

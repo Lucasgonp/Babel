@@ -1,6 +1,6 @@
 import UIKit
 
-public class ImageView: UIImageView {
+public class ImageView: UIImageView {    
     public init(image: UIImage, size: CGSize? = nil, color: Color? = nil) {
         super.init(image: image)
         set(uiImage: image, size: size, color: color, withRenderingMode: image.renderingMode)

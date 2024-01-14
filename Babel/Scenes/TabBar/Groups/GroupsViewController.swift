@@ -82,11 +82,11 @@ extension GroupsViewController: UISearchResultsUpdating {
 }
 
 extension GroupsViewController: UITableViewDelegate {
-        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            tableView.deselectRow(at: indexPath, animated: true)
-            let group = searchController.isActive ? filteredGroups[indexPath.row] : allGroups[indexPath.row]
-            interactor.didTapOnGroup(id: group.id)
-        }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let group = searchController.isActive ? filteredGroups[indexPath.row] : sections[indexPath.section].groups[indexPath.row]
+        interactor.didTapOnGroup(id: group.id)
+    }
     //
     //    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
     //        return true

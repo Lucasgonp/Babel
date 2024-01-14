@@ -18,7 +18,7 @@ final class CreateGroupRouter {
 extension CreateGroupRouter: CreateGroupRouting {
     func perform(action: CreateGroupAction) {
         if case .finishGroupCreation = action {
-            viewController?.navigationController?.popViewController { [weak self] in
+            viewController?.navigationController?.popViewController { [weak self] _ in
                 self?.completion?()
             }
         }

@@ -17,8 +17,8 @@ extension ContactInfoRouter: ContactInfoRouting {
         if case .pushChatView(let dto) = action {
             let chatController = ChatFactory.make(dto: dto)
             chatController.hidesBottomBarWhenPushed = true
-            viewController?.navigationController?.popToRootViewController { [weak self] in
-                self?.viewController?.navigationController?.pushViewController(chatController, animated: true)
+            viewController?.navigationController?.popViewController(animated: true) { navigation in
+                navigation?.pushViewController(chatController, animated: true)
             }
         }
     }

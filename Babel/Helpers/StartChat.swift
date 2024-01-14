@@ -73,7 +73,9 @@ private extension StartChat {
     
     func getReceiverFrom(users: [User]) -> User {
         var allUsers = users
-        allUsers.remove(at: allUsers.firstIndex(where: { $0.id == currentUser.id })!)
+        if let currentUser = allUsers.firstIndex(where: { $0.id == currentUser.id }) {
+            allUsers.remove(at: currentUser)
+        }
         return allUsers.first!
     }
 }

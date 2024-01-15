@@ -3,10 +3,12 @@
 "Commons.cancel" = "Cancel";
 "Commons.edit" = "Edit";
 "Commons.add" = "Add";
+"Commons.description" = "Description";
+"Commons.searchUser" = "Search user";
+"Commons.users" = "Users";
 
 // TabBar
 "TabBar.Settings.title" = "Settings";
-"TabBar.Users.title" = "Users";
 "TabBar.Groups.title" = "Groups";
 "TabBar.Chats.title" = "Chats";
 
@@ -68,12 +70,26 @@
 "MessageInputBar.swipeToCancel" = "Swipe to cancel";
 
 // Create group
+"CreateGroup.title" = "Create new group";
 "CreateGroup.createButton" = "Create";
+"CreateGroup.groupNamePlaceholder" = "Group name";
 
 // Group info
 "GroupInfo.groupNamePlaceholder" = "Group name";
 "GroupInfo.title" = "Group info";
+"GroupInfo.addGroupDescription" = "Add group description";
+"GroupInfo.members" = "Members";
+"GroupInfo.sendMessage" = "Send message";
+"GroupInfo.joinGroup" = "Join group";
+"GroupInfo.usersRequests" = "Users requests";
+"GroupInfo.addNewMember" = "Add new member";
+"GroupInfo.joinGroup" = "Join group";
 "GroupInfo.exitGroup" = "Exit group";
+"GroupInfo.descriptionInfo" = "The group description is visible to members of this group and people invited to this group.";
+
+"GroupInfo.ActionSheet.joinGroupQuestion" = "Do you want to join this group?";
+"GroupInfo.ActionSheet.exitGroupQuestion" = "Do you want to exit this group?";
+
 "GroupInfo.ActionSheet.userInfo" = "User info";
 "GroupInfo.ActionSheet.makeAdmin" = "Make admin";
 "GroupInfo.ActionSheet.removeAdmin" = "Remove admin";

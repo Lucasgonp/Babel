@@ -37,10 +37,16 @@ internal enum Strings {
     internal static let add = Strings.tr("Localizable", "Commons.add", fallback: "Add")
     /// Cancel
     internal static let cancel = Strings.tr("Localizable", "Commons.cancel", fallback: "Cancel")
+    /// Description
+    internal static let description = Strings.tr("Localizable", "Commons.description", fallback: "Description")
     /// Done
     internal static let done = Strings.tr("Localizable", "Commons.done", fallback: "Done")
     /// Edit
     internal static let edit = Strings.tr("Localizable", "Commons.edit", fallback: "Edit")
+    /// Search user
+    internal static let searchUser = Strings.tr("Localizable", "Commons.searchUser", fallback: "Search user")
+    /// Users
+    internal static let users = Strings.tr("Localizable", "Commons.users", fallback: "Users")
   }
   internal enum ContactInfo {
     /// Contact Info
@@ -49,15 +55,37 @@ internal enum Strings {
   internal enum CreateGroup {
     /// Create
     internal static let createButton = Strings.tr("Localizable", "CreateGroup.createButton", fallback: "Create")
+    /// Group name
+    internal static let groupNamePlaceholder = Strings.tr("Localizable", "CreateGroup.groupNamePlaceholder", fallback: "Group name")
+    /// Create new group
+    internal static let title = Strings.tr("Localizable", "CreateGroup.title", fallback: "Create new group")
   }
   internal enum GroupInfo {
+    /// Add group description
+    internal static let addGroupDescription = Strings.tr("Localizable", "GroupInfo.addGroupDescription", fallback: "Add group description")
+    /// Add new member
+    internal static let addNewMember = Strings.tr("Localizable", "GroupInfo.addNewMember", fallback: "Add new member")
+    /// The group description is visible to members of this group and people invited to this group.
+    internal static let descriptionInfo = Strings.tr("Localizable", "GroupInfo.descriptionInfo", fallback: "The group description is visible to members of this group and people invited to this group.")
     /// Exit group
     internal static let exitGroup = Strings.tr("Localizable", "GroupInfo.exitGroup", fallback: "Exit group")
     /// Group name
     internal static let groupNamePlaceholder = Strings.tr("Localizable", "GroupInfo.groupNamePlaceholder", fallback: "Group name")
+    /// Join group
+    internal static let joinGroup = Strings.tr("Localizable", "GroupInfo.joinGroup", fallback: "Join group")
+    /// Members
+    internal static let members = Strings.tr("Localizable", "GroupInfo.members", fallback: "Members")
+    /// Send message
+    internal static let sendMessage = Strings.tr("Localizable", "GroupInfo.sendMessage", fallback: "Send message")
     /// Group info
     internal static let title = Strings.tr("Localizable", "GroupInfo.title", fallback: "Group info")
+    /// Users requests
+    internal static let usersRequests = Strings.tr("Localizable", "GroupInfo.usersRequests", fallback: "Users requests")
     internal enum ActionSheet {
+      /// Do you want to exit this group?
+      internal static let exitGroupQuestion = Strings.tr("Localizable", "GroupInfo.ActionSheet.exitGroupQuestion", fallback: "Do you want to exit this group?")
+      /// Do you want to join this group?
+      internal static let joinGroupQuestion = Strings.tr("Localizable", "GroupInfo.ActionSheet.joinGroupQuestion", fallback: "Do you want to join this group?")
       /// Make admin
       internal static let makeAdmin = Strings.tr("Localizable", "GroupInfo.ActionSheet.makeAdmin", fallback: "Make admin")
       /// Remove admin
@@ -126,10 +154,6 @@ internal enum Strings {
     internal enum Settings {
       /// Settings
       internal static let title = Strings.tr("Localizable", "TabBar.Settings.title", fallback: "Settings")
-    }
-    internal enum Users {
-      /// Users
-      internal static let title = Strings.tr("Localizable", "TabBar.Users.title", fallback: "Users")
     }
   }
   internal enum UserBio {

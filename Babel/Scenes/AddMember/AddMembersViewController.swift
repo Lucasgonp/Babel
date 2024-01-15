@@ -29,7 +29,7 @@ final class AddMembersViewController: ViewController<AddMembersInteracting, UIVi
     private lazy var searchController: UISearchController = {
         let controller = UISearchController(searchResultsController: nil)
         controller.obscuresBackgroundDuringPresentation = false
-        controller.searchBar.placeholder = "Search user"
+        controller.searchBar.placeholder = Strings.Commons.searchUser
         controller.searchResultsUpdater = self
         controller.definesPresentationContext = true
         return controller
@@ -84,7 +84,7 @@ extension AddMembersViewController: AddMembersDisplaying {
     func displayViewState(_ state: AddMembersViewState) {
         switch state {
         case .success(let users):
-            var users = users.filter({ !groupMembers.contains($0) })
+            let users = users.filter({ !groupMembers.contains($0) })
             allUsers = users.sorted(by: { $0.name.lowercased() < $1.name.lowercased() })
             setupUsersList()
         case .error(let message):
@@ -142,7 +142,7 @@ extension AddMembersViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return searchController.isActive ? "Users" : sections[section].letter
+        return searchController.isActive ? Strings.Commons.users : sections[section].letter
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

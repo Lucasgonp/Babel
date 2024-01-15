@@ -2,9 +2,11 @@ import UIKit
 import DesignKit
 
 final class EditGroupDescViewController: UIViewController {
+    typealias Localizable = Strings.GroupInfo
+    
     private let descriptionLabel: TextLabel = {
         let label = TextLabel(font: Font.xs.make())
-        label.text = "The group description is visible to members of this group and people invited to this group."
+        label.text = Localizable.descriptionInfo
         label.textColor = Color.grayscale700.uiColor
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false

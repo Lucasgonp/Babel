@@ -43,8 +43,8 @@ enum HomeTabBarFactory {
         let viewController = UsersFactory.make()
         let navigation = UINavigationController(rootViewController: viewController)
         navigation.navigationBar.prefersLargeTitles = true
-        navigation.tabBarItem.title = Strings.TabBar.Users.title
-        viewController.navigationItem.title = Strings.TabBar.Users.title
+        navigation.tabBarItem.title = Strings.Commons.users
+        viewController.navigationItem.title = Strings.Commons.users
         let icon = ImageAsset.Image(systemName: "person.2")?.withRenderingMode(.alwaysTemplate)
         return HomeTabBarModel(icon: icon, navigation: navigation)
     }

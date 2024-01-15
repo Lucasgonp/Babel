@@ -24,8 +24,8 @@ final class CreateGroupViewController: ViewController<CreateGroupInteracting, UI
     private lazy var groupNameTextField: TextField = {
         let textField = TextField()
         textField.render(.clean(
-            placeholder: "Group name",
-            hint: "Group name",
+            placeholder: Localizable.CreateGroup.groupNamePlaceholder,
+            hint: Localizable.CreateGroup.groupNamePlaceholder,
             isHintAlwaysVisible: true,
             autocapitalizationType: .words
         ))
@@ -82,7 +82,7 @@ final class CreateGroupViewController: ViewController<CreateGroupInteracting, UI
     }
     
     override func configureViews() {
-        title = "Create new group"
+        title = Localizable.CreateGroup.title
         view.backgroundColor = Color.backgroundPrimary.uiColor
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false

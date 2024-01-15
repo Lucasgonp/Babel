@@ -16,7 +16,7 @@ final class EditGroupViewController: UIViewController {
     
     private lazy var editAvatarButton: Button = {
         let button = Button()
-        button.render(.tertiary(title: "Edit", titleColor: Color.blueNative))
+        button.render(.tertiary(title: Strings.Commons.edit, titleColor: Color.blueNative))
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

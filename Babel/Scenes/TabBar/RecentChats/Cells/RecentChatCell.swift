@@ -117,7 +117,7 @@ final class RecentChatCell: UITableViewCell, ViewConfiguration {
 extension RecentChatCell {
     func render(dto: RecentChatModel) {
         fullNameLabel.text = dto.receiverName
-        lastMassageLabel.text = dto.lastMassage
+        lastMassageLabel.text = dto.type == .group ? "\(dto.senderName): \(dto.lastMassage)" : dto.lastMassage
         timeLabel.text = (dto.date ?? Date()).lastMessageDate()
         unreadCountLabel.text = String(dto.unreadCounter)
         

@@ -78,4 +78,28 @@ extension StorageAdapter {
             }.resume()
         }
     }
+    
+//    public func downloadImage(_ link: String, directory: String, completion: @escaping (_ documentLink: String?, _ data: Data?) -> Void) {
+//        guard let url = URL(string: link) else {
+//            return completion(nil, nil)
+//        }
+//        
+//        let reference = storage.reference(forURL: StorageKey.fileReference.rawValue).child(directory)
+//        var task: StorageDownloadTask?
+//        task = reference.getData(maxSize: 10000, completion: { data, error in
+//            if let data {
+//                completion(nil, data)
+//            } else {
+//                
+//            }
+//        })
+//        
+//        task?.observe(StorageTaskStatus.progress, handler: { snapshot in
+//            guard let snapshotProgress = snapshot.progress else {
+//                return
+//            }
+//            let progress = snapshotProgress.completedUnitCount / snapshotProgress.totalUnitCount
+//            ProgressHUD.progress(CGFloat(progress))
+//        })
+//    }
 }

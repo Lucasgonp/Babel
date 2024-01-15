@@ -12,6 +12,10 @@ extension ChatGroupViewController: MessagesLayoutDelegate {
         return .zero
     }
     
+    func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        return 24
+    }
+    
     func cellBottomLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         // TIP: If you want to show all avatar just remove this method
 //        removeStatusMessageSpace()
@@ -38,9 +42,22 @@ extension ChatGroupViewController: MessagesLayoutDelegate {
     
     //TIP: If you want to show all avatars just use avatarView.set(avatar: Avatar(initials: mkMessages[indexPath.section].senderInitials))
     func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
-        SDWebImageManager.shared.loadImage(with: URL(string: mkMessages[indexPath.section].mkSender.avatarLink), progress: nil) { image, _, _, _, _, _ in
-                avatarView.set(avatar: Avatar(image: image))
-        }
+        avatarView.set(avatar: Avatar(initials: mkMessages[indexPath.section].senderInitials))
+        
+//        guard avatarView.image == nil else { return }
+        
+//        guard let url = URL(string: mkMessages[indexPath.section].mkSender.avatarLink) else {
+//            avatarView.set(avatar: Avatar(initials: mkMessages[indexPath.section].senderInitials))
+//            return
+//        }
+//        DispatchQueue.global().async {
+//            URLSession.shared.dataTask(with: url, completionHandler: { data, _, _ in
+//                StorageManager.shared.saveFileLocally(fileData: data!, fileName: url.absoluteString)
+//                DispatchQueue.main.async {
+//                    avatarView.set(avatar: Avatar(image: UIImage(data: data!)))
+//                }
+//            }).resume()
+//        }
 //        avatarView.isHidden = true
     }
     

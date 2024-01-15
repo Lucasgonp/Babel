@@ -6,10 +6,10 @@
          contextName = "StartChat.getReceiverFrom(users:):StartChat.swift">
       </ContextState>
       <ContextState
-         contextName = "GroupInfoViewController.makeMembersCell(from:indexPath:row:):GroupInfoViewController.swift">
+         contextName = "RecentChatsViewController.configureNavigationAppearance():RecentChatsViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self.groupInfo">
+               value = "navigationController?.navigationBar.standardAppearance">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -63,6 +63,20 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "closure #2 in StartChat.createRecentItems(chatRoomId:users:type:):StartChat.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ChatGroupViewController.configureAvatarView(_:for:at:in:):GroupMessageLayoutDelegate.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.mkMessages">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "GroupsViewController.tableView(_:didSelectRowAt:):GroupsViewController.swift">
+      </ContextState>
+      <ContextState
          contextName = "MessageInputBarView.shortPressRecognizer2():MessageInputBarView.swift">
          <PersistentStrings>
             <PersistentString
@@ -71,13 +85,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "GroupsViewController.tableView(_:didSelectRowAt:):GroupsViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "RecentChatsViewController.configureNavigationAppearance():RecentChatsViewController.swift">
+         contextName = "GroupInfoViewController.makeMembersCell(from:indexPath:row:):GroupInfoViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "navigationController?.navigationBar.standardAppearance">
+               value = "self.groupInfo">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

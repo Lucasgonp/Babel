@@ -94,9 +94,10 @@ extension ChatGroupInteractor: ChatGroupInteracting {
         localMessage.chatRoomId = message.chatId
         localMessage.senderId = currentUser.id
         localMessage.senderName = currentUser.name
-        localMessage.senderInitials = "\(String(describing: currentUser.username.first))"
+        localMessage.senderInitials = "\(currentUser.name.first!)"
         localMessage.date = Date()
         localMessage.status = Localizable.sent
+        localMessage.senderAvatarLink = currentUser.avatarLink
         
         if let text = message.text {
             sendTextMessage(message: localMessage, text: text, memberIds: message.memberIds)

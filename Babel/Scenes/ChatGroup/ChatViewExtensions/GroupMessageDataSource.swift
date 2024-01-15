@@ -13,6 +13,17 @@ extension ChatGroupViewController: MessagesDataSource {
         return mkMessages.count
     }
     
+    func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        let text = mkMessages[indexPath.section].mkSender.displayName
+        let font = Font.sm.make(isBold: true)
+        let color = UIColor.darkGray
+        
+        return NSAttributedString(
+            string: text,
+            attributes: [.font: font, .foregroundColor: color]
+        )
+    }
+    
     func cellTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
         if shouldDisplayHeader(for: message, at: indexPath) {
             let shouldLoadMore = indexPath.section == 0 && (dto.allLocalMessages?.count ?? 0) > dto.displayingMessagesCount

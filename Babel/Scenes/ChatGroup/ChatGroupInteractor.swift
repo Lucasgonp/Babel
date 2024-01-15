@@ -1,24 +1,27 @@
 import UIKit
-import struct GalleryKit.MediaVideo
 import RealmSwift
+import struct GalleryKit.MediaVideo
 
-protocol ChatInteracting: AnyObject {
+protocol ChatGroupInteracting: AnyObject {
     func loadChatMessages()
     func sendMessage(message: OutgoingMessage)
-    func refreshNewMessages()
-    func updateTypingObserver()
-    func didTapOnBackButton()
-    func didTapOnContactInfo()
     func registerObservers()
     func removeListeners()
-    
-    func audioRecording(_ status: RecordingState)
+    func refreshNewMessages()
+    func updateTypingObserver()
 }
 
-final class ChatInteractor {
+final class ChatGroupInteractor {
     typealias Localizable = Strings.ChatView
     
-    private let currentUser = UserSafe.shared.user
+    private var currentUser: User {
+        UserSafe.shared.user
+    }
+    
+    //MARK: Init
+    private let presenter: ChatGroupPresenting
+    private var dto: ChatGroupDTO
+    
     private var notificationToken: NotificationToken?
     
     //MARK: Typing
@@ -28,23 +31,19 @@ final class ChatInteractor {
     private var audioFileName = String()
     private var audioDuration = Date()
     
-    //MARK: Init
-    private let presenter: ChatPresenting
-    private let dto: ChatDTO
-    
     //MARK: Workers
     private let chatListenerWorker: ChatListenersWorkerProtocol
     private let chatTypingWorker: ChatTypingWorkerProtocol
     private let fetchMessageWorker: FetchMessageWorkerProtocol
     private let sendMessageWorker: SendMessageWorkerProtocol
-    
+
     init(
         chatListenerWorker: ChatListenersWorkerProtocol = ChatListenersWorker(),
         chatTypingWorker: ChatTypingWorkerProtocol = ChatTypingWorker(),
         fetchMessageWorker: FetchMessageWorkerProtocol = FetchMessageWorker(),
         sendMessageWorker: SendMessageWorkerProtocol = SendMessageWorker(),
-        presenter: ChatPresenting,
-        dto: ChatDTO
+        presenter: ChatGroupPresenting,
+        dto: ChatGroupDTO
     ) {
         self.chatListenerWorker = chatListenerWorker
         self.chatTypingWorker = chatTypingWorker
@@ -55,7 +54,7 @@ final class ChatInteractor {
     }
 }
 
-extension ChatInteractor: ChatInteracting {
+extension ChatGroupInteractor: ChatGroupInteracting {
     func loadChatMessages() {
         let predicate = NSPredicate(format: "chatRoomId = %@", dto.chatId)
         dto.allLocalMessages = RealmManager.shared.realm.objects(LocalMessage.self).filter(predicate).sorted(byKeyPath: kDATE, ascending: true)
@@ -79,6 +78,16 @@ extension ChatInteractor: ChatInteracting {
         })
     }
     
+    func registerObservers() {
+        listenForNewChats()
+        createTypingObserver()
+        listenForReadStatusChange()
+    }
+    
+    func removeListeners() {
+        chatListenerWorker.removeListeners()
+    }
+    
     func sendMessage(message: OutgoingMessage) {
         let localMessage = LocalMessage()
         localMessage.id = UUID().uuidString
@@ -88,7 +97,6 @@ extension ChatInteractor: ChatInteracting {
         localMessage.senderInitials = "\(String(describing: currentUser.username.first))"
         localMessage.date = Date()
         localMessage.status = Localizable.sent
-        localMessage.senderAvatarLink = currentUser.avatarLink
         
         if let text = message.text {
             sendTextMessage(message: localMessage, text: text, memberIds: message.memberIds)
@@ -134,48 +142,62 @@ extension ChatInteractor: ChatInteracting {
             self?.typingCounterStop()
         }
     }
-    
-    func removeListeners() {
-        chatListenerWorker.removeListeners()
-    }
-    
-    func didTapOnBackButton() {
-        presenter.didNextStep(action: .popViewController)
-    }
-    
-    func didTapOnContactInfo() {
-        presenter.didNextStep(action: .showContactInfo(dto.recipientId))
-    }
-    
-    func registerObservers() {
-        listenForNewChats()
-        createTypingObserver()
-        listenForReadStatusChange()
-    }
-    
-    func audioRecording(_ status: RecordingState) {
-        switch status {
-        case .start:
-            AudioRecorderManager.shared.authorizeMicrophoneAccess { [weak self] in
-                guard let self else { return }
-                self.audioDuration = Date()
-                self.audioFileName = Date().stringDate()
-                AudioRecorderManager.shared.startRecording(fileName: self.audioFileName)
-            }
-        case .stop:
-            AudioRecorderManager.shared.finishRecording()
-            if StorageManager.shared.fileExistsAtPath(path: "\(audioFileName).m4a") {
-                let audioDuration = audioDuration.interval(ofComponent: .second, from: Date())
-                let message = OutgoingMessage(chatId: dto.chatId, audio: audioFileName, audioDuration: audioDuration, memberIds: [currentUser.id, dto.recipientId])
-                sendMessage(message: message)
-            } else {
-                print("no audio file")
+}
+
+private extension ChatGroupInteractor {
+    func checkForOldChats() {
+        fetchMessageWorker.getOldChats(documentId: currentUser.id, collectionId: dto.chatId) { result in
+            switch result {
+            case var .success(messages):
+                messages.sort(by: { $0.date < $1.date })
+                messages.forEach({ RealmManager.shared.saveToRealm($0) })
+                
+            case let .failure(error):
+                print("Error getting older chat: \(error.localizedDescription)")
+                return
             }
         }
     }
-}
-
-private extension ChatInteractor {
+    
+    func insertMessages() {
+        guard let allLocalMessages = dto.allLocalMessages else { return }
+        
+        dto.maxMessageNumber = (allLocalMessages.count) - dto.displayingMessagesCount
+        dto.minMessageNumber = dto.maxMessageNumber - kNUMBEROFMESSAGES
+        
+        if dto.minMessageNumber < 0 {
+            dto.minMessageNumber = 0
+        }
+        
+        for i in dto.minMessageNumber ..< dto.maxMessageNumber {
+            insertMessage(allLocalMessages[i])
+        }
+    }
+    
+    func insertMessage(_ localMessage: LocalMessage) {
+        if localMessage.senderId != currentUser.id && localMessage.status != Localizable.read {
+            markMessageAsRead(localMessage)
+        }
+        
+        dto.displayingMessagesCount += 1
+        presenter.displayMessage(localMessage)
+    }
+    
+    func markMessageAsRead(_ localMessage: LocalMessage) {
+        if !dto.membersIds.contains({ currentUser.id }()) {
+            dto.membersIds.append(currentUser.id)
+        }
+        sendMessageWorker.updateMessageInFirebase(
+            message: localMessage,
+            dto: .init(
+                chatRoomId: dto.chatId,
+                messageId: localMessage.id,
+                memberIds: dto.membersIds,
+                status: [kSTATUS: Localizable.read, kREADDATE: Date()]
+            )
+        )
+    }
+    
     func listenForNewChats() {
         let date = dto.allLocalMessages?.last?.date ?? Date()
         let lastMessageDate = Calendar.current.date(byAdding: .second, value: 1, to: date) ?? date
@@ -199,21 +221,6 @@ private extension ChatInteractor {
         }
     }
     
-    func insertMessages() {
-        guard let allLocalMessages = dto.allLocalMessages else { return }
-        
-        dto.maxMessageNumber = (allLocalMessages.count) - dto.displayingMessagesCount
-        dto.minMessageNumber = dto.maxMessageNumber - kNUMBEROFMESSAGES
-        
-        if dto.minMessageNumber < 0 {
-            dto.minMessageNumber = 0
-        }
-        
-        for i in dto.minMessageNumber ..< dto.maxMessageNumber {
-            insertMessage(allLocalMessages[i])
-        }
-    }
-    
     //MARK: Read message
     func listenForReadStatusChange() {
         chatListenerWorker.listenForReadStatusChange(currentUser.id, collectionId: dto.chatId) { [weak self] updatedMessage in
@@ -224,59 +231,16 @@ private extension ChatInteractor {
         }
     }
     
-    func checkForOldChats() {
-        fetchMessageWorker.getOldChats(documentId: currentUser.id, collectionId: dto.chatId) { result in
-            switch result {
-            case var .success(messages):
-                messages.sort(by: { $0.date < $1.date })
-                messages.forEach({ RealmManager.shared.saveToRealm($0) })
+    func resetUnreadCount() {
+        fetchMessageWorker.getRecentChats(chatRoomId: dto.chatId) { recents in
+            for recent in recents {
+                var recent = recent
+                if recent.senderId != UserSafe.shared.user.id {
+                    recent.unreadCounter = 0
+                }
                 
-            case let .failure(error):
-                print("Error getting older chat: \(error.localizedDescription)")
-                return
+                ChatHelper.shared.saveRecent(id: recent.id, recentChat: recent)
             }
-        }
-    }
-    
-    func loadMoreMessages(maxNumber: Int, minNumber: Int) {
-        dto.maxMessageNumber = minNumber - 1
-        dto.minMessageNumber = dto.maxMessageNumber - kNUMBEROFMESSAGES
-        
-        if dto.minMessageNumber < 0 {
-            dto.minMessageNumber = 0
-        }
-        
-        for i in (dto.minMessageNumber ... dto.maxMessageNumber).reversed() {
-            dto.displayingMessagesCount += 1
-            presenter.displayRefreshedMessages(dto.allLocalMessages![i])
-        }
-    }
-    
-    func insertMessage(_ localMessage: LocalMessage) {
-        if localMessage.senderId != currentUser.id && localMessage.status != Localizable.read {
-            markMessageAsRead(localMessage)
-        }
-        
-        dto.displayingMessagesCount += 1
-        presenter.displayMessage(localMessage)
-    }
-    
-    func markMessageAsRead(_ localMessage: LocalMessage) {
-        sendMessageWorker.updateMessageInFirebase(
-            message: localMessage,
-            dto: .init(
-                chatRoomId: dto.chatId,
-                messageId: localMessage.id,
-                memberIds: [currentUser.id, dto.recipientId],
-                status: [kSTATUS: Localizable.read, kREADDATE: Date()]
-            )
-        )
-    }
-    
-    func typingCounterStop() {
-        typingCounter -= 1
-        if typingCounter == .zero {
-            chatTypingWorker.saveTypingCounter(isTyping: false, chatRoomId: dto.chatId)
         }
     }
     
@@ -295,27 +259,36 @@ private extension ChatInteractor {
         }
         
         tempRecent.lastMassage = lastMessage
+//        tempRecent.membersId = dto.groupInfo.members.compactMap({ $0.id })
         tempRecent.date = Date()
         
         ChatHelper.shared.saveRecent(id: tempRecent.id, recentChat: tempRecent)
     }
     
-    func resetUnreadCount() {
-        fetchMessageWorker.getRecentChats(chatRoomId: dto.chatId) { recents in
-            for recent in recents {
-                var recent = recent
-                if recent.senderId != UserSafe.shared.user.id {
-                    recent.unreadCounter = 0
-                }
-                
-                ChatHelper.shared.saveRecent(id: recent.id, recentChat: recent)
-            }
+    func loadMoreMessages(maxNumber: Int, minNumber: Int) {
+        dto.maxMessageNumber = minNumber - 1
+        dto.minMessageNumber = dto.maxMessageNumber - kNUMBEROFMESSAGES
+        
+        if dto.minMessageNumber < 0 {
+            dto.minMessageNumber = 0
+        }
+        
+        for i in (dto.minMessageNumber ... dto.maxMessageNumber).reversed() {
+            dto.displayingMessagesCount += 1
+            presenter.displayRefreshedMessages(dto.allLocalMessages![i])
+        }
+    }
+    
+    func typingCounterStop() {
+        typingCounter -= 1
+        if typingCounter == .zero {
+            chatTypingWorker.saveTypingCounter(isTyping: false, chatRoomId: dto.chatId)
         }
     }
 }
 
 // MARK: Send Messages
-private extension ChatInteractor {
+private extension ChatGroupInteractor {
     func sendTextMessage(message: LocalMessage, text: String, memberIds: [String]) {
         message.message = text
         message.type = ChatMessageType.text.rawValue

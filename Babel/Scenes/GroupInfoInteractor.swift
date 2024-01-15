@@ -7,6 +7,7 @@ protocol GroupInfoInteracting: AnyObject {
     func addMembers(_ users: [User])
     func removeMember(_ user: User)
     func updatePrivileges(for member: User, isAdmin: Bool)
+    func sendMessage()
     func exitGroup()
 }
 
@@ -148,6 +149,13 @@ extension GroupInfoInteractor: GroupInfoInteracting {
                 }
             }
         }
+    }
+    
+    func sendMessage() {
+        guard let group else { return }
+        let chatId = StartGroupChat.shared.startChat(group: group)
+        let chatDTO = ChatGroupDTO(chatId: chatId, groupInfo: group, membersIds: members.compactMap({ $0.id }))
+        presenter.didNextStep(action: .pushChatView(dto: chatDTO))
     }
 }
 

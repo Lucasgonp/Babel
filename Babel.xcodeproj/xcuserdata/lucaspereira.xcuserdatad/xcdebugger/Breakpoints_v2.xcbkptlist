@@ -14,8 +14,8 @@
             filePath = "Babel/Scenes/Chat/ChatInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "402"
-            endingLineNumber = "402"
+            startingLineNumber = "403"
+            endingLineNumber = "403"
             landmarkName = "sendAudioMessage(message:audioFileName:audioDuration:memberIds:)"
             landmarkType = "7">
             <Locations>
@@ -78,8 +78,8 @@
             filePath = "Babel/Scenes/Chat/ChatInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
             landmarkName = "audioRecording(_:)"
             landmarkType = "7">
             <Locations>
@@ -126,8 +126,8 @@
             filePath = "Babel/Scenes/Chat/ChatInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "406"
-            endingLineNumber = "406"
+            startingLineNumber = "407"
+            endingLineNumber = "407"
             landmarkName = "sendAudioMessage(message:audioFileName:audioDuration:memberIds:)"
             landmarkType = "7">
             <Locations>
@@ -215,70 +215,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "EB44C137-D391-42FE-82B4-7F1E5C6FFA13"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Babel/Scenes/Chat/Workers/SendMessageWorker.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "addMessage(_:memberIds:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "52F3C90A-2EF6-4D17-ACFC-2AE99478D910"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Babel/Scenes/Chat/Workers/SendMessageWorker.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "addMessage(_:memberIds:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "52F3C90A-2EF6-4D17-ACFC-2AE99478D910 - 4d44326a36b08dd2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Babel.SendMessageWorker.addMessage(_: Babel.LocalMessage, memberIds: Swift.Array&lt;Swift.String&gt;) -&gt; ()"
-                  moduleName = "Babel"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lucaspereira/Workspace/Personal/Apps/Babel/Babel/Babel/Babel/Scenes/Chat/Workers/SendMessageWorker.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "21"
-                  endingLineNumber = "21"
-                  offsetFromSymbolStart = "160">
-               </Location>
-               <Location
-                  uuid = "52F3C90A-2EF6-4D17-ACFC-2AE99478D910 - 4d44326a36b08dd2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Babel.SendMessageWorker.addMessage(_: Babel.LocalMessage, memberIds: Swift.Array&lt;Swift.String&gt;) -&gt; ()"
-                  moduleName = "Babel"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lucaspereira/Workspace/Personal/Apps/Babel/Babel/Babel/Babel/Scenes/Chat/Workers/SendMessageWorker.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "21"
-                  endingLineNumber = "21"
-                  offsetFromSymbolStart = "316">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "146D1883-4B76-4172-A767-9A57E6D88E2A"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -359,48 +295,176 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FE95A91C-E669-4B75-AC5C-F65364A47C5E"
+            uuid = "0C1593D6-5A73-47D7-811B-A894305B08DE"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Modules/Kits/NetworkKit/Firebase/Users/UsersClient.swift"
+            filePath = "Babel/Helpers/StartChat.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "downloadUsers(withIds:completion:)"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "restartChat(chatRoomId:memberIds:type:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "28E509F7-98F0-4008-AAB8-3BACA43567F8"
+            uuid = "8719E941-05BC-46A3-BE7A-1889A52B58B9"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Babel/Scenes/GroupInfoInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "fetchGroupData()"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "updatePrivileges(for:isAdmin:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8719E941-05BC-46A3-BE7A-1889A52B58B9 - d413fcb53949ded8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Babel.Group) -&gt; () in closure #1 (Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Babel.GroupInfoInteractor.updatePrivileges(for: Authenticator.User, isAdmin: Swift.Bool) -&gt; ()"
+                  moduleName = "Babel"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucaspereira/Workspace/Personal/Apps/Babel/Babel/Babel/Scenes/GroupInfoInteractor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "328">
+               </Location>
+               <Location
+                  uuid = "8719E941-05BC-46A3-BE7A-1889A52B58B9 - d413fcb53949ded8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Babel.Group) -&gt; () in closure #1 (Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Babel.GroupInfoInteractor.updatePrivileges(for: Authenticator.User, isAdmin: Swift.Bool) -&gt; ()"
+                  moduleName = "Babel"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucaspereira/Workspace/Personal/Apps/Babel/Babel/Babel/Scenes/GroupInfoInteractor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "420">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CBC2E7FC-D882-4A30-A6E2-7390892721F0"
+            uuid = "8369F7A2-4F9C-4BB4-8A47-A5619C862845"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Babel/Scenes/GroupInfoViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
-            landmarkName = "makeMembersCell(from:indexPath:)"
+            startingLineNumber = "298"
+            endingLineNumber = "298"
+            landmarkName = "isUserAdmin(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8369F7A2-4F9C-4BB4-8A47-A5619C862845 - 206c7e6b73c17e42"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Babel.GroupInfoViewController.configureEditButton() -&gt; ()"
+                  moduleName = "Babel"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucaspereira/Workspace/Personal/Apps/Babel/Babel/Babel/Scenes/GroupInfoViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "280"
+                  endingLineNumber = "280"
+                  offsetFromSymbolStart = "252">
+               </Location>
+               <Location
+                  uuid = "8369F7A2-4F9C-4BB4-8A47-A5619C862845 - 8814a5583a02c0b2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Babel.GroupInfoViewController.isUserAdmin(Authenticator.User) -&gt; Swift.Bool"
+                  moduleName = "Babel"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucaspereira/Workspace/Personal/Apps/Babel/Babel/Babel/Scenes/GroupInfoViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "280"
+                  endingLineNumber = "280"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F07D89C4-2703-4EA9-92DD-B7BA024AF464"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Babel/Scenes/GroupInfoViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "86B9F876-D18A-44E7-B29F-B18A9B5CF41D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Babel/Scenes/ChatGroup/ChatGroupInteractor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "sendMessage(message:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9F6EEB59-191F-4305-8E97-673D070954A3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Babel/Helpers/StartGroupChat.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "createRecentItems(chatRoomId:group:type:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DF6180A1-0B67-4625-9F72-EABC17330E0B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Babel/Helpers/StartChat.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "createRecentItems(chatRoomId:users:type:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -25,6 +25,7 @@ extension FirebaseClient {
     
     public func saveRecent<T: Codable>(id: String, recentChat: T) {
         do {
+            // Aqui que ta o problema
             try firebaseReference(.recent).document(id).setData(from: recentChat)
         } catch {
             print("erro saving recent chat", error.localizedDescription)

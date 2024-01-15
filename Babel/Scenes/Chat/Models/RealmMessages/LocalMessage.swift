@@ -8,6 +8,7 @@ final class LocalMessage: Object, Codable {
     @objc dynamic var senderName = String()
     @objc dynamic var senderId = String()
     @objc dynamic var senderInitials = String()
+    @objc dynamic var senderAvatarLink = String()
     @objc dynamic var readDate = Date()
     @objc dynamic var type = String()
     @objc dynamic var status = String()

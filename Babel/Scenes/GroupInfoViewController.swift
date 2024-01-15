@@ -145,6 +145,7 @@ extension GroupInfoViewController: UITableViewDelegate {
         case 2:
             if isMember {
                 // Send message
+                interactor.sendMessage()
             } else {
                 let actionSheet = makeJoinGroupActionSheet(user: members[indexPath.row])
                 present(actionSheet, animated: true)
@@ -178,7 +179,7 @@ extension GroupInfoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 2:
-            return isAdmin ? 2 : 1
+            return 1
         case 3:
             return isAdmin ? members.count + 1 : members.count
         default:

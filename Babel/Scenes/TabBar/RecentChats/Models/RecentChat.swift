@@ -13,7 +13,7 @@ struct RecentChatModel: Codable, Equatable {
     
     @ServerTimestamp var date = Date()
     
-    let membersId: [String]
+    var membersId: [String]
     
     var lastMassage: String
     var unreadCounter: Int

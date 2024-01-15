@@ -18,7 +18,6 @@ final class RecentChatsInteractor {
     }
 }
 
-// MARK: - RecentChatsInteracting
 extension RecentChatsInteractor: RecentChatsInteracting {
     func loadRecentChats() {
         service.downloadRecentChats(key: StorageKey.senderId.rawValue, currentUserId: currentUser.id) { [weak self] recentChats in
@@ -37,12 +36,39 @@ extension RecentChatsInteractor: RecentChatsInteracting {
     func didTapOnChat(_ chat: RecentChatModel) {
         ChatHelper.shared.clearUnreadCounter(for: chat)
 //        StartChat.shared.restartChat(chatRoomId: chat.chatRoomId, memberIds: chat.membersId, type: .chat)
-        let dto = ChatDTO(
-            chatId: chat.chatRoomId,
-            recipientId: chat.receiverId,
-            recipientName: chat.receiverName,
-            recipientAvatarURL: chat.avatarLink
-        )
-        presenter.didNextStep(action: .pushToChatView(dto: dto))
+        
+        if chat.type == .chat {
+            let dto = ChatDTO(
+                chatId: chat.chatRoomId,
+                recipientId: chat.receiverId,
+                recipientName: chat.receiverName,
+                recipientAvatarURL: chat.avatarLink
+            )
+            presenter.didNextStep(action: .pushToChatView(dto: dto))
+        } else {
+//            groupInfoWorker.fetchGroup(from: chatRoomId) { [weak self] result in
+//                guard let self else { return }
+//                switch result {
+//                case let .success(group):
+//                    self.group = group
+//                    self.dto = ChatGroupDTO(chatId: self.chatRoomId, groupInfo: group, membersIds: group.members.compactMap({ $0.id }))
+//                    self.presenter.receiveDTO(dto)
+//                    self.loadChatMessages()
+//                case let .failure(error):
+//                    fatalError("Error on get dto gorup: \(error.localizedDescription)")
+//                }
+//            }
+            
+            service.fetchGroup(from: chat.chatRoomId) { [weak self] result in
+                guard let self else { return }
+                switch result {
+                case let .success(group):
+                    let dto = ChatGroupDTO(chatId: chat.chatRoomId, groupInfo: group, membersIds: group.members.compactMap({ $0.id }))
+                    self.presenter.didNextStep(action: .pushToGroupChatView(dto: dto))
+                case let .failure(error):
+                    fatalError("Error on get dto gorup: \(error.localizedDescription)")
+                }
+            }
+        }
     }
 }

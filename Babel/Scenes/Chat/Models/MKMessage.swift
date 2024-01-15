@@ -20,7 +20,7 @@ final class MKMessage: NSObject, MessageType {
     
     init(message: LocalMessage) {
         self.messageId = message.id
-        self.mkSender = MKSender(senderId: message.senderId, displayName: message.senderName)
+        self.mkSender = MKSender(senderId: message.senderId, displayName: message.senderName, avatarLink: message.senderAvatarLink)
         self.status = message.status
         self.kind = .text(message.message)
         self.senderInitials = message.senderInitials

@@ -2,6 +2,7 @@ import UIKit
 
 enum GroupInfoAction {
     case didExitGroup
+    case pushChatView(dto: ChatGroupDTO)
 }
 
 protocol GroupInfoRouting: AnyObject {
@@ -14,8 +15,12 @@ final class GroupInfoRouter {
 
 extension GroupInfoRouter: GroupInfoRouting {
     func perform(action: GroupInfoAction) {
-        if case .didExitGroup = action {
+        switch action {
+        case .didExitGroup:
             viewController?.navigationController?.popViewController(animated: true)
+        case .pushChatView(let dto):
+            let chatGroup = ChatGroupFactory.make(dto: dto)
+            viewController?.navigationController?.pushViewController(chatGroup, animated: true)
         }
     }
 }

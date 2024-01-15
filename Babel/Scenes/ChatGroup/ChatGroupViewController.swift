@@ -4,8 +4,9 @@ import MessageKit
 import InputBarAccessoryView
 import GalleryKit
 
-protocol ChatDisplaying: AnyObject {
+protocol ChatGroupDisplaying: AnyObject {
     func displayMessage(_ localMessage: LocalMessage)
+    func receiveDTO(_ dto: ChatGroupDTO)
     func displayRefreshedMessages(_ localMessage: LocalMessage)
     func refreshNewMessages()
     func endRefreshing()
@@ -13,12 +14,12 @@ protocol ChatDisplaying: AnyObject {
     func updateMessage(_ localMessage: LocalMessage)
 }
 
-final class ChatViewController: MessagesViewController {
+final class ChatGroupViewController: MessagesViewController {
     typealias Localizable = Strings.ChatView
     
     private lazy var titleLabel: TextLabel = {
         let label = TextLabel()
-        label.text = dto.recipientName
+        label.text = dto.groupInfo.name
         label.textAlignment = .center
         label.font = Font.md.make(isBold: true)
         label.adjustsFontSizeToFitWidth = true
@@ -84,11 +85,11 @@ final class ChatViewController: MessagesViewController {
     
     private let refreshController = UIRefreshControl()
     private let currentUser = UserSafe.shared.user
-    private let interactor: ChatInteracting
+    private let interactor: ChatGroupInteractor
     
-    private(set) var dto: ChatDTO
+    private(set) var dto: ChatGroupDTO
     
-    init(interactor: ChatInteracting, dto: ChatDTO) {
+    init(interactor: ChatGroupInteractor, dto: ChatGroupDTO) {
         self.interactor = interactor
         self.dto = dto
         super.init(nibName: nil, bundle: nil)
@@ -128,6 +129,7 @@ final class ChatViewController: MessagesViewController {
         audioDuration: Float = 0.0,
         location: String? = nil
     ) {
+        let memberIds = dto.membersIds
         let message = OutgoingMessage(
             chatId: dto.chatId,
             text: text,
@@ -136,7 +138,7 @@ final class ChatViewController: MessagesViewController {
             audio: audio,
             audioDuration: audioDuration,
             location: location,
-            memberIds: [currentUser.id, dto.recipientId]
+            memberIds: memberIds
         )
         interactor.sendMessage(message: message)
     }
@@ -175,8 +177,7 @@ final class ChatViewController: MessagesViewController {
     }
 }
 
-//MARK: - ViewConfiguration
-extension ChatViewController: ViewConfiguration {
+extension ChatGroupViewController: ViewConfiguration {
     func buildViewHierarchy() {
         navigationItem.titleView = stackView
     }
@@ -188,7 +189,7 @@ extension ChatViewController: ViewConfiguration {
         configureMessageCollectionView()
         configureMessageInputBar()
         
-        titleViewAvatar.setImage(with: dto.recipientAvatarURL, placeholderImage: Image.avatarPlaceholder.image) { [weak self] image in
+        titleViewAvatar.setImage(with: dto.groupInfo.avatarLink, placeholderImage: Image.avatarPlaceholder.image) { [weak self] image in
             self?.titleViewAvatar.image = image
             self?.stackView.layoutIfNeeded()
         }
@@ -197,14 +198,17 @@ extension ChatViewController: ViewConfiguration {
     }
 }
 
-// MARK: - ChatDisplaying
-extension ChatViewController: ChatDisplaying {
+extension ChatGroupViewController: ChatGroupDisplaying {
     func displayMessage(_ localMessage: LocalMessage) {
         let incoming = IncomingMessage(messagesViewController: self)
         let mkMessage = incoming.createMessage(localMessage: localMessage)!
         mkMessages.append(mkMessage)
         messagesCollectionView.reloadData()
         messagesCollectionView.scrollToLastItem(animated: true)
+    }
+    
+    func receiveDTO(_ dto: ChatGroupDTO) {
+        self.dto = dto
     }
     
     func displayRefreshedMessages(_ localMessage: LocalMessage) {
@@ -245,36 +249,36 @@ extension ChatViewController: ChatDisplaying {
 }
 
 //MARK: - LoadingViewDelegate
-extension ChatViewController: LoadingViewDelegate {
+extension ChatGroupViewController: LoadingViewDelegate {
     func dismissLoadingView() {
         spinnerView.removeFromSuperview()
     }
 }
 
 //MARK: - MessageInputBarDelegate
-extension ChatViewController: MessageInputBarDelegate {
+extension ChatGroupViewController: MessageInputBarDelegate {
     func openAttachActionSheet() {
         present(attachActionSheet, animated: true)
     }
     
     func audioRecording(_ state: RecordingState) {
-        interactor.audioRecording(state)
+//        interactor.audioRecording(state)
     }
 }
 
 //MARK: - Actions
-@objc private extension ChatViewController {
+@objc private extension ChatGroupViewController {
     func didTapOnContactInfo() {
-        interactor.didTapOnContactInfo()
+//        interactor.didTapOnContactInfo()
     }
     
     func didTapOnBackButton() {
-        interactor.didTapOnBackButton()
+//        interactor.didTapOnBackButton()
     }
 }
 
 //MARK: - Private methods
-private extension ChatViewController {
+private extension ChatGroupViewController {
     func configureMessageCollectionView() {
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messageCellDelegate = self

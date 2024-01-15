@@ -73,14 +73,6 @@ final class CreateGroupViewController: ViewController<CreateGroupInteracting, UI
         navigationItem.largeTitleDisplayMode =  .never
     }
     
-    override func buildViewHierarchy() {
-        
-    }
-    
-    override func setupConstraints() {
-        // template
-    }
-    
     override func configureViews() {
         title = Localizable.CreateGroup.title
         view.backgroundColor = Color.backgroundPrimary.uiColor

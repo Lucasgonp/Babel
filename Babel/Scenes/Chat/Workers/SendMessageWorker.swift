@@ -18,6 +18,7 @@ extension SendMessageWorker: SendMessageWorkerProtocol {
     func addMessage(_ message: LocalMessage, memberIds: [String]) {
         RealmManager.shared.saveToRealm(message)
         
+        // Aqui
         for memberId in memberIds {
             client.addMessage(message, memberId: memberId, chatRoomId: message.chatRoomId, messageId: message.id)
         }

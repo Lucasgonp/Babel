@@ -3,6 +3,7 @@ import UIKit
 enum RecentChatsAction {
     case pushToAllUsersView
     case pushToChatView(dto: ChatDTO)
+    case pushToGroupChatView(dto: ChatGroupDTO)
 }
 
 protocol RecentChatsRouting: AnyObject {
@@ -22,6 +23,10 @@ extension RecentChatsRouter: RecentChatsRouting {
             viewController?.navigationController?.pushViewController(usersController, animated: true)
         case .pushToChatView(let dto):
             let chatController = ChatFactory.make(dto: dto)
+            chatController.hidesBottomBarWhenPushed = true
+            viewController?.navigationController?.pushViewController(chatController, animated: true)
+        case let .pushToGroupChatView(dto):
+            let chatController = ChatGroupFactory.make(dto: dto)
             chatController.hidesBottomBarWhenPushed = true
             viewController?.navigationController?.pushViewController(chatController, animated: true)
         }

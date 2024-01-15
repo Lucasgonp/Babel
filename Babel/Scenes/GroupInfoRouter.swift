@@ -1,7 +1,7 @@
 import UIKit
 
 enum GroupInfoAction {
-    // template
+    case didExitGroup
 }
 
 protocol GroupInfoRouting: AnyObject {
@@ -12,9 +12,10 @@ final class GroupInfoRouter {
     weak var viewController: UIViewController?
 }
 
-// MARK: - GroupInfoRouting
 extension GroupInfoRouter: GroupInfoRouting {
     func perform(action: GroupInfoAction) {
-        // template
+        if case .didExitGroup = action {
+            viewController?.navigationController?.popViewController(animated: true)
+        }
     }
 }

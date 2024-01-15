@@ -8,11 +8,15 @@ protocol GroupInfoWorkerProtocol {
     func saveGroupToFirebase(group: Group, completion: @escaping (Error?) -> Void)
     func addMembers(_ members: [Group.Member], groupId: String, completion: @escaping (Error?) -> Void)
     func removeMember(_ member: Group.Member, groupId: String, completion: @escaping (Error?) -> Void)
-    func updatePrivileges(isAdmin: Bool, groupId: String, for userId: String, completion: @escaping (Error?) -> Void)
+    func updatePrivileges(isAdmin: Bool, groupId: String, userId: String, completion: @escaping (Error?) -> Void)
+    func exitGroup(groupId: String, completion: @escaping (Error?) -> Void)
 }
 
 final class GroupInfoWorker {
     typealias ClientProtocol = GroupClientProtocol & UsersClientProtocol
+    
+    private var currentUser: User { UserSafe.shared.user }
+    
     private let client: ClientProtocol
     
     init(client: ClientProtocol = FirebaseClient.shared) {
@@ -45,7 +49,20 @@ extension GroupInfoWorker: GroupInfoWorkerProtocol {
         client.removeMember(member, groupId: groupId, completion: completion)
     }
     
-    func updatePrivileges(isAdmin: Bool, groupId: String, for userId: String, completion: @escaping (Error?) -> Void) {
+    func updatePrivileges(isAdmin: Bool, groupId: String, userId: String, completion: @escaping (Error?) -> Void) {
         client.updatePrivileges(isAdmin: isAdmin, groupId: groupId, for: userId, completion: completion)
+    }
+    
+    func exitGroup(groupId: String, completion: @escaping (Error?) -> Void) {
+        
+        client.updatePrivileges(isAdmin: false, groupId: groupId, for: currentUser.id) { [weak self] error in
+            guard let self else { return }
+            if let error {
+                completion(error)
+            } else {
+                let member = Group.Member(id: self.currentUser.id, name: self.currentUser.name)
+                self.client.removeMember(member, groupId: groupId, completion: completion)
+            }
+        }
     }
 }

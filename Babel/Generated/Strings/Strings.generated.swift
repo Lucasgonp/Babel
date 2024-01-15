@@ -51,6 +51,8 @@ internal enum Strings {
     internal static let createButton = Strings.tr("Localizable", "CreateGroup.createButton", fallback: "Create")
   }
   internal enum GroupInfo {
+    /// Exit group
+    internal static let exitGroup = Strings.tr("Localizable", "GroupInfo.exitGroup", fallback: "Exit group")
     /// Group name
     internal static let groupNamePlaceholder = Strings.tr("Localizable", "GroupInfo.groupNamePlaceholder", fallback: "Group name")
     /// Group info

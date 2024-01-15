@@ -73,6 +73,7 @@
 // Group info
 "GroupInfo.groupNamePlaceholder" = "Group name";
 "GroupInfo.title" = "Group info";
+"GroupInfo.exitGroup" = "Exit group";
 "GroupInfo.ActionSheet.userInfo" = "User info";
 "GroupInfo.ActionSheet.makeAdmin" = "Make admin";
 "GroupInfo.ActionSheet.removeAdmin" = "Remove admin";

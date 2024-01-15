@@ -7,6 +7,7 @@ protocol GroupInfoInteracting: AnyObject {
     func addMembers(_ users: [User])
     func removeMember(_ user: User)
     func updatePrivileges(for member: User, isAdmin: Bool)
+    func exitGroup()
 }
 
 final class GroupInfoInteractor {
@@ -106,7 +107,7 @@ extension GroupInfoInteractor: GroupInfoInteracting {
     }
     
     func updatePrivileges(for member: User, isAdmin: Bool) {
-        worker.updatePrivileges(isAdmin: isAdmin, groupId: groupId, for: member.id) { [weak self] error in
+        worker.updatePrivileges(isAdmin: isAdmin, groupId: groupId, userId: member.id) { [weak self] error in
             guard let self else { return }
             if let error {
                 self.presenter.displayError(message: error.localizedDescription)
@@ -115,6 +116,35 @@ extension GroupInfoInteractor: GroupInfoInteracting {
                     guard let self else { return }
                     self.group = group
                     self.presenter.displayGroup(with: group, members: self.members)
+                }
+            }
+        }
+    }
+    
+    func exitGroup() {
+        let isLastAdm = (group?.adminIds.count == 1) && (group?.adminIds.contains({ currentUser.id }()) == true)
+        if isLastAdm {
+            if group!.members.count > 1 {
+                let otherMembers = group!.members.filter({ $0.id != currentUser.id }).first!
+                worker.updatePrivileges(isAdmin: true, groupId: groupId, userId: otherMembers.id) { [weak self] error in
+                    guard let self else { return }
+                    self.worker.exitGroup(groupId: self.groupId) { [weak self] error in
+                        if let error {
+                            self?.presenter.displayError(message: error.localizedDescription)
+                        } else {
+                            self?.presenter.didNextStep(action: .didExitGroup)
+                        }
+                    }
+                }
+            } else {
+                // Should delete group
+            }
+        } else {
+            worker.exitGroup(groupId: groupId) { [weak self] error in
+                if let error {
+                    self?.presenter.displayError(message: error.localizedDescription)
+                } else {
+                    self?.presenter.didNextStep(action: .didExitGroup)
                 }
             }
         }

@@ -64,6 +64,10 @@ final class GroupInfoViewController: ViewController<GroupInfoInteracting, UIView
     private var isAdmin: Bool {
         groupInfo?.adminIds.contains(currentUser.id) == true
     }
+    private var isMember: Bool {
+        let memberIds = members.compactMap({ $0.id })
+        return memberIds.contains(currentUser.id) == true
+    }
     
     private var groupInfo: Group?
     private lazy var members = [User]()
@@ -142,6 +146,13 @@ extension GroupInfoViewController: UITableViewDelegate {
         switch indexPath.section {
         case 1:
             present(groupDescNavigation, animated: true)
+        case 2:
+            if isMember {
+                // Send message
+            } else {
+                let actionSheet = makeJoinGroupActionSheet(user: members[indexPath.row])
+                present(actionSheet, animated: true)
+            }
         case 3:
             if isAdmin {
                 if indexPath.row == 0 {
@@ -154,6 +165,9 @@ extension GroupInfoViewController: UITableViewDelegate {
                 let actionSheet = makeMemberActionSheet(user: members[indexPath.row])
                 present(actionSheet, animated: true)
             }
+        case 4:
+            let actionSheet = makeExitGroupActionSheet(user: members[indexPath.row])
+            present(actionSheet, animated: true)
         default:
             return
         }
@@ -162,7 +176,7 @@ extension GroupInfoViewController: UITableViewDelegate {
 
 extension GroupInfoViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return isMember ? 5 : 4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -212,14 +226,23 @@ extension GroupInfoViewController: UITableViewDataSource {
             return cell
         case 2:
             if indexPath.row == 0 {
-                let cell: SettingsButtonCell = tableView.makeCell(indexPath: indexPath, accessoryType: .disclosureIndicator)
-                let image = Icon.send.image.withTintColor(Color.primary500.uiColor)
-                cell.render(.init(icon: image, text: "Start chat"))
-                return cell
+                if isMember {
+                    let cell: SettingsButtonCell = tableView.makeCell(indexPath: indexPath, accessoryType: .disclosureIndicator)
+                    let image = Icon.send.image.withTintColor(Color.primary500.uiColor)
+                    cell.render(.init(icon: image, text: "Start chat"))
+                    return cell
+                } else {
+                    let cell: UITableViewCell = tableView.makeCell(indexPath: indexPath, accessoryType: .disclosureIndicator)
+                    var content = cell.defaultContentConfiguration()
+                    content.text = "Join group"
+                    content.textProperties.color = Color.blueNative.uiColor
+                    cell.contentConfiguration = content
+                    return cell
+                }
             } else {
                 let cell: UITableViewCell = tableView.makeCell(indexPath: indexPath, accessoryType: .disclosureIndicator)
                 var content = cell.defaultContentConfiguration()
-                content.text = "Requests to join"
+                content.text = "Users requests"
                 content.textProperties.color = Color.blueNative.uiColor
                 cell.contentConfiguration = content
                 return cell
@@ -240,6 +263,13 @@ extension GroupInfoViewController: UITableViewDataSource {
                 return makeMembersCell(from: tableView, indexPath: indexPath, row: indexPath.row - 1)
             }
             return makeMembersCell(from: tableView, indexPath: indexPath, row: indexPath.row)
+        case 4:
+            let button = Button()
+            button.setTitle(Localizable.exitGroup, for: .normal)
+            button.setTitleColor(Color.warning500.uiColor, for: .normal)
+            let cell = UITableViewCell()
+            cell.fillWithSubview(subview: button, spacing: .init(top: 6, left: .zero, bottom: 6, right: .zero))
+            return cell
         default:
             return UITableViewCell()
         }
@@ -313,6 +343,31 @@ private extension GroupInfoViewController {
             actionSheet.addAction(removeUserAction)
         }
         
+        actionSheet.addAction(UIAlertAction(title: Strings.Commons.cancel, style: .cancel, handler: nil))
+        
+        return actionSheet
+    }
+    
+    func makeExitGroupActionSheet(user: User) -> UIAlertController {
+        let exitGroupAction = UIAlertAction(title: Localizable.exitGroup, style: .default, handler: { [weak self] _ in
+            self?.interactor.exitGroup()
+        })
+        
+        let actionSheet = UIAlertController(title: Localizable.exitGroup, message: "Do you want to exit this group?", preferredStyle: .actionSheet)
+        actionSheet.addAction(exitGroupAction)
+        actionSheet.addAction(UIAlertAction(title: Strings.Commons.cancel, style: .cancel, handler: nil))
+        
+        return actionSheet
+    }
+    
+    func makeJoinGroupActionSheet(user: User) -> UIAlertController {
+        let joinGroupAction = UIAlertAction(title: "Join group", style: .default, handler: { [weak self] _ in
+            guard let self else { return }
+            self.interactor.addMembers([self.currentUser])
+        })
+        
+        let actionSheet = UIAlertController(title: "Join group", message: "Do you want to join this group?", preferredStyle: .alert)
+        actionSheet.addAction(joinGroupAction)
         actionSheet.addAction(UIAlertAction(title: Strings.Commons.cancel, style: .cancel, handler: nil))
         
         return actionSheet

@@ -14,16 +14,7 @@ protocol SettingsViewDelegate: AnyObject {
 protocol SettingsDisplaying: AnyObject {
     func displayViewState(_ state: SettingsViewState)
 }
-
-private extension SettingsViewController.Layout {
-    // example
-    enum Size {
-        static let imageHeight: CGFloat = 90.0
-    }
-}
-
 final class SettingsViewController: ViewController<SettingsInteracting, UIView> {
-    fileprivate enum Layout { }
     typealias Localizable = Strings.Settings
     
     private lazy var tableView: UITableView = {

@@ -7,7 +7,7 @@ extension Date {
         
         var elapsed = String()
         if seconds < 24 * 60 * 60 {
-            formatter.dateFormat = "hh:mm"
+            formatter.dateFormat = "HH:mm"
             elapsed = formatter.string(from: self)
         } else if seconds < 24 * 60 * 60 * 7 {
             let formatter = DateFormatter()

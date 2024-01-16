@@ -17,7 +17,7 @@ extension GroupInfoRouter: GroupInfoRouting {
     func perform(action: GroupInfoAction) {
         switch action {
         case .didExitGroup:
-            viewController?.navigationController?.popViewController(animated: true)
+            viewController?.navigationController?.popToRootViewController(animated: true)
         case .pushChatView(let dto):
             let chatGroup = ChatGroupFactory.make(dto: dto)
             viewController?.navigationController?.pushViewController(chatGroup, animated: true)

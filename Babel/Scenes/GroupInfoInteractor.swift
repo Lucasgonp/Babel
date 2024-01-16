@@ -19,6 +19,10 @@ final class GroupInfoInteractor {
         UserSafe.shared.user
     }
     
+    private var membersIds: [String] {
+        group?.members.compactMap({ $0.id }) ?? []
+    }
+    
     private var group: Group?
     private let groupId: String
     private var members = [User]()
@@ -86,6 +90,7 @@ extension GroupInfoInteractor: GroupInfoInteracting {
                 self.presenter.displayError(message: error.localizedDescription)
             } else {
                 self.members.append(contentsOf: users)
+                self.group?.members.append(contentsOf: members)
                 self.fetchGroupMembers(ids: self.members.compactMap({ $0.id })) { [weak self] users in
                     guard let self else { return }
                     self.presenter.displayGroup(with: self.group!, members: users)
@@ -102,6 +107,7 @@ extension GroupInfoInteractor: GroupInfoInteracting {
                 self.presenter.displayError(message: error.localizedDescription)
             } else {
                 self.members.removeAll(where: { $0 == user })
+                self.group?.members.removeAll(where: { $0 == member })
                 self.presenter.displayGroup(with: self.group!, members: self.members)
             }
         }
@@ -130,10 +136,12 @@ extension GroupInfoInteractor: GroupInfoInteracting {
                 worker.updatePrivileges(isAdmin: true, groupId: groupId, userId: otherMembers.id) { [weak self] error in
                     guard let self else { return }
                     self.worker.exitGroup(groupId: self.groupId) { [weak self] error in
+                        guard let self else { return }
                         if let error {
-                            self?.presenter.displayError(message: error.localizedDescription)
+                            self.presenter.displayError(message: error.localizedDescription)
                         } else {
-                            self?.presenter.didNextStep(action: .didExitGroup)
+                            StartGroupChat.shared.restartChat(chatRoomId: self.groupId, memberIds: self.membersIds)
+                            self.presenter.didNextStep(action: .didExitGroup)
                         }
                     }
                 }
@@ -142,10 +150,12 @@ extension GroupInfoInteractor: GroupInfoInteracting {
             }
         } else {
             worker.exitGroup(groupId: groupId) { [weak self] error in
+                guard let self else { return }
                 if let error {
-                    self?.presenter.displayError(message: error.localizedDescription)
+                    self.presenter.displayError(message: error.localizedDescription)
                 } else {
-                    self?.presenter.didNextStep(action: .didExitGroup)
+                    StartGroupChat.shared.restartChat(chatRoomId: self.groupId, memberIds: self.membersIds)
+                    self.presenter.didNextStep(action: .didExitGroup)
                 }
             }
         }

@@ -46,19 +46,6 @@ extension RecentChatsInteractor: RecentChatsInteracting {
             )
             presenter.didNextStep(action: .pushToChatView(dto: dto))
         } else {
-//            groupInfoWorker.fetchGroup(from: chatRoomId) { [weak self] result in
-//                guard let self else { return }
-//                switch result {
-//                case let .success(group):
-//                    self.group = group
-//                    self.dto = ChatGroupDTO(chatId: self.chatRoomId, groupInfo: group, membersIds: group.members.compactMap({ $0.id }))
-//                    self.presenter.receiveDTO(dto)
-//                    self.loadChatMessages()
-//                case let .failure(error):
-//                    fatalError("Error on get dto gorup: \(error.localizedDescription)")
-//                }
-//            }
-            
             service.fetchGroup(from: chat.chatRoomId) { [weak self] result in
                 guard let self else { return }
                 switch result {

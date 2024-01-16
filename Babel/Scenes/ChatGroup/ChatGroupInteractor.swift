@@ -234,9 +234,10 @@ private extension ChatGroupInteractor {
     
     func resetUnreadCount() {
         fetchMessageWorker.getRecentChats(chatRoomId: dto.chatId) { recents in
+            
             for recent in recents {
                 var recent = recent
-                if recent.senderId != UserSafe.shared.user.id {
+                if recent.receiverId == UserSafe.shared.user.id {
                     recent.unreadCounter = 0
                 }
                 
@@ -260,6 +261,7 @@ private extension ChatGroupInteractor {
         }
         
         tempRecent.lastMassage = lastMessage
+        tempRecent.receiverName = currentUser.name
 //        tempRecent.membersId = dto.groupInfo.members.compactMap({ $0.id })
         tempRecent.date = Date()
         

@@ -55,6 +55,7 @@ private extension StartChat {
                     lastMassage: String(),
                     unreadCounter: 0,
                     avatarLink: receiverUser.avatarLink,
+                    groupName: nil,
                     type: type
                 )
                 self.client.saveRecent(id: recentObject.id, recentChat: recentObject)

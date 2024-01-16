@@ -1,6 +1,7 @@
 public protocol RecentChatClientProtocol {
     func downloadRecentChats<T: Codable>(key: String, currentUserId: String, completion: @escaping (_ allRecents: [T]) -> Void)
     func deleteRecentChat(_ id: String)
+    func deleteRecentChat(key: String, currentUserId: String)
     func updateRecentChat<T: Codable>(id: String, recentChat: T)
 }
 
@@ -19,6 +20,15 @@ extension FirebaseClient: RecentChatClientProtocol {
     
     public func deleteRecentChat(_ id: String) {
         firebaseReference(.recent).document(id).delete()
+    }
+    
+    public func deleteRecentChat(key: String, currentUserId: String) {
+        firebaseReference(.recent).whereField(key, isEqualTo: currentUserId).getDocuments { [weak self] snapshot, error in
+            guard let documents = snapshot?.documents, let document = documents.first else {
+                return
+            }
+            self?.firebaseReference(.recent).document(document.documentID).delete()
+        }
     }
     
     public func updateRecentChat<T: Codable>(id: String, recentChat: T) {

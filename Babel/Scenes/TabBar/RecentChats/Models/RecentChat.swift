@@ -9,7 +9,7 @@ struct RecentChatModel: Codable, Equatable {
     let senderName: String
     
     let receiverId: String
-    let receiverName: String
+    var receiverName: String
     
     @ServerTimestamp var date = Date()
     
@@ -21,5 +21,6 @@ struct RecentChatModel: Codable, Equatable {
     let avatarLink: String
     
     // group or chat
+    let groupName: String?
     let type: RecentChatType?
 }

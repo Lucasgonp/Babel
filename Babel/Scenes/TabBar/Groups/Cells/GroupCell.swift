@@ -74,7 +74,9 @@ extension GroupCell {
         statusLabel.text = dto.description
         
         if !dto.avatarLink.isEmpty {
-            avatar.setImage(with: dto.avatarLink, placeholderImage: Image.avatarPlaceholder.image)
+            avatar.setImage(with: dto.avatarLink) { [weak self] image in
+                self?.avatar.image = image ?? Image.avatarPlaceholder.image
+            }
         } else {
             avatar.image = Image.avatarPlaceholder.image
         }

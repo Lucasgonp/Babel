@@ -1,6 +1,7 @@
 import Authenticator
 import StorageKit
 import UIKit
+import NetworkKit
 
 protocol EditProfileServicing {
     func checkAuthentication(completion: @escaping (AuthCheckCredentials?) -> Void)
@@ -13,9 +14,11 @@ final class EditProfileService {
                                  AuthenticatorSaveUserProtocol
     
     private let authManager: AuthDependencies
+    private let client: EditProfileClientProtocol
     
-    init(authManager: AuthDependencies) {
+    init(authManager: AuthDependencies, client: EditProfileClientProtocol = FirebaseClient.shared) {
         self.authManager = authManager
+        self.client = client
     }
 }
 
@@ -30,6 +33,11 @@ extension EditProfileService: EditProfileServicing {
     }
     
     func updateAvatarImage(_ image: UIImage, directory: String, completion: @escaping (String?) -> Void) {
-        StorageManager.shared.uploadImage(image, directory: directory, callbackThread: .main, completion: completion)
+        StorageManager.shared.uploadImage(image, directory: directory, callbackThread: .main) { [weak self] documentLink in
+            if let documentLink {
+                self?.client.updateAvatarsOrigin(currentUserId: UserSafe.shared.user.id, imageLink: documentLink)
+            }
+            completion(documentLink)
+        }
     }
 }

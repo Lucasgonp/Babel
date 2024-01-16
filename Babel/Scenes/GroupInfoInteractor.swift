@@ -121,8 +121,10 @@ extension GroupInfoInteractor: GroupInfoInteracting {
             } else {
                 self.fetchGroupData { [weak self] group in
                     guard let self else { return }
-                    self.group = group
-                    self.presenter.displayGroup(with: group, members: self.members)
+                    DispatchQueue.main.async {
+                        self.group = group
+                        self.presenter.displayGroup(with: group, members: self.members)
+                    }
                 }
             }
         }
@@ -179,8 +181,10 @@ private extension GroupInfoInteractor {
                     completion(group)
                     
                 case let .failure(error):
-                    self?.presenter.displayLoading(isLoading: false)
-                    self?.presenter.displayError(message: error.localizedDescription)
+                    DispatchQueue.main.async { [weak self] in
+                        self?.presenter.displayLoading(isLoading: false)
+                        self?.presenter.displayError(message: error.localizedDescription)
+                    }
                 }
             }
         }

@@ -294,6 +294,7 @@ private extension ChatInteractor {
             tempRecent.unreadCounter += 1
         }
         
+        tempRecent.avatarLink = currentUser.avatarLink
         tempRecent.lastMassage = lastMessage
         tempRecent.date = Date()
         

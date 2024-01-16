@@ -28,14 +28,18 @@ extension UIImageView {
         activityIndicator.startAnimating()
         
         if let link, let url = URL(string: link) {
-            sd_setImage(with: url) { [weak self] image, _, _, _ in
-                if let image {
-                    completion?(image)
-                } else {
-                    self?.image = placeholderImage
-                    completion?(placeholderImage)
+            DispatchQueue.global().async {
+                SDWebImageManager.shared.loadImage(with: url, progress: nil) { [weak self] image, _, _, _, _, _ in
+                    DispatchQueue.main.async {
+                        if let image {
+                            completion?(image)
+                        } else {
+                            self?.image = placeholderImage
+                            completion?(placeholderImage)
+                        }
+                        activityIndicator.stopAnimating()
+                    }
                 }
-                activityIndicator.stopAnimating()
             }
         } else {
             image = placeholderImage

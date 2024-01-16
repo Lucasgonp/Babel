@@ -17,6 +17,12 @@
          contextName = "RecentChatsInteractor.didTapOnChat(_:):RecentChatsInteractor.swift">
       </ContextState>
       <ContextState
+         contextName = "ChatGroupInteractor.updateRecentItemWithNewMessage(recent:lastMessage:):ChatGroupInteractor.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in ChatViewController.configureViews():ChatViewController.swift">
+      </ContextState>
+      <ContextState
          contextName = "FirebaseClient.addMembers&lt;&#x3c4;_0_0&gt;(_:groupId:completion:):GroupClient.swift">
       </ContextState>
       <ContextState
@@ -24,6 +30,20 @@
          <PersistentStrings>
             <PersistentString
                value = "selectedUsers">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RecentChatCell.render(dto:):RecentChatCell.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in RecentChatCell.render(dto:):RecentChatCell.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "top">
+            </PersistentString>
+            <PersistentString
+               value = "dto">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

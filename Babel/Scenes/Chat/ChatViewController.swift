@@ -117,7 +117,7 @@ final class ChatViewController: MessagesViewController {
         
         //TODO: check if its necessary
 //        FirebaseRecentListener.shared.resetRecentCounter(chatRoomId: chatId)
-//        audioController.stopAnyOngoingPlaying()
+        audioController.stopAnyOngoingPlaying()
     }
     
     func messageSend(
@@ -150,9 +150,7 @@ final class ChatViewController: MessagesViewController {
     }
     
     func shouldDisplayHeader(for message: MessageType, at indexPath: IndexPath) -> Bool {
-        if indexPath.section == 0 {
-            return true
-        }
+        if indexPath.section == 0 { return true }
         
         let previousIndexPath = IndexPath(row: 0, section: indexPath.section - 1)
         let previousMessage = messageForItem(at: previousIndexPath, in: messagesCollectionView)
@@ -188,8 +186,9 @@ extension ChatViewController: ViewConfiguration {
         configureMessageCollectionView()
         configureMessageInputBar()
         
-        titleViewAvatar.setImage(with: dto.recipientAvatarURL, placeholderImage: Image.avatarPlaceholder.image) { [weak self] image in
-            self?.titleViewAvatar.image = image
+        titleViewAvatar.setImage(with: dto.recipientAvatarURL) { [weak self] image in
+            self?.titleViewAvatar.image = image ?? Image.avatarPlaceholder.image
+            self?.titleViewAvatar.frame = CGRect(x: 0, y: 0, width: 38, height: 38)
             self?.stackView.layoutIfNeeded()
         }
         
@@ -203,20 +202,26 @@ extension ChatViewController: ChatDisplaying {
         let incoming = IncomingMessage(messagesViewController: self)
         let mkMessage = incoming.createMessage(localMessage: localMessage)!
         mkMessages.append(mkMessage)
-        messagesCollectionView.reloadData()
-        messagesCollectionView.scrollToLastItem(animated: true)
+        DispatchQueue.main.async {
+            self.messagesCollectionView.reloadData()
+            self.messagesCollectionView.scrollToLastItem(animated: true)
+        }
     }
     
     func displayRefreshedMessages(_ localMessage: LocalMessage) {
         let incoming = IncomingMessage(messagesViewController: self)
         mkMessages.insert(incoming.createMessage(localMessage: localMessage)!, at: 0)
-        messagesCollectionView.reloadData()
-        messagesCollectionView.scrollToLastItem(animated: true)
+        DispatchQueue.main.async {
+            self.messagesCollectionView.reloadData()
+            self.messagesCollectionView.scrollToLastItem(animated: true)
+        }
     }
     
     func refreshNewMessages() {
-        messagesCollectionView.reloadDataAndKeepOffset()
-        refreshController.endRefreshing()
+        DispatchQueue.main.async {
+            self.messagesCollectionView.reloadDataAndKeepOffset()
+            self.refreshController.endRefreshing()
+        }
     }
     
     func endRefreshing() {

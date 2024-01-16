@@ -18,7 +18,7 @@ struct RecentChatModel: Codable, Equatable {
     var lastMassage: String
     var unreadCounter: Int
     
-    let avatarLink: String
+    var avatarLink: String
     
     // group or chat
     let groupName: String?

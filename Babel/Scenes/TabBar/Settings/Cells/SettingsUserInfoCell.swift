@@ -76,7 +76,9 @@ extension SettingsUserInfoCell {
         statusLabel.text = dto.status
         
         avatar.image = nil
-        avatar.setImage(with: dto.avatarLink, placeholderImage: Image.avatarPlaceholder.image)
+        avatar.setImage(with: dto.avatarLink) { [weak self] image in
+            self?.avatar.image = image ?? Image.avatarPlaceholder.image
+        }
     }
     
     func updateAvatar(image: UIImage) {

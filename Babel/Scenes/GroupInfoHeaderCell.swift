@@ -75,7 +75,9 @@ extension GroupInfoHeaderCell {
         fullNameLabel.text = dto.name
         
         if !dto.avatarLink.isEmpty {
-            avatarImageView.setImage(with: dto.avatarLink)
+            avatarImageView.setImage(with: dto.avatarLink) { [weak self] image in
+                self?.avatarImageView.image = image ?? Image.avatarPlaceholder.image
+            }
         } else {
             avatarImageView.image = Image.avatarPlaceholder.image
         }

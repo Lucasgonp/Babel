@@ -61,54 +61,38 @@ public extension GalleryController {
         
         var picker: YPImagePicker {
             var config = YPImagePickerConfiguration()
+            config.showsVideoTrimmer = true
+            config.library.maxNumberOfItems = 1
+            config.video.libraryTimeLimit = 60.0
+            config.video.minimumTimeLimit = 3.0
+            config.video.trimmerMaxDuration = 60.0
+            config.video.trimmerMinDuration = 1.0
+            config.video.recordingTimeLimit = 60.0
+            config.video.compression = AVAssetExportPresetHighestQuality
             
             switch self {
             case .camera:
                 config.screens = [.photo, .video]
                 config.showsVideoTrimmer = true
-                config.video.compression = AVAssetExportPresetHighestQuality
-                config.video.libraryTimeLimit = 60.0
-                config.video.minimumTimeLimit = 3.0
-                config.video.trimmerMaxDuration = 60.0
-                config.video.trimmerMinDuration = 1.0
                 config.albumName = "Babel Images"
-                config.video.recordingTimeLimit = 60.0
                 return YPImagePicker(configuration: config)
                 
             case .avatarPhoto:
                 config.screens = [.photo, .library]
-                config.library.onlySquare = true
                 config.library.mediaType = .photo
-                config.library.maxNumberOfItems = 1
                 config.showsCrop = .circle
                 return YPImagePicker(configuration: config)
                 
             case .library:
                 config.library.mediaType = .photoAndVideo
                 config.screens = [.library]
-                config.library.maxNumberOfItems = 5
-                config.video.compression = AVAssetExportPresetHighestQuality
-                config.showsVideoTrimmer = true
-                config.video.libraryTimeLimit = 60.0
-                config.video.minimumTimeLimit = 3.0
-                config.video.trimmerMaxDuration = 60.0
-                config.video.trimmerMinDuration = 1.0
                 return YPImagePicker(configuration: config)
                 
             case let .cameraAndLibrary(maxNumberOfItems):
                 config.screens = [.photo, .video]
-                config.showsVideoTrimmer = true
-                config.video.compression = AVAssetExportPresetHighestQuality
-                config.video.libraryTimeLimit = 60.0
-                config.video.minimumTimeLimit = 3.0
-                config.video.trimmerMaxDuration = 60.0
-                config.video.trimmerMinDuration = 1.0
-                config.albumName = "Babel Images"
-                config.video.recordingTimeLimit = 60.0
                 config.library.mediaType = .photoAndVideo
                 config.screens = [.library, .photo, .video]
                 config.library.maxNumberOfItems = maxNumberOfItems
-                config.video.trimmerMinDuration = 1.0
                 return YPImagePicker(configuration: config)
                 
             default:

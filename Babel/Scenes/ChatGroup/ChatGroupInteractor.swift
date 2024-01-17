@@ -262,7 +262,7 @@ private extension ChatGroupInteractor {
         
         tempRecent.lastMassage = lastMessage
         tempRecent.receiverName = currentUser.name
-        tempRecent.avatarLink = currentUser.avatarLink
+//        tempRecent.avatarLink = currentUser.avatarLink
 //        tempRecent.membersId = dto.groupInfo.members.compactMap({ $0.id })
         tempRecent.date = Date()
         

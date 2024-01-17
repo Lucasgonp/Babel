@@ -28,13 +28,13 @@ extension StorageAdapter {
             }
         })
         
-        task?.observe(StorageTaskStatus.progress, handler: { snapshot in
-            guard let snapshotProgress = snapshot.progress else {
-                return
-            }
-            let progress = snapshotProgress.completedUnitCount / snapshotProgress.totalUnitCount
-            ProgressHUD.progress(CGFloat(progress))
-        })
+//        task?.observe(StorageTaskStatus.progress, handler: { snapshot in
+//            guard let snapshotProgress = snapshot.progress else {
+//                return
+//            }
+//            let progress = snapshotProgress.completedUnitCount / snapshotProgress.totalUnitCount
+//            ProgressHUD.progress(CGFloat(progress))
+//        })
     }
     
     public func uploadVideo(_ video: Data, directory: String, callbackThread: DispatchQueue = .main, completion: @escaping (_ videoLink: String?) -> Void) {

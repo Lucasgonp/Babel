@@ -88,7 +88,7 @@ extension ChatInteractor: ChatInteracting {
         localMessage.senderInitials = "\(String(describing: currentUser.username.first))"
         localMessage.date = Date()
         localMessage.status = Localizable.sent
-        localMessage.senderAvatarLink = currentUser.avatarLink
+//        localMessage.senderAvatarLink = currentUser.avatarLink
         
         if let text = message.text {
             sendTextMessage(message: localMessage, text: text, memberIds: message.memberIds)
@@ -294,7 +294,7 @@ private extension ChatInteractor {
             tempRecent.unreadCounter += 1
         }
         
-        tempRecent.avatarLink = currentUser.avatarLink
+//        tempRecent.avatarLink = currentUser.avatarLink
         tempRecent.lastMassage = lastMessage
         tempRecent.date = Date()
         

@@ -62,7 +62,7 @@ final class ChatGroupViewController: MessagesViewController {
     }()
     
     private lazy var attachActionSheet = makeAttachActionSheet()
-    private lazy var galleryController: GalleryController = {
+    private let galleryController: GalleryController = {
         let gallery = GalleryController()
         gallery.configuration = .library
         return gallery

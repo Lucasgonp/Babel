@@ -189,9 +189,8 @@ extension ChatGroupViewController: ViewConfiguration {
         configureMessageCollectionView()
         configureMessageInputBar()
         
-        titleViewAvatar.setImage(with: dto.groupInfo.avatarLink, placeholderImage: Image.avatarPlaceholder.image) { [weak self] image in
-            self?.titleViewAvatar.image = image
-            self?.stackView.layoutIfNeeded()
+        titleViewAvatar.setImage(with: dto.groupInfo.avatarLink) { [weak self] image in
+            self?.titleViewAvatar.image = image ?? Image.avatarPlaceholder.image
         }
         
         // TODO: showMessageTimestampOnSwipeLeft = true
@@ -269,11 +268,7 @@ extension ChatGroupViewController: MessageInputBarDelegate {
 //MARK: - Actions
 @objc private extension ChatGroupViewController {
     func didTapOnContactInfo() {
-//        interactor.didTapOnContactInfo()
-    }
-    
-    func didTapOnBackButton() {
-//        interactor.didTapOnBackButton()
+        interactor.loadChatMessages()
     }
 }
 

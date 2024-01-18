@@ -1,7 +1,7 @@
 import UIKit
 
 enum ChatGroupAction {
-    // template
+    case pushGroupInfo(_ group: Group)
 }
 
 protocol ChatGroupRouting: AnyObject {
@@ -15,6 +15,8 @@ final class ChatGroupRouter {
 // MARK: - ChatGroupRouting
 extension ChatGroupRouter: ChatGroupRouting {
     func perform(action: ChatGroupAction) {
-        // template
+        if case let .pushGroupInfo(group) = action {
+            let controller = GroupInfoFactory.make(groupId: group.id)
+        }
     }
 }

@@ -9,6 +9,7 @@ protocol ChatGroupInteracting: AnyObject {
     func removeListeners()
     func refreshNewMessages()
     func updateTypingObserver()
+    func didTapOnGroupInfo()
 }
 
 final class ChatGroupInteractor {
@@ -142,6 +143,10 @@ extension ChatGroupInteractor: ChatGroupInteracting {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
             self?.typingCounterStop()
         }
+    }
+    
+    func didTapOnGroupInfo() {
+        presenter.didNextStep(action: <#T##ChatGroupAction#>)
     }
 }
 

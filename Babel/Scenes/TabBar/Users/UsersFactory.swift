@@ -4,7 +4,7 @@ import NetworkKit
 enum UsersFactory {
     static func make() -> UIViewController {
         let firebaseClient = FirebaseClient.shared
-        let service = UsersService(firebaseClient: firebaseClient)
+        let service = UsersWorker(firebaseClient: firebaseClient)
         let router = UsersRouter()
         let presenter = UsersPresenter(router: router)
         let interactor = UsersInteractor(service: service, presenter: presenter)

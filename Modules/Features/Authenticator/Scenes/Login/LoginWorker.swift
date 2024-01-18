@@ -1,26 +1,26 @@
 import FirebaseAuth
 
-protocol LoginServicing {
+protocol LoginWorkerProtocol {
     func login(userRequest: LoginUserRequestModel, completion: @escaping (Result<UserGlobalModel, AuthError>) -> Void)
     func resendEmailVerification(completion: @escaping (Error?) -> Void)
     func resetPassword(email: String, completion: @escaping (Error?) -> Void)
 }
 
-final class LoginService {
-    typealias AuthService = LoginProtocol &
+final class LoginWorker {
+    typealias AuthWorker = LoginProtocol &
                             AuthenticatorResendEmailProtocol &
                             AuthenticatorResetPasswordProtocol
-    private let authService: AuthService
+    private let authWorker: AuthWorker
     
-    init(authService: AuthService) {
-        self.authService = authService
+    init(authWorker: AuthWorker) {
+        self.authWorker = authWorker
     }
 }
 
-// MARK: - LoginServicing
-extension LoginService: LoginServicing {
+// MARK: - LoginWorkerProtocol
+extension LoginWorker: LoginWorkerProtocol {
     func login(userRequest: LoginUserRequestModel, completion: @escaping (Result<UserGlobalModel, AuthError>) -> Void) {
-        authService.login(with: userRequest, thread: .main) { result in
+        authWorker.login(with: userRequest, thread: .main) { result in
             switch result {
             case .success(let model):
                 completion(.success(model))
@@ -31,10 +31,10 @@ extension LoginService: LoginServicing {
     }
     
     func resendEmailVerification(completion: @escaping (Error?) -> Void) {
-        authService.resentEmailVerification(thread: .main, completion: completion)
+        authWorker.resentEmailVerification(thread: .main, completion: completion)
     }
     
     func resetPassword(email: String, completion: @escaping (Error?) -> Void) {
-        authService.resetPassword(email: email, thread: .main, completion: completion)
+        authWorker.resetPassword(email: email, thread: .main, completion: completion)
     }
 }

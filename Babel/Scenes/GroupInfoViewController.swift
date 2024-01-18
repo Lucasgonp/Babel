@@ -14,7 +14,7 @@ enum GroupInfoViewState {
     case setLoading(isLoading: Bool)
 }
 
-final class GroupInfoViewController: ViewController<GroupInfoInteracting, UIView> {
+final class GroupInfoViewController: ViewController<GroupInfoInteractorProtocol, UIView> {
     fileprivate enum Layout { }
     typealias Localizable = Strings.GroupInfo
     

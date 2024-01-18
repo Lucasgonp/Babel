@@ -1,21 +1,20 @@
 import FirebaseAuth
 
-protocol RegisterServicing {
+protocol RegisterWorkerProtocol {
     func register(userRequest: RegisterUserRequestModel, completion: @escaping (AuthError?) -> Void)
 }
 
-final class RegisterService {
-    private let authService: RegisterProtocol
+final class RegisterWorker {
+    private let authWorker: RegisterProtocol
     
-    init(authService: RegisterProtocol) {
-        self.authService = authService
+    init(authWorker: RegisterProtocol) {
+        self.authWorker = authWorker
     }
 }
 
-// MARK: - RegisterServicing
-extension RegisterService: RegisterServicing {
+extension RegisterWorker: RegisterWorkerProtocol {
     func register(userRequest: RegisterUserRequestModel, completion: @escaping (AuthError?) -> Void) {
-        authService.registerUser(with: userRequest, thread: .main) { didSuccess, error in
+        authWorker.registerUser(with: userRequest, thread: .main) { didSuccess, error in
             if let error {
                 completion(.custom(error))
                 return

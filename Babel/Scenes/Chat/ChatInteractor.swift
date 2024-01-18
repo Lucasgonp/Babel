@@ -2,7 +2,7 @@ import UIKit
 import struct GalleryKit.MediaVideo
 import RealmSwift
 
-protocol ChatInteracting: AnyObject {
+protocol ChatInteractorProtocol: AnyObject {
     func loadChatMessages()
     func sendMessage(message: OutgoingMessage)
     func refreshNewMessages()
@@ -11,7 +11,6 @@ protocol ChatInteracting: AnyObject {
     func didTapOnContactInfo()
     func registerObservers()
     func removeListeners()
-    
     func audioRecording(_ status: RecordingState)
 }
 
@@ -29,7 +28,7 @@ final class ChatInteractor {
     private var audioDuration = Date()
     
     //MARK: Init
-    private let presenter: ChatPresenting
+    private let presenter: ChatPresenterProtocol
     private let dto: ChatDTO
     
     //MARK: Workers
@@ -43,7 +42,7 @@ final class ChatInteractor {
         chatTypingWorker: ChatTypingWorkerProtocol = ChatTypingWorker(),
         fetchMessageWorker: FetchMessageWorkerProtocol = FetchMessageWorker(),
         sendMessageWorker: SendMessageWorkerProtocol = SendMessageWorker(),
-        presenter: ChatPresenting,
+        presenter: ChatPresenterProtocol,
         dto: ChatDTO
     ) {
         self.chatListenerWorker = chatListenerWorker
@@ -55,7 +54,7 @@ final class ChatInteractor {
     }
 }
 
-extension ChatInteractor: ChatInteracting {
+extension ChatInteractor: ChatInteractorProtocol {
     func loadChatMessages() {
         let predicate = NSPredicate(format: "chatRoomId = %@", dto.chatId)
         dto.allLocalMessages = RealmManager.shared.realm.objects(LocalMessage.self).filter(predicate).sorted(byKeyPath: kDATE, ascending: true)

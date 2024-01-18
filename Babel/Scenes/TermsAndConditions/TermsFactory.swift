@@ -2,7 +2,7 @@ import UIKit
 
 enum TermsFactory {
     static func make() -> UIViewController {
-        let service = TermsService()
+        let service = TermsWorker()
         let router = TermsRouter()
         let presenter = TermsPresenter(router: router)
         let interactor = TermsInteractor(service: service, presenter: presenter)

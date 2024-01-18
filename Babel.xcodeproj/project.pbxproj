@@ -13,7 +13,7 @@
 		7608DE692A9BAFDE0036027A /* EditBioRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE632A9BAFDE0036027A /* EditBioRouter.swift */; };
 		7608DE6A2A9BAFDE0036027A /* EditBioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE642A9BAFDE0036027A /* EditBioViewController.swift */; };
 		7608DE6B2A9BAFDE0036027A /* EditBioInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE652A9BAFDE0036027A /* EditBioInteractor.swift */; };
-		7608DE6C2A9BAFDE0036027A /* EditBioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE662A9BAFDE0036027A /* EditBioService.swift */; };
+		7608DE6C2A9BAFDE0036027A /* EditBioWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE662A9BAFDE0036027A /* EditBioWorker.swift */; };
 		7608DE6F2A9BAFF30036027A /* UserBio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE6E2A9BAFF30036027A /* UserBio.swift */; };
 		7608DE7A2A9D00A60036027A /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE792A9D00A60036027A /* UserCell.swift */; };
 		7608DE7D2A9D248E0036027A /* UserContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE7C2A9D248E0036027A /* UserContact.swift */; };
@@ -48,13 +48,13 @@
 		7620F2B62A92DE1B002A4EB5 /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2B02A92DE1B002A4EB5 /* SettingsRouter.swift */; };
 		7620F2B72A92DE1B002A4EB5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2B12A92DE1B002A4EB5 /* SettingsViewController.swift */; };
 		7620F2B82A92DE1B002A4EB5 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2B22A92DE1B002A4EB5 /* SettingsInteractor.swift */; };
-		7620F2B92A92DE1B002A4EB5 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2B32A92DE1B002A4EB5 /* SettingsService.swift */; };
+		7620F2B92A92DE1B002A4EB5 /* SettingsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2B32A92DE1B002A4EB5 /* SettingsWorker.swift */; };
 		7620F2D82A92EF74002A4EB5 /* UsersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2D22A92EF74002A4EB5 /* UsersFactory.swift */; };
 		7620F2D92A92EF74002A4EB5 /* UsersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2D32A92EF74002A4EB5 /* UsersPresenter.swift */; };
 		7620F2DA2A92EF74002A4EB5 /* UsersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2D42A92EF74002A4EB5 /* UsersRouter.swift */; };
 		7620F2DB2A92EF74002A4EB5 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2D52A92EF74002A4EB5 /* UsersViewController.swift */; };
 		7620F2DC2A92EF74002A4EB5 /* UsersInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2D62A92EF74002A4EB5 /* UsersInteractor.swift */; };
-		7620F2DD2A92EF74002A4EB5 /* UsersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2D72A92EF74002A4EB5 /* UsersService.swift */; };
+		7620F2DD2A92EF74002A4EB5 /* UsersWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F2D72A92EF74002A4EB5 /* UsersWorker.swift */; };
 		7620F4202A951280002A4EB5 /* SettingsButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F41F2A951280002A4EB5 /* SettingsButtonCell.swift */; };
 		7620F42A2A9541AC002A4EB5 /* SettingsUserInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4292A9541AB002A4EB5 /* SettingsUserInfoCell.swift */; };
 		7620F42D2A9567B1002A4EB5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F42C2A9567B1002A4EB5 /* User.swift */; };
@@ -65,19 +65,19 @@
 		7620F4402A9592C2002A4EB5 /* EditProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F43A2A9592C2002A4EB5 /* EditProfileRouter.swift */; };
 		7620F4412A9592C2002A4EB5 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F43B2A9592C2002A4EB5 /* EditProfileViewController.swift */; };
 		7620F4422A9592C2002A4EB5 /* EditProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F43C2A9592C2002A4EB5 /* EditProfileInteractor.swift */; };
-		7620F4432A9592C2002A4EB5 /* EditProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F43D2A9592C2002A4EB5 /* EditProfileService.swift */; };
+		7620F4432A9592C2002A4EB5 /* EditProfileWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F43D2A9592C2002A4EB5 /* EditProfileWorker.swift */; };
 		7620F44D2A9659F5002A4EB5 /* TellAFriendFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4472A9659F5002A4EB5 /* TellAFriendFactory.swift */; };
 		7620F44E2A9659F5002A4EB5 /* TellAFriendPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4482A9659F5002A4EB5 /* TellAFriendPresenter.swift */; };
 		7620F44F2A9659F5002A4EB5 /* TellAFriendRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4492A9659F5002A4EB5 /* TellAFriendRouter.swift */; };
 		7620F4502A9659F5002A4EB5 /* TellAFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F44A2A9659F5002A4EB5 /* TellAFriendViewController.swift */; };
 		7620F4512A9659F5002A4EB5 /* TellAFriendInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F44B2A9659F5002A4EB5 /* TellAFriendInteractor.swift */; };
-		7620F4522A9659F5002A4EB5 /* TellAFriendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F44C2A9659F5002A4EB5 /* TellAFriendService.swift */; };
+		7620F4522A9659F5002A4EB5 /* TellAFriendWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F44C2A9659F5002A4EB5 /* TellAFriendWorker.swift */; };
 		7620F4592A965A09002A4EB5 /* TermsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4532A965A09002A4EB5 /* TermsFactory.swift */; };
 		7620F45A2A965A09002A4EB5 /* TermsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4542A965A09002A4EB5 /* TermsPresenter.swift */; };
 		7620F45B2A965A09002A4EB5 /* TermsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4552A965A09002A4EB5 /* TermsRouter.swift */; };
 		7620F45C2A965A09002A4EB5 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4562A965A09002A4EB5 /* TermsViewController.swift */; };
 		7620F45D2A965A09002A4EB5 /* TermsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4572A965A09002A4EB5 /* TermsInteractor.swift */; };
-		7620F45E2A965A09002A4EB5 /* TermsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4582A965A09002A4EB5 /* TermsService.swift */; };
+		7620F45E2A965A09002A4EB5 /* TermsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4582A965A09002A4EB5 /* TermsWorker.swift */; };
 		7620F4612A96B31C002A4EB5 /* EditProfileHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4602A96B31C002A4EB5 /* EditProfileHeaderCell.swift */; };
 		76371F9A2B488F96007C9E7E /* ChatListenersWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76371F992B488F96007C9E7E /* ChatListenersWorker.swift */; };
 		76371F9C2B488FFB007C9E7E /* FetchMessageWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76371F9B2B488FFB007C9E7E /* FetchMessageWorker.swift */; };
@@ -113,7 +113,7 @@
 		7686A88E2B545C0F0025FBD3 /* AddMembersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7686A8882B545C0F0025FBD3 /* AddMembersRouter.swift */; };
 		7686A88F2B545C0F0025FBD3 /* AddMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7686A8892B545C0F0025FBD3 /* AddMembersViewController.swift */; };
 		7686A8902B545C0F0025FBD3 /* AddMembersInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7686A88A2B545C0F0025FBD3 /* AddMembersInteractor.swift */; };
-		7686A8912B545C0F0025FBD3 /* AddMembersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7686A88B2B545C0F0025FBD3 /* AddMembersService.swift */; };
+		7686A8912B545C0F0025FBD3 /* AddMembersWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7686A88B2B545C0F0025FBD3 /* AddMembersWorker.swift */; };
 		768E40DA2B4D9A5B009F8F7C /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768E40D92B4D9A5B009F8F7C /* KeyboardManager.swift */; };
 		768E40DD2B4DC94C009F8F7C /* Strings.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768E40DC2B4DC94C009F8F7C /* Strings.generated.swift */; };
 		768F4EB12B4F4AD80051E970 /* GroupsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768F4EAB2B4F4AD80051E970 /* GroupsFactory.swift */; };
@@ -130,11 +130,11 @@
 		7691DB4B2B499632007D52B3 /* RegisterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691DB182B499631007D52B3 /* RegisterRouter.swift */; };
 		7691DB4C2B499632007D52B3 /* RegisterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691DB192B499631007D52B3 /* RegisterFactory.swift */; };
 		7691DB4D2B499632007D52B3 /* RegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691DB1A2B499631007D52B3 /* RegisterInteractor.swift */; };
-		7691DB4E2B499632007D52B3 /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691DB1B2B499631007D52B3 /* RegisterService.swift */; };
+		7691DB4E2B499632007D52B3 /* RegisterWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691DB1B2B499631007D52B3 /* RegisterWorker.swift */; };
 		7691DB4F2B499632007D52B3 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691DB1C2B499631007D52B3 /* RegisterViewController.swift */; };
 		7691DB502B499632007D52B3 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691DB1E2B499631007D52B3 /* LoginInteractor.swift */; };
 		7691DB512B499632007D52B3 /* LoginFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691DB1F2B499631007D52B3 /* LoginFactory.swift */; };
-		7691DB522B499632007D52B3 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691DB202B499631007D52B3 /* LoginService.swift */; };
+		7691DB522B499632007D52B3 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691DB202B499631007D52B3 /* LoginWorker.swift */; };
 		7691DB532B499632007D52B3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691DB212B499631007D52B3 /* LoginViewController.swift */; };
 		7691DB542B499632007D52B3 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691DB222B499631007D52B3 /* LoginPresenter.swift */; };
 		7691DB552B499632007D52B3 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691DB232B499631007D52B3 /* LoginRouter.swift */; };
@@ -267,7 +267,7 @@
 		769E972F2AA3C4FC004FC6B4 /* ContactInfoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E97292AA3C4FC004FC6B4 /* ContactInfoRouter.swift */; };
 		769E97302AA3C4FC004FC6B4 /* ContactInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E972A2AA3C4FC004FC6B4 /* ContactInfoViewController.swift */; };
 		769E97312AA3C4FC004FC6B4 /* ContactInfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E972B2AA3C4FC004FC6B4 /* ContactInfoInteractor.swift */; };
-		769E97322AA3C4FC004FC6B4 /* ContactInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E972C2AA3C4FC004FC6B4 /* ContactInfoService.swift */; };
+		769E97322AA3C4FC004FC6B4 /* ContactInfoWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E972C2AA3C4FC004FC6B4 /* ContactInfoWorker.swift */; };
 		769E97352AA3CA1B004FC6B4 /* ContactInfoHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E97342AA3CA1B004FC6B4 /* ContactInfoHeaderCell.swift */; };
 		76AF8DC22B51EDF400E21CD5 /* GroupInfoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AF8DBC2B51EDF400E21CD5 /* GroupInfoFactory.swift */; };
 		76AF8DC32B51EDF400E21CD5 /* GroupInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AF8DBD2B51EDF400E21CD5 /* GroupInfoPresenter.swift */; };
@@ -323,7 +323,7 @@
 		76CAA1892A8AA9ED00D742E9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA1832A8AA9ED00D742E9 /* HomeViewController.swift */; };
 		76CAA18A2A8AA9ED00D742E9 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA1842A8AA9ED00D742E9 /* HomeRouter.swift */; };
 		76CAA18B2A8AA9ED00D742E9 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA1852A8AA9ED00D742E9 /* HomePresenter.swift */; };
-		76CAA18C2A8AA9ED00D742E9 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA1862A8AA9ED00D742E9 /* HomeService.swift */; };
+		76CAA18C2A8AA9ED00D742E9 /* HomeWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA1862A8AA9ED00D742E9 /* HomeWorker.swift */; };
 		76CAA18E2A8AAA6800D742E9 /* BabelResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA18D2A8AAA6800D742E9 /* BabelResources.swift */; };
 		76CAA1902A8AAC0100D742E9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 76CAA18F2A8AAC0100D742E9 /* GoogleService-Info.plist */; };
 		76D246762AC4A2CF00FDA81E /* ChatHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D246752AC4A2CF00FDA81E /* ChatHelper.swift */; };
@@ -341,7 +341,7 @@
 		76DA7EBE2AB78D1F00106731 /* RecentChatsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DA7EB82AB78D1F00106731 /* RecentChatsRouter.swift */; };
 		76DA7EBF2AB78D1F00106731 /* RecentChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DA7EB92AB78D1F00106731 /* RecentChatsViewController.swift */; };
 		76DA7EC02AB78D1F00106731 /* RecentChatsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DA7EBA2AB78D1F00106731 /* RecentChatsInteractor.swift */; };
-		76DA7EC12AB78D1F00106731 /* RecentChatsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DA7EBB2AB78D1F00106731 /* RecentChatsService.swift */; };
+		76DA7EC12AB78D1F00106731 /* RecentChatsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DA7EBB2AB78D1F00106731 /* RecentChatsWorker.swift */; };
 		76DA7EC42AB78E7400106731 /* RecentChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DA7EC32AB78E7400106731 /* RecentChatCell.swift */; };
 		76E41BF22B559B2C00976A73 /* GroupInfoMessageWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E41BF12B559B2C00976A73 /* GroupInfoMessageWorker.swift */; };
 		76E41BF62B562DEE00976A73 /* EditProfileClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E41BF42B562D8E00976A73 /* EditProfileClient.swift */; };
@@ -507,7 +507,7 @@
 		7608DE632A9BAFDE0036027A /* EditBioRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBioRouter.swift; sourceTree = "<group>"; };
 		7608DE642A9BAFDE0036027A /* EditBioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBioViewController.swift; sourceTree = "<group>"; };
 		7608DE652A9BAFDE0036027A /* EditBioInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBioInteractor.swift; sourceTree = "<group>"; };
-		7608DE662A9BAFDE0036027A /* EditBioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBioService.swift; sourceTree = "<group>"; };
+		7608DE662A9BAFDE0036027A /* EditBioWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBioWorker.swift; sourceTree = "<group>"; };
 		7608DE6E2A9BAFF30036027A /* UserBio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBio.swift; sourceTree = "<group>"; };
 		7608DE792A9D00A60036027A /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		7608DE7C2A9D248E0036027A /* UserContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContact.swift; sourceTree = "<group>"; };
@@ -542,13 +542,13 @@
 		7620F2B02A92DE1B002A4EB5 /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
 		7620F2B12A92DE1B002A4EB5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7620F2B22A92DE1B002A4EB5 /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
-		7620F2B32A92DE1B002A4EB5 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
+		7620F2B32A92DE1B002A4EB5 /* SettingsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWorker.swift; sourceTree = "<group>"; };
 		7620F2D22A92EF74002A4EB5 /* UsersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersFactory.swift; sourceTree = "<group>"; };
 		7620F2D32A92EF74002A4EB5 /* UsersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersPresenter.swift; sourceTree = "<group>"; };
 		7620F2D42A92EF74002A4EB5 /* UsersRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRouter.swift; sourceTree = "<group>"; };
 		7620F2D52A92EF74002A4EB5 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		7620F2D62A92EF74002A4EB5 /* UsersInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersInteractor.swift; sourceTree = "<group>"; };
-		7620F2D72A92EF74002A4EB5 /* UsersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersService.swift; sourceTree = "<group>"; };
+		7620F2D72A92EF74002A4EB5 /* UsersWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersWorker.swift; sourceTree = "<group>"; };
 		7620F41F2A951280002A4EB5 /* SettingsButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButtonCell.swift; sourceTree = "<group>"; };
 		7620F4292A9541AB002A4EB5 /* SettingsUserInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUserInfoCell.swift; sourceTree = "<group>"; };
 		7620F42C2A9567B1002A4EB5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -559,19 +559,19 @@
 		7620F43A2A9592C2002A4EB5 /* EditProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileRouter.swift; sourceTree = "<group>"; };
 		7620F43B2A9592C2002A4EB5 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		7620F43C2A9592C2002A4EB5 /* EditProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileInteractor.swift; sourceTree = "<group>"; };
-		7620F43D2A9592C2002A4EB5 /* EditProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileService.swift; sourceTree = "<group>"; };
+		7620F43D2A9592C2002A4EB5 /* EditProfileWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileWorker.swift; sourceTree = "<group>"; };
 		7620F4472A9659F5002A4EB5 /* TellAFriendFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TellAFriendFactory.swift; sourceTree = "<group>"; };
 		7620F4482A9659F5002A4EB5 /* TellAFriendPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TellAFriendPresenter.swift; sourceTree = "<group>"; };
 		7620F4492A9659F5002A4EB5 /* TellAFriendRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TellAFriendRouter.swift; sourceTree = "<group>"; };
 		7620F44A2A9659F5002A4EB5 /* TellAFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TellAFriendViewController.swift; sourceTree = "<group>"; };
 		7620F44B2A9659F5002A4EB5 /* TellAFriendInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TellAFriendInteractor.swift; sourceTree = "<group>"; };
-		7620F44C2A9659F5002A4EB5 /* TellAFriendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TellAFriendService.swift; sourceTree = "<group>"; };
+		7620F44C2A9659F5002A4EB5 /* TellAFriendWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TellAFriendWorker.swift; sourceTree = "<group>"; };
 		7620F4532A965A09002A4EB5 /* TermsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsFactory.swift; sourceTree = "<group>"; };
 		7620F4542A965A09002A4EB5 /* TermsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsPresenter.swift; sourceTree = "<group>"; };
 		7620F4552A965A09002A4EB5 /* TermsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsRouter.swift; sourceTree = "<group>"; };
 		7620F4562A965A09002A4EB5 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		7620F4572A965A09002A4EB5 /* TermsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsInteractor.swift; sourceTree = "<group>"; };
-		7620F4582A965A09002A4EB5 /* TermsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsService.swift; sourceTree = "<group>"; };
+		7620F4582A965A09002A4EB5 /* TermsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsWorker.swift; sourceTree = "<group>"; };
 		7620F4602A96B31C002A4EB5 /* EditProfileHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileHeaderCell.swift; sourceTree = "<group>"; };
 		76228DA32A8AAF6200C27C7A /* Authenticator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Authenticator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76228DA62A8AAF6800C27C7A /* NetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -608,7 +608,7 @@
 		7686A8882B545C0F0025FBD3 /* AddMembersRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMembersRouter.swift; sourceTree = "<group>"; };
 		7686A8892B545C0F0025FBD3 /* AddMembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMembersViewController.swift; sourceTree = "<group>"; };
 		7686A88A2B545C0F0025FBD3 /* AddMembersInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMembersInteractor.swift; sourceTree = "<group>"; };
-		7686A88B2B545C0F0025FBD3 /* AddMembersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMembersService.swift; sourceTree = "<group>"; };
+		7686A88B2B545C0F0025FBD3 /* AddMembersWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMembersWorker.swift; sourceTree = "<group>"; };
 		768E40D92B4D9A5B009F8F7C /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
 		768E40DC2B4DC94C009F8F7C /* Strings.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.generated.swift; sourceTree = "<group>"; };
 		768F4EAB2B4F4AD80051E970 /* GroupsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsFactory.swift; sourceTree = "<group>"; };
@@ -626,11 +626,11 @@
 		7691DB182B499631007D52B3 /* RegisterRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterRouter.swift; sourceTree = "<group>"; };
 		7691DB192B499631007D52B3 /* RegisterFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterFactory.swift; sourceTree = "<group>"; };
 		7691DB1A2B499631007D52B3 /* RegisterInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterInteractor.swift; sourceTree = "<group>"; };
-		7691DB1B2B499631007D52B3 /* RegisterService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
+		7691DB1B2B499631007D52B3 /* RegisterWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterWorker.swift; sourceTree = "<group>"; };
 		7691DB1C2B499631007D52B3 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		7691DB1E2B499631007D52B3 /* LoginInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		7691DB1F2B499631007D52B3 /* LoginFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginFactory.swift; sourceTree = "<group>"; };
-		7691DB202B499631007D52B3 /* LoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		7691DB202B499631007D52B3 /* LoginWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
 		7691DB212B499631007D52B3 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7691DB222B499631007D52B3 /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		7691DB232B499631007D52B3 /* LoginRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
@@ -751,7 +751,7 @@
 		769E97292AA3C4FC004FC6B4 /* ContactInfoRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoRouter.swift; sourceTree = "<group>"; };
 		769E972A2AA3C4FC004FC6B4 /* ContactInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoViewController.swift; sourceTree = "<group>"; };
 		769E972B2AA3C4FC004FC6B4 /* ContactInfoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoInteractor.swift; sourceTree = "<group>"; };
-		769E972C2AA3C4FC004FC6B4 /* ContactInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoService.swift; sourceTree = "<group>"; };
+		769E972C2AA3C4FC004FC6B4 /* ContactInfoWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoWorker.swift; sourceTree = "<group>"; };
 		769E97342AA3CA1B004FC6B4 /* ContactInfoHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoHeaderCell.swift; sourceTree = "<group>"; };
 		76AF8DBC2B51EDF400E21CD5 /* GroupInfoFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoFactory.swift; sourceTree = "<group>"; };
 		76AF8DBD2B51EDF400E21CD5 /* GroupInfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoPresenter.swift; sourceTree = "<group>"; };
@@ -792,7 +792,7 @@
 		76CAA1832A8AA9ED00D742E9 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		76CAA1842A8AA9ED00D742E9 /* HomeRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		76CAA1852A8AA9ED00D742E9 /* HomePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
-		76CAA1862A8AA9ED00D742E9 /* HomeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
+		76CAA1862A8AA9ED00D742E9 /* HomeWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeWorker.swift; sourceTree = "<group>"; };
 		76CAA18D2A8AAA6800D742E9 /* BabelResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabelResources.swift; sourceTree = "<group>"; };
 		76CAA18F2A8AAC0100D742E9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		76D246752AC4A2CF00FDA81E /* ChatHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHelper.swift; sourceTree = "<group>"; };
@@ -809,7 +809,7 @@
 		76DA7EB82AB78D1F00106731 /* RecentChatsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatsRouter.swift; sourceTree = "<group>"; };
 		76DA7EB92AB78D1F00106731 /* RecentChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatsViewController.swift; sourceTree = "<group>"; };
 		76DA7EBA2AB78D1F00106731 /* RecentChatsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatsInteractor.swift; sourceTree = "<group>"; };
-		76DA7EBB2AB78D1F00106731 /* RecentChatsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatsService.swift; sourceTree = "<group>"; };
+		76DA7EBB2AB78D1F00106731 /* RecentChatsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatsWorker.swift; sourceTree = "<group>"; };
 		76DA7EC32AB78E7400106731 /* RecentChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatCell.swift; sourceTree = "<group>"; };
 		76E41BF12B559B2C00976A73 /* GroupInfoMessageWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoMessageWorker.swift; sourceTree = "<group>"; };
 		76E41BF42B562D8E00976A73 /* EditProfileClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileClient.swift; sourceTree = "<group>"; };
@@ -933,7 +933,7 @@
 				7608DE632A9BAFDE0036027A /* EditBioRouter.swift */,
 				7608DE642A9BAFDE0036027A /* EditBioViewController.swift */,
 				7608DE652A9BAFDE0036027A /* EditBioInteractor.swift */,
-				7608DE662A9BAFDE0036027A /* EditBioService.swift */,
+				7608DE662A9BAFDE0036027A /* EditBioWorker.swift */,
 			);
 			path = EditBio;
 			sourceTree = "<group>";
@@ -1044,7 +1044,7 @@
 				7620F2B02A92DE1B002A4EB5 /* SettingsRouter.swift */,
 				7620F2B12A92DE1B002A4EB5 /* SettingsViewController.swift */,
 				7620F2B22A92DE1B002A4EB5 /* SettingsInteractor.swift */,
-				7620F2B32A92DE1B002A4EB5 /* SettingsService.swift */,
+				7620F2B32A92DE1B002A4EB5 /* SettingsWorker.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1059,7 +1059,7 @@
 				7620F2D42A92EF74002A4EB5 /* UsersRouter.swift */,
 				7620F2D52A92EF74002A4EB5 /* UsersViewController.swift */,
 				7620F2D62A92EF74002A4EB5 /* UsersInteractor.swift */,
-				7620F2D72A92EF74002A4EB5 /* UsersService.swift */,
+				7620F2D72A92EF74002A4EB5 /* UsersWorker.swift */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -1074,7 +1074,7 @@
 				76DA7EB82AB78D1F00106731 /* RecentChatsRouter.swift */,
 				76DA7EB92AB78D1F00106731 /* RecentChatsViewController.swift */,
 				76DA7EBA2AB78D1F00106731 /* RecentChatsInteractor.swift */,
-				76DA7EBB2AB78D1F00106731 /* RecentChatsService.swift */,
+				76DA7EBB2AB78D1F00106731 /* RecentChatsWorker.swift */,
 			);
 			path = RecentChats;
 			sourceTree = "<group>";
@@ -1128,7 +1128,7 @@
 				7620F43A2A9592C2002A4EB5 /* EditProfileRouter.swift */,
 				7620F43B2A9592C2002A4EB5 /* EditProfileViewController.swift */,
 				7620F43C2A9592C2002A4EB5 /* EditProfileInteractor.swift */,
-				7620F43D2A9592C2002A4EB5 /* EditProfileService.swift */,
+				7620F43D2A9592C2002A4EB5 /* EditProfileWorker.swift */,
 			);
 			path = EditProfile;
 			sourceTree = "<group>";
@@ -1141,7 +1141,7 @@
 				7620F4492A9659F5002A4EB5 /* TellAFriendRouter.swift */,
 				7620F44A2A9659F5002A4EB5 /* TellAFriendViewController.swift */,
 				7620F44B2A9659F5002A4EB5 /* TellAFriendInteractor.swift */,
-				7620F44C2A9659F5002A4EB5 /* TellAFriendService.swift */,
+				7620F44C2A9659F5002A4EB5 /* TellAFriendWorker.swift */,
 			);
 			path = TellAFriend;
 			sourceTree = "<group>";
@@ -1154,7 +1154,7 @@
 				7620F4552A965A09002A4EB5 /* TermsRouter.swift */,
 				7620F4562A965A09002A4EB5 /* TermsViewController.swift */,
 				7620F4572A965A09002A4EB5 /* TermsInteractor.swift */,
-				7620F4582A965A09002A4EB5 /* TermsService.swift */,
+				7620F4582A965A09002A4EB5 /* TermsWorker.swift */,
 			);
 			path = TermsAndConditions;
 			sourceTree = "<group>";
@@ -1300,7 +1300,7 @@
 				7686A8882B545C0F0025FBD3 /* AddMembersRouter.swift */,
 				7686A8892B545C0F0025FBD3 /* AddMembersViewController.swift */,
 				7686A88A2B545C0F0025FBD3 /* AddMembersInteractor.swift */,
-				7686A88B2B545C0F0025FBD3 /* AddMembersService.swift */,
+				7686A88B2B545C0F0025FBD3 /* AddMembersWorker.swift */,
 			);
 			path = AddMember;
 			sourceTree = "<group>";
@@ -1401,7 +1401,7 @@
 				7691DB182B499631007D52B3 /* RegisterRouter.swift */,
 				7691DB192B499631007D52B3 /* RegisterFactory.swift */,
 				7691DB1A2B499631007D52B3 /* RegisterInteractor.swift */,
-				7691DB1B2B499631007D52B3 /* RegisterService.swift */,
+				7691DB1B2B499631007D52B3 /* RegisterWorker.swift */,
 				7691DB1C2B499631007D52B3 /* RegisterViewController.swift */,
 			);
 			path = Register;
@@ -1412,7 +1412,7 @@
 			children = (
 				7691DB1E2B499631007D52B3 /* LoginInteractor.swift */,
 				7691DB1F2B499631007D52B3 /* LoginFactory.swift */,
-				7691DB202B499631007D52B3 /* LoginService.swift */,
+				7691DB202B499631007D52B3 /* LoginWorker.swift */,
 				7691DB212B499631007D52B3 /* LoginViewController.swift */,
 				7691DB222B499631007D52B3 /* LoginPresenter.swift */,
 				7691DB232B499631007D52B3 /* LoginRouter.swift */,
@@ -1896,7 +1896,7 @@
 				769E97292AA3C4FC004FC6B4 /* ContactInfoRouter.swift */,
 				769E972A2AA3C4FC004FC6B4 /* ContactInfoViewController.swift */,
 				769E972B2AA3C4FC004FC6B4 /* ContactInfoInteractor.swift */,
-				769E972C2AA3C4FC004FC6B4 /* ContactInfoService.swift */,
+				769E972C2AA3C4FC004FC6B4 /* ContactInfoWorker.swift */,
 			);
 			path = ContactInfo;
 			sourceTree = "<group>";
@@ -2134,7 +2134,7 @@
 				76CAA1832A8AA9ED00D742E9 /* HomeViewController.swift */,
 				76CAA1842A8AA9ED00D742E9 /* HomeRouter.swift */,
 				76CAA1852A8AA9ED00D742E9 /* HomePresenter.swift */,
-				76CAA1862A8AA9ED00D742E9 /* HomeService.swift */,
+				76CAA1862A8AA9ED00D742E9 /* HomeWorker.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -2694,7 +2694,7 @@
 				7691DB6A2B499632007D52B3 /* UsernameValidation.swift in Sources */,
 				7691DB542B499632007D52B3 /* LoginPresenter.swift in Sources */,
 				7691DB5F2B499632007D52B3 /* AuthenticatorAdapter.swift in Sources */,
-				7691DB4E2B499632007D52B3 /* RegisterService.swift in Sources */,
+				7691DB4E2B499632007D52B3 /* RegisterWorker.swift in Sources */,
 				7691DB5B2B499632007D52B3 /* RegisterUserRequestModel.swift in Sources */,
 				7691DAF92B499409007D52B3 /* Authenticator.docc in Sources */,
 				7691DB622B499632007D52B3 /* AuthenticatorCheck.swift in Sources */,
@@ -2709,7 +2709,7 @@
 				7691DB612B499632007D52B3 /* AuthenticatorSaveUser.swift in Sources */,
 				7691DB6C2B499632007D52B3 /* FCollectionReference.swift in Sources */,
 				7691DB682B499632007D52B3 /* PasswordValidation.swift in Sources */,
-				7691DB522B499632007D52B3 /* LoginService.swift in Sources */,
+				7691DB522B499632007D52B3 /* LoginWorker.swift in Sources */,
 				7691DB4A2B499632007D52B3 /* RegisterPresenter.swift in Sources */,
 				7691DB632B499632007D52B3 /* AuthenticatorLogout.swift in Sources */,
 				7691DB572B499632007D52B3 /* AuthenticatorPresentation.swift in Sources */,
@@ -2870,7 +2870,7 @@
 				76EF5D492A905E3700D9AE8B /* DesignKit.framework in Sources */,
 				7686A88C2B545C0F0025FBD3 /* AddMembersFactory.swift in Sources */,
 				761011912B3A0137004639C4 /* MessageCellDelegate.swift in Sources */,
-				7620F4432A9592C2002A4EB5 /* EditProfileService.swift in Sources */,
+				7620F4432A9592C2002A4EB5 /* EditProfileWorker.swift in Sources */,
 				7608DE6F2A9BAFF30036027A /* UserBio.swift in Sources */,
 				76DA7EA22AB787C700106731 /* RecentChat.swift in Sources */,
 				7608DE692A9BAFDE0036027A /* EditBioRouter.swift in Sources */,
@@ -2885,7 +2885,7 @@
 				768E40DA2B4D9A5B009F8F7C /* KeyboardManager.swift in Sources */,
 				7686A88F2B545C0F0025FBD3 /* AddMembersViewController.swift in Sources */,
 				7620F2B62A92DE1B002A4EB5 /* SettingsRouter.swift in Sources */,
-				7608DE6C2A9BAFDE0036027A /* EditBioService.swift in Sources */,
+				7608DE6C2A9BAFDE0036027A /* EditBioWorker.swift in Sources */,
 				7620F2B52A92DE1B002A4EB5 /* SettingsPresenter.swift in Sources */,
 				76C6B7612B4B507000285EE2 /* AudioRecorderManager.swift in Sources */,
 				76D246802AC4AE7000FDA81E /* ChatFactory.swift in Sources */,
@@ -2900,7 +2900,7 @@
 				761011992B3A0351004639C4 /* MessageKitDefaults.swift in Sources */,
 				768F4EB62B4F4AD80051E970 /* GroupsWorker.swift in Sources */,
 				76AF8DCA2B51EE8F00E21CD5 /* GroupInfoHeaderCell.swift in Sources */,
-				7620F4522A9659F5002A4EB5 /* TellAFriendService.swift in Sources */,
+				7620F4522A9659F5002A4EB5 /* TellAFriendWorker.swift in Sources */,
 				76AF8DC22B51EDF400E21CD5 /* GroupInfoFactory.swift in Sources */,
 				76DA7EBE2AB78D1F00106731 /* RecentChatsRouter.swift in Sources */,
 				7620F4612A96B31C002A4EB5 /* EditProfileHeaderCell.swift in Sources */,
@@ -2913,18 +2913,18 @@
 				7669BA2D2ABDDA650002AD4C /* StartChat.swift in Sources */,
 				76AF8DC52B51EDF400E21CD5 /* GroupInfoViewController.swift in Sources */,
 				76CAA17E2A8AA9B700D742E9 /* NetworkManager.swift in Sources */,
-				7686A8912B545C0F0025FBD3 /* AddMembersService.swift in Sources */,
+				7686A8912B545C0F0025FBD3 /* AddMembersWorker.swift in Sources */,
 				761011972B3A0168004639C4 /* InputBarAccessoryViewDelegate.swift in Sources */,
-				76DA7EC12AB78D1F00106731 /* RecentChatsService.swift in Sources */,
-				7620F2DD2A92EF74002A4EB5 /* UsersService.swift in Sources */,
+				76DA7EC12AB78D1F00106731 /* RecentChatsWorker.swift in Sources */,
+				7620F2DD2A92EF74002A4EB5 /* UsersWorker.swift in Sources */,
 				7620F42A2A9541AC002A4EB5 /* SettingsUserInfoCell.swift in Sources */,
 				76AF8DC62B51EDF400E21CD5 /* GroupInfoInteractor.swift in Sources */,
-				769E97322AA3C4FC004FC6B4 /* ContactInfoService.swift in Sources */,
+				769E97322AA3C4FC004FC6B4 /* ContactInfoWorker.swift in Sources */,
 				7686A88E2B545C0F0025FBD3 /* AddMembersRouter.swift in Sources */,
 				76D246822AC4AE7000FDA81E /* ChatRouter.swift in Sources */,
 				76CAA18B2A8AA9ED00D742E9 /* HomePresenter.swift in Sources */,
-				7620F2B92A92DE1B002A4EB5 /* SettingsService.swift in Sources */,
-				7620F45E2A965A09002A4EB5 /* TermsService.swift in Sources */,
+				7620F2B92A92DE1B002A4EB5 /* SettingsWorker.swift in Sources */,
+				7620F45E2A965A09002A4EB5 /* TermsWorker.swift in Sources */,
 				76FA5D312B50DD8A004D86A5 /* Data+Extensions.swift in Sources */,
 				7620F4332A95694B002A4EB5 /* SettingsViewModel.swift in Sources */,
 				7620F45A2A965A09002A4EB5 /* TermsPresenter.swift in Sources */,
@@ -3002,7 +3002,7 @@
 				7610118F2B3A0128004639C4 /* MessageDataSource.swift in Sources */,
 				7620F45D2A965A09002A4EB5 /* TermsInteractor.swift in Sources */,
 				768F4EB22B4F4AD80051E970 /* GroupsPresenter.swift in Sources */,
-				76CAA18C2A8AA9ED00D742E9 /* HomeService.swift in Sources */,
+				76CAA18C2A8AA9ED00D742E9 /* HomeWorker.swift in Sources */,
 				763B03C42B4F74EB0022E145 /* CreateGroupInteractor.swift in Sources */,
 				7620F2DA2A92EF74002A4EB5 /* UsersRouter.swift in Sources */,
 				768F4EB52B4F4AD80051E970 /* GroupsInteractor.swift in Sources */,

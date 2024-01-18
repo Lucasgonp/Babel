@@ -1,18 +1,18 @@
-protocol HomePresenting: AnyObject {
+protocol HomePresenterProtocol: AnyObject {
     func displayViewState(_ state: HomeViewState)
     func didNextStep(action: HomeAction)
 }
 
 final class HomePresenter {
     weak var viewController: HomeDisplaying?
-    private let router: HomeRouting
+    private let router: HomeRouterProtocol
     
-    init(router: HomeRouting) {
+    init(router: HomeRouterProtocol) {
         self.router = router
     }
 }
 
-extension HomePresenter: HomePresenting {
+extension HomePresenter: HomePresenterProtocol {
     func displayViewState(_ state: HomeViewState) {
         viewController?.displayViewState(state)
     }

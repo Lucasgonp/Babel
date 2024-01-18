@@ -1,4 +1,4 @@
-protocol LoginInteracting: AnyObject {
+protocol LoginInteractorProtocol: AnyObject {
     func loginWith(userModel: LoginUserRequestModel)
     func resendEmailVerification()
     func didTapOnForgotPassword()
@@ -7,17 +7,17 @@ protocol LoginInteracting: AnyObject {
 }
 
 final class LoginInteractor {
-    private let service: LoginServicing
-    private let presenter: LoginPresenting
+    private let service: LoginWorkerProtocol
+    private let presenter: LoginPresenterProtocol
     
-    init(service: LoginServicing, presenter: LoginPresenting) {
+    init(service: LoginWorkerProtocol, presenter: LoginPresenterProtocol) {
         self.service = service
         self.presenter = presenter
     }
 }
 
-// MARK: - LoginInteracting
-extension LoginInteractor: LoginInteracting {
+// MARK: - LoginInteractorProtocol
+extension LoginInteractor: LoginInteractorProtocol {
     func loginWith(userModel: LoginUserRequestModel) {
         showButtonLoading()
         service.login(userRequest: userModel) { [weak self] result in

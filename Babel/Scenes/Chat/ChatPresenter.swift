@@ -1,4 +1,4 @@
-protocol ChatPresenting: AnyObject {
+protocol ChatPresenterProtocol: AnyObject {
     func displayMessage(_ localMessage: LocalMessage)
     func displayRefreshedMessages(_ refreshedMessege: LocalMessage)
     func refreshNewMessages()
@@ -9,16 +9,16 @@ protocol ChatPresenting: AnyObject {
 }
 
 final class ChatPresenter {
-    private let router: ChatRouting
+    private let router: ChatRouterProtocol
     weak var viewController: ChatDisplaying?
 
-    init(router: ChatRouting) {
+    init(router: ChatRouterProtocol) {
         self.router = router
     }
 }
 
-// MARK: - ChatPresenting
-extension ChatPresenter: ChatPresenting {
+// MARK: - ChatPresenterProtocol
+extension ChatPresenter: ChatPresenterProtocol {
     func displayMessage(_ localMessage: LocalMessage) {
         viewController?.displayMessage(localMessage)
     }

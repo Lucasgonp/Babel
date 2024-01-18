@@ -1,10 +1,10 @@
 import Authenticator
 
-protocol EditBioServicing {
+protocol EditBioWorkerProtocol {
     func saveUserToFirebase(user: User, completion: @escaping (Error?) -> Void)
 }
 
-final class EditBioService {
+final class EditBioWorker {
     private let authManager: AuthenticatorSaveUserProtocol
     
     init(authManager: AuthenticatorSaveUserProtocol) {
@@ -12,8 +12,8 @@ final class EditBioService {
     }
 }
 
-// MARK: - EditBioServicing
-extension EditBioService: EditBioServicing {
+// MARK: - EditBioWorkerProtocol
+extension EditBioWorker: EditBioWorkerProtocol {
     func saveUserToFirebase(user: User, completion: @escaping (Error?) -> Void) {
         authManager.saveUserToFirestore(user, thread: .main, completion: completion)
     }

@@ -1,19 +1,19 @@
-protocol UsersPresenting: AnyObject {
+protocol UsersPresenterProtocol: AnyObject {
     func displayViewState(_ state: UsersViewState)
     func didNextStep(action: UsersAction)
 }
 
 final class UsersPresenter {
-    private let router: UsersRouting
+    private let router: UsersRouterProtocol
     weak var viewController: UsersDisplaying?
 
-    init(router: UsersRouting) {
+    init(router: UsersRouterProtocol) {
         self.router = router
     }
 }
 
-// MARK: - UsersPresenting
-extension UsersPresenter: UsersPresenting {
+// MARK: - UsersPresenterProtocol
+extension UsersPresenter: UsersPresenterProtocol {
     func displayViewState(_ state: UsersViewState) {
         viewController?.displayViewState(state)
     }

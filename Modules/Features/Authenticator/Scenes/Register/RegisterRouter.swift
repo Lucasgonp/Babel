@@ -5,7 +5,7 @@ enum RegisterAction {
     case popToLogin
 }
 
-protocol RegisterRouting: AnyObject {
+protocol RegisterRouterProtocol: AnyObject {
     func perform(action: RegisterAction)
     func popToLogin(title: String, message: String)
 }
@@ -14,8 +14,8 @@ final class RegisterRouter {
     weak var viewController: UIViewController?
 }
 
-// MARK: - RegisterRouting
-extension RegisterRouter: RegisterRouting {
+// MARK: - RegisterRouterProtocol
+extension RegisterRouter: RegisterRouterProtocol {
     func popToLogin(title: String, message: String) {
         guard let viewController = viewController, let navigation = viewController.navigationController else {
             return
@@ -27,7 +27,7 @@ extension RegisterRouter: RegisterRouting {
                    return
                 }
                 
-                guard let controller = topController as? ViewController<LoginInteracting, UIView> else {
+                guard let controller = topController as? ViewController<LoginInteractorProtocol, UIView> else {
                     return
                 }
                 

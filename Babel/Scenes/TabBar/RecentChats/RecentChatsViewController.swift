@@ -18,7 +18,7 @@ private extension RecentChatsViewController.Layout {
     }
 }
 
-final class RecentChatsViewController: ViewController<RecentChatsInteracting, UIView> {
+final class RecentChatsViewController: ViewController<RecentChatsInteractorProtocol, UIView> {
     fileprivate enum Layout { 
         // template
     }

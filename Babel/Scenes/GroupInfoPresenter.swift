@@ -1,6 +1,6 @@
 import UIKit
 
-protocol GroupInfoPresenting: AnyObject {
+protocol GroupInfoPresenterProtocol: AnyObject {
     func displayGroup(with groupInfo: Group, members: [User])
     func updateGroupInfo(dto: EditGroupDTO)
     func updateGroupDesc(_ description: String)
@@ -10,15 +10,15 @@ protocol GroupInfoPresenting: AnyObject {
 }
 
 final class GroupInfoPresenter {
-    private let router: GroupInfoRouting
+    private let router: GroupInfoRouterProtocol
     weak var viewController: GroupInfoDisplaying?
 
-    init(router: GroupInfoRouting) {
+    init(router: GroupInfoRouterProtocol) {
         self.router = router
     }
 }
 
-extension GroupInfoPresenter: GroupInfoPresenting {
+extension GroupInfoPresenter: GroupInfoPresenterProtocol {
     func displayGroup(with groupInfo: Group, members: [User]) {
         viewController?.displayViewState(.success(groupInfo: groupInfo, members: members))
     }

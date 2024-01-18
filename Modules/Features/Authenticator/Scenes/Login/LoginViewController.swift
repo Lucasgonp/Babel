@@ -20,7 +20,7 @@ private extension LoginViewController.Layout {
     }
 }
 
-final class LoginViewController: ViewController<LoginInteracting, UIView> {
+final class LoginViewController: ViewController<LoginInteractorProtocol, UIView> {
     fileprivate enum Layout { }
     typealias Localizable = Strings.Login
     

@@ -3,7 +3,7 @@ import UIKit
 enum EditProfileFactory {
     static func make(user: User, delegate: SettingsViewDelegate?) -> UIViewController {
         let authManager = AuthManager.shared
-        let service = EditProfileService(authManager: authManager)
+        let service = EditProfileWorker(authManager: authManager)
         let router = EditProfileRouter()
         let presenter = EditProfilePresenter(router: router)
         let interactor = EditProfileInteractor(service: service, presenter: presenter, currentUser: user)

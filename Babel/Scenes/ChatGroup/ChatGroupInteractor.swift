@@ -2,7 +2,7 @@ import UIKit
 import RealmSwift
 import struct GalleryKit.MediaVideo
 
-protocol ChatGroupInteracting: AnyObject {
+protocol ChatGroupInteractorProtocol: AnyObject {
     func loadChatMessages()
     func sendMessage(message: OutgoingMessage)
     func registerObservers()
@@ -10,6 +10,7 @@ protocol ChatGroupInteracting: AnyObject {
     func refreshNewMessages()
     func updateTypingObserver()
     func didTapOnGroupInfo()
+    func audioRecording(_ status: RecordingState)
 }
 
 final class ChatGroupInteractor {
@@ -20,7 +21,7 @@ final class ChatGroupInteractor {
     }
     
     //MARK: Init
-    private let presenter: ChatGroupPresenting
+    private let presenter: ChatGroupPresenterProtocol
     private var dto: ChatGroupDTO
     
     private var notificationToken: NotificationToken?
@@ -43,7 +44,7 @@ final class ChatGroupInteractor {
         chatTypingWorker: ChatTypingWorkerProtocol = ChatTypingWorker(),
         fetchMessageWorker: FetchMessageWorkerProtocol = FetchMessageWorker(),
         sendMessageWorker: SendMessageWorkerProtocol = SendMessageWorker(),
-        presenter: ChatGroupPresenting,
+        presenter: ChatGroupPresenterProtocol,
         dto: ChatGroupDTO
     ) {
         self.chatListenerWorker = chatListenerWorker
@@ -55,7 +56,7 @@ final class ChatGroupInteractor {
     }
 }
 
-extension ChatGroupInteractor: ChatGroupInteracting {
+extension ChatGroupInteractor: ChatGroupInteractorProtocol {
     func loadChatMessages() {
         let predicate = NSPredicate(format: "chatRoomId = %@", dto.chatId)
         dto.allLocalMessages = RealmManager.shared.realm.objects(LocalMessage.self).filter(predicate).sorted(byKeyPath: kDATE, ascending: true)
@@ -146,7 +147,28 @@ extension ChatGroupInteractor: ChatGroupInteracting {
     }
     
     func didTapOnGroupInfo() {
-        presenter.didNextStep(action: <#T##ChatGroupAction#>)
+        presenter.didNextStep(action: .pushGroupInfo(dto.groupInfo.id))
+    }
+    
+    func audioRecording(_ status: RecordingState) {
+        switch status {
+        case .start:
+            AudioRecorderManager.shared.authorizeMicrophoneAccess { [weak self] in
+                guard let self else { return }
+                self.audioDuration = Date()
+                self.audioFileName = Date().stringDate()
+                AudioRecorderManager.shared.startRecording(fileName: self.audioFileName)
+            }
+        case .stop:
+            AudioRecorderManager.shared.finishRecording()
+            if StorageManager.shared.fileExistsAtPath(path: "\(audioFileName).m4a") {
+                let audioDuration = audioDuration.interval(ofComponent: .second, from: Date())
+                let message = OutgoingMessage(chatId: dto.chatId, audio: audioFileName, audioDuration: audioDuration, memberIds: dto.membersIds)
+                sendMessage(message: message)
+            } else {
+                print("no audio file")
+            }
+        }
     }
 }
 

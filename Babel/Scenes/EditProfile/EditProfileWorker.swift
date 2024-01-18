@@ -3,13 +3,13 @@ import StorageKit
 import UIKit
 import NetworkKit
 
-protocol EditProfileServicing {
+protocol EditProfileWorkerProtocol {
     func checkAuthentication(completion: @escaping (AuthCheckCredentials?) -> Void)
     func saveUserToFirebase(user: User, completion: @escaping (Error?) -> Void)
     func updateAvatarImage(_ image: UIImage, directory: String, completion: @escaping (String?) -> Void)
 }
 
-final class EditProfileService {
+final class EditProfileWorker {
     typealias AuthDependencies = CheckAuthenticationProtocol &
                                  AuthenticatorSaveUserProtocol
     
@@ -22,8 +22,7 @@ final class EditProfileService {
     }
 }
 
-// MARK: - EditProfileServicing
-extension EditProfileService: EditProfileServicing {
+extension EditProfileWorker: EditProfileWorkerProtocol {
     func checkAuthentication(completion: @escaping (AuthCheckCredentials?) -> Void) {
         authManager.checkAuthentication(thread: .main, completion: completion)
     }

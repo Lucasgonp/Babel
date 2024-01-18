@@ -1,19 +1,19 @@
-protocol TermsInteracting: AnyObject {
+protocol TermsInteractorProtocol: AnyObject {
     func loadSomething()
 }
 
 final class TermsInteractor {
-    private let service: TermsServicing
-    private let presenter: TermsPresenting
+    private let service: TermsWorkerProtocol
+    private let presenter: TermsPresenterProtocol
 
-    init(service: TermsServicing, presenter: TermsPresenting) {
+    init(service: TermsWorkerProtocol, presenter: TermsPresenterProtocol) {
         self.service = service
         self.presenter = presenter
     }
 }
 
-// MARK: - TermsInteracting
-extension TermsInteractor: TermsInteracting {
+// MARK: - TermsInteractorProtocol
+extension TermsInteractor: TermsInteractorProtocol {
     func loadSomething() {
         presenter.displaySomething()
     }

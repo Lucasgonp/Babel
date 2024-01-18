@@ -4,7 +4,7 @@ enum TellAFriendAction {
     // template
 }
 
-protocol TellAFriendRouting: AnyObject {
+protocol TellAFriendRouterProtocol: AnyObject {
     func perform(action: TellAFriendAction)
 }
 
@@ -12,8 +12,8 @@ final class TellAFriendRouter {
     weak var viewController: UIViewController?
 }
 
-// MARK: - TellAFriendRouting
-extension TellAFriendRouter: TellAFriendRouting {
+// MARK: - TellAFriendRouterProtocol
+extension TellAFriendRouter: TellAFriendRouterProtocol {
     func perform(action: TellAFriendAction) {
         // template
     }

@@ -1,26 +1,26 @@
 import UIKit
 import DesignKit
 
-protocol CreateGroupInteracting: AnyObject {
+protocol CreateGroupInteractorProtocol: AnyObject {
     func loadAllUsers()
     func createGroup(_ group: CreateGroupDTO)
 }
 
 final class CreateGroupInteractor {
     private let worker: CreateGroupWorkerProtocol
-    private let presenter: CreateGroupPresenting
+    private let presenter: CreateGroupPresenterProtocol
     
     private var currentUser: User {
         UserSafe.shared.user
     }
 
-    init(worker: CreateGroupWorkerProtocol, presenter: CreateGroupPresenting) {
+    init(worker: CreateGroupWorkerProtocol, presenter: CreateGroupPresenterProtocol) {
         self.worker = worker
         self.presenter = presenter
     }
 }
 
-extension CreateGroupInteractor: CreateGroupInteracting {
+extension CreateGroupInteractor: CreateGroupInteractorProtocol {
     func loadAllUsers() {
         worker.getAllUsers { [weak self] result in
             switch result {

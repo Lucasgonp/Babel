@@ -1,6 +1,6 @@
 import UIKit
 
-protocol EditProfilePresenting: AnyObject {
+protocol EditProfilePresenterProtocol: AnyObject {
     func updateEditProfile()
     func updateAvatarImage(_ image: UIImage)
     func displayErrorMessage(message: String)
@@ -8,16 +8,16 @@ protocol EditProfilePresenting: AnyObject {
 }
 
 final class EditProfilePresenter {
-    private let router: EditProfileRouting
+    private let router: EditProfileRouterProtocol
     weak var viewController: EditProfileDisplaying?
 
-    init(router: EditProfileRouting) {
+    init(router: EditProfileRouterProtocol) {
         self.router = router
     }
 }
 
-// MARK: - EditProfilePresenting
-extension EditProfilePresenter: EditProfilePresenting {    
+// MARK: - EditProfilePresenterProtocol
+extension EditProfilePresenter: EditProfilePresenterProtocol {    
     func updateEditProfile() {
         viewController?.updateEditProfile()
     }

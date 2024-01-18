@@ -18,7 +18,7 @@ private extension UsersViewController.Layout {
     }
 }
 
-final class UsersViewController: ViewController<UsersInteracting, UIView> {
+final class UsersViewController: ViewController<UsersInteractorProtocol, UIView> {
     private struct Section {
         let letter : String
         let contacts : [User]

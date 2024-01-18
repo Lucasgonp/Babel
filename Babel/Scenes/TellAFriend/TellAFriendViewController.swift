@@ -12,7 +12,7 @@ private extension TellAFriendViewController.Layout {
     }
 }
 
-final class TellAFriendViewController: ViewController<TellAFriendInteracting, UIView> {
+final class TellAFriendViewController: ViewController<TellAFriendInteractorProtocol, UIView> {
     fileprivate enum Layout { }
     typealias Localizable = Strings.Settings.TellAFriend
 

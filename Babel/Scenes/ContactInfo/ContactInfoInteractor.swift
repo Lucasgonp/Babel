@@ -1,11 +1,11 @@
-protocol ContactInfoInteracting: AnyObject {
+protocol ContactInfoInteractorProtocol: AnyObject {
     func loadContactInfo()
     func startChat()
 }
 
 final class ContactInfoInteractor {
-    private let service: ContactInfoServicing
-    private let presenter: ContactInfoPresenting
+    private let service: ContactInfoWorkerProtocol
+    private let presenter: ContactInfoPresenterProtocol
     private let currentUser = UserSafe.shared.user
     
     private var contactUser: User?
@@ -13,8 +13,8 @@ final class ContactInfoInteractor {
     private let shouldDisplayStartChat: Bool
 
     init(
-        service: ContactInfoServicing,
-        presenter: ContactInfoPresenting,
+        service: ContactInfoWorkerProtocol,
+        presenter: ContactInfoPresenterProtocol,
         contactUser: User? = nil,
         contactUserId: String = String(),
         shouldDisplayStartChat: Bool
@@ -27,8 +27,8 @@ final class ContactInfoInteractor {
     }
 }
 
-// MARK: - ContactInfoInteracting
-extension ContactInfoInteractor: ContactInfoInteracting {
+// MARK: - ContactInfoInteractorProtocol
+extension ContactInfoInteractor: ContactInfoInteractorProtocol {
     func loadContactInfo() {
         if let contactUser {
             presenter.displayViewState(.success(contact: contactUser, shouldDisplayStartChat: shouldDisplayStartChat))

@@ -4,7 +4,7 @@ enum UsersAction {
     // template
 }
 
-protocol UsersRouting: AnyObject {
+protocol UsersRouterProtocol: AnyObject {
     func perform(action: UsersAction)
 }
 
@@ -12,8 +12,8 @@ final class UsersRouter {
     weak var viewController: UIViewController?
 }
 
-// MARK: - UsersRouting
-extension UsersRouter: UsersRouting {
+// MARK: - UsersRouterProtocol
+extension UsersRouter: UsersRouterProtocol {
     func perform(action: UsersAction) {
         // template
     }

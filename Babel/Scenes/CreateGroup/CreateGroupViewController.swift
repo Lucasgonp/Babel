@@ -8,7 +8,7 @@ protocol CreateGroupDisplaying: AnyObject {
     func displayErrorMessage(message: String)
 }
 
-final class CreateGroupViewController: ViewController<CreateGroupInteracting, UIView> {
+final class CreateGroupViewController: ViewController<CreateGroupInteractorProtocol, UIView> {
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.register(cellType: CreateGroupHeaderCell.self)

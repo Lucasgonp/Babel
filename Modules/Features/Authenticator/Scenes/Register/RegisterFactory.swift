@@ -3,7 +3,7 @@ import UIKit
 enum RegisterFactory {
     static func make() -> UIViewController {
         let authManager = AuthManager.shared
-        let service = RegisterService(authService: authManager)
+        let service = RegisterWorker(authWorker: authManager)
         let router = RegisterRouter()
         let presenter = RegisterPresenter(router: router)
         let interactor = RegisterInteractor(service: service, presenter: presenter)

@@ -1,19 +1,19 @@
-protocol TermsPresenting: AnyObject {
+protocol TermsPresenterProtocol: AnyObject {
     func displaySomething()
     func didNextStep(action: TermsAction)
 }
 
 final class TermsPresenter {
-    private let router: TermsRouting
+    private let router: TermsRouterProtocol
     weak var viewController: TermsDisplaying?
 
-    init(router: TermsRouting) {
+    init(router: TermsRouterProtocol) {
         self.router = router
     }
 }
 
-// MARK: - TermsPresenting
-extension TermsPresenter: TermsPresenting {
+// MARK: - TermsPresenterProtocol
+extension TermsPresenter: TermsPresenterProtocol {
     func displaySomething() {
         viewController?.displaySomething()
     }

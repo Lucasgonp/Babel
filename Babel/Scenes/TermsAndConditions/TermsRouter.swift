@@ -4,7 +4,7 @@ enum TermsAction {
     // template
 }
 
-protocol TermsRouting: AnyObject {
+protocol TermsRouterProtocol: AnyObject {
     func perform(action: TermsAction)
 }
 
@@ -12,8 +12,8 @@ final class TermsRouter {
     weak var viewController: UIViewController?
 }
 
-// MARK: - TermsRouting
-extension TermsRouter: TermsRouting {
+// MARK: - TermsRouterProtocol
+extension TermsRouter: TermsRouterProtocol {
     func perform(action: TermsAction) {
         // template
     }

@@ -1,18 +1,18 @@
-protocol AddMembersInteracting: AnyObject {
+protocol AddMembersInteractorProtocol: AnyObject {
     func loadAllUsers()
 }
 
 final class AddMembersInteractor {
     private let worker: AddMembersWorkerProtocol
-    private let presenter: AddMembersPresenting
+    private let presenter: AddMembersPresenterProtocol
 
-    init(worker: AddMembersWorkerProtocol, presenter: AddMembersPresenting) {
+    init(worker: AddMembersWorkerProtocol, presenter: AddMembersPresenterProtocol) {
         self.worker = worker
         self.presenter = presenter
     }
 }
 
-extension AddMembersInteractor: AddMembersInteracting {
+extension AddMembersInteractor: AddMembersInteractorProtocol {
     func loadAllUsers() {
         worker.getAllUsers { [weak self] result in
             switch result {

@@ -4,7 +4,7 @@ enum AddMembersAction {
     // template
 }
 
-protocol AddMembersRouting: AnyObject {
+protocol AddMembersRouterProtocol: AnyObject {
     func perform(action: AddMembersAction)
 }
 
@@ -12,8 +12,8 @@ final class AddMembersRouter {
     weak var viewController: UIViewController?
 }
 
-// MARK: - AddMembersRouting
-extension AddMembersRouter: AddMembersRouting {
+// MARK: - AddMembersRouterProtocol
+extension AddMembersRouter: AddMembersRouterProtocol {
     func perform(action: AddMembersAction) {
         // template
     }

@@ -14,7 +14,7 @@ protocol SettingsViewDelegate: AnyObject {
 protocol SettingsDisplaying: AnyObject {
     func displayViewState(_ state: SettingsViewState)
 }
-final class SettingsViewController: ViewController<SettingsInteracting, UIView> {
+final class SettingsViewController: ViewController<SettingsInteractorProtocol, UIView> {
     typealias Localizable = Strings.Settings
     
     private lazy var tableView: UITableView = {

@@ -4,7 +4,7 @@ enum ContactInfoAction {
     case pushChatView(dto: ChatDTO)
 }
 
-protocol ContactInfoRouting: AnyObject {
+protocol ContactInfoRouterProtocol: AnyObject {
     func perform(action: ContactInfoAction)
 }
 
@@ -12,7 +12,7 @@ final class ContactInfoRouter {
     weak var viewController: UIViewController?
 }
 
-extension ContactInfoRouter: ContactInfoRouting {
+extension ContactInfoRouter: ContactInfoRouterProtocol {
     func perform(action: ContactInfoAction) {
         if case .pushChatView(let dto) = action {
             let chatController = ChatFactory.make(dto: dto)

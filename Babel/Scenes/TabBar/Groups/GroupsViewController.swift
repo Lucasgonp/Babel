@@ -9,7 +9,7 @@ protocol GroupsDisplaying: AnyObject {
     func displayAllGroups(_ groups: [Group])
 }
 
-final class GroupsViewController: ViewController<GroupsInteracting, UIView> {
+final class GroupsViewController: ViewController<GroupsInteractorProtocol, UIView> {
     private struct Section {
         let letter : String
         let groups : [Group]

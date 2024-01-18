@@ -1,6 +1,6 @@
 import DesignKit
 
-protocol LoginPresenting: AnyObject {
+protocol LoginPresenterProtocol: AnyObject {
     func displayViewState(_ state: LoginViewState)
     func displayResendEmailAlert()
     func displayForgotPasswordAlert()
@@ -12,16 +12,16 @@ protocol LoginPresenting: AnyObject {
 final class LoginPresenter {
     typealias Localizable = Strings.Login
     
-    private let router: LoginRouting
+    private let router: LoginRouterProtocol
     weak var viewController: LoginDisplaying?
 
-    init(router: LoginRouting) {
+    init(router: LoginRouterProtocol) {
         self.router = router
     }
 }
 
-// MARK: - LoginPresenting
-extension LoginPresenter: LoginPresenting {
+// MARK: - LoginPresenterProtocol
+extension LoginPresenter: LoginPresenterProtocol {
     func displayViewState(_ state: LoginViewState) {
         viewController?.displayViewState(state)
     }

@@ -1,4 +1,4 @@
-protocol RegisterPresenting: AnyObject {
+protocol RegisterPresenterProtocol: AnyObject {
     func displayViewState(_ state: RegisterViewState)
     func emailSentToNewUser()
     func didNextStep(action: RegisterAction)
@@ -7,16 +7,16 @@ protocol RegisterPresenting: AnyObject {
 final class RegisterPresenter {
     typealias Localizable = Strings.Register
     
-    private let router: RegisterRouting
+    private let router: RegisterRouterProtocol
     weak var viewController: RegisterDisplaying?
 
-    init(router: RegisterRouting) {
+    init(router: RegisterRouterProtocol) {
         self.router = router
     }
 }
 
-// MARK: - RegisterPresenting
-extension RegisterPresenter: RegisterPresenting {
+// MARK: - RegisterPresenterProtocol
+extension RegisterPresenter: RegisterPresenterProtocol {
     func displayViewState(_ state: RegisterViewState) {
         viewController?.displayViewState(state)
     }

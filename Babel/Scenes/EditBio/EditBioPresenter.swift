@@ -1,19 +1,19 @@
-protocol EditBioPresenting: AnyObject {
+protocol EditBioPresenterProtocol: AnyObject {
     func displayErrorMessage(message: String)
     func didNextStep(action: EditBioAction)
 }
 
 final class EditBioPresenter {
-    private let router: EditBioRouting
+    private let router: EditBioRouterProtocol
     weak var viewController: EditBioDisplaying?
 
-    init(router: EditBioRouting) {
+    init(router: EditBioRouterProtocol) {
         self.router = router
     }
 }
 
-// MARK: - EditBioPresenting
-extension EditBioPresenter: EditBioPresenting {
+// MARK: - EditBioPresenterProtocol
+extension EditBioPresenter: EditBioPresenterProtocol {
     func displayErrorMessage(message: String) {
         viewController?.displayErrorMessage(message: message)
     }

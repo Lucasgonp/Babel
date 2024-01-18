@@ -1,6 +1,6 @@
 import Foundation
 
-protocol GroupInfoInteracting: AnyObject {
+protocol GroupInfoInteractorProtocol: AnyObject {
     func fetchGroupData()
     func updateGroupInfo(dto: EditGroupDTO)
     func updateGroupDesc(_ description: String)
@@ -13,7 +13,7 @@ protocol GroupInfoInteracting: AnyObject {
 
 final class GroupInfoInteractor {
     private let worker: GroupInfoWorkerProtocol
-    private let presenter: GroupInfoPresenting
+    private let presenter: GroupInfoPresenterProtocol
     
     private var currentUser: User {
         UserSafe.shared.user
@@ -27,14 +27,14 @@ final class GroupInfoInteractor {
     private let groupId: String
     private var members = [User]()
 
-    init(worker: GroupInfoWorkerProtocol, presenter: GroupInfoPresenting, groupId: String) {
+    init(worker: GroupInfoWorkerProtocol, presenter: GroupInfoPresenterProtocol, groupId: String) {
         self.worker = worker
         self.presenter = presenter
         self.groupId = groupId
     }
 }
 
-extension GroupInfoInteractor: GroupInfoInteracting {
+extension GroupInfoInteractor: GroupInfoInteractorProtocol {
     func fetchGroupData() {
         presenter.displayLoading(isLoading: true)
         fetchGroupData { [weak self] group in

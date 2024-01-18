@@ -1,19 +1,19 @@
-protocol GroupsPresenting: AnyObject {
+protocol GroupsPresenterProtocol: AnyObject {
     func displayAllGroups(_ groups: [Group])
     func didNextStep(action: GroupsAction)
 }
 
 final class GroupsPresenter {
-    private let router: GroupsRouting
+    private let router: GroupsRouterProtocol
     weak var viewController: GroupsDisplaying?
 
-    init(router: GroupsRouting) {
+    init(router: GroupsRouterProtocol) {
         self.router = router
     }
 }
 
-// MARK: - GroupsPresenting
-extension GroupsPresenter: GroupsPresenting {
+// MARK: - GroupsPresenterProtocol
+extension GroupsPresenter: GroupsPresenterProtocol {
     func displayAllGroups(_ groups: [Group]) {
         viewController?.displayAllGroups(groups)
     }

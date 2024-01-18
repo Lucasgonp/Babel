@@ -1,6 +1,6 @@
 import Authenticator
 
-protocol SettingsInteracting: AnyObject {
+protocol SettingsInteractorProtocol: AnyObject {
     func loadSettings()
     func editProfile()
     func tellAFriend()
@@ -9,8 +9,8 @@ protocol SettingsInteracting: AnyObject {
 }
 
 final class SettingsInteractor {
-    private let service: SettingsServicing
-    private let presenter: SettingsPresenting
+    private let service: SettingsWorkerProtocol
+    private let presenter: SettingsPresenterProtocol
     private var user: User
     
     private var currentUser: User {
@@ -18,8 +18,8 @@ final class SettingsInteractor {
     }
     
     init(
-        service: SettingsServicing,
-        presenter: SettingsPresenting,
+        service: SettingsWorkerProtocol,
+        presenter: SettingsPresenterProtocol,
         user: User
     ) {
         self.service = service
@@ -28,8 +28,8 @@ final class SettingsInteractor {
     }
 }
 
-// MARK: - SettingsInteracting
-extension SettingsInteractor: SettingsInteracting {
+// MARK: - SettingsInteractorProtocol
+extension SettingsInteractor: SettingsInteractorProtocol {
     func loadSettings() {
         presenter.displayViewState(.success(user: currentUser))
         service.checkAuthentication { [weak self] credentials in

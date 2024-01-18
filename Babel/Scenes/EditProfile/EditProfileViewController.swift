@@ -9,7 +9,7 @@ protocol EditProfileDisplaying: AnyObject {
     func displayErrorMessage(message: String)
 }
 
-final class EditProfileViewController: ViewController<EditProfileInteracting, UIView> {
+final class EditProfileViewController: ViewController<EditProfileInteractorProtocol, UIView> {
     typealias Localizable = Strings.Settings.EditProfile
     
     private lazy var tableView: UITableView = {

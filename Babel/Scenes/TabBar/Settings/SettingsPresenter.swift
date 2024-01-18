@@ -1,19 +1,19 @@
-protocol SettingsPresenting: AnyObject {
+protocol SettingsPresenterProtocol: AnyObject {
     func displayViewState(_ state: SettingsViewState)
     func didNextStep(action: SettingsAction)
 }
 
 final class SettingsPresenter {
-    private let router: SettingsRouting
+    private let router: SettingsRouterProtocol
     weak var viewController: SettingsDisplaying?
 
-    init(router: SettingsRouting) {
+    init(router: SettingsRouterProtocol) {
         self.router = router
     }
 }
 
-// MARK: - SettingsPresenting
-extension SettingsPresenter: SettingsPresenting {
+// MARK: - SettingsPresenterProtocol
+extension SettingsPresenter: SettingsPresenterProtocol {
     func displayViewState(_ state: SettingsViewState) {
         viewController?.displayViewState(state)
     }

@@ -12,7 +12,7 @@ private extension TermsViewController.Layout {
     }
 }
 
-final class TermsViewController: ViewController<TermsInteracting, UIView> {
+final class TermsViewController: ViewController<TermsInteractorProtocol, UIView> {
     fileprivate enum Layout { }
     typealias Localizable = Strings.Settings.TermsAndConditions
     

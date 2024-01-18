@@ -4,7 +4,7 @@ import NetworkKit
 enum ContactInfoFactory {
     static func make(contactInfo: User, shouldDisplayStartChat: Bool) -> UIViewController {
         let client = FirebaseClient.shared
-        let service = ContactInfoService(client: client)
+        let service = ContactInfoWorker(client: client)
         let router = ContactInfoRouter()
         let presenter = ContactInfoPresenter(router: router)
         let interactor = ContactInfoInteractor(
@@ -23,7 +23,7 @@ enum ContactInfoFactory {
     
     static func make(contactUserId: String, shouldDisplayStartChat: Bool) -> UIViewController {
         let client = FirebaseClient.shared
-        let service = ContactInfoService(client: client)
+        let service = ContactInfoWorker(client: client)
         let router = ContactInfoRouter()
         let presenter = ContactInfoPresenter(router: router)
         let interactor = ContactInfoInteractor(

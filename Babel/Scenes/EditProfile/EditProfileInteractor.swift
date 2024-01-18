@@ -2,7 +2,7 @@ import UIKit
 import StorageKit
 import Authenticator
 
-protocol EditProfileInteracting: AnyObject {
+protocol EditProfileInteractorProtocol: AnyObject {
     func getUpdatedUser()
     func saveUserToFirebase(user: User)
     func updateAvatarImage(_ image: UIImage)
@@ -10,13 +10,13 @@ protocol EditProfileInteracting: AnyObject {
 }
 
 final class EditProfileInteractor {
-    private let service: EditProfileServicing
-    private let presenter: EditProfilePresenting
+    private let service: EditProfileWorkerProtocol
+    private let presenter: EditProfilePresenterProtocol
     private var currentUser: User
     
     init(
-        service: EditProfileServicing,
-        presenter: EditProfilePresenting,
+        service: EditProfileWorkerProtocol,
+        presenter: EditProfilePresenterProtocol,
         currentUser: User
     ) {
         self.service = service
@@ -25,8 +25,8 @@ final class EditProfileInteractor {
     }
 }
 
-// MARK: - EditProfileInteracting
-extension EditProfileInteractor: EditProfileInteracting {
+// MARK: - EditProfileInteractorProtocol
+extension EditProfileInteractor: EditProfileInteractorProtocol {
     func getUpdatedUser() {
         service.checkAuthentication { [weak self] credentials in
             if let credentials, credentials.user != self?.currentUser {

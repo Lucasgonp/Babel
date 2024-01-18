@@ -1,19 +1,19 @@
-protocol TellAFriendPresenting: AnyObject {
+protocol TellAFriendPresenterProtocol: AnyObject {
     func displaySomething()
     func didNextStep(action: TellAFriendAction)
 }
 
 final class TellAFriendPresenter {
-    private let router: TellAFriendRouting
+    private let router: TellAFriendRouterProtocol
     weak var viewController: TellAFriendDisplaying?
 
-    init(router: TellAFriendRouting) {
+    init(router: TellAFriendRouterProtocol) {
         self.router = router
     }
 }
 
-// MARK: - TellAFriendPresenting
-extension TellAFriendPresenter: TellAFriendPresenting {
+// MARK: - TellAFriendPresenterProtocol
+extension TellAFriendPresenter: TellAFriendPresenterProtocol {
     func displaySomething() {
         viewController?.displaySomething()
     }

@@ -1,19 +1,19 @@
-protocol RecentChatsPresenting: AnyObject {
+protocol RecentChatsPresenterProtocol: AnyObject {
     func displayViewState(_ state: RecentChatsViewState)
     func didNextStep(action: RecentChatsAction)
 }
 
 final class RecentChatsPresenter {
-    private let router: RecentChatsRouting
+    private let router: RecentChatsRouterProtocol
     weak var viewController: RecentChatsDisplaying?
 
-    init(router: RecentChatsRouting) {
+    init(router: RecentChatsRouterProtocol) {
         self.router = router
     }
 }
 
-// MARK: - RecentChatsPresenting
-extension RecentChatsPresenter: RecentChatsPresenting {
+// MARK: - RecentChatsPresenterProtocol
+extension RecentChatsPresenter: RecentChatsPresenterProtocol {
     func displayViewState(_ state: RecentChatsViewState) {
         viewController?.displayViewState(state)
     }

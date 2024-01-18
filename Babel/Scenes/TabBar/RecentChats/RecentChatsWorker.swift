@@ -1,13 +1,13 @@
 import NetworkKit
 
-protocol RecentChatsServicing {
+protocol RecentChatsWorkerProtocol {
     func downloadRecentChats(key: String, currentUserId: String, completion: @escaping ([RecentChatModel]) -> Void)
     func deleteRecentChat(_ chat: RecentChatModel)
     func updateRecentChat(_ chat: RecentChatModel)
     func fetchGroup(from id: String, completion: @escaping (Result<Group, FirebaseError>) -> Void)
 }
 
-final class RecentChatsService {
+final class RecentChatsWorker {
     typealias ClientProtocol = RecentChatClientProtocol & GroupClientProtocol
     private let client: ClientProtocol
     
@@ -16,8 +16,7 @@ final class RecentChatsService {
     }
 }
 
-// MARK: - RecentChatsServicing
-extension RecentChatsService: RecentChatsServicing {
+extension RecentChatsWorker: RecentChatsWorkerProtocol {
     func downloadRecentChats(key: String, currentUserId: String, completion: @escaping ([RecentChatModel]) -> Void) {
         client.downloadRecentChats(key: key, currentUserId: currentUserId) { (allRecents: [RecentChatModel]) in
             var recentChats = [RecentChatModel]()

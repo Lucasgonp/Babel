@@ -1,18 +1,18 @@
-protocol AddMembersPresenting: AnyObject {
+protocol AddMembersPresenterProtocol: AnyObject {
     func displayViewState(_ state: AddMembersViewState)
     func didNextStep(action: AddMembersAction)
 }
 
 final class AddMembersPresenter {
-    private let router: AddMembersRouting
+    private let router: AddMembersRouterProtocol
     weak var viewController: AddMembersDisplaying?
 
-    init(router: AddMembersRouting) {
+    init(router: AddMembersRouterProtocol) {
         self.router = router
     }
 }
 
-extension AddMembersPresenter: AddMembersPresenting {
+extension AddMembersPresenter: AddMembersPresenterProtocol {
     func displayViewState(_ state: AddMembersViewState) {
         viewController?.displayViewState(state)
     }

@@ -1,19 +1,19 @@
-protocol EditBioInteracting: AnyObject {
+protocol EditBioInteractorProtocol: AnyObject {
     func saveUserToFirebase(user: User)
 }
 
 final class EditBioInteractor {
-    private let service: EditBioServicing
-    private let presenter: EditBioPresenting
+    private let service: EditBioWorkerProtocol
+    private let presenter: EditBioPresenterProtocol
 
-    init(service: EditBioServicing, presenter: EditBioPresenting) {
+    init(service: EditBioWorkerProtocol, presenter: EditBioPresenterProtocol) {
         self.service = service
         self.presenter = presenter
     }
 }
 
-// MARK: - EditBioInteracting
-extension EditBioInteractor: EditBioInteracting {
+// MARK: - EditBioInteractorProtocol
+extension EditBioInteractor: EditBioInteractorProtocol {
     func saveUserToFirebase(user: User) {
         service.saveUserToFirebase(user: user) { [weak self] error in
             guard let self else {

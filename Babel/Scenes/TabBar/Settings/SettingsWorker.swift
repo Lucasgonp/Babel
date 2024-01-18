@@ -1,10 +1,10 @@
 import Authenticator
 
-protocol SettingsServicing {
+protocol SettingsWorkerProtocol {
     func checkAuthentication(completion: @escaping (AuthCheckCredentials?) -> Void)
 }
 
-final class SettingsService {
+final class SettingsWorker {
     typealias AuthDependencies = CheckAuthenticationProtocol
     
     private let authManager: AuthDependencies
@@ -14,8 +14,7 @@ final class SettingsService {
     }
 }
 
-// MARK: - SettingsServicing
-extension SettingsService: SettingsServicing {
+extension SettingsWorker: SettingsWorkerProtocol {
     func checkAuthentication(completion: @escaping (AuthCheckCredentials?) -> Void) {
         authManager.checkAuthentication(thread: .main, completion: completion)
     }

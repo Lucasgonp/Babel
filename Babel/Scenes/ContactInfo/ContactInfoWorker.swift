@@ -1,10 +1,10 @@
 import NetworkKit
 
-protocol ContactInfoServicing {
+protocol ContactInfoWorkerProtocol {
     func getContactUser(from id: String, completion: @escaping (Result<User, FirebaseError>) -> Void)
 }
 
-final class ContactInfoService {
+final class ContactInfoWorker {
     private let client: ContactInfoClientProtocol
     
     init(client: ContactInfoClientProtocol) {
@@ -12,8 +12,7 @@ final class ContactInfoService {
     }
 }
 
-// MARK: - ContactInfoServicing
-extension ContactInfoService: ContactInfoServicing {
+extension ContactInfoWorker: ContactInfoWorkerProtocol {
     func getContactUser(from id: String, completion: @escaping (Result<User, FirebaseError>) -> Void) {
         client.downloadUser(id: id, completion: completion)
     }

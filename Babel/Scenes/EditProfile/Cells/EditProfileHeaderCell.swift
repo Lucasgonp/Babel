@@ -70,7 +70,9 @@ final class EditProfileHeaderCell: UITableViewCell, ViewConfiguration {
 
 extension EditProfileHeaderCell {
     func render(_ dto: User) {
-        avatar.setImage(with: dto.avatarLink, placeholderImage: Image.avatarPlaceholder.image)
+        avatar.setImage(with: dto.avatarLink) { [weak self] image in
+            self?.avatar.image = image ?? Image.avatarPlaceholder.image
+        }
     }
     
     func update(_ image: UIImage) {

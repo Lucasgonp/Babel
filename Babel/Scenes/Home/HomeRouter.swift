@@ -5,7 +5,7 @@ enum HomeAction {
     case presentLogin
 }
 
-protocol HomeRouting: AnyObject {
+protocol HomeRouterProtocol: AnyObject {
     func perform(action: HomeAction)
 }
 
@@ -18,7 +18,7 @@ final class HomeRouter {
     }
 }
 
-extension HomeRouter: HomeRouting {
+extension HomeRouter: HomeRouterProtocol {
     func perform(action: HomeAction) {
         guard let tabBar = self.viewController as? UITabBarController else {
             return

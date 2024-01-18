@@ -19,7 +19,7 @@ private extension ContactInfoViewController.Layout {
     }
 }
 
-final class ContactInfoViewController: ViewController<ContactInfoInteracting, UIView> {
+final class ContactInfoViewController: ViewController<ContactInfoInteractorProtocol, UIView> {
     fileprivate enum Layout { }
     typealias Localizable = Strings.ContactInfo
     

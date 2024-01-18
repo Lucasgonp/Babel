@@ -4,7 +4,7 @@ enum EditProfileAction {
     case editBio
 }
 
-protocol EditProfileRouting: AnyObject {
+protocol EditProfileRouterProtocol: AnyObject {
     func perform(action: EditProfileAction)
 }
 
@@ -12,8 +12,8 @@ final class EditProfileRouter {
     weak var viewController: UIViewController?
 }
 
-// MARK: - EditProfileRouting
-extension EditProfileRouter: EditProfileRouting {
+// MARK: - EditProfileRouterProtocol
+extension EditProfileRouter: EditProfileRouterProtocol {
     func perform(action: EditProfileAction) {
         if case .editBio = action {
             let editBio = EditBioFactory.make()

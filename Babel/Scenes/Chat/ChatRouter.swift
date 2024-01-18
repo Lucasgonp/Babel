@@ -5,7 +5,7 @@ enum ChatAction {
     case showContactInfo(String)
 }
 
-protocol ChatRouting: AnyObject {
+protocol ChatRouterProtocol: AnyObject {
     func perform(action: ChatAction)
 }
 
@@ -13,8 +13,8 @@ final class ChatRouter {
     weak var viewController: UIViewController?
 }
 
-// MARK: - ChatRouting
-extension ChatRouter: ChatRouting {
+// MARK: - ChatRouterProtocol
+extension ChatRouter: ChatRouterProtocol {
     func perform(action: ChatAction) {
         switch action {
         case .popViewController:

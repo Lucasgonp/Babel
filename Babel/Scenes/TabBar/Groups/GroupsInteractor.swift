@@ -1,4 +1,4 @@
-protocol GroupsInteracting: AnyObject {
+protocol GroupsInteractorProtocol: AnyObject {
     func fetchAllGroups()
     func didTapCreateNewGroup()
     func didTapOnGroup(id: String)
@@ -6,15 +6,15 @@ protocol GroupsInteracting: AnyObject {
 
 final class GroupsInteractor {
     private let worker: GroupsWorkerProtocol
-    private let presenter: GroupsPresenting
+    private let presenter: GroupsPresenterProtocol
 
-    init(worker: GroupsWorkerProtocol, presenter: GroupsPresenting) {
+    init(worker: GroupsWorkerProtocol, presenter: GroupsPresenterProtocol) {
         self.worker = worker
         self.presenter = presenter
     }
 }
 
-extension GroupsInteractor: GroupsInteracting {
+extension GroupsInteractor: GroupsInteractorProtocol {
     func fetchAllGroups() {
         worker.fetchAllGroups { [weak self] result in
             switch result {

@@ -84,11 +84,11 @@ final class ChatViewController: MessagesViewController {
     
     private let refreshController = UIRefreshControl()
     private let currentUser = UserSafe.shared.user
-    private let interactor: ChatInteracting
+    private let interactor: ChatInteractorProtocol
     
     private(set) var dto: ChatDTO
     
-    init(interactor: ChatInteracting, dto: ChatDTO) {
+    init(interactor: ChatInteractorProtocol, dto: ChatDTO) {
         self.interactor = interactor
         self.dto = dto
         super.init(nibName: nil, bundle: nil)

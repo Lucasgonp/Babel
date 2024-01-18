@@ -4,7 +4,7 @@ enum CreateGroupAction {
     case finishGroupCreation
 }
 
-protocol CreateGroupRouting: AnyObject {
+protocol CreateGroupRouterProtocol: AnyObject {
     func perform(action: CreateGroupAction)
 }
 
@@ -14,8 +14,8 @@ final class CreateGroupRouter {
     weak var viewController: UIViewController?
 }
 
-// MARK: - CreateGroupRouting
-extension CreateGroupRouter: CreateGroupRouting {
+// MARK: - CreateGroupRouterProtocol
+extension CreateGroupRouter: CreateGroupRouterProtocol {
     func perform(action: CreateGroupAction) {
         if case .finishGroupCreation = action {
             viewController?.navigationController?.popViewController { [weak self] _ in

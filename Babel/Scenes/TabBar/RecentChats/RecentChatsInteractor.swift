@@ -1,6 +1,6 @@
 import StorageKit
 
-protocol RecentChatsInteracting: AnyObject {
+protocol RecentChatsInteractorProtocol: AnyObject {
     func loadRecentChats()
     func deleteRecentChat(_ chat: RecentChatModel)
     func didTapOnNewChat()
@@ -8,17 +8,17 @@ protocol RecentChatsInteracting: AnyObject {
 }
 
 final class RecentChatsInteractor {
-    private let service: RecentChatsServicing
-    private let presenter: RecentChatsPresenting
+    private let service: RecentChatsWorkerProtocol
+    private let presenter: RecentChatsPresenterProtocol
     private let currentUser = UserSafe.shared.user
 
-    init(service: RecentChatsServicing, presenter: RecentChatsPresenting) {
+    init(service: RecentChatsWorkerProtocol, presenter: RecentChatsPresenterProtocol) {
         self.service = service
         self.presenter = presenter
     }
 }
 
-extension RecentChatsInteractor: RecentChatsInteracting {
+extension RecentChatsInteractor: RecentChatsInteractorProtocol {
     func loadRecentChats() {
         service.downloadRecentChats(key: StorageKey.senderId.rawValue, currentUserId: currentUser.id) { [weak self] recentChats in
             self?.presenter.displayViewState(.success(recentChats: recentChats))

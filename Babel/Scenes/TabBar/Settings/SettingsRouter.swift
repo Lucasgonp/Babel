@@ -8,7 +8,7 @@ enum SettingsAction {
     case logout
 }
 
-protocol SettingsRouting: AnyObject {
+protocol SettingsRouterProtocol: AnyObject {
     func perform(action: SettingsAction)
 }
 
@@ -17,8 +17,7 @@ final class SettingsRouter {
     weak var delegate: HomeViewDelegate?
 }
 
-// MARK: - SettingsRouting
-extension SettingsRouter: SettingsRouting {
+extension SettingsRouter: SettingsRouterProtocol {
     func perform(action: SettingsAction) {
         switch action {
         case .pushEditProfile(let user):

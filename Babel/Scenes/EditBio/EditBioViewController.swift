@@ -5,7 +5,7 @@ protocol EditBioDisplaying: AnyObject {
     func displayErrorMessage(message: String)
 }
 
-final class EditBioViewController: ViewController<EditBioInteracting, UIView> {
+final class EditBioViewController: ViewController<EditBioInteractorProtocol, UIView> {
     typealias Localizable = Strings.UserBio
     
     private lazy var tableView: UITableView = {

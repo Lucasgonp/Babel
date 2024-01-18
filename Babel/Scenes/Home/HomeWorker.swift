@@ -1,11 +1,11 @@
 import Authenticator
 
-protocol HomeServicing {
+protocol HomeWorkerProtocol {
     func checkAuthentication(completion: @escaping (AuthCheckCredentials?) -> Void)
     func logout(completion: @escaping (Error?) -> Void)
 }
 
-final class HomeService {
+final class HomeWorker {
     typealias AuthDependencies = LogoutProtocol & CheckAuthenticationProtocol
     
     private let client: AuthDependencies
@@ -15,7 +15,7 @@ final class HomeService {
     }
 }
 
-extension HomeService: HomeServicing {    
+extension HomeWorker: HomeWorkerProtocol {    
     func checkAuthentication(completion: @escaping (AuthCheckCredentials?) -> Void) {
         client.checkAuthentication(thread: .main, completion: completion)
     }

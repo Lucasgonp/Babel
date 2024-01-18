@@ -5,7 +5,7 @@ enum GroupsAction {
     case pushGroupInfo(id: String)
 }
 
-protocol GroupsRouting: AnyObject {
+protocol GroupsRouterProtocol: AnyObject {
     func perform(action: GroupsAction)
 }
 
@@ -13,8 +13,8 @@ final class GroupsRouter {
     weak var viewController: UIViewController?
 }
 
-// MARK: - GroupsRouting
-extension GroupsRouter: GroupsRouting {
+// MARK: - GroupsRouterProtocol
+extension GroupsRouter: GroupsRouterProtocol {
     func perform(action: GroupsAction) {
         switch action {
         case .pushCreateNewGroup:

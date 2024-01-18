@@ -2,7 +2,7 @@ import UIKit
 
 enum TellAFriendFactory {
     static func make() -> UIViewController {
-        let service = TellAFriendService()
+        let service = TellAFriendWorker()
         let router = TellAFriendRouter()
         let presenter = TellAFriendPresenter(router: router)
         let interactor = TellAFriendInteractor(service: service, presenter: presenter)

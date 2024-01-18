@@ -6,7 +6,7 @@ enum RecentChatsAction {
     case pushToGroupChatView(dto: ChatGroupDTO)
 }
 
-protocol RecentChatsRouting: AnyObject {
+protocol RecentChatsRouterProtocol: AnyObject {
     func perform(action: RecentChatsAction)
 }
 
@@ -14,8 +14,8 @@ final class RecentChatsRouter {
     weak var viewController: UIViewController?
 }
 
-// MARK: - RecentChatsRouting
-extension RecentChatsRouter: RecentChatsRouting {
+// MARK: - RecentChatsRouterProtocol
+extension RecentChatsRouter: RecentChatsRouterProtocol {
     func perform(action: RecentChatsAction) {
         switch action {
         case .pushToAllUsersView:

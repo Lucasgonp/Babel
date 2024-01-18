@@ -1,6 +1,5 @@
-protocol ChatGroupPresenting: AnyObject {
+protocol ChatGroupPresenterProtocol: AnyObject {
     func displayMessage(_ localMessage: LocalMessage)
-    func receiveDTO(_ dto: ChatGroupDTO)
     func displayRefreshedMessages(_ refreshedMessege: LocalMessage)
     func refreshNewMessages()
     func endRefreshing()
@@ -10,21 +9,17 @@ protocol ChatGroupPresenting: AnyObject {
 }
 
 final class ChatGroupPresenter {
-    private let router: ChatGroupRouting
+    private let router: ChatGroupRouterProtocol
     weak var viewController: ChatGroupDisplaying?
 
-    init(router: ChatGroupRouting) {
+    init(router: ChatGroupRouterProtocol) {
         self.router = router
     }
 }
 
-extension ChatGroupPresenter: ChatGroupPresenting {
+extension ChatGroupPresenter: ChatGroupPresenterProtocol {
     func displayMessage(_ localMessage: LocalMessage) {
         viewController?.displayMessage(localMessage)
-    }
-    
-    func receiveDTO(_ dto: ChatGroupDTO) {
-        viewController?.receiveDTO(dto)
     }
     
     func displayRefreshedMessages(_ refreshedMessege: LocalMessage) {

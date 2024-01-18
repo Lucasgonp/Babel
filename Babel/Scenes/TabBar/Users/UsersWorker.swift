@@ -1,10 +1,10 @@
 import NetworkKit
 
-protocol UsersServicing {
+protocol UsersWorkerProtocol {
     func getAllUsers(completion: @escaping (Result<[User], Error>) -> Void)
 }
 
-final class UsersService {
+final class UsersWorker {
     private let firebaseClient: UsersClientProtocol
     
     init(firebaseClient: UsersClientProtocol) {
@@ -12,8 +12,7 @@ final class UsersService {
     }
 }
 
-// MARK: - UsersServicing
-extension UsersService: UsersServicing {
+extension UsersWorker: UsersWorkerProtocol {
     func getAllUsers(completion: @escaping (Result<[User], Error>) -> Void) {
         firebaseClient.downloadAllUsers { (result: Result<[User], FirebaseError>) in
             switch result {

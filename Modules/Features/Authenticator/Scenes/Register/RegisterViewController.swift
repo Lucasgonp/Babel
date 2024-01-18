@@ -17,7 +17,7 @@ private extension RegisterViewController.Layout {
     }
 }
 
-final class RegisterViewController: ViewController<RegisterInteracting, UIView> {
+final class RegisterViewController: ViewController<RegisterInteractorProtocol, UIView> {
     fileprivate enum Layout { }
     typealias Localizable = Strings.Register
     

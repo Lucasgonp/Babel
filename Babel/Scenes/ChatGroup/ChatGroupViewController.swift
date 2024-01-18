@@ -6,7 +6,6 @@ import GalleryKit
 
 protocol ChatGroupDisplaying: AnyObject {
     func displayMessage(_ localMessage: LocalMessage)
-    func receiveDTO(_ dto: ChatGroupDTO)
     func displayRefreshedMessages(_ localMessage: LocalMessage)
     func refreshNewMessages()
     func endRefreshing()
@@ -48,9 +47,10 @@ final class ChatGroupViewController: MessagesViewController {
     }()
     
     private let titleViewAvatar: ImageView = {
-        let imageView = ImageView(frame: CGRect(x: .zero, y: .zero, width: 38, height: 38))
+        let imageView = ImageView()
         imageView.layer.cornerRadius = 19
         imageView.clipsToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -182,6 +182,13 @@ extension ChatGroupViewController: ViewConfiguration {
         navigationItem.titleView = stackView
     }
     
+    func setupConstraints() {
+        NSLayoutConstraint.activate([
+            titleViewAvatar.heightAnchor.constraint(equalToConstant: 38),
+            titleViewAvatar.widthAnchor.constraint(equalToConstant: 38)
+        ])
+    }
+    
     func configureViews() {
         let backButton = UIBarButtonItem(title: String(), style: .plain, target: nil, action: nil)
         navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
@@ -204,10 +211,6 @@ extension ChatGroupViewController: ChatGroupDisplaying {
         mkMessages.append(mkMessage)
         messagesCollectionView.reloadData()
         messagesCollectionView.scrollToLastItem(animated: true)
-    }
-    
-    func receiveDTO(_ dto: ChatGroupDTO) {
-        self.dto = dto
     }
     
     func displayRefreshedMessages(_ localMessage: LocalMessage) {
@@ -261,14 +264,14 @@ extension ChatGroupViewController: MessageInputBarDelegate {
     }
     
     func audioRecording(_ state: RecordingState) {
-//        interactor.audioRecording(state)
+        interactor.audioRecording(state)
     }
 }
 
 //MARK: - Actions
 @objc private extension ChatGroupViewController {
     func didTapOnContactInfo() {
-        interactor.loadChatMessages()
+        interactor.didTapOnGroupInfo()
     }
 }
 

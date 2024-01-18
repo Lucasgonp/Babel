@@ -1,4 +1,4 @@
-protocol CreateGroupPresenting: AnyObject {
+protocol CreateGroupPresenterProtocol: AnyObject {
     func displayAllUsers(_ users: [User])
     func setLoading(isLoading: Bool)
     func displayErrorMessage(message: String)
@@ -6,16 +6,16 @@ protocol CreateGroupPresenting: AnyObject {
 }
 
 final class CreateGroupPresenter {
-    private let router: CreateGroupRouting
+    private let router: CreateGroupRouterProtocol
     weak var viewController: CreateGroupDisplaying?
 
-    init(router: CreateGroupRouting) {
+    init(router: CreateGroupRouterProtocol) {
         self.router = router
     }
 }
 
-// MARK: - CreateGroupPresenting
-extension CreateGroupPresenter: CreateGroupPresenting {
+// MARK: - CreateGroupPresenterProtocol
+extension CreateGroupPresenter: CreateGroupPresenterProtocol {
     func displayAllUsers(_ users: [User]) {
         viewController?.displayAllUsers(users)
     }

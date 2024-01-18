@@ -5,7 +5,7 @@ enum GroupInfoAction {
     case pushChatView(dto: ChatGroupDTO)
 }
 
-protocol GroupInfoRouting: AnyObject {
+protocol GroupInfoRouterProtocol: AnyObject {
     func perform(action: GroupInfoAction)
 }
 
@@ -13,7 +13,7 @@ final class GroupInfoRouter {
     weak var viewController: UIViewController?
 }
 
-extension GroupInfoRouter: GroupInfoRouting {
+extension GroupInfoRouter: GroupInfoRouterProtocol {
     func perform(action: GroupInfoAction) {
         switch action {
         case .didExitGroup:

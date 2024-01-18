@@ -23,7 +23,7 @@ private extension HomeViewController.Layout {
     }
 }
 
-final class HomeViewController: TabBarViewController<HomeInteracting> {
+final class HomeViewController: TabBarViewController<HomeInteractorProtocol> {
     fileprivate enum Layout { }
 
     override func viewDidLoad() {

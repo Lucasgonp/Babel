@@ -1,22 +1,22 @@
 import Foundation
 
-protocol HomeInteracting: AnyObject {
+protocol HomeInteractorProtocol: AnyObject {
     func checkAuthentication()
     func performLogout()
 }
 
 final class HomeInteractor {
-    private let service: HomeServicing
-    private let presenter: HomePresenting
+    private let service: HomeWorkerProtocol
+    private let presenter: HomePresenterProtocol
     
-    init(service: HomeServicing, presenter: HomePresenting) {
+    init(service: HomeWorkerProtocol, presenter: HomePresenterProtocol) {
         self.service = service
         self.presenter = presenter
     }
 }
 
-// MARK: - HomeInteracting
-extension HomeInteractor: HomeInteracting {
+// MARK: - HomeInteractorProtocol
+extension HomeInteractor: HomeInteractorProtocol {
     func checkAuthentication() {
         showLoading()
         service.checkAuthentication { [weak self] authCredentials in

@@ -1,10 +1,10 @@
 import UIKit
 
 enum ChatGroupAction {
-    case pushGroupInfo(_ group: Group)
+    case pushGroupInfo(_ id: String)
 }
 
-protocol ChatGroupRouting: AnyObject {
+protocol ChatGroupRouterProtocol: AnyObject {
     func perform(action: ChatGroupAction)
 }
 
@@ -12,11 +12,11 @@ final class ChatGroupRouter {
     weak var viewController: UIViewController?
 }
 
-// MARK: - ChatGroupRouting
-extension ChatGroupRouter: ChatGroupRouting {
+extension ChatGroupRouter: ChatGroupRouterProtocol {
     func perform(action: ChatGroupAction) {
-        if case let .pushGroupInfo(group) = action {
-            let controller = GroupInfoFactory.make(groupId: group.id)
+        if case let .pushGroupInfo(id) = action {
+            let controller = GroupInfoFactory.make(groupId: id)
+            viewController?.navigationController?.pushViewController(controller, animated: true)
         }
     }
 }

@@ -11,7 +11,7 @@ protocol AddMembersDisplaying: AnyObject {
     func displayViewState(_ state: AddMembersViewState)
 }
 
-final class AddMembersViewController: ViewController<AddMembersInteracting, UIView> {
+final class AddMembersViewController: ViewController<AddMembersInteractorProtocol, UIView> {
     private struct Section {
         let letter : String
         let users : [User]

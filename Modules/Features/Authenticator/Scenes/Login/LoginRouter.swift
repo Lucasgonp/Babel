@@ -5,7 +5,7 @@ enum LoginAction {
     case presentSignUp
 }
 
-protocol LoginRouting: AnyObject {
+protocol LoginRouterProtocol: AnyObject {
     func perform(action: LoginAction)
 }
 
@@ -18,8 +18,8 @@ final class LoginRouter {
     }
 }
 
-// MARK: - LoginRouting
-extension LoginRouter: LoginRouting {
+// MARK: - LoginRouterProtocol
+extension LoginRouter: LoginRouterProtocol {
     func perform(action: LoginAction) {
         switch action {
         case .didLoginSuccess:

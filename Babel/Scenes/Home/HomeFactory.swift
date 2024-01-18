@@ -6,7 +6,7 @@ enum HomeFactory {
     static func make() -> UIViewController {
         let authManager = AuthManager.shared
         let authPresentation = AuthenticatorPresentation.shared
-        let service = HomeService(client: authManager)
+        let service = HomeWorker(client: authManager)
         let router = HomeRouter(authPresentation: authPresentation)
         let presenter = HomePresenter(router: router)
         let interactor = HomeInteractor(service: service, presenter: presenter)

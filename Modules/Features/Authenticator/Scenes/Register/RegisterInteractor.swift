@@ -1,21 +1,21 @@
-protocol RegisterInteracting: AnyObject {
+protocol RegisterInteractorProtocol: AnyObject {
     func registerUser(_ userRequest: RegisterUserRequestModel)
     func emailSentToNewUser()
     func backToLoginView()
 }
 
 final class RegisterInteractor {
-    private let service: RegisterServicing
-    private let presenter: RegisterPresenting
+    private let service: RegisterWorkerProtocol
+    private let presenter: RegisterPresenterProtocol
 
-    init(service: RegisterServicing, presenter: RegisterPresenting) {
+    init(service: RegisterWorkerProtocol, presenter: RegisterPresenterProtocol) {
         self.service = service
         self.presenter = presenter
     }
 }
 
-// MARK: - RegisterInteracting
-extension RegisterInteractor: RegisterInteracting {
+// MARK: - RegisterInteractorProtocol
+extension RegisterInteractor: RegisterInteractorProtocol {
     func registerUser(_ userRequest: RegisterUserRequestModel) {
         showLoading()
         service.register(userRequest: userRequest) { [weak self] error in

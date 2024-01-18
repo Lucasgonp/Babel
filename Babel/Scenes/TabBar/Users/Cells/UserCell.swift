@@ -101,6 +101,7 @@ extension UserCell {
         }
         
         if !dto.avatarLink.isEmpty {
+            
             avatar.setImage(with: dto.avatarLink) { [weak self] image in
                 self?.avatar.image = image ?? Image.avatarPlaceholder.image
             }

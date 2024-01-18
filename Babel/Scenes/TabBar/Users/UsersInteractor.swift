@@ -1,23 +1,22 @@
 import Foundation
 
-protocol UsersInteracting: AnyObject {
+protocol UsersInteractorProtocol: AnyObject {
     func loadAllUsers()
     func refreshAllUsers()
 }
 
 final class UsersInteractor {
-    private let service: UsersServicing
-    private let presenter: UsersPresenting
+    private let service: UsersWorkerProtocol
+    private let presenter: UsersPresenterProtocol
     private var users = [User]()
     
-    init(service: UsersServicing, presenter: UsersPresenting) {
+    init(service: UsersWorkerProtocol, presenter: UsersPresenterProtocol) {
         self.service = service
         self.presenter = presenter
     }
 }
 
-// MARK: - UsersInteracting
-extension UsersInteractor: UsersInteracting {
+extension UsersInteractor: UsersInteractorProtocol {
     func loadAllUsers() {
         DispatchQueue.global().async { [weak self] in
             self?.service.getAllUsers { [weak self] result in

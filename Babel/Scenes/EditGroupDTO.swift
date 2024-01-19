@@ -2,5 +2,6 @@ import UIKit
 
 struct EditGroupDTO {
     let name: String
-    let image: UIImage
+    let avatar: UIImage
+    var avatarLink: String
 }

@@ -29,6 +29,7 @@ final class StopWatchView: UIView {
     }
     
     func startCounter() {
+        isHidden = false
         timeRecordingStart = Date().timeIntervalSinceNow + 1
         updateTimeLabel()
         
@@ -48,8 +49,9 @@ final class StopWatchView: UIView {
     }
     
     func stopCounter() {
-        self.timeRecordingStart = nil
-        self.timeRecordingLabel.text = "0:00 ⏺"
+        timeRecordingStart = nil
+        timeRecordingLabel.text = "0:00 ⏺"
+        isHidden = true
     }
 }
 
@@ -60,6 +62,7 @@ extension StopWatchView: ViewConfiguration {
     
     func configureViews() {
         backgroundColor = Color.backgroundTertiary.uiColor
+        isHidden = true
     }
 }
 

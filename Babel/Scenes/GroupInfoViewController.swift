@@ -32,8 +32,11 @@ final class GroupInfoViewController: ViewController<GroupInfoInteractorProtocol,
     }()
     
     private lazy var editGroupNavigation: UINavigationController = {
-        let editGroupController = EditGroupViewController(name: groupInfo?.name, imageLink: groupInfo?.avatarLink)
+        let editGroupController = EditGroupViewController(name: groupInfo!.name, avatarLink: groupInfo!.avatarLink)
         editGroupController.completion = { [weak self] dto in
+            self?.showLoading(backgroupColor: .clear, shouldBlur: true)
+            self?.didUpdateGroup = true
+            self?.headerCell?.update(dto)
             self?.interactor.updateGroupInfo(dto: dto)
         }
         let navigation = UINavigationController(rootViewController: editGroupController)
@@ -72,11 +75,20 @@ final class GroupInfoViewController: ViewController<GroupInfoInteractorProtocol,
     private var groupInfo: Group?
     private lazy var members = [User]()
     
-    weak var delegate: SettingsViewDelegate?
+    weak var delegate: GroupInfoUpdateProtocol?
+    
+    private var didUpdateGroup = false
+    private var editGroupDTO: EditGroupDTO?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         interactor.fetchGroupData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        guard let editGroupDTO, didUpdateGroup else { return }
+        delegate?.didUpdateGroupInfo(dto: editGroupDTO)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -115,7 +127,10 @@ extension GroupInfoViewController: GroupInfoDisplaying {
             tableView.reloadData()
             
         case let .updateInfo(dto):
-            let dto = EditGroupDTO(name: dto.name, image: dto.image)
+            groupInfo?.name = dto.name
+            groupInfo?.avatarLink = dto.avatarLink
+            editGroupDTO = dto
+            hideLoading()
             headerCell?.update(dto)
             
         case let .updateDesc(description):

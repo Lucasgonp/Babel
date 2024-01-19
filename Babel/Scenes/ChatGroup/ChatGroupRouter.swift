@@ -15,7 +15,8 @@ final class ChatGroupRouter {
 extension ChatGroupRouter: ChatGroupRouterProtocol {
     func perform(action: ChatGroupAction) {
         if case let .pushGroupInfo(id) = action {
-            let controller = GroupInfoFactory.make(groupId: id)
+            let delegate = viewController as? GroupInfoUpdateProtocol
+            let controller = GroupInfoFactory.make(groupId: id, delegate: delegate)
             viewController?.navigationController?.pushViewController(controller, animated: true)
         }
     }

@@ -3,6 +3,8 @@ import SDWebImage
 
 extension UIImageView {
     public func setImage(with url: URL?, placeholderImage: UIImage? = nil, completion: ((UIImage?) -> Void)? = nil) {
+        image = nil
+        
         let activityIndicator = makeLoadingIndicator()
         activityIndicator.startAnimating()
         
@@ -24,6 +26,8 @@ extension UIImageView {
     }
     
     public func setImage(with link: String?, placeholderImage: UIImage? = nil, completion: ((UIImage?) -> Void)? = nil) {
+        image = nil
+        
         let activityIndicator = makeLoadingIndicator()
         activityIndicator.startAnimating()
         

@@ -59,6 +59,8 @@ final class AudioRecorderManager: NSObject, AVAudioRecorderDelegate {
             } catch {
                 print("error setting up audio recorder", error.localizedDescription)
             }
+        } else {
+            authorizeMicrophoneAccess(completion: { })
         }
     }
     

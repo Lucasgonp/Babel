@@ -54,12 +54,15 @@ final class EditGroupViewController: UIViewController {
         return gallery
     }()
     
+    private let avatarLink: String
+    
     var completion: ((EditGroupDTO) -> Void)?
     
-    init(name: String?, imageLink: String?) {
+    init(name: String?, avatarLink: String) {
+        self.avatarLink = avatarLink
         super.init(nibName: nil, bundle: nil)
         self.groupNameTextField.text = name ?? String()
-        self.avatarImageView.setImage(with: imageLink) { [weak self] image in
+        self.avatarImageView.setImage(with: avatarLink) { [weak self] image in
             if let image {
                 self?.avatarImageView.image = image
             } else {
@@ -124,7 +127,7 @@ extension EditGroupViewController: ViewConfiguration {
         view.endEditing(true)
         dismiss(animated: true) { [weak self] in
             guard let self else { return }
-            let dto = EditGroupDTO(name: self.groupNameTextField.text, image: avatarImageView.image ?? Image.photoPlaceholder.image)
+            let dto = EditGroupDTO(name: self.groupNameTextField.text, avatar: avatarImageView.image ?? Image.photoPlaceholder.image, avatarLink: avatarLink)
             self.completion?(dto)
         }
     }

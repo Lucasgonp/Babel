@@ -25,11 +25,7 @@ public extension ViewConfiguration {
 }
 
 open class ViewController<Interactor, V: UIView>: UIViewController, ViewConfiguration {
-    private lazy var spinnerView: SpinnerView = {
-        let view = SpinnerView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    private lazy var spinnerView = SpinnerView()
     
     public let interactor: Interactor
     public var rootView = V()
@@ -66,8 +62,18 @@ public extension ViewController where Interactor == Void {
     }
 }
 
+extension ViewController: LoadingViewDelegate {
+    public func dismissLoadingView() {
+        spinnerView.removeFromSuperview()
+    }
+}
+
 public extension ViewController {    
-    func showLoading() {
+    func showLoading(backgroupColor: UIColor = Color.backgroundPrimary.uiColor, shouldBlur: Bool = false) {
+        spinnerView = SpinnerView(backgroundColor: backgroupColor, shouldBlur: shouldBlur)
+        spinnerView.delegate = self
+        spinnerView.translatesAutoresizingMaskIntoConstraints = false
+        
         view.addSubview(spinnerView)
         
         NSLayoutConstraint.activate([

@@ -6,6 +6,7 @@ protocol GroupInfoWorkerProtocol {
     func downloadUsers(with ids: [String], completion: @escaping ((Result<[User], FirebaseError>) -> Void))
     func updateAvatarImage(_ image: UIImage, directory: String, completion: @escaping (String?) -> Void)
     func saveGroupToFirebase(group: Group, completion: @escaping (Error?) -> Void)
+    func saveGroupInRecentChats(group: Group)
     func addMembers(_ members: [Group.Member], groupId: String, completion: @escaping (Error?) -> Void)
     func removeMember(_ member: Group.Member, groupId: String, completion: @escaping (Error?) -> Void)
     func updatePrivileges(isAdmin: Bool, groupId: String, userId: String, completion: @escaping (Error?) -> Void)
@@ -41,6 +42,10 @@ extension GroupInfoWorker: GroupInfoWorkerProtocol {
         client.updateGroupInfo(id: group.id, dto: group, completion: completion)
     }
     
+    func saveGroupInRecentChats(group: Group) {
+        client.updateGroupName(name: group.name, avatarLink: group.avatarLink, groupId: group.id)
+    }
+    
     func addMembers(_ members: [Group.Member], groupId: String, completion: @escaping (Error?) -> Void) {
         client.addMembers(members, groupId: groupId, completion: completion)
     }
@@ -54,7 +59,6 @@ extension GroupInfoWorker: GroupInfoWorkerProtocol {
     }
     
     func exitGroup(groupId: String, completion: @escaping (Error?) -> Void) {
-        
         client.updatePrivileges(isAdmin: false, groupId: groupId, for: currentUser.id) { [weak self] error in
             guard let self else { return }
             if let error {

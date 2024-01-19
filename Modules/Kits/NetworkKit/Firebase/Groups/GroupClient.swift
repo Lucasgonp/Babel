@@ -7,6 +7,7 @@ public protocol GroupClientProtocol {
     func addMembers<T: Encodable>(_ members: [T], groupId: String, completion: @escaping (Error?) -> Void)
     func removeMember<T: Encodable>(_ member: T, groupId: String, completion: @escaping (Error?) -> Void)
     func updatePrivileges(isAdmin: Bool, groupId: String, for userId: String, completion: @escaping (Error?) -> Void)
+    func updateGroupName(name: String, avatarLink: String, groupId: String)
 }
 
 extension FirebaseClient: GroupClientProtocol {
@@ -36,6 +37,23 @@ extension FirebaseClient: GroupClientProtocol {
             print(error.localizedDescription)
             completion(error)
         }
+    }
+    
+    public func updateGroupName(name: String, avatarLink: String, groupId: String) {
+        firebaseReference(.recent)
+            .whereField("chatRoomId", isEqualTo: groupId).getDocuments { snapshot, error in
+                snapshot?.query.whereField("type", isEqualTo: "group").getDocuments(completion: { snapshot, error in
+                    guard let documents = snapshot?.documents else { return }
+                    
+                    for document in documents {
+                        let fields = [
+                            "groupName": name,
+                            "avatarLink": avatarLink
+                        ]
+                        document.reference.setData(fields, merge: true)
+                    }
+                })
+            }
     }
     
     public func addMembers<T: Encodable>(_ members: [T], groupId: String, completion: @escaping (Error?) -> Void) {

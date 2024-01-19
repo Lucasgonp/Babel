@@ -34,7 +34,7 @@ extension RecentChatsWorker: RecentChatsWorkerProtocol {
     }
     
     func deleteRecentChat(_ chat: RecentChatModel) {
-        client.deleteRecentChat(chat.id)
+        //TODO: Remove remote chat?
     }
     
     func updateRecentChat(_ chat: RecentChatModel) {

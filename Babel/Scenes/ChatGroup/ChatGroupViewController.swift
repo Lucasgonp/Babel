@@ -4,6 +4,10 @@ import MessageKit
 import InputBarAccessoryView
 import GalleryKit
 
+protocol GroupInfoUpdateProtocol: AnyObject {
+    func didUpdateGroupInfo(dto: EditGroupDTO)
+}
+
 protocol ChatGroupDisplaying: AnyObject {
     func displayMessage(_ localMessage: LocalMessage)
     func displayRefreshedMessages(_ localMessage: LocalMessage)
@@ -250,6 +254,12 @@ extension ChatGroupViewController: ChatGroupDisplaying {
     }
 }
 
+extension ChatGroupViewController: GroupInfoUpdateProtocol {
+    func didUpdateGroupInfo(dto: EditGroupDTO) {
+        updateGroupInfo(dto: dto)
+    }
+}
+
 //MARK: - LoadingViewDelegate
 extension ChatGroupViewController: LoadingViewDelegate {
     func dismissLoadingView() {
@@ -328,6 +338,12 @@ private extension ChatGroupViewController {
                 self.descriptionLabel.isHidden = true
             }
         }
+    }
+    
+    func updateGroupInfo(dto: EditGroupDTO) {
+        titleLabel.text = dto.name
+        titleViewAvatar.image = dto.avatar
+        stackView.layoutIfNeeded()
     }
     
     func makeAttachActionSheet() -> UIAlertController {

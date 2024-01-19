@@ -11,18 +11,7 @@ enum RecentChatsViewState {
     case loading(isLoading: Bool)
 }
 
-private extension RecentChatsViewController.Layout {
-    // example
-    enum Size {
-        static let imageHeight: CGFloat = 90.0
-    }
-}
-
 final class RecentChatsViewController: ViewController<RecentChatsInteractorProtocol, UIView> {
-    fileprivate enum Layout { 
-        // template
-    }
-    
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(cellType: RecentChatCell.self)
@@ -105,8 +94,11 @@ extension RecentChatsViewController: RecentChatsDisplaying {
             // TODO:
             return
         case .loading(let isLoading):
-            // TODO:
-            return
+            if isLoading {
+                showLoading()
+            } else {
+                hideLoading()
+            }
         }
     }
 }
@@ -163,7 +155,7 @@ extension RecentChatsViewController: UITableViewDataSource {
 private extension RecentChatsViewController {
     func filterContentForSearchText(searchText: String) {
         if !searchText.isEmpty {
-            filteredRecentChats = allRecentChats.filter({ $0.receiverName.lowercased().contains(searchText.lowercased()) })
+            filteredRecentChats = allRecentChats.filter({ ($0.groupName ?? $0.receiverName).lowercased().contains(searchText.lowercased()) })
         } else {
             filteredRecentChats = allRecentChats
         }

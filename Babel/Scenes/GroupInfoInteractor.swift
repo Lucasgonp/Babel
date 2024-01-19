@@ -52,7 +52,7 @@ extension GroupInfoInteractor: GroupInfoInteractorProtocol {
     
     func updateGroupInfo(dto: EditGroupDTO) {
         let directory = FileDirectory.avatars.format(groupId)
-        worker.updateAvatarImage(dto.image, directory: directory) { [weak self] avatarLink in
+        worker.updateAvatarImage(dto.avatar, directory: directory) { [weak self] avatarLink in
             guard let self, var group, let avatarLink else { return }
             group.avatarLink = avatarLink
             group.name = dto.name
@@ -61,7 +61,13 @@ extension GroupInfoInteractor: GroupInfoInteractorProtocol {
                 if let error {
                     self.presenter.displayError(message: error.localizedDescription)
                 } else {
+                    if self.group?.name != dto.name || self.group?.avatarLink != avatarLink {
+                        self.worker.saveGroupInRecentChats(group: group)
+                    }
+                    
                     self.group = group
+                    var dto = dto
+                    dto.avatarLink = avatarLink
                     self.presenter.updateGroupInfo(dto: dto)
                 }
             }
@@ -142,7 +148,7 @@ extension GroupInfoInteractor: GroupInfoInteractorProtocol {
                         if let error {
                             self.presenter.displayError(message: error.localizedDescription)
                         } else {
-                            StartGroupChat.shared.restartChat(chatRoomId: self.groupId, memberIds: self.membersIds)
+                            StartGroupChat.shared.deleteChat(chatRoomId: self.groupId, memberIds: self.membersIds)
                             self.presenter.didNextStep(action: .didExitGroup)
                         }
                     }
@@ -156,7 +162,7 @@ extension GroupInfoInteractor: GroupInfoInteractorProtocol {
                 if let error {
                     self.presenter.displayError(message: error.localizedDescription)
                 } else {
-                    StartGroupChat.shared.restartChat(chatRoomId: self.groupId, memberIds: self.membersIds)
+                    StartGroupChat.shared.deleteChat(chatRoomId: self.groupId, memberIds: self.membersIds)
                     self.presenter.didNextStep(action: .didExitGroup)
                 }
             }

@@ -54,7 +54,7 @@ final class StartGroupChat {
         }
     }
     
-    func restartChat(chatRoomId: String, memberIds: [String]) {
+    func deleteChat(chatRoomId: String, memberIds: [String]) {
         client.deleteRecentChat(key: StorageKey.senderId.rawValue, currentUserId: currentUser.id)
     }
 }

@@ -22,8 +22,9 @@ final class MessageInputBarView: InputBarAccessoryView {
     
     private lazy var micButtonItem: InputBarButtonItem = {
         let micButtonItem = InputBarButtonItem()
-        micButtonItem.image = UIImage(systemName: "mic.fill")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 30))
-        micButtonItem.setSize(CGSize(width: 30, height: 30), animated: false)
+        micButtonItem.image = UIImage(systemName: "mic.fill")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 26))
+        micButtonItem.setSize(CGSize(width: 26, height: 26), animated: false)
+        micButtonItem.contentMode = .scaleAspectFit
         micButtonItem.addGestureRecognizer(shortGestureRecognizer)
         micButtonItem.addGestureRecognizer(longGestureRecognizer)
         micButtonItem.addGestureRecognizer(panGestureRecognizer)
@@ -107,8 +108,8 @@ final class MessageInputBarView: InputBarAccessoryView {
     
     func configure() {
         //TextView
-        inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 36)
-        inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 8, left: 20, bottom: 8, right: 36)
+        inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 12)
+        inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 8, left: 12, bottom: 8, right: 12)
         inputTextView.layer.borderColor = Color.grayscale300.cgColor
         inputTextView.layer.borderWidth = 1
         inputTextView.layer.cornerRadius = 16
@@ -119,7 +120,7 @@ final class MessageInputBarView: InputBarAccessoryView {
         setLeftStackViewWidthConstant(to: 36, animated: false)
         
         // SendButton
-        setStackViewItems([sendButton], forStack: .right, animated: false)
+//        setStackViewItems([sendButton], forStack: .right, animated: false)
         setRightStackViewWidthConstant(to: 36, animated: false)
         
         sendButton.setSize(CGSize(width: 36, height: 36), animated: false)
@@ -142,6 +143,11 @@ final class MessageInputBarView: InputBarAccessoryView {
     
     func addAttachButton() {
         setStackViewItems([attachButtonItem], forStack: .left, animated: false)
+        
+        NSLayoutConstraint.activate([
+            attachButtonItem.topAnchor.constraint(equalTo: leftStackView.topAnchor)
+        ])
+        
         attachButtonItem.alpha = 1
         cancelAudioAnimation.alpha = 0
     }
@@ -157,6 +163,10 @@ final class MessageInputBarView: InputBarAccessoryView {
     
     func addMicButton() {
         setStackViewItems([micButtonItem], forStack: .right, animated: false)
+        
+        NSLayoutConstraint.activate([
+            micButtonItem.topAnchor.constraint(equalTo: rightStackView.topAnchor)
+        ])
         
         UIView.animate(withDuration: 0.2) {
             self.sendButton.alpha = 0
@@ -320,11 +330,14 @@ private extension MessageInputBarView {
     func recordAudio() {
         switch longGestureRecognizer.state {
         case .began:
-            feedbackHapticMedium.prepare()
-            feedbackHapticMedium.impactOccurred()
-            isRecording = true
-            startTimer()
-            actionDelegate?.audioRecording(.start)
+            AudioRecorderManager.shared.authorizeMicrophoneAccess { [weak self] in
+                guard let self else { return }
+                self.feedbackHapticMedium.prepare()
+                self.feedbackHapticMedium.impactOccurred()
+                self.isRecording = true
+                self.startTimer()
+                self.actionDelegate?.audioRecording(.start)
+            }
         case .ended:
             if isRecording {
                 stopTimer()

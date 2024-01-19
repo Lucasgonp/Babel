@@ -84,7 +84,7 @@ extension GroupInfoHeaderCell {
     }
     
     func update(_ dto: EditGroupDTO) {
-        avatarImageView.image = dto.image
+        avatarImageView.image = dto.avatar
         fullNameLabel.text = dto.name
         layoutIfNeeded()
     }

@@ -36,7 +36,8 @@ final class LocationManager: NSObject {
         
         switch locationManager.authorizationStatus {
         case .authorizedAlways, .authorizedWhenInUse:
-            completion?()
+            authorizationHandler?()
+            authorizationHandler = nil
         default:
             locationManager.requestWhenInUseAuthorization()
         }
@@ -53,11 +54,11 @@ extension LocationManager: CLLocationManagerDelegate {
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        switch locationManager.authorizationStatus {
+        switch manager.authorizationStatus {
         case .authorizedAlways, .authorizedWhenInUse:
             authorizationHandler?()
         default:
-            locationManager.requestWhenInUseAuthorization()
+            manager.requestWhenInUseAuthorization()
         }
     }
 }

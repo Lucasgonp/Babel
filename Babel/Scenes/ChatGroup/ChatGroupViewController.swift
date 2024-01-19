@@ -122,7 +122,7 @@ final class ChatGroupViewController: MessagesViewController {
         
         //TODO: check if its necessary
 //        FirebaseRecentListener.shared.resetRecentCounter(chatRoomId: chatId)
-//        audioController.stopAnyOngoingPlaying()
+        audioController.stopAnyOngoingPlaying()
     }
     
     func messageSend(

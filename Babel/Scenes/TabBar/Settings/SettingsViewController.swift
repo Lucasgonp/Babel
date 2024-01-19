@@ -37,10 +37,17 @@ final class SettingsViewController: ViewController<SettingsInteractorProtocol, U
             }
         ),
         SettingsButtonViewModel(
-            icon: Icon.info.image,
+            icon: UIImage(systemName: "info.circle")!,
             text: Localizable.SecondSession.termsAndConditions,
             completionHandler: { [weak self] in
                 self?.interactor.termsAndConditions()
+            }
+        ),
+        SettingsButtonViewModel(
+            icon: UIImage(systemName: "gear")!,
+            text: "Settings",
+            completionHandler: { [weak self] in
+                self?.interactor.systemSettings()
             }
         )
     ]

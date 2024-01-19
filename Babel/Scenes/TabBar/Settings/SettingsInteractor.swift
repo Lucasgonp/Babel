@@ -5,6 +5,7 @@ protocol SettingsInteractorProtocol: AnyObject {
     func editProfile()
     func tellAFriend()
     func termsAndConditions()
+    func systemSettings()
     func logout()
 }
 
@@ -54,6 +55,10 @@ extension SettingsInteractor: SettingsInteractorProtocol {
     
     func termsAndConditions() {
         presenter.didNextStep(action: .pushTermsAndCondition)
+    }
+    
+    func systemSettings() {
+        presenter.didNextStep(action: .pushSystemSettings)
     }
     
     func logout() {

@@ -151,7 +151,7 @@ open class AudioController: NSObject, AVAudioPlayerDelegate {
 
     /// Stops any ongoing audio playing if exists
     open func stopAnyOngoingPlaying() {
-        guard let player = mp3Player, let collectionView = messageCollectionView else { return } // If the audio player is nil then we don't need to go through the stopping logic
+        guard let player = mp3Player, let collectionView = messageCollectionView else { return }
         player.seek(to: CMTime.zero)
         player.pause()
 

@@ -29,7 +29,8 @@ extension ChatGroupViewController: MessageCellDelegate {
             
             moviePlayer.player = player
             
-            present(moviePlayer, animated: true) {
+            present(moviePlayer, animated: true) { [weak self] in
+                self?.audioController.stopAnyOngoingPlaying()
                 moviePlayer.player!.play()
             }
         }

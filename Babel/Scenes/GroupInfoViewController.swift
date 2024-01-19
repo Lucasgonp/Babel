@@ -73,7 +73,7 @@ final class GroupInfoViewController: ViewController<GroupInfoInteractorProtocol,
     }
     
     private var groupInfo: Group?
-    private lazy var members = [User]()
+    private var members = [User]()
     
     weak var delegate: GroupInfoUpdateProtocol?
     
@@ -159,7 +159,6 @@ extension GroupInfoViewController: UITableViewDelegate {
             present(groupDescNavigation, animated: true)
         case 2:
             if isMember {
-                // Send message
                 interactor.sendMessage()
             } else {
                 let actionSheet = makeJoinGroupActionSheet(user: members[indexPath.row])

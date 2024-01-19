@@ -18,4 +18,14 @@ final class RealmManager {
             print("error saving realm: \(error.localizedDescription)")
         }
     }
+    
+    func deleteAll() {
+        do {
+            try realm.write { [weak self] in
+                self?.realm.deleteAll()
+            }
+        } catch {
+            print("error saving realm: \(error.localizedDescription)")
+        }
+    }
 }

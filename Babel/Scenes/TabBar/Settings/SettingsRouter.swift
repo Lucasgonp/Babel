@@ -5,6 +5,7 @@ enum SettingsAction {
     case pushEditProfile(user: User)
     case pushTellAFriend
     case pushTermsAndCondition
+    case pushSystemSettings
     case logout
 }
 
@@ -26,6 +27,8 @@ extension SettingsRouter: SettingsRouterProtocol {
             pushTellAFriend()
         case .pushTermsAndCondition:
             pushTermsAndCondition()
+        case .pushSystemSettings:
+            pushSystemSettings()
         case .logout:
             delegate?.logout()
         }
@@ -49,6 +52,11 @@ private extension SettingsRouter {
     
     func pushTermsAndCondition() {
         let controller = TermsFactory.make()
+        viewController?.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func pushSystemSettings() {
+        let controller = SystemSettingsFactory.make()
         viewController?.navigationController?.pushViewController(controller, animated: true)
     }
 }

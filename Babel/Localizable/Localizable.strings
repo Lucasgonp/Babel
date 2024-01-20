@@ -7,6 +7,9 @@
 "Commons.searchUser" = "Search user";
 "Commons.users" = "Users";
 
+// Generic Errors
+"GenericError.message" = "Ops! Something went wrong";
+
 // TabBar
 "TabBar.Settings.title" = "Settings";
 "TabBar.Groups.title" = "Groups";

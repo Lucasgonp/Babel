@@ -53,7 +53,6 @@ final class EditBioViewController: ViewController<EditBioInteractorProtocol, UIV
     }
 }
 
-// MARK: - EditBioDisplaying
 extension EditBioViewController: EditBioDisplaying {
     func displayErrorMessage(message: String) {
         showErrorAlert(message)
@@ -121,9 +120,7 @@ extension EditBioViewController: UITableViewDataSource {
     func didTapDoneButton() {
         view.endEditing(true)
         
-        guard var currentUser else {
-            return
-        }
+        guard var currentUser else { return }
         currentUser.status = aboutTextField.text
         interactor.saveUserToFirebase(user: currentUser)
     }
@@ -141,7 +138,6 @@ private extension EditBioViewController {
     }
     
     func updateDoneBarButton(isHidden: Bool) {
-        // TODO: Check if is hiding correctly
         if isHidden {
             navigationItem.rightBarButtonItem = nil
         } else {

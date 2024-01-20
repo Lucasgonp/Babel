@@ -262,6 +262,9 @@
 		7691DCE52B49A766007D52B3 /* GalleryKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7691DC402B49A35C007D52B3 /* GalleryKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7691DCE82B49A83D007D52B3 /* DesignKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7691DC5E2B49A3EA007D52B3 /* DesignKit.framework */; };
 		7691DCE92B49A83D007D52B3 /* DesignKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7691DC5E2B49A3EA007D52B3 /* DesignKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		76926F7D2B5C3272003A0518 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76926F7C2B5C3272003A0518 /* Security.framework */; };
+		76926F812B5C3731003A0518 /* Encodable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76926F7F2B5C36D9003A0518 /* Encodable+Extensions.swift */; };
+		76926F842B5C4437003A0518 /* Strings+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76926F822B5C442F003A0518 /* Strings+Extensions.swift */; };
 		7695DAFD2B5B27BD002D91CB /* SystemSettingsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7695DAF72B5B27BD002D91CB /* SystemSettingsFactory.swift */; };
 		7695DAFE2B5B27BD002D91CB /* SystemSettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7695DAF82B5B27BD002D91CB /* SystemSettingsPresenter.swift */; };
 		7695DAFF2B5B27BD002D91CB /* SystemSettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7695DAF92B5B27BD002D91CB /* SystemSettingsRouter.swift */; };
@@ -752,6 +755,9 @@
 		7691DCA12B49A410007D52B3 /* AlertViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewModel.swift; sourceTree = "<group>"; };
 		7691DCA32B49A410007D52B3 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7691DCA42B49A410007D52B3 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		76926F7C2B5C3272003A0518 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		76926F7F2B5C36D9003A0518 /* Encodable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extensions.swift"; sourceTree = "<group>"; };
+		76926F822B5C442F003A0518 /* Strings+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Strings+Extensions.swift"; sourceTree = "<group>"; };
 		7695DAF72B5B27BD002D91CB /* SystemSettingsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSettingsFactory.swift; sourceTree = "<group>"; };
 		7695DAF82B5B27BD002D91CB /* SystemSettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSettingsPresenter.swift; sourceTree = "<group>"; };
 		7695DAF92B5B27BD002D91CB /* SystemSettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSettingsRouter.swift; sourceTree = "<group>"; };
@@ -909,6 +915,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76926F7D2B5C3272003A0518 /* Security.framework in Frameworks */,
 				76B487832B49CA95001FC465 /* Dependencies.framework in Frameworks */,
 				7667DC742B4CDF1D00938D6F /* Lottie in Frameworks */,
 				7691DB8E2B499862007D52B3 /* NetworkKit.framework in Frameworks */,
@@ -1560,6 +1567,7 @@
 		7691DBA32B4998EA007D52B3 /* StorageKit */ = {
 			isa = PBXGroup;
 			children = (
+				76926F7E2B5C36CA003A0518 /* Extensions */,
 				7691DBC62B499973007D52B3 /* Local */,
 				7691DBBF2B499973007D52B3 /* Remote */,
 				7691DBC52B499973007D52B3 /* StorageKey.swift */,
@@ -1899,6 +1907,15 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		76926F7E2B5C36CA003A0518 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				76926F7F2B5C36D9003A0518 /* Encodable+Extensions.swift */,
+				76926F822B5C442F003A0518 /* Strings+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		7695DAF62B5B27A2002D91CB /* SystemSettings */ = {
 			isa = PBXGroup;
 			children = (
@@ -2091,6 +2108,7 @@
 		76CAA1712A8AA8F400D742E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				76926F7C2B5C3272003A0518 /* Security.framework */,
 				7608DE502A9960DC0036027A /* StorageKit.framework */,
 				7608DE282A9945BB0036027A /* GalleryKit.framework */,
 				76228DA92A8AAF7000C27C7A /* DesignKit.framework */,
@@ -2804,10 +2822,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76926F842B5C4437003A0518 /* Strings+Extensions.swift in Sources */,
 				7691DBCB2B499973007D52B3 /* StorageUpload.swift in Sources */,
 				7691DBCF2B499973007D52B3 /* StorageLocalVideo.swift in Sources */,
 				7691DBCD2B499973007D52B3 /* StorageKey.swift in Sources */,
 				7691DBCA2B499973007D52B3 /* StorageAdapter.swift in Sources */,
+				76926F812B5C3731003A0518 /* Encodable+Extensions.swift in Sources */,
 				7691DBA62B4998EA007D52B3 /* StorageKit.docc in Sources */,
 				7691DBCE2B499973007D52B3 /* StorageLocal.swift in Sources */,
 				7691DBCC2B499973007D52B3 /* ImageDownloadManager.swift in Sources */,

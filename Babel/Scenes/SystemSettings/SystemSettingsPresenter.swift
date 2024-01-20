@@ -7,7 +7,7 @@ final class SystemSettingsPresenter {
     private let router: SystemSettingsRouterProtocol
     weak var viewController: SystemSettingsDisplaying?
 
-    init(router: SystemSettingsRouting) {
+    init(router: SystemSettingsRouterProtocol) {
         self.router = router
     }
 }

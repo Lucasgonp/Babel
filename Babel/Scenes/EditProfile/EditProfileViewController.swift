@@ -39,7 +39,9 @@ final class EditProfileViewController: ViewController<EditProfileInteractorProto
         return textField
     }()
     
-    private var currentUser = UserSafe.shared.user
+    private var currentUser: User {
+        UserSafe.shared.user
+    }
     
     private var headerCell: EditProfileHeaderCell?
     private var shouldUpdateInto = false
@@ -181,6 +183,7 @@ private extension EditProfileViewController {
 @objc private extension EditProfileViewController {
     func didTapDoneButton() {
         view.endEditing(true)
+        var currentUser = currentUser
         currentUser.name = fullNameTextField.text
         interactor.saveUserToFirebase(user: currentUser)
     }

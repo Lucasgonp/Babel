@@ -12,9 +12,8 @@ final class EditBioWorker {
     }
 }
 
-// MARK: - EditBioWorkerProtocol
 extension EditBioWorker: EditBioWorkerProtocol {
     func saveUserToFirebase(user: User, completion: @escaping (Error?) -> Void) {
-        authManager.saveUserToFirestore(user, thread: .main, completion: completion)
+        authManager.saveUserToFirestore(user, completion: completion)
     }
 }

@@ -16,7 +16,6 @@ final class EditProfilePresenter {
     }
 }
 
-// MARK: - EditProfilePresenterProtocol
 extension EditProfilePresenter: EditProfilePresenterProtocol {    
     func updateEditProfile() {
         viewController?.updateEditProfile()

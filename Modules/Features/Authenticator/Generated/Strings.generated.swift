@@ -111,6 +111,10 @@ internal enum Strings {
         internal static let placeholder = Strings.tr("Localizable", "Register.Field.Username.placeholder", fallback: "Username")
       }
     }
+    internal enum UserBio {
+      /// Hello there! I'm using Babel!
+      internal static let `default` = Strings.tr("Localizable", "Register.UserBio.default", fallback: "Hello there! I'm using Babel!")
+    }
   }
   internal enum ResetPassword {
     internal enum SendReset {
@@ -136,7 +140,19 @@ internal enum Strings {
 
 extension Strings {
   private static func tr(_ table: String, _ key: String, _ args: CVarArg..., fallback value: String) -> String {
-    let format = AuthenticatorResources.resourcesBundle.localizedString(forKey: key, value: value, table: table)
+    let format = BundleToken.bundle.localizedString(forKey: key, value: value, table: table)
     return String(format: format, locale: Locale.current, arguments: args)
   }
 }
+
+// swiftlint:disable convenience_type
+private final class BundleToken {
+  static let bundle: Bundle = {
+    #if SWIFT_PACKAGE
+    return Bundle.module
+    #else
+    return Bundle(for: BundleToken.self)
+    #endif
+  }()
+}
+// swiftlint:enable convenience_type

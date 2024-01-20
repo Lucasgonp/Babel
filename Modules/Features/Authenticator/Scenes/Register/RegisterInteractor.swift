@@ -14,16 +14,19 @@ final class RegisterInteractor {
     }
 }
 
-// MARK: - RegisterInteractorProtocol
 extension RegisterInteractor: RegisterInteractorProtocol {
     func registerUser(_ userRequest: RegisterUserRequestModel) {
         showLoading()
-        service.register(userRequest: userRequest) { [weak self] error in
-            self?.hideLoading()
-            if let error {
-                self?.presenter.displayViewState(.error(message: error.errorDescription ?? String()))
-            } else {
-                self?.presenter.displayViewState(.success)
+        DispatchQueue.global().async { [weak self] in
+            self?.service.register(userRequest: userRequest) { [weak self] error in
+                DispatchQueue.main.async { [weak self] in
+                    self?.hideLoading()
+                    if let error {
+                        self?.presenter.displayViewState(.error(message: error.errorDescription ?? String()))
+                    } else {
+                        self?.presenter.displayViewState(.success)
+                    }
+                }
             }
         }
     }

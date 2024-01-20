@@ -25,7 +25,6 @@ final class EditProfileInteractor {
     }
 }
 
-// MARK: - EditProfileInteractorProtocol
 extension EditProfileInteractor: EditProfileInteractorProtocol {
     func getUpdatedUser() {
         service.checkAuthentication { [weak self] credentials in
@@ -38,35 +37,39 @@ extension EditProfileInteractor: EditProfileInteractorProtocol {
     
     func saveUserToFirebase(user: User) {
         currentUser = user
-        service.saveUserToFirebase(user: user) { [weak self] error in
-            guard let self else {
-                return
-            }
-            if let error {
-                self.presenter.displayErrorMessage(message: error.localizedDescription)
-            } else {
-                self.presenter.updateEditProfile()
+        DispatchQueue.global().async { [weak self] in
+            self?.service.saveUserToFirebase(user: user) { [weak self] error in
+                DispatchQueue.main.async { [weak self] in
+                    guard let self else { return }
+                    if let error {
+                        self.presenter.displayErrorMessage(message: error.localizedDescription)
+                    } else {
+                        self.presenter.updateEditProfile()
+                    }
+                }
             }
         }
     }
     
     func updateAvatarImage(_ image: UIImage) {
         let directory = FileDirectory.avatars.format(currentUser.id)
-        service.updateAvatarImage(image, directory: directory) { [weak self] avatarLink in
-            guard let self else {
-                return
-            }
-            if let avatarLink {
-                self.currentUser.avatarLink = avatarLink
-                self.service.saveUserToFirebase(user: self.currentUser) { [weak self] error in
-                    guard let self else {
-                        return
+        DispatchQueue.global().async { [weak self] in
+            self?.service.updateAvatarImage(image, directory: directory) { [weak self] avatarLink in
+                guard let self else { return }
+                if let avatarLink {
+                    self.currentUser.avatarLink = avatarLink
+                    self.service.saveUserToFirebase(user: self.currentUser) { [weak self] error in
+                        DispatchQueue.main.async { [weak self] in
+                            guard let self else { return }
+                            if let error {
+                                self.presenter.displayErrorMessage(message: error.localizedDescription)
+                            } else {
+                                self.presenter.updateAvatarImage(image)
+                            }
+                        }
                     }
-                    if let error {
-                        self.presenter.displayErrorMessage(message: error.localizedDescription)
-                    } else {
-                        self.presenter.updateAvatarImage(image)
-                    }
+                } else {
+                    self.presenter.displayErrorMessage(message: Strings.GenericError.message)
                 }
             }
         }

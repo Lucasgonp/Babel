@@ -28,6 +28,7 @@
 "Register.Field.Email.placeholder" = "Email";
 "Register.Button.register" = "Register";
 "Register.Button.login" = "Already have an account? **Login**";
+"Register.UserBio.default" = "Hello there! I'm using Babel!";
 
 "Register.Alert.EmailVerification.Verify.title" = "Email verification sent";
 "Register.Alert.EmailVerification.Verify.message" = "Please check your email inbox we just sent you, you need to validate before login";
@@ -48,6 +49,3 @@
 "Error.Field.usernameShort" = "Username is too short";
 "Error.Field.fullNameShort" = "Full name is too short";
 "Error.Field.passwordShort" = "Password is too short";
-
-
-// Login

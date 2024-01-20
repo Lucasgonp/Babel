@@ -16,6 +16,13 @@ strings:
       params:
         publicAccess: false
         enumName: "Strings"
+  - inputs: Modules/Features/Authenticator/Localizable/Localizable.strings
+    outputs:
+      templateName: structured-swift5
+      output: Modules/Features/Authenticator/Generated/Strings.generated.swift
+      params:
+        publicAccess: false
+        enumName: "Strings"
 
         
 xcassets:

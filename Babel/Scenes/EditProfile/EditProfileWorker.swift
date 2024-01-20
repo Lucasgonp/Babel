@@ -28,7 +28,7 @@ extension EditProfileWorker: EditProfileWorkerProtocol {
     }
     
     func saveUserToFirebase(user: User, completion: @escaping (Error?) -> Void) {
-        authManager.saveUserToFirestore(user, thread: .main, completion: completion)
+        authManager.saveUserToFirestore(user, completion: completion)
     }
     
     func updateAvatarImage(_ image: UIImage, directory: String, completion: @escaping (String?) -> Void) {

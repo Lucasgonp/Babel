@@ -14,7 +14,7 @@ final class RegisterWorker {
 
 extension RegisterWorker: RegisterWorkerProtocol {
     func register(userRequest: RegisterUserRequestModel, completion: @escaping (AuthError?) -> Void) {
-        authWorker.registerUser(with: userRequest, thread: .main) { didSuccess, error in
+        authWorker.registerUser(with: userRequest) { didSuccess, error in
             if let error {
                 completion(.custom(error))
                 return

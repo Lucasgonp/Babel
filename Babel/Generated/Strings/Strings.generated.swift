@@ -60,6 +60,10 @@ internal enum Strings {
     /// Create new group
     internal static let title = Strings.tr("Localizable", "CreateGroup.title", fallback: "Create new group")
   }
+  internal enum GenericError {
+    /// Ops! Something went wrong
+    internal static let message = Strings.tr("Localizable", "GenericError.message", fallback: "Ops! Something went wrong")
+  }
   internal enum GroupInfo {
     /// Add group description
     internal static let addGroupDescription = Strings.tr("Localizable", "GroupInfo.addGroupDescription", fallback: "Add group description")

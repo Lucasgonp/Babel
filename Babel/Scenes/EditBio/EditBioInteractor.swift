@@ -12,13 +12,10 @@ final class EditBioInteractor {
     }
 }
 
-// MARK: - EditBioInteractorProtocol
 extension EditBioInteractor: EditBioInteractorProtocol {
     func saveUserToFirebase(user: User) {
         service.saveUserToFirebase(user: user) { [weak self] error in
-            guard let self else {
-                return
-            }
+            guard let self else { return }
             if let error {
                 self.presenter.displayErrorMessage(message: error.localizedDescription)
             }

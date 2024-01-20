@@ -1,48 +1,40 @@
 import FirebaseFirestoreSwift
 
 public protocol RegisterProtocol {
-    func registerUser(with userRequest: RegisterUserRequestModel, thread: DispatchQueue, completion: @escaping (Bool, Error?) -> Void)
+    func registerUser(with userRequest: RegisterUserRequestModel, completion: @escaping (Bool, Error?) -> Void)
 }
 
 extension AuthenticatorAdapter: RegisterProtocol {
-    public func registerUser(with userRequest: RegisterUserRequestModel, thread: DispatchQueue = .main, completion: @escaping (Bool, Error?) -> Void) {
+    public func registerUser(with userRequest: RegisterUserRequestModel, completion: @escaping (Bool, Error?) -> Void) {
         auth.createUser(withEmail: userRequest.email, password: userRequest.password) { [weak self] (result, error) in
             print("Register user result: \(String(describing: result))")
             print("Error: \(String(describing: error))")
             
             if let error {
-                thread.async {
-                    return completion(false, error)
-                }
+                return completion(false, error)
             }
             
             guard let resultUser = result?.user else {
-                thread.async {
-                    completion(false, nil)
-                }
-                return
+                return completion(false, nil)
             }
             
             resultUser.sendEmailVerification { (error) in
-                print("Sent user verification")
                 if let error {
-                    thread.async {
-                        completion(false, error)
-                    }
+                    return completion(false, error)
                 }
             }
             
             let user = User(
                 id: resultUser.uid,
-                pushId: "",
-                avatarLink: "",
+                pushId: String(),
+                avatarLink: String(),
                 name: userRequest.fullName,
                 email: userRequest.email,
                 username: userRequest.username,
                 password: userRequest.password,
-                status: "Hello there! I'm using Babel!"
+                status: Strings.Register.UserBio.default
             )
-            self?.saveUserToFirestore(user, thread: thread) { error in
+            self?.saveUserToFirestore(user) { error in
                 if let error {
                     completion(false, error)
                 } else {

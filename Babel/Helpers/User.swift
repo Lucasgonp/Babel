@@ -6,7 +6,7 @@ typealias AccountInfo = Authenticator.AccountInfo
 struct UserSafe {
     static let shared = UserSafe()
     
-    let user = AccountInfo.shared.user!
+    var user: User { AccountInfo.shared.user! }
     let firebaseUser = AccountInfo.shared.firebaseUser!
     
     private init() { }

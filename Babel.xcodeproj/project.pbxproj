@@ -267,7 +267,7 @@
 		7695DAFF2B5B27BD002D91CB /* SystemSettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7695DAF92B5B27BD002D91CB /* SystemSettingsRouter.swift */; };
 		7695DB002B5B27BD002D91CB /* SystemSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7695DAFA2B5B27BD002D91CB /* SystemSettingsViewController.swift */; };
 		7695DB012B5B27BD002D91CB /* SystemSettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7695DAFB2B5B27BD002D91CB /* SystemSettingsInteractor.swift */; };
-		7695DB022B5B27BD002D91CB /* SystemSettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7695DAFC2B5B27BD002D91CB /* SystemSettingsService.swift */; };
+		7695DB022B5B27BD002D91CB /* SystemSettingsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7695DAFC2B5B27BD002D91CB /* SystemSettingsWorker.swift */; };
 		769E972D2AA3C4FC004FC6B4 /* ContactInfoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E97272AA3C4FC004FC6B4 /* ContactInfoFactory.swift */; };
 		769E972E2AA3C4FC004FC6B4 /* ContactInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E97282AA3C4FC004FC6B4 /* ContactInfoPresenter.swift */; };
 		769E972F2AA3C4FC004FC6B4 /* ContactInfoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E97292AA3C4FC004FC6B4 /* ContactInfoRouter.swift */; };
@@ -757,7 +757,7 @@
 		7695DAF92B5B27BD002D91CB /* SystemSettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSettingsRouter.swift; sourceTree = "<group>"; };
 		7695DAFA2B5B27BD002D91CB /* SystemSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSettingsViewController.swift; sourceTree = "<group>"; };
 		7695DAFB2B5B27BD002D91CB /* SystemSettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSettingsInteractor.swift; sourceTree = "<group>"; };
-		7695DAFC2B5B27BD002D91CB /* SystemSettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSettingsService.swift; sourceTree = "<group>"; };
+		7695DAFC2B5B27BD002D91CB /* SystemSettingsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSettingsWorker.swift; sourceTree = "<group>"; };
 		769E97272AA3C4FC004FC6B4 /* ContactInfoFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoFactory.swift; sourceTree = "<group>"; };
 		769E97282AA3C4FC004FC6B4 /* ContactInfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoPresenter.swift; sourceTree = "<group>"; };
 		769E97292AA3C4FC004FC6B4 /* ContactInfoRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoRouter.swift; sourceTree = "<group>"; };
@@ -1907,7 +1907,7 @@
 				7695DAF92B5B27BD002D91CB /* SystemSettingsRouter.swift */,
 				7695DAFA2B5B27BD002D91CB /* SystemSettingsViewController.swift */,
 				7695DAFB2B5B27BD002D91CB /* SystemSettingsInteractor.swift */,
-				7695DAFC2B5B27BD002D91CB /* SystemSettingsService.swift */,
+				7695DAFC2B5B27BD002D91CB /* SystemSettingsWorker.swift */,
 			);
 			path = SystemSettings;
 			sourceTree = "<group>";
@@ -3051,7 +3051,7 @@
 				76AF8DC72B51EDF400E21CD5 /* GroupInfoWorker.swift in Sources */,
 				76AF8DC32B51EDF400E21CD5 /* GroupInfoPresenter.swift in Sources */,
 				7620F42D2A9567B1002A4EB5 /* User.swift in Sources */,
-				7695DB022B5B27BD002D91CB /* SystemSettingsService.swift in Sources */,
+				7695DB022B5B27BD002D91CB /* SystemSettingsWorker.swift in Sources */,
 				7608DE542A999F050036027A /* StorageManager.swift in Sources */,
 				7608DE682A9BAFDE0036027A /* EditBioPresenter.swift in Sources */,
 			);

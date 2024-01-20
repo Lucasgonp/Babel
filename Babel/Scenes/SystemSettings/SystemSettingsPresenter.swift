@@ -1,10 +1,10 @@
-protocol SystemSettingsPresenting: AnyObject {
+protocol SystemSettingsPresenterProtocol: AnyObject {
     func displaySomething()
     func didNextStep(action: SystemSettingsAction)
 }
 
 final class SystemSettingsPresenter {
-    private let router: SystemSettingsRouting
+    private let router: SystemSettingsRouterProtocol
     weak var viewController: SystemSettingsDisplaying?
 
     init(router: SystemSettingsRouting) {
@@ -12,7 +12,7 @@ final class SystemSettingsPresenter {
     }
 }
 
-extension SystemSettingsPresenter: SystemSettingsPresenting {
+extension SystemSettingsPresenter: SystemSettingsPresenterProtocol {
     func displaySomething() {
         viewController?.displaySomething()
     }

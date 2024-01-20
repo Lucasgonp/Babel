@@ -5,7 +5,7 @@ protocol SystemSettingsDisplaying: AnyObject {
     func displaySomething()
 }
 
-final class SystemSettingsViewController: ViewController<SystemSettingsInteracting, UIView> {
+final class SystemSettingsViewController: ViewController<SystemSettingsInteractorProtocol, UIView> {
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.register(cellType: UITableViewCell.self)
@@ -24,9 +24,7 @@ final class SystemSettingsViewController: ViewController<SystemSettingsInteracti
         view.fillWithSubview(subview: tableView, navigationSafeArea: true)
     }
     
-    override func setupConstraints() {
-        // template
-    }
+    override func setupConstraints() { }
 
     override func configureViews() {
         title = "System settings"
@@ -34,7 +32,6 @@ final class SystemSettingsViewController: ViewController<SystemSettingsInteracti
     }
 }
 
-// MARK: - SystemSettingsDisplaying
 extension SystemSettingsViewController: SystemSettingsDisplaying {
     func displaySomething() { 
         // template

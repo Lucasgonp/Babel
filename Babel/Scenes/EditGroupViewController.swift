@@ -48,11 +48,7 @@ final class EditGroupViewController: UIViewController {
         return item
     }()
     
-    private lazy var galleryController: GalleryController = {
-        let gallery = GalleryController()
-        gallery.configuration = .avatarPhoto
-        return gallery
-    }()
+    private var galleryController: GalleryController?
     
     private let avatarLink: String
     
@@ -146,7 +142,10 @@ extension EditGroupViewController: TextFieldDelegate {
 
 @objc private extension EditGroupViewController {
     func didTapEditAvatarButton() {
-        galleryController.showMediaPicker(from: navigationController) { [weak self] mediaItems in
+        galleryController = GalleryController()
+        galleryController?.configuration = .avatarPhoto
+        galleryController?.showMediaPicker(from: navigationController) { [weak self] mediaItems in
+            self?.galleryController = nil
             if let singlePhoto = mediaItems.singlePhoto {
                 self?.avatarImageView.image = singlePhoto.image
             }

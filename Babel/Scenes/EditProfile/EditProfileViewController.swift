@@ -46,11 +46,7 @@ final class EditProfileViewController: ViewController<EditProfileInteractorProto
     private var headerCell: EditProfileHeaderCell?
     private var shouldUpdateInto = false
     
-    private lazy var galleryController: GalleryController = {
-        let gallery = GalleryController()
-        gallery.configuration = .avatarPhoto
-        return gallery
-    }()
+    private var galleryController: GalleryController?
     
     weak var delegate: SettingsViewDelegate?
     
@@ -192,7 +188,10 @@ private extension EditProfileViewController {
 extension EditProfileViewController: EditProfileHeaderDelegate {    
     func didTapOnEditAvatar() {
         fullNameTextField.text = currentUser.name
-        galleryController.showSinglePhotoPicker(from: navigationController) { [weak self] image in
+        galleryController = GalleryController()
+        galleryController?.configuration = .avatarPhoto
+        galleryController?.showSinglePhotoPicker(from: navigationController) { [weak self] image in
+            self?.galleryController = nil
             if let image {
                 self?.headerCell?.update(image)
                 self?.interactor.updateAvatarImage(image)

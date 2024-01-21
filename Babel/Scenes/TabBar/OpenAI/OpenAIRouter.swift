@@ -1,7 +1,8 @@
 import UIKit
 
 enum OpenAIAction {
-    // template
+    case pushChatBot(_ dto: ChatBotDTO)
+    case pushImageGenerator(_ dto: ChatBotDTO)
 }
 
 protocol OpenAIRouterProtocol: AnyObject {
@@ -14,6 +15,15 @@ final class OpenAIRouter {
 
 extension OpenAIRouter: OpenAIRouterProtocol {
     func perform(action: OpenAIAction) {
-        // template
+        switch action {
+        case let .pushChatBot(dto):
+            let controller = ChatBotFactory.make(dto: dto)
+            controller.hidesBottomBarWhenPushed = true
+            viewController?.navigationController?.pushViewController(controller, animated: true)
+        case let .pushImageGenerator(dto):
+            let controller = ChatBotFactory.make(dto: dto)
+            controller.hidesBottomBarWhenPushed = true
+            viewController?.navigationController?.pushViewController(controller, animated: true)
+        }
     }
 }

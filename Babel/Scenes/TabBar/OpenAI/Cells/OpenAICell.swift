@@ -54,6 +54,8 @@ final class OpenAICell: UITableViewCell, ViewConfiguration {
         return stack
     }()
     
+    private(set) var completionHandler: (() -> Void)?
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         buildLayout()
@@ -92,6 +94,7 @@ extension OpenAICell {
         fullNameLabel.text = dto.name
         statusLabel.text = dto.bio
         avatar.image = dto.avatar
+        completionHandler = dto.action
         
         if dto.avatar.renderingMode == .alwaysTemplate {
             avatar.tintColor = Color.grayscale400.uiColor

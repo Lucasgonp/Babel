@@ -294,6 +294,21 @@
 		76B1FC0F2B5D6515007D0519 /* OpenAIInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC092B5D6515007D0519 /* OpenAIInteractor.swift */; };
 		76B1FC122B5D6F8A007D0519 /* OpenAICell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC112B5D6F8A007D0519 /* OpenAICell.swift */; };
 		76B1FC152B5D7004007D0519 /* OpenAIDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC142B5D7004007D0519 /* OpenAIDTO.swift */; };
+		76B1FC1D2B5D819F007D0519 /* ChatBotFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC172B5D819F007D0519 /* ChatBotFactory.swift */; };
+		76B1FC1E2B5D819F007D0519 /* ChatBotPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC182B5D819F007D0519 /* ChatBotPresenter.swift */; };
+		76B1FC1F2B5D819F007D0519 /* ChatBotWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC192B5D819F007D0519 /* ChatBotWorker.swift */; };
+		76B1FC202B5D819F007D0519 /* ChatBotRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC1A2B5D819F007D0519 /* ChatBotRouter.swift */; };
+		76B1FC212B5D819F007D0519 /* ChatBotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC1B2B5D819F007D0519 /* ChatBotViewController.swift */; };
+		76B1FC222B5D819F007D0519 /* ChatBotInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC1C2B5D819F007D0519 /* ChatBotInteractor.swift */; };
+		76B1FC292B5D85C6007D0519 /* ChatBotMessageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC242B5D85C5007D0519 /* ChatBotMessageDataSource.swift */; };
+		76B1FC2A2B5D85C6007D0519 /* ChatBotInputBarAccessoryViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC252B5D85C5007D0519 /* ChatBotInputBarAccessoryViewDelegate.swift */; };
+		76B1FC2B2B5D85C6007D0519 /* ChatBotMessageDisplayDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC262B5D85C6007D0519 /* ChatBotMessageDisplayDelegate.swift */; };
+		76B1FC2C2B5D85C6007D0519 /* ChatBotMessageLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC272B5D85C6007D0519 /* ChatBotMessageLayoutDelegate.swift */; };
+		76B1FC2D2B5D85C6007D0519 /* ChatBotMessageCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC282B5D85C6007D0519 /* ChatBotMessageCellDelegate.swift */; };
+		76B1FC302B5D89FC007D0519 /* BotDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC2F2B5D89FC007D0519 /* BotDTO.swift */; };
+		76B1FC322B5D8CCC007D0519 /* ChatBotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC312B5D8CCC007D0519 /* ChatBotHelper.swift */; };
+		76B1FC352B5D91C1007D0519 /* MessageBotInputBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC342B5D91C1007D0519 /* MessageBotInputBarView.swift */; };
+		76B1FC382B5D9951007D0519 /* ChatBotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC372B5D9951007D0519 /* ChatBotViewModel.swift */; };
 		76B487802B49CA95001FC465 /* Dependencies.h in Headers */ = {isa = PBXBuildFile; fileRef = 76B4877F2B49CA95001FC465 /* Dependencies.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		76B487832B49CA95001FC465 /* Dependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76B4877D2B49CA95001FC465 /* Dependencies.framework */; };
 		76B487842B49CA95001FC465 /* Dependencies.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76B4877D2B49CA95001FC465 /* Dependencies.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -793,6 +808,21 @@
 		76B1FC092B5D6515007D0519 /* OpenAIInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIInteractor.swift; sourceTree = "<group>"; };
 		76B1FC112B5D6F8A007D0519 /* OpenAICell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAICell.swift; sourceTree = "<group>"; };
 		76B1FC142B5D7004007D0519 /* OpenAIDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIDTO.swift; sourceTree = "<group>"; };
+		76B1FC172B5D819F007D0519 /* ChatBotFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotFactory.swift; sourceTree = "<group>"; };
+		76B1FC182B5D819F007D0519 /* ChatBotPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotPresenter.swift; sourceTree = "<group>"; };
+		76B1FC192B5D819F007D0519 /* ChatBotWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotWorker.swift; sourceTree = "<group>"; };
+		76B1FC1A2B5D819F007D0519 /* ChatBotRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotRouter.swift; sourceTree = "<group>"; };
+		76B1FC1B2B5D819F007D0519 /* ChatBotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotViewController.swift; sourceTree = "<group>"; };
+		76B1FC1C2B5D819F007D0519 /* ChatBotInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotInteractor.swift; sourceTree = "<group>"; };
+		76B1FC242B5D85C5007D0519 /* ChatBotMessageDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatBotMessageDataSource.swift; sourceTree = "<group>"; };
+		76B1FC252B5D85C5007D0519 /* ChatBotInputBarAccessoryViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatBotInputBarAccessoryViewDelegate.swift; sourceTree = "<group>"; };
+		76B1FC262B5D85C6007D0519 /* ChatBotMessageDisplayDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatBotMessageDisplayDelegate.swift; sourceTree = "<group>"; };
+		76B1FC272B5D85C6007D0519 /* ChatBotMessageLayoutDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatBotMessageLayoutDelegate.swift; sourceTree = "<group>"; };
+		76B1FC282B5D85C6007D0519 /* ChatBotMessageCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatBotMessageCellDelegate.swift; sourceTree = "<group>"; };
+		76B1FC2F2B5D89FC007D0519 /* BotDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotDTO.swift; sourceTree = "<group>"; };
+		76B1FC312B5D8CCC007D0519 /* ChatBotHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotHelper.swift; sourceTree = "<group>"; };
+		76B1FC342B5D91C1007D0519 /* MessageBotInputBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBotInputBarView.swift; sourceTree = "<group>"; };
+		76B1FC372B5D9951007D0519 /* ChatBotViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotViewModel.swift; sourceTree = "<group>"; };
 		76B4877D2B49CA95001FC465 /* Dependencies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dependencies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76B4877F2B49CA95001FC465 /* Dependencies.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dependencies.h; sourceTree = "<group>"; };
 		76B5040B2B47600300966DB6 /* PhotoMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMessage.swift; sourceTree = "<group>"; };
@@ -1016,6 +1046,7 @@
 		761E38102B54BBF70080194C /* ChatGroup */ = {
 			isa = PBXGroup;
 			children = (
+				76B1FC332B5D91AD007D0519 /* Views */,
 				761E382D2B54CF100080194C /* Workers */,
 				761E38282B54BE290080194C /* Models */,
 				761E381D2B54BD0E0080194C /* ChatViewExtensions */,
@@ -1130,6 +1161,7 @@
 				764303872B4650F20037721A /* FilesDirectory.swift */,
 				7670825D2B4B96E10024EF41 /* BasicAudioController.swift */,
 				761E382B2B54C65C0080194C /* StartGroupChat.swift */,
+				76B1FC312B5D8CCC007D0519 /* ChatBotHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -2033,6 +2065,58 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		76B1FC162B5D817A007D0519 /* ChatBot */ = {
+			isa = PBXGroup;
+			children = (
+				76B1FC362B5D993E007D0519 /* ViewModels */,
+				76B1FC2E2B5D89F5007D0519 /* Models */,
+				76B1FC232B5D8594007D0519 /* ChatViewExtensions */,
+				76B1FC172B5D819F007D0519 /* ChatBotFactory.swift */,
+				76B1FC182B5D819F007D0519 /* ChatBotPresenter.swift */,
+				76B1FC192B5D819F007D0519 /* ChatBotWorker.swift */,
+				76B1FC1A2B5D819F007D0519 /* ChatBotRouter.swift */,
+				76B1FC1B2B5D819F007D0519 /* ChatBotViewController.swift */,
+				76B1FC1C2B5D819F007D0519 /* ChatBotInteractor.swift */,
+			);
+			path = ChatBot;
+			sourceTree = "<group>";
+		};
+		76B1FC232B5D8594007D0519 /* ChatViewExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				76B1FC252B5D85C5007D0519 /* ChatBotInputBarAccessoryViewDelegate.swift */,
+				76B1FC282B5D85C6007D0519 /* ChatBotMessageCellDelegate.swift */,
+				76B1FC242B5D85C5007D0519 /* ChatBotMessageDataSource.swift */,
+				76B1FC262B5D85C6007D0519 /* ChatBotMessageDisplayDelegate.swift */,
+				76B1FC272B5D85C6007D0519 /* ChatBotMessageLayoutDelegate.swift */,
+			);
+			path = ChatViewExtensions;
+			sourceTree = "<group>";
+		};
+		76B1FC2E2B5D89F5007D0519 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				76B1FC2F2B5D89FC007D0519 /* BotDTO.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		76B1FC332B5D91AD007D0519 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				76B1FC342B5D91C1007D0519 /* MessageBotInputBarView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		76B1FC362B5D993E007D0519 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				76B1FC372B5D9951007D0519 /* ChatBotViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		76B4877E2B49CA95001FC465 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
@@ -2185,6 +2269,7 @@
 		76CAA17F2A8AA9ED00D742E9 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				76B1FC162B5D817A007D0519 /* ChatBot */,
 				7695DAF62B5B27A2002D91CB /* SystemSettings */,
 				761E38102B54BBF70080194C /* ChatGroup */,
 				7686A8852B545BE50025FBD3 /* AddMember */,
@@ -2943,12 +3028,14 @@
 				7620F2D82A92EF74002A4EB5 /* UsersFactory.swift in Sources */,
 				76371F9E2B489020007C9E7E /* SendMessageWorker.swift in Sources */,
 				76B1FC0D2B5D6515007D0519 /* OpenAIRouter.swift in Sources */,
+				76B1FC212B5D819F007D0519 /* ChatBotViewController.swift in Sources */,
 				763B03C52B4F74EB0022E145 /* CreateGroupWorker.swift in Sources */,
 				769E97302AA3C4FC004FC6B4 /* ContactInfoViewController.swift in Sources */,
 				7620F44E2A9659F5002A4EB5 /* TellAFriendPresenter.swift in Sources */,
 				7620F2A92A92DB70002A4EB5 /* HomeTabBarModel.swift in Sources */,
 				76D246882AC4B4A000FDA81E /* ChatDTO.swift in Sources */,
 				76EF5D492A905E3700D9AE8B /* DesignKit.framework in Sources */,
+				76B1FC382B5D9951007D0519 /* ChatBotViewModel.swift in Sources */,
 				7686A88C2B545C0F0025FBD3 /* AddMembersFactory.swift in Sources */,
 				761011912B3A0137004639C4 /* MessageCellDelegate.swift in Sources */,
 				7620F4432A9592C2002A4EB5 /* EditProfileWorker.swift in Sources */,
@@ -2995,21 +3082,26 @@
 				7695DAFE2B5B27BD002D91CB /* SystemSettingsPresenter.swift in Sources */,
 				7669BA2D2ABDDA650002AD4C /* StartChat.swift in Sources */,
 				76AF8DC52B51EDF400E21CD5 /* GroupInfoViewController.swift in Sources */,
+				76B1FC322B5D8CCC007D0519 /* ChatBotHelper.swift in Sources */,
 				76CAA17E2A8AA9B700D742E9 /* NetworkManager.swift in Sources */,
 				7695DB012B5B27BD002D91CB /* SystemSettingsInteractor.swift in Sources */,
 				7686A8912B545C0F0025FBD3 /* AddMembersWorker.swift in Sources */,
 				76B1FC0B2B5D6515007D0519 /* OpenAIPresenter.swift in Sources */,
 				761011972B3A0168004639C4 /* InputBarAccessoryViewDelegate.swift in Sources */,
 				7695DAFF2B5B27BD002D91CB /* SystemSettingsRouter.swift in Sources */,
+				76B1FC2D2B5D85C6007D0519 /* ChatBotMessageCellDelegate.swift in Sources */,
 				76B1FC152B5D7004007D0519 /* OpenAIDTO.swift in Sources */,
 				76DA7EC12AB78D1F00106731 /* RecentChatsWorker.swift in Sources */,
 				7620F2DD2A92EF74002A4EB5 /* UsersWorker.swift in Sources */,
 				7620F42A2A9541AC002A4EB5 /* SettingsUserInfoCell.swift in Sources */,
 				76AF8DC62B51EDF400E21CD5 /* GroupInfoInteractor.swift in Sources */,
 				769E97322AA3C4FC004FC6B4 /* ContactInfoWorker.swift in Sources */,
+				76B1FC222B5D819F007D0519 /* ChatBotInteractor.swift in Sources */,
 				7686A88E2B545C0F0025FBD3 /* AddMembersRouter.swift in Sources */,
 				76D246822AC4AE7000FDA81E /* ChatRouter.swift in Sources */,
+				76B1FC2A2B5D85C6007D0519 /* ChatBotInputBarAccessoryViewDelegate.swift in Sources */,
 				76CAA18B2A8AA9ED00D742E9 /* HomePresenter.swift in Sources */,
+				76B1FC2B2B5D85C6007D0519 /* ChatBotMessageDisplayDelegate.swift in Sources */,
 				7620F2B92A92DE1B002A4EB5 /* SettingsWorker.swift in Sources */,
 				7620F45E2A965A09002A4EB5 /* TermsWorker.swift in Sources */,
 				76FA5D312B50DD8A004D86A5 /* Data+Extensions.swift in Sources */,
@@ -3022,6 +3114,7 @@
 				7608DE7D2A9D248E0036027A /* UserContact.swift in Sources */,
 				7620F4512A9659F5002A4EB5 /* TellAFriendInteractor.swift in Sources */,
 				7608DE7A2A9D00A60036027A /* UserCell.swift in Sources */,
+				76B1FC1F2B5D819F007D0519 /* ChatBotWorker.swift in Sources */,
 				7686A8902B545C0F0025FBD3 /* AddMembersInteractor.swift in Sources */,
 				7620F2B42A92DE1B002A4EB5 /* SettingsFactory.swift in Sources */,
 				76DA7EBF2AB78D1F00106731 /* RecentChatsViewController.swift in Sources */,
@@ -3051,11 +3144,13 @@
 				763B03A82B4F54C50022E145 /* GroupCell.swift in Sources */,
 				7608DE6A2A9BAFDE0036027A /* EditBioViewController.swift in Sources */,
 				76C6B74C2B4B1F1300285EE2 /* LocationMessage.swift in Sources */,
+				76B1FC2C2B5D85C6007D0519 /* ChatBotMessageLayoutDelegate.swift in Sources */,
 				76C6B7492B4B040000285EE2 /* LocationManager.swift in Sources */,
 				76AF8DC42B51EDF400E21CD5 /* GroupInfoRouter.swift in Sources */,
 				76D246762AC4A2CF00FDA81E /* ChatHelper.swift in Sources */,
 				7610119D2B3A1768004639C4 /* LocalMessage.swift in Sources */,
 				761E382A2B54BE350080194C /* ChatGroupDTO.swift in Sources */,
+				76B1FC302B5D89FC007D0519 /* BotDTO.swift in Sources */,
 				761E381B2B54BC080080194C /* ChatGroupInteractor.swift in Sources */,
 				76C6B75B2B4B22E900285EE2 /* MapViewController.swift in Sources */,
 				763B03C32B4F74EB0022E145 /* CreateGroupViewController.swift in Sources */,
@@ -3063,6 +3158,7 @@
 				7620F4502A9659F5002A4EB5 /* TellAFriendViewController.swift in Sources */,
 				76B1FC122B5D6F8A007D0519 /* OpenAICell.swift in Sources */,
 				767082622B4C4F4D0024EF41 /* MessageInputBarView.swift in Sources */,
+				76B1FC202B5D819F007D0519 /* ChatBotRouter.swift in Sources */,
 				7643038A2B4654B10037721A /* String+Extensions.swift in Sources */,
 				76B5040C2B47600300966DB6 /* PhotoMessage.swift in Sources */,
 				76C6B75D2B4B24AE00285EE2 /* MapAnnotation.swift in Sources */,
@@ -3072,12 +3168,15 @@
 				76CAA1872A8AA9ED00D742E9 /* HomeFactory.swift in Sources */,
 				7620F4412A9592C2002A4EB5 /* EditProfileViewController.swift in Sources */,
 				761E38272B54BD700080194C /* GroupInputBarAccessoryViewDelegate.swift in Sources */,
+				76B1FC292B5D85C6007D0519 /* ChatBotMessageDataSource.swift in Sources */,
 				7620F4422A9592C2002A4EB5 /* EditProfileInteractor.swift in Sources */,
 				7620F2DB2A92EF74002A4EB5 /* UsersViewController.swift in Sources */,
 				76371FA22B48931D007C9E7E /* ChatTypingWorker.swift in Sources */,
 				7670825B2B4B89480024EF41 /* AudioMessage.swift in Sources */,
 				7695DB002B5B27BD002D91CB /* SystemSettingsViewController.swift in Sources */,
 				769E97312AA3C4FC004FC6B4 /* ContactInfoInteractor.swift in Sources */,
+				76B1FC352B5D91C1007D0519 /* MessageBotInputBarView.swift in Sources */,
+				76B1FC1D2B5D819F007D0519 /* ChatBotFactory.swift in Sources */,
 				76D246842AC4AE7000FDA81E /* ChatInteractor.swift in Sources */,
 				7620F2DC2A92EF74002A4EB5 /* UsersInteractor.swift in Sources */,
 				7620F4402A9592C2002A4EB5 /* EditProfileRouter.swift in Sources */,
@@ -3101,6 +3200,7 @@
 				768F4EB52B4F4AD80051E970 /* GroupsInteractor.swift in Sources */,
 				76CAA18A2A8AA9ED00D742E9 /* HomeRouter.swift in Sources */,
 				7620F43F2A9592C2002A4EB5 /* EditProfilePresenter.swift in Sources */,
+				76B1FC1E2B5D819F007D0519 /* ChatBotPresenter.swift in Sources */,
 				76CAA1882A8AA9ED00D742E9 /* HomeInteractor.swift in Sources */,
 				761E38182B54BC080080194C /* ChatGroupPresenter.swift in Sources */,
 				76DA7EC42AB78E7400106731 /* RecentChatCell.swift in Sources */,

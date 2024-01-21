@@ -17,29 +17,27 @@ final class OpenAIViewController: ViewController<OpenAIInteractorProtocol, UIVie
         return tableView
     }()
     
-    private let bots = [
-        OpenAIDTO(name: Localizable.ChatBot.title, bio: Localizable.ChatBot.description, avatar: Icon.marvin.image.withRenderingMode(.alwaysOriginal)),
-        OpenAIDTO(name: Localizable.ImageGenerator.title, bio: Localizable.ImageGenerator.description, avatar: UIImage(systemName: "theatermask.and.paintbrush")!
-            .withRenderingMode(.alwaysTemplate)
+    private lazy var bots = [
+        OpenAIDTO(
+            name: Localizable.ChatBot.title,
+            bio: Localizable.ChatBot.description,
+            avatar: ChatBotHelper.Images.chatBotIcon,
+            action: { [weak self] in
+                self?.interactor.openChatBot()
+            }
+        ),
+        OpenAIDTO(
+            name: Localizable.ImageGenerator.title,
+            bio: Localizable.ImageGenerator.description,
+            avatar: ChatBotHelper.Images.imageGeneratorIcon,
+            action: {[weak self] in
+                self?.interactor.openImageGenerator()
+            }
         )
     ]
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        interactor.loadSomething()
-    }
 
     override func buildViewHierarchy() { 
         view.fillWithSubview(subview: tableView, spacing: .init(top: 16, left: 0, bottom: 0, right: 0), navigationSafeArea: true)
-    }
-    
-    override func setupConstraints() { 
-        // template
-    }
-
-    override func configureViews() { 
-        // template
     }
 }
 
@@ -52,6 +50,10 @@ extension OpenAIViewController: OpenAIDisplaying {
 extension OpenAIViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        if let cell = tableView.cellForRow(at: indexPath) as? OpenAICell {
+            cell.completionHandler?()
+        }
     }
 }
 

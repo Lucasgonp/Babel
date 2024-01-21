@@ -24,6 +24,7 @@ enum HomeTabBarFactory {
         return [
             makeChats(),
             makeGroupsTab(),
+            makeOpenAI(),
             makeUsers(),
             makeSettings(delegate: delegate, user: user)
         ]
@@ -46,6 +47,16 @@ enum HomeTabBarFactory {
         navigation.tabBarItem.title = Strings.Commons.users
         viewController.navigationItem.title = Strings.Commons.users
         let icon = ImageAsset.Image(systemName: "person.2")?.withRenderingMode(.alwaysTemplate)
+        return HomeTabBarModel(icon: icon, navigation: navigation)
+    }
+    
+    static func makeOpenAI() -> HomeTabBarModel {
+        let viewController = OpenAIFactory.make()
+        let navigation = UINavigationController(rootViewController: viewController)
+        navigation.navigationBar.prefersLargeTitles = true
+        navigation.tabBarItem.title = Strings.TabBar.OpenAI.title
+        viewController.navigationItem.title = Strings.TabBar.OpenAI.title
+        let icon = ImageAsset.Image(systemName: "microbe")?.withRenderingMode(.alwaysTemplate)
         return HomeTabBarModel(icon: icon, navigation: navigation)
     }
     

@@ -262,9 +262,6 @@
 		7691DCE52B49A766007D52B3 /* GalleryKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7691DC402B49A35C007D52B3 /* GalleryKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7691DCE82B49A83D007D52B3 /* DesignKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7691DC5E2B49A3EA007D52B3 /* DesignKit.framework */; };
 		7691DCE92B49A83D007D52B3 /* DesignKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7691DC5E2B49A3EA007D52B3 /* DesignKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		76926F7D2B5C3272003A0518 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76926F7C2B5C3272003A0518 /* Security.framework */; };
-		76926F812B5C3731003A0518 /* Encodable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76926F7F2B5C36D9003A0518 /* Encodable+Extensions.swift */; };
-		76926F842B5C4437003A0518 /* Strings+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76926F822B5C442F003A0518 /* Strings+Extensions.swift */; };
 		7695DAFD2B5B27BD002D91CB /* SystemSettingsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7695DAF72B5B27BD002D91CB /* SystemSettingsFactory.swift */; };
 		7695DAFE2B5B27BD002D91CB /* SystemSettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7695DAF82B5B27BD002D91CB /* SystemSettingsPresenter.swift */; };
 		7695DAFF2B5B27BD002D91CB /* SystemSettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7695DAF92B5B27BD002D91CB /* SystemSettingsRouter.swift */; };
@@ -288,6 +285,15 @@
 		76AF8DCD2B51F06F00E21CD5 /* GroupClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AF8DCB2B51F04500E21CD5 /* GroupClient.swift */; };
 		76AF8DD12B52384800E21CD5 /* EditGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AF8DD02B52384800E21CD5 /* EditGroupViewController.swift */; };
 		76AF8DD42B523D7300E21CD5 /* EditGroupDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AF8DD32B523D7300E21CD5 /* EditGroupDTO.swift */; };
+		76B1FC022B5D57E8007D0519 /* OpenAIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 76B1FC012B5D57E8007D0519 /* OpenAIKit */; };
+		76B1FC0A2B5D6515007D0519 /* OpenAIFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC042B5D6515007D0519 /* OpenAIFactory.swift */; };
+		76B1FC0B2B5D6515007D0519 /* OpenAIPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC052B5D6515007D0519 /* OpenAIPresenter.swift */; };
+		76B1FC0C2B5D6515007D0519 /* OpenAIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC062B5D6515007D0519 /* OpenAIWorker.swift */; };
+		76B1FC0D2B5D6515007D0519 /* OpenAIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC072B5D6515007D0519 /* OpenAIRouter.swift */; };
+		76B1FC0E2B5D6515007D0519 /* OpenAIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC082B5D6515007D0519 /* OpenAIViewController.swift */; };
+		76B1FC0F2B5D6515007D0519 /* OpenAIInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC092B5D6515007D0519 /* OpenAIInteractor.swift */; };
+		76B1FC122B5D6F8A007D0519 /* OpenAICell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC112B5D6F8A007D0519 /* OpenAICell.swift */; };
+		76B1FC152B5D7004007D0519 /* OpenAIDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC142B5D7004007D0519 /* OpenAIDTO.swift */; };
 		76B487802B49CA95001FC465 /* Dependencies.h in Headers */ = {isa = PBXBuildFile; fileRef = 76B4877F2B49CA95001FC465 /* Dependencies.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		76B487832B49CA95001FC465 /* Dependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76B4877D2B49CA95001FC465 /* Dependencies.framework */; };
 		76B487842B49CA95001FC465 /* Dependencies.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76B4877D2B49CA95001FC465 /* Dependencies.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -756,8 +762,6 @@
 		7691DCA32B49A410007D52B3 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7691DCA42B49A410007D52B3 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		76926F7C2B5C3272003A0518 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		76926F7F2B5C36D9003A0518 /* Encodable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extensions.swift"; sourceTree = "<group>"; };
-		76926F822B5C442F003A0518 /* Strings+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Strings+Extensions.swift"; sourceTree = "<group>"; };
 		7695DAF72B5B27BD002D91CB /* SystemSettingsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSettingsFactory.swift; sourceTree = "<group>"; };
 		7695DAF82B5B27BD002D91CB /* SystemSettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSettingsPresenter.swift; sourceTree = "<group>"; };
 		7695DAF92B5B27BD002D91CB /* SystemSettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSettingsRouter.swift; sourceTree = "<group>"; };
@@ -781,6 +785,14 @@
 		76AF8DCB2B51F04500E21CD5 /* GroupClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupClient.swift; sourceTree = "<group>"; };
 		76AF8DD02B52384800E21CD5 /* EditGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupViewController.swift; sourceTree = "<group>"; };
 		76AF8DD32B523D7300E21CD5 /* EditGroupDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupDTO.swift; sourceTree = "<group>"; };
+		76B1FC042B5D6515007D0519 /* OpenAIFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIFactory.swift; sourceTree = "<group>"; };
+		76B1FC052B5D6515007D0519 /* OpenAIPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIPresenter.swift; sourceTree = "<group>"; };
+		76B1FC062B5D6515007D0519 /* OpenAIWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIWorker.swift; sourceTree = "<group>"; };
+		76B1FC072B5D6515007D0519 /* OpenAIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRouter.swift; sourceTree = "<group>"; };
+		76B1FC082B5D6515007D0519 /* OpenAIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIViewController.swift; sourceTree = "<group>"; };
+		76B1FC092B5D6515007D0519 /* OpenAIInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIInteractor.swift; sourceTree = "<group>"; };
+		76B1FC112B5D6F8A007D0519 /* OpenAICell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAICell.swift; sourceTree = "<group>"; };
+		76B1FC142B5D7004007D0519 /* OpenAIDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIDTO.swift; sourceTree = "<group>"; };
 		76B4877D2B49CA95001FC465 /* Dependencies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dependencies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76B4877F2B49CA95001FC465 /* Dependencies.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dependencies.h; sourceTree = "<group>"; };
 		76B5040B2B47600300966DB6 /* PhotoMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMessage.swift; sourceTree = "<group>"; };
@@ -915,12 +927,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76926F7D2B5C3272003A0518 /* Security.framework in Frameworks */,
 				76B487832B49CA95001FC465 /* Dependencies.framework in Frameworks */,
 				7667DC742B4CDF1D00938D6F /* Lottie in Frameworks */,
 				7691DB8E2B499862007D52B3 /* NetworkKit.framework in Frameworks */,
 				7691DCE02B49A75B007D52B3 /* DesignKit.framework in Frameworks */,
 				7691DCE42B49A766007D52B3 /* GalleryKit.framework in Frameworks */,
+				76B1FC022B5D57E8007D0519 /* OpenAIKit in Frameworks */,
 				7691DB702B4997DE007D52B3 /* Authenticator.framework in Frameworks */,
 				7691DC052B499B20007D52B3 /* StorageKit.framework in Frameworks */,
 			);
@@ -1286,6 +1298,7 @@
 		7669BA2B2ABDD8670002AD4C /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
+				76B1FC032B5D64E9007D0519 /* OpenAI */,
 				768E40DE2B4DD1C6009F8F7C /* Groups */,
 				7620F2AD2A92DDFB002A4EB5 /* RecentChats */,
 				7620F2AB2A92DDDA002A4EB5 /* Users */,
@@ -1567,7 +1580,6 @@
 		7691DBA32B4998EA007D52B3 /* StorageKit */ = {
 			isa = PBXGroup;
 			children = (
-				76926F7E2B5C36CA003A0518 /* Extensions */,
 				7691DBC62B499973007D52B3 /* Local */,
 				7691DBBF2B499973007D52B3 /* Remote */,
 				7691DBC52B499973007D52B3 /* StorageKey.swift */,
@@ -1907,15 +1919,6 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		76926F7E2B5C36CA003A0518 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				76926F7F2B5C36D9003A0518 /* Encodable+Extensions.swift */,
-				76926F822B5C442F003A0518 /* Strings+Extensions.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		7695DAF62B5B27A2002D91CB /* SystemSettings */ = {
 			isa = PBXGroup;
 			children = (
@@ -1997,6 +2000,37 @@
 				76AF8DD32B523D7300E21CD5 /* EditGroupDTO.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		76B1FC032B5D64E9007D0519 /* OpenAI */ = {
+			isa = PBXGroup;
+			children = (
+				76B1FC132B5D6FF1007D0519 /* Models */,
+				76B1FC102B5D6F63007D0519 /* Cells */,
+				76B1FC042B5D6515007D0519 /* OpenAIFactory.swift */,
+				76B1FC052B5D6515007D0519 /* OpenAIPresenter.swift */,
+				76B1FC062B5D6515007D0519 /* OpenAIWorker.swift */,
+				76B1FC072B5D6515007D0519 /* OpenAIRouter.swift */,
+				76B1FC082B5D6515007D0519 /* OpenAIViewController.swift */,
+				76B1FC092B5D6515007D0519 /* OpenAIInteractor.swift */,
+			);
+			path = OpenAI;
+			sourceTree = "<group>";
+		};
+		76B1FC102B5D6F63007D0519 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				76B1FC112B5D6F8A007D0519 /* OpenAICell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		76B1FC132B5D6FF1007D0519 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				76B1FC142B5D7004007D0519 /* OpenAIDTO.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		76B4877E2B49CA95001FC465 /* Dependencies */ = {
@@ -2481,6 +2515,7 @@
 			name = Babel;
 			packageProductDependencies = (
 				7667DC732B4CDF1D00938D6F /* Lottie */,
+				76B1FC012B5D57E8007D0519 /* OpenAIKit */,
 			);
 			productName = Babel;
 			productReference = 76CAA1352A8AA1F400D742E9 /* Babel.app */;
@@ -2585,6 +2620,7 @@
 				76B487A42B49CBE6001FC465 /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */,
 				76B487A72B49CC0B001FC465 /* XCRemoteSwiftPackageReference "SKPhotoBrowser" */,
 				7667DC722B4CDF1D00938D6F /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				76B1FC002B5D57E8007D0519 /* XCRemoteSwiftPackageReference "OpenAI" */,
 			);
 			productRefGroup = 76CAA1362A8AA1F400D742E9 /* Products */;
 			projectDirPath = "";
@@ -2822,12 +2858,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76926F842B5C4437003A0518 /* Strings+Extensions.swift in Sources */,
 				7691DBCB2B499973007D52B3 /* StorageUpload.swift in Sources */,
 				7691DBCF2B499973007D52B3 /* StorageLocalVideo.swift in Sources */,
 				7691DBCD2B499973007D52B3 /* StorageKey.swift in Sources */,
 				7691DBCA2B499973007D52B3 /* StorageAdapter.swift in Sources */,
-				76926F812B5C3731003A0518 /* Encodable+Extensions.swift in Sources */,
 				7691DBA62B4998EA007D52B3 /* StorageKit.docc in Sources */,
 				7691DBCE2B499973007D52B3 /* StorageLocal.swift in Sources */,
 				7691DBCC2B499973007D52B3 /* ImageDownloadManager.swift in Sources */,
@@ -2908,6 +2942,7 @@
 			files = (
 				7620F2D82A92EF74002A4EB5 /* UsersFactory.swift in Sources */,
 				76371F9E2B489020007C9E7E /* SendMessageWorker.swift in Sources */,
+				76B1FC0D2B5D6515007D0519 /* OpenAIRouter.swift in Sources */,
 				763B03C52B4F74EB0022E145 /* CreateGroupWorker.swift in Sources */,
 				769E97302AA3C4FC004FC6B4 /* ContactInfoViewController.swift in Sources */,
 				7620F44E2A9659F5002A4EB5 /* TellAFriendPresenter.swift in Sources */,
@@ -2919,6 +2954,7 @@
 				7620F4432A9592C2002A4EB5 /* EditProfileWorker.swift in Sources */,
 				7608DE6F2A9BAFF30036027A /* UserBio.swift in Sources */,
 				76DA7EA22AB787C700106731 /* RecentChat.swift in Sources */,
+				76B1FC0E2B5D6515007D0519 /* OpenAIViewController.swift in Sources */,
 				7608DE692A9BAFDE0036027A /* EditBioRouter.swift in Sources */,
 				763B03C02B4F74EB0022E145 /* CreateGroupFactory.swift in Sources */,
 				76EF5D4A2A905E3700D9AE8B /* Authenticator.framework in Sources */,
@@ -2962,8 +2998,10 @@
 				76CAA17E2A8AA9B700D742E9 /* NetworkManager.swift in Sources */,
 				7695DB012B5B27BD002D91CB /* SystemSettingsInteractor.swift in Sources */,
 				7686A8912B545C0F0025FBD3 /* AddMembersWorker.swift in Sources */,
+				76B1FC0B2B5D6515007D0519 /* OpenAIPresenter.swift in Sources */,
 				761011972B3A0168004639C4 /* InputBarAccessoryViewDelegate.swift in Sources */,
 				7695DAFF2B5B27BD002D91CB /* SystemSettingsRouter.swift in Sources */,
+				76B1FC152B5D7004007D0519 /* OpenAIDTO.swift in Sources */,
 				76DA7EC12AB78D1F00106731 /* RecentChatsWorker.swift in Sources */,
 				7620F2DD2A92EF74002A4EB5 /* UsersWorker.swift in Sources */,
 				7620F42A2A9541AC002A4EB5 /* SettingsUserInfoCell.swift in Sources */,
@@ -2988,6 +3026,7 @@
 				7620F2B42A92DE1B002A4EB5 /* SettingsFactory.swift in Sources */,
 				76DA7EBF2AB78D1F00106731 /* RecentChatsViewController.swift in Sources */,
 				761011952B3A0156004639C4 /* MessageLayoutDelegate.swift in Sources */,
+				76B1FC0C2B5D6515007D0519 /* OpenAIWorker.swift in Sources */,
 				768F4EB12B4F4AD80051E970 /* GroupsFactory.swift in Sources */,
 				761E381A2B54BC080080194C /* ChatGroupViewController.swift in Sources */,
 				769E97352AA3CA1B004FC6B4 /* ContactInfoHeaderCell.swift in Sources */,
@@ -3006,6 +3045,7 @@
 				763B03C82B4F7C830022E145 /* CreateGroupHeaderCell.swift in Sources */,
 				7620F45C2A965A09002A4EB5 /* TermsViewController.swift in Sources */,
 				76CAA13B2A8AA1F400D742E9 /* SceneDelegate.swift in Sources */,
+				76B1FC0A2B5D6515007D0519 /* OpenAIFactory.swift in Sources */,
 				76FA5D2C2B50B438004D86A5 /* StopWatchView.swift in Sources */,
 				76DA7EBC2AB78D1F00106731 /* RecentChatsFactory.swift in Sources */,
 				763B03A82B4F54C50022E145 /* GroupCell.swift in Sources */,
@@ -3021,6 +3061,7 @@
 				763B03C32B4F74EB0022E145 /* CreateGroupViewController.swift in Sources */,
 				7620F2D92A92EF74002A4EB5 /* UsersPresenter.swift in Sources */,
 				7620F4502A9659F5002A4EB5 /* TellAFriendViewController.swift in Sources */,
+				76B1FC122B5D6F8A007D0519 /* OpenAICell.swift in Sources */,
 				767082622B4C4F4D0024EF41 /* MessageInputBarView.swift in Sources */,
 				7643038A2B4654B10037721A /* String+Extensions.swift in Sources */,
 				76B5040C2B47600300966DB6 /* PhotoMessage.swift in Sources */,
@@ -3041,6 +3082,7 @@
 				7620F2DC2A92EF74002A4EB5 /* UsersInteractor.swift in Sources */,
 				7620F4402A9592C2002A4EB5 /* EditProfileRouter.swift in Sources */,
 				7620F4202A951280002A4EB5 /* SettingsButtonCell.swift in Sources */,
+				76B1FC0F2B5D6515007D0519 /* OpenAIInteractor.swift in Sources */,
 				7670825E2B4B96E10024EF41 /* BasicAudioController.swift in Sources */,
 				768F4EB42B4F4AD80051E970 /* GroupsViewController.swift in Sources */,
 				7686A88D2B545C0F0025FBD3 /* AddMembersPresenter.swift in Sources */,
@@ -4166,6 +4208,14 @@
 				minimumVersion = 5.18.8;
 			};
 		};
+		76B1FC002B5D57E8007D0519 /* XCRemoteSwiftPackageReference "OpenAI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/FuturraGroup/OpenAI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.8.0;
+			};
+		};
 		76B4879B2B49CB99001FC465 /* XCRemoteSwiftPackageReference "ProgressHUD" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/relatedcode/ProgressHUD";
@@ -4213,6 +4263,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7667DC722B4CDF1D00938D6F /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		76B1FC012B5D57E8007D0519 /* OpenAIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76B1FC002B5D57E8007D0519 /* XCRemoteSwiftPackageReference "OpenAI" */;
+			productName = OpenAIKit;
 		};
 		76B4878D2B49CB3B001FC465 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;

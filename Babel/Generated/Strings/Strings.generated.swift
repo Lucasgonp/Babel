@@ -118,6 +118,20 @@ internal enum Strings {
     /// Video
     internal static let video = Strings.tr("Localizable", "MessageType.video", fallback: "Video")
   }
+  internal enum OpenAI {
+    internal enum ChatBot {
+      /// Chat bot with messages only
+      internal static let description = Strings.tr("Localizable", "OpenAI.ChatBot.description", fallback: "Chat bot with messages only")
+      /// Chat bot
+      internal static let title = Strings.tr("Localizable", "OpenAI.ChatBot.title", fallback: "Chat bot")
+    }
+    internal enum ImageGenerator {
+      /// Generate images through AI
+      internal static let description = Strings.tr("Localizable", "OpenAI.ImageGenerator.description", fallback: "Generate images through AI")
+      /// Image generator
+      internal static let title = Strings.tr("Localizable", "OpenAI.ImageGenerator.title", fallback: "Image generator")
+    }
+  }
   internal enum Settings {
     internal enum EditProfile {
       /// Full name
@@ -154,6 +168,10 @@ internal enum Strings {
     internal enum Groups {
       /// Groups
       internal static let title = Strings.tr("Localizable", "TabBar.Groups.title", fallback: "Groups")
+    }
+    internal enum OpenAI {
+      /// Open AI
+      internal static let title = Strings.tr("Localizable", "TabBar.OpenAI.title", fallback: "Open AI")
     }
     internal enum Settings {
       /// Settings

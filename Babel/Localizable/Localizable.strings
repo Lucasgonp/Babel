@@ -14,6 +14,7 @@
 "TabBar.Settings.title" = "Settings";
 "TabBar.Groups.title" = "Groups";
 "TabBar.Chats.title" = "Chats";
+"TabBar.OpenAI.title" = "Open AI";
 
 // Settings
 "Settings.SecondSession.tellAFriend" = "Tell a friend";
@@ -97,3 +98,9 @@
 "GroupInfo.ActionSheet.makeAdmin" = "Make admin";
 "GroupInfo.ActionSheet.removeAdmin" = "Remove admin";
 "GroupInfo.ActionSheet.removeUser" = "Remove user";
+
+// Open AI
+"OpenAI.ChatBot.title" = "Chat bot";
+"OpenAI.ChatBot.description" = "Chat bot with messages only";
+"OpenAI.ImageGenerator.title" = "Image generator";
+"OpenAI.ImageGenerator.description" = "Generate images through AI";

@@ -1,7 +1,7 @@
 import FirebaseRemoteConfig
 
 private let defaults: [String: NSObject] = [
-    "OpenAIToken": "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" as NSObject,
+    "OpenAIToken": String() as NSObject,
     "ShowTabBots": false as NSObject
 ]
 
@@ -12,6 +12,8 @@ final class RemoteConfigManager {
         let remoteConfig = RemoteConfig.remoteConfig()
         return remoteConfig
     }()
+    
+    var configTabBarHandler: (() -> Void)?
     
     private init() {
         setup()
@@ -44,9 +46,13 @@ private extension RemoteConfigManager {
         }
         
         remoteConfig.addOnConfigUpdateListener { [weak self] configUpdate, error in
-          guard let configUpdate, error == nil else { return }
-          print("Updated keys: \(configUpdate.updatedKeys)")
-          self?.remoteConfig.activate(completion: nil)
+            guard let configUpdate, error == nil else { return }
+            print("Updated keys: \(configUpdate.updatedKeys)")
+            self?.remoteConfig.activate(completion: { [weak self] _, _ in
+                if configUpdate.updatedKeys.contains("ShowTabBots") {
+                    self?.configTabBarHandler?()
+                }
+            })
         }
     }
 }

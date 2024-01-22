@@ -46,6 +46,11 @@ extension HomeViewController: HomeDisplaying {
             setupLoading(isLoading: isLoading)
         case .success(let user):
             configureTabBar(with: user)
+            RemoteConfigManager.shared.configTabBarHandler = { [weak self] in
+                DispatchQueue.main.async {
+                    self?.configureTabBar(with: user)
+                }
+            }
         case .error(let message):
             print(message)
         }

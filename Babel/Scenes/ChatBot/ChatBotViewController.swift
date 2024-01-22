@@ -78,7 +78,7 @@ final class ChatBotViewController: MessagesViewController {
     
     private(set) var dto: ChatBotDTO
     
-    weak var viewModel: ChatBotViewModel!
+    var viewModel: ChatBotViewModel!
     
     init(interactor: ChatBotInteractorProtocol, dto: ChatBotDTO) {
         self.interactor = interactor
@@ -95,11 +95,17 @@ final class ChatBotViewController: MessagesViewController {
         super.viewDidLoad()
         buildLayout()
         interactor.loadChatMessages()
+        interactor.listenForNewChats()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.largeTitleDisplayMode =  .never
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        interactor.removeListeners()
     }
     
     func messageSend(text: String? = nil) {

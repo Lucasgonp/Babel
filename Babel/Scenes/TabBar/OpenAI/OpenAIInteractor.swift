@@ -21,8 +21,8 @@ extension OpenAIInteractor: OpenAIInteractorProtocol {
     func openChatBot() {
         let chatRoomId = ChatBotHelper.shared.createChatRoomId()
         let chatDTO = ChatBotDTO(
-            id: chatRoomId,
-            chatId: currentUser.id,
+            id: kCHATBOT,
+            chatId: chatRoomId,
             name: Strings.OpenAI.ChatBot.title,
             description: Strings.OpenAI.ChatBot.description,
             avatarImage: ChatBotHelper.Images.chatBotIcon
@@ -33,8 +33,8 @@ extension OpenAIInteractor: OpenAIInteractorProtocol {
     func openImageGenerator() {
         let chatRoomId = ChatBotHelper.shared.createImageGeneratorRoomId()
         let chatDTO = ChatBotDTO(
-            id: chatRoomId,
-            chatId: currentUser.id,
+            id: kIMAGEGENERATOR,
+            chatId: chatRoomId,
             name: Strings.OpenAI.ChatBot.title,
             description: Strings.OpenAI.ImageGenerator.description,
             avatarImage: ChatBotHelper.Images.imageGeneratorIcon

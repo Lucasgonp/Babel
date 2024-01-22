@@ -1,5 +1,6 @@
 protocol ChatBotPresenterProtocol: AnyObject {
-    func displaySomething()
+    func displayMessage(_ localMessage: LocalMessage)
+    func updateTypingIndicator(_ isTyping: Bool)
     func didNextStep(action: ChatBotAction)
 }
 
@@ -13,8 +14,12 @@ final class ChatBotPresenter {
 }
 
 extension ChatBotPresenter: ChatBotPresenterProtocol {
-    func displaySomething() {
-//        viewController?.displaySomething()
+    func displayMessage(_ localMessage: LocalMessage) {
+        viewController?.displayMessage(localMessage)
+    }
+    
+    func updateTypingIndicator(_ isTyping: Bool) {
+        viewController?.updateTypingIndicator(isTyping)
     }
     
     func didNextStep(action: ChatBotAction) {

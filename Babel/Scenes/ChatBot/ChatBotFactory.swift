@@ -2,10 +2,11 @@ import UIKit
 
 enum ChatBotFactory {
     static func make(dto: ChatBotDTO) -> UIViewController {
-        let worker = ChatBotWorker()
+        let messageWorker = ChatBotMessageWorker()
+        let openAIWorker = ChatBotAIWorker()
         let router = ChatBotRouter()
         let presenter = ChatBotPresenter(router: router)
-        let interactor = ChatBotInteractor(worker: worker, presenter: presenter, dto: dto)
+        let interactor = ChatBotInteractor(presenter: presenter, dto: dto, messageWorker: messageWorker, openAIWorker: openAIWorker)
         let viewController = ChatBotViewController(interactor: interactor, dto: dto)
         
         router.viewController = viewController

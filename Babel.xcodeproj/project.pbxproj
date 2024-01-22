@@ -285,7 +285,6 @@
 		76AF8DCD2B51F06F00E21CD5 /* GroupClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AF8DCB2B51F04500E21CD5 /* GroupClient.swift */; };
 		76AF8DD12B52384800E21CD5 /* EditGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AF8DD02B52384800E21CD5 /* EditGroupViewController.swift */; };
 		76AF8DD42B523D7300E21CD5 /* EditGroupDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AF8DD32B523D7300E21CD5 /* EditGroupDTO.swift */; };
-		76B1FC022B5D57E8007D0519 /* OpenAIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 76B1FC012B5D57E8007D0519 /* OpenAIKit */; };
 		76B1FC0A2B5D6515007D0519 /* OpenAIFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC042B5D6515007D0519 /* OpenAIFactory.swift */; };
 		76B1FC0B2B5D6515007D0519 /* OpenAIPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC052B5D6515007D0519 /* OpenAIPresenter.swift */; };
 		76B1FC0C2B5D6515007D0519 /* OpenAIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC062B5D6515007D0519 /* OpenAIWorker.swift */; };
@@ -296,7 +295,7 @@
 		76B1FC152B5D7004007D0519 /* OpenAIDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC142B5D7004007D0519 /* OpenAIDTO.swift */; };
 		76B1FC1D2B5D819F007D0519 /* ChatBotFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC172B5D819F007D0519 /* ChatBotFactory.swift */; };
 		76B1FC1E2B5D819F007D0519 /* ChatBotPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC182B5D819F007D0519 /* ChatBotPresenter.swift */; };
-		76B1FC1F2B5D819F007D0519 /* ChatBotWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC192B5D819F007D0519 /* ChatBotWorker.swift */; };
+		76B1FC1F2B5D819F007D0519 /* ChatBotMessageWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC192B5D819F007D0519 /* ChatBotMessageWorker.swift */; };
 		76B1FC202B5D819F007D0519 /* ChatBotRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC1A2B5D819F007D0519 /* ChatBotRouter.swift */; };
 		76B1FC212B5D819F007D0519 /* ChatBotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC1B2B5D819F007D0519 /* ChatBotViewController.swift */; };
 		76B1FC222B5D819F007D0519 /* ChatBotInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC1C2B5D819F007D0519 /* ChatBotInteractor.swift */; };
@@ -309,6 +308,12 @@
 		76B1FC322B5D8CCC007D0519 /* ChatBotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC312B5D8CCC007D0519 /* ChatBotHelper.swift */; };
 		76B1FC352B5D91C1007D0519 /* MessageBotInputBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC342B5D91C1007D0519 /* MessageBotInputBarView.swift */; };
 		76B1FC382B5D9951007D0519 /* ChatBotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC372B5D9951007D0519 /* ChatBotViewModel.swift */; };
+		76B1FC3E2B5D9E68007D0519 /* ChatBotClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC3A2B5D9E5C007D0519 /* ChatBotClient.swift */; };
+		76B1FC412B5DA466007D0519 /* ChatBotAIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC402B5DA466007D0519 /* ChatBotAIWorker.swift */; };
+		76B1FC482B5DACEA007D0519 /* RemoteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC472B5DACEA007D0519 /* RemoteConfig.swift */; };
+		76B1FC4A2B5DB368007D0519 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 76B1FC492B5DB368007D0519 /* FirebaseRemoteConfig */; };
+		76B1FC4D2B5DC13E007D0519 /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 76B1FC4C2B5DC13E007D0519 /* OpenAI */; };
+		76B1FC4F2B5DE913007D0519 /* RemoteConfigKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC4E2B5DE913007D0519 /* RemoteConfigKeys.swift */; };
 		76B487802B49CA95001FC465 /* Dependencies.h in Headers */ = {isa = PBXBuildFile; fileRef = 76B4877F2B49CA95001FC465 /* Dependencies.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		76B487832B49CA95001FC465 /* Dependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76B4877D2B49CA95001FC465 /* Dependencies.framework */; };
 		76B487842B49CA95001FC465 /* Dependencies.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 76B4877D2B49CA95001FC465 /* Dependencies.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -810,7 +815,7 @@
 		76B1FC142B5D7004007D0519 /* OpenAIDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIDTO.swift; sourceTree = "<group>"; };
 		76B1FC172B5D819F007D0519 /* ChatBotFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotFactory.swift; sourceTree = "<group>"; };
 		76B1FC182B5D819F007D0519 /* ChatBotPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotPresenter.swift; sourceTree = "<group>"; };
-		76B1FC192B5D819F007D0519 /* ChatBotWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotWorker.swift; sourceTree = "<group>"; };
+		76B1FC192B5D819F007D0519 /* ChatBotMessageWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotMessageWorker.swift; sourceTree = "<group>"; };
 		76B1FC1A2B5D819F007D0519 /* ChatBotRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotRouter.swift; sourceTree = "<group>"; };
 		76B1FC1B2B5D819F007D0519 /* ChatBotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotViewController.swift; sourceTree = "<group>"; };
 		76B1FC1C2B5D819F007D0519 /* ChatBotInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotInteractor.swift; sourceTree = "<group>"; };
@@ -823,6 +828,10 @@
 		76B1FC312B5D8CCC007D0519 /* ChatBotHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotHelper.swift; sourceTree = "<group>"; };
 		76B1FC342B5D91C1007D0519 /* MessageBotInputBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBotInputBarView.swift; sourceTree = "<group>"; };
 		76B1FC372B5D9951007D0519 /* ChatBotViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotViewModel.swift; sourceTree = "<group>"; };
+		76B1FC3A2B5D9E5C007D0519 /* ChatBotClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotClient.swift; sourceTree = "<group>"; };
+		76B1FC402B5DA466007D0519 /* ChatBotAIWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotAIWorker.swift; sourceTree = "<group>"; };
+		76B1FC472B5DACEA007D0519 /* RemoteConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfig.swift; sourceTree = "<group>"; };
+		76B1FC4E2B5DE913007D0519 /* RemoteConfigKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigKeys.swift; sourceTree = "<group>"; };
 		76B4877D2B49CA95001FC465 /* Dependencies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dependencies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76B4877F2B49CA95001FC465 /* Dependencies.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dependencies.h; sourceTree = "<group>"; };
 		76B5040B2B47600300966DB6 /* PhotoMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMessage.swift; sourceTree = "<group>"; };
@@ -945,6 +954,7 @@
 				76B487942B49CB3B001FC465 /* FirebaseFirestore in Frameworks */,
 				76B4879A2B49CB3C001FC465 /* FirebaseStorage in Frameworks */,
 				76B4878E2B49CB3B001FC465 /* FirebaseAnalytics in Frameworks */,
+				76B1FC4A2B5DB368007D0519 /* FirebaseRemoteConfig in Frameworks */,
 				76B487902B49CB3B001FC465 /* FirebaseAuth in Frameworks */,
 				76B487AB2B49CDCA001FC465 /* SDWebImage in Frameworks */,
 				76B487A92B49CC0B001FC465 /* SKPhotoBrowser in Frameworks */,
@@ -959,10 +969,10 @@
 			files = (
 				76B487832B49CA95001FC465 /* Dependencies.framework in Frameworks */,
 				7667DC742B4CDF1D00938D6F /* Lottie in Frameworks */,
+				76B1FC4D2B5DC13E007D0519 /* OpenAI in Frameworks */,
 				7691DB8E2B499862007D52B3 /* NetworkKit.framework in Frameworks */,
 				7691DCE02B49A75B007D52B3 /* DesignKit.framework in Frameworks */,
 				7691DCE42B49A766007D52B3 /* GalleryKit.framework in Frameworks */,
-				76B1FC022B5D57E8007D0519 /* OpenAIKit in Frameworks */,
 				7691DB702B4997DE007D52B3 /* Authenticator.framework in Frameworks */,
 				7691DC052B499B20007D52B3 /* StorageKit.framework in Frameworks */,
 			);
@@ -1303,6 +1313,7 @@
 		7667DC752B4CDF3200938D6F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				76B1FC462B5DACDD007D0519 /* RemoteConfig */,
 				7667DC762B4CDF3A00938D6F /* Lottie */,
 			);
 			path = Resources;
@@ -1661,6 +1672,7 @@
 		7691DBD32B499A29007D52B3 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
+				76B1FC392B5D9E4D007D0519 /* ChatBot */,
 				76E41BF32B562D8200976A73 /* EditProfile */,
 				76AF8DCE2B51FA2C00E21CD5 /* Users */,
 				7691DBD92B499A29007D52B3 /* Models */,
@@ -2068,12 +2080,12 @@
 		76B1FC162B5D817A007D0519 /* ChatBot */ = {
 			isa = PBXGroup;
 			children = (
+				76B1FC3F2B5DA411007D0519 /* Workers */,
 				76B1FC362B5D993E007D0519 /* ViewModels */,
 				76B1FC2E2B5D89F5007D0519 /* Models */,
 				76B1FC232B5D8594007D0519 /* ChatViewExtensions */,
 				76B1FC172B5D819F007D0519 /* ChatBotFactory.swift */,
 				76B1FC182B5D819F007D0519 /* ChatBotPresenter.swift */,
-				76B1FC192B5D819F007D0519 /* ChatBotWorker.swift */,
 				76B1FC1A2B5D819F007D0519 /* ChatBotRouter.swift */,
 				76B1FC1B2B5D819F007D0519 /* ChatBotViewController.swift */,
 				76B1FC1C2B5D819F007D0519 /* ChatBotInteractor.swift */,
@@ -2115,6 +2127,32 @@
 				76B1FC372B5D9951007D0519 /* ChatBotViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		76B1FC392B5D9E4D007D0519 /* ChatBot */ = {
+			isa = PBXGroup;
+			children = (
+				76B1FC3A2B5D9E5C007D0519 /* ChatBotClient.swift */,
+			);
+			path = ChatBot;
+			sourceTree = "<group>";
+		};
+		76B1FC3F2B5DA411007D0519 /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				76B1FC192B5D819F007D0519 /* ChatBotMessageWorker.swift */,
+				76B1FC402B5DA466007D0519 /* ChatBotAIWorker.swift */,
+			);
+			path = Workers;
+			sourceTree = "<group>";
+		};
+		76B1FC462B5DACDD007D0519 /* RemoteConfig */ = {
+			isa = PBXGroup;
+			children = (
+				76B1FC472B5DACEA007D0519 /* RemoteConfig.swift */,
+				76B1FC4E2B5DE913007D0519 /* RemoteConfigKeys.swift */,
+			);
+			path = RemoteConfig;
 			sourceTree = "<group>";
 		};
 		76B4877E2B49CA95001FC465 /* Dependencies */ = {
@@ -2571,6 +2609,7 @@
 				76B487A82B49CC0B001FC465 /* SKPhotoBrowser */,
 				76B487AA2B49CDCA001FC465 /* SDWebImage */,
 				76B487AC2B49CDCA001FC465 /* SDWebImageMapKit */,
+				76B1FC492B5DB368007D0519 /* FirebaseRemoteConfig */,
 			);
 			productName = Dependencies;
 			productReference = 76B4877D2B49CA95001FC465 /* Dependencies.framework */;
@@ -2600,7 +2639,7 @@
 			name = Babel;
 			packageProductDependencies = (
 				7667DC732B4CDF1D00938D6F /* Lottie */,
-				76B1FC012B5D57E8007D0519 /* OpenAIKit */,
+				76B1FC4C2B5DC13E007D0519 /* OpenAI */,
 			);
 			productName = Babel;
 			productReference = 76CAA1352A8AA1F400D742E9 /* Babel.app */;
@@ -2705,7 +2744,7 @@
 				76B487A42B49CBE6001FC465 /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */,
 				76B487A72B49CC0B001FC465 /* XCRemoteSwiftPackageReference "SKPhotoBrowser" */,
 				7667DC722B4CDF1D00938D6F /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				76B1FC002B5D57E8007D0519 /* XCRemoteSwiftPackageReference "OpenAI" */,
+				76B1FC4B2B5DC13E007D0519 /* XCRemoteSwiftPackageReference "OpenAI" */,
 			);
 			productRefGroup = 76CAA1362A8AA1F400D742E9 /* Products */;
 			projectDirPath = "";
@@ -2935,6 +2974,7 @@
 				7691DBFB2B499A2A007D52B3 /* FirebaseClient.swift in Sources */,
 				7691DC012B499A2A007D52B3 /* HttpGetProtocol.swift in Sources */,
 				7691DBEF2B499A2A007D52B3 /* Constants.swift in Sources */,
+				76B1FC3E2B5D9E68007D0519 /* ChatBotClient.swift in Sources */,
 				7691DBF42B499A2A007D52B3 /* ChatHelperDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3034,6 +3074,7 @@
 				7620F44E2A9659F5002A4EB5 /* TellAFriendPresenter.swift in Sources */,
 				7620F2A92A92DB70002A4EB5 /* HomeTabBarModel.swift in Sources */,
 				76D246882AC4B4A000FDA81E /* ChatDTO.swift in Sources */,
+				76B1FC4F2B5DE913007D0519 /* RemoteConfigKeys.swift in Sources */,
 				76EF5D492A905E3700D9AE8B /* DesignKit.framework in Sources */,
 				76B1FC382B5D9951007D0519 /* ChatBotViewModel.swift in Sources */,
 				7686A88C2B545C0F0025FBD3 /* AddMembersFactory.swift in Sources */,
@@ -3050,6 +3091,7 @@
 				763B03AB2B4F54F40022E145 /* Group.swift in Sources */,
 				7669BA2A2ABDD3550002AD4C /* Date+Extensions.swift in Sources */,
 				7620F2B82A92DE1B002A4EB5 /* SettingsInteractor.swift in Sources */,
+				76B1FC412B5DA466007D0519 /* ChatBotAIWorker.swift in Sources */,
 				761E38172B54BC080080194C /* ChatGroupFactory.swift in Sources */,
 				768E40DA2B4D9A5B009F8F7C /* KeyboardManager.swift in Sources */,
 				7686A88F2B545C0F0025FBD3 /* AddMembersViewController.swift in Sources */,
@@ -3114,7 +3156,7 @@
 				7608DE7D2A9D248E0036027A /* UserContact.swift in Sources */,
 				7620F4512A9659F5002A4EB5 /* TellAFriendInteractor.swift in Sources */,
 				7608DE7A2A9D00A60036027A /* UserCell.swift in Sources */,
-				76B1FC1F2B5D819F007D0519 /* ChatBotWorker.swift in Sources */,
+				76B1FC1F2B5D819F007D0519 /* ChatBotMessageWorker.swift in Sources */,
 				7686A8902B545C0F0025FBD3 /* AddMembersInteractor.swift in Sources */,
 				7620F2B42A92DE1B002A4EB5 /* SettingsFactory.swift in Sources */,
 				76DA7EBF2AB78D1F00106731 /* RecentChatsViewController.swift in Sources */,
@@ -3171,6 +3213,7 @@
 				76B1FC292B5D85C6007D0519 /* ChatBotMessageDataSource.swift in Sources */,
 				7620F4422A9592C2002A4EB5 /* EditProfileInteractor.swift in Sources */,
 				7620F2DB2A92EF74002A4EB5 /* UsersViewController.swift in Sources */,
+				76B1FC482B5DACEA007D0519 /* RemoteConfig.swift in Sources */,
 				76371FA22B48931D007C9E7E /* ChatTypingWorker.swift in Sources */,
 				7670825B2B4B89480024EF41 /* AudioMessage.swift in Sources */,
 				7695DB002B5B27BD002D91CB /* SystemSettingsViewController.swift in Sources */,
@@ -3353,6 +3396,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -3396,6 +3440,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3421,6 +3466,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = lucasgonp.AuthenticatorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -3445,6 +3494,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = lucasgonp.AuthenticatorTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3487,6 +3540,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -3530,6 +3584,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3573,6 +3628,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -3616,6 +3672,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3659,6 +3716,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -3702,6 +3760,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3745,6 +3804,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -3788,6 +3848,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -3831,6 +3892,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -3874,6 +3936,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4037,6 +4100,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4083,6 +4147,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4105,6 +4170,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4128,6 +4194,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4150,6 +4217,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4172,6 +4240,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4308,12 +4377,12 @@
 				minimumVersion = 5.18.8;
 			};
 		};
-		76B1FC002B5D57E8007D0519 /* XCRemoteSwiftPackageReference "OpenAI" */ = {
+		76B1FC4B2B5DC13E007D0519 /* XCRemoteSwiftPackageReference "OpenAI" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/FuturraGroup/OpenAI";
+			repositoryURL = "https://github.com/MacPaw/OpenAI";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.8.0;
+				minimumVersion = 0.2.5;
 			};
 		};
 		76B4879B2B49CB99001FC465 /* XCRemoteSwiftPackageReference "ProgressHUD" */ = {
@@ -4364,10 +4433,15 @@
 			package = 7667DC722B4CDF1D00938D6F /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
 		};
-		76B1FC012B5D57E8007D0519 /* OpenAIKit */ = {
+		76B1FC492B5DB368007D0519 /* FirebaseRemoteConfig */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 76B1FC002B5D57E8007D0519 /* XCRemoteSwiftPackageReference "OpenAI" */;
-			productName = OpenAIKit;
+			package = 7691DC1E2B49A0E6007D52B3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
+		};
+		76B1FC4C2B5DC13E007D0519 /* OpenAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76B1FC4B2B5DC13E007D0519 /* XCRemoteSwiftPackageReference "OpenAI" */;
+			productName = OpenAI;
 		};
 		76B4878D2B49CB3B001FC465 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;

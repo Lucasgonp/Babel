@@ -21,13 +21,22 @@ enum HomeFactory {
 
 enum HomeTabBarFactory {
     static func makeTabs(delegate: HomeViewDelegate,for user: User) -> [HomeTabBarModel] {
-        return [
+        var tabs = [
             makeChats(),
             makeGroupsTab(),
-            makeOpenAI(),
             makeUsers(),
             makeSettings(delegate: delegate, user: user)
         ]
+        if RemoteConfigManager.shared.showTabBots {
+            tabs = [
+                makeChats(),
+                makeGroupsTab(),
+                makeOpenAI(),
+                makeUsers(),
+                makeSettings(delegate: delegate, user: user)
+            ]
+        }
+        return tabs
     }
     
     static func makeSettings(delegate: HomeViewDelegate, user: User) -> HomeTabBarModel {

@@ -64,5 +64,6 @@ extension FirebaseClient: ChatListenerProtocol {
         typingListener?.remove()
         newChatListener?.remove()
         updatedChatListener?.remove()
+        chatBotListener?.remove()
     }
 }

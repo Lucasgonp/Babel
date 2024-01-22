@@ -6,6 +6,7 @@ public class FirebaseClient {
     // MessagesClient
     weak var newChatListener: ListenerRegistration?
     weak var updatedChatListener: ListenerRegistration?
+    weak var chatBotListener: ListenerRegistration?
     
     // TypingClient
     weak var typingListener: ListenerRegistration?

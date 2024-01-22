@@ -128,12 +128,12 @@
         }
       },
       {
-        "package": "OpenAIKit",
-        "repositoryURL": "https://github.com/FuturraGroup/OpenAI",
+        "package": "OpenAI",
+        "repositoryURL": "https://github.com/MacPaw/OpenAI",
         "state": {
           "branch": null,
-          "revision": "ea017bef7e24bcf3c7b9668abeb2585b74ca2da3",
-          "version": "1.8.0"
+          "revision": "ac5892fd0de8d283362ddc30f8e9f1a0eaba8cc0",
+          "version": "0.2.5"
         }
       },
       {

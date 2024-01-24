@@ -43,8 +43,8 @@ enum HomeTabBarFactory {
         let viewController = SettingsFactory.make(delegate: delegate, user: user)
         let navigation = UINavigationController(rootViewController: viewController)
         navigation.navigationBar.prefersLargeTitles = true
-        navigation.tabBarItem.title = Strings.TabBar.Settings.title
-        viewController.navigationItem.title = Strings.TabBar.Settings.title
+        navigation.tabBarItem.title = Strings.TabBar.Settings.title.localized()
+        viewController.navigationItem.title = Strings.TabBar.Settings.title.localized()
         let icon = ImageAsset.Image(systemName: "gear")?.withRenderingMode(.alwaysTemplate)
         return HomeTabBarModel(icon: icon, navigation: navigation)
     }
@@ -53,8 +53,8 @@ enum HomeTabBarFactory {
         let viewController = UsersFactory.make()
         let navigation = UINavigationController(rootViewController: viewController)
         navigation.navigationBar.prefersLargeTitles = true
-        navigation.tabBarItem.title = Strings.Commons.users
-        viewController.navigationItem.title = Strings.Commons.users
+        navigation.tabBarItem.title = Strings.Commons.users.localized()
+        viewController.navigationItem.title = Strings.Commons.users.localized()
         let icon = ImageAsset.Image(systemName: "person.2")?.withRenderingMode(.alwaysTemplate)
         return HomeTabBarModel(icon: icon, navigation: navigation)
     }
@@ -63,8 +63,8 @@ enum HomeTabBarFactory {
         let viewController = OpenAIFactory.make()
         let navigation = UINavigationController(rootViewController: viewController)
         navigation.navigationBar.prefersLargeTitles = true
-        navigation.tabBarItem.title = Strings.TabBar.OpenAI.title
-        viewController.navigationItem.title = Strings.TabBar.OpenAI.title
+        navigation.tabBarItem.title = Strings.TabBar.OpenAI.title.localized()
+        viewController.navigationItem.title = Strings.TabBar.OpenAI.title.localized()
         let icon = ImageAsset.Image(systemName: "microbe")?.withRenderingMode(.alwaysTemplate)
         return HomeTabBarModel(icon: icon, navigation: navigation)
     }
@@ -73,8 +73,8 @@ enum HomeTabBarFactory {
         let viewController = GroupsFactory.make()
         let navigation = UINavigationController(rootViewController: viewController)
         navigation.navigationBar.prefersLargeTitles = true
-        navigation.tabBarItem.title = Strings.TabBar.Groups.title
-        viewController.navigationItem.title = Strings.TabBar.Groups.title
+        navigation.tabBarItem.title = Strings.TabBar.Groups.title.localized()
+        viewController.navigationItem.title = Strings.TabBar.Groups.title.localized()
         let icon = ImageAsset.Image(systemName: "quote.bubble")?.withRenderingMode(.alwaysTemplate)
         return HomeTabBarModel(icon: icon, navigation: navigation)
     }
@@ -83,8 +83,8 @@ enum HomeTabBarFactory {
         let viewController = RecentChatsFactory.make()
         let navigation = UINavigationController(rootViewController: viewController)
         navigation.navigationBar.prefersLargeTitles = true
-        navigation.tabBarItem.title = Strings.TabBar.Chats.title
-        viewController.navigationItem.title = Strings.TabBar.Chats.title
+        navigation.tabBarItem.title = Strings.TabBar.Chats.title.localized()
+        viewController.navigationItem.title = Strings.TabBar.Chats.title.localized()
         let icon = ImageAsset.Image(systemName: "message")?.withRenderingMode(.alwaysTemplate)
         return HomeTabBarModel(icon: icon, navigation: navigation)
     }

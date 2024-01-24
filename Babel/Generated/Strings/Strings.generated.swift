@@ -177,6 +177,10 @@ internal enum Strings {
       /// Settings
       internal static let title = Strings.tr("Localizable", "TabBar.Settings.title", fallback: "Settings")
     }
+    internal enum Users {
+      /// Users
+      internal static let title = Strings.tr("Localizable", "TabBar.Users.title", fallback: "Users")
+    }
   }
   internal enum UserBio {
     /// Currently set to

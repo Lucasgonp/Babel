@@ -12,6 +12,7 @@
 
 // TabBar
 "TabBar.Settings.title" = "Settings";
+"TabBar.Users.title" = "Users";
 "TabBar.Groups.title" = "Groups";
 "TabBar.Chats.title" = "Chats";
 "TabBar.OpenAI.title" = "Open AI";

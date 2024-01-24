@@ -100,6 +100,7 @@
 		763B03CB2B4F8DB50022E145 /* EditGroupDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763B03CA2B4F8DB50022E145 /* EditGroupDescriptionView.swift */; };
 		764303882B4650F20037721A /* FilesDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764303872B4650F20037721A /* FilesDirectory.swift */; };
 		7643038A2B4654B10037721A /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764303892B4654B10037721A /* String+Extensions.swift */; };
+		764B13E52B61C3E900C48FAE /* Main.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 764B13E42B61C3E900C48FAE /* Main.xcstrings */; };
 		7667DC742B4CDF1D00938D6F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 7667DC732B4CDF1D00938D6F /* Lottie */; };
 		7667DC782B4CDF5900938D6F /* TrashAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 7667DC772B4CDF5900938D6F /* TrashAnimation.json */; };
 		7669BA2A2ABDD3550002AD4C /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669BA292ABDD3550002AD4C /* Date+Extensions.swift */; };
@@ -632,6 +633,7 @@
 		763B03CA2B4F8DB50022E145 /* EditGroupDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupDescriptionView.swift; sourceTree = "<group>"; };
 		764303872B4650F20037721A /* FilesDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesDirectory.swift; sourceTree = "<group>"; };
 		764303892B4654B10037721A /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		764B13E42B61C3E900C48FAE /* Main.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Main.xcstrings; sourceTree = "<group>"; };
 		7667DC772B4CDF5900938D6F /* TrashAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TrashAnimation.json; sourceTree = "<group>"; };
 		7669BA292ABDD3550002AD4C /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		7669BA2C2ABDDA650002AD4C /* StartChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartChat.swift; sourceTree = "<group>"; };
@@ -2286,6 +2288,7 @@
 			isa = PBXGroup;
 			children = (
 				76CAA1782A8AA94B00D742E9 /* Localizable.strings */,
+				764B13E42B61C3E900C48FAE /* Main.xcstrings */,
 			);
 			path = Localizable;
 			sourceTree = "<group>";
@@ -2733,6 +2736,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = 76CAA12C2A8AA1F400D742E9;
 			packageReferences = (
@@ -2823,6 +2827,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76CAA1452A8AA1F600D742E9 /* LaunchScreen.storyboard in Resources */,
+				764B13E52B61C3E900C48FAE /* Main.xcstrings in Resources */,
 				76CAA1902A8AAC0100D742E9 /* GoogleService-Info.plist in Resources */,
 				7667DC782B4CDF5900938D6F /* TrashAnimation.json in Resources */,
 				76CAA1792A8AA94B00D742E9 /* Localizable.strings in Resources */,

@@ -25,7 +25,8 @@ final class RemoteConfigManager {
     }
     
     var showTabBots: Bool {
-        remoteConfig.configValue(forKey: Keys.ShowTabBots.rawValue).boolValue
+        remoteConfig.configValue(forKey: Keys.ShowTabBots.rawValue)
+            .boolValue
     }
 }
 

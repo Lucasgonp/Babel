@@ -1312,6 +1312,13 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		764B13EC2B62031F00C48FAE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		7667DC752B4CDF3200938D6F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -1355,6 +1362,7 @@
 		7670825F2B4C4F210024EF41 /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				764B13EC2B62031F00C48FAE /* Models */,
 				767082602B4C4F300024EF41 /* Views */,
 			);
 			path = Commons;
@@ -2889,7 +2897,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftgen >/dev/null; then\n  swiftgen\nelse\n  echo \"warning: SwiftGen not installed, download it from https://github.com/SwiftGen/SwiftGen\"\nfi\n";
+			shellScript = "#if which swiftgen >/dev/null; then\n#  swiftgen\n#else\n#  echo \"warning: SwiftGen not installed, download it from https://github.com/SwiftGen/SwiftGen\"\n#fi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

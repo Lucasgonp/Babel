@@ -98,7 +98,7 @@ extension ChatGroupInteractor: ChatGroupInteractorProtocol {
         localMessage.senderName = currentUser.name
         localMessage.senderInitials = "\(currentUser.name.first!)"
         localMessage.date = Date()
-        localMessage.status = Localizable.sent
+        localMessage.status = kSENT
 //        localMessage.senderAvatarLink = currentUser.avatarLink
         
         if let text = message.text {
@@ -203,7 +203,7 @@ private extension ChatGroupInteractor {
     }
     
     func insertMessage(_ localMessage: LocalMessage) {
-        if localMessage.senderId != currentUser.id && localMessage.status != Localizable.read {
+        if localMessage.senderId != currentUser.id && localMessage.status != kREAD {
             markMessageAsRead(localMessage)
         }
         
@@ -221,7 +221,7 @@ private extension ChatGroupInteractor {
                 chatRoomId: dto.chatId,
                 messageId: localMessage.id,
                 memberIds: dto.membersIds,
-                status: [kSTATUS: Localizable.read, kREADDATE: Date()]
+                status: [kSTATUS: kREAD, kREADDATE: Date()]
             )
         )
     }
@@ -252,7 +252,7 @@ private extension ChatGroupInteractor {
     //MARK: Read message
     func listenForReadStatusChange() {
         chatListenerWorker.listenForReadStatusChange(currentUser.id, collectionId: dto.chatId) { [weak self] updatedMessage in
-            if updatedMessage.status != Localizable.sent {
+            if updatedMessage.status != kSENT {
                 self?.resetUnreadCount()
                 self?.presenter.updateMessage(updatedMessage)
             }

@@ -328,7 +328,7 @@ private extension GroupInfoViewController {
             self?.interactor.updatePrivileges(for: user, isAdmin: false)
         })
         
-        let removeUserAction = UIAlertAction(title: Localizable.ActionSheet.removeUser, style: .destructive, handler: { [weak self] _ in
+        let removeUserAction = UIAlertAction(title: Localizable.ActionSheet.removeMember, style: .destructive, handler: { [weak self] _ in
             self?.interactor.removeMember(user)
         })
         

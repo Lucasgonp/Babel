@@ -40,9 +40,11 @@ extension ChatViewController: MessagesDataSource {
     func cellBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
         if isFromCurrentSender(message: message) {
             let message = mkMessages[indexPath.section]
+            let status = ChatMessageStatus(rawValue: message.status)!.localized
+            
             if indexPath.section == mkMessages.count - 1 {
                 return NSAttributedString(
-                    string: message.status,
+                    string: status,
                     attributes: [
                         .font: Font.xs.make(isBold: true),
                         .foregroundColor: UIColor.darkGray

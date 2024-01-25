@@ -31,21 +31,21 @@ final class SettingsViewController: ViewController<SettingsInteractorProtocol, U
     private lazy var settingsButtons = [
         SettingsButtonViewModel(
             icon: Icon.heartSquare.image.withTintColor(Color.warning500.uiColor, renderingMode: .alwaysOriginal),
-            text: Localizable.SecondSession.tellAFriend,
+            text: Localizable.TellAFriend.title,
             completionHandler: { [weak self] in
                 self?.interactor.tellAFriend()
             }
         ),
         SettingsButtonViewModel(
             icon: UIImage(systemName: "info.circle")!,
-            text: Localizable.SecondSession.termsAndConditions,
+            text: Localizable.TermsAndConditions.title,
             completionHandler: { [weak self] in
                 self?.interactor.termsAndConditions()
             }
         ),
         SettingsButtonViewModel(
             icon: UIImage(systemName: "gear")!,
-            text: "Settings",
+            text: Strings.TabBar.Settings.title,
             completionHandler: { [weak self] in
                 self?.interactor.systemSettings()
             }
@@ -170,7 +170,7 @@ extension SettingsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? String()
-        return (section == 2) ? Localizable.ThirdSection.version + version : nil
+        return (section == 2) ? "\(Localizable.version) \(version)" : nil
     }
     
     func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {

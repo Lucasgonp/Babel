@@ -72,7 +72,7 @@ final class MessageInputBarView: InputBarAccessoryView {
     private var cancelRecordingLabel: TextLabel = {
         let text = TextLabel(font: Font.lg.make(isBold: true))
         text.textColor = Color.grayscale600.uiColor
-        text.text = "〈 \(Localizable.swipeToCancel)"
+        text.text = "〈 \(Localizable.swipeToCancel.localized())"
         text.alpha = 0
         return text
     }()

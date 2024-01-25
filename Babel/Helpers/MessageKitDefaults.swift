@@ -20,6 +20,23 @@ enum ChatMessageType: String {
     case location
 }
 
+enum ChatMessageStatus: String {
+    case send
+    case sent
+    case read
+    
+    var localized: String {
+        switch self {
+        case .send:
+            return Strings.ChatView.send.localized()
+        case .sent:
+            return Strings.ChatView.sent.localized()
+        case .read:
+            return Strings.ChatView.read.localized()
+        }
+    }
+}
+
 enum RecentChatType: String, Codable {
     case chat
     case group

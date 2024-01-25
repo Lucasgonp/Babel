@@ -29,7 +29,7 @@ final class ChatBotViewController: MessagesViewController {
         label.textAlignment = .center
         label.font = Font.sm.uiFont
         label.adjustsFontSizeToFitWidth = true
-        label.text = Localizable.typing
+        label.text = Localizable.typing.localized()
         label.textAlignment = .left
         label.isHidden = true
         return label
@@ -200,7 +200,7 @@ extension ChatBotViewController: ChatBotDisplaying {
                 RealmManager.shared.saveToRealm(localMessage)
             }
             
-            if mkMessages[index].status == Localizable.read {
+            if mkMessages[index].status == kREAD {
                 self.messagesCollectionView.reloadData()
             }
         }

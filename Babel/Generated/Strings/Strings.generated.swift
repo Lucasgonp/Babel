@@ -45,6 +45,8 @@ internal enum Strings {
     internal static let edit = Strings.tr("Localizable", "Commons.edit", fallback: "Edit")
     /// Search user
     internal static let searchUser = Strings.tr("Localizable", "Commons.searchUser", fallback: "Search user")
+    /// Users
+    internal static let users = Strings.tr("Localizable", "Commons.users", fallback: "Users")
   }
   internal enum ContactInfo {
     /// Contact Info
@@ -92,8 +94,8 @@ internal enum Strings {
       internal static let makeAdmin = Strings.tr("Localizable", "GroupInfo.ActionSheet.makeAdmin", fallback: "Make admin")
       /// Remove admin
       internal static let removeAdmin = Strings.tr("Localizable", "GroupInfo.ActionSheet.removeAdmin", fallback: "Remove admin")
-      /// Remove user
-      internal static let removeUser = Strings.tr("Localizable", "GroupInfo.ActionSheet.removeUser", fallback: "Remove user")
+      /// Remove member
+      internal static let removeMember = Strings.tr("Localizable", "GroupInfo.ActionSheet.removeMember", fallback: "Remove member")
       /// User info
       internal static let userInfo = Strings.tr("Localizable", "GroupInfo.ActionSheet.userInfo", fallback: "User info")
     }
@@ -131,17 +133,13 @@ internal enum Strings {
     }
   }
   internal enum Settings {
+    /// Version
+    internal static let version = Strings.tr("Localizable", "Settings.version", fallback: "Version")
     internal enum EditProfile {
       /// Full name
       internal static let namePlaceholder = Strings.tr("Localizable", "Settings.EditProfile.namePlaceholder", fallback: "Full name")
       /// Edit profile
       internal static let title = Strings.tr("Localizable", "Settings.EditProfile.title", fallback: "Edit profile")
-    }
-    internal enum SecondSession {
-      /// Tell a friend
-      internal static let tellAFriend = Strings.tr("Localizable", "Settings.SecondSession.tellAFriend", fallback: "Tell a friend")
-      /// Terms and conditions
-      internal static let termsAndConditions = Strings.tr("Localizable", "Settings.SecondSession.termsAndConditions", fallback: "Terms and conditions")
     }
     internal enum TellAFriend {
       /// Tell a friend
@@ -150,12 +148,6 @@ internal enum Strings {
     internal enum TermsAndConditions {
       /// Terms and conditions
       internal static let title = Strings.tr("Localizable", "Settings.TermsAndConditions.title", fallback: "Terms and conditions")
-    }
-    internal enum ThirdSection {
-      /// Logout
-      internal static let logout = Strings.tr("Localizable", "Settings.ThirdSection.logout", fallback: "Logout")
-      /// Version 
-      internal static let version = Strings.tr("Localizable", "Settings.ThirdSection.version", fallback: "Version ")
     }
   }
   internal enum TabBar {
@@ -225,6 +217,6 @@ internal enum Strings {
 extension Strings {
   private static func tr(_ table: String, _ key: String, _ args: CVarArg..., fallback value: String) -> String {
     let format = BabelResources.resourcesBundle.localizedString(forKey: key, value: value, table: table)
-    return String(format: format, locale: Locale.current, arguments: args)
+      return String(format: format, locale: Locale.current, arguments: args).localized()
   }
 }

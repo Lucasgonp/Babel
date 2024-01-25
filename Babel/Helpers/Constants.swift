@@ -1,5 +1,9 @@
 typealias Localizable = Strings
 
+let kSEND = "send"
+let kSENT = "sent"
+let kREAD = "read"
+
 let kDATE = "date"
 let kNUMBEROFMESSAGES = 12
 let kSTATUS = "status"

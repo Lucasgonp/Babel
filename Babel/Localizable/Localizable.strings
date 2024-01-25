@@ -17,18 +17,12 @@
 "TabBar.Chats.title" = "Chats";
 "TabBar.OpenAI.title" = "Open AI";
 
-// Settings
-"Settings.SecondSession.tellAFriend" = "Tell a friend";
-"Settings.SecondSession.termsAndConditions" = "Terms and conditions";
-"Settings.ThirdSection.version" = "Version ";
-"Settings.ThirdSection.logout" = "Logout";
+"Settings.TellAFriend.title" = "Tell a friend";
+"Settings.TermsAndConditions.title" = "Terms and conditions";
+"Settings.version" = "Version";
 
 "Settings.EditProfile.title" = "Edit profile";
 "Settings.EditProfile.namePlaceholder" = "Full name";
-
-"Settings.TellAFriend.title" = "Tell a friend";
-
-"Settings.TermsAndConditions.title" = "Terms and conditions";
 
 // User Bio
 "UserBio.Options.wellcome" = "Hello there! I'm using Babel!";
@@ -98,7 +92,7 @@
 "GroupInfo.ActionSheet.userInfo" = "User info";
 "GroupInfo.ActionSheet.makeAdmin" = "Make admin";
 "GroupInfo.ActionSheet.removeAdmin" = "Remove admin";
-"GroupInfo.ActionSheet.removeUser" = "Remove user";
+"GroupInfo.ActionSheet.removeMember" = "Remove member";
 
 // Open AI
 "OpenAI.ChatBot.title" = "Chat bot";

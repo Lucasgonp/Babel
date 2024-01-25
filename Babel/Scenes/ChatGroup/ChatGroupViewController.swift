@@ -247,7 +247,7 @@ extension ChatGroupViewController: ChatGroupDisplaying {
                 RealmManager.shared.saveToRealm(localMessage)
             }
             
-            if mkMessages[index].status == Localizable.read {
+            if mkMessages[index].status == kREAD {
                 self.messagesCollectionView.reloadData()
             }
         }

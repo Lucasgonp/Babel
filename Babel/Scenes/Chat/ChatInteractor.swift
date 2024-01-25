@@ -86,7 +86,7 @@ extension ChatInteractor: ChatInteractorProtocol {
         localMessage.senderName = currentUser.name
         localMessage.senderInitials = "\(String(describing: currentUser.username.first))"
         localMessage.date = Date()
-        localMessage.status = Localizable.sent
+        localMessage.status = kSENT
 //        localMessage.senderAvatarLink = currentUser.avatarLink
         
         if let text = message.text {
@@ -216,7 +216,7 @@ private extension ChatInteractor {
     //MARK: Read message
     func listenForReadStatusChange() {
         chatListenerWorker.listenForReadStatusChange(currentUser.id, collectionId: dto.chatId) { [weak self] updatedMessage in
-            if updatedMessage.status != Localizable.sent {
+            if updatedMessage.status != kSENT {
                 self?.resetUnreadCount()
                 self?.presenter.updateMessage(updatedMessage)
             }
@@ -252,7 +252,7 @@ private extension ChatInteractor {
     }
     
     func insertMessage(_ localMessage: LocalMessage) {
-        if localMessage.senderId != currentUser.id && localMessage.status != Localizable.read {
+        if localMessage.senderId != currentUser.id && localMessage.status != kREAD {
             markMessageAsRead(localMessage)
         }
         
@@ -267,7 +267,7 @@ private extension ChatInteractor {
                 chatRoomId: dto.chatId,
                 messageId: localMessage.id,
                 memberIds: [currentUser.id, dto.recipientId],
-                status: [kSTATUS: Localizable.read, kREADDATE: Date()]
+                status: [kSTATUS: kREAD, kREADDATE: Date()]
             )
         )
     }

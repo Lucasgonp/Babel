@@ -45,8 +45,6 @@ internal enum Strings {
     internal static let edit = Strings.tr("Localizable", "Commons.edit", fallback: "Edit")
     /// Search user
     internal static let searchUser = Strings.tr("Localizable", "Commons.searchUser", fallback: "Search user")
-    /// Users
-    internal static let users = Strings.tr("Localizable", "Commons.users", fallback: "Users")
   }
   internal enum ContactInfo {
     /// Contact Info

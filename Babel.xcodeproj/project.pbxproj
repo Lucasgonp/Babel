@@ -100,7 +100,8 @@
 		763B03CB2B4F8DB50022E145 /* EditGroupDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763B03CA2B4F8DB50022E145 /* EditGroupDescriptionView.swift */; };
 		764303882B4650F20037721A /* FilesDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764303872B4650F20037721A /* FilesDirectory.swift */; };
 		7643038A2B4654B10037721A /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764303892B4654B10037721A /* String+Extensions.swift */; };
-		764B13E52B61C3E900C48FAE /* Main.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 764B13E42B61C3E900C48FAE /* Main.xcstrings */; };
+		764B13E92B61E94900C48FAE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 764B13E82B61E94900C48FAE /* Localizable.strings */; };
+		764B13EB2B61E95900C48FAE /* Main.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 764B13EA2B61E95800C48FAE /* Main.xcstrings */; };
 		7667DC742B4CDF1D00938D6F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 7667DC732B4CDF1D00938D6F /* Lottie */; };
 		7667DC782B4CDF5900938D6F /* TrashAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 7667DC772B4CDF5900938D6F /* TrashAnimation.json */; };
 		7669BA2A2ABDD3550002AD4C /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669BA292ABDD3550002AD4C /* Date+Extensions.swift */; };
@@ -351,7 +352,6 @@
 		76CAA1502A8AA1F700D742E9 /* BabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA14F2A8AA1F700D742E9 /* BabelTests.swift */; };
 		76CAA15A2A8AA1F700D742E9 /* BabelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA1592A8AA1F700D742E9 /* BabelUITests.swift */; };
 		76CAA15C2A8AA1F700D742E9 /* BabelUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA15B2A8AA1F700D742E9 /* BabelUITestsLaunchTests.swift */; };
-		76CAA1792A8AA94B00D742E9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 76CAA1782A8AA94B00D742E9 /* Localizable.strings */; };
 		76CAA17C2A8AA99F00D742E9 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA17B2A8AA99F00D742E9 /* AuthManager.swift */; };
 		76CAA17E2A8AA9B700D742E9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA17D2A8AA9B700D742E9 /* NetworkManager.swift */; };
 		76CAA1872A8AA9ED00D742E9 /* HomeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CAA1812A8AA9ED00D742E9 /* HomeFactory.swift */; };
@@ -633,7 +633,8 @@
 		763B03CA2B4F8DB50022E145 /* EditGroupDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupDescriptionView.swift; sourceTree = "<group>"; };
 		764303872B4650F20037721A /* FilesDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesDirectory.swift; sourceTree = "<group>"; };
 		764303892B4654B10037721A /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
-		764B13E42B61C3E900C48FAE /* Main.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Main.xcstrings; sourceTree = "<group>"; };
+		764B13E82B61E94900C48FAE /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		764B13EA2B61E95800C48FAE /* Main.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Main.xcstrings; sourceTree = "<group>"; };
 		7667DC772B4CDF5900938D6F /* TrashAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TrashAnimation.json; sourceTree = "<group>"; };
 		7669BA292ABDD3550002AD4C /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		7669BA2C2ABDDA650002AD4C /* StartChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartChat.swift; sourceTree = "<group>"; };
@@ -855,7 +856,6 @@
 		76CAA1552A8AA1F700D742E9 /* BabelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BabelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		76CAA1592A8AA1F700D742E9 /* BabelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabelUITests.swift; sourceTree = "<group>"; };
 		76CAA15B2A8AA1F700D742E9 /* BabelUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabelUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		76CAA1782A8AA94B00D742E9 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		76CAA17B2A8AA99F00D742E9 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		76CAA17D2A8AA9B700D742E9 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		76CAA1812A8AA9ED00D742E9 /* HomeFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeFactory.swift; sourceTree = "<group>"; };
@@ -2287,8 +2287,8 @@
 		76CAA1772A8AA93800D742E9 /* Localizable */ = {
 			isa = PBXGroup;
 			children = (
-				76CAA1782A8AA94B00D742E9 /* Localizable.strings */,
-				764B13E42B61C3E900C48FAE /* Main.xcstrings */,
+				764B13E82B61E94900C48FAE /* Localizable.strings */,
+				764B13EA2B61E95800C48FAE /* Main.xcstrings */,
 			);
 			path = Localizable;
 			sourceTree = "<group>";
@@ -2826,11 +2826,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				764B13E92B61E94900C48FAE /* Localizable.strings in Resources */,
 				76CAA1452A8AA1F600D742E9 /* LaunchScreen.storyboard in Resources */,
-				764B13E52B61C3E900C48FAE /* Main.xcstrings in Resources */,
 				76CAA1902A8AAC0100D742E9 /* GoogleService-Info.plist in Resources */,
 				7667DC782B4CDF5900938D6F /* TrashAnimation.json in Resources */,
-				76CAA1792A8AA94B00D742E9 /* Localizable.strings in Resources */,
+				764B13EB2B61E95900C48FAE /* Main.xcstrings in Resources */,
 				76CAA1422A8AA1F600D742E9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

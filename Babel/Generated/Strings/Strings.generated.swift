@@ -138,6 +138,16 @@ internal enum Strings {
       internal static let title = Strings.tr("Localizable", "OpenAI.ImageGenerator.title", fallback: "Image generator")
     }
   }
+  internal enum RecentChat {
+    internal enum ActionSheet {
+      internal enum Delete {
+        /// Do you want to delete this chat?
+        internal static let description = Strings.tr("Localizable", "RecentChat.ActionSheet.Delete.description", fallback: "Do you want to delete this chat?")
+        /// Chat bot
+        internal static let title = Strings.tr("Localizable", "RecentChat.ActionSheet.Delete.title", fallback: "Chat bot")
+      }
+    }
+  }
   internal enum Settings {
     /// Version
     internal static let version = Strings.tr("Localizable", "Settings.version", fallback: "Version")

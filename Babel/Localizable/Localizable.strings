@@ -108,3 +108,7 @@
 "OpenAI.ChatBot.description" = "Chat bot with messages only";
 "OpenAI.ImageGenerator.title" = "Image generator";
 "OpenAI.ImageGenerator.description" = "Generate images through AI";
+
+// Recent chat
+"RecentChat.ActionSheet.Delete.title" = "Delete chat";
+"RecentChat.ActionSheet.Delete.description" = "Do you want to delete this chat?";

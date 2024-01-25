@@ -14,7 +14,7 @@ protocol RegisterDisplaying: AnyObject {
 private extension RegisterViewController.Layout {
     enum Texts {
         static let emailPlaceholder = Strings.Register.Field.Email.placeholder.localized()
-        static let fullNamePlaceholder = Strings.Register.Field.Email.placeholder.localized()
+        static let fullNamePlaceholder = Strings.Register.Field.FullName.placeholder.localized()
         static let usernamePlaceholder = Strings.Register.Field.Username.placeholder.localized()
         static let passwordPlaceholder = Strings.Register.Field.Password.placeholder.localized()
         static let register = Strings.Register.Button.register.localized()

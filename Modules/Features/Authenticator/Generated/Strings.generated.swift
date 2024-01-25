@@ -50,8 +50,8 @@ internal enum Strings {
           internal static let title = Strings.tr("Localizable", "Login.Alert.EmailVerification.Resend.title", fallback: "Validate you email first")
         }
         internal enum Resent {
-          /// We just resent a varification to your email, please validate before login
-          internal static let message = Strings.tr("Localizable", "Login.Alert.EmailVerification.Resent.message", fallback: "We just resent a varification to your email, please validate before login")
+          /// We just resent a verification to your email, please validate before login
+          internal static let message = Strings.tr("Localizable", "Login.Alert.EmailVerification.Resent.message", fallback: "We just resent a verification to your email, please validate before login")
           /// Email sent
           internal static let title = Strings.tr("Localizable", "Login.Alert.EmailVerification.Resent.title", fallback: "Email sent")
         }

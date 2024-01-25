@@ -14,6 +14,9 @@ enum RecentChatsViewState {
 private extension RecentChatsViewController.Layout {
     enum Texts {
         static let search = Strings.Commons.search.localized()
+        static let deleteTitle = Strings.RecentChat.ActionSheet.Delete.title.localized()
+        static let deleteDescription = Strings.RecentChat.ActionSheet.Delete.description.localized()
+        static let cancel = Strings.Commons.cancel.localized()
     }
 }
 
@@ -100,11 +103,7 @@ extension RecentChatsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let recent = searchController.isActive ? filteredRecentChats[indexPath.row] : allRecentChats[indexPath.row]
-            allRecentChats.removeAll(where: { $0 == recent })
-            filteredRecentChats.removeAll(where: { $0 == recent })
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            interactor.deleteRecentChat(recent)
+            makeDeleteRecentActionSheet(indexPath: indexPath)
         }
     }
 }
@@ -142,6 +141,26 @@ private extension RecentChatsViewController {
     
     func didTapOnChat(_ chat: RecentChatModel) {
         interactor.didTapOnChat(chat)
+    }
+    
+    func makeDeleteRecentActionSheet(indexPath: IndexPath) {
+        let deleteRecentAction = UIAlertAction(title: Layout.Texts.deleteTitle, style: .destructive, handler: { [weak self] _ in
+            self?.navigationController?.popViewController(completion: { [weak self] _ in
+                self?.makeDeleteRecentAction(indexPath: indexPath)
+            })
+        })
+        let actionSheet = UIAlertController(title: Layout.Texts.deleteTitle, message: Layout.Texts.deleteDescription, preferredStyle: .alert)
+        actionSheet.addAction(deleteRecentAction)
+        actionSheet.addAction(UIAlertAction(title: Layout.Texts.cancel, style: .cancel, handler: nil))
+        present(actionSheet, animated: true)
+    }
+    
+    func makeDeleteRecentAction(indexPath: IndexPath) {
+        let recent = searchController.isActive ? filteredRecentChats[indexPath.row] : allRecentChats[indexPath.row]
+        allRecentChats.removeAll(where: { $0 == recent })
+        filteredRecentChats.removeAll(where: { $0 == recent })
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+        interactor.deleteRecentChat(recent)
     }
 }
 

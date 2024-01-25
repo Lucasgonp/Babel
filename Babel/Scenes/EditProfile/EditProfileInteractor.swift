@@ -69,7 +69,7 @@ extension EditProfileInteractor: EditProfileInteractorProtocol {
                         }
                     }
                 } else {
-                    self.presenter.displayErrorMessage(message: Strings.GenericError.message)
+                    self.presenter.displayErrorMessage(message: Strings.GenericError.message.localized())
                 }
             }
         }

@@ -5,8 +5,18 @@ protocol EditBioDisplaying: AnyObject {
     func displayErrorMessage(message: String)
 }
 
+private extension EditBioViewController.Layout {
+    enum Texts {
+        static let title = Strings.UserBio.title.localized()
+        static let placeholder = Strings.UserBio.placeholder.localized()
+        static let currentTitle = Strings.UserBio.currentTitle.localized()
+        static let optionsTitle = Strings.UserBio.optionsTitle.localized()
+        static let done = Strings.Commons.done.localized()
+    }
+}
+
 final class EditBioViewController: ViewController<EditBioInteractorProtocol, UIView> {
-    typealias Localizable = Strings.UserBio
+    fileprivate enum Layout { }
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
@@ -20,7 +30,7 @@ final class EditBioViewController: ViewController<EditBioInteractorProtocol, UIV
     
     private lazy var aboutTextField: TextField = {
         let textField = TextField()
-        textField.render(.simple(placeholder: Localizable.placeholder, textLength: 35))
+        textField.render(.simple(placeholder: Layout.Texts.placeholder, textLength: 35))
         textField.returnKeyType = .done
         textField.enablesReturnKeyAutomatically = true
         textField.delegate = self
@@ -47,7 +57,7 @@ final class EditBioViewController: ViewController<EditBioInteractorProtocol, UIV
     }
 
     override func configureViews() { 
-        title = Localizable.title
+        title = Layout.Texts.title
         view.backgroundColor = Color.backgroundPrimary.uiColor
         configureNavigation()
     }
@@ -109,9 +119,9 @@ extension EditBioViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
-            return Localizable.currentTitle
+            return Layout.Texts.currentTitle
         } else {
-            return Localizable.optionsTitle
+            return Layout.Texts.optionsTitle
         }
     }
 }
@@ -128,7 +138,7 @@ extension EditBioViewController: UITableViewDataSource {
 
 private extension EditBioViewController {
     func configureNavigation() {
-        let done = UIBarButtonItem(title: Strings.Commons.done, style: .done, target: self, action: #selector(didTapDoneButton))
+        let done = UIBarButtonItem(title: Layout.Texts.done, style: .done, target: self, action: #selector(didTapDoneButton))
         navigationItem.setRightBarButton(done, animated: true)
         updateDoneBarButton(isHidden: true)
     }
@@ -141,7 +151,7 @@ private extension EditBioViewController {
         if isHidden {
             navigationItem.rightBarButtonItem = nil
         } else {
-            let done = UIBarButtonItem(title: Strings.Commons.done, style: .done, target: self, action: #selector(didTapDoneButton))
+            let done = UIBarButtonItem(title: Layout.Texts.done, style: .done, target: self, action: #selector(didTapDoneButton))
             navigationItem.rightBarButtonItem = done
         }
     }

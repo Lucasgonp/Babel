@@ -35,6 +35,8 @@ internal enum Strings {
   internal enum Commons {
     /// Add
     internal static let add = Strings.tr("Localizable", "Commons.add", fallback: "Add")
+    /// All users
+    internal static let allUsers = Strings.tr("Localizable", "Commons.allUsers", fallback: "All users")
     /// Cancel
     internal static let cancel = Strings.tr("Localizable", "Commons.cancel", fallback: "Cancel")
     /// Description
@@ -43,8 +45,12 @@ internal enum Strings {
     internal static let done = Strings.tr("Localizable", "Commons.done", fallback: "Done")
     /// Edit
     internal static let edit = Strings.tr("Localizable", "Commons.edit", fallback: "Edit")
-    /// Search user
-    internal static let searchUser = Strings.tr("Localizable", "Commons.searchUser", fallback: "Search user")
+    /// Logout
+    internal static let logout = Strings.tr("Localizable", "Commons.logout", fallback: "Logout")
+    /// Search
+    internal static let search = Strings.tr("Localizable", "Commons.search", fallback: "Search")
+    /// Send message
+    internal static let sendMessage = Strings.tr("Localizable", "Commons.sendMessage", fallback: "Send message")
     /// Users
     internal static let users = Strings.tr("Localizable", "Commons.users", fallback: "Users")
   }
@@ -79,8 +85,6 @@ internal enum Strings {
     internal static let joinGroup = Strings.tr("Localizable", "GroupInfo.joinGroup", fallback: "Join group")
     /// Members
     internal static let members = Strings.tr("Localizable", "GroupInfo.members", fallback: "Members")
-    /// Send message
-    internal static let sendMessage = Strings.tr("Localizable", "GroupInfo.sendMessage", fallback: "Send message")
     /// Group info
     internal static let title = Strings.tr("Localizable", "GroupInfo.title", fallback: "Group info")
     /// Users requests
@@ -150,6 +154,16 @@ internal enum Strings {
       internal static let title = Strings.tr("Localizable", "Settings.TermsAndConditions.title", fallback: "Terms and conditions")
     }
   }
+  internal enum SystemSettings {
+    /// Clear
+    internal static let clear = Strings.tr("Localizable", "SystemSettings.clear", fallback: "Clear")
+    /// Clear cache
+    internal static let clearCache = Strings.tr("Localizable", "SystemSettings.clearCache", fallback: "Clear cache")
+    /// Do you want to clear cache?
+    internal static let clearCacheDescription = Strings.tr("Localizable", "SystemSettings.clearCacheDescription", fallback: "Do you want to clear cache?")
+    /// System settings
+    internal static let title = Strings.tr("Localizable", "SystemSettings.title", fallback: "System settings")
+  }
   internal enum TabBar {
     internal enum Chats {
       /// Chats
@@ -217,6 +231,6 @@ internal enum Strings {
 extension Strings {
   private static func tr(_ table: String, _ key: String, _ args: CVarArg..., fallback value: String) -> String {
     let format = BabelResources.resourcesBundle.localizedString(forKey: key, value: value, table: table)
-      return String(format: format, locale: Locale.current, arguments: args).localized()
+    return String(format: format, locale: Locale.current, arguments: args)
   }
 }

@@ -12,8 +12,14 @@ protocol ChatBotDisplaying: AnyObject {
     func updateMessage(_ localMessage: LocalMessage)
 }
 
+private extension ChatBotViewController.Layout {
+    enum Texts {
+        static let typing = Strings.ChatView.typing.localized()
+    }
+}
+
 final class ChatBotViewController: MessagesViewController {
-    typealias Localizable = Strings.ChatView
+    fileprivate enum Layout { }
     
     private lazy var titleLabel: TextLabel = {
         let label = TextLabel()
@@ -29,7 +35,7 @@ final class ChatBotViewController: MessagesViewController {
         label.textAlignment = .center
         label.font = Font.sm.uiFont
         label.adjustsFontSizeToFitWidth = true
-        label.text = Localizable.typing.localized()
+        label.text = Layout.Texts.typing
         label.textAlignment = .left
         label.isHidden = true
         return label
@@ -243,7 +249,7 @@ private extension ChatBotViewController {
     }
     
     func updateTypingIndicator(show: Bool) {
-        descriptionLabel.text = Localizable.typing
+        descriptionLabel.text = Layout.Texts.typing
         animateDescription(show: show)
     }
     

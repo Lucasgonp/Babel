@@ -23,8 +23,8 @@ extension OpenAIInteractor: OpenAIInteractorProtocol {
         let chatDTO = ChatBotDTO(
             id: kCHATBOT,
             chatId: chatRoomId,
-            name: Strings.OpenAI.ChatBot.title,
-            description: Strings.OpenAI.ChatBot.description,
+            name: Strings.OpenAI.ChatBot.title.localized(),
+            description: Strings.OpenAI.ChatBot.description.localized(),
             avatarImage: ChatBotHelper.Images.chatBotIcon
         )
         presenter.didNextStep(action: .pushChatBot(chatDTO))
@@ -35,8 +35,8 @@ extension OpenAIInteractor: OpenAIInteractorProtocol {
         let chatDTO = ChatBotDTO(
             id: kIMAGEGENERATOR,
             chatId: chatRoomId,
-            name: Strings.OpenAI.ChatBot.title,
-            description: Strings.OpenAI.ImageGenerator.description,
+            name: Strings.OpenAI.ChatBot.title.localized(),
+            description: Strings.OpenAI.ImageGenerator.description.localized(),
             avatarImage: ChatBotHelper.Images.imageGeneratorIcon
         )
         presenter.didNextStep(action: .pushImageGenerator(chatDTO))

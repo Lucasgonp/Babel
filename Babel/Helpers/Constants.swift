@@ -1,4 +1,4 @@
-typealias Localizable = Strings
+fileprivate typealias Localizable = Strings
 
 let kSEND = "send"
 let kSENT = "sent"
@@ -13,7 +13,7 @@ let kLOCATION = "location"
 let kCHATBOT = "chatBot"
 let kIMAGEGENERATOR = "imageGenerator"
 
-let kPICTUREMESSAGE = "📷 \(Localizable.MessageType.photo)"
-let kVIDEOMESSAGE = "🎥 \(Localizable.MessageType.video)"
-let kLOCATIONMESSAGE = "📍 \(Localizable.MessageType.location)"
-let kAUDIOMESSAGE = "🔈 \(Localizable.MessageType.audio)"
+let kPICTUREMESSAGE = "📷 \(Localizable.MessageType.photo.localized())"
+let kVIDEOMESSAGE = "🎥 \(Localizable.MessageType.video.localized())"
+let kLOCATIONMESSAGE = "📍 \(Localizable.MessageType.location.localized())"
+let kAUDIOMESSAGE = "🔈 \(Localizable.MessageType.audio.localized())"

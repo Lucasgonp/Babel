@@ -15,8 +15,6 @@ protocol ChatInteractorProtocol: AnyObject {
 }
 
 final class ChatInteractor {
-    typealias Localizable = Strings.ChatView
-    
     private let currentUser = UserSafe.shared.user
     private var notificationToken: NotificationToken?
     

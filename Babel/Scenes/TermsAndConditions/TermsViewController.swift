@@ -6,15 +6,13 @@ protocol TermsDisplaying: AnyObject {
 }
 
 private extension TermsViewController.Layout {
-    // example
-    enum Size {
-        static let imageHeight: CGFloat = 90.0
+    enum Texts {
+        static let title = Strings.Settings.TermsAndConditions.title.localized()
     }
 }
 
 final class TermsViewController: ViewController<TermsInteractorProtocol, UIView> {
     fileprivate enum Layout { }
-    typealias Localizable = Strings.Settings.TermsAndConditions
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +34,7 @@ final class TermsViewController: ViewController<TermsInteractorProtocol, UIView>
     }
 
     override func configureViews() {
-        title = Localizable.title
+        title = Layout.Texts.title
         view.backgroundColor = Color.grayscale050.uiColor
     }
 }

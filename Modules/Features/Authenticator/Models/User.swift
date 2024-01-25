@@ -6,6 +6,6 @@ public struct User: Codable, Equatable {
     public var name: String
     public let email: String
     public let username: String
-    public let password: String
+    public var password: String
     public var status: String
 }

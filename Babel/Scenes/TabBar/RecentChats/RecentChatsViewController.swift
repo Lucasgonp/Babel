@@ -11,7 +11,15 @@ enum RecentChatsViewState {
     case loading(isLoading: Bool)
 }
 
+private extension RecentChatsViewController.Layout {
+    enum Texts {
+        static let search = Strings.Commons.search.localized()
+    }
+}
+
 final class RecentChatsViewController: ViewController<RecentChatsInteractorProtocol, UIView> {
+    fileprivate enum Layout { }
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(cellType: RecentChatCell.self)
@@ -25,7 +33,7 @@ final class RecentChatsViewController: ViewController<RecentChatsInteractorProto
     private lazy var searchController: UISearchController = {
         let controller = UISearchController(searchResultsController: nil)
         controller.obscuresBackgroundDuringPresentation = false
-        controller.searchBar.placeholder = "Search user"
+        controller.searchBar.placeholder = Layout.Texts.search
         controller.searchResultsUpdater = self
         controller.definesPresentationContext = true
         return controller
@@ -33,45 +41,14 @@ final class RecentChatsViewController: ViewController<RecentChatsInteractorProto
     
     private var allRecentChats = [RecentChatModel]()
     private var filteredRecentChats = [RecentChatModel]()
-
-//    var counter = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         interactor.loadRecentChats()
-        
-//        Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
-//            self.counter += 1
-//            switch self.counter {
-//            case 1:
-//                print("light")
-//                UIImpactFeedbackGenerator(style: .light).impactOccurred()
-//            case 2:
-//                print("medium")
-//                UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-//            case 3:
-//                print("heavy")
-//                UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
-//            case 4:
-//                print("soft")
-//                UIImpactFeedbackGenerator(style: .soft).impactOccurred()
-//            case 5:
-//                print("rigid")
-//                UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
-//            default:
-//                self.counter = 0
-//                UIImpactFeedbackGenerator().impactOccurred()
-//            }
-//        }
     }
 
     override func buildViewHierarchy() { 
         view.fillWithSubview(subview: tableView)
-    }
-    
-    override func setupConstraints() { 
-        // template
     }
 
     override func configureViews() { 
@@ -134,7 +111,7 @@ extension RecentChatsViewController: UITableViewDelegate {
 
 extension RecentChatsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return searchController.isActive ? "Search for user" : nil
+        return searchController.isActive ? Layout.Texts.search : nil
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

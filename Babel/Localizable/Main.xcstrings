@@ -876,19 +876,20 @@
         }
       }
     },
-    "Search user" : {
+    "Search" : {
+      "comment" : "Common",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Search user"
+            "value" : "Search"
           }
         },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pesquisar usuario"
+            "value" : "Pesquisar"
           }
         }
       }
@@ -1145,7 +1146,7 @@
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Informações do usuario"
+            "value" : "Informações do usuário"
           }
         }
       }
@@ -1179,7 +1180,7 @@
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Solicitações de usuarios"
+            "value" : "Solicitações de usuários"
           }
         }
       }

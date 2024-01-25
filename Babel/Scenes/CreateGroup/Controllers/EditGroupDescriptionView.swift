@@ -1,12 +1,20 @@
 import UIKit
 import DesignKit
 
+private extension EditGroupDescViewController.Layout {
+    enum Texts {
+        static let descriptionInfo = Strings.GroupInfo.descriptionInfo.localized()
+        static let done = Strings.Commons.done.localized()
+        static let cancel = Strings.Commons.cancel.localized()
+    }
+}
+
 final class EditGroupDescViewController: UIViewController {
-    typealias Localizable = Strings.GroupInfo
+    fileprivate enum Layout { }
     
     private let descriptionLabel: TextLabel = {
         let label = TextLabel(font: Font.xs.make())
-        label.text = Localizable.descriptionInfo
+        label.text = Layout.Texts.descriptionInfo
         label.textColor = Color.grayscale700.uiColor
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -33,7 +41,7 @@ final class EditGroupDescViewController: UIViewController {
     }()
     
     private lazy var doneButton: UIBarButtonItem = {
-        let item = UIBarButtonItem(title: Strings.Commons.done, style: .done, target: self, action: #selector(didTapDoneButton))
+        let item = UIBarButtonItem(title: Layout.Texts.done, style: .done, target: self, action: #selector(didTapDoneButton))
         item.isEnabled = false
         return item
     }()
@@ -78,7 +86,7 @@ extension EditGroupDescViewController: ViewConfiguration {
         
         navigationItem.setRightBarButton(doneButton, animated: true)
         
-        let cancel = UIBarButtonItem(title: Strings.Commons.cancel, style: .plain, target: self, action: #selector(didTapCancelButton))
+        let cancel = UIBarButtonItem(title: Layout.Texts.cancel, style: .plain, target: self, action: #selector(didTapCancelButton))
         navigationItem.setLeftBarButton(cancel, animated: true)
     }
 }

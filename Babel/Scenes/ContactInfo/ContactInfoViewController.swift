@@ -13,15 +13,14 @@ enum ContactInfoViewState {
 }
 
 private extension ContactInfoViewController.Layout {
-    // example
-    enum Size {
-        static let imageHeight: CGFloat = 90.0
+    enum Texts {
+        static let title = Strings.ContactInfo.title.localized()
+        static let sendMessage = Strings.Commons.sendMessage.localized()
     }
 }
 
 final class ContactInfoViewController: ViewController<ContactInfoInteractorProtocol, UIView> {
     fileprivate enum Layout { }
-    typealias Localizable = Strings.ContactInfo
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
@@ -35,6 +34,10 @@ final class ContactInfoViewController: ViewController<ContactInfoInteractorProto
     }()
     
     weak var delegate: SettingsViewDelegate?
+    
+    private var currentUser: User {
+        UserSafe.shared.user
+    }
     
     private var contactUser: User?
     private var shouldDisplayStartChat = false
@@ -61,7 +64,7 @@ final class ContactInfoViewController: ViewController<ContactInfoInteractorProto
         let backButton = UIBarButtonItem(title: String(), style: .plain, target: nil, action: nil)
         navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         
-        title = Localizable.title
+        title = Layout.Texts.title
         view.backgroundColor = Color.backgroundPrimary.uiColor
     }
 }
@@ -98,7 +101,7 @@ extension ContactInfoViewController: UITableViewDelegate {
 
 extension ContactInfoViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return shouldDisplayStartChat ? 2 : 1
+        return shouldDisplayStartChat && contactUser?.id != currentUser.id ? 2 : 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -117,9 +120,7 @@ extension ContactInfoViewController: UITableViewDataSource {
             return cell
         case 1:
             let cell: SettingsButtonCell = tableView.makeCell(indexPath: indexPath, accessoryType: .disclosureIndicator)
-            let image = ImageAsset.Image(systemName: "bubble.left.fill")?
-                .withTintColor(Color.primary500.uiColor)  ?? UIImage()
-            cell.render(.init(icon: image, text: "Start chat"))
+            cell.render(.init(icon: Icon.send.image, text: Layout.Texts.sendMessage))
             return cell
         default:
             return UITableViewCell()

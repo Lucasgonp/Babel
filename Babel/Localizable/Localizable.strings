@@ -4,8 +4,11 @@
 "Commons.edit" = "Edit";
 "Commons.add" = "Add";
 "Commons.description" = "Description";
-"Commons.searchUser" = "Search user";
+"Commons.search" = "Search";
 "Commons.users" = "Users";
+"Commons.allUsers" = "All users";
+"Commons.sendMessage" = "Send message";
+"Commons.logout" = "Logout";
 
 // Generic Errors
 "GenericError.message" = "Ops! Something went wrong";
@@ -78,7 +81,6 @@
 "GroupInfo.title" = "Group info";
 "GroupInfo.addGroupDescription" = "Add group description";
 "GroupInfo.members" = "Members";
-"GroupInfo.sendMessage" = "Send message";
 "GroupInfo.joinGroup" = "Join group";
 "GroupInfo.usersRequests" = "Users requests";
 "GroupInfo.addNewMember" = "Add new member";
@@ -93,6 +95,12 @@
 "GroupInfo.ActionSheet.makeAdmin" = "Make admin";
 "GroupInfo.ActionSheet.removeAdmin" = "Remove admin";
 "GroupInfo.ActionSheet.removeMember" = "Remove member";
+
+// System settings
+"SystemSettings.title" = "System settings";
+"SystemSettings.clear" = "Clear";
+"SystemSettings.clearCache" = "Clear cache";
+"SystemSettings.clearCacheDescription" = "Do you want to clear cache?";
 
 // Open AI
 "OpenAI.ChatBot.title" = "Chat bot";

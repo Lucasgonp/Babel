@@ -14,8 +14,6 @@ protocol ChatGroupInteractorProtocol: AnyObject {
 }
 
 final class ChatGroupInteractor {
-    typealias Localizable = Strings.ChatView
-    
     private var currentUser: User {
         UserSafe.shared.user
     }

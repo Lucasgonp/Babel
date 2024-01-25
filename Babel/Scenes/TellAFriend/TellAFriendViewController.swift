@@ -6,15 +6,13 @@ protocol TellAFriendDisplaying: AnyObject {
 }
 
 private extension TellAFriendViewController.Layout {
-    // example
-    enum Size {
-        static let imageHeight: CGFloat = 90.0
+    enum Texts {
+        static let title = Strings.Settings.TellAFriend.title.localized()
     }
 }
 
 final class TellAFriendViewController: ViewController<TellAFriendInteractorProtocol, UIView> {
     fileprivate enum Layout { }
-    typealias Localizable = Strings.Settings.TellAFriend
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +34,7 @@ final class TellAFriendViewController: ViewController<TellAFriendInteractorProto
     }
 
     override func configureViews() {
-        title = Localizable.title
+        title = Layout.Texts.title
         view.backgroundColor = Color.grayscale050.uiColor
     }
 }

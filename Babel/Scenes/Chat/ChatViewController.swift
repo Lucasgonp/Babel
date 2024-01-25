@@ -13,8 +13,18 @@ protocol ChatDisplaying: AnyObject {
     func updateMessage(_ localMessage: LocalMessage)
 }
 
+private extension ChatViewController.Layout {
+    enum Texts {
+        static let typing = Strings.ChatView.typing.localized()
+        static let camera = Strings.ChatView.ActionSheet.camera.localized()
+        static let library = Strings.ChatView.ActionSheet.library.localized()
+        static let shareLocation = Strings.ChatView.ActionSheet.shareLocation.localized()
+        static let cancel = Strings.Commons.cancel.localized()
+    }
+}
+
 final class ChatViewController: MessagesViewController {
-    typealias Localizable = Strings.ChatView
+    fileprivate enum Layout { }
     
     private lazy var titleLabel: TextLabel = {
         let label = TextLabel()
@@ -30,7 +40,7 @@ final class ChatViewController: MessagesViewController {
         label.textAlignment = .center
         label.font = Font.sm.uiFont
         label.adjustsFontSizeToFitWidth = true
-        label.text = Localizable.typing
+        label.text = Layout.Texts.typing
         label.textAlignment = .left
         label.isHidden = true
         return label
@@ -318,7 +328,7 @@ private extension ChatViewController {
     }
     
     func updateTypingIndicator(show: Bool) {
-        descriptionLabel.text = Localizable.typing
+        descriptionLabel.text = Layout.Texts.typing
         animateDescription(show: show)
     }
     
@@ -335,21 +345,21 @@ private extension ChatViewController {
     
     func makeAttachActionSheet() -> UIAlertController {
         let cameraImage = UIImage(systemName: "camera")?.withRenderingMode(.alwaysTemplate)
-        let cameraAction = UIAlertAction(title: Localizable.ActionSheet.camera, style: .default, image: cameraImage, handler: { [weak self] _ in
+        let cameraAction = UIAlertAction(title: Layout.Texts.camera, style: .default, image: cameraImage, handler: { [weak self] _ in
             self?.showLoadingView()
             self?.galleryController.configuration = .camera
             self?.showGalleryView()
         })
         
         let libraryImage = UIImage(systemName: "photo")?.withRenderingMode(.alwaysTemplate)
-        let libraryAction = UIAlertAction(title: Localizable.ActionSheet.library, style: .default, image: libraryImage, handler: { [weak self] _ in
+        let libraryAction = UIAlertAction(title: Layout.Texts.library, style: .default, image: libraryImage, handler: { [weak self] _ in
             self?.showLoadingView()
             self?.galleryController.configuration = .library
             self?.showGalleryView()
         })
         
         let locationImage = UIImage(systemName: "mappin.and.ellipse")?.withRenderingMode(.alwaysTemplate)
-        let locationAction = UIAlertAction(title: Localizable.ActionSheet.shareLocation, style: .default, image: locationImage, handler: { [weak self] _ in
+        let locationAction = UIAlertAction(title: Layout.Texts.shareLocation, style: .default, image: locationImage, handler: { [weak self] _ in
             LocationManager.shared.authorizeLocationAccess { [weak self] in
                 LocationManager.shared.startUpdating()
                 self?.messageSend(location: kLOCATION)
@@ -360,7 +370,7 @@ private extension ChatViewController {
         actionSheet.addAction(cameraAction)
         actionSheet.addAction(libraryAction)
         actionSheet.addAction(locationAction)
-        actionSheet.addAction(UIAlertAction(title: Localizable.ActionSheet.cancel, style: .cancel, handler: nil))
+        actionSheet.addAction(UIAlertAction(title: Layout.Texts.cancel, style: .cancel, handler: nil))
         
         return actionSheet
     }

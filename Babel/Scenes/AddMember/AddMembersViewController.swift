@@ -11,7 +11,18 @@ protocol AddMembersDisplaying: AnyObject {
     func displayViewState(_ state: AddMembersViewState)
 }
 
+private extension AddMembersViewController.Layout {
+    enum Texts {
+        static let search = Strings.Commons.search.localized()
+        static let add = Strings.Commons.add.localized()
+        static let users = Strings.Commons.users.localized()
+        static let cancel = Strings.Commons.cancel.localized()
+    }
+}
+
 final class AddMembersViewController: ViewController<AddMembersInteractorProtocol, UIView> {
+    fileprivate enum Layout { }
+    
     private struct Section {
         let letter : String
         let users : [User]
@@ -29,14 +40,14 @@ final class AddMembersViewController: ViewController<AddMembersInteractorProtoco
     private lazy var searchController: UISearchController = {
         let controller = UISearchController(searchResultsController: nil)
         controller.obscuresBackgroundDuringPresentation = false
-        controller.searchBar.placeholder = Strings.Commons.searchUser
+        controller.searchBar.placeholder = Layout.Texts.search
         controller.searchResultsUpdater = self
         controller.definesPresentationContext = true
         return controller
     }()
     
     private lazy var addButton: UIBarButtonItem = {
-        let item = UIBarButtonItem(title: Strings.Commons.add, style: .done, target: self, action: #selector(didTapDoneButton))
+        let item = UIBarButtonItem(title: Layout.Texts.add, style: .done, target: self, action: #selector(didTapDoneButton))
         item.isEnabled = false
         return item
     }()
@@ -142,7 +153,7 @@ extension AddMembersViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return searchController.isActive ? Strings.Commons.users : sections[section].letter
+        return searchController.isActive ? Layout.Texts.users : sections[section].letter
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -185,7 +196,7 @@ private extension AddMembersViewController {
         
         navigationItem.setRightBarButton(addButton, animated: false)
         
-        let cancel = UIBarButtonItem(title: Strings.Commons.cancel, style: .plain, target: self, action: #selector(didTapCancelButton))
+        let cancel = UIBarButtonItem(title: Layout.Texts.cancel, style: .plain, target: self, action: #selector(didTapCancelButton))
         navigationItem.setLeftBarButton(cancel, animated: true)
     }
     

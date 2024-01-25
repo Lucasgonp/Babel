@@ -5,7 +5,19 @@ protocol SystemSettingsDisplaying: AnyObject {
     func displaySomething()
 }
 
+private extension SystemSettingsViewController.Layout {
+    enum Texts {
+        static let title = Strings.SystemSettings.title.localized()
+        static let clear = Strings.SystemSettings.clear.localized()
+        static let clearCache = Strings.SystemSettings.clearCache.localized()
+        static let clearCacheDescription = Strings.SystemSettings.clearCacheDescription.localized()
+        static let cancel = Strings.Commons.cancel.localized()
+    }
+}
+
 final class SystemSettingsViewController: ViewController<SystemSettingsInteractorProtocol, UIView> {
+    fileprivate enum Layout { }
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.register(cellType: UITableViewCell.self)
@@ -27,7 +39,7 @@ final class SystemSettingsViewController: ViewController<SystemSettingsInteracto
     override func setupConstraints() { }
 
     override func configureViews() {
-        title = "System settings"
+        title = Layout.Texts.title
         view.backgroundColor = Color.backgroundPrimary.uiColor
     }
 }
@@ -42,13 +54,13 @@ extension SystemSettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let clearCacheAction = UIAlertAction(title: "Clear", style: .destructive, handler: { [weak self] _ in
+        let clearCacheAction = UIAlertAction(title: Layout.Texts.clear, style: .destructive, handler: { [weak self] _ in
             self?.interactor.clearCache()
         })
         
-        let actionSheet = UIAlertController(title: "Clear cache", message: "Do you want to clear cache?", preferredStyle: .alert)
+        let actionSheet = UIAlertController(title: Layout.Texts.clearCache, message: Layout.Texts.clearCacheDescription, preferredStyle: .alert)
         actionSheet.addAction(clearCacheAction)
-        actionSheet.addAction(UIAlertAction(title: Strings.Commons.cancel, style: .cancel, handler: nil))
+        actionSheet.addAction(UIAlertAction(title: Layout.Texts.cancel, style: .cancel, handler: nil))
         present(actionSheet, animated: true)
     }
 }
@@ -60,7 +72,7 @@ extension SystemSettingsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let button = Button()
-        button.setTitle("Clear cache", for: .normal)
+        button.setTitle(Layout.Texts.clearCache, for: .normal)
         button.setTitleColor(Color.warning500.uiColor, for: .normal)
         let cell = tableView.makeCell(indexPath: indexPath)
         cell.fillWithSubview(subview: button, spacing: .init(top: 6, left: .zero, bottom: 6, right: .zero))

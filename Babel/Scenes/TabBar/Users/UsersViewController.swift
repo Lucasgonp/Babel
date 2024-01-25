@@ -12,20 +12,17 @@ protocol UsersDisplaying: AnyObject {
 }
 
 private extension UsersViewController.Layout {
-    // example
-    enum Size {
-        static let imageHeight: CGFloat = 90.0
+    enum Texts {
+        static let search = Strings.Commons.search.localized()
     }
 }
 
 final class UsersViewController: ViewController<UsersInteractorProtocol, UIView> {
+    fileprivate enum Layout { }
+    
     private struct Section {
         let letter : String
         let contacts : [User]
-    }
-    
-    fileprivate enum Layout {
-        // template
     }
     
     private lazy var tableView: UITableView = {
@@ -41,7 +38,7 @@ final class UsersViewController: ViewController<UsersInteractorProtocol, UIView>
     private lazy var searchController: UISearchController = {
         let controller = UISearchController(searchResultsController: nil)
         controller.obscuresBackgroundDuringPresentation = false
-        controller.searchBar.placeholder = "Search user"
+        controller.searchBar.placeholder = Layout.Texts.search
         controller.searchResultsUpdater = self
         controller.definesPresentationContext = true
         return controller
@@ -53,10 +50,6 @@ final class UsersViewController: ViewController<UsersInteractorProtocol, UIView>
     
     private let refreshControl = UIRefreshControl()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.largeTitleDisplayMode = .always
@@ -67,10 +60,6 @@ final class UsersViewController: ViewController<UsersInteractorProtocol, UIView>
     
     override func buildViewHierarchy() {
         view.fillWithSubview(subview: tableView)
-    }
-    
-    override func setupConstraints() {
-        // template
     }
     
     override func configureViews() {
@@ -147,7 +136,7 @@ extension UsersViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return searchController.isActive ? "Contacts" : sections[section].letter
+        return searchController.isActive ? Layout.Texts.search : sections[section].letter
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

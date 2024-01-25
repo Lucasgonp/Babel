@@ -2,8 +2,17 @@ import UIKit
 import DesignKit
 import GalleryKit
 
+private extension EditGroupViewController.Layout {
+    enum Texts {
+        static let edit = Strings.Commons.edit.localized()
+        static let groupNamePlaceholder = Strings.GroupInfo.groupNamePlaceholder.localized()
+        static let done = Strings.Commons.done.localized()
+        static let cancel = Strings.Commons.cancel.localized()
+    }
+}
+
 final class EditGroupViewController: UIViewController {
-    typealias Localizable = Strings.GroupInfo
+    fileprivate enum Layout { }
     
     private let avatarImageView: ImageView = {
         let imageView = ImageView()
@@ -16,7 +25,7 @@ final class EditGroupViewController: UIViewController {
     
     private lazy var editAvatarButton: Button = {
         let button = Button()
-        button.render(.tertiary(title: Strings.Commons.edit, titleColor: Color.blueNative))
+        button.render(.tertiary(title: Layout.Texts.edit, titleColor: Color.blueNative))
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -33,7 +42,7 @@ final class EditGroupViewController: UIViewController {
     
     private lazy var groupNameTextField: TextField = {
         let textField = TextField()
-        textField.render(.simple(placeholder: Localizable.groupNamePlaceholder, autocapitalizationType: .words, textLength: 35))
+        textField.render(.simple(placeholder: Layout.Texts.groupNamePlaceholder, autocapitalizationType: .words, textLength: 35))
         textField.backgroundColor = Color.backgroundTertiary.uiColor
         textField.layer.cornerRadius = 8
         textField.clipsToBounds = true
@@ -43,7 +52,7 @@ final class EditGroupViewController: UIViewController {
     }()
     
     private lazy var doneButton: UIBarButtonItem = {
-        let item = UIBarButtonItem(title: Strings.Commons.done, style: .done, target: self, action: #selector(didTapDoneButton))
+        let item = UIBarButtonItem(title: Layout.Texts.done, style: .done, target: self, action: #selector(didTapDoneButton))
         item.isEnabled = false
         return item
     }()
@@ -113,7 +122,7 @@ extension EditGroupViewController: ViewConfiguration {
         
         navigationItem.setRightBarButton(doneButton, animated: true)
         
-        let cancel = UIBarButtonItem(title: Strings.Commons.cancel, style: .plain, target: self, action: #selector(didTapCancelButton))
+        let cancel = UIBarButtonItem(title: Layout.Texts.cancel, style: .plain, target: self, action: #selector(didTapCancelButton))
         navigationItem.setLeftBarButton(cancel, animated: true)
     }
 }

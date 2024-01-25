@@ -14,8 +14,19 @@ protocol SettingsViewDelegate: AnyObject {
 protocol SettingsDisplaying: AnyObject {
     func displayViewState(_ state: SettingsViewState)
 }
+
+private extension SettingsViewController.Layout {
+    enum Texts {
+        static let title = Strings.TabBar.Settings.title.localized()
+        static let tellAFriendTitle = Strings.Settings.TellAFriend.title.localized()
+        static let termsAndConditionsTitle = Strings.Settings.TermsAndConditions.title.localized()
+        static let version = Strings.Settings.version.localized()
+        static let logout = Strings.Commons.logout.localized()
+    }
+}
+
 final class SettingsViewController: ViewController<SettingsInteractorProtocol, UIView> {
-    typealias Localizable = Strings.Settings
+    fileprivate enum Layout { }
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
@@ -31,21 +42,21 @@ final class SettingsViewController: ViewController<SettingsInteractorProtocol, U
     private lazy var settingsButtons = [
         SettingsButtonViewModel(
             icon: Icon.heartSquare.image.withTintColor(Color.warning500.uiColor, renderingMode: .alwaysOriginal),
-            text: Localizable.TellAFriend.title,
+            text: Layout.Texts.tellAFriendTitle,
             completionHandler: { [weak self] in
                 self?.interactor.tellAFriend()
             }
         ),
         SettingsButtonViewModel(
             icon: UIImage(systemName: "info.circle")!,
-            text: Localizable.TermsAndConditions.title,
+            text: Layout.Texts.termsAndConditionsTitle,
             completionHandler: { [weak self] in
                 self?.interactor.termsAndConditions()
             }
         ),
         SettingsButtonViewModel(
             icon: UIImage(systemName: "gear")!,
-            text: Strings.TabBar.Settings.title,
+            text: Layout.Texts.title,
             completionHandler: { [weak self] in
                 self?.interactor.systemSettings()
             }
@@ -158,7 +169,7 @@ extension SettingsViewController: UITableViewDataSource {
             return cell
         case 2:
             let button = Button()
-            button.setTitle("Logout", for: .normal)
+            button.setTitle(Layout.Texts.logout, for: .normal)
             button.setTitleColor(Color.warning500.uiColor, for: .normal)
             let cell = UITableViewCell()
             cell.fillWithSubview(subview: button, spacing: .init(top: 6, left: .zero, bottom: 6, right: .zero))
@@ -170,7 +181,7 @@ extension SettingsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? String()
-        return (section == 2) ? "\(Localizable.version) \(version)" : nil
+        return (section == 2) ? "\(Layout.Texts.version) \(version)" : nil
     }
     
     func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {

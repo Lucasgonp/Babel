@@ -9,8 +9,16 @@ protocol EditProfileDisplaying: AnyObject {
     func displayErrorMessage(message: String)
 }
 
+private extension EditProfileViewController.Layout {
+    enum Texts {
+        static let title = Strings.Settings.EditProfile.title.localized()
+        static let namePlaceholder = Strings.Settings.EditProfile.namePlaceholder.localized()
+        static let done = Strings.Commons.done.localized()
+    }
+}
+
 final class EditProfileViewController: ViewController<EditProfileInteractorProtocol, UIView> {
-    typealias Localizable = Strings.Settings.EditProfile
+    fileprivate enum Layout { }
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
@@ -26,8 +34,8 @@ final class EditProfileViewController: ViewController<EditProfileInteractorProto
     private lazy var fullNameTextField: TextField = {
         let textField = TextField()
         textField.render(.clean(
-            placeholder: Localizable.namePlaceholder,
-            hint: Localizable.namePlaceholder,
+            placeholder: Layout.Texts.namePlaceholder,
+            hint: Layout.Texts.namePlaceholder,
             isHintAlwaysVisible: true,
             autocapitalizationType: .words,
             textLength: 32
@@ -77,7 +85,7 @@ final class EditProfileViewController: ViewController<EditProfileInteractorProto
     }
 
     override func configureViews() { 
-        title = Localizable.title
+        title = Layout.Texts.title
         view.backgroundColor = Color.backgroundPrimary.uiColor
         configureNavigation()
     }
@@ -156,7 +164,7 @@ extension EditProfileViewController: UITableViewDataSource {
 
 private extension EditProfileViewController {    
     func configureNavigation() {
-        let done = UIBarButtonItem(title: Strings.Commons.done, style: .done, target: self, action: #selector(didTapDoneButton))
+        let done = UIBarButtonItem(title: Layout.Texts.done, style: .done, target: self, action: #selector(didTapDoneButton))
         navigationItem.setRightBarButton(done, animated: true)
         updateDoneBarButton(isHidden: true)
     }
@@ -170,7 +178,7 @@ private extension EditProfileViewController {
         if isHidden {
             navigationItem.rightBarButtonItem = nil
         } else {
-            let done = UIBarButtonItem(title: Strings.Commons.done, style: .done, target: self, action: #selector(didTapDoneButton))
+            let done = UIBarButtonItem(title: Layout.Texts.done, style: .done, target: self, action: #selector(didTapDoneButton))
             navigationItem.rightBarButtonItem = done
         }
     }

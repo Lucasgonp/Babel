@@ -8,7 +8,19 @@ protocol CreateGroupDisplaying: AnyObject {
     func displayErrorMessage(message: String)
 }
 
+private extension CreateGroupViewController.Layout {
+    enum Texts {
+        static let title = Strings.CreateGroup.title.localized()
+        static let groupNamePlaceholder = Strings.CreateGroup.groupNamePlaceholder.localized()
+        static let description = Strings.Commons.description.localized()
+        static let allUsers = Strings.Commons.allUsers.localized()
+        static let addGroupDescription = Strings.GroupInfo.addGroupDescription.localized()
+    }
+}
+
 final class CreateGroupViewController: ViewController<CreateGroupInteractorProtocol, UIView> {
+    fileprivate enum Layout { }
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.register(cellType: CreateGroupHeaderCell.self)
@@ -24,8 +36,8 @@ final class CreateGroupViewController: ViewController<CreateGroupInteractorProto
     private lazy var groupNameTextField: TextField = {
         let textField = TextField()
         textField.render(.clean(
-            placeholder: Localizable.CreateGroup.groupNamePlaceholder,
-            hint: Localizable.CreateGroup.groupNamePlaceholder,
+            placeholder: Layout.Texts.groupNamePlaceholder,
+            hint: Layout.Texts.groupNamePlaceholder,
             isHintAlwaysVisible: true,
             autocapitalizationType: .words
         ))
@@ -74,7 +86,7 @@ final class CreateGroupViewController: ViewController<CreateGroupInteractorProto
     }
     
     override func configureViews() {
-        title = Localizable.CreateGroup.title
+        title = Layout.Texts.title
         view.backgroundColor = Color.backgroundPrimary.uiColor
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
@@ -149,9 +161,9 @@ extension CreateGroupViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 1:
-            return "Description"
+            return Layout.Texts.description
         case 2:
-            return "All users"
+            return Layout.Texts.allUsers
         default:
             return nil
         }
@@ -173,7 +185,7 @@ extension CreateGroupViewController: UITableViewDataSource {
         case 1:
             let cell: UITableViewCell = tableView.makeCell(indexPath: indexPath, accessoryType: .disclosureIndicator)
             var content = cell.defaultContentConfiguration()
-            content.text = groupDescription.isEmpty ? "Add group description" : groupDescription
+            content.text = groupDescription.isEmpty ? Layout.Texts.addGroupDescription : groupDescription
             content.textProperties.color = groupDescription.isEmpty ? Color.blueNative.uiColor : cell.defaultContentConfiguration().textProperties.color
             cell.contentConfiguration = content
             return cell

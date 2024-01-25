@@ -4,9 +4,17 @@ import DesignKit
 protocol OpenAIDisplaying: AnyObject {
     func displaySomething()
 }
+private extension OpenAIViewController.Layout {
+    enum Texts {
+        static let chatBotTitle = Strings.OpenAI.ChatBot.title.localized()
+        static let chatBotDescription = Strings.OpenAI.ChatBot.description.localized()
+        static let imageGeneratorTitle = Strings.OpenAI.ImageGenerator.title.localized()
+        static let imageGeneratorDescription = Strings.OpenAI.ImageGenerator.description.localized()
+    }
+}
 
 final class OpenAIViewController: ViewController<OpenAIInteractorProtocol, UIView> {
-    typealias Localizable = Strings.OpenAI
+    fileprivate enum Layout { }
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
@@ -19,16 +27,16 @@ final class OpenAIViewController: ViewController<OpenAIInteractorProtocol, UIVie
     
     private lazy var bots = [
         OpenAIDTO(
-            name: Localizable.ChatBot.title,
-            bio: Localizable.ChatBot.description,
+            name: Layout.Texts.chatBotTitle,
+            bio: Layout.Texts.chatBotDescription,
             avatar: ChatBotHelper.Images.chatBotIcon,
             action: { [weak self] in
                 self?.interactor.openChatBot()
             }
         ),
         OpenAIDTO(
-            name: Localizable.ImageGenerator.title,
-            bio: Localizable.ImageGenerator.description,
+            name: Layout.Texts.imageGeneratorTitle,
+            bio: Layout.Texts.imageGeneratorDescription,
             avatar: ChatBotHelper.Images.imageGeneratorIcon,
             action: {[weak self] in
                 self?.interactor.openImageGenerator()

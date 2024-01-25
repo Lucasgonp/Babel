@@ -52,14 +52,6 @@ final class GroupInfoViewController: ViewController<GroupInfoInteractorProtocol,
         return navigation
     }()
     
-    private lazy var addMemberNavigation: UINavigationController = {
-        let controller = AddMembersFactory.make(groupMembers: members) { [weak self] users in
-            self?.interactor.addMembers(users)
-        }
-        let navigation = UINavigationController(rootViewController: controller)
-        return navigation
-    }()
-    
     private var groupDescription = String()
     
     private var headerCell: GroupInfoHeaderCell?
@@ -167,7 +159,11 @@ extension GroupInfoViewController: UITableViewDelegate {
         case 3:
             if isAdmin {
                 if indexPath.row == 0 {
-                    present(addMemberNavigation, animated: true)
+                    let controller = AddMembersFactory.make(groupMembers: members) { [weak self] users in
+                        self?.interactor.addMembers(users)
+                    }
+                    let navigation = UINavigationController(rootViewController: controller)
+                    present(navigation, animated: true)
                 } else {
                     let actionSheet = makeMemberActionSheet(user: members[indexPath.row - 1])
                     present(actionSheet, animated: true)
@@ -226,13 +222,7 @@ extension GroupInfoViewController: UITableViewDataSource {
             let cell: UITableViewCell = tableView.makeCell(indexPath: indexPath, accessoryType: .disclosureIndicator)
             var content = cell.defaultContentConfiguration()
             content.text = groupDescription.isEmpty ? Localizable.addGroupDescription : groupDescription
-            if groupInfo.adminIds.contains(currentUser.id) {
-                content.textProperties.color = groupDescription.isEmpty ? Color.blueNative.uiColor : cell.defaultContentConfiguration().textProperties.color
-            } else {
-                cell.isUserInteractionEnabled = false
-                cell.accessoryType = .none
-                content.textProperties.color = cell.defaultContentConfiguration().textProperties.color
-            }
+            content.textProperties.color = groupDescription.isEmpty ? Color.blueNative.uiColor : cell.defaultContentConfiguration().textProperties.color
             cell.contentConfiguration = content
             return cell
         case 2:
@@ -255,7 +245,7 @@ extension GroupInfoViewController: UITableViewDataSource {
                     let cell: UITableViewCell = tableView.makeCell(indexPath: indexPath)
                     var content = cell.defaultContentConfiguration()
                     content.text = Localizable.addNewMember
-                    content.image = UIImage(systemName: "person.crop.circle.fill.badge.plus")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 28)).withTintColor(Color.blueNative.uiColor)
+                    content.image = UIImage(systemName: "person.crop.circle.fill.badge.plus")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 26)).withTintColor(Color.blueNative.uiColor)
                     content.imageToTextPadding = 17
                     content.imageProperties.reservedLayoutSize = CGSize(width: 42, height: 42)
                     content.textProperties.color = Color.blueNative.uiColor

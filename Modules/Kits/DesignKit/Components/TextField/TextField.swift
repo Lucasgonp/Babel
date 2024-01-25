@@ -230,7 +230,7 @@ extension TextField: ViewConfiguration {
         ])
         
         NSLayoutConstraint.activate([
-            hintView.heightAnchor.constraint(equalToConstant: 12)
+            hintView.heightAnchor.constraint(equalToConstant: 16)
         ])
         
         NSLayoutConstraint.activate([

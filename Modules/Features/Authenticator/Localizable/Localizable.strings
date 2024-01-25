@@ -11,7 +11,7 @@
 "Login.Alert.EmailVerification.Resend.resendButton" = "Resend";
 
 "Login.Alert.EmailVerification.Resent.title" = "Email sent";
-"Login.Alert.EmailVerification.Resent.message" = "We just resent a varification to your email, please validate before login";
+"Login.Alert.EmailVerification.Resent.message" = "We just resent a verification to your email, please validate before login";
 
 // Reset password
 "ResetPassword.SendReset.title" = "Reset password";

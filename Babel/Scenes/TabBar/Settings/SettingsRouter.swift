@@ -56,7 +56,7 @@ private extension SettingsRouter {
     }
     
     func pushSystemSettings() {
-        let controller = SystemSettingsFactory.make()
+        let controller = SystemSettingsFactory.make(delegate: viewController as? SystemSettingsDelegate)
         viewController?.navigationController?.pushViewController(controller, animated: true)
     }
 }

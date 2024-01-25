@@ -97,15 +97,15 @@ public extension ViewController {
     }
     
     func showErrorAlert(_ errorMessage: String) {
-        let title = Strings.Error.Generic.title
+        let title = Strings.Error.Generic.title.localized()
         let alert = UIAlertController(title: title, message: errorMessage, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: Strings.Error.Generic.button, style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: Strings.Error.Generic.button.localized(), style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     
     func showMessageAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: Strings.Error.Generic.button, style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: Strings.Error.Generic.button.localized(), style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     

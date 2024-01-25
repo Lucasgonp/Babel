@@ -102,6 +102,10 @@
 		7643038A2B4654B10037721A /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764303892B4654B10037721A /* String+Extensions.swift */; };
 		764B13E92B61E94900C48FAE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 764B13E82B61E94900C48FAE /* Localizable.strings */; };
 		764B13EB2B61E95900C48FAE /* Main.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 764B13EA2B61E95800C48FAE /* Main.xcstrings */; };
+		764B13EF2B62E79600C48FAE /* Main.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 764B13ED2B62E78200C48FAE /* Main.xcstrings */; };
+		764B13F12B62E81D00C48FAE /* Main.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 764B13F02B62E81D00C48FAE /* Main.xcstrings */; };
+		764B13F32B62E84800C48FAE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 764B13F22B62E84800C48FAE /* Localizable.strings */; };
+		764B13F82B62ECA400C48FAE /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764B13F72B62ECA400C48FAE /* String+Extensions.swift */; };
 		7667DC742B4CDF1D00938D6F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 7667DC732B4CDF1D00938D6F /* Lottie */; };
 		7667DC782B4CDF5900938D6F /* TrashAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 7667DC772B4CDF5900938D6F /* TrashAnimation.json */; };
 		7669BA2A2ABDD3550002AD4C /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669BA292ABDD3550002AD4C /* Date+Extensions.swift */; };
@@ -163,7 +167,6 @@
 		7691DB6A2B499632007D52B3 /* UsernameValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691DB412B499631007D52B3 /* UsernameValidation.swift */; };
 		7691DB6B2B499632007D52B3 /* FullNameValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691DB422B499631007D52B3 /* FullNameValidation.swift */; };
 		7691DB6C2B499632007D52B3 /* FCollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691DB442B499631007D52B3 /* FCollectionReference.swift */; };
-		7691DB6D2B499632007D52B3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7691DB462B499632007D52B3 /* Localizable.strings */; };
 		7691DB6E2B499632007D52B3 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691DB482B499632007D52B3 /* AuthManager.swift */; };
 		7691DB6F2B499632007D52B3 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691DB492B499632007D52B3 /* FirebaseManager.swift */; };
 		7691DB702B4997DE007D52B3 /* Authenticator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7691DAF52B499409007D52B3 /* Authenticator.framework */; };
@@ -635,6 +638,10 @@
 		764303892B4654B10037721A /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		764B13E82B61E94900C48FAE /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		764B13EA2B61E95800C48FAE /* Main.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Main.xcstrings; sourceTree = "<group>"; };
+		764B13ED2B62E78200C48FAE /* Main.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Main.xcstrings; sourceTree = "<group>"; };
+		764B13F02B62E81D00C48FAE /* Main.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Main.xcstrings; sourceTree = "<group>"; };
+		764B13F22B62E84800C48FAE /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		764B13F72B62ECA400C48FAE /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		7667DC772B4CDF5900938D6F /* TrashAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TrashAnimation.json; sourceTree = "<group>"; };
 		7669BA292ABDD3550002AD4C /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		7669BA2C2ABDDA650002AD4C /* StartChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartChat.swift; sourceTree = "<group>"; };
@@ -695,7 +702,6 @@
 		7691DB412B499631007D52B3 /* UsernameValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsernameValidation.swift; sourceTree = "<group>"; };
 		7691DB422B499631007D52B3 /* FullNameValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullNameValidation.swift; sourceTree = "<group>"; };
 		7691DB442B499631007D52B3 /* FCollectionReference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCollectionReference.swift; sourceTree = "<group>"; };
-		7691DB462B499632007D52B3 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		7691DB482B499632007D52B3 /* AuthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		7691DB492B499632007D52B3 /* FirebaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		7691DB792B499861007D52B3 /* NetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1319,6 +1325,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		764B13F62B62EC9000C48FAE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				764B13F72B62ECA400C48FAE /* String+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		7667DC752B4CDF3200938D6F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -1416,6 +1430,7 @@
 		7691DAF62B499409007D52B3 /* Authenticator */ = {
 			isa = PBXGroup;
 			children = (
+				764B13F62B62EC9000C48FAE /* Extensions */,
 				7691DB272B499631007D52B3 /* Auth */,
 				7691DB262B499631007D52B3 /* AuthenticatorPresentation.swift */,
 				7691DB392B499631007D52B3 /* AuthenticatorResources.swift */,
@@ -1603,7 +1618,8 @@
 		7691DB452B499632007D52B3 /* Localizable */ = {
 			isa = PBXGroup;
 			children = (
-				7691DB462B499632007D52B3 /* Localizable.strings */,
+				764B13F22B62E84800C48FAE /* Localizable.strings */,
+				764B13F02B62E81D00C48FAE /* Main.xcstrings */,
 			);
 			path = Localizable;
 			sourceTree = "<group>";
@@ -1816,6 +1832,7 @@
 			isa = PBXGroup;
 			children = (
 				7691DC6C2B49A410007D52B3 /* Localizable.strings */,
+				764B13ED2B62E78200C48FAE /* Main.xcstrings */,
 			);
 			path = Localizable;
 			sourceTree = "<group>";
@@ -2781,7 +2798,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7691DB6D2B499632007D52B3 /* Localizable.strings in Resources */,
+				764B13F12B62E81D00C48FAE /* Main.xcstrings in Resources */,
+				764B13F32B62E84800C48FAE /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2819,6 +2837,7 @@
 			files = (
 				7691DCA52B49A410007D52B3 /* Localizable.strings in Resources */,
 				7691DCB42B49A410007D52B3 /* IconAssets.xcassets in Resources */,
+				764B13EF2B62E79600C48FAE /* Main.xcstrings in Resources */,
 				7691DCB52B49A410007D52B3 /* ImageAssets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2907,6 +2926,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7691DB672B499632007D52B3 /* AuthError.swift in Sources */,
+				764B13F82B62ECA400C48FAE /* String+Extensions.swift in Sources */,
 				7691DB582B499632007D52B3 /* AuthCredentials.swift in Sources */,
 				7691DB6A2B499632007D52B3 /* UsernameValidation.swift in Sources */,
 				7691DB542B499632007D52B3 /* LoginPresenter.swift in Sources */,

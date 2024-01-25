@@ -21,7 +21,6 @@ private extension SettingsViewController.Layout {
         static let tellAFriendTitle = Strings.Settings.TellAFriend.title.localized()
         static let termsAndConditionsTitle = Strings.Settings.TermsAndConditions.title.localized()
         static let version = Strings.Settings.version.localized()
-        static let logout = Strings.Commons.logout.localized()
     }
 }
 
@@ -77,14 +76,6 @@ final class SettingsViewController: ViewController<SettingsInteractorProtocol, U
     override func buildViewHierarchy() { 
         view.fillWithSubview(subview: tableView)
     }
-    
-    override func setupConstraints() { 
-        // template
-    }
-
-    override func configureViews() {
-        // template
-    }
 }
 
 // MARK: - SettingsDisplaying
@@ -111,6 +102,12 @@ extension SettingsViewController: SettingsViewDelegate {
     }
 }
 
+extension SettingsViewController: SystemSettingsDelegate {
+    func didTapOnLogout() {
+        interactor.logout()
+    }
+}
+
 private extension SettingsViewController {
     func displaySettings(for user: User) {
         currentUser = user
@@ -128,15 +125,13 @@ extension SettingsViewController: UITableViewDelegate {
             interactor.editProfile()
         } else if let cell = cell as? SettingsButtonCell {
             cell.completionHandler?()
-        } else {
-            interactor.logout()
         }
     }
 }
 
 extension SettingsViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -145,8 +140,6 @@ extension SettingsViewController: UITableViewDataSource {
             return 1
         case 1:
             return settingsButtons.count
-        case 2:
-            return 1
         default:
             return .zero
         }
@@ -166,13 +159,6 @@ extension SettingsViewController: UITableViewDataSource {
         case 1:
             let cell: SettingsButtonCell = tableView.makeCell(indexPath: indexPath, accessoryType: .disclosureIndicator)
             cell.render(settingsButtons[indexPath.row])
-            return cell
-        case 2:
-            let button = Button()
-            button.setTitle(Layout.Texts.logout, for: .normal)
-            button.setTitleColor(Color.warning500.uiColor, for: .normal)
-            let cell = UITableViewCell()
-            cell.fillWithSubview(subview: button, spacing: .init(top: 6, left: .zero, bottom: 6, right: .zero))
             return cell
         default:
             return UITableViewCell()

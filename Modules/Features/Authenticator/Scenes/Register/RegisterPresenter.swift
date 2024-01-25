@@ -22,8 +22,8 @@ extension RegisterPresenter: RegisterPresenterProtocol {
     }
     
     func emailSentToNewUser() {
-        let title = Localizable.Alert.EmailVerification.Verify.title
-        let message = Localizable.Alert.EmailVerification.Verify.message
+        let title = Localizable.Alert.EmailVerification.Verify.title.localized()
+        let message = Localizable.Alert.EmailVerification.Verify.message.localized()
         router.popToLogin(title: title, message: message)
     }
     

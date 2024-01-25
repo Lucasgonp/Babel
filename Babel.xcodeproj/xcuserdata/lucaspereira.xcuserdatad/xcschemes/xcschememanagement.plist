@@ -34,14 +34,14 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>11</integer>
+			<integer>12</integer>
 		</dict>
 		<key>GettingStarted (Playground) 2.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>12</integer>
+			<integer>13</integer>
 		</dict>
 		<key>GettingStarted (Playground) 3.xcscheme</key>
 		<dict>
@@ -90,7 +90,7 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>10</integer>
+			<integer>11</integer>
 		</dict>
 		<key>NetworkKit.xcscheme_^#shared#^_</key>
 		<dict>
@@ -102,14 +102,14 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>8</integer>
+			<integer>9</integer>
 		</dict>
 		<key>Promises (Playground) 2.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>9</integer>
+			<integer>10</integer>
 		</dict>
 		<key>Promises (Playground) 3.xcscheme</key>
 		<dict>
@@ -137,7 +137,7 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>7</integer>
 		</dict>
 		<key>StorageKit.xcscheme_^#shared#^_</key>
 		<dict>
@@ -147,6 +147,16 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>7691DAF42B499409007D52B3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7691DC5D2B49A3EA007D52B3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>76CAA1342A8AA1F400D742E9</key>
 		<dict>
 			<key>primary</key>

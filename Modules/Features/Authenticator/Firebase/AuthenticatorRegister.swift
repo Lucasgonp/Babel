@@ -32,7 +32,7 @@ extension AuthenticatorAdapter: RegisterProtocol {
                 email: userRequest.email,
                 username: userRequest.username,
                 password: userRequest.password,
-                status: Strings.Register.UserBio.default
+                status: Strings.Register.UserBio.default.localized()
             )
             self?.saveUserToFirestore(user) { error in
                 if let error {

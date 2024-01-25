@@ -3,7 +3,7 @@ import DesignKit
 final class EmailValidation: Validation {
     func run(_ text: String) -> ValidationResult {
         if text.isEmpty {
-            return .error(Strings.Error.Field.emailEmpty)
+            return .error(Strings.Error.Field.emailEmpty.localized())
         }
         
         let pattern = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
@@ -13,7 +13,7 @@ final class EmailValidation: Validation {
         if firstMatch != nil {
             return .success
         } else {
-            return .error(Strings.Error.Field.emailInvalid)
+            return .error(Strings.Error.Field.emailInvalid.localized())
         }
     }
 }

@@ -9,6 +9,7 @@
 "Commons.allUsers" = "All users";
 "Commons.sendMessage" = "Send message";
 "Commons.logout" = "Logout";
+"Commons.logoutDescription" = "Are you sure you want to logout? You will have to login with your credentials again";
 
 // Generic Errors
 "GenericError.message" = "Ops! Something went wrong";

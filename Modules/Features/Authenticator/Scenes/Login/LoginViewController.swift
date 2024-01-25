@@ -15,14 +15,17 @@ protocol LoginDisplaying: AnyObject {
 }
 
 private extension LoginViewController.Layout {
-    enum Size {
-        static let imageHeight: CGFloat = 120
+    enum Texts {
+        static let emailPlaceholder = Strings.Login.Field.Email.placeholder.localized()
+        static let passwordPlaceholder = Strings.Login.Field.Password.placeholder.localized()
+        static let forgotPassword = Strings.Login.Button.forgotPassword.localized()
+        static let register = Strings.Login.Button.register.localized()
+        static let login = Strings.Login.Button.login.localized()
     }
 }
 
 final class LoginViewController: ViewController<LoginInteractorProtocol, UIView> {
     fileprivate enum Layout { }
-    typealias Localizable = Strings.Login
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -65,7 +68,7 @@ final class LoginViewController: ViewController<LoginInteractorProtocol, UIView>
     
     private lazy var emailTextField: TextField = {
         let textField = TextField()
-        textField.render(.standard(placeholder: Localizable.Field.Email.placeholder, keyboardType: .emailAddress))
+        textField.render(.standard(placeholder: Layout.Texts.emailPlaceholder, keyboardType: .emailAddress))
         textField.validations = [EmailValidation()]
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -73,7 +76,7 @@ final class LoginViewController: ViewController<LoginInteractorProtocol, UIView>
     
     private lazy var passwordTextField: TextField = {
         let textField = TextField()
-        textField.render(.standard(placeholder: Localizable.Field.Password.placeholder, isSecureTextEntry: true))
+        textField.render(.standard(placeholder: Layout.Texts.passwordPlaceholder, isSecureTextEntry: true))
         textField.validations = [PasswordValidation()]
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -81,7 +84,7 @@ final class LoginViewController: ViewController<LoginInteractorProtocol, UIView>
     
     private lazy var forgotPasswordButton: Button = {
         let button = Button()
-        button.render(.tertiary(title: Localizable.Button.forgotPassword))
+        button.render(.tertiary(title: Layout.Texts.forgotPassword))
         button.addTarget(self, action: #selector(forgotPasswordButtonAction), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -89,7 +92,7 @@ final class LoginViewController: ViewController<LoginInteractorProtocol, UIView>
     
     private lazy var primaryButton: Button = {
         let button = Button()
-        button.render(.primary(title: Localizable.Button.login))
+        button.render(.primary(title: Layout.Texts.login))
         button.addTarget(self, action: #selector(primaryButtonAction), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -97,7 +100,7 @@ final class LoginViewController: ViewController<LoginInteractorProtocol, UIView>
     
     private lazy var secondaryButton: Button = {
         let button = Button()
-        button.render(.secondary(title: Localizable.Button.register))
+        button.render(.secondary(title: Layout.Texts.register))
         button.addTarget(self, action: #selector(secondaryButtonAction), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -130,7 +133,7 @@ final class LoginViewController: ViewController<LoginInteractorProtocol, UIView>
         
         NSLayoutConstraint.activate([
             brandImageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 46),
-            brandImageView.heightAnchor.constraint(equalToConstant: Layout.Size.imageHeight),
+            brandImageView.heightAnchor.constraint(equalToConstant: 120),
             brandImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
             brandImageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16)
         ])

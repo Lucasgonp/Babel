@@ -47,6 +47,8 @@ internal enum Strings {
     internal static let edit = Strings.tr("Localizable", "Commons.edit", fallback: "Edit")
     /// Logout
     internal static let logout = Strings.tr("Localizable", "Commons.logout", fallback: "Logout")
+    /// Are you sure you want to logout? You will have to login with your credentials again
+    internal static let logoutDescription = Strings.tr("Localizable", "Commons.logoutDescription", fallback: "Are you sure you want to logout? You will have to login with your credentials again")
     /// Search
     internal static let search = Strings.tr("Localizable", "Commons.search", fallback: "Search")
     /// Send message

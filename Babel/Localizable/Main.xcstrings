@@ -69,6 +69,23 @@
         }
       }
     },
+    "Are you sure you want to logout? You will have to login with your credentials again" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to logout? You will have to login with your credentials again"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tem certeza que você deseja sair? Você vai ter que entrar novamente com as suas credenciais"
+          }
+        }
+      }
+    },
     "At school" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -304,6 +321,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Conversas"
+          }
+        }
+      }
+    },
+    "Clear cache" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear cache"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limpar cache"
           }
         }
       }

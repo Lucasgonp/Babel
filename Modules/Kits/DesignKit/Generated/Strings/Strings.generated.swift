@@ -14,8 +14,8 @@ internal enum Strings {
     internal enum Generic {
       /// Ok
       internal static let button = Strings.tr("Localizable", "Error.Generic.button", fallback: "Ok")
-      /// Something went wrong
-      internal static let title = Strings.tr("Localizable", "Error.Generic.title", fallback: "Something went wrong")
+      /// Ops! Something went wrong
+      internal static let title = Strings.tr("Localizable", "Error.Generic.title", fallback: "Ops! Something went wrong")
     }
   }
 }

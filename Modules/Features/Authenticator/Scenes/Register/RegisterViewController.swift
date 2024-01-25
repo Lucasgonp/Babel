@@ -12,14 +12,18 @@ protocol RegisterDisplaying: AnyObject {
 }
 
 private extension RegisterViewController.Layout {
-    enum Size {
-        static let imageHeight: CGFloat = 120
+    enum Texts {
+        static let emailPlaceholder = Strings.Register.Field.Email.placeholder.localized()
+        static let fullNamePlaceholder = Strings.Register.Field.Email.placeholder.localized()
+        static let usernamePlaceholder = Strings.Register.Field.Username.placeholder.localized()
+        static let passwordPlaceholder = Strings.Register.Field.Password.placeholder.localized()
+        static let register = Strings.Register.Button.register.localized()
+        static let login = Strings.Register.Button.login.localized()
     }
 }
 
 final class RegisterViewController: ViewController<RegisterInteractorProtocol, UIView> {
     fileprivate enum Layout { }
-    typealias Localizable = Strings.Register
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -54,7 +58,7 @@ final class RegisterViewController: ViewController<RegisterInteractorProtocol, U
     
     private lazy var emailTextField: TextField = {
         let textField = TextField()
-        textField.render(.standard(placeholder: Localizable.Field.Email.placeholder, keyboardType: .emailAddress))
+        textField.render(.standard(placeholder: Layout.Texts.emailPlaceholder, keyboardType: .emailAddress))
         textField.validations = [EmailValidation()]
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -62,7 +66,7 @@ final class RegisterViewController: ViewController<RegisterInteractorProtocol, U
     
     private lazy var fullNameTextField: TextField = {
         let textField = TextField()
-        textField.render(.standard(placeholder: Localizable.Field.FullName.placeholder, autocapitalizationType: .words))
+        textField.render(.standard(placeholder: Layout.Texts.fullNamePlaceholder, autocapitalizationType: .words))
         textField.validations = [FullNameValidation()]
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -70,7 +74,7 @@ final class RegisterViewController: ViewController<RegisterInteractorProtocol, U
     
     private lazy var usernameTextField: TextField = {
         let textField = TextField()
-        textField.render(.standard(placeholder: Localizable.Field.Username.placeholder, textLength: 32))
+        textField.render(.standard(placeholder: Layout.Texts.usernamePlaceholder, textLength: 32))
         textField.validations = [UsernameValidation()]
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -78,7 +82,7 @@ final class RegisterViewController: ViewController<RegisterInteractorProtocol, U
     
     private lazy var passwordTextField: TextField = {
         let textField = TextField()
-        textField.render(.standard(placeholder: Localizable.Field.Password.placeholder, isSecureTextEntry: true))
+        textField.render(.standard(placeholder: Layout.Texts.passwordPlaceholder, isSecureTextEntry: true))
         textField.validations = [PasswordValidation()]
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -86,7 +90,7 @@ final class RegisterViewController: ViewController<RegisterInteractorProtocol, U
     
     private lazy var primaryButton: Button = {
         let button = Button()
-        button.render(.primary(title: Localizable.Button.register))
+        button.render(.primary(title: Layout.Texts.register))
         button.addTarget(self, action: #selector(primaryButtonAction), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -94,7 +98,7 @@ final class RegisterViewController: ViewController<RegisterInteractorProtocol, U
     
     private lazy var secondaryButton: Button = {
         let button = Button()
-        button.render(.secondary(title: Localizable.Button.login))
+        button.render(.secondary(title: Layout.Texts.login))
         button.addTarget(self, action: #selector(secondaryButtonAction), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -125,7 +129,7 @@ final class RegisterViewController: ViewController<RegisterInteractorProtocol, U
         
         NSLayoutConstraint.activate([
             brandImageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 42),
-            brandImageView.heightAnchor.constraint(equalToConstant: Layout.Size.imageHeight),
+            brandImageView.heightAnchor.constraint(equalToConstant: 120),
             brandImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
             brandImageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16)
         ])

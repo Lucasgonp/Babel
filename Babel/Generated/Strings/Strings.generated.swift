@@ -143,8 +143,8 @@ internal enum Strings {
       internal enum Delete {
         /// Do you want to delete this chat?
         internal static let description = Strings.tr("Localizable", "RecentChat.ActionSheet.Delete.description", fallback: "Do you want to delete this chat?")
-        /// Chat bot
-        internal static let title = Strings.tr("Localizable", "RecentChat.ActionSheet.Delete.title", fallback: "Chat bot")
+        /// Delete chat
+        internal static let title = Strings.tr("Localizable", "RecentChat.ActionSheet.Delete.title", fallback: "Delete chat")
       }
     }
   }

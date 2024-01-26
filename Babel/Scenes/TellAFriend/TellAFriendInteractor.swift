@@ -1,5 +1,5 @@
 protocol TellAFriendInteractorProtocol: AnyObject {
-    func loadSomething()
+    func fetchContacts()
 }
 
 final class TellAFriendInteractor {
@@ -14,7 +14,14 @@ final class TellAFriendInteractor {
 
 // MARK: - TellAFriendInteractorProtocol
 extension TellAFriendInteractor: TellAFriendInteractorProtocol {
-    func loadSomething() {
-        presenter.displaySomething()
+    func fetchContacts() {
+        PhoneContacts.requestAccess { [weak self] accessGranted in
+            if accessGranted {
+                let allContacts = PhoneContacts.fetchContacts()
+                self?.presenter.displayContacts(allContacts)
+            } else {
+                self?.presenter.contactsAccessNotGranted()
+            }
+        }
     }
 }

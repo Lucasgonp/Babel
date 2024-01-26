@@ -1,5 +1,8 @@
+import Contacts
+
 protocol TellAFriendPresenterProtocol: AnyObject {
-    func displaySomething()
+    func displayContacts(_ contacts: [CNContact])
+    func contactsAccessNotGranted()
     func didNextStep(action: TellAFriendAction)
 }
 
@@ -14,8 +17,12 @@ final class TellAFriendPresenter {
 
 // MARK: - TellAFriendPresenterProtocol
 extension TellAFriendPresenter: TellAFriendPresenterProtocol {
-    func displaySomething() {
-        viewController?.displaySomething()
+    func displayContacts(_ contacts: [CNContact]) {
+        viewController?.displayViewState(.success(contacts: contacts))
+    }
+    
+    func contactsAccessNotGranted() {
+        viewController?.displayViewState(.accessNotGranted(message: ""))
     }
     
     func didNextStep(action: TellAFriendAction) {

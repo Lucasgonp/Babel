@@ -109,6 +109,12 @@ public extension ViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    func showMessageAlert(title: String, message: String, button: String, completion: ((UIAlertAction) -> Void)?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: button, style: .cancel, handler: completion))
+        present(alert, animated: true, completion: nil)
+    }
+    
     func showMessageAlert(viewModel: AlertViewModel) {
         let alert = UIAlertController(title: viewModel.title, message: viewModel.message, preferredStyle: .alert)
         if let placeholder = viewModel.textFieldPlaceholder {

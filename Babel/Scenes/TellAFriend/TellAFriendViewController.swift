@@ -124,6 +124,7 @@ extension TellAFriendViewController: UITableViewDelegate {
     
     func openExternalMessageApp(for model: PhoneContactModel) {
 //        let phoneNumber = "958585858"
+        //TODO: Deeplink message
         let text = "Let's chat on Babel! It's a fast, simple, and secure app we can use to message each other for free."
         guard let messageURL = URL(string: "sms:\(model.phoneNumber)&body=\(text)") else { return }
         if UIApplication.shared.canOpenURL(messageURL) {

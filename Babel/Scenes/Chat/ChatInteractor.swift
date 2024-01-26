@@ -82,7 +82,7 @@ extension ChatInteractor: ChatInteractorProtocol {
         localMessage.chatRoomId = message.chatId
         localMessage.senderId = currentUser.id
         localMessage.senderName = currentUser.name
-        localMessage.senderInitials = "\(String(describing: currentUser.username.first))"
+        localMessage.senderInitials = String(currentUser.username.first!)
         localMessage.date = Date()
         localMessage.status = kSENT
 //        localMessage.senderAvatarLink = currentUser.avatarLink

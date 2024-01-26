@@ -25,7 +25,7 @@ final class TellAFriendViewController: ViewController<TellAFriendInteractorProto
     
     private struct Section {
         let letter : String
-        let contacts : [TestContact]
+        let contacts : [PhoneContactModel]
     }
     
     private lazy var tableView: UITableView = {
@@ -47,8 +47,8 @@ final class TellAFriendViewController: ViewController<TellAFriendInteractorProto
     }()
     
     private var sections = [Section]()
-    private var allContacts = [TestContact]()
-    private var filteredContacts = [TestContact]()
+    private var allContacts = [PhoneContactModel]()
+    private var filteredContacts = [PhoneContactModel]()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -74,43 +74,12 @@ final class TellAFriendViewController: ViewController<TellAFriendInteractorProto
     }
 }
 
-struct TestContact {
-    var fullName: String
-    var phoneNumber = String()
-    let image: UIImage?
-    
-    init(firstName: String, middleName: String?, lastName: String?, phoneNumbers: [CNLabeledValue<CNPhoneNumber>], imageData: Data?) {
-        self.fullName = firstName
-        self.image = imageData?.image
-        
-        if let middleName {
-            self.fullName.append(" \(middleName)")
-        }
-        
-        if let lastName {
-            self.fullName.append(" \(lastName)")
-        }
-        
-        for phoneNumber in phoneNumbers {
-            let number = phoneNumber.value
-            self.phoneNumber = number.stringValue
-        }
-        
-        for phoneNumber in phoneNumbers {
-            if let phoneLabel = phoneNumber.label, phoneLabel == CNLabelPhoneNumberMobile {
-                let number = phoneNumber.value
-                self.phoneNumber = number.stringValue
-            }
-        }
-    }
-}
-
 extension TellAFriendViewController: TellAFriendDisplaying {
     func displayViewState(_ state: TellAFriendViewState) {
         switch state {
         case let .success(contacts):
             let filteredContacts = contacts.filter({ !$0.phoneNumbers.isEmpty && !$0.givenName.isEmpty })
-            let users = filteredContacts.compactMap({ TestContact(
+            let users = filteredContacts.compactMap({ PhoneContactModel(
                 firstName: $0.givenName,
                 middleName: $0.middleName,
                 lastName: $0.familyName,
@@ -142,19 +111,24 @@ extension TellAFriendViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-//        if searchController.isActive {
-//            let contact = filteredContacts[indexPath.row]
-//            let viewController = ContactInfoFactory.make(contactInfo: contact, shouldDisplayStartChat: true)
-//            viewController.hidesBottomBarWhenPushed = true
-//            navigationController?.pushViewController(viewController, animated: true)
-//        } else {
-//            let section = sections[indexPath.section]
-//            let contact = section.contacts[indexPath.row]
-//            let viewController = ContactInfoFactory.make(contactInfo: contact, shouldDisplayStartChat: true)
-//            viewController.hidesBottomBarWhenPushed = true
-//            navigationController?.pushViewController(viewController, animated: true)
-//        }
+        if searchController.isActive {
+            let contact = filteredContacts[indexPath.row]
+            openExternalMessageApp(for: contact)
+        } else {
+            let section = sections[indexPath.section]
+            let contact = section.contacts[indexPath.row]
+            openExternalMessageApp(for: contact)
+        }
         
+    }
+    
+    func openExternalMessageApp(for model: PhoneContactModel) {
+//        let phoneNumber = "958585858"
+        let text = "Let's chat on Babel! It's a fast, simple, and secure app we can use to message each other for free."
+        guard let messageURL = URL(string: "sms:\(model.phoneNumber)&body=\(text)") else { return }
+        if UIApplication.shared.canOpenURL(messageURL) {
+            UIApplication.shared.open(messageURL)
+        }
     }
 }
 

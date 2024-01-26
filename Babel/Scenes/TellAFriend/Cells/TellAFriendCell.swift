@@ -88,7 +88,7 @@ final class TellAFriendCell: UITableViewCell, ViewConfiguration {
 }
 
 extension TellAFriendCell {
-    func render(_ dto: TestContact) {
+    func render(_ dto: PhoneContactModel) {
         fullNameLabel.text = dto.fullName
         statusLabel.text = dto.phoneNumber
         avatar.image = dto.image ?? Image.avatarPlaceholder.image

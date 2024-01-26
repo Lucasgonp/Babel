@@ -9,8 +9,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseConfiguration.shared.setLoggerLevel(.min)
         return true
     }
-
-    // MARK: UISceneSession Lifecycle
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        guard let components = NSURLComponents(url: url, resolvingAgainstBaseURL: true),
+              let host = components.host else {
+            print("invalid url: \(url.absoluteString)")
+            return false
+        }
+        
+        guard let deeplink = DeeplinkManager.Deeplink(rawValue: host) else {
+            print("deeplink not found: \(host)")
+            return false
+        }
+        
+        DeeplinkManager.handleDeeplink(deeplink)
+        return true
+    }
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.

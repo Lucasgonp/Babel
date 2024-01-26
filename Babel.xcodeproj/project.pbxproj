@@ -108,6 +108,8 @@
 		764B13F82B62ECA400C48FAE /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764B13F72B62ECA400C48FAE /* String+Extensions.swift */; };
 		764B13FA2B631BAB00C48FAE /* PhoneContacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764B13F92B631BAB00C48FAE /* PhoneContacts.swift */; };
 		764B13FD2B63208800C48FAE /* TellAFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764B13FC2B63208800C48FAE /* TellAFriendCell.swift */; };
+		764B14002B63437A00C48FAE /* PhoneContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764B13FF2B63437A00C48FAE /* PhoneContactModel.swift */; };
+		764B14022B6348E700C48FAE /* DeeplinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764B14012B6348E700C48FAE /* DeeplinkManager.swift */; };
 		7667DC742B4CDF1D00938D6F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 7667DC732B4CDF1D00938D6F /* Lottie */; };
 		7667DC782B4CDF5900938D6F /* TrashAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 7667DC772B4CDF5900938D6F /* TrashAnimation.json */; };
 		7669BA2A2ABDD3550002AD4C /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669BA292ABDD3550002AD4C /* Date+Extensions.swift */; };
@@ -646,6 +648,8 @@
 		764B13F72B62ECA400C48FAE /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		764B13F92B631BAB00C48FAE /* PhoneContacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContacts.swift; sourceTree = "<group>"; };
 		764B13FC2B63208800C48FAE /* TellAFriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TellAFriendCell.swift; sourceTree = "<group>"; };
+		764B13FF2B63437A00C48FAE /* PhoneContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContactModel.swift; sourceTree = "<group>"; };
+		764B14012B6348E700C48FAE /* DeeplinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkManager.swift; sourceTree = "<group>"; };
 		7667DC772B4CDF5900938D6F /* TrashAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TrashAnimation.json; sourceTree = "<group>"; };
 		7669BA292ABDD3550002AD4C /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		7669BA2C2ABDDA650002AD4C /* StartChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartChat.swift; sourceTree = "<group>"; };
@@ -1222,6 +1226,7 @@
 		7620F4452A9659D7002A4EB5 /* TellAFriend */ = {
 			isa = PBXGroup;
 			children = (
+				764B13FE2B63436200C48FAE /* Models */,
 				764B13FB2B63207B00C48FAE /* Cells */,
 				7620F4472A9659F5002A4EB5 /* TellAFriendFactory.swift */,
 				7620F4482A9659F5002A4EB5 /* TellAFriendPresenter.swift */,
@@ -1345,6 +1350,14 @@
 				764B13FC2B63208800C48FAE /* TellAFriendCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		764B13FE2B63436200C48FAE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				764B13FF2B63437A00C48FAE /* PhoneContactModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		7667DC752B4CDF3200938D6F /* Resources */ = {
@@ -2342,6 +2355,7 @@
 				76C6B7482B4B03FF00285EE2 /* LocationManager.swift */,
 				76C6B7602B4B507000285EE2 /* AudioRecorderManager.swift */,
 				768E40D92B4D9A5B009F8F7C /* KeyboardManager.swift */,
+				764B14012B6348E700C48FAE /* DeeplinkManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -3112,6 +3126,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				764B14002B63437A00C48FAE /* PhoneContactModel.swift in Sources */,
 				7620F2D82A92EF74002A4EB5 /* UsersFactory.swift in Sources */,
 				76371F9E2B489020007C9E7E /* SendMessageWorker.swift in Sources */,
 				76B1FC0D2B5D6515007D0519 /* OpenAIRouter.swift in Sources */,
@@ -3132,6 +3147,7 @@
 				76B1FC0E2B5D6515007D0519 /* OpenAIViewController.swift in Sources */,
 				7608DE692A9BAFDE0036027A /* EditBioRouter.swift in Sources */,
 				763B03C02B4F74EB0022E145 /* CreateGroupFactory.swift in Sources */,
+				764B14022B6348E700C48FAE /* DeeplinkManager.swift in Sources */,
 				76EF5D4A2A905E3700D9AE8B /* Authenticator.framework in Sources */,
 				76DA757E2B44C5B2000B7FD7 /* UIAlertAction+Extensions.swift in Sources */,
 				761E38212B54BD4D0080194C /* GroupMessageCellDelegate.swift in Sources */,

@@ -45,7 +45,6 @@ final class TellAFriendViewController: ViewController<TellAFriendInteractorProto
     
     private lazy var searchController: UISearchController = {
         let controller = UISearchController(searchResultsController: nil)
-//        controller.obscuresBackgroundDuringPresentation = false
         controller.searchBar.placeholder = Layout.Texts.search
         controller.searchResultsUpdater = self
         controller.definesPresentationContext = true
@@ -184,7 +183,7 @@ extension TellAFriendViewController: UITableViewDataSource {
             if indexPath.section == 0 && indexPath.row == 0 {
                 let cell: UITableViewCell = tableView.makeCell(indexPath: indexPath)
                 var content = cell.defaultContentConfiguration()
-                content.text = Layout.Text.shareInviteLink
+                content.text = Layout.Texts.shareInviteLink
                 content.image = UIImage(systemName: "square.and.arrow.up.circle.fill")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 26)).withTintColor(Color.blueNative.uiColor)
                 content.imageToTextPadding = 17
                 content.imageProperties.reservedLayoutSize = CGSize(width: 42, height: 42)

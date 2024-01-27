@@ -165,6 +165,10 @@ extension TellAFriendViewController: UITableViewDataSource {
         return searchController.isActive ? Layout.Texts.search : (section == 0 ? nil : sections[section - 1].letter)
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 28
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: TellAFriendCell = tableView.makeCell(indexPath: indexPath)
         

@@ -167,6 +167,9 @@ private extension EditProfileViewController {
         let done = UIBarButtonItem(title: Layout.Texts.done, style: .done, target: self, action: #selector(didTapDoneButton))
         navigationItem.setRightBarButton(done, animated: true)
         updateDoneBarButton(isHidden: true)
+        
+        let backButton = UIBarButtonItem(title: String(), style: .plain, target: nil, action: nil)
+        navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
     
     func updateDoneBarButton(isEnabled: Bool) {

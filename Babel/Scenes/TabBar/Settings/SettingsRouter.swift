@@ -47,16 +47,19 @@ private extension SettingsRouter {
     
     func pushTellAFriend() {
         let controller = TellAFriendFactory.make()
+        controller.hidesBottomBarWhenPushed = true
         viewController?.navigationController?.pushViewController(controller, animated: true)
     }
     
     func pushTermsAndCondition() {
         let controller = TermsFactory.make()
+        controller.hidesBottomBarWhenPushed = true
         viewController?.navigationController?.pushViewController(controller, animated: true)
     }
     
     func pushSystemSettings() {
         let controller = SystemSettingsFactory.make(delegate: viewController as? SystemSettingsDelegate)
+        controller.hidesBottomBarWhenPushed = true
         viewController?.navigationController?.pushViewController(controller, animated: true)
     }
 }

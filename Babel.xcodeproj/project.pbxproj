@@ -72,12 +72,7 @@
 		7620F4502A9659F5002A4EB5 /* TellAFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F44A2A9659F5002A4EB5 /* TellAFriendViewController.swift */; };
 		7620F4512A9659F5002A4EB5 /* TellAFriendInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F44B2A9659F5002A4EB5 /* TellAFriendInteractor.swift */; };
 		7620F4522A9659F5002A4EB5 /* TellAFriendWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F44C2A9659F5002A4EB5 /* TellAFriendWorker.swift */; };
-		7620F4592A965A09002A4EB5 /* TermsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4532A965A09002A4EB5 /* TermsFactory.swift */; };
-		7620F45A2A965A09002A4EB5 /* TermsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4542A965A09002A4EB5 /* TermsPresenter.swift */; };
-		7620F45B2A965A09002A4EB5 /* TermsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4552A965A09002A4EB5 /* TermsRouter.swift */; };
 		7620F45C2A965A09002A4EB5 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4562A965A09002A4EB5 /* TermsViewController.swift */; };
-		7620F45D2A965A09002A4EB5 /* TermsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4572A965A09002A4EB5 /* TermsInteractor.swift */; };
-		7620F45E2A965A09002A4EB5 /* TermsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4582A965A09002A4EB5 /* TermsWorker.swift */; };
 		7620F4612A96B31C002A4EB5 /* EditProfileHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4602A96B31C002A4EB5 /* EditProfileHeaderCell.swift */; };
 		76371F9A2B488F96007C9E7E /* ChatListenersWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76371F992B488F96007C9E7E /* ChatListenersWorker.swift */; };
 		76371F9C2B488FFB007C9E7E /* FetchMessageWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76371F9B2B488FFB007C9E7E /* FetchMessageWorker.swift */; };
@@ -111,6 +106,7 @@
 		764B14002B63437A00C48FAE /* PhoneContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764B13FF2B63437A00C48FAE /* PhoneContactModel.swift */; };
 		764B14022B6348E700C48FAE /* DeeplinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764B14012B6348E700C48FAE /* DeeplinkManager.swift */; };
 		764B14052B6473F600C48FAE /* DeeplinkCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764B14042B6473F600C48FAE /* DeeplinkCore.swift */; };
+		7655EF152B6577690028054C /* TermsAndConditions.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7655EF172B6577690028054C /* TermsAndConditions.pdf */; };
 		7667DC742B4CDF1D00938D6F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 7667DC732B4CDF1D00938D6F /* Lottie */; };
 		7667DC782B4CDF5900938D6F /* TrashAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 7667DC772B4CDF5900938D6F /* TrashAnimation.json */; };
 		7669BA2A2ABDD3550002AD4C /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669BA292ABDD3550002AD4C /* Date+Extensions.swift */; };
@@ -610,12 +606,7 @@
 		7620F44A2A9659F5002A4EB5 /* TellAFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TellAFriendViewController.swift; sourceTree = "<group>"; };
 		7620F44B2A9659F5002A4EB5 /* TellAFriendInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TellAFriendInteractor.swift; sourceTree = "<group>"; };
 		7620F44C2A9659F5002A4EB5 /* TellAFriendWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TellAFriendWorker.swift; sourceTree = "<group>"; };
-		7620F4532A965A09002A4EB5 /* TermsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsFactory.swift; sourceTree = "<group>"; };
-		7620F4542A965A09002A4EB5 /* TermsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsPresenter.swift; sourceTree = "<group>"; };
-		7620F4552A965A09002A4EB5 /* TermsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsRouter.swift; sourceTree = "<group>"; };
 		7620F4562A965A09002A4EB5 /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
-		7620F4572A965A09002A4EB5 /* TermsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsInteractor.swift; sourceTree = "<group>"; };
-		7620F4582A965A09002A4EB5 /* TermsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsWorker.swift; sourceTree = "<group>"; };
 		7620F4602A96B31C002A4EB5 /* EditProfileHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileHeaderCell.swift; sourceTree = "<group>"; };
 		76228DA32A8AAF6200C27C7A /* Authenticator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Authenticator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76228DA62A8AAF6800C27C7A /* NetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -652,6 +643,9 @@
 		764B13FF2B63437A00C48FAE /* PhoneContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContactModel.swift; sourceTree = "<group>"; };
 		764B14012B6348E700C48FAE /* DeeplinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkManager.swift; sourceTree = "<group>"; };
 		764B14042B6473F600C48FAE /* DeeplinkCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkCore.swift; sourceTree = "<group>"; };
+		7655EF162B6577690028054C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "pt-BR"; path = "pt-BR.lproj/TermsAndConditions.pdf"; sourceTree = "<group>"; };
+		7655EF182B6577700028054C /* en */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = en; path = en.lproj/TermsAndConditions.pdf; sourceTree = "<group>"; };
+		7655EF192B6577790028054C /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = Base; path = Base.lproj/TermsAndConditions.pdf; sourceTree = "<group>"; };
 		7667DC772B4CDF5900938D6F /* TrashAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TrashAnimation.json; sourceTree = "<group>"; };
 		7669BA292ABDD3550002AD4C /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		7669BA2C2ABDDA650002AD4C /* StartChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartChat.swift; sourceTree = "<group>"; };
@@ -1243,12 +1237,7 @@
 		7620F4462A9659E3002A4EB5 /* TermsAndConditions */ = {
 			isa = PBXGroup;
 			children = (
-				7620F4532A965A09002A4EB5 /* TermsFactory.swift */,
-				7620F4542A965A09002A4EB5 /* TermsPresenter.swift */,
-				7620F4552A965A09002A4EB5 /* TermsRouter.swift */,
 				7620F4562A965A09002A4EB5 /* TermsViewController.swift */,
-				7620F4572A965A09002A4EB5 /* TermsInteractor.swift */,
-				7620F4582A965A09002A4EB5 /* TermsWorker.swift */,
 			);
 			path = TermsAndConditions;
 			sourceTree = "<group>";
@@ -1371,9 +1360,18 @@
 			path = Deeplink;
 			sourceTree = "<group>";
 		};
+		7655EF102B65729D0028054C /* PDF */ = {
+			isa = PBXGroup;
+			children = (
+				7655EF172B6577690028054C /* TermsAndConditions.pdf */,
+			);
+			path = PDF;
+			sourceTree = "<group>";
+		};
 		7667DC752B4CDF3200938D6F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7655EF102B65729D0028054C /* PDF */,
 				76B1FC462B5DACDD007D0519 /* RemoteConfig */,
 				7667DC762B4CDF3A00938D6F /* Lottie */,
 			);
@@ -2896,6 +2894,7 @@
 				76CAA1452A8AA1F600D742E9 /* LaunchScreen.storyboard in Resources */,
 				76CAA1902A8AAC0100D742E9 /* GoogleService-Info.plist in Resources */,
 				7667DC782B4CDF5900938D6F /* TrashAnimation.json in Resources */,
+				7655EF152B6577690028054C /* TermsAndConditions.pdf in Resources */,
 				764B13EB2B61E95900C48FAE /* Main.xcstrings in Resources */,
 				76CAA1422A8AA1F600D742E9 /* Assets.xcassets in Resources */,
 			);
@@ -3219,10 +3218,8 @@
 				76CAA18B2A8AA9ED00D742E9 /* HomePresenter.swift in Sources */,
 				76B1FC2B2B5D85C6007D0519 /* ChatBotMessageDisplayDelegate.swift in Sources */,
 				7620F2B92A92DE1B002A4EB5 /* SettingsWorker.swift in Sources */,
-				7620F45E2A965A09002A4EB5 /* TermsWorker.swift in Sources */,
 				76FA5D312B50DD8A004D86A5 /* Data+Extensions.swift in Sources */,
 				7620F4332A95694B002A4EB5 /* SettingsViewModel.swift in Sources */,
-				7620F45A2A965A09002A4EB5 /* TermsPresenter.swift in Sources */,
 				763B03C12B4F74EB0022E145 /* CreateGroupPresenter.swift in Sources */,
 				769E972E2AA3C4FC004FC6B4 /* ContactInfoPresenter.swift in Sources */,
 				761011AC2B3A688F004639C4 /* IncomingMessage.swift in Sources */,
@@ -3248,7 +3245,6 @@
 				7608DE6B2A9BAFDE0036027A /* EditBioInteractor.swift in Sources */,
 				7620F43E2A9592C2002A4EB5 /* EditProfileFactory.swift in Sources */,
 				764303882B4650F20037721A /* FilesDirectory.swift in Sources */,
-				7620F4592A965A09002A4EB5 /* TermsFactory.swift in Sources */,
 				761E38232B54BD590080194C /* GroupMessageDisplayDelegate.swift in Sources */,
 				761E381F2B54BD270080194C /* GroupMessageDataSource.swift in Sources */,
 				769E972D2AA3C4FC004FC6B4 /* ContactInfoFactory.swift in Sources */,
@@ -3309,10 +3305,8 @@
 				761E382C2B54C65C0080194C /* StartGroupChat.swift in Sources */,
 				7620F44D2A9659F5002A4EB5 /* TellAFriendFactory.swift in Sources */,
 				76DA7EC02AB78D1F00106731 /* RecentChatsInteractor.swift in Sources */,
-				7620F45B2A965A09002A4EB5 /* TermsRouter.swift in Sources */,
 				76371F9C2B488FFB007C9E7E /* FetchMessageWorker.swift in Sources */,
 				7610118F2B3A0128004639C4 /* MessageDataSource.swift in Sources */,
-				7620F45D2A965A09002A4EB5 /* TermsInteractor.swift in Sources */,
 				768F4EB22B4F4AD80051E970 /* GroupsPresenter.swift in Sources */,
 				76CAA18C2A8AA9ED00D742E9 /* HomeWorker.swift in Sources */,
 				763B03C42B4F74EB0022E145 /* CreateGroupInteractor.swift in Sources */,
@@ -3427,6 +3421,16 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		7655EF172B6577690028054C /* TermsAndConditions.pdf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7655EF162B6577690028054C /* pt-BR */,
+				7655EF182B6577700028054C /* en */,
+				7655EF192B6577790028054C /* Base */,
+			);
+			name = TermsAndConditions.pdf;
+			sourceTree = "<group>";
+		};
 		76CAA1432A8AA1F600D742E9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -52,7 +52,7 @@ private extension SettingsRouter {
     }
     
     func pushTermsAndCondition() {
-        let controller = TermsFactory.make()
+        let controller = TermsViewController()
         controller.hidesBottomBarWhenPushed = true
         viewController?.navigationController?.pushViewController(controller, animated: true)
     }

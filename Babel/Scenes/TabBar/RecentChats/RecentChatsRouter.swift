@@ -14,13 +14,17 @@ final class RecentChatsRouter {
     weak var viewController: UIViewController?
 }
 
-// MARK: - RecentChatsRouterProtocol
 extension RecentChatsRouter: RecentChatsRouterProtocol {
     func perform(action: RecentChatsAction) {
         switch action {
         case .pushToAllUsersView:
             let usersController = UsersFactory.make()
-            viewController?.navigationController?.pushViewController(usersController, animated: true)
+            viewController?.navigationController?.pushViewController(usersController, animated: true) {
+                UIView.animate(withDuration: 0.2) {
+                    usersController.navigationItem.largeTitleDisplayMode = .never
+                    usersController.navigationController?.navigationBar.prefersLargeTitles = false
+                }
+            }
         case .pushToChatView(let dto):
             let chatController = ChatFactory.make(dto: dto)
             chatController.hidesBottomBarWhenPushed = true

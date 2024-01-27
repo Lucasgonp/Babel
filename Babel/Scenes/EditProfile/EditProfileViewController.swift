@@ -177,7 +177,6 @@ private extension EditProfileViewController {
     }
     
     func updateDoneBarButton(isHidden: Bool) {
-        // TODO: Check if is hiding correctly
         if isHidden {
             navigationItem.rightBarButtonItem = nil
         } else {

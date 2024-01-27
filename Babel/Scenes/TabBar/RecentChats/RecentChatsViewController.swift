@@ -49,6 +49,12 @@ final class RecentChatsViewController: ViewController<RecentChatsInteractorProto
         super.viewDidLoad()
         interactor.loadRecentChats()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
 
     override func buildViewHierarchy() { 
         view.fillWithSubview(subview: tableView)

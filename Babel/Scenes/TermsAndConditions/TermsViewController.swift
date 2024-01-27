@@ -1,9 +1,6 @@
 import UIKit
 import DesignKit
-
-protocol TermsDisplaying: AnyObject {
-    func displaySomething()
-}
+import PDFKit
 
 private extension TermsViewController.Layout {
     enum Texts {
@@ -11,37 +8,45 @@ private extension TermsViewController.Layout {
     }
 }
 
-final class TermsViewController: ViewController<TermsInteractorProtocol, UIView> {
+final class TermsViewController: UIViewController {
     fileprivate enum Layout { }
+    
+    private lazy var pdfViewer: PDFView = {
+        let pdfViewer = PDFView()
+        pdfViewer.displayMode = .singlePageContinuous
+        pdfViewer.autoScales = true
+        pdfViewer.displayDirection = .vertical
+        return pdfViewer
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        interactor.loadSomething()
+        buildLayout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.largeTitleDisplayMode = .never
     }
-
-    override func buildViewHierarchy() { 
-        // template
-    }
-    
-    override func setupConstraints() { 
-        // template
-    }
-
-    override func configureViews() {
-        title = Layout.Texts.title
-        view.backgroundColor = Color.grayscale050.uiColor
-    }
 }
 
-// MARK: - TermsDisplaying
-extension TermsViewController: TermsDisplaying {
-    func displaySomething() { 
-        // template
+extension TermsViewController: ViewConfiguration {
+    func buildViewHierarchy() {
+        view.fillWithSubview(subview: pdfViewer, navigationSafeArea: true)
+    }
+
+    func configureViews() {
+        title = Layout.Texts.title
+        view.backgroundColor = Color.backgroundPrimary.uiColor
+        
+        DispatchQueue.global().async {
+            if let path = Bundle.main.path(forResource: "TermsAndConditions", ofType: "pdf") {
+                if let pdfDocument = PDFDocument(url: URL(fileURLWithPath: path)) {
+                    DispatchQueue.main.async {
+                        self.pdfViewer.document = pdfDocument
+                    }
+                }
+            }
+        }
     }
 }

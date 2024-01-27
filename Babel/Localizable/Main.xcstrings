@@ -18,6 +18,23 @@
         }
       }
     },
+    "Access not granted" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Access not granted"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acesso não permitido"
+          }
+        }
+      }
+    },
     "Add" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -600,6 +617,23 @@
         }
       }
     },
+    "Grant access" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grant access"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permitir acesso"
+          }
+        }
+      }
+    },
     "Group info" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -699,6 +733,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Em uma reunião"
+          }
+        }
+      }
+    },
+    "Invite friends" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invite friends"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Convidar amigo(a)s"
           }
         }
       }
@@ -1117,23 +1168,6 @@
         }
       }
     },
-    "Tell a friend" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tell a friend"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Compartilhar com um amigo(a)"
-          }
-        }
-      }
-    },
     "Terms and conditions" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1283,6 +1317,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Vídeo"
+          }
+        }
+      }
+    },
+    "We need access your contact list to send invitations" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We need access your contact list to send invitations"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por favor, precisamos acessar sua lista de contatos para enviar convites"
           }
         }
       }

@@ -33,6 +33,8 @@ internal enum Strings {
     }
   }
   internal enum Commons {
+    /// Access not granted
+    internal static let accessNotGranted = Strings.tr("Localizable", "Commons.accessNotGranted", fallback: "Access not granted")
     /// Add
     internal static let add = Strings.tr("Localizable", "Commons.add", fallback: "Add")
     /// All users
@@ -45,6 +47,8 @@ internal enum Strings {
     internal static let done = Strings.tr("Localizable", "Commons.done", fallback: "Done")
     /// Edit
     internal static let edit = Strings.tr("Localizable", "Commons.edit", fallback: "Edit")
+    /// Grant access
+    internal static let grantAccess = Strings.tr("Localizable", "Commons.grantAccess", fallback: "Grant access")
     /// Logout
     internal static let logout = Strings.tr("Localizable", "Commons.logout", fallback: "Logout")
     /// Are you sure you want to logout? You will have to login with your credentials again
@@ -158,8 +162,8 @@ internal enum Strings {
       internal static let title = Strings.tr("Localizable", "Settings.EditProfile.title", fallback: "Edit profile")
     }
     internal enum TellAFriend {
-      /// Tell a friend
-      internal static let title = Strings.tr("Localizable", "Settings.TellAFriend.title", fallback: "Tell a friend")
+      /// Invite friends
+      internal static let title = Strings.tr("Localizable", "Settings.TellAFriend.title", fallback: "Invite friends")
     }
     internal enum TermsAndConditions {
       /// Terms and conditions
@@ -197,6 +201,10 @@ internal enum Strings {
       /// Users
       internal static let title = Strings.tr("Localizable", "TabBar.Users.title", fallback: "Users")
     }
+  }
+  internal enum TellAFriend {
+    /// We need access your contact list to send invitations
+    internal static let accessContactsMessage = Strings.tr("Localizable", "TellAFriend.accessContactsMessage", fallback: "We need access your contact list to send invitations")
   }
   internal enum UserBio {
     /// Currently set to

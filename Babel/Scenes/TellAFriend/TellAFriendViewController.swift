@@ -5,7 +5,7 @@ import MessageUI
 
 enum TellAFriendViewState {
     case success(contacts: [CNContact])
-    case accessNotGranted(message: String)
+    case accessNotGranted
     case error(message: String)
     case loading(isLoading: Bool)
 }
@@ -18,6 +18,9 @@ private extension TellAFriendViewController.Layout {
     enum Texts {
         static let title = Strings.Settings.TellAFriend.title.localized()
         static let search = Strings.Commons.search.localized()
+        static let accessNotGranted = Strings.Commons.accessNotGranted.localized()
+        static let grantAccess = Strings.Commons.grantAccess.localized()
+        static let accessContactsMessage = Strings.TellAFriend.accessContactsMessage.localized()
     }
 }
 
@@ -53,8 +56,8 @@ final class TellAFriendViewController: ViewController<TellAFriendInteractorProto
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.largeTitleDisplayMode = .always
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .never
+        navigationController?.navigationBar.prefersLargeTitles = false
         
         interactor.fetchContacts()
     }
@@ -89,9 +92,9 @@ extension TellAFriendViewController: TellAFriendDisplaying {
             )})
             allContacts = users.sorted(by: { $0.fullName.lowercased() < $1.fullName.lowercased() })
             setupContactsList()
-        case let .accessNotGranted(message):
+        case .accessNotGranted:
             navigationController?.popViewController(completion: { [weak self] _ in
-                self?.showMessageAlert(title: "Access not granted", message: "We need access your contacts to send invitations", button: "Grant access") { _ in
+                self?.showMessageAlert(title: Layout.Texts.accessNotGranted, message: Layout.Texts.accessContactsMessage, button: Layout.Texts.grantAccess) { _ in
                     let appSettingsURL = URL(string: UIApplication.openSettingsURLString)!
                     UIApplication.shared.open(appSettingsURL)
                 }

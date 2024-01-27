@@ -22,7 +22,7 @@ extension TellAFriendPresenter: TellAFriendPresenterProtocol {
     }
     
     func contactsAccessNotGranted() {
-        viewController?.displayViewState(.accessNotGranted(message: ""))
+        viewController?.displayViewState(.accessNotGranted)
     }
     
     func didNextStep(action: TellAFriendAction) {

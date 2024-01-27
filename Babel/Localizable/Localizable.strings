@@ -10,6 +10,8 @@
 "Commons.sendMessage" = "Send message";
 "Commons.logout" = "Logout";
 "Commons.logoutDescription" = "Are you sure you want to logout? You will have to login with your credentials again";
+"Commons.accessNotGranted" = "Access not granted";
+"Commons.grantAccess" = "Grant access";
 
 // Generic Errors
 "GenericError.message" = "Ops! Something went wrong";
@@ -21,7 +23,7 @@
 "TabBar.Chats.title" = "Chats";
 "TabBar.OpenAI.title" = "Open AI";
 
-"Settings.TellAFriend.title" = "Tell a friend";
+"Settings.TellAFriend.title" = "Invite friends";
 "Settings.TermsAndConditions.title" = "Terms and conditions";
 "Settings.version" = "Version";
 
@@ -112,3 +114,6 @@
 // Recent chat
 "RecentChat.ActionSheet.Delete.title" = "Delete chat";
 "RecentChat.ActionSheet.Delete.description" = "Do you want to delete this chat?";
+
+// TellAFriend
+"TellAFriend.accessContactsMessage" = "We need access your contact list to send invitations";

@@ -2,7 +2,8 @@ import FirebaseRemoteConfig
 
 private let defaults: [String: NSObject] = [
     "OpenAIToken": String() as NSObject,
-    "ShowTabBots": false as NSObject
+    "ShowTabBots": false as NSObject,
+    "ShareAppMessage": "Let's chat on Babel! It's a fast, simple, and secure app we can use to message each other for free." as NSObject
 ]
 
 final class RemoteConfigManager {
@@ -27,6 +28,11 @@ final class RemoteConfigManager {
     var showTabBots: Bool {
         remoteConfig.configValue(forKey: Keys.ShowTabBots.rawValue)
             .boolValue
+    }
+    
+    var shareAppMessage: String {
+        remoteConfig.configValue(forKey: Keys.ShareAppMessage.rawValue)
+            .stringValue ?? String()
     }
 }
 

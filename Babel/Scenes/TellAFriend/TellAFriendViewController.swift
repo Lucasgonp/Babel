@@ -1,6 +1,7 @@
 import UIKit
 import DesignKit
 import Contacts
+import MessageUI
 
 enum TellAFriendViewState {
     case success(contacts: [CNContact])
@@ -121,16 +122,6 @@ extension TellAFriendViewController: UITableViewDelegate {
         }
         
     }
-    
-    func openExternalMessageApp(for model: PhoneContactModel) {
-//        let phoneNumber = "958585858"
-        //TODO: Deeplink message
-        let text = "Let's chat on Babel! It's a fast, simple, and secure app we can use to message each other for free."
-        guard let messageURL = URL(string: "sms:\(model.phoneNumber)&body=\(text)") else { return }
-        if UIApplication.shared.canOpenURL(messageURL) {
-            UIApplication.shared.open(messageURL)
-        }
-    }
 }
 
 extension TellAFriendViewController: UITableViewDataSource {
@@ -184,6 +175,12 @@ extension TellAFriendViewController: UISearchResultsUpdating {
     }
 }
 
+extension TellAFriendViewController: MFMessageComposeViewControllerDelegate {
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        dismiss(animated: true)
+    }
+}
+
 private extension TellAFriendViewController {
     func setupContactsList() {
         let names = allContacts.compactMap({ $0 })
@@ -207,6 +204,15 @@ private extension TellAFriendViewController {
         }
         
         tableView.reloadData()
+    }
+    
+    func openExternalMessageApp(for model: PhoneContactModel) {
+        let text = RemoteConfigManager.shared.shareAppMessage
+        let iMessageController = MFMessageComposeViewController()
+        iMessageController.body = text
+        iMessageController.recipients = [model.phoneNumber]
+        iMessageController.messageComposeDelegate = self
+        present(iMessageController, animated: true)
     }
 }
 

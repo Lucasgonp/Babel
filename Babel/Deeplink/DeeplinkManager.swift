@@ -10,9 +10,9 @@ struct DeeplinkManager {
         case .home:
             return
         case .chat:
-            <#code#>
+            return
         case .group:
-            <#code#>
+            return
         }
     }
 }

@@ -1,21 +1,23 @@
 import Contacts
 
 struct PhoneContacts {
-    static func requestAccess(completion: @escaping (_ accessGranted: Bool) -> Void) {
+    static let shared = PhoneContacts()
+    private let store = CNContactStore()
+    
+    func requestAccess(completion: @escaping (_ accessGranted: Bool) -> Void) {
         let authorizationStatus = CNContactStore.authorizationStatus(for: .contacts)
         
         switch authorizationStatus {
         case .authorized:
             completion(true)
         default:
-            CNContactStore().requestAccess(for: .contacts, completionHandler: { (access, accessError) -> Void in
+            store.requestAccess(for: .contacts, completionHandler: { (access, accessError) -> Void in
                 completion(access)
             })
         }
     }
     
-    static func fetchContacts() -> [CNContact] {
-        let store = CNContactStore()
+    func fetchContacts() -> [CNContact] {
         var allContainers = [CNContainer]()
         
         do {

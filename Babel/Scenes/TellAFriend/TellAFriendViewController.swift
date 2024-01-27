@@ -21,6 +21,7 @@ private extension TellAFriendViewController.Layout {
         static let accessNotGranted = Strings.Commons.accessNotGranted.localized()
         static let grantAccess = Strings.Commons.grantAccess.localized()
         static let accessContactsMessage = Strings.TellAFriend.accessContactsMessage.localized()
+        static let shareInviteLink = Strings.TellAFriend.shareInviteLink.localized()
     }
 }
 
@@ -34,6 +35,7 @@ final class TellAFriendViewController: ViewController<TellAFriendInteractorProto
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
+        tableView.register(cellType: UITableViewCell.self)
         tableView.register(cellType: TellAFriendCell.self)
         tableView.delegate = self
         tableView.dataSource = self
@@ -43,7 +45,7 @@ final class TellAFriendViewController: ViewController<TellAFriendInteractorProto
     
     private lazy var searchController: UISearchController = {
         let controller = UISearchController(searchResultsController: nil)
-        controller.obscuresBackgroundDuringPresentation = false
+//        controller.obscuresBackgroundDuringPresentation = false
         controller.searchBar.placeholder = Layout.Texts.search
         controller.searchResultsUpdater = self
         controller.definesPresentationContext = true
@@ -54,12 +56,14 @@ final class TellAFriendViewController: ViewController<TellAFriendInteractorProto
     private var allContacts = [PhoneContactModel]()
     private var filteredContacts = [PhoneContactModel]()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        interactor.fetchContacts()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.largeTitleDisplayMode = .never
-        navigationController?.navigationBar.prefersLargeTitles = false
-        
-        interactor.fetchContacts()
     }
     
     override func buildViewHierarchy() {
@@ -71,7 +75,7 @@ final class TellAFriendViewController: ViewController<TellAFriendInteractorProto
         view.backgroundColor = Color.backgroundPrimary.uiColor
         
         navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = true
+        navigationItem.hidesSearchBarWhenScrolling = false
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -80,6 +84,7 @@ final class TellAFriendViewController: ViewController<TellAFriendInteractorProto
 
 extension TellAFriendViewController: TellAFriendDisplaying {
     func displayViewState(_ state: TellAFriendViewState) {
+        
         switch state {
         case let .success(contacts):
             let filteredContacts = contacts.filter({ !$0.phoneNumbers.isEmpty && !$0.givenName.isEmpty })
@@ -115,13 +120,26 @@ extension TellAFriendViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        let messsage = RemoteConfigManager.shared.shareAppMessage
+//        let image = Image.babelBrandLogo.image
+        
         if searchController.isActive {
             let contact = filteredContacts[indexPath.row]
-            openExternalMessageApp(for: contact)
+            openExternalMessageApp(for: contact, message: messsage, image: nil)
         } else {
-            let section = sections[indexPath.section]
-            let contact = section.contacts[indexPath.row]
-            openExternalMessageApp(for: contact)
+            if indexPath.section == 0 {
+                let sharedObjects: [AnyObject] = [messsage as AnyObject]
+                let activityViewController = UIActivityViewController(activityItems: sharedObjects, applicationActivities: nil)
+                activityViewController.popoverPresentationController?.sourceView = view
+                
+                DispatchQueue.main.async {
+                    self.present(activityViewController, animated: true, completion: nil)
+                }
+            } else {
+                let section = sections[indexPath.section - 1]
+                let contact = section.contacts[indexPath.row]
+                openExternalMessageApp(for: contact, message: messsage, image: nil)
+            }
         }
         
     }
@@ -140,12 +158,12 @@ extension TellAFriendViewController: UITableViewDataSource {
                 return filteredContacts.count
             }
         } else {
-            return sections[section].contacts.count
+            return section == 0 ? 1 : sections[section - 1].contacts.count
         }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return searchController.isActive ? Layout.Texts.search : sections[section].letter
+        return searchController.isActive ? Layout.Texts.search : (section == 0 ? nil : sections[section - 1].letter)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -163,7 +181,19 @@ extension TellAFriendViewController: UITableViewDataSource {
                 return cell
             }
         } else {
-            let section = sections[indexPath.section]
+            if indexPath.section == 0 && indexPath.row == 0 {
+                let cell: UITableViewCell = tableView.makeCell(indexPath: indexPath)
+                var content = cell.defaultContentConfiguration()
+                content.text = Layout.Text.shareInviteLink
+                content.image = UIImage(systemName: "square.and.arrow.up.circle.fill")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 26)).withTintColor(Color.blueNative.uiColor)
+                content.imageToTextPadding = 17
+                content.imageProperties.reservedLayoutSize = CGSize(width: 42, height: 42)
+                content.textProperties.color = Color.blueNative.uiColor
+                cell.contentConfiguration = content
+                return cell
+            }
+            
+            let section = sections[indexPath.section - 1]
             let contact = section.contacts[indexPath.row]
             cell.render(contact)
             return cell
@@ -196,7 +226,9 @@ private extension TellAFriendViewController {
             }))
         }
         
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     func filterContentForSearchText(searchText: String) {
@@ -206,16 +238,24 @@ private extension TellAFriendViewController {
             filteredContacts = allContacts
         }
         
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
-    func openExternalMessageApp(for model: PhoneContactModel) {
-        let text = RemoteConfigManager.shared.shareAppMessage
+    func openExternalMessageApp(for model: PhoneContactModel, message: String, image: UIImage?) {
         let iMessageController = MFMessageComposeViewController()
-        iMessageController.body = text
+        iMessageController.body = message
         iMessageController.recipients = [model.phoneNumber]
         iMessageController.messageComposeDelegate = self
-        present(iMessageController, animated: true)
+        
+        if let image, let data = image.pngData() {
+            iMessageController.addAttachmentData(data, typeIdentifier: "babel.logo", filename: "babel.logo.png")
+        }
+        
+        DispatchQueue.main.async {
+            self.present(iMessageController, animated: true)
+        }
     }
 }
 

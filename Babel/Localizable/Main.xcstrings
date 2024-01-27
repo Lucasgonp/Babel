@@ -1099,6 +1099,23 @@
         }
       }
     },
+    "Share invite link" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share invite link"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compartilhar convite via link"
+          }
+        }
+      }
+    },
     "Share location" : {
       "extractionState" : "manual",
       "localizations" : {

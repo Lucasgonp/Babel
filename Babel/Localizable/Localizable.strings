@@ -117,3 +117,4 @@
 
 // TellAFriend
 "TellAFriend.accessContactsMessage" = "We need access your contact list to send invitations";
+"TellAFriend.shareInviteLink" = "Share invite link";

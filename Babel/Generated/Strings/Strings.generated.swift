@@ -205,6 +205,8 @@ internal enum Strings {
   internal enum TellAFriend {
     /// We need access your contact list to send invitations
     internal static let accessContactsMessage = Strings.tr("Localizable", "TellAFriend.accessContactsMessage", fallback: "We need access your contact list to send invitations")
+    /// Share invite link
+    internal static let shareInviteLink = Strings.tr("Localizable", "TellAFriend.shareInviteLink", fallback: "Share invite link")
   }
   internal enum UserBio {
     /// Currently set to

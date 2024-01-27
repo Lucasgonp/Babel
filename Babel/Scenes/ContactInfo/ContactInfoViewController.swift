@@ -55,10 +55,6 @@ final class ContactInfoViewController: ViewController<ContactInfoInteractorProto
     override func buildViewHierarchy() {
         view.fillWithSubview(subview: tableView, navigationSafeArea: true)
     }
-    
-    override func setupConstraints() {
-        // template
-    }
 
     override func configureViews() {
         let backButton = UIBarButtonItem(title: String(), style: .plain, target: nil, action: nil)

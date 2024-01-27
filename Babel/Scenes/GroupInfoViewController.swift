@@ -167,7 +167,9 @@ extension GroupInfoViewController: UITableViewDelegate {
         
         switch indexPath.section {
         case 1:
-            present(groupDescNavigation, animated: true)
+            if isMember {
+                present(groupDescNavigation, animated: true)
+            }
         case 2:
             if isMember {
                 interactor.sendMessage()
@@ -238,7 +240,7 @@ extension GroupInfoViewController: UITableViewDataSource {
             headerCell = cell
             return cell
         case 1:
-            let cell: UITableViewCell = tableView.makeCell(indexPath: indexPath, accessoryType: .disclosureIndicator)
+            let cell: UITableViewCell = tableView.makeCell(indexPath: indexPath, accessoryType: isMember ? .disclosureIndicator : .none)
             var content = cell.defaultContentConfiguration()
             content.text = groupDescription.isEmpty ? Layout.Texts.addGroupDescription : groupDescription
             content.textProperties.color = groupDescription.isEmpty ? Color.blueNative.uiColor : cell.defaultContentConfiguration().textProperties.color
@@ -264,7 +266,7 @@ extension GroupInfoViewController: UITableViewDataSource {
                     let cell: UITableViewCell = tableView.makeCell(indexPath: indexPath)
                     var content = cell.defaultContentConfiguration()
                     content.text = Layout.Texts.addNewMember
-                    content.image = UIImage(systemName: "person.crop.circle.fill.badge.plus")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 26)).withTintColor(Color.blueNative.uiColor)
+                    content.image = UIImage(systemName: "person.crop.circle.fill.badge.plus")?.withConfiguration(UIImage.SymbolConfiguration(pointSize: 28)).withTintColor(Color.blueNative.uiColor)
                     content.imageToTextPadding = 17
                     content.imageProperties.reservedLayoutSize = CGSize(width: 42, height: 42)
                     content.textProperties.color = Color.blueNative.uiColor

@@ -1,5 +1,5 @@
+import Foundation
 import MessageKit
-import SDWebImage
 
 extension ChatGroupViewController: MessagesLayoutDelegate {    
     func cellTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {

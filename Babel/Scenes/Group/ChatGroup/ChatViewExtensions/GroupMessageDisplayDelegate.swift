@@ -1,6 +1,5 @@
 import UIKit
 import MessageKit
-import SDWebImage
 import DesignKit
 
 extension ChatGroupViewController: MessagesDisplayDelegate {
@@ -38,7 +37,9 @@ extension ChatGroupViewController: MessagesDisplayDelegate {
         if case .video = message.kind {
             let mkMessage = mkMessages[indexPath.section]
             let videoMessage = mkMessage.videoItem
-            imageView.setImage(with: videoMessage?.thumbailUrl)
+            imageView.setImage(with: videoMessage?.thumbailUrl) { image in
+                imageView.image = image
+            }
             
             StorageManager.shared.downloadVideo(mkMessage.videoItem!.url!) { [weak self] isReadyToPlay, videoFileName, fileDirectory in
                 let videoUrl: URL

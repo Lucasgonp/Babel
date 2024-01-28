@@ -87,12 +87,19 @@
 "GroupInfo.joinGroup" = "Join group";
 "GroupInfo.usersRequests" = "Users requests";
 "GroupInfo.addNewMember" = "Add new member";
-"GroupInfo.joinGroup" = "Join group";
+"GroupInfo.requestToJoin" = "Request to join";
+"GroupInfo.requestSent" = "Request sent, waiting for approval";
+"GroupInfo.requests" = "Requests";
 "GroupInfo.exitGroup" = "Exit group";
 "GroupInfo.descriptionInfo" = "The group description is visible to members of this group and people invited to this group.";
+"GroupInfo.request" = "The group description is visible to members of this group and people invited to this group.";
 
 "GroupInfo.ActionSheet.joinGroupQuestion" = "Do you want to join this group?";
 "GroupInfo.ActionSheet.exitGroupQuestion" = "Do you want to exit this group?";
+"GroupInfo.ActionSheet.accept" = "Accept";
+"GroupInfo.ActionSheet.deny" = "Deny";
+"GroupInfo.ActionSheet.acceptQuestion" = "Do you want to accept this user to get into de group?";
+"GroupInfo.ActionSheet.denyQuestion" = "Do you want to deny this user request?";
 
 "GroupInfo.ActionSheet.userInfo" = "User info";
 "GroupInfo.ActionSheet.makeAdmin" = "Make admin";

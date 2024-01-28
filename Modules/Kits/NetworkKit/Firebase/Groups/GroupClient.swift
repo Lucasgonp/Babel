@@ -64,7 +64,7 @@ extension FirebaseClient: GroupClientProtocol {
     }
     
     public func requestToJoin(_ userId: String, groupId: String, completion: @escaping (Error?) -> Void) {
-        let fields = [kREQUESTSTOJOIN: FieldValue.arrayUnion([userId])]
+        let fields = [kREQUESTSTOJOINMEMBERSIDS: FieldValue.arrayUnion([userId])]
         firebaseReference(.group).document(groupId).updateData(fields, completion: completion)
     }
     

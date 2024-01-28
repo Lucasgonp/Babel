@@ -20,7 +20,9 @@ private extension GroupInfoViewController.Layout {
         static let members = Strings.GroupInfo.members.localized()
         static let addGroupDescription = Strings.GroupInfo.addGroupDescription.localized()
         static let sendMessage = Strings.Commons.sendMessage.localized()
-        static let joinGroup = Strings.GroupInfo.joinGroup.localized()
+        static let requestToJoin = Strings.GroupInfo.requestToJoin.localized()
+        static let requestSent = Strings.GroupInfo.requestSent.localized()
+        static let requests = Strings.GroupInfo.requests.localized()
         static let exitGroup = Strings.GroupInfo.exitGroup.localized()
         static let addNewMember = Strings.GroupInfo.addNewMember.localized()
         static let edit = Strings.Commons.edit.localized()
@@ -170,9 +172,7 @@ extension GroupInfoViewController: UITableViewDelegate {
         
         switch indexPath.section {
         case 1:
-            if isMember {
-                present(groupDescNavigation, animated: true)
-            }
+            present(groupDescNavigation, animated: true)
         case 2:
             if indexPath.row == 0 {
                 if isMember {
@@ -247,7 +247,6 @@ extension GroupInfoViewController: UITableViewDataSource {
             headerCell = cell
             return cell
         case 1:
-            
             let cell: UITableViewCell = tableView.makeCell(indexPath: indexPath, accessoryType: isMember ? .disclosureIndicator : .none)
             var content = cell.defaultContentConfiguration()
             if groupDescription.isEmpty && !isMember {
@@ -257,14 +256,15 @@ extension GroupInfoViewController: UITableViewDataSource {
             }
             content.textProperties.color = (groupDescription.isEmpty && isMember) ? Color.blueNative.uiColor : cell.defaultContentConfiguration().textProperties.color
             cell.contentConfiguration = content
+            cell.isUserInteractionEnabled = isMember
             return cell
         case 2:
             if indexPath.row == 1 && isAdmin {
                 let cell: RequestsToJoinCell = tableView.makeCell(indexPath: indexPath, accessoryType: .disclosureIndicator)
                 cell.render(
                     icon: UIImage(systemName: "person.crop.circle.badge.questionmark.fill")!.withRenderingMode(.alwaysTemplate),
-                    text: "Requests to join group",
-                    counter: "5"
+                    text: Layout.Texts.requests,
+                    counter: groupInfo.requestToJoinMemberIds.count
                 )
                 return cell
             }
@@ -275,10 +275,13 @@ extension GroupInfoViewController: UITableViewDataSource {
                 cell.render(.init(icon: image, text: Layout.Texts.sendMessage))
                 return cell
             } else {
-                let cell: UITableViewCell = tableView.makeCell(indexPath: indexPath, accessoryType: .disclosureIndicator)
+                let didRequest = groupInfo.requestToJoinMemberIds.contains(currentUser.id)
+                let cell: UITableViewCell = tableView.makeCell(indexPath: indexPath)
                 var content = cell.defaultContentConfiguration()
-                content.text = Layout.Texts.joinGroup
-                content.textProperties.color = Color.blueNative.uiColor
+                content.text = didRequest ? Layout.Texts.requestSent : Layout.Texts.requestToJoin
+                content.textProperties.color = didRequest ? Color.grayscale700.uiColor : Color.blueNative.uiColor
+                cell.accessoryType = didRequest ? .none : .disclosureIndicator
+                cell.isUserInteractionEnabled = !didRequest
                 cell.contentConfiguration = content
                 return cell
             }
@@ -397,11 +400,11 @@ private extension GroupInfoViewController {
     }
     
     func makeJoinGroupActionSheet(user: User) -> UIAlertController {
-        let joinGroupAction = UIAlertAction(title: Layout.Texts.joinGroup, style: .default, handler: { [weak self] _ in
+        let joinGroupAction = UIAlertAction(title: Layout.Texts.requestToJoin, style: .default, handler: { [weak self] _ in
             self?.interactor.requestToJoin()
         })
         
-        let actionSheet = UIAlertController(title: Layout.Texts.joinGroup, message: Layout.Texts.joinGroupQuestion, preferredStyle: .alert)
+        let actionSheet = UIAlertController(title: Layout.Texts.requestToJoin, message: Layout.Texts.joinGroupQuestion, preferredStyle: .alert)
         actionSheet.addAction(joinGroupAction)
         actionSheet.addAction(UIAlertAction(title: Strings.Commons.cancel, style: .cancel, handler: nil))
         
@@ -409,9 +412,7 @@ private extension GroupInfoViewController {
     }
     
     func didTapRequestsToJoin() {
-        let controller = UIViewController()
-        controller.view.backgroundColor = .red
-        navigationController?.pushViewController(controller, animated: true)
+        interactor.didTapOnRequestsToJoin()
     }
 }
 

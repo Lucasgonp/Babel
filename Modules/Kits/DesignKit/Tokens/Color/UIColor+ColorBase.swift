@@ -95,6 +95,12 @@ public extension Color {
     ///
     /// - Light Mode: `#E62320`.
     /// - Dark Mode: `#E62320`.
+    static let warning300 = Color(#colorLiteral(red: 0.7450980392, green: 0.1921568627, blue: 0.2666666667, alpha: 1), #colorLiteral(red: 0.7450980392, green: 0.1921568627, blue: 0.2666666667, alpha: 1))
+    
+    /// Returns a color object whose values are:
+    ///
+    /// - Light Mode: `#E62320`.
+    /// - Dark Mode: `#E62320`.
     static let warning500 = Color(#colorLiteral(red: 0.9019607843, green: 0.137254902, blue: 0.1254901961, alpha: 1), #colorLiteral(red: 0.9019607843, green: 0.137254902, blue: 0.1254901961, alpha: 1))
     
     /// Returns a color object whose values are:

@@ -91,11 +91,27 @@ internal enum Strings {
     internal static let joinGroup = Strings.tr("Localizable", "GroupInfo.joinGroup", fallback: "Join group")
     /// Members
     internal static let members = Strings.tr("Localizable", "GroupInfo.members", fallback: "Members")
+    /// The group description is visible to members of this group and people invited to this group.
+    internal static let request = Strings.tr("Localizable", "GroupInfo.request", fallback: "The group description is visible to members of this group and people invited to this group.")
+    /// Requests
+    internal static let requests = Strings.tr("Localizable", "GroupInfo.requests", fallback: "Requests")
+    /// Request sent, waiting for approval
+    internal static let requestSent = Strings.tr("Localizable", "GroupInfo.requestSent", fallback: "Request sent, waiting for approval")
+    /// Request to join
+    internal static let requestToJoin = Strings.tr("Localizable", "GroupInfo.requestToJoin", fallback: "Request to join")
     /// Group info
     internal static let title = Strings.tr("Localizable", "GroupInfo.title", fallback: "Group info")
     /// Users requests
     internal static let usersRequests = Strings.tr("Localizable", "GroupInfo.usersRequests", fallback: "Users requests")
     internal enum ActionSheet {
+      /// Accept
+      internal static let accept = Strings.tr("Localizable", "GroupInfo.ActionSheet.accept", fallback: "Accept")
+      /// Do you want to accept this user to get into de group?
+      internal static let acceptQuestion = Strings.tr("Localizable", "GroupInfo.ActionSheet.acceptQuestion", fallback: "Do you want to accept this user to get into de group?")
+      /// Deny
+      internal static let deny = Strings.tr("Localizable", "GroupInfo.ActionSheet.deny", fallback: "Deny")
+      /// Do you want to deny this user request?
+      internal static let denyQuestion = Strings.tr("Localizable", "GroupInfo.ActionSheet.denyQuestion", fallback: "Do you want to deny this user request?")
       /// Do you want to exit this group?
       internal static let exitGroupQuestion = Strings.tr("Localizable", "GroupInfo.ActionSheet.exitGroupQuestion", fallback: "Do you want to exit this group?")
       /// Do you want to join this group?

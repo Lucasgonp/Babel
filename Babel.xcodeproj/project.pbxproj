@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		76016FFC2B66D067009264D9 /* RequestJoinGroupClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76016FFB2B66D067009264D9 /* RequestJoinGroupClient.swift */; };
 		7608DE542A999F050036027A /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE532A999F050036027A /* StorageManager.swift */; };
 		7608DE672A9BAFDE0036027A /* EditBioFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE612A9BAFDE0036027A /* EditBioFactory.swift */; };
 		7608DE682A9BAFDE0036027A /* EditBioPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE622A9BAFDE0036027A /* EditBioPresenter.swift */; };
@@ -282,6 +283,15 @@
 		769E97322AA3C4FC004FC6B4 /* ContactInfoWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E972C2AA3C4FC004FC6B4 /* ContactInfoWorker.swift */; };
 		769E97352AA3CA1B004FC6B4 /* ContactInfoHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E97342AA3CA1B004FC6B4 /* ContactInfoHeaderCell.swift */; };
 		76AE76562B65EA8A00FBB7D3 /* RequestsToJoinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AE76552B65EA8A00FBB7D3 /* RequestsToJoinCell.swift */; };
+		76AE765F2B66AE2A00FBB7D3 /* RequestsJoinGroupFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AE76592B66AE2A00FBB7D3 /* RequestsJoinGroupFactory.swift */; };
+		76AE76602B66AE2A00FBB7D3 /* RequestsJoinGroupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AE765A2B66AE2A00FBB7D3 /* RequestsJoinGroupPresenter.swift */; };
+		76AE76612B66AE2A00FBB7D3 /* RequestsJoinGroupWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AE765B2B66AE2A00FBB7D3 /* RequestsJoinGroupWorker.swift */; };
+		76AE76622B66AE2A00FBB7D3 /* RequestsJoinGroupRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AE765C2B66AE2A00FBB7D3 /* RequestsJoinGroupRouter.swift */; };
+		76AE76632B66AE2A00FBB7D3 /* RequestsJoinGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AE765D2B66AE2A00FBB7D3 /* RequestsJoinGroupViewController.swift */; };
+		76AE76642B66AE2A00FBB7D3 /* RequestsJoinGroupInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AE765E2B66AE2A00FBB7D3 /* RequestsJoinGroupInteractor.swift */; };
+		76AE76672B66B10500FBB7D3 /* RequestsJoinGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AE76662B66B10500FBB7D3 /* RequestsJoinGroupCell.swift */; };
+		76AE766A2B66B59900FBB7D3 /* DenyAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 76AE76682B66B59900FBB7D3 /* DenyAnimation.json */; };
+		76AE766B2B66B59900FBB7D3 /* ApproveAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 76AE76692B66B59900FBB7D3 /* ApproveAnimation.json */; };
 		76AF8DC22B51EDF400E21CD5 /* GroupInfoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AF8DBC2B51EDF400E21CD5 /* GroupInfoFactory.swift */; };
 		76AF8DC32B51EDF400E21CD5 /* GroupInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AF8DBD2B51EDF400E21CD5 /* GroupInfoPresenter.swift */; };
 		76AF8DC42B51EDF400E21CD5 /* GroupInfoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AF8DBE2B51EDF400E21CD5 /* GroupInfoRouter.swift */; };
@@ -540,6 +550,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		76016FFB2B66D067009264D9 /* RequestJoinGroupClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestJoinGroupClient.swift; sourceTree = "<group>"; };
 		7608DE282A9945BB0036027A /* GalleryKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GalleryKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7608DE502A9960DC0036027A /* StorageKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StorageKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7608DE532A999F050036027A /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
@@ -810,6 +821,15 @@
 		769E972C2AA3C4FC004FC6B4 /* ContactInfoWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoWorker.swift; sourceTree = "<group>"; };
 		769E97342AA3CA1B004FC6B4 /* ContactInfoHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoHeaderCell.swift; sourceTree = "<group>"; };
 		76AE76552B65EA8A00FBB7D3 /* RequestsToJoinCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsToJoinCell.swift; sourceTree = "<group>"; };
+		76AE76592B66AE2A00FBB7D3 /* RequestsJoinGroupFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsJoinGroupFactory.swift; sourceTree = "<group>"; };
+		76AE765A2B66AE2A00FBB7D3 /* RequestsJoinGroupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsJoinGroupPresenter.swift; sourceTree = "<group>"; };
+		76AE765B2B66AE2A00FBB7D3 /* RequestsJoinGroupWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsJoinGroupWorker.swift; sourceTree = "<group>"; };
+		76AE765C2B66AE2A00FBB7D3 /* RequestsJoinGroupRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsJoinGroupRouter.swift; sourceTree = "<group>"; };
+		76AE765D2B66AE2A00FBB7D3 /* RequestsJoinGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsJoinGroupViewController.swift; sourceTree = "<group>"; };
+		76AE765E2B66AE2A00FBB7D3 /* RequestsJoinGroupInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsJoinGroupInteractor.swift; sourceTree = "<group>"; };
+		76AE76662B66B10500FBB7D3 /* RequestsJoinGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsJoinGroupCell.swift; sourceTree = "<group>"; };
+		76AE76682B66B59900FBB7D3 /* DenyAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DenyAnimation.json; sourceTree = "<group>"; };
+		76AE76692B66B59900FBB7D3 /* ApproveAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ApproveAnimation.json; sourceTree = "<group>"; };
 		76AF8DBC2B51EDF400E21CD5 /* GroupInfoFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoFactory.swift; sourceTree = "<group>"; };
 		76AF8DBD2B51EDF400E21CD5 /* GroupInfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoPresenter.swift; sourceTree = "<group>"; };
 		76AF8DBE2B51EDF400E21CD5 /* GroupInfoRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoRouter.swift; sourceTree = "<group>"; };
@@ -1286,6 +1306,7 @@
 				763B03B02B4F62BD0022E145 /* CreateGroupClient.swift */,
 				76AF8DCB2B51F04500E21CD5 /* GroupClient.swift */,
 				761E38302B54CFA80080194C /* SendMessageGroupClient.swift */,
+				76016FFB2B66D067009264D9 /* RequestJoinGroupClient.swift */,
 			);
 			path = Groups;
 			sourceTree = "<group>";
@@ -1383,6 +1404,8 @@
 		7667DC762B4CDF3A00938D6F /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				76AE76692B66B59900FBB7D3 /* ApproveAnimation.json */,
+				76AE76682B66B59900FBB7D3 /* DenyAnimation.json */,
 				7667DC772B4CDF5900938D6F /* TrashAnimation.json */,
 			);
 			path = Lottie;
@@ -2063,6 +2086,39 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		76AE76572B66ADCD00FBB7D3 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				76AE76582B66ADF200FBB7D3 /* RequestsJoinGroup */,
+				761E38102B54BBF70080194C /* ChatGroup */,
+				76AF8DBB2B51EDE100E21CD5 /* GroupInfo */,
+				763B03B72B4F74B40022E145 /* CreateGroup */,
+			);
+			path = Group;
+			sourceTree = "<group>";
+		};
+		76AE76582B66ADF200FBB7D3 /* RequestsJoinGroup */ = {
+			isa = PBXGroup;
+			children = (
+				76AE76652B66B0F800FBB7D3 /* Cells */,
+				76AE76592B66AE2A00FBB7D3 /* RequestsJoinGroupFactory.swift */,
+				76AE765A2B66AE2A00FBB7D3 /* RequestsJoinGroupPresenter.swift */,
+				76AE765B2B66AE2A00FBB7D3 /* RequestsJoinGroupWorker.swift */,
+				76AE765C2B66AE2A00FBB7D3 /* RequestsJoinGroupRouter.swift */,
+				76AE765D2B66AE2A00FBB7D3 /* RequestsJoinGroupViewController.swift */,
+				76AE765E2B66AE2A00FBB7D3 /* RequestsJoinGroupInteractor.swift */,
+			);
+			path = RequestsJoinGroup;
+			sourceTree = "<group>";
+		};
+		76AE76652B66B0F800FBB7D3 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				76AE76662B66B10500FBB7D3 /* RequestsJoinGroupCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		76AF8DBB2B51EDE100E21CD5 /* GroupInfo */ = {
 			isa = PBXGroup;
 			children = (
@@ -2077,6 +2133,7 @@
 				76AF8DC12B51EDF400E21CD5 /* GroupInfoWorker.swift */,
 			);
 			name = GroupInfo;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		76AF8DC82B51EE7600E21CD5 /* Cells */ = {
@@ -2375,12 +2432,10 @@
 		76CAA17F2A8AA9ED00D742E9 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				76AE76572B66ADCD00FBB7D3 /* Group */,
 				76B1FC162B5D817A007D0519 /* ChatBot */,
 				7695DAF62B5B27A2002D91CB /* SystemSettings */,
-				761E38102B54BBF70080194C /* ChatGroup */,
 				7686A8852B545BE50025FBD3 /* AddMember */,
-				76AF8DBB2B51EDE100E21CD5 /* GroupInfo */,
-				763B03B72B4F74B40022E145 /* CreateGroup */,
 				76C6B74D2B4B228500285EE2 /* Map */,
 				76D246792AC4AE5F00FDA81E /* Chat */,
 				76CAA1802A8AA9ED00D742E9 /* Home */,
@@ -2894,12 +2949,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				764B13E92B61E94900C48FAE /* Localizable.strings in Resources */,
+				76AE766A2B66B59900FBB7D3 /* DenyAnimation.json in Resources */,
 				76CAA1452A8AA1F600D742E9 /* LaunchScreen.storyboard in Resources */,
 				76CAA1902A8AAC0100D742E9 /* GoogleService-Info.plist in Resources */,
 				7667DC782B4CDF5900938D6F /* TrashAnimation.json in Resources */,
 				7655EF152B6577690028054C /* TermsAndConditions.pdf in Resources */,
 				764B13EB2B61E95900C48FAE /* Main.xcstrings in Resources */,
 				76CAA1422A8AA1F600D742E9 /* Assets.xcassets in Resources */,
+				76AE766B2B66B59900FBB7D3 /* ApproveAnimation.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3028,6 +3085,7 @@
 				763B03B62B4F644F0022E145 /* StartGroupDTO.swift in Sources */,
 				767082592B4B81C20024EF41 /* HttpMethod.swift in Sources */,
 				7691DBFE2B499A2A007D52B3 /* RecentChatClient.swift in Sources */,
+				76016FFC2B66D067009264D9 /* RequestJoinGroupClient.swift in Sources */,
 				7691DBF82B499A2A007D52B3 /* SendMessage.swift in Sources */,
 				76E41BF62B562DEE00976A73 /* EditProfileClient.swift in Sources */,
 				7691DBFC2B499A2A007D52B3 /* ContactInfoClient.swift in Sources */,
@@ -3170,6 +3228,7 @@
 				76B1FC412B5DA466007D0519 /* ChatBotAIWorker.swift in Sources */,
 				761E38172B54BC080080194C /* ChatGroupFactory.swift in Sources */,
 				768E40DA2B4D9A5B009F8F7C /* KeyboardManager.swift in Sources */,
+				76AE76622B66AE2A00FBB7D3 /* RequestsJoinGroupRouter.swift in Sources */,
 				7686A88F2B545C0F0025FBD3 /* AddMembersViewController.swift in Sources */,
 				7620F2B62A92DE1B002A4EB5 /* SettingsRouter.swift in Sources */,
 				7608DE6C2A9BAFDE0036027A /* EditBioWorker.swift in Sources */,
@@ -3190,6 +3249,7 @@
 				7620F4522A9659F5002A4EB5 /* TellAFriendWorker.swift in Sources */,
 				76AF8DC22B51EDF400E21CD5 /* GroupInfoFactory.swift in Sources */,
 				76DA7EBE2AB78D1F00106731 /* RecentChatsRouter.swift in Sources */,
+				76AE76602B66AE2A00FBB7D3 /* RequestsJoinGroupPresenter.swift in Sources */,
 				7620F4612A96B31C002A4EB5 /* EditProfileHeaderCell.swift in Sources */,
 				76CAA18E2A8AAA6800D742E9 /* BabelResources.swift in Sources */,
 				76D246812AC4AE7000FDA81E /* ChatPresenter.swift in Sources */,
@@ -3197,6 +3257,7 @@
 				761E38252B54BD640080194C /* GroupMessageLayoutDelegate.swift in Sources */,
 				76DA7EBD2AB78D1F00106731 /* RecentChatsPresenter.swift in Sources */,
 				76CAA17C2A8AA99F00D742E9 /* AuthManager.swift in Sources */,
+				76AE765F2B66AE2A00FBB7D3 /* RequestsJoinGroupFactory.swift in Sources */,
 				7695DAFE2B5B27BD002D91CB /* SystemSettingsPresenter.swift in Sources */,
 				7669BA2D2ABDDA650002AD4C /* StartChat.swift in Sources */,
 				76AF8DC52B51EDF400E21CD5 /* GroupInfoViewController.swift in Sources */,
@@ -3208,6 +3269,7 @@
 				761011972B3A0168004639C4 /* InputBarAccessoryViewDelegate.swift in Sources */,
 				7695DAFF2B5B27BD002D91CB /* SystemSettingsRouter.swift in Sources */,
 				76B1FC2D2B5D85C6007D0519 /* ChatBotMessageCellDelegate.swift in Sources */,
+				76AE76632B66AE2A00FBB7D3 /* RequestsJoinGroupViewController.swift in Sources */,
 				76B1FC152B5D7004007D0519 /* OpenAIDTO.swift in Sources */,
 				76DA7EC12AB78D1F00106731 /* RecentChatsWorker.swift in Sources */,
 				7620F2DD2A92EF74002A4EB5 /* UsersWorker.swift in Sources */,
@@ -3226,6 +3288,7 @@
 				7620F4332A95694B002A4EB5 /* SettingsViewModel.swift in Sources */,
 				763B03C12B4F74EB0022E145 /* CreateGroupPresenter.swift in Sources */,
 				769E972E2AA3C4FC004FC6B4 /* ContactInfoPresenter.swift in Sources */,
+				76AE76672B66B10500FBB7D3 /* RequestsJoinGroupCell.swift in Sources */,
 				761011AC2B3A688F004639C4 /* IncomingMessage.swift in Sources */,
 				76CAA1892A8AA9ED00D742E9 /* HomeViewController.swift in Sources */,
 				7608DE7D2A9D248E0036027A /* UserContact.swift in Sources */,
@@ -3272,6 +3335,7 @@
 				76C6B75B2B4B22E900285EE2 /* MapViewController.swift in Sources */,
 				763B03C32B4F74EB0022E145 /* CreateGroupViewController.swift in Sources */,
 				7620F2D92A92EF74002A4EB5 /* UsersPresenter.swift in Sources */,
+				76AE76642B66AE2A00FBB7D3 /* RequestsJoinGroupInteractor.swift in Sources */,
 				7620F4502A9659F5002A4EB5 /* TellAFriendViewController.swift in Sources */,
 				76B1FC122B5D6F8A007D0519 /* OpenAICell.swift in Sources */,
 				767082622B4C4F4D0024EF41 /* MessageInputBarView.swift in Sources */,
@@ -3316,6 +3380,7 @@
 				763B03C42B4F74EB0022E145 /* CreateGroupInteractor.swift in Sources */,
 				7620F2DA2A92EF74002A4EB5 /* UsersRouter.swift in Sources */,
 				768F4EB52B4F4AD80051E970 /* GroupsInteractor.swift in Sources */,
+				76AE76612B66AE2A00FBB7D3 /* RequestsJoinGroupWorker.swift in Sources */,
 				76CAA18A2A8AA9ED00D742E9 /* HomeRouter.swift in Sources */,
 				7620F43F2A9592C2002A4EB5 /* EditProfilePresenter.swift in Sources */,
 				76B1FC1E2B5D819F007D0519 /* ChatBotPresenter.swift in Sources */,

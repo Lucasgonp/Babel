@@ -18,6 +18,23 @@
         }
       }
     },
+    "Accept" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accept"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aceitar"
+          }
+        }
+      }
+    },
     "Access not granted" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -446,6 +463,23 @@
         }
       }
     },
+    "Deny" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deny"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rejeitar"
+          }
+        }
+      }
+    },
     "Description" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -463,6 +497,23 @@
         }
       }
     },
+    "Do you want to accept this user to get into de group?" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do you want to accept this user to get into de group?"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deseja aprovar a solicitação de acesso ao group deste usuário?"
+          }
+        }
+      }
+    },
     "Do you want to delete this chat?" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -476,6 +527,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Você quer apagar essa conversa?"
+          }
+        }
+      }
+    },
+    "Do you want to deny this user request?" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do you want to deny this user request?"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deseja rejeitar a solicitação de acesso ao grupo deste usuário?"
           }
         }
       }
@@ -991,6 +1059,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Remover membro"
+          }
+        }
+      }
+    },
+    "Request sent, waiting for approval" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Request sent, waiting for approval"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solicitação enviada, aguardando aprovação"
+          }
+        }
+      }
+    },
+    "Requests to join group" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Requests to join group"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solicitações para entrar"
           }
         }
       }

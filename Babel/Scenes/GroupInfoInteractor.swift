@@ -11,6 +11,7 @@ protocol GroupInfoInteractorProtocol: AnyObject {
     func sendMessage()
     func exitGroup()
     func removeListeners()
+    func didTapOnRequestsToJoin()
 }
 
 final class GroupInfoInteractor {
@@ -188,6 +189,11 @@ extension GroupInfoInteractor: GroupInfoInteractorProtocol {
     
     func removeListeners() {
         worker.removeListeners()
+    }
+    
+    func didTapOnRequestsToJoin() {
+        guard let group else { return }
+        presenter.didNextStep(action: .pushRequestsToJoin(group: group))
     }
 }
 

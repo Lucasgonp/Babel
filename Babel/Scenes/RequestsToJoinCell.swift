@@ -81,9 +81,15 @@ final class RequestsToJoinCell: UITableViewCell, ViewConfiguration {
 }
 
 extension RequestsToJoinCell {
-    func render(icon: UIImage, text: String, counter: String) {
+    func render(icon: UIImage, text: String, counter: Int) {
         iconImageView.image = icon
         titleLabel.text = text
-        requestsCountLabel.text = "5"
+        
+        if counter == 0 {
+            requestsCounterView.isHidden = true
+        } else {
+            requestsCounterView.isHidden = false
+            requestsCountLabel.text = String(counter)
+        }
     }
 }

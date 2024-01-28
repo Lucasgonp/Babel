@@ -61,6 +61,7 @@ public extension GalleryController {
         
         var picker: YPImagePicker {
             var config = YPImagePickerConfiguration()
+            config.shouldSaveNewPicturesToAlbum = false
             config.showsVideoTrimmer = true
             config.library.maxNumberOfItems = 1
             config.video.libraryTimeLimit = 60.0
@@ -74,11 +75,12 @@ public extension GalleryController {
             case .camera:
                 config.screens = [.photo, .video]
                 config.showsVideoTrimmer = true
+                config.shouldSaveNewPicturesToAlbum = true
                 config.albumName = "Babel Images"
                 return YPImagePicker(configuration: config)
                 
             case .avatarPhoto:
-                config.screens = [.photo, .library]
+                config.screens = [.library, .photo]
                 config.library.mediaType = .photo
                 config.showsCrop = .circle
                 return YPImagePicker(configuration: config)
@@ -89,7 +91,6 @@ public extension GalleryController {
                 return YPImagePicker(configuration: config)
                 
             case let .cameraAndLibrary(maxNumberOfItems):
-                config.screens = [.photo, .video]
                 config.library.mediaType = .photoAndVideo
                 config.screens = [.library, .photo, .video]
                 config.library.maxNumberOfItems = maxNumberOfItems

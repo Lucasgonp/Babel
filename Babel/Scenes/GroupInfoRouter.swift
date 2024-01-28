@@ -2,6 +2,7 @@ import UIKit
 
 enum GroupInfoAction {
     case didExitGroup
+    case didExitGroupWith(_ completion: () -> Void)
     case pushRequestsToJoin(group: Group)
     case pushChatView(dto: ChatGroupDTO)
 }
@@ -19,6 +20,8 @@ extension GroupInfoRouter: GroupInfoRouterProtocol {
         switch action {
         case .didExitGroup:
             viewController?.navigationController?.popToRootViewController(animated: true)
+        case let .didExitGroupWith(completion):
+            viewController?.navigationController?.popToRootViewController(animated: true, completion: completion)
         case let .pushRequestsToJoin(group):
             let controller = RequestsJoinGroupFactory.make(requestsIds: group.requestToJoinMemberIds, groupId: group.id)
             viewController?.navigationController?.pushViewController(controller, animated: true)

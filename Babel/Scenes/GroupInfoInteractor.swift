@@ -156,13 +156,10 @@ extension GroupInfoInteractor: GroupInfoInteractorProtocol {
                         self.presenter.displayError(message: error.localizedDescription)
                     } else {
                         StartGroupChat.shared.deleteChat(chatRoomId: self.groupId, memberIds: self.membersIds)
-                        self.worker.deleteGroup(groupId: self.groupId) { [weak self] error in
-                            if let error {
-                                self?.presenter.displayError(message: error.localizedDescription)
-                            } else {
-                                self?.presenter.didNextStep(action: .didExitGroup)
-                            }
-                        }
+                        self.presenter.didNextStep(action: .didExitGroupWith({ [weak self] in
+                            guard let self else { return }
+                            self.worker.deleteGroup(groupId: self.groupId)
+                        }))
                     }
                 }
             }

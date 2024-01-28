@@ -12,7 +12,7 @@ protocol GroupInfoWorkerProtocol {
     func removeMember(_ member: User, groupId: String, completion: @escaping (Error?) -> Void)
     func updatePrivileges(isAdmin: Bool, groupId: String, userId: String, completion: @escaping (Error?) -> Void)
     func exitGroup(groupId: String, completion: @escaping (Error?) -> Void)
-    func deleteGroup(groupId: String, completion: @escaping (Error?) -> Void)
+    func deleteGroup(groupId: String)
     func removeListeners()
 }
 
@@ -76,11 +76,11 @@ extension GroupInfoWorker: GroupInfoWorkerProtocol {
         }
     }
     
-    func deleteGroup(groupId: String, completion: @escaping (Error?) -> Void) {
-        client.deleteGroup(groupId: groupId, completion: completion)
+    func deleteGroup(groupId: String) {
+        client.deleteGroup(groupId: groupId)
     }
     
     func removeListeners() {
-        client.removeListeners()
+        client.removeGroupInfoListener()
     }
 }

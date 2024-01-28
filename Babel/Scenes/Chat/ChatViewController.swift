@@ -71,11 +71,7 @@ final class ChatViewController: MessagesViewController {
     }()
     
     private lazy var attachActionSheet = makeAttachActionSheet()
-    private lazy var galleryController: GalleryController = {
-        let gallery = GalleryController()
-        gallery.configuration = .library
-        return gallery
-    }()
+    private var galleryController: GalleryController?
     
     private lazy var inputBar: InputBarAccessoryView = {
         let inputBar = MessageInputBarView()
@@ -344,17 +340,19 @@ private extension ChatViewController {
     }
     
     func makeAttachActionSheet() -> UIAlertController {
+        galleryController = GalleryController()
+        
         let cameraImage = UIImage(systemName: "camera")?.withRenderingMode(.alwaysTemplate)
         let cameraAction = UIAlertAction(title: Layout.Texts.camera, style: .default, image: cameraImage, handler: { [weak self] _ in
             self?.showLoadingView()
-            self?.galleryController.configuration = .camera
+            self?.galleryController?.configuration = .camera
             self?.showGalleryView()
         })
         
         let libraryImage = UIImage(systemName: "photo")?.withRenderingMode(.alwaysTemplate)
         let libraryAction = UIAlertAction(title: Layout.Texts.library, style: .default, image: libraryImage, handler: { [weak self] _ in
             self?.showLoadingView()
-            self?.galleryController.configuration = .library
+            self?.galleryController?.configuration = .library
             self?.showGalleryView()
         })
         
@@ -381,10 +379,12 @@ private extension ChatViewController {
     }
     
     func showGalleryView() {
-        galleryController.showMediaPicker(
+        galleryController?.showMediaPicker(
             from: navigationController,
             loadingViewDelegate: self,
             completion: { [weak self] items in
+                self?.galleryController = nil
+                
                 if let singlePhoto = items.singlePhoto {
                     self?.messageSend(photo: singlePhoto.image)
                 }

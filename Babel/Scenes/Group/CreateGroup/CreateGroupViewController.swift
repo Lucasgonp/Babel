@@ -48,11 +48,7 @@ final class CreateGroupViewController: ViewController<CreateGroupInteractorProto
         return textField
     }()
     
-    private lazy var galleryController: GalleryController = {
-        let gallery = GalleryController()
-        gallery.configuration = .avatarPhoto
-        return gallery
-    }()
+    private var galleryController: GalleryController?
     
     private lazy var groupDescNavigation: UINavigationController = {
         let controller = EditGroupDescViewController(description: groupDescription)
@@ -234,7 +230,11 @@ private extension CreateGroupViewController {
 
 extension CreateGroupViewController: EditProfileHeaderDelegate {
     func didTapOnEditAvatar() {
-        galleryController.showSinglePhotoPicker(from: navigationController) { [weak self] image in
+        galleryController = GalleryController()
+        galleryController?.configuration = .avatarPhoto
+        galleryController?.showSinglePhotoPicker(from: navigationController) { [weak self] image in
+            self?.galleryController = nil
+            
             if let image {
                 self?.groupAvatar = image
                 self?.headerCell?.update(image)

@@ -14,6 +14,8 @@ private extension RequestsJoinGroupViewController.Layout {
         static let acceptQuestion = Strings.GroupInfo.ActionSheet.acceptQuestion.localized()
         static let deny = Strings.GroupInfo.ActionSheet.deny.localized()
         static let denyQuestion = Strings.GroupInfo.ActionSheet.denyQuestion.localized()
+        static let noRequestsTitle = Strings.GroupInfo.noRequestsTitle.localized()
+        static let noRequestsDescription = Strings.GroupInfo.noRequestsDescription.localized()
     }
 }
 
@@ -30,10 +32,34 @@ final class RequestsJoinGroupViewController: ViewController<RequestsJoinGroupInt
         return tableView
     }()
     
+    private let emptyRequestsImageView: UIImageView = {
+        let image = UIImage(systemName: "person.and.person.fill")?.withRenderingMode(.alwaysOriginal).withTintColor(Color.grayscale500.uiColor)
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    private lazy var emptyRequestsView: UIStackView = {
+        let title = TextLabel()
+        title.text = Layout.Texts.noRequestsTitle
+        title.font = Font.xl.make(isBold: true)
+        title.numberOfLines = 0
+        title.textAlignment = .center
+        let description = TextLabel()
+        description.text = Layout.Texts.noRequestsDescription
+        description.textAlignment = .center
+        description.font = Font.md.uiFont
+        description.numberOfLines = 0
+        let stack = UIStackView(arrangedSubviews: [emptyRequestsImageView, title, description])
+        stack.axis = .vertical
+        stack.spacing = 8
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.isHidden = true
+        return stack
+    }()
+    
     private var users = [User]()
-    
-    private var removedUsersIdsFromList = [String]()
-    
     private var completionHandler: (() -> Void)? = nil
 
     override func viewDidLoad() {
@@ -42,20 +68,40 @@ final class RequestsJoinGroupViewController: ViewController<RequestsJoinGroupInt
     }
     
     override func buildViewHierarchy() {
+        view.addSubview(emptyRequestsView)
         view.fillWithSubview(subview: tableView)
+    }
+    
+    override func setupConstraints() {
+        NSLayoutConstraint.activate([
+            emptyRequestsView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            emptyRequestsView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            emptyRequestsView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+        ])
+        
+        NSLayoutConstraint.activate([
+            emptyRequestsImageView.heightAnchor.constraint(equalToConstant: 120),
+            emptyRequestsImageView.widthAnchor.constraint(equalToConstant: 120)
+        ])
     }
 
     override func configureViews() { 
         title = Layout.Texts.title
+        view.backgroundColor = Color.backgroundPrimary.uiColor
     }
 }
 
 extension RequestsJoinGroupViewController: RequestsJoinGroupDisplaying {
     func displayUsers(_ users: [User]) {
-        self.users = users
-        
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
+        if users.count == 0 {
+            setupEmptyView(show: true)
+        } else {
+            setupEmptyView(show: false)
+            self.users = users
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -145,6 +191,20 @@ private extension RequestsJoinGroupViewController {
         users.remove(at: indexPath.row)
         DispatchQueue.main.async {
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        
+        if users.count == 0 {
+            setupEmptyView(show: true)
+        }
+    }
+    
+    func setupEmptyView(show: Bool) {
+        if show {
+            tableView.isHidden = true
+            emptyRequestsView.isHidden = false
+        } else {
+            tableView.isHidden = false
+            emptyRequestsView.isHidden = true
         }
     }
 }

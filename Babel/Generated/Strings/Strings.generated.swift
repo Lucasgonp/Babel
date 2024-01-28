@@ -91,8 +91,10 @@ internal enum Strings {
     internal static let joinGroup = Strings.tr("Localizable", "GroupInfo.joinGroup", fallback: "Join group")
     /// Members
     internal static let members = Strings.tr("Localizable", "GroupInfo.members", fallback: "Members")
-    /// The group description is visible to members of this group and people invited to this group.
-    internal static let request = Strings.tr("Localizable", "GroupInfo.request", fallback: "The group description is visible to members of this group and people invited to this group.")
+    /// No pending requests to join into your group, when someone request to join it will appear here
+    internal static let noRequestsDescription = Strings.tr("Localizable", "GroupInfo.noRequestsDescription", fallback: "No pending requests to join into your group, when someone request to join it will appear here")
+    /// No pending requests
+    internal static let noRequestsTitle = Strings.tr("Localizable", "GroupInfo.noRequestsTitle", fallback: "No pending requests")
     /// Requests
     internal static let requests = Strings.tr("Localizable", "GroupInfo.requests", fallback: "Requests")
     /// Request sent, waiting for approval

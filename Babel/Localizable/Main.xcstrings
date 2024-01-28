@@ -942,6 +942,40 @@
         }
       }
     },
+    "No pending requests" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No pending requests"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sem solicitações"
+          }
+        }
+      }
+    },
+    "No pending requests to join into your group, when someone request to join it will appear here" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No pending requests to join into your group, when someone request to join it will appear here"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não há solicitações para entrar no grupo, quando alguém enviar uma solicitação aparecerá aqui"
+          }
+        }
+      }
+    },
     "Open AI" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1076,6 +1110,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Solicitação enviada, aguardando aprovação"
+          }
+        }
+      }
+    },
+    "Requests" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Requests"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solicitações"
           }
         }
       }

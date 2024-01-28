@@ -26,12 +26,16 @@ final class RequestsJoinGroupInteractor {
 
 extension RequestsJoinGroupInteractor: RequestsJoinGroupInteractorProtocol {
     func fetchRequests() {
-        worker.fetchRequests(usersIds: usersIds) { [weak self] result in
-            switch result {
-            case let .success(users):
-                self?.presenter.displayUsers(users)
-            case let .failure(error):
-                self?.presenter.displayError(message: error.localizedDescription)
+        if usersIds.count == 0 {
+            presenter.displayUsers([])
+        } else {
+            worker.fetchRequests(usersIds: usersIds) { [weak self] result in
+                switch result {
+                case let .success(users):
+                    self?.presenter.displayUsers(users)
+                case let .failure(error):
+                    self?.presenter.displayError(message: error.localizedDescription)
+                }
             }
         }
     }

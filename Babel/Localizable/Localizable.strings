@@ -87,12 +87,14 @@
 "GroupInfo.joinGroup" = "Join group";
 "GroupInfo.usersRequests" = "Users requests";
 "GroupInfo.addNewMember" = "Add new member";
+"GroupInfo.exitGroup" = "Exit group";
+"GroupInfo.descriptionInfo" = "The group description is visible to members of this group and people invited to this group.";
+
+"GroupInfo.noRequestsTitle" = "No pending requests";
+"GroupInfo.noRequestsDescription" = "No pending requests to join into your group, when someone request to join it will appear here";
 "GroupInfo.requestToJoin" = "Request to join";
 "GroupInfo.requestSent" = "Request sent, waiting for approval";
 "GroupInfo.requests" = "Requests";
-"GroupInfo.exitGroup" = "Exit group";
-"GroupInfo.descriptionInfo" = "The group description is visible to members of this group and people invited to this group.";
-"GroupInfo.request" = "The group description is visible to members of this group and people invited to this group.";
 
 "GroupInfo.ActionSheet.joinGroupQuestion" = "Do you want to join this group?";
 "GroupInfo.ActionSheet.exitGroupQuestion" = "Do you want to exit this group?";

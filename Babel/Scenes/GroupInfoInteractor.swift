@@ -29,7 +29,7 @@ final class GroupInfoInteractor {
     private var group: Group?
     private let groupId: String
     private var members = [User]()
-
+    
     init(worker: GroupInfoWorkerProtocol, presenter: GroupInfoPresenterProtocol, groupId: String) {
         self.worker = worker
         self.presenter = presenter
@@ -82,12 +82,12 @@ extension GroupInfoInteractor: GroupInfoInteractorProtocol {
         guard var group = group else { return }
         group.description = description
         worker.saveGroupToFirebase(group: group) { [weak self] error in
-                guard let self else { return }
-                if let error {
-                    self.presenter.displayError(message: error.localizedDescription)
-                } else {
-                    self.group = group
-                    self.presenter.updateGroupDesc(description)
+            guard let self else { return }
+            if let error {
+                self.presenter.displayError(message: error.localizedDescription)
+            } else {
+                self.group = group
+                self.presenter.updateGroupDesc(description)
             }
         }
     }
@@ -98,13 +98,6 @@ extension GroupInfoInteractor: GroupInfoInteractorProtocol {
             guard let self else { return }
             if let error {
                 self.presenter.displayError(message: error.localizedDescription)
-            } else {
-//                self.members.append(contentsOf: members)
-//                self.group?.membersIds.append(contentsOf: members.compactMap({ $0.id }))
-//                self.fetchGroupMembers(ids: self.members.compactMap({ $0.id })) { [weak self] users in
-//                    guard let self else { return }
-//                    self.presenter.displayGroup(with: self.group!, members: users)
-//                }
             }
         }
     }
@@ -135,14 +128,6 @@ extension GroupInfoInteractor: GroupInfoInteractorProtocol {
             guard let self else { return }
             if let error {
                 self.presenter.displayError(message: error.localizedDescription)
-            } else {
-//                self.fetchGroupData { [weak self] group in
-//                    guard let self else { return }
-//                    DispatchQueue.main.async {
-//                        self.group = group
-//                        self.presenter.displayGroup(with: group, members: self.members)
-//                    }
-//                }
             }
         }
     }
@@ -165,7 +150,21 @@ extension GroupInfoInteractor: GroupInfoInteractorProtocol {
                     }
                 }
             } else {
-                // Should delete group
+                worker.exitGroup(groupId: self.groupId) { [weak self] error in
+                    guard let self else { return }
+                    if let error {
+                        self.presenter.displayError(message: error.localizedDescription)
+                    } else {
+                        StartGroupChat.shared.deleteChat(chatRoomId: self.groupId, memberIds: self.membersIds)
+                        self.worker.deleteGroup(groupId: self.groupId) { [weak self] error in
+                            if let error {
+                                self?.presenter.displayError(message: error.localizedDescription)
+                            } else {
+                                self?.presenter.didNextStep(action: .didExitGroup)
+                            }
+                        }
+                    }
+                }
             }
         } else {
             worker.exitGroup(groupId: groupId) { [weak self] error in

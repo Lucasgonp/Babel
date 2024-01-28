@@ -281,6 +281,7 @@
 		769E97312AA3C4FC004FC6B4 /* ContactInfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E972B2AA3C4FC004FC6B4 /* ContactInfoInteractor.swift */; };
 		769E97322AA3C4FC004FC6B4 /* ContactInfoWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E972C2AA3C4FC004FC6B4 /* ContactInfoWorker.swift */; };
 		769E97352AA3CA1B004FC6B4 /* ContactInfoHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E97342AA3CA1B004FC6B4 /* ContactInfoHeaderCell.swift */; };
+		76AE76562B65EA8A00FBB7D3 /* RequestsToJoinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AE76552B65EA8A00FBB7D3 /* RequestsToJoinCell.swift */; };
 		76AF8DC22B51EDF400E21CD5 /* GroupInfoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AF8DBC2B51EDF400E21CD5 /* GroupInfoFactory.swift */; };
 		76AF8DC32B51EDF400E21CD5 /* GroupInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AF8DBD2B51EDF400E21CD5 /* GroupInfoPresenter.swift */; };
 		76AF8DC42B51EDF400E21CD5 /* GroupInfoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AF8DBE2B51EDF400E21CD5 /* GroupInfoRouter.swift */; };
@@ -808,6 +809,7 @@
 		769E972B2AA3C4FC004FC6B4 /* ContactInfoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoInteractor.swift; sourceTree = "<group>"; };
 		769E972C2AA3C4FC004FC6B4 /* ContactInfoWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoWorker.swift; sourceTree = "<group>"; };
 		769E97342AA3CA1B004FC6B4 /* ContactInfoHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoHeaderCell.swift; sourceTree = "<group>"; };
+		76AE76552B65EA8A00FBB7D3 /* RequestsToJoinCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsToJoinCell.swift; sourceTree = "<group>"; };
 		76AF8DBC2B51EDF400E21CD5 /* GroupInfoFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoFactory.swift; sourceTree = "<group>"; };
 		76AF8DBD2B51EDF400E21CD5 /* GroupInfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoPresenter.swift; sourceTree = "<group>"; };
 		76AF8DBE2B51EDF400E21CD5 /* GroupInfoRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoRouter.swift; sourceTree = "<group>"; };
@@ -2081,6 +2083,7 @@
 			isa = PBXGroup;
 			children = (
 				76AF8DC92B51EE8F00E21CD5 /* GroupInfoHeaderCell.swift */,
+				76AE76552B65EA8A00FBB7D3 /* RequestsToJoinCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -3213,6 +3216,7 @@
 				769E97322AA3C4FC004FC6B4 /* ContactInfoWorker.swift in Sources */,
 				76B1FC222B5D819F007D0519 /* ChatBotInteractor.swift in Sources */,
 				7686A88E2B545C0F0025FBD3 /* AddMembersRouter.swift in Sources */,
+				76AE76562B65EA8A00FBB7D3 /* RequestsToJoinCell.swift in Sources */,
 				76D246822AC4AE7000FDA81E /* ChatRouter.swift in Sources */,
 				76B1FC2A2B5D85C6007D0519 /* ChatBotInputBarAccessoryViewDelegate.swift in Sources */,
 				76CAA18B2A8AA9ED00D742E9 /* HomePresenter.swift in Sources */,

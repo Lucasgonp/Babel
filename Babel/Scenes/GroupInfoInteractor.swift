@@ -112,8 +112,6 @@ extension GroupInfoInteractor: GroupInfoInteractorProtocol {
         worker.requestToJoin(groupId: groupId) { [weak self] error in
             if let error {
                 self?.presenter.displayError(message: error.localizedDescription)
-            } else {
-                
             }
         }
     }

@@ -41,6 +41,7 @@ final class GroupInfoViewController: ViewController<GroupInfoInteractorProtocol,
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.register(cellType: GroupInfoHeaderCell.self)
         tableView.register(cellType: UITableViewCell.self)
+        tableView.register(cellType: RequestsToJoinCell.self)
         tableView.register(cellType: SettingsButtonCell.self)
         tableView.register(cellType: UserCell.self)
         tableView.delegate = self
@@ -173,11 +174,15 @@ extension GroupInfoViewController: UITableViewDelegate {
                 present(groupDescNavigation, animated: true)
             }
         case 2:
-            if isMember {
-                interactor.sendMessage()
+            if indexPath.row == 0 {
+                if isMember {
+                    interactor.sendMessage()
+                } else {
+                    let actionSheet = makeJoinGroupActionSheet(user: members[indexPath.row])
+                    present(actionSheet, animated: true)
+                }
             } else {
-                let actionSheet = makeJoinGroupActionSheet(user: members[indexPath.row])
-                present(actionSheet, animated: true)
+                didTapRequestsToJoin()
             }
         case 3:
             if isAdmin {
@@ -212,7 +217,7 @@ extension GroupInfoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 2:
-            return 1
+            return isAdmin ? 2 : 1
         case 3:
             return isAdmin ? members.count + 1 : members.count
         default:
@@ -254,6 +259,16 @@ extension GroupInfoViewController: UITableViewDataSource {
             cell.contentConfiguration = content
             return cell
         case 2:
+            if indexPath.row == 1 && isAdmin {
+                let cell: RequestsToJoinCell = tableView.makeCell(indexPath: indexPath, accessoryType: .disclosureIndicator)
+                cell.render(
+                    icon: UIImage(systemName: "person.crop.circle.badge.questionmark.fill")!.withRenderingMode(.alwaysTemplate),
+                    text: "Requests to join group",
+                    counter: "5"
+                )
+                return cell
+            }
+            
             if isMember {
                 let cell: SettingsButtonCell = tableView.makeCell(indexPath: indexPath, accessoryType: .disclosureIndicator)
                 let image = Icon.send.image.withTintColor(Color.primary500.uiColor)
@@ -288,12 +303,13 @@ extension GroupInfoViewController: UITableViewDataSource {
             button.setTitle(Layout.Texts.exitGroup, for: .normal)
             button.setTitleColor(Color.warning500.uiColor, for: .normal)
             let cell = UITableViewCell()
-            cell.fillWithSubview(subview: button, spacing: .init(top: 6, left: .zero, bottom: 6, right: .zero))
+            cell.fillWithSubview(subview: button, spacing: .init(top: 12, left: .zero, bottom: 6, right: .zero))
             return cell
         default:
             return UITableViewCell()
         }
     }
+    // paperplane.circle.fill
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if isAdmin {
@@ -382,9 +398,7 @@ private extension GroupInfoViewController {
     
     func makeJoinGroupActionSheet(user: User) -> UIAlertController {
         let joinGroupAction = UIAlertAction(title: Layout.Texts.joinGroup, style: .default, handler: { [weak self] _ in
-            guard let self else { return }
-//            self.interactor.addMembers([self.currentUser])
-            
+            self?.interactor.requestToJoin()
         })
         
         let actionSheet = UIAlertController(title: Layout.Texts.joinGroup, message: Layout.Texts.joinGroupQuestion, preferredStyle: .alert)
@@ -392,6 +406,12 @@ private extension GroupInfoViewController {
         actionSheet.addAction(UIAlertAction(title: Strings.Commons.cancel, style: .cancel, handler: nil))
         
         return actionSheet
+    }
+    
+    func didTapRequestsToJoin() {
+        let controller = UIViewController()
+        controller.view.backgroundColor = .red
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
 

@@ -53,7 +53,7 @@ extension GroupInfoWorker: GroupInfoWorkerProtocol {
     }
     
     func requestToJoin(groupId: String, completion: @escaping (Error?) -> Void) {
-        client.requestToJoin(currentUser, groupId: groupId, completion: completion)
+        client.requestToJoin(currentUser.id, groupId: groupId, completion: completion)
     }
     
     func removeMember(_ member: User, groupId: String, completion: @escaping (Error?) -> Void) {

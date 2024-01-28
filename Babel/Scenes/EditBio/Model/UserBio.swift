@@ -20,31 +20,31 @@ enum UserBio: CaseIterable {
     var rawValue: String {
         switch self {
         case .wellcome:
-            return Localizable.Options.wellcome
+            return Localizable.Options.wellcome.localized()
         case .available:
-            return Localizable.Options.available
+            return Localizable.Options.available.localized()
         case .busy:
-            return Localizable.Options.busy
+            return Localizable.Options.busy.localized()
         case .atSchool:
-            return Localizable.Options.atSchool
+            return Localizable.Options.atSchool.localized()
         case .atTheMovies:
-            return Localizable.Options.atTheMovies
+            return Localizable.Options.atTheMovies.localized()
         case .atWork:
-            return Localizable.Options.atWork
+            return Localizable.Options.atWork.localized()
         case .batteryAboutToDie:
-            return Localizable.Options.batteryAboutToDie
+            return Localizable.Options.batteryAboutToDie.localized()
         case .cantTalk:
-            return Localizable.Options.cantTalk
+            return Localizable.Options.cantTalk.localized()
         case .inAMetting:
-            return Localizable.Options.inAMetting
+            return Localizable.Options.inAMetting.localized()
         case .atTheGym:
-            return Localizable.Options.atTheGym
+            return Localizable.Options.atTheGym.localized()
         case .sleeping:
-            return Localizable.Options.sleeping
+            return Localizable.Options.sleeping.localized()
         case .urgentCallsOnly:
-            return Localizable.Options.urgentCallsOnly
+            return Localizable.Options.urgentCallsOnly.localized()
         case let .custom(text):
-            return text
+            return text.localized()
         }
     }
     

@@ -49,7 +49,7 @@ extension RecentChatsInteractor: RecentChatsInteractorProtocol {
                 guard let self else { return }
                 switch result {
                 case let .success(group):
-                    let dto = ChatGroupDTO(chatId: chat.chatRoomId, groupInfo: group, membersIds: group.members.compactMap({ $0.id }))
+                    let dto = ChatGroupDTO(chatId: chat.chatRoomId, groupInfo: group, membersIds: group.membersIds)
                     self.presenter.didNextStep(action: .pushToGroupChatView(dto: dto))
                 case let .failure(error):
                     fatalError("Error on get dto gorup: \(error.localizedDescription)")

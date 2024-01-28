@@ -12,7 +12,8 @@ public class FirebaseClient {
     weak var typingListener: ListenerRegistration?
     
     // GroupListenner
-    weak var groupListenner: ListenerRegistration?
+    weak var groupsListenner: ListenerRegistration?
+    weak var groupInfoListenner: ListenerRegistration?
     
     private let firestore: Firestore = .firestore()
     
@@ -31,5 +32,14 @@ extension FirebaseClient {
         } catch {
             print("erro saving recent chat", error.localizedDescription)
         }
+    }
+    
+    public func removeListeners() {
+        typingListener?.remove()
+        newChatListener?.remove()
+        updatedChatListener?.remove()
+        chatBotListener?.remove()
+        groupsListenner?.remove()
+        groupInfoListenner?.remove()
     }
 }

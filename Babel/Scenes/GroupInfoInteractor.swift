@@ -5,10 +5,12 @@ protocol GroupInfoInteractorProtocol: AnyObject {
     func updateGroupInfo(dto: EditGroupDTO)
     func updateGroupDesc(_ description: String)
     func addMembers(_ users: [User])
+    func requestToJoin()
     func removeMember(_ user: User)
     func updatePrivileges(for member: User, isAdmin: Bool)
     func sendMessage()
     func exitGroup()
+    func removeListeners()
 }
 
 final class GroupInfoInteractor {
@@ -20,7 +22,7 @@ final class GroupInfoInteractor {
     }
     
     private var membersIds: [String] {
-        group?.members.compactMap({ $0.id }) ?? []
+        group?.membersIds ?? []
     }
     
     private var group: Group?
@@ -39,8 +41,9 @@ extension GroupInfoInteractor: GroupInfoInteractorProtocol {
         presenter.displayLoading(isLoading: true)
         fetchGroupData { [weak self] group in
             self?.group = group
-            let memberIds = group.members.compactMap({ $0.id })
+            let memberIds = group.membersIds
             self?.fetchGroupMembers(ids: memberIds) { [weak self] users in
+                self?.group?.membersIds = users.compactMap({ $0.id })
                 self?.members = users
                 DispatchQueue.main.async {
                     self?.presenter.displayLoading(isLoading: false)
@@ -88,32 +91,41 @@ extension GroupInfoInteractor: GroupInfoInteractorProtocol {
         }
     }
     
-    func addMembers(_ users: [User]) {
-        let members = users.compactMap({ Group.Member(id: $0.id, name: $0.name) })
-        worker.addMembers(members, groupId: groupId) { [weak self] error in
+    func addMembers(_ members: [User]) {
+        let membersIds = members.compactMap({ $0.id })
+        worker.addMembers(membersIds, groupId: groupId) { [weak self] error in
             guard let self else { return }
             if let error {
                 self.presenter.displayError(message: error.localizedDescription)
             } else {
-                self.members.append(contentsOf: users)
-                self.group?.members.append(contentsOf: members)
-                self.fetchGroupMembers(ids: self.members.compactMap({ $0.id })) { [weak self] users in
-                    guard let self else { return }
-                    self.presenter.displayGroup(with: self.group!, members: users)
-                }
+//                self.members.append(contentsOf: members)
+//                self.group?.membersIds.append(contentsOf: members.compactMap({ $0.id }))
+//                self.fetchGroupMembers(ids: self.members.compactMap({ $0.id })) { [weak self] users in
+//                    guard let self else { return }
+//                    self.presenter.displayGroup(with: self.group!, members: users)
+//                }
             }
         }
     }
     
-    func removeMember(_ user: User) {
-        let member = Group.Member(id: user.id, name: user.name)
+    func requestToJoin() {
+        worker.requestToJoin(groupId: groupId) { [weak self] error in
+            if let error {
+                self?.presenter.displayError(message: error.localizedDescription)
+            } else {
+                
+            }
+        }
+    }
+    
+    func removeMember(_ member: User) {
         worker.removeMember(member, groupId: groupId) { [weak self] error in
             guard let self else { return }
             if let error {
                 self.presenter.displayError(message: error.localizedDescription)
             } else {
-                self.members.removeAll(where: { $0 == user })
-                self.group?.members.removeAll(where: { $0 == member })
+                self.members.removeAll(where: { $0 == member })
+                self.group?.membersIds.removeAll(where: { $0 == member.id })
                 self.presenter.displayGroup(with: self.group!, members: self.members)
             }
         }
@@ -125,13 +137,13 @@ extension GroupInfoInteractor: GroupInfoInteractorProtocol {
             if let error {
                 self.presenter.displayError(message: error.localizedDescription)
             } else {
-                self.fetchGroupData { [weak self] group in
-                    guard let self else { return }
-                    DispatchQueue.main.async {
-                        self.group = group
-                        self.presenter.displayGroup(with: group, members: self.members)
-                    }
-                }
+//                self.fetchGroupData { [weak self] group in
+//                    guard let self else { return }
+//                    DispatchQueue.main.async {
+//                        self.group = group
+//                        self.presenter.displayGroup(with: group, members: self.members)
+//                    }
+//                }
             }
         }
     }
@@ -139,9 +151,9 @@ extension GroupInfoInteractor: GroupInfoInteractorProtocol {
     func exitGroup() {
         let isLastAdm = (group?.adminIds.count == 1) && (group?.adminIds.contains({ currentUser.id }()) == true)
         if isLastAdm {
-            if group!.members.count > 1 {
-                let otherMembers = group!.members.filter({ $0.id != currentUser.id }).first!
-                worker.updatePrivileges(isAdmin: true, groupId: groupId, userId: otherMembers.id) { [weak self] error in
+            if group!.membersIds.count > 1 {
+                let otherMembers = group!.membersIds.filter({ $0 != currentUser.id }).first!
+                worker.updatePrivileges(isAdmin: true, groupId: groupId, userId: otherMembers) { [weak self] error in
                     guard let self else { return }
                     self.worker.exitGroup(groupId: self.groupId) { [weak self] error in
                         guard let self else { return }
@@ -174,6 +186,10 @@ extension GroupInfoInteractor: GroupInfoInteractorProtocol {
         let chatId = StartGroupChat.shared.startChat(group: group)
         let chatDTO = ChatGroupDTO(chatId: chatId, groupInfo: group, membersIds: members.compactMap({ $0.id }))
         presenter.didNextStep(action: .pushChatView(dto: chatDTO))
+    }
+    
+    func removeListeners() {
+        worker.removeListeners()
     }
 }
 

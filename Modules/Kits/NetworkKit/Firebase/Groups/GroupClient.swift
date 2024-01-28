@@ -4,15 +4,17 @@ import FirebaseFirestoreSwift
 public protocol GroupClientProtocol {
     func downloadGroup<T: Decodable>(id: String, completion: @escaping ((Result<T, FirebaseError>) -> Void))
     func updateGroupInfo<T: Encodable>(id: String, dto: T, completion: @escaping (Error?) -> Void)
-    func addMembers<T: Encodable>(_ members: [T], groupId: String, completion: @escaping (Error?) -> Void)
-    func removeMember<T: Encodable>(_ member: T, groupId: String, completion: @escaping (Error?) -> Void)
+    func requestToJoin<T: Encodable>(_ member: T, groupId: String, completion: @escaping (Error?) -> Void)
+    func addMembers(_ memberIds: [String], groupId: String, completion: @escaping (Error?) -> Void)
+    func removeMember(_ memberId: String, groupId: String, completion: @escaping (Error?) -> Void)
     func updatePrivileges(isAdmin: Bool, groupId: String, for userId: String, completion: @escaping (Error?) -> Void)
     func updateGroupName(name: String, avatarLink: String, groupId: String)
+    func removeListeners()
 }
 
 extension FirebaseClient: GroupClientProtocol {
     public func downloadGroup<T: Decodable>(id: String, completion: @escaping ((Result<T, FirebaseError>) -> Void)) {
-        firebaseReference(.group).document(id).getDocument { (querySnapshot, error) in
+        groupInfoListenner = firebaseReference(.group).document(id).addSnapshotListener { (querySnapshot, error) in
             if let error {
                 return completion(.failure(.custom(error)))
             }
@@ -56,24 +58,24 @@ extension FirebaseClient: GroupClientProtocol {
             }
     }
     
-    public func addMembers<T: Encodable>(_ members: [T], groupId: String, completion: @escaping (Error?) -> Void) {
+    public func addMembers(_ memberIds: [String], groupId: String, completion: @escaping (Error?) -> Void) {
+        let fields = [kMEMBERSIDS: FieldValue.arrayUnion(memberIds)]
+        firebaseReference(.group).document(groupId).updateData(fields, completion: completion)
+    }
+    
+    public func requestToJoin<T: Encodable>(_ member: T, groupId: String, completion: @escaping (Error?) -> Void) {
         do {
-            let encodedMembers = try members.compactMap({ try Firestore.Encoder().encode($0) })
-            let fields = [kMEMBERS: FieldValue.arrayUnion(encodedMembers)]
+            let encodedMember = try Firestore.Encoder().encode(member)
+            let fields = [kREQUESTSTOJOIN: FieldValue.arrayUnion([encodedMember])]
             firebaseReference(.group).document(groupId).updateData(fields, completion: completion)
         } catch {
             completion(error)
         }
     }
     
-    public func removeMember<T: Encodable>(_ member: T, groupId: String, completion: @escaping (Error?) -> Void) {
-        do {
-            let encodedMember = try Firestore.Encoder().encode(member)
-            let fields = [kMEMBERS: FieldValue.arrayRemove([encodedMember])]
-            firebaseReference(.group).document(groupId).updateData(fields, completion: completion)
-        } catch {
-            completion(error)
-        }
+    public func removeMember(_ memberId: String, groupId: String, completion: @escaping (Error?) -> Void) {
+        let fields = [kMEMBERSIDS: FieldValue.arrayRemove([memberId])]
+        firebaseReference(.group).document(groupId).updateData(fields, completion: completion)
     }
     
     public func updatePrivileges(isAdmin: Bool, groupId: String, for userId: String, completion: @escaping (Error?) -> Void) {

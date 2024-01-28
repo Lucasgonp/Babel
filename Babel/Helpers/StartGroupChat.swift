@@ -19,7 +19,7 @@ final class StartGroupChat {
         let dto = StartChatDTO(
             chatRoomId: group.id,
             chatRoomKey: StorageKey.chatRoomId.rawValue,
-            membersIdsToCreateRecent: group.members.compactMap({ $0.id }),
+            membersIdsToCreateRecent: group.membersIds.compactMap({ $0 }),
             senderKey: StorageKey.senderId.rawValue
         )
         
@@ -27,21 +27,21 @@ final class StartGroupChat {
             guard let self else { return }
             
             for userId in membersIdsToCreateRecent {
-                let currentMember = group.members.first(where: { $0.id == self.currentUser.id })!
-                let receiverMember = group.members.first(where: { $0.id == userId })!
+                let currentMember = group.membersIds.first(where: { $0 == self.currentUser.id })!
+                let receiverMember = group.membersIds.first(where: { $0 == userId })!
                 
                 let senderUser = userId == currentUser.id ? currentMember : receiverMember
                 let receiverUser = userId == currentUser.id ? receiverMember : currentMember
                 
-                let memberIds = group.members.compactMap({ $0.id })
+                let memberIds = group.membersIds.compactMap({ $0 })
                 
                 let recentObject = RecentChatModel(
                     id: UUID().uuidString,
                     chatRoomId: chatRoomId,
-                    senderId: senderUser.id,
-                    senderName: senderUser.name,
+                    senderId: senderUser,
+                    senderName: String(),
                     receiverId: userId,
-                    receiverName: receiverUser.name,
+                    receiverName: String(),
                     membersId: memberIds,
                     lastMassage: String(),
                     unreadCounter: 0,
@@ -60,7 +60,7 @@ final class StartGroupChat {
 }
 
 private extension StartGroupChat {
-    func getReceiverFrom(users: [Group.Member]) -> Group.Member {
+    func getReceiverFrom(users: [User]) -> User {
         var allUsers = users
         if let currentUser = allUsers.firstIndex(where: { $0.id == currentUser.id }) {
             allUsers.remove(at: currentUser)

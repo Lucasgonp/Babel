@@ -6,14 +6,9 @@ struct Group: Codable, Equatable {
     var name: String
     var description: String
     var avatarLink: String
-    var members: [Member]
+    var membersIds: [String]
     var adminIds: [String]
-    var removedMembers: [Member] = []
+    var removedMembersIds: [String] = []
     var requestToJoinMemberIds: [String] = []
     @ServerTimestamp var createdDate = Date()
-    
-    struct Member: Codable, Equatable {
-        let id: String
-        let name: String
-    }
 }

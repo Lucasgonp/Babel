@@ -157,6 +157,7 @@ extension EditGroupViewController: TextFieldDelegate {
             self?.galleryController = nil
             if let singlePhoto = mediaItems.singlePhoto {
                 self?.avatarImageView.image = singlePhoto.image
+                self?.doneButton.isEnabled = true
             }
         }
     }

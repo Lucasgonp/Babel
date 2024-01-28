@@ -59,11 +59,4 @@ extension FirebaseClient: ChatListenerProtocol {
             }
         })
     }
-    
-    public func removeListeners() {
-        typingListener?.remove()
-        newChatListener?.remove()
-        updatedChatListener?.remove()
-        chatBotListener?.remove()
-    }
 }

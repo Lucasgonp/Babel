@@ -36,13 +36,12 @@ extension CreateGroupInteractor: CreateGroupInteractorProtocol {
         presenter.setLoading(isLoading: true)
         uploadImage(dto.avatarImage) { [weak self] avatarLink in
             guard let self else { return }
-            let members = dto.members.compactMap({ Group.Member(id: $0.id, name: $0.name) })
             let group = Group(
                 id: dto.id,
                 name: dto.name,
                 description: dto.description ?? String(),
                 avatarLink: avatarLink ?? String(),
-                members: members,
+                membersIds: dto.members.compactMap({ $0.id }),
                 adminIds: [self.currentUser.id]
             )
             self.worker.addGroup(group) { error in

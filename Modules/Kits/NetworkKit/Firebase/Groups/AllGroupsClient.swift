@@ -4,7 +4,7 @@ public protocol AllGroupsClientProtocol {
 
 extension FirebaseClient: AllGroupsClientProtocol {
     public func downloadAllGroups<T: Decodable>(completion: @escaping ((Result<[T], FirebaseError>) -> Void)) {
-        groupListenner = firebaseReference(.group).limit(to: 500).addSnapshotListener( { (querySnapshot, error) in
+        groupsListenner = firebaseReference(.group).limit(to: 500).addSnapshotListener( { (querySnapshot, error) in
             if let error {
                 return completion(.failure(.custom(error)))
             }

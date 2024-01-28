@@ -98,6 +98,8 @@ final class GroupInfoViewController: ViewController<GroupInfoInteractorProtocol,
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        interactor.removeListeners()
+        
         guard let editGroupDTO, didUpdateGroup else { return }
         delegate?.didUpdateGroupInfo(dto: editGroupDTO)
     }
@@ -240,10 +242,15 @@ extension GroupInfoViewController: UITableViewDataSource {
             headerCell = cell
             return cell
         case 1:
+            
             let cell: UITableViewCell = tableView.makeCell(indexPath: indexPath, accessoryType: isMember ? .disclosureIndicator : .none)
             var content = cell.defaultContentConfiguration()
-            content.text = groupDescription.isEmpty ? Layout.Texts.addGroupDescription : groupDescription
-            content.textProperties.color = groupDescription.isEmpty ? Color.blueNative.uiColor : cell.defaultContentConfiguration().textProperties.color
+            if groupDescription.isEmpty && !isMember {
+                content.text = "No group description"
+            } else {
+                content.text = groupDescription.isEmpty ? Layout.Texts.addGroupDescription : groupDescription
+            }
+            content.textProperties.color = (groupDescription.isEmpty && isMember) ? Color.blueNative.uiColor : cell.defaultContentConfiguration().textProperties.color
             cell.contentConfiguration = content
             return cell
         case 2:
@@ -376,7 +383,8 @@ private extension GroupInfoViewController {
     func makeJoinGroupActionSheet(user: User) -> UIAlertController {
         let joinGroupAction = UIAlertAction(title: Layout.Texts.joinGroup, style: .default, handler: { [weak self] _ in
             guard let self else { return }
-            self.interactor.addMembers([self.currentUser])
+//            self.interactor.addMembers([self.currentUser])
+            
         })
         
         let actionSheet = UIAlertController(title: Layout.Texts.joinGroup, message: Layout.Texts.joinGroupQuestion, preferredStyle: .alert)

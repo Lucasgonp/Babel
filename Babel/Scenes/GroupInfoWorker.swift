@@ -7,10 +7,12 @@ protocol GroupInfoWorkerProtocol {
     func updateAvatarImage(_ image: UIImage, directory: String, completion: @escaping (String?) -> Void)
     func saveGroupToFirebase(group: Group, completion: @escaping (Error?) -> Void)
     func saveGroupInRecentChats(group: Group)
-    func addMembers(_ members: [Group.Member], groupId: String, completion: @escaping (Error?) -> Void)
-    func removeMember(_ member: Group.Member, groupId: String, completion: @escaping (Error?) -> Void)
+    func addMembers(_ membersIds: [String], groupId: String, completion: @escaping (Error?) -> Void)
+    func requestToJoin(groupId: String, completion: @escaping (Error?) -> Void)
+    func removeMember(_ member: User, groupId: String, completion: @escaping (Error?) -> Void)
     func updatePrivileges(isAdmin: Bool, groupId: String, userId: String, completion: @escaping (Error?) -> Void)
     func exitGroup(groupId: String, completion: @escaping (Error?) -> Void)
+    func removeListeners()
 }
 
 final class GroupInfoWorker {
@@ -46,12 +48,16 @@ extension GroupInfoWorker: GroupInfoWorkerProtocol {
         client.updateGroupName(name: group.name, avatarLink: group.avatarLink, groupId: group.id)
     }
     
-    func addMembers(_ members: [Group.Member], groupId: String, completion: @escaping (Error?) -> Void) {
-        client.addMembers(members, groupId: groupId, completion: completion)
+    func addMembers(_ membersIds: [String], groupId: String, completion: @escaping (Error?) -> Void) {
+        client.addMembers(membersIds, groupId: groupId, completion: completion)
     }
     
-    func removeMember(_ member: Group.Member, groupId: String, completion: @escaping (Error?) -> Void) {
-        client.removeMember(member, groupId: groupId, completion: completion)
+    func requestToJoin(groupId: String, completion: @escaping (Error?) -> Void) {
+        client.requestToJoin(currentUser, groupId: groupId, completion: completion)
+    }
+    
+    func removeMember(_ member: User, groupId: String, completion: @escaping (Error?) -> Void) {
+        client.removeMember(member.id, groupId: groupId, completion: completion)
     }
     
     func updatePrivileges(isAdmin: Bool, groupId: String, userId: String, completion: @escaping (Error?) -> Void) {
@@ -64,9 +70,12 @@ extension GroupInfoWorker: GroupInfoWorkerProtocol {
             if let error {
                 completion(error)
             } else {
-                let member = Group.Member(id: self.currentUser.id, name: self.currentUser.name)
-                self.client.removeMember(member, groupId: groupId, completion: completion)
+                self.client.removeMember(self.currentUser.id, groupId: groupId, completion: completion)
             }
         }
+    }
+    
+    func removeListeners() {
+        client.removeListeners()
     }
 }

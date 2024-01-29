@@ -4,7 +4,7 @@ import StorageKit
 final class StartGroupChat {
     static let shared = StartGroupChat()
     
-    private let client: StartChatClientProtocol & RecentChatClientProtocol = FirebaseClient.shared
+    private let client: StartChatClientProtocol & GroupClientProtocol = FirebaseClient.shared
     private let currentUser = UserSafe.shared.user
     
     private init() {}
@@ -55,7 +55,7 @@ final class StartGroupChat {
     }
     
     func deleteChat(chatRoomId: String, memberIds: [String]) {
-        client.deleteRecentChat(key: StorageKey.senderId.rawValue, currentUserId: currentUser.id)
+        client.deleteRecentGroupChat(key: StorageKey.receiverId.rawValue, currentUserId: currentUser.id)
     }
 }
 

@@ -10,6 +10,7 @@ public protocol GroupClientProtocol {
     func updatePrivileges(isAdmin: Bool, groupId: String, for userId: String, completion: @escaping (Error?) -> Void)
     func updateGroupName(name: String, avatarLink: String, groupId: String)
     func deleteGroup(groupId: String)
+    func deleteRecentGroupChat(key: String, currentUserId: String)
     func removeGroupInfoListener()
 }
 
@@ -87,6 +88,18 @@ extension FirebaseClient: GroupClientProtocol {
     
     public func deleteGroup(groupId: String) {
         firebaseReference(.group).document(groupId).delete()
+    }
+    
+    public func deleteRecentGroupChat(key: String, currentUserId: String) {
+        firebaseReference(.recent)
+            .whereField("type", isEqualTo: "group")
+            .whereField(key, isEqualTo: currentUserId)
+            .getDocuments { [weak self] snapshot, error in
+            guard let documents = snapshot?.documents, let document = documents.first else {
+                return
+            }
+            self?.firebaseReference(.recent).document(document.documentID).delete()
+        }
     }
     
     public func removeGroupInfoListener() {

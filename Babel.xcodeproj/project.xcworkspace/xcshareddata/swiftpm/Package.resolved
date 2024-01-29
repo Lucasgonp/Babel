@@ -92,6 +92,15 @@
         }
       },
       {
+        "package": "Kingfisher",
+        "repositoryURL": "https://github.com/onevcat/Kingfisher",
+        "state": {
+          "branch": null,
+          "revision": "3ec0ab0bca4feb56e8b33e289c9496e89059dd08",
+          "version": "7.10.2"
+        }
+      },
+      {
         "package": "leveldb",
         "repositoryURL": "https://github.com/firebase/leveldb.git",
         "state": {
@@ -125,15 +134,6 @@
           "branch": null,
           "revision": "819d0a2173aff699fb8c364b6fb906f7cdb1a692",
           "version": "2.30909.0"
-        }
-      },
-      {
-        "package": "OpenAI",
-        "repositoryURL": "https://github.com/MacPaw/OpenAI",
-        "state": {
-          "branch": null,
-          "revision": "ac5892fd0de8d283362ddc30f8e9f1a0eaba8cc0",
-          "version": "0.2.5"
         }
       },
       {
@@ -179,15 +179,6 @@
           "branch": null,
           "revision": "569c656a8494ad03d790fd1075338c1da92d495a",
           "version": "10.45.2"
-        }
-      },
-      {
-        "package": "SDWebImage",
-        "repositoryURL": "https://github.com/SDWebImage/SDWebImage",
-        "state": {
-          "branch": null,
-          "revision": "fd010e54231331fc19338f81c6d072cd9ace2825",
-          "version": "5.18.8"
         }
       },
       {

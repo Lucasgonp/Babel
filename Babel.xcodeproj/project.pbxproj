@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		76016FFC2B66D067009264D9 /* RequestJoinGroupClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76016FFB2B66D067009264D9 /* RequestJoinGroupClient.swift */; };
+		76016FFF2B672238009264D9 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 76016FFE2B672238009264D9 /* Kingfisher */; };
 		7608DE542A999F050036027A /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE532A999F050036027A /* StorageManager.swift */; };
 		7608DE672A9BAFDE0036027A /* EditBioFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE612A9BAFDE0036027A /* EditBioFactory.swift */; };
 		7608DE682A9BAFDE0036027A /* EditBioPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7608DE622A9BAFDE0036027A /* EditBioPresenter.swift */; };
@@ -329,7 +330,6 @@
 		76B1FC412B5DA466007D0519 /* ChatBotAIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC402B5DA466007D0519 /* ChatBotAIWorker.swift */; };
 		76B1FC482B5DACEA007D0519 /* RemoteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC472B5DACEA007D0519 /* RemoteConfig.swift */; };
 		76B1FC4A2B5DB368007D0519 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 76B1FC492B5DB368007D0519 /* FirebaseRemoteConfig */; };
-		76B1FC4D2B5DC13E007D0519 /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 76B1FC4C2B5DC13E007D0519 /* OpenAI */; };
 		76B1FC4F2B5DE913007D0519 /* RemoteConfigKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC4E2B5DE913007D0519 /* RemoteConfigKeys.swift */; };
 		76B487802B49CA95001FC465 /* Dependencies.h in Headers */ = {isa = PBXBuildFile; fileRef = 76B4877F2B49CA95001FC465 /* Dependencies.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		76B487832B49CA95001FC465 /* Dependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76B4877D2B49CA95001FC465 /* Dependencies.framework */; };
@@ -351,8 +351,6 @@
 		76B487A32B49CBD5001FC465 /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 76B487A22B49CBD5001FC465 /* MessageKit */; };
 		76B487A62B49CBE6001FC465 /* InputBarAccessoryView in Frameworks */ = {isa = PBXBuildFile; productRef = 76B487A52B49CBE6001FC465 /* InputBarAccessoryView */; };
 		76B487A92B49CC0B001FC465 /* SKPhotoBrowser in Frameworks */ = {isa = PBXBuildFile; productRef = 76B487A82B49CC0B001FC465 /* SKPhotoBrowser */; };
-		76B487AB2B49CDCA001FC465 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 76B487AA2B49CDCA001FC465 /* SDWebImage */; };
-		76B487AD2B49CDCA001FC465 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 76B487AC2B49CDCA001FC465 /* SDWebImageMapKit */; };
 		76B5040C2B47600300966DB6 /* PhotoMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B5040B2B47600300966DB6 /* PhotoMessage.swift */; };
 		76C6B7472B4AFEBB00285EE2 /* YPImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = 76C6B7462B4AFEBB00285EE2 /* YPImagePicker */; };
 		76C6B7492B4B040000285EE2 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C6B7482B4B03FF00285EE2 /* LocationManager.swift */; };
@@ -952,6 +950,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76016FFF2B672238009264D9 /* Kingfisher in Frameworks */,
 				76B4878A2B49CADB001FC465 /* Dependencies.framework in Frameworks */,
 				76DA2D8C2B49BC510019E98E /* DesignKit.framework in Frameworks */,
 			);
@@ -990,9 +989,7 @@
 				76B4878E2B49CB3B001FC465 /* FirebaseAnalytics in Frameworks */,
 				76B1FC4A2B5DB368007D0519 /* FirebaseRemoteConfig in Frameworks */,
 				76B487902B49CB3B001FC465 /* FirebaseAuth in Frameworks */,
-				76B487AB2B49CDCA001FC465 /* SDWebImage in Frameworks */,
 				76B487A92B49CC0B001FC465 /* SKPhotoBrowser in Frameworks */,
-				76B487AD2B49CDCA001FC465 /* SDWebImageMapKit in Frameworks */,
 				76B487A32B49CBD5001FC465 /* MessageKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1003,7 +1000,6 @@
 			files = (
 				76B487832B49CA95001FC465 /* Dependencies.framework in Frameworks */,
 				7667DC742B4CDF1D00938D6F /* Lottie in Frameworks */,
-				76B1FC4D2B5DC13E007D0519 /* OpenAI in Frameworks */,
 				7691DB8E2B499862007D52B3 /* NetworkKit.framework in Frameworks */,
 				7691DCE02B49A75B007D52B3 /* DesignKit.framework in Frameworks */,
 				7691DCE42B49A766007D52B3 /* GalleryKit.framework in Frameworks */,
@@ -2655,6 +2651,7 @@
 			);
 			name = StorageKit;
 			packageProductDependencies = (
+				76016FFE2B672238009264D9 /* Kingfisher */,
 			);
 			productName = StorageKit;
 			productReference = 7691DBA22B4998EA007D52B3 /* StorageKit.framework */;
@@ -2730,8 +2727,6 @@
 				76B487A22B49CBD5001FC465 /* MessageKit */,
 				76B487A52B49CBE6001FC465 /* InputBarAccessoryView */,
 				76B487A82B49CC0B001FC465 /* SKPhotoBrowser */,
-				76B487AA2B49CDCA001FC465 /* SDWebImage */,
-				76B487AC2B49CDCA001FC465 /* SDWebImageMapKit */,
 				76B1FC492B5DB368007D0519 /* FirebaseRemoteConfig */,
 			);
 			productName = Dependencies;
@@ -2762,7 +2757,6 @@
 			name = Babel;
 			packageProductDependencies = (
 				7667DC732B4CDF1D00938D6F /* Lottie */,
-				76B1FC4C2B5DC13E007D0519 /* OpenAI */,
 			);
 			productName = Babel;
 			productReference = 76CAA1352A8AA1F400D742E9 /* Babel.app */;
@@ -2861,14 +2855,13 @@
 			mainGroup = 76CAA12C2A8AA1F400D742E9;
 			packageReferences = (
 				7691DC1E2B49A0E6007D52B3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				7691DCDB2B49A6F5007D52B3 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				76B4879B2B49CB99001FC465 /* XCRemoteSwiftPackageReference "ProgressHUD" */,
 				76B4879E2B49CBBD001FC465 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				76B487A12B49CBD5001FC465 /* XCRemoteSwiftPackageReference "MessageKit" */,
 				76B487A42B49CBE6001FC465 /* XCRemoteSwiftPackageReference "InputBarAccessoryView" */,
 				76B487A72B49CC0B001FC465 /* XCRemoteSwiftPackageReference "SKPhotoBrowser" */,
 				7667DC722B4CDF1D00938D6F /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				76B1FC4B2B5DC13E007D0519 /* XCRemoteSwiftPackageReference "OpenAI" */,
+				76016FFD2B672238009264D9 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 76CAA1362A8AA1F400D742E9 /* Products */;
 			projectDirPath = "";
@@ -4503,6 +4496,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		76016FFD2B672238009264D9 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.10.2;
+			};
+		};
 		7667DC722B4CDF1D00938D6F /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios";
@@ -4517,22 +4518,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 10.19.1;
-			};
-		};
-		7691DCDB2B49A6F5007D52B3 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.18.8;
-			};
-		};
-		76B1FC4B2B5DC13E007D0519 /* XCRemoteSwiftPackageReference "OpenAI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/MacPaw/OpenAI";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.2.5;
 			};
 		};
 		76B4879B2B49CB99001FC465 /* XCRemoteSwiftPackageReference "ProgressHUD" */ = {
@@ -4578,6 +4563,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		76016FFE2B672238009264D9 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76016FFD2B672238009264D9 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		7667DC732B4CDF1D00938D6F /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7667DC722B4CDF1D00938D6F /* XCRemoteSwiftPackageReference "lottie-ios" */;
@@ -4587,11 +4577,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7691DC1E2B49A0E6007D52B3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseRemoteConfig;
-		};
-		76B1FC4C2B5DC13E007D0519 /* OpenAI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 76B1FC4B2B5DC13E007D0519 /* XCRemoteSwiftPackageReference "OpenAI" */;
-			productName = OpenAI;
 		};
 		76B4878D2B49CB3B001FC465 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -4652,16 +4637,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 76B487A72B49CC0B001FC465 /* XCRemoteSwiftPackageReference "SKPhotoBrowser" */;
 			productName = SKPhotoBrowser;
-		};
-		76B487AA2B49CDCA001FC465 /* SDWebImage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7691DCDB2B49A6F5007D52B3 /* XCRemoteSwiftPackageReference "SDWebImage" */;
-			productName = SDWebImage;
-		};
-		76B487AC2B49CDCA001FC465 /* SDWebImageMapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7691DCDB2B49A6F5007D52B3 /* XCRemoteSwiftPackageReference "SDWebImage" */;
-			productName = SDWebImageMapKit;
 		};
 		76C6B7462B4AFEBB00285EE2 /* YPImagePicker */ = {
 			isa = XCSwiftPackageProductDependency;

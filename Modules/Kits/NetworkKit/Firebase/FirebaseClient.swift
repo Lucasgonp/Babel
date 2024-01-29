@@ -13,7 +13,6 @@ public class FirebaseClient {
     
     // GroupListenner
     weak var groupsListenner: ListenerRegistration?
-    weak var groupInfoListenner: ListenerRegistration?
     
     private let firestore: Firestore = .firestore()
     
@@ -27,7 +26,6 @@ extension FirebaseClient {
     
     public func saveRecent<T: Codable>(id: String, recentChat: T) {
         do {
-            // Aqui que ta o problema
             try firebaseReference(.recent).document(id).setData(from: recentChat)
         } catch {
             print("erro saving recent chat", error.localizedDescription)
@@ -40,6 +38,5 @@ extension FirebaseClient {
         updatedChatListener?.remove()
         chatBotListener?.remove()
         groupsListenner?.remove()
-        groupInfoListenner?.remove()
     }
 }

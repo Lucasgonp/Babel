@@ -54,8 +54,12 @@ final class StartGroupChat {
         }
     }
     
-    func deleteChat(chatRoomId: String, memberIds: [String]) {
-        client.deleteRecentGroupChat(key: StorageKey.receiverId.rawValue, currentUserId: currentUser.id)
+    func deleteChat(chatRoomId: String) {
+        client.deleteRecentGroupChat(
+            key: StorageKey.receiverId.rawValue,
+            currentUserId: currentUser.id,
+            chatRoomId: chatRoomId
+        )
     }
 }
 

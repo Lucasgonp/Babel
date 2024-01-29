@@ -23,6 +23,10 @@ extension FirebaseClient: UsersClientProtocol {
     }
     
     public func downloadUsers<T: Decodable>(withIds: [String], completion: @escaping ((Result<[T], FirebaseError>) -> Void)) {
+        guard withIds.count > 0 else {
+            return completion(.success([]))
+        }
+        
         var users = [T]()
         for id in withIds {
             firebaseReference(.user).document(id).getDocument { (querySnapshot, error) in

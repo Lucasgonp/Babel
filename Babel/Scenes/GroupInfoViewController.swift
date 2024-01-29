@@ -177,8 +177,8 @@ extension GroupInfoViewController: UITableViewDelegate {
             if indexPath.row == 0 {
                 if isMember {
                     interactor.sendMessage()
-                } else {
-                    let actionSheet = makeJoinGroupActionSheet(user: members[indexPath.row])
+                } else if let user = members[safe: indexPath.row] {
+                    let actionSheet = makeJoinGroupActionSheet(user: user)
                     present(actionSheet, animated: true)
                 }
             } else {
@@ -372,13 +372,8 @@ private extension GroupInfoViewController {
         let actionSheet = UIAlertController(title: user.name, message: nil, preferredStyle: .actionSheet)
         actionSheet.addAction(userInfoAction)
         
-        if isAdmin {
-            if isUserAdmin {
-                actionSheet.addAction(removeAdminAction)
-            } else {
-                actionSheet.addAction(makeAdminAction)
-            }
-            
+        if isAdmin && currentUser.id != user.id {
+            actionSheet.addAction(isUserAdmin ? removeAdminAction : makeAdminAction)
             actionSheet.addAction(removeUserAction)
         }
         

@@ -117,6 +117,7 @@
 		7670825B2B4B89480024EF41 /* AudioMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670825A2B4B89480024EF41 /* AudioMessage.swift */; };
 		7670825E2B4B96E10024EF41 /* BasicAudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670825D2B4B96E10024EF41 /* BasicAudioController.swift */; };
 		767082622B4C4F4D0024EF41 /* MessageInputBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767082612B4C4F4D0024EF41 /* MessageInputBarView.swift */; };
+		767CA9372B6829F6004C4358 /* Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767CA9362B6829F6004C4358 /* Collection+Extensions.swift */; };
 		7686A88C2B545C0F0025FBD3 /* AddMembersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7686A8862B545C0F0025FBD3 /* AddMembersFactory.swift */; };
 		7686A88D2B545C0F0025FBD3 /* AddMembersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7686A8872B545C0F0025FBD3 /* AddMembersPresenter.swift */; };
 		7686A88E2B545C0F0025FBD3 /* AddMembersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7686A8882B545C0F0025FBD3 /* AddMembersRouter.swift */; };
@@ -662,6 +663,7 @@
 		7670825A2B4B89480024EF41 /* AudioMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioMessage.swift; sourceTree = "<group>"; };
 		7670825D2B4B96E10024EF41 /* BasicAudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAudioController.swift; sourceTree = "<group>"; };
 		767082612B4C4F4D0024EF41 /* MessageInputBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputBarView.swift; sourceTree = "<group>"; };
+		767CA9362B6829F6004C4358 /* Collection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extensions.swift"; sourceTree = "<group>"; };
 		7686A8862B545C0F0025FBD3 /* AddMembersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMembersFactory.swift; sourceTree = "<group>"; };
 		7686A8872B545C0F0025FBD3 /* AddMembersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMembersPresenter.swift; sourceTree = "<group>"; };
 		7686A8882B545C0F0025FBD3 /* AddMembersRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMembersRouter.swift; sourceTree = "<group>"; };
@@ -1414,6 +1416,7 @@
 				76DA757D2B44C5B2000B7FD7 /* UIAlertAction+Extensions.swift */,
 				764303892B4654B10037721A /* String+Extensions.swift */,
 				76FA5D302B50DD8A004D86A5 /* Data+Extensions.swift */,
+				767CA9362B6829F6004C4358 /* Collection+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -3339,6 +3342,7 @@
 				7610119B2B3A15CD004639C4 /* MKMessage.swift in Sources */,
 				763B03C22B4F74EB0022E145 /* CreateGroupRouter.swift in Sources */,
 				7620F4302A9568D2002A4EB5 /* SettingsButtonViewModel.swift in Sources */,
+				767CA9372B6829F6004C4358 /* Collection+Extensions.swift in Sources */,
 				76CAA1872A8AA9ED00D742E9 /* HomeFactory.swift in Sources */,
 				7620F4412A9592C2002A4EB5 /* EditProfileViewController.swift in Sources */,
 				764B14052B6473F600C48FAE /* DeeplinkCore.swift in Sources */,

@@ -29,6 +29,7 @@ final class GroupInfoInteractor {
     private var group: Group?
     private let groupId: String
     private var members = [User]()
+    private var didDeleteGroup = false
     
     init(worker: GroupInfoWorkerProtocol, presenter: GroupInfoPresenterProtocol, groupId: String) {
         self.worker = worker
@@ -111,14 +112,30 @@ extension GroupInfoInteractor: GroupInfoInteractorProtocol {
     }
     
     func removeMember(_ member: User) {
-        worker.removeMember(member, groupId: groupId) { [weak self] error in
-            guard let self else { return }
-            if let error {
-                self.presenter.displayError(message: error.localizedDescription)
-            } else {
-                self.members.removeAll(where: { $0 == member })
-                self.group?.membersIds.removeAll(where: { $0 == member.id })
-                self.presenter.displayGroup(with: self.group!, members: self.members)
+        if group?.adminIds.contains(member.id) == true {
+            worker.updatePrivileges(isAdmin: false, groupId: groupId, userId: member.id) { [weak self] error in
+                guard let self else { return }
+                self.worker.removeMember(member, groupId: groupId) { [weak self] error in
+                    guard let self else { return }
+                    if let error {
+                        self.presenter.displayError(message: error.localizedDescription)
+                    } else {
+                        self.members.removeAll(where: { $0 == member })
+                        self.group?.membersIds.removeAll(where: { $0 == member.id })
+                        self.presenter.displayGroup(with: self.group!, members: self.members)
+                    }
+                }
+            }
+        } else {
+            worker.removeMember(member, groupId: groupId) { [weak self] error in
+                guard let self else { return }
+                if let error {
+                    self.presenter.displayError(message: error.localizedDescription)
+                } else {
+                    self.members.removeAll(where: { $0 == member })
+                    self.group?.membersIds.removeAll(where: { $0 == member.id })
+                    self.presenter.displayGroup(with: self.group!, members: self.members)
+                }
             }
         }
     }
@@ -144,22 +161,21 @@ extension GroupInfoInteractor: GroupInfoInteractorProtocol {
                         if let error {
                             self.presenter.displayError(message: error.localizedDescription)
                         } else {
-                            StartGroupChat.shared.deleteChat(chatRoomId: self.groupId, memberIds: self.membersIds)
+                            StartGroupChat.shared.deleteChat(chatRoomId: self.groupId)
                             self.presenter.didNextStep(action: .didExitGroup)
                         }
                     }
                 }
             } else {
+                worker.removeListeners()
                 worker.exitGroup(groupId: self.groupId) { [weak self] error in
                     guard let self else { return }
                     if let error {
                         self.presenter.displayError(message: error.localizedDescription)
                     } else {
-                        StartGroupChat.shared.deleteChat(chatRoomId: self.groupId, memberIds: self.membersIds)
-                        self.presenter.didNextStep(action: .didExitGroupWith({ [weak self] in
-                            guard let self else { return }
-                            self.worker.deleteGroup(groupId: self.groupId)
-                        }))
+                        StartGroupChat.shared.deleteChat(chatRoomId: self.groupId)
+                        self.worker.deleteGroup(groupId: self.groupId)
+                        self.presenter.didNextStep(action: .didExitGroup)
                     }
                 }
             }
@@ -169,7 +185,7 @@ extension GroupInfoInteractor: GroupInfoInteractorProtocol {
                 if let error {
                     self.presenter.displayError(message: error.localizedDescription)
                 } else {
-                    StartGroupChat.shared.deleteChat(chatRoomId: self.groupId, memberIds: self.membersIds)
+                    StartGroupChat.shared.deleteChat(chatRoomId: self.groupId)
                     self.presenter.didNextStep(action: .didExitGroup)
                 }
             }
@@ -214,12 +230,14 @@ private extension GroupInfoInteractor {
     
     func fetchGroupMembers(ids: [String], completion: @escaping ([User]) -> Void) {
         worker.downloadUsers(with: ids) { [weak self] result in
+            guard let self, !self.didDeleteGroup else { return }
+            
             switch result {
             case let .success(users):
                 completion(users)
             case let .failure(error):
-                self?.presenter.displayLoading(isLoading: false)
-                self?.presenter.displayError(message: error.localizedDescription)
+                self.presenter.displayLoading(isLoading: false)
+                self.presenter.displayError(message: error.localizedDescription)
             }
         }
     }

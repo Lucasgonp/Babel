@@ -1,6 +1,8 @@
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
+private var groupInfoListenner: ListenerRegistration?
+
 public protocol GroupClientProtocol {
     func downloadGroup<T: Decodable>(id: String, completion: @escaping ((Result<T, FirebaseError>) -> Void))
     func updateGroupInfo<T: Encodable>(id: String, dto: T, completion: @escaping (Error?) -> Void)
@@ -10,7 +12,7 @@ public protocol GroupClientProtocol {
     func updatePrivileges(isAdmin: Bool, groupId: String, for userId: String, completion: @escaping (Error?) -> Void)
     func updateGroupName(name: String, avatarLink: String, groupId: String)
     func deleteGroup(groupId: String)
-    func deleteRecentGroupChat(key: String, currentUserId: String)
+    func deleteRecentGroupChat(key: String, currentUserId: String, chatRoomId: String)
     func removeGroupInfoListener()
 }
 
@@ -90,9 +92,10 @@ extension FirebaseClient: GroupClientProtocol {
         firebaseReference(.group).document(groupId).delete()
     }
     
-    public func deleteRecentGroupChat(key: String, currentUserId: String) {
+    public func deleteRecentGroupChat(key: String, currentUserId: String, chatRoomId: String) {
         firebaseReference(.recent)
             .whereField("type", isEqualTo: "group")
+            .whereField("chatRoomId", isEqualTo: chatRoomId)
             .whereField(key, isEqualTo: currentUserId)
             .getDocuments { [weak self] snapshot, error in
             guard let documents = snapshot?.documents, let document = documents.first else {
@@ -104,6 +107,5 @@ extension FirebaseClient: GroupClientProtocol {
     
     public func removeGroupInfoListener() {
         groupInfoListenner?.remove()
-        groupInfoListenner = nil
     }
 }

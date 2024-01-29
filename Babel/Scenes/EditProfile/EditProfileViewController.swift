@@ -102,6 +102,7 @@ extension EditProfileViewController: EditProfileDisplaying {
     }
     
     func updateAvatarImage(_ image: UIImage) {
+        hideLoading()
         delegate?.updateAvatar(image: image)
     }
     
@@ -204,6 +205,7 @@ extension EditProfileViewController: EditProfileHeaderDelegate {
             self?.galleryController = nil
             if let image {
                 self?.headerCell?.update(image)
+                self?.showLoading(backgroupColor: .clear, shouldBlur: true)
                 self?.interactor.updateAvatarImage(image)
             }
         }

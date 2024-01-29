@@ -1,3 +1,5 @@
+import StorageKit
+
 protocol SystemSettingsInteractorProtocol: AnyObject {
     func clearCache()
 }
@@ -15,6 +17,7 @@ final class SystemSettingsInteractor {
 extension SystemSettingsInteractor: SystemSettingsInteractorProtocol {
     func clearCache() {
         RealmManager.shared.deleteAll()
+        StorageManager.shared.clearCache()
         presenter.didNextStep(action: .popViewController)
     }
 }

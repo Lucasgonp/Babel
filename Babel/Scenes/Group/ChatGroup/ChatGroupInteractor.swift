@@ -151,12 +151,9 @@ extension ChatGroupInteractor: ChatGroupInteractorProtocol {
     func audioRecording(_ status: RecordingState) {
         switch status {
         case .start:
-            AudioRecorderManager.shared.authorizeMicrophoneAccess { [weak self] in
-                guard let self else { return }
-                self.audioDuration = Date()
-                self.audioFileName = Date().stringDate()
-                AudioRecorderManager.shared.startRecording(fileName: self.audioFileName)
-            }
+            audioDuration = Date()
+            audioFileName = Date().stringDate()
+            AudioRecorderManager.shared.startRecording(fileName: self.audioFileName)
         case .stop:
             AudioRecorderManager.shared.finishRecording()
             if StorageManager.shared.fileExistsAtPath(path: "\(audioFileName).m4a") {
@@ -165,6 +162,12 @@ extension ChatGroupInteractor: ChatGroupInteractorProtocol {
                 sendMessage(message: message)
             } else {
                 print("no audio file")
+            }
+        case .notGranted:
+            AudioRecorderManager.shared.authorizeMicrophoneAccess { [weak self] granted in
+                if !granted {
+                    self?.presenter.audioNotGranted()
+                }
             }
         }
     }

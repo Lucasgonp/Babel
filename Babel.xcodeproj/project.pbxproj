@@ -1721,17 +1721,17 @@
 				7691DBC02B499973007D52B3 /* StorageDownload.swift */,
 				7691DBC12B499973007D52B3 /* StorageAdapter.swift */,
 				7691DBC22B499973007D52B3 /* StorageUpload.swift */,
-				7691DBC32B499973007D52B3 /* SDWebImage */,
+				7691DBC32B499973007D52B3 /* SetImage */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
 		};
-		7691DBC32B499973007D52B3 /* SDWebImage */ = {
+		7691DBC32B499973007D52B3 /* SetImage */ = {
 			isa = PBXGroup;
 			children = (
 				7691DBC42B499973007D52B3 /* ImageDownloadManager.swift */,
 			);
-			path = SDWebImage;
+			path = SetImage;
 			sourceTree = "<group>";
 		};
 		7691DBC62B499973007D52B3 /* Local */ = {

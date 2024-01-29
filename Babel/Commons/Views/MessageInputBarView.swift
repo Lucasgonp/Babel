@@ -330,13 +330,16 @@ private extension MessageInputBarView {
     func recordAudio() {
         switch longGestureRecognizer.state {
         case .began:
-            AudioRecorderManager.shared.authorizeMicrophoneAccess { [weak self] in
-                guard let self else { return }
-                self.feedbackHapticMedium.prepare()
-                self.feedbackHapticMedium.impactOccurred()
-                self.isRecording = true
-                self.startTimer()
-                self.actionDelegate?.audioRecording(.start)
+            if AudioRecorderManager.shared.isAudioRecordingGranted() {
+                DispatchQueue.main.async {
+                    self.feedbackHapticMedium.prepare()
+                    self.feedbackHapticMedium.impactOccurred()
+                    self.isRecording = true
+                    self.startTimer()
+                    self.actionDelegate?.audioRecording(.start)
+                }
+            } else {
+                actionDelegate?.audioRecording(.notGranted)
             }
         case .ended:
             if isRecording {

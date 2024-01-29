@@ -3,11 +3,12 @@ import AVFoundation
 enum RecordingState {
     case start
     case stop
+    case notGranted
 }
 
 final class AudioRecorderManager: NSObject, AVAudioRecorderDelegate {
     private var audioRecorder: AVAudioRecorder?
-    private var authorizationHandler: (() -> Void)?
+    private var authorizationHandler: ((_ granted: Bool) -> Void)?
 
     static let shared = AudioRecorderManager()
     
@@ -15,7 +16,7 @@ final class AudioRecorderManager: NSObject, AVAudioRecorderDelegate {
         super.init()
     }
     
-    private func isAudioRecordingGranted() -> Bool {
+    func isAudioRecordingGranted() -> Bool {
         if #available(iOS 17.0, *) {
             return AVAudioApplication.shared.recordPermission == .granted
         } else {
@@ -23,28 +24,26 @@ final class AudioRecorderManager: NSObject, AVAudioRecorderDelegate {
         }
     }
     
-    func authorizeMicrophoneAccess(completion: (() -> Void)?) {
+    func authorizeMicrophoneAccess(completion: @escaping ((_ granted: Bool) -> Void)) {
         authorizationHandler = completion
         
         if #available(iOS 17.0, *) {
             switch AVAudioApplication.shared.recordPermission {
             case .granted:
-                completion?()
+                completion(true)
             default:
                 AVAudioApplication.requestRecordPermission { isAllowed in
-                    if isAllowed {
-                        completion?()
-                    }
+                    completion(isAllowed)
                 }
             }
         } else {
             switch AVAudioSession.sharedInstance().recordPermission {
             case .granted:
-                completion?()
+                completion(true)
             default:
                 AVAudioSession.sharedInstance().requestRecordPermission { isAllowed in
                     if isAllowed {
-                        completion?()
+                        completion(isAllowed)
                     }
                 }
             }
@@ -60,7 +59,7 @@ final class AudioRecorderManager: NSObject, AVAudioRecorderDelegate {
                 print("error setting up audio recorder", error.localizedDescription)
             }
         } else {
-            authorizeMicrophoneAccess(completion: { })
+            authorizeMicrophoneAccess(completion: { _ in })
         }
     }
     
@@ -82,7 +81,6 @@ final class AudioRecorderManager: NSObject, AVAudioRecorderDelegate {
             audioRecorder = try AVAudioRecorder(url: audioFileName, settings: settings)
             audioRecorder?.delegate = self
             audioRecorder?.record()
-            
         } catch {
             print("Error recording ", error.localizedDescription)
             finishRecording()

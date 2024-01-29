@@ -1,4 +1,5 @@
 import FirebaseStorage
+import Kingfisher
 
 public final class StorageAdapter {
     let storage: Storage
@@ -15,6 +16,12 @@ public final class StorageAdapter {
     
     public func getDocumentsURL() -> URL {
         fileManager.urls(for: .documentDirectory, in: .userDomainMask).last!
+    }
+    
+    public func clearCache() {
+        KingfisherManager.shared.cache.clearMemoryCache()
+        KingfisherManager.shared.cache.clearDiskCache()
+        KingfisherManager.shared.cache.cleanExpiredDiskCache()
     }
 }
 

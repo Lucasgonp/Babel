@@ -99,7 +99,7 @@ extension TellAFriendViewController: TellAFriendDisplaying {
         case .accessNotGranted:
             navigationController?.popViewController(completion: { [weak self] _ in
                 self?.showMessageAlert(title: Layout.Texts.accessNotGranted, message: Layout.Texts.accessContactsMessage, button: Layout.Texts.grantAccess) { _ in
-                    let appSettingsURL = URL(string: UIApplication.openSettingsURLString)!
+                    guard let appSettingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
                     UIApplication.shared.open(appSettingsURL)
                 }
             })

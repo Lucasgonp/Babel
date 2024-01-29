@@ -15,6 +15,7 @@ protocol ChatGroupDisplaying: AnyObject {
     func endRefreshing()
     func updateTypingIndicator(_ isTyping: Bool)
     func updateMessage(_ localMessage: LocalMessage)
+    func audioNotGranted()
 }
 
 private extension ChatGroupViewController.Layout {
@@ -257,6 +258,18 @@ extension ChatGroupViewController: ChatGroupDisplaying {
                 self.messagesCollectionView.reloadData()
             }
         }
+    }
+    
+    func audioNotGranted() {
+        let title = "Audio access not granted"
+        let message = "Audio access not granted"
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let grantAction = UIAlertAction(title: "Allow", style: .cancel) { _ in
+            guard let appSettingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
+            UIApplication.shared.open(appSettingsURL)
+        }
+        alert.addAction(grantAction)
+        present(alert, animated: true, completion: nil)
     }
 }
 

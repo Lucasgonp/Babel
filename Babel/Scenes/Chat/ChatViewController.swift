@@ -11,6 +11,7 @@ protocol ChatDisplaying: AnyObject {
     func endRefreshing()
     func updateTypingIndicator(_ isTyping: Bool)
     func updateMessage(_ localMessage: LocalMessage)
+    func audioNotGranted()
 }
 
 private extension ChatViewController.Layout {
@@ -120,9 +121,7 @@ final class ChatViewController: MessagesViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         interactor.removeListeners()
-        
-        //TODO: check if its necessary
-//        FirebaseRecentListener.shared.resetRecentCounter(chatRoomId: chatId)
+        interactor.resetTypingIndicator()
         audioController.stopAnyOngoingPlaying()
     }
     
@@ -252,6 +251,18 @@ extension ChatViewController: ChatDisplaying {
                 self.messagesCollectionView.reloadData()
             }
         }
+    }
+    
+    func audioNotGranted() {
+        let title = "Audio access not granted"
+        let message = "Audio access not granted"
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let grantAction = UIAlertAction(title: "Allow", style: .cancel) { _ in
+            guard let appSettingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
+            UIApplication.shared.open(appSettingsURL)
+        }
+        alert.addAction(grantAction)
+        present(alert, animated: true, completion: nil)
     }
 }
 

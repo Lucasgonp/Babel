@@ -97,12 +97,14 @@ extension TellAFriendViewController: TellAFriendDisplaying {
             allContacts = users.sorted(by: { $0.fullName.lowercased() < $1.fullName.lowercased() })
             setupContactsList()
         case .accessNotGranted:
-            navigationController?.popViewController(completion: { [weak self] _ in
-                self?.showMessageAlert(title: Layout.Texts.accessNotGranted, message: Layout.Texts.accessContactsMessage, button: Layout.Texts.grantAccess) { _ in
-                    guard let appSettingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
-                    UIApplication.shared.open(appSettingsURL)
-                }
-            })
+            DispatchQueue.main.async {
+                self.navigationController?.popViewController(completion: { [weak self] _ in
+                    self?.showMessageAlert(title: Layout.Texts.accessNotGranted, message: Layout.Texts.accessContactsMessage, button: Layout.Texts.grantAccess) { _ in
+                        guard let appSettingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
+                        UIApplication.shared.open(appSettingsURL)
+                    }
+                })
+            }
         case let .error(message):
             showErrorAlert(message)
         case let .loading(isLoading):

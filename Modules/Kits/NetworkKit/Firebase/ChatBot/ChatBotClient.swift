@@ -18,31 +18,31 @@ extension FirebaseClient: ChatBotProtocol {
     }
     
     public func listenForNewChatsBot<T: Decodable>(documentId: String, collectionId: String, lastMessageDate: Date, completion: @escaping (Result<T, FirebaseError>) -> Void) {
-        chatBotListener = firebaseReference(.bot)
-            .document(documentId)
-            .collection(collectionId)
-            .whereField(kDATE, isGreaterThan: lastMessageDate)
-            .addSnapshotListener { querySnapshot, error in
-                guard let querySnapshot else { return completion(.failure(.noDocumentFound)) }
-                
-                for change in querySnapshot.documentChanges {
-                    if change.type == .added {
-                        let result = Result {
-                            try? change.document.data(as: T.self)
-                        }
-                        
-                        switch result {
-                        case let .success(message):
-                            if let message {
-                                completion(.success(message))
-                            } else {
-                                print("document doesnt exist")
-                            }
-                        case let .failure(error):
-                            print("error listening for new chats: \(error.localizedDescription)")
-                        }
-                    }
-                }
-            }
+//        chatBotListener = firebaseReference(.bot)
+//            .document(documentId)
+//            .collection(collectionId)
+//            .whereField(kDATE, isGreaterThan: lastMessageDate)
+//            .addSnapshotListener { querySnapshot, error in
+//                guard let querySnapshot else { return completion(.failure(.noDocumentFound)) }
+//                
+//                for change in querySnapshot.documentChanges {
+//                    if change.type == .added {
+//                        let result = Result {
+//                            try? change.document.data(as: T.self)
+//                        }
+//                        
+//                        switch result {
+//                        case let .success(message):
+//                            if let message {
+//                                completion(.success(message))
+//                            } else {
+//                                print("document doesnt exist")
+//                            }
+//                        case let .failure(error):
+//                            print("error listening for new chats: \(error.localizedDescription)")
+//                        }
+//                    }
+//                }
+//            }
     }
 }

@@ -36,12 +36,14 @@ final class ChatGroupInteractor {
     private let chatTypingWorker: ChatTypingWorkerProtocol
     private let fetchMessageWorker: FetchMessageWorkerProtocol
     private let sendMessageWorker: SendMessageWorkerProtocol
+    private let groupInfoWorker: GroupInfoWorkerProtocol
 
     init(
         chatListenerWorker: ChatListenersWorkerProtocol = ChatListenersWorker(),
         chatTypingWorker: ChatTypingWorkerProtocol = ChatTypingWorker(),
         fetchMessageWorker: FetchMessageWorkerProtocol = FetchMessageWorker(),
         sendMessageWorker: SendMessageWorkerProtocol = SendMessageWorker(),
+        groupInfoWorker: GroupInfoWorkerProtocol = GroupInfoWorker(),
         presenter: ChatGroupPresenterProtocol,
         dto: ChatGroupDTO
     ) {
@@ -49,6 +51,7 @@ final class ChatGroupInteractor {
         self.chatTypingWorker = chatTypingWorker
         self.fetchMessageWorker = fetchMessageWorker
         self.sendMessageWorker = sendMessageWorker
+        self.groupInfoWorker = groupInfoWorker
         self.presenter = presenter
         self.dto = dto
     }
@@ -82,6 +85,7 @@ extension ChatGroupInteractor: ChatGroupInteractorProtocol {
         listenForNewChats()
         createTypingObserver()
         listenForReadStatusChange()
+        listenForGroupInfoChange()
     }
     
     func removeListeners() {
@@ -256,6 +260,15 @@ private extension ChatGroupInteractor {
             if updatedMessage.status != kSENT {
                 self?.resetUnreadCount()
                 self?.presenter.updateMessage(updatedMessage)
+            }
+        }
+    }
+    
+    //MARK: Group listenner
+    func listenForGroupInfoChange() {
+        groupInfoWorker.fetchGroup(from: dto.groupInfo.id) { [weak self] result in
+            if case let .success(group) = result {
+                self?.presenter.didUpdateGroupInfo(group)
             }
         }
     }

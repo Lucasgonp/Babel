@@ -8,10 +8,9 @@ protocol RecentChatsWorkerProtocol {
 }
 
 final class RecentChatsWorker {
-    typealias ClientProtocol = RecentChatClientProtocol & GroupClientProtocol
-    private let client: ClientProtocol
+    private let client: RecentChatClientProtocol
     
-    init(client: ClientProtocol = FirebaseClient.shared) {
+    init(client: RecentChatClientProtocol = FirebaseClient.shared) {
         self.client = client
     }
 }
@@ -42,6 +41,6 @@ extension RecentChatsWorker: RecentChatsWorkerProtocol {
     }
     
     func fetchGroup(from id: String, completion: @escaping (Result<Group, FirebaseError>) -> Void) {
-        client.downloadGroup(id: id, completion: completion)
+        client.downloadRecentGroup(id: id, completion: completion)
     }
 }

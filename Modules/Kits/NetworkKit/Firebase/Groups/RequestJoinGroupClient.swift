@@ -10,6 +10,7 @@ extension FirebaseClient: RequestJoinGroupClientProtocol {
     public func acceptUser(_ userId: String, groupId: String, completion: @escaping (Error?) -> Void) {
         let fields = [
             kMEMBERSIDS: FieldValue.arrayUnion([userId]),
+            kREMOVEDMEMBERSIDS: FieldValue.arrayRemove([userId]),
             kREQUESTSTOJOINMEMBERSIDS: FieldValue.arrayRemove([userId])
         ]
         

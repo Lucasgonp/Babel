@@ -106,6 +106,10 @@ final class ChatViewController: MessagesViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        interactor.removeListeners()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         buildLayout()
@@ -120,7 +124,6 @@ final class ChatViewController: MessagesViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        interactor.removeListeners()
         interactor.resetTypingIndicator()
         audioController.stopAnyOngoingPlaying()
     }

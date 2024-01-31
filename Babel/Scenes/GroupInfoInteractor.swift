@@ -161,7 +161,6 @@ extension GroupInfoInteractor: GroupInfoInteractorProtocol {
                         if let error {
                             self.presenter.displayError(message: error.localizedDescription)
                         } else {
-                            StartGroupChat.shared.deleteChat(chatRoomId: self.groupId)
                             self.presenter.didNextStep(action: .didExitGroup)
                         }
                     }
@@ -173,7 +172,6 @@ extension GroupInfoInteractor: GroupInfoInteractorProtocol {
                     if let error {
                         self.presenter.displayError(message: error.localizedDescription)
                     } else {
-                        StartGroupChat.shared.deleteChat(chatRoomId: self.groupId)
                         self.worker.deleteGroup(groupId: self.groupId)
                         self.presenter.didNextStep(action: .didExitGroup)
                     }
@@ -185,7 +183,6 @@ extension GroupInfoInteractor: GroupInfoInteractorProtocol {
                 if let error {
                     self.presenter.displayError(message: error.localizedDescription)
                 } else {
-                    StartGroupChat.shared.deleteChat(chatRoomId: self.groupId)
                     self.presenter.didNextStep(action: .didExitGroup)
                 }
             }

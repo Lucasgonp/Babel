@@ -30,6 +30,6 @@ extension ChatListenersWorker: ChatListenersWorkerProtocol {
     }
     
     func removeListeners() {
-        client.removeListeners()
+        client.removeChatListeners()
     }
 }

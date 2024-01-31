@@ -94,6 +94,10 @@ final class GroupInfoViewController: ViewController<GroupInfoInteractorProtocol,
     private var didUpdateGroup = false
     private var editGroupDTO: EditGroupDTO?
     
+    deinit {
+        interactor.removeListeners()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         interactor.fetchGroupData()
@@ -101,7 +105,6 @@ final class GroupInfoViewController: ViewController<GroupInfoInteractorProtocol,
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        interactor.removeListeners()
         
         guard let editGroupDTO, didUpdateGroup else { return }
         delegate?.didUpdateGroupInfo(dto: editGroupDTO)

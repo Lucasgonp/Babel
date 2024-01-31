@@ -4,12 +4,11 @@ public class FirebaseClient {
     public static var shared = FirebaseClient()
     
     // MessagesClient
-    weak var newChatListener: ListenerRegistration?
-    weak var updatedChatListener: ListenerRegistration?
-    weak var chatBotListener: ListenerRegistration?
+    var newChatListener: ListenerRegistration?
+    var updatedChatListener: ListenerRegistration?
     
     // TypingClient
-    weak var typingListener: ListenerRegistration?
+    var typingListener: ListenerRegistration?
     
     // GroupListenner
     weak var groupsListenner: ListenerRegistration?
@@ -33,10 +32,6 @@ extension FirebaseClient {
     }
     
     public func removeListeners() {
-        typingListener?.remove()
-        newChatListener?.remove()
-        updatedChatListener?.remove()
-        chatBotListener?.remove()
         groupsListenner?.remove()
     }
 }

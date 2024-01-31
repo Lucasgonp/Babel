@@ -4,6 +4,7 @@ protocol ChatGroupPresenterProtocol: AnyObject {
     func refreshNewMessages()
     func endRefreshing()
     func updateTypingIndicator(_ isTyping: Bool)
+    func didUpdateGroupInfo(_ groupInfo: Group)
     func updateMessage(_ localMessage: LocalMessage)
     func audioNotGranted()
     func didNextStep(action: ChatGroupAction)
@@ -37,6 +38,10 @@ extension ChatGroupPresenter: ChatGroupPresenterProtocol {
     
     func updateTypingIndicator(_ isTyping: Bool) {
         viewController?.updateTypingIndicator(isTyping)
+    }
+    
+    func didUpdateGroupInfo(_ groupInfo: Group) {
+        viewController?.didUpdateGroupInfo(groupInfo)
     }
     
     func updateMessage(_ localMessage: LocalMessage) {

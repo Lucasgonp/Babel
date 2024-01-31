@@ -73,7 +73,10 @@ extension FirebaseClient: GroupClientProtocol {
     }
     
     public func removeMember(_ memberId: String, groupId: String, completion: @escaping (Error?) -> Void) {
-        let fields = [kMEMBERSIDS: FieldValue.arrayRemove([memberId])]
+        let fields = [
+            kMEMBERSIDS: FieldValue.arrayRemove([memberId]),
+            kREMOVEDMEMBERSIDS: FieldValue.arrayUnion([memberId])
+        ]
         firebaseReference(.group).document(groupId).updateData(fields, completion: completion)
     }
     
@@ -93,16 +96,16 @@ extension FirebaseClient: GroupClientProtocol {
     }
     
     public func deleteRecentGroupChat(key: String, currentUserId: String, chatRoomId: String) {
-        firebaseReference(.recent)
-            .whereField("type", isEqualTo: "group")
-            .whereField("chatRoomId", isEqualTo: chatRoomId)
-            .whereField(key, isEqualTo: currentUserId)
-            .getDocuments { [weak self] snapshot, error in
-            guard let documents = snapshot?.documents, let document = documents.first else {
-                return
-            }
-            self?.firebaseReference(.recent).document(document.documentID).delete()
-        }
+//        firebaseReference(.recent)
+//            .whereField("type", isEqualTo: "group")
+//            .whereField("chatRoomId", isEqualTo: chatRoomId)
+//            .whereField(key, isEqualTo: currentUserId)
+//            .getDocuments { [weak self] snapshot, error in
+//            guard let documents = snapshot?.documents, let document = documents.first else {
+//                return
+//            }
+//            self?.firebaseReference(.recent).document(document.documentID).delete()
+//        }
     }
     
     public func removeGroupInfoListener() {

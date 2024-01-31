@@ -20,8 +20,9 @@ public final class GalleryController {
     ) {
         picker.didFinishPicking { [unowned picker] items, cancelled in
             DispatchQueue.main.async {
-                completion(items.singlePhoto?.image)
-                picker.dismiss(animated: true)
+                picker.dismiss(animated: true) {
+                    completion(items.singlePhoto?.image)
+                }
             }
         }
         
@@ -37,9 +38,10 @@ public final class GalleryController {
     ) {
         picker.didFinishPicking { [unowned picker, self] items, isCancelled in
             DispatchQueue.main.async {
-                let mediaItems = self.makeMediaItems(from: items)
-                completion(mediaItems)
-                picker.dismiss(animated: true)
+                picker.dismiss(animated: true) {
+                    let mediaItems = self.makeMediaItems(from: items)
+                    completion(mediaItems)
+                }
             }
         }
         

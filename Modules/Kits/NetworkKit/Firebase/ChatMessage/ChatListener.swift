@@ -2,7 +2,7 @@ public protocol ChatListenerProtocol {
     func listenForNewChats<T: Decodable>(documentId: String, collectionId: String, lastMessageDate: Date, completion: @escaping (Result<T, FirebaseError>) -> Void)
     func listenForReadStatusChange<T: Decodable>(_ documentId: String, collectionId: String, completion: @escaping (T) -> Void)
     func createTypingObserver(chatRoomId: String, currentUserId: String, completion: @escaping (_ isTyping: Bool) -> Void)
-    func removeListeners()
+    func removeChatListeners()
 }
 
 extension FirebaseClient: ChatListenerProtocol {
@@ -58,5 +58,11 @@ extension FirebaseClient: ChatListenerProtocol {
                 }
             }
         })
+    }
+    
+    public func removeChatListeners() {
+        typingListener?.remove()
+        newChatListener?.remove()
+        updatedChatListener?.remove()
     }
 }

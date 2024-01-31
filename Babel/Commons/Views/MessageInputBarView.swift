@@ -120,7 +120,7 @@ final class MessageInputBarView: InputBarAccessoryView {
         setLeftStackViewWidthConstant(to: 36, animated: false)
         
         // SendButton
-//        setStackViewItems([sendButton], forStack: .right, animated: false)
+        //        setStackViewItems([sendButton], forStack: .right, animated: false)
         setRightStackViewWidthConstant(to: 36, animated: false)
         
         sendButton.setSize(CGSize(width: 36, height: 36), animated: false)
@@ -171,6 +171,27 @@ final class MessageInputBarView: InputBarAccessoryView {
         UIView.animate(withDuration: 0.2) {
             self.sendButton.alpha = 0
             self.micButtonItem.alpha = 1
+        }
+    }
+    
+    func setupState(available: Bool) {
+        if available {
+            setup()
+            configure()
+            addAttachButton()
+            addMicButton()
+        } else {
+            let messageButton = UIButton()
+            messageButton.setTitle("You're no longer a member of this group", for: .normal)
+            messageButton.backgroundColor = .clear
+            messageButton.setTitleColor(Color.grayscale850.uiColor, for: .normal)
+            messageButton.isUserInteractionEnabled = false
+            messageButton.translatesAutoresizingMaskIntoConstraints = false
+            messageButton.titleLabel?.adjustsFontSizeToFitWidth = true
+            messageButton.heightAnchor.constraint(equalToConstant: 38).isActive = true
+            setStackViewItems([], forStack: .left, animated: false)
+            setStackViewItems([], forStack: .right, animated: false)
+            setMiddleContentView(messageButton, animated: false)
         }
     }
 }

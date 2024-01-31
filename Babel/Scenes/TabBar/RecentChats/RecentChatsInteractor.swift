@@ -11,6 +11,7 @@ final class RecentChatsInteractor {
     private let service: RecentChatsWorkerProtocol
     private let presenter: RecentChatsPresenterProtocol
     private let currentUser = UserSafe.shared.user
+    private var shouldCallNextView = false
 
     init(service: RecentChatsWorkerProtocol, presenter: RecentChatsPresenterProtocol) {
         self.service = service
@@ -45,8 +46,11 @@ extension RecentChatsInteractor: RecentChatsInteractorProtocol {
             )
             presenter.didNextStep(action: .pushToChatView(dto: dto))
         } else {
+            shouldCallNextView = true
             service.fetchGroup(from: chat.chatRoomId) { [weak self] result in
-                guard let self else { return }
+                guard let self, self.shouldCallNextView else { return }
+                self.shouldCallNextView = false
+                
                 switch result {
                 case let .success(group):
                     let dto = ChatGroupDTO(chatId: chat.chatRoomId, groupInfo: group, membersIds: group.membersIds)

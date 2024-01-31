@@ -14,6 +14,7 @@ protocol ChatGroupDisplaying: AnyObject {
     func refreshNewMessages()
     func endRefreshing()
     func updateTypingIndicator(_ isTyping: Bool)
+    func didUpdateGroupInfo(_ groupInfo: Group)
     func updateMessage(_ localMessage: LocalMessage)
     func audioNotGranted()
 }
@@ -111,6 +112,10 @@ final class ChatGroupViewController: MessagesViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        interactor.removeListeners()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         buildLayout()
@@ -125,7 +130,6 @@ final class ChatGroupViewController: MessagesViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        interactor.removeListeners()
         
         //TODO: check if its necessary
 //        FirebaseRecentListener.shared.resetRecentCounter(chatRoomId: chatId)
@@ -244,6 +248,11 @@ extension ChatGroupViewController: ChatGroupDisplaying {
         updateTypingIndicator(show: isTyping)
     }
     
+    func didUpdateGroupInfo(_ groupInfo: Group) {
+        let inputBar = messageInputBar as? MessageInputBarView
+        inputBar?.setupState(available: !groupInfo.removedMembersIds.contains(currentUser.id))
+    }
+    
     func updateMessage(_ localMessage: LocalMessage) {
         for index in 0 ..< mkMessages.count {
             let tempMessage = mkMessages[index]
@@ -326,6 +335,9 @@ private extension ChatGroupViewController {
         
         configureAttachButton()
         addMicrophoneButton()
+        
+        let inputBar = messageInputBar as? MessageInputBarView
+        inputBar?.setupState(available: !dto.groupInfo.removedMembersIds.contains(currentUser.id))
     }
     
     func configureAttachButton() {

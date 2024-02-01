@@ -74,9 +74,9 @@ final class RequestsJoinGroupViewController: ViewController<RequestsJoinGroupInt
     
     override func setupConstraints() {
         NSLayoutConstraint.activate([
-            emptyRequestsView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
-            emptyRequestsView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            emptyRequestsView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+            emptyRequestsView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 42),
+            emptyRequestsView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
+            emptyRequestsView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32)
         ])
         
         NSLayoutConstraint.activate([

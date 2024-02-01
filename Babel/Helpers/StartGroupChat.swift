@@ -53,14 +53,6 @@ final class StartGroupChat {
             }
         }
     }
-    
-    func deleteChat(chatRoomId: String) {
-        client.deleteRecentGroupChat(
-            key: StorageKey.receiverId.rawValue,
-            currentUserId: currentUser.id,
-            chatRoomId: chatRoomId
-        )
-    }
 }
 
 private extension StartGroupChat {

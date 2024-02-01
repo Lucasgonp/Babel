@@ -30,7 +30,7 @@ final class MessageBotInputBarView: InputBarAccessoryView {
         setRightStackViewWidthConstant(to: 36, animated: false)
         
         sendButton.setSize(CGSize(width: 36, height: 36), animated: false)
-        sendButton.image = Icon.send.image
+        sendButton.image = UIImage(systemName: "paperplane.fill")?.withRenderingMode(.alwaysOriginal).withTintColor(.white)
         setStackViewItems([sendButton], forStack: .right, animated: false)
         
         // TODO: Resolve deprecated

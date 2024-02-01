@@ -12,7 +12,6 @@ public protocol GroupClientProtocol {
     func updatePrivileges(isAdmin: Bool, groupId: String, for userId: String, completion: @escaping (Error?) -> Void)
     func updateGroupName(name: String, avatarLink: String, groupId: String)
     func deleteGroup(groupId: String)
-    func deleteRecentGroupChat(key: String, currentUserId: String, chatRoomId: String)
     func removeGroupInfoListener()
 }
 
@@ -63,7 +62,12 @@ extension FirebaseClient: GroupClientProtocol {
     }
     
     public func addMembers(_ memberIds: [String], groupId: String, completion: @escaping (Error?) -> Void) {
-        let fields = [kMEMBERSIDS: FieldValue.arrayUnion(memberIds)]
+        let fields = [
+            kMEMBERSIDS: FieldValue.arrayUnion(memberIds),
+            kREMOVEDMEMBERSIDS: FieldValue.arrayRemove(memberIds),
+            kREQUESTSTOJOINMEMBERSIDS: FieldValue.arrayRemove(memberIds)
+        ]
+        
         firebaseReference(.group).document(groupId).updateData(fields, completion: completion)
     }
     
@@ -93,19 +97,6 @@ extension FirebaseClient: GroupClientProtocol {
     
     public func deleteGroup(groupId: String) {
         firebaseReference(.group).document(groupId).delete()
-    }
-    
-    public func deleteRecentGroupChat(key: String, currentUserId: String, chatRoomId: String) {
-//        firebaseReference(.recent)
-//            .whereField("type", isEqualTo: "group")
-//            .whereField("chatRoomId", isEqualTo: chatRoomId)
-//            .whereField(key, isEqualTo: currentUserId)
-//            .getDocuments { [weak self] snapshot, error in
-//            guard let documents = snapshot?.documents, let document = documents.first else {
-//                return
-//            }
-//            self?.firebaseReference(.recent).document(document.documentID).delete()
-//        }
     }
     
     public func removeGroupInfoListener() {

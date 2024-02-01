@@ -1507,6 +1507,23 @@
           }
         }
       }
+    },
+    "You're no longer a member of this group" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You're no longer a member of this group"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Você não é mais membro do grupo"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

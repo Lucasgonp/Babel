@@ -95,6 +95,7 @@
 "GroupInfo.requestToJoin" = "Request to join";
 "GroupInfo.requestSent" = "Request sent, waiting for approval";
 "GroupInfo.requests" = "Requests";
+"GroupInfo.noLongerMember" = "You're no longer a member of this group";
 
 "GroupInfo.ActionSheet.joinGroupQuestion" = "Do you want to join this group?";
 "GroupInfo.ActionSheet.exitGroupQuestion" = "Do you want to exit this group?";

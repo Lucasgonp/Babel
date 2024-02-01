@@ -8,8 +8,15 @@ protocol MessageInputBarDelegate: AnyObject {
     func audioRecording(_ state: RecordingState)
 }
 
+private extension MessageInputBarView.Layout {
+    enum Texts {
+        static let noLongerMember = Strings.GroupInfo.noLongerMember.localized()
+        static let swipeToCancel = Strings.MessageInputBar.swipeToCancel.localized()
+    }
+}
+
 final class MessageInputBarView: InputBarAccessoryView {
-    typealias Localizable = Strings.MessageInputBar
+    fileprivate enum Layout { }
     
     private let cancelAudioAnimation: LottieAnimationView = {
         let animationView = LottieAnimationView(name: "TrashAnimation")
@@ -72,7 +79,7 @@ final class MessageInputBarView: InputBarAccessoryView {
     private var cancelRecordingLabel: TextLabel = {
         let text = TextLabel(font: Font.lg.make(isBold: true))
         text.textColor = Color.grayscale600.uiColor
-        text.text = "〈 \(Localizable.swipeToCancel.localized())"
+        text.text = "〈 \(Layout.Texts.swipeToCancel)"
         text.alpha = 0
         return text
     }()
@@ -124,7 +131,7 @@ final class MessageInputBarView: InputBarAccessoryView {
         setRightStackViewWidthConstant(to: 36, animated: false)
         
         sendButton.setSize(CGSize(width: 36, height: 36), animated: false)
-        sendButton.image = Icon.send.image
+        sendButton.image = UIImage(systemName: "paperplane.fill")?.withRenderingMode(.alwaysOriginal).withTintColor(.white)
         
         // TODO: Resolve deprecated
         sendButton.imageEdgeInsets = UIEdgeInsets(top: 6, left: 4, bottom: 4, right: 6)
@@ -182,7 +189,7 @@ final class MessageInputBarView: InputBarAccessoryView {
             addMicButton()
         } else {
             let messageButton = UIButton()
-            messageButton.setTitle("You're no longer a member of this group", for: .normal)
+            messageButton.setTitle(Layout.Texts.noLongerMember, for: .normal)
             messageButton.backgroundColor = .clear
             messageButton.setTitleColor(Color.grayscale850.uiColor, for: .normal)
             messageButton.isUserInteractionEnabled = false

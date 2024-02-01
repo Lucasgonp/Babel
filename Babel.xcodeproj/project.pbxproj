@@ -260,7 +260,6 @@
 		7691DCC72B49A410007D52B3 /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691DC9B2B49A410007D52B3 /* UINavigationController+Extensions.swift */; };
 		7691DCC82B49A410007D52B3 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691DC9C2B49A410007D52B3 /* UITableView+Extensions.swift */; };
 		7691DCC92B49A410007D52B3 /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691DC9D2B49A410007D52B3 /* UITableViewCell+Extensions.swift */; };
-		7691DCCA2B49A410007D52B3 /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691DC9E2B49A410007D52B3 /* UILabel+Extensions.swift */; };
 		7691DCCB2B49A410007D52B3 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691DC9F2B49A410007D52B3 /* UITextField+Extensions.swift */; };
 		7691DCCC2B49A410007D52B3 /* AlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691DCA12B49A410007D52B3 /* AlertViewModel.swift */; };
 		7691DCCD2B49A410007D52B3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691DCA32B49A410007D52B3 /* ViewController.swift */; };
@@ -284,6 +283,7 @@
 		769E97312AA3C4FC004FC6B4 /* ContactInfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E972B2AA3C4FC004FC6B4 /* ContactInfoInteractor.swift */; };
 		769E97322AA3C4FC004FC6B4 /* ContactInfoWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E972C2AA3C4FC004FC6B4 /* ContactInfoWorker.swift */; };
 		769E97352AA3CA1B004FC6B4 /* ContactInfoHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769E97342AA3CA1B004FC6B4 /* ContactInfoHeaderCell.swift */; };
+		76A189F22B6C554F00DD2B81 /* Image+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A189F12B6C554F00DD2B81 /* Image+Extensions.swift */; };
 		76AE76562B65EA8A00FBB7D3 /* RequestsToJoinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AE76552B65EA8A00FBB7D3 /* RequestsToJoinCell.swift */; };
 		76AE765F2B66AE2A00FBB7D3 /* RequestsJoinGroupFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AE76592B66AE2A00FBB7D3 /* RequestsJoinGroupFactory.swift */; };
 		76AE76602B66AE2A00FBB7D3 /* RequestsJoinGroupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AE765A2B66AE2A00FBB7D3 /* RequestsJoinGroupPresenter.swift */; };
@@ -801,7 +801,6 @@
 		7691DC9B2B49A410007D52B3 /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		7691DC9C2B49A410007D52B3 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		7691DC9D2B49A410007D52B3 /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
-		7691DC9E2B49A410007D52B3 /* UILabel+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		7691DC9F2B49A410007D52B3 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		7691DCA12B49A410007D52B3 /* AlertViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewModel.swift; sourceTree = "<group>"; };
 		7691DCA32B49A410007D52B3 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -820,6 +819,7 @@
 		769E972B2AA3C4FC004FC6B4 /* ContactInfoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoInteractor.swift; sourceTree = "<group>"; };
 		769E972C2AA3C4FC004FC6B4 /* ContactInfoWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoWorker.swift; sourceTree = "<group>"; };
 		769E97342AA3CA1B004FC6B4 /* ContactInfoHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoHeaderCell.swift; sourceTree = "<group>"; };
+		76A189F12B6C554F00DD2B81 /* Image+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extensions.swift"; sourceTree = "<group>"; };
 		76AE76552B65EA8A00FBB7D3 /* RequestsToJoinCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsToJoinCell.swift; sourceTree = "<group>"; };
 		76AE76592B66AE2A00FBB7D3 /* RequestsJoinGroupFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsJoinGroupFactory.swift; sourceTree = "<group>"; };
 		76AE765A2B66AE2A00FBB7D3 /* RequestsJoinGroupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsJoinGroupPresenter.swift; sourceTree = "<group>"; };
@@ -2027,8 +2027,8 @@
 				7691DC9B2B49A410007D52B3 /* UINavigationController+Extensions.swift */,
 				7691DC9C2B49A410007D52B3 /* UITableView+Extensions.swift */,
 				7691DC9D2B49A410007D52B3 /* UITableViewCell+Extensions.swift */,
-				7691DC9E2B49A410007D52B3 /* UILabel+Extensions.swift */,
 				7691DC9F2B49A410007D52B3 /* UITextField+Extensions.swift */,
+				76A189F12B6C554F00DD2B81 /* Image+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -3153,9 +3153,9 @@
 				7691DCC22B49A410007D52B3 /* String+Extensions.swift in Sources */,
 				7691DCCC2B49A410007D52B3 /* AlertViewModel.swift in Sources */,
 				7691DCA82B49A410007D52B3 /* TextFieldDelegate.swift in Sources */,
-				7691DCCA2B49A410007D52B3 /* UILabel+Extensions.swift in Sources */,
 				7691DCAA2B49A410007D52B3 /* TextField.swift in Sources */,
 				7691DCAB2B49A410007D52B3 /* TextFieldTheme.swift in Sources */,
+				76A189F22B6C554F00DD2B81 /* Image+Extensions.swift in Sources */,
 				7691DCCB2B49A410007D52B3 /* UITextField+Extensions.swift in Sources */,
 				7691DCBF2B49A410007D52B3 /* UIImageView+Extensions.swift in Sources */,
 				7691DCC12B49A410007D52B3 /* UIView+Extensions.swift in Sources */,

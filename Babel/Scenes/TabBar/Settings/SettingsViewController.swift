@@ -40,21 +40,21 @@ final class SettingsViewController: ViewController<SettingsInteractorProtocol, U
     
     private lazy var settingsButtons = [
         SettingsButtonViewModel(
-            icon: Icon.heartSquare.image.withTintColor(Color.warning500.uiColor, renderingMode: .alwaysOriginal),
+            icon: UIImage(systemName: "heart.fill")?.withRenderingMode(.alwaysOriginal).withTintColor(Color.warning500.uiColor) ?? UIImage(),
             text: Layout.Texts.tellAFriendTitle,
             completionHandler: { [weak self] in
                 self?.interactor.tellAFriend()
             }
         ),
         SettingsButtonViewModel(
-            icon: UIImage(systemName: "info.circle")!,
+            icon: UIImage(systemName: "info.square.fill") ?? UIImage(),
             text: Layout.Texts.termsAndConditionsTitle,
             completionHandler: { [weak self] in
                 self?.interactor.termsAndConditions()
             }
         ),
         SettingsButtonViewModel(
-            icon: UIImage(systemName: "gear")!,
+            icon: UIImage(systemName: "gear")?.withRenderingMode(.alwaysOriginal).withTintColor(Color.grayscale300.uiColor) ?? UIImage(),
             text: Layout.Texts.title,
             completionHandler: { [weak self] in
                 self?.interactor.systemSettings()

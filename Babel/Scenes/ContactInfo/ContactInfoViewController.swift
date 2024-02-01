@@ -116,8 +116,8 @@ extension ContactInfoViewController: UITableViewDataSource {
             return cell
         case 1:
             let cell: SettingsButtonCell = tableView.makeCell(indexPath: indexPath, accessoryType: .disclosureIndicator)
-            let image = Icon.send.image.withTintColor(Color.primary500.uiColor)
-            cell.render(.init(icon: image, text: Layout.Texts.sendMessage))
+            let image = UIImage(systemName: "paperplane.fill")?.withRenderingMode(.alwaysOriginal).withTintColor(Color.primary500.uiColor) ?? UIImage()
+            cell.render(.init(icon: image,  text: Layout.Texts.sendMessage))
             return cell
         default:
             return UITableViewCell()

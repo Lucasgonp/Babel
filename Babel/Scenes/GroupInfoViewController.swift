@@ -274,7 +274,7 @@ extension GroupInfoViewController: UITableViewDataSource {
             
             if isMember {
                 let cell: SettingsButtonCell = tableView.makeCell(indexPath: indexPath, accessoryType: .disclosureIndicator)
-                let image = Icon.send.image.withTintColor(Color.primary500.uiColor)
+                let image = UIImage(systemName: "paperplane.fill")?.withRenderingMode(.alwaysOriginal).withTintColor(Color.primary500.uiColor) ?? UIImage()
                 cell.render(.init(icon: image, text: Layout.Texts.sendMessage))
                 return cell
             } else {

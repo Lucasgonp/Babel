@@ -1,15 +1,17 @@
 import UIKit
-import Foundation
 import NetworkKit
 
 final class PushNotificationManager {
     static let shared = PushNotificationManager()
+    private let client: UsersClientProtocol
+    
+    private var currentUser: User {
+        UserSafe.shared.user
+    }
     
     private var keyServerFirebase: String {
         RemoteConfigManager.shared.keyServerFirebase
     }
-    
-    private let client: UsersClientProtocol
     
     private init(client: UsersClientProtocol = FirebaseClient.shared) {
         self.client = client
@@ -20,7 +22,7 @@ final class PushNotificationManager {
     }
     
     func sendPushNotificationToGroup(usersIds: [String], body: String, chatRoomId: String, groupName: String) {
-        let fullBody = "\(UserSafe.shared.user.name): \(body)"
+        let fullBody = "\(currentUser.name): \(body)"
         sendPushNotificationTo(usersIds: usersIds, body: fullBody, chatRoomId: chatRoomId, groupName: groupName)
     }
     
@@ -36,13 +38,13 @@ final class PushNotificationManager {
         let urlString = "https://fcm.googleapis.com/fcm/send"
         
         let url = NSURL(string: urlString)!
-        let paramString: [String : Any] = [
+        let paramString: [String: Any] = [
             "to" : token,
-            "notification" : [
-                "title" : title,
-                "body" : body,
-                "badge" : "1",
-                "sound" : "default"
+            "notification": [
+                "title": title,
+                "body": body,
+                "badge": "1",
+                "sound": "default"
             ]
         ]
         

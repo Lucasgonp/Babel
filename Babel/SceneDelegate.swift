@@ -7,6 +7,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         setupWindow(scene)
     }
+    
+    func sceneWillEnterForeground(_ scene: UIScene) {
+        PushNotificationManager.shared.resetNotificationBadge()
+    }
 }
 
 private extension SceneDelegate {

@@ -37,6 +37,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //MARK: Remote notifications
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         completionHandler(UIBackgroundFetchResult.newData)
+        
+        //TO DEBUG:
+        /*
+        guard let arrAPS = userInfo["aps"] as? [String: Any] else { return }
+            if application.applicationState == .active{
+                guard let arrAlert = arrAPS["alert"] as? [String:Any] else { return }
+
+                let strTitle:String = arrAlert["title"] as? String ?? ""
+                let strBody:String = arrAlert["body"] as? String ?? ""
+
+                let alert = UIAlertController(title: strTitle, message: strBody, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
+                    print("OK Action")
+                })
+                let topController = UIApplication.shared.topViewController()
+                topController?.present(alert, animated: true)
+            } else {
+                guard let arrNotification = arrAPS["notification"] as? [String:Any] else { return }
+                guard let arrAlert = arrNotification["alert"] as? [String:Any] else { return }
+
+                let strTitle:String = arrAlert["title"] as? String ?? ""
+                print("Title --", strTitle)
+                let strBody:String = arrAlert["body"] as? String ?? ""
+                print("Body --", strBody)
+            }
+         */
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
@@ -64,12 +90,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 
 extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-        guard let fcmToken else {
-            print("........... error")
-            return
-        }
-        
-        print("........... User push talking is ", fcmToken)
+        guard let fcmToken else { return }
         updateUserPushId(newPushId: fcmToken)
     }
 }

@@ -397,6 +397,7 @@
 		76EF5D492A905E3700D9AE8B /* DesignKit.framework in Sources */ = {isa = PBXBuildFile; fileRef = 76228DA92A8AAF7000C27C7A /* DesignKit.framework */; };
 		76EF5D4A2A905E3700D9AE8B /* Authenticator.framework in Sources */ = {isa = PBXBuildFile; fileRef = 76228DA32A8AAF6200C27C7A /* Authenticator.framework */; };
 		76F406F02B6D525B007C5A67 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F406EF2B6D525B007C5A67 /* PushNotificationManager.swift */; };
+		76F407312B6D87C6007C5A67 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F407302B6D87C6007C5A67 /* UIApplication+Extensions.swift */; };
 		76FA5D2C2B50B438004D86A5 /* StopWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FA5D2B2B50B438004D86A5 /* StopWatchView.swift */; };
 		76FA5D2F2B50CA75004D86A5 /* CreateGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FA5D2E2B50CA75004D86A5 /* CreateGroup.swift */; };
 		76FA5D312B50DD8A004D86A5 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FA5D302B50DD8A004D86A5 /* Data+Extensions.swift */; };
@@ -928,6 +929,7 @@
 		76E41BF42B562D8E00976A73 /* EditProfileClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileClient.swift; sourceTree = "<group>"; };
 		76F406EE2B6D4347007C5A67 /* Babel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Babel.entitlements; sourceTree = "<group>"; };
 		76F406EF2B6D525B007C5A67 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
+		76F407302B6D87C6007C5A67 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		76FA5D2B2B50B438004D86A5 /* StopWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchView.swift; sourceTree = "<group>"; };
 		76FA5D2E2B50CA75004D86A5 /* CreateGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroup.swift; sourceTree = "<group>"; };
 		76FA5D302B50DD8A004D86A5 /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
@@ -1428,6 +1430,7 @@
 				764303892B4654B10037721A /* String+Extensions.swift */,
 				76FA5D302B50DD8A004D86A5 /* Data+Extensions.swift */,
 				767CA9362B6829F6004C4358 /* Collection+Extensions.swift */,
+				76F407302B6D87C6007C5A67 /* UIApplication+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -3345,6 +3348,7 @@
 				763B03C32B4F74EB0022E145 /* CreateGroupViewController.swift in Sources */,
 				7620F2D92A92EF74002A4EB5 /* UsersPresenter.swift in Sources */,
 				76AE76642B66AE2A00FBB7D3 /* RequestsJoinGroupInteractor.swift in Sources */,
+				76F407312B6D87C6007C5A67 /* UIApplication+Extensions.swift in Sources */,
 				7620F4502A9659F5002A4EB5 /* TellAFriendViewController.swift in Sources */,
 				76B1FC122B5D6F8A007D0519 /* OpenAICell.swift in Sources */,
 				767082622B4C4F4D0024EF41 /* MessageInputBarView.swift in Sources */,

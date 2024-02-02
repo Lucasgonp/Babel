@@ -44,7 +44,8 @@ final class PushNotificationManager {
                 "title": title,
                 "body": body,
                 "badge": "1",
-                "sound": "default"
+                "sound": "default",
+                "chatRoomId": chatRoomId,
             ]
         ]
         

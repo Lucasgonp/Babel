@@ -20,7 +20,8 @@ final class PushNotificationManager {
     }
     
     func sendPushNotificationToGroup(usersIds: [String], body: String, chatRoomId: String, groupName: String) {
-        sendPushNotificationTo(usersIds: usersIds, body: body, chatRoomId: chatRoomId, groupName: groupName)
+        let fullBody = "\(UserSafe.shared.user.name): \(body)"
+        sendPushNotificationTo(usersIds: usersIds, body: fullBody, chatRoomId: chatRoomId, groupName: groupName)
     }
     
     func resetNotificationBadge() {
@@ -32,7 +33,6 @@ final class PushNotificationManager {
     }
     
     private func sendMessageToUser(to token: String, title: String, body: String, chatRoomId: String) {
-        print("token is ...", token)
         let urlString = "https://fcm.googleapis.com/fcm/send"
         
         let url = NSURL(string: urlString)!
@@ -62,14 +62,12 @@ final class PushNotificationManager {
 
 private extension PushNotificationManager {
     func sendPushNotificationTo(usersIds: [String], body: String, chatRoomId: String, groupName: String?) {
-        print("Sending push to user ", usersIds)
-        
         DispatchQueue.global().async {
             self.client.downloadUsers(withIds: usersIds) { [weak self] (result: (Result<[User], FirebaseError>)) in
                 switch result {
                 case let .success(users):
                     for user in users {
-                        let title = groupName != nil ? groupName! : AccountInfo.shared.user?.name ?? "User"
+                        let title = groupName != nil ? groupName! : AccountInfo.shared.user?.name ?? String()
                         self?.sendMessageToUser(to: user.pushId, title: title, body: body, chatRoomId: chatRoomId)
                     }
                 case let .failure(error):

@@ -928,8 +928,6 @@
 		76E41BF42B562D8E00976A73 /* EditProfileClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileClient.swift; sourceTree = "<group>"; };
 		76F406EE2B6D4347007C5A67 /* Babel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Babel.entitlements; sourceTree = "<group>"; };
 		76F406EF2B6D525B007C5A67 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
-		76F406F72B6D7D23007C5A67 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
-		76F406F92B6D7D23007C5A67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76FA5D2B2B50B438004D86A5 /* StopWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchView.swift; sourceTree = "<group>"; };
 		76FA5D2E2B50CA75004D86A5 /* CreateGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroup.swift; sourceTree = "<group>"; };
 		76FA5D302B50DD8A004D86A5 /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
@@ -2333,7 +2331,6 @@
 				76CAA14E2A8AA1F700D742E9 /* BabelTests */,
 				76CAA1582A8AA1F700D742E9 /* BabelUITests */,
 				76B4877E2B49CA95001FC465 /* Dependencies */,
-				76F406F62B6D7D23007C5A67 /* NotificationServiceExtension */,
 				76CAA1362A8AA1F400D742E9 /* Products */,
 				76CAA1712A8AA8F400D742E9 /* Frameworks */,
 				7691DB122B4994FF007D52B3 /* Modules */,
@@ -2528,15 +2525,6 @@
 				76E41BF42B562D8E00976A73 /* EditProfileClient.swift */,
 			);
 			path = EditProfile;
-			sourceTree = "<group>";
-		};
-		76F406F62B6D7D23007C5A67 /* NotificationServiceExtension */ = {
-			isa = PBXGroup;
-			children = (
-				76F406F72B6D7D23007C5A67 /* NotificationService.swift */,
-				76F406F92B6D7D23007C5A67 /* Info.plist */,
-			);
-			path = NotificationServiceExtension;
 			sourceTree = "<group>";
 		};
 		76FA5D2D2B50CA6A004D86A5 /* Models */ = {

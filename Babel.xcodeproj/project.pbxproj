@@ -831,6 +831,7 @@
 		769E972C2AA3C4FC004FC6B4 /* ContactInfoWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoWorker.swift; sourceTree = "<group>"; };
 		769E97342AA3CA1B004FC6B4 /* ContactInfoHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoHeaderCell.swift; sourceTree = "<group>"; };
 		76A189F12B6C554F00DD2B81 /* Image+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extensions.swift"; sourceTree = "<group>"; };
+		76AA4DC42B6DA1CC000ED9E3 /* BabelDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BabelDebug.entitlements; sourceTree = "<group>"; };
 		76AE76552B65EA8A00FBB7D3 /* RequestsToJoinCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsToJoinCell.swift; sourceTree = "<group>"; };
 		76AE76592B66AE2A00FBB7D3 /* RequestsJoinGroupFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsJoinGroupFactory.swift; sourceTree = "<group>"; };
 		76AE765A2B66AE2A00FBB7D3 /* RequestsJoinGroupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsJoinGroupPresenter.swift; sourceTree = "<group>"; };
@@ -2361,6 +2362,7 @@
 		76CAA1372A8AA1F400D742E9 /* Babel */ = {
 			isa = PBXGroup;
 			children = (
+				76AA4DC42B6DA1CC000ED9E3 /* BabelDebug.entitlements */,
 				76F406EE2B6D4347007C5A67 /* Babel.entitlements */,
 				764B14032B6473EE00C48FAE /* Deeplink */,
 				7667DC752B4CDF3200938D6F /* Resources */,

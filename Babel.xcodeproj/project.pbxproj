@@ -396,6 +396,7 @@
 		76E41BF62B562DEE00976A73 /* EditProfileClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E41BF42B562D8E00976A73 /* EditProfileClient.swift */; };
 		76EF5D492A905E3700D9AE8B /* DesignKit.framework in Sources */ = {isa = PBXBuildFile; fileRef = 76228DA92A8AAF7000C27C7A /* DesignKit.framework */; };
 		76EF5D4A2A905E3700D9AE8B /* Authenticator.framework in Sources */ = {isa = PBXBuildFile; fileRef = 76228DA32A8AAF6200C27C7A /* Authenticator.framework */; };
+		76F406F02B6D525B007C5A67 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F406EF2B6D525B007C5A67 /* PushNotificationManager.swift */; };
 		76FA5D2C2B50B438004D86A5 /* StopWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FA5D2B2B50B438004D86A5 /* StopWatchView.swift */; };
 		76FA5D2F2B50CA75004D86A5 /* CreateGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FA5D2E2B50CA75004D86A5 /* CreateGroup.swift */; };
 		76FA5D312B50DD8A004D86A5 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FA5D302B50DD8A004D86A5 /* Data+Extensions.swift */; };
@@ -543,6 +544,16 @@
 				76B487842B49CA95001FC465 /* Dependencies.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76F407002B6D7D24007C5A67 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -915,6 +926,10 @@
 		76DA7EC32AB78E7400106731 /* RecentChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatCell.swift; sourceTree = "<group>"; };
 		76E41BF12B559B2C00976A73 /* GroupInfoMessageWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoMessageWorker.swift; sourceTree = "<group>"; };
 		76E41BF42B562D8E00976A73 /* EditProfileClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileClient.swift; sourceTree = "<group>"; };
+		76F406EE2B6D4347007C5A67 /* Babel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Babel.entitlements; sourceTree = "<group>"; };
+		76F406EF2B6D525B007C5A67 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
+		76F406F72B6D7D23007C5A67 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		76F406F92B6D7D23007C5A67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76FA5D2B2B50B438004D86A5 /* StopWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchView.swift; sourceTree = "<group>"; };
 		76FA5D2E2B50CA75004D86A5 /* CreateGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroup.swift; sourceTree = "<group>"; };
 		76FA5D302B50DD8A004D86A5 /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
@@ -2318,6 +2333,7 @@
 				76CAA14E2A8AA1F700D742E9 /* BabelTests */,
 				76CAA1582A8AA1F700D742E9 /* BabelUITests */,
 				76B4877E2B49CA95001FC465 /* Dependencies */,
+				76F406F62B6D7D23007C5A67 /* NotificationServiceExtension */,
 				76CAA1362A8AA1F400D742E9 /* Products */,
 				76CAA1712A8AA8F400D742E9 /* Frameworks */,
 				7691DB122B4994FF007D52B3 /* Modules */,
@@ -2345,6 +2361,7 @@
 		76CAA1372A8AA1F400D742E9 /* Babel */ = {
 			isa = PBXGroup;
 			children = (
+				76F406EE2B6D4347007C5A67 /* Babel.entitlements */,
 				764B14032B6473EE00C48FAE /* Deeplink */,
 				7667DC752B4CDF3200938D6F /* Resources */,
 				7670825F2B4C4F210024EF41 /* Commons */,
@@ -2422,6 +2439,7 @@
 				76C6B7482B4B03FF00285EE2 /* LocationManager.swift */,
 				76C6B7602B4B507000285EE2 /* AudioRecorderManager.swift */,
 				768E40D92B4D9A5B009F8F7C /* KeyboardManager.swift */,
+				76F406EF2B6D525B007C5A67 /* PushNotificationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -2510,6 +2528,15 @@
 				76E41BF42B562D8E00976A73 /* EditProfileClient.swift */,
 			);
 			path = EditProfile;
+			sourceTree = "<group>";
+		};
+		76F406F62B6D7D23007C5A67 /* NotificationServiceExtension */ = {
+			isa = PBXGroup;
+			children = (
+				76F406F72B6D7D23007C5A67 /* NotificationService.swift */,
+				76F406F92B6D7D23007C5A67 /* Info.plist */,
+			);
+			path = NotificationServiceExtension;
 			sourceTree = "<group>";
 		};
 		76FA5D2D2B50CA6A004D86A5 /* Models */ = {
@@ -2743,6 +2770,7 @@
 				76CAA1752A8AA8F400D742E9 /* Embed Frameworks */,
 				76CAA1912A8AACA100D742E9 /* Swiftgen Run Script */,
 				76228DB62A8AB0A300C27C7A /* Crashlytics Run Script */,
+				76F407002B6D7D24007C5A67 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -2805,7 +2833,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1510;
+				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					7691DAF42B499409007D52B3 = {
@@ -3291,6 +3319,7 @@
 				7686A8902B545C0F0025FBD3 /* AddMembersInteractor.swift in Sources */,
 				7620F2B42A92DE1B002A4EB5 /* SettingsFactory.swift in Sources */,
 				76DA7EBF2AB78D1F00106731 /* RecentChatsViewController.swift in Sources */,
+				76F406F02B6D525B007C5A67 /* PushNotificationManager.swift in Sources */,
 				761011952B3A0156004639C4 /* MessageLayoutDelegate.swift in Sources */,
 				76B1FC0C2B5D6515007D0519 /* OpenAIWorker.swift in Sources */,
 				768F4EB12B4F4AD80051E970 /* GroupsFactory.swift in Sources */,
@@ -4208,6 +4237,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Babel/Babel.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -4218,6 +4248,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Babel requires to access your Media library";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Babel requires to access your Camera";
+				INFOPLIST_KEY_NSContactsUsageDescription = "Babel Precisa acessar sua lista de contatos";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Babel requires to access your location";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Babel requires to access your location";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Babel requires to access your location";
@@ -4256,6 +4287,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Babel/Babel.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -4265,6 +4297,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Babel requires to access your Media library";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Babel requires to access your Camera";
+				INFOPLIST_KEY_NSContactsUsageDescription = "Babel Precisa acessar sua lista de contatos";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Babel requires to access your location";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Babel requires to access your location";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Babel requires to access your location";

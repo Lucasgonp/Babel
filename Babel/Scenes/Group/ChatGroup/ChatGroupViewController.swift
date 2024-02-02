@@ -378,20 +378,16 @@ private extension ChatGroupViewController {
     }
     
     func makeAttachActionSheet() -> UIAlertController {
-        galleryController = GalleryController()
-        
         let cameraImage = UIImage(systemName: "camera")?.withRenderingMode(.alwaysTemplate)
         let cameraAction = UIAlertAction(title: Layout.Texts.camera, style: .default, image: cameraImage, handler: { [weak self] _ in
             self?.showLoadingView()
-            self?.galleryController?.configuration = .camera
-            self?.showGalleryView()
+            self?.showGalleryView(configuration: .camera)
         })
         
         let libraryImage = UIImage(systemName: "photo")?.withRenderingMode(.alwaysTemplate)
         let libraryAction = UIAlertAction(title: Layout.Texts.library, style: .default, image: libraryImage, handler: { [weak self] _ in
             self?.showLoadingView()
-            self?.galleryController?.configuration = .library
-            self?.showGalleryView()
+            self?.showGalleryView(configuration: .library)
         })
         
         let locationImage = UIImage(systemName: "mappin.and.ellipse")?.withRenderingMode(.alwaysTemplate)
@@ -416,7 +412,9 @@ private extension ChatGroupViewController {
         view.fillWithSubview(subview: spinnerView)
     }
     
-    func showGalleryView() {
+    func showGalleryView(configuration: GalleryController.Configuration) {
+        galleryController = GalleryController()
+        galleryController?.configuration = configuration
         galleryController?.showMediaPicker(
             from: navigationController,
             loadingViewDelegate: self,
@@ -424,10 +422,12 @@ private extension ChatGroupViewController {
                 self?.galleryController = nil
                 
                 if let singlePhoto = items.singlePhoto {
+                    self?.showLoadingView()
                     self?.messageSend(photo: singlePhoto.image)
                 }
                 
                 if let singleVideo = items.singleVideo {
+                    self?.showLoadingView()
                     self?.messageSend(video: singleVideo)
                 }
             })

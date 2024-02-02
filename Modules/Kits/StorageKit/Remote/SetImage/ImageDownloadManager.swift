@@ -18,7 +18,7 @@ extension UIImageView {
         }
         
         /// Get image from local
-        let fileName = StorageAdapter.shared.fileNameFrom(fileUrl: url.absoluteString) + ".png"
+        let fileName = url.absoluteString.replacingOccurrences(of: "/", with: "") + ".png"
         if StorageAdapter.shared.fileExistsAtPath(path: fileName) {
             let fileDirectory = StorageAdapter.shared.fileInDocumentsDirectory(fileName: fileName)
             let image = UIImage(contentsOfFile: fileDirectory)
@@ -63,7 +63,7 @@ extension UIImageView {
         }
         
         /// Get image from local
-        let fileName = StorageAdapter.shared.fileNameFrom(fileUrl: link) + ".png"
+        let fileName = link.replacingOccurrences(of: "/", with: "") + ".png"
         if StorageAdapter.shared.fileExistsAtPath(path: fileName) {
             let fileDirectory = StorageAdapter.shared.fileInDocumentsDirectory(fileName: fileName)
             let image = UIImage(contentsOfFile: fileDirectory)

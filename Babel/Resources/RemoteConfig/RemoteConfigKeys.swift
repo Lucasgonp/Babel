@@ -3,5 +3,6 @@ extension RemoteConfigManager {
         case OpenAIToken
         case ShowTabBots
         case ShareAppMessage
+        case KeyServerFirebase
     }
 }

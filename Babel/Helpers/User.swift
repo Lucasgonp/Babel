@@ -11,3 +11,7 @@ struct UserSafe {
     
     private init() { }
 }
+
+func removeCurrentUsersFrom(usersIds: [String]) -> [String] {
+    usersIds.filter({ $0 != AccountInfo.shared.user?.id })
+}

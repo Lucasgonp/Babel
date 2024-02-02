@@ -28,6 +28,7 @@ extension ChatGroupViewController: MessagesDisplayDelegate {
     
     func configureMediaMessageImageView(_ imageView: UIImageView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
         if case .photo(let media) = message.kind, let imageURL = media.url {
+            dismissLoadingView()
             imageView.setImage(with: imageURL, placeholderImage: Image.photoPlaceholder.image) { image in
                 let mediaItem = PhotoMessage(path: imageURL.absoluteString, image: image)
                 self.mkMessages[indexPath.section].kind = .photo(mediaItem)
@@ -35,6 +36,8 @@ extension ChatGroupViewController: MessagesDisplayDelegate {
         }
         
         if case .video = message.kind {
+            dismissLoadingView()
+            
             let mkMessage = mkMessages[indexPath.section]
             let videoMessage = mkMessage.videoItem
             imageView.setImage(with: videoMessage?.thumbailUrl) { image in

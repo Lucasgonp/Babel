@@ -12,7 +12,7 @@ final class VideoMessage: NSObject, MediaItem {
     init(url: URL?, thumbailUrl: String) {
         self.url = url
         self.thumbailUrl = thumbailUrl
-        self.placeholderImage = Image.photoPlaceholder.image
+        self.placeholderImage = UIImage()
         self.size = CGSize(width: 240, height: 240)
     }
 }

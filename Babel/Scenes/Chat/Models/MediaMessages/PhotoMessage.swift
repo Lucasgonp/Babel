@@ -11,7 +11,7 @@ final class PhotoMessage: NSObject, MediaItem {
     init(
         path: String,
         image: UIImage? = nil,
-        placeholderImage: UIImage = Image.photoPlaceholder.image
+        placeholderImage: UIImage = UIImage()
     ) {
         self.url = URL(string: path)
         self.image = image

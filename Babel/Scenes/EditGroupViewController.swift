@@ -132,7 +132,7 @@ extension EditGroupViewController: ViewConfiguration {
         view.endEditing(true)
         dismiss(animated: true) { [weak self] in
             guard let self else { return }
-            let dto = EditGroupDTO(name: self.groupNameTextField.text, avatar: avatarImageView.image ?? Image.photoPlaceholder.image, avatarLink: avatarLink)
+            let dto = EditGroupDTO(name: self.groupNameTextField.text, avatar: avatarImageView.image ?? Image.avatarPlaceholder.image, avatarLink: avatarLink)
             self.completion?(dto)
         }
     }

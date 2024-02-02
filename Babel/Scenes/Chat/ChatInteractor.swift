@@ -110,7 +110,8 @@ extension ChatInteractor: ChatInteractorProtocol {
             sendAudioMessage(message: localMessage, audioFileName: audio, audioDuration: audioDuration, memberIds: message.memberIds)
         }
         
-        // TODO: Send push notification
+        let memberIds = removeCurrentUsersFrom(usersIds: message.memberIds)
+        PushNotificationManager.shared.sendPushNotificationToUser(usersIds: memberIds, body: localMessage.message, chatRoomId: localMessage.chatRoomId)
         
         updateRecents(chatRoomId: dto.chatId, lastMessage: localMessage.message)
     }

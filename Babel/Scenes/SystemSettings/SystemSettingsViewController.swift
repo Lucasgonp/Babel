@@ -34,10 +34,6 @@ final class SystemSettingsViewController: ViewController<SystemSettingsInteracto
     }()
     
     weak var delegate: SystemSettingsDelegate?
-    
-    deinit {
-        print("tela de system deinit!!!!!")
-    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

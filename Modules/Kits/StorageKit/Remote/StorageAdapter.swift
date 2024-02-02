@@ -1,11 +1,12 @@
 import FirebaseStorage
-import Kingfisher
 
 public final class StorageAdapter {
+    public static let shared = StorageAdapter()
+    
     let storage: Storage
     let fileManager: FileManager
     
-    public init(storage: Storage = Storage.storage(), fileManager: FileManager = .default) {
+    private init(storage: Storage = Storage.storage(), fileManager: FileManager = .default) {
         self.storage = storage
         self.fileManager = fileManager
     }
@@ -19,9 +20,17 @@ public final class StorageAdapter {
     }
     
     public func clearCache() {
-        KingfisherManager.shared.cache.clearMemoryCache()
-        KingfisherManager.shared.cache.clearDiskCache()
-        KingfisherManager.shared.cache.cleanExpiredDiskCache()
+        let directoryPath = fileInDocumentsDirectory(fileName: String())
+        
+        do {
+            let contents = try fileManager.contentsOfDirectory(atPath: directoryPath)
+            for file in contents {
+                let filePath = directoryPath.appending(file)
+                try fileManager.removeItem(atPath: filePath)
+            }
+        } catch {
+            print("Error deleting files: \(error)")
+        }
     }
 }
 

@@ -7,8 +7,6 @@ final class RealmManager {
     
     private init() { }
     
-    
-    
     func saveToRealm<T: Object>(_ object: T) {
         do {
             try realm.write { [weak self] in

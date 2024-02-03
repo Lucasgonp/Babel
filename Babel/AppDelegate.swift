@@ -34,6 +34,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+//    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+//        if notification.request.content.userInfo["ViewType"] as! String == "ShowNotificationView" {
+//         // Then you can implement your functionaliton here according to the need.
+//        }
+//    }
+    
     //MARK: Remote notifications
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         completionHandler(UIBackgroundFetchResult.newData)

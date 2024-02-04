@@ -20,7 +20,7 @@ extension FirebaseClient: RecentChatClientProtocol {
     }
     
     public func downloadRecentGroup<T: Decodable>(id: String, completion: @escaping ((Result<T, FirebaseError>) -> Void)) {
-        firebaseReference(.group).document(id).addSnapshotListener { (querySnapshot, error) in
+        firebaseReference(.group).document(id).getDocument { (querySnapshot, error) in
             if let error {
                 return completion(.failure(.custom(error)))
             }

@@ -34,41 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-//    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-//        if notification.request.content.userInfo["ViewType"] as! String == "ShowNotificationView" {
-//         // Then you can implement your functionaliton here according to the need.
-//        }
-//    }
-    
     //MARK: Remote notifications
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        completionHandler(UIBackgroundFetchResult.newData)
-        
-        //TO DEBUG:
-        /*
-        guard let arrAPS = userInfo["aps"] as? [String: Any] else { return }
-            if application.applicationState == .active{
-                guard let arrAlert = arrAPS["alert"] as? [String:Any] else { return }
-
-                let strTitle:String = arrAlert["title"] as? String ?? ""
-                let strBody:String = arrAlert["body"] as? String ?? ""
-
-                let alert = UIAlertController(title: strTitle, message: strBody, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default) { action in
-                    print("OK Action")
-                })
-                let topController = UIApplication.shared.topViewController()
-                topController?.present(alert, animated: true)
-            } else {
-                guard let arrNotification = arrAPS["notification"] as? [String:Any] else { return }
-                guard let arrAlert = arrNotification["alert"] as? [String:Any] else { return }
-
-                let strTitle:String = arrAlert["title"] as? String ?? ""
-                print("Title --", strTitle)
-                let strBody:String = arrAlert["body"] as? String ?? ""
-                print("Body --", strBody)
-            }
-         */
+        completionHandler(.newData)
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
@@ -89,7 +57,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    //MARK: Will present on push notification
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        guard let userInfo = notification.request.content.userInfo as? [String: AnyObject] else {
+            return
+        }
+        
+        if let chatRoomId = userInfo["gcm.notification.chatRoomId"] as? String,
+           CoordinatorManager.shared.shouldDisplayNotificator(chatRoomId: chatRoomId) {
+            completionHandler(.banner)
+        }
+    }
+    
+    //MARK: Tap on push notification
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        didReceive response: UNNotificationResponse,
+        withCompletionHandler completionHandler: @escaping () -> Void
+    ) {
+        guard let userInfo = response.notification.request.content.userInfo as? [String: AnyObject] else {
+            return
+        }
+        
+        if let chatRoomId = userInfo["gcm.notification.chatRoomId"] as? String {
+            CoordinatorManager.shared.pushChat(chatRoomId: chatRoomId)
+        }
+        
         completionHandler()
     }
 }

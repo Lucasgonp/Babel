@@ -110,6 +110,8 @@
 		7655EF152B6577690028054C /* TermsAndConditions.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7655EF172B6577690028054C /* TermsAndConditions.pdf */; };
 		7667DC742B4CDF1D00938D6F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 7667DC732B4CDF1D00938D6F /* Lottie */; };
 		7667DC782B4CDF5900938D6F /* TrashAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 7667DC772B4CDF5900938D6F /* TrashAnimation.json */; };
+		76693FE92B6FF500009CC4C0 /* CoordinatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76693FE82B6FF500009CC4C0 /* CoordinatorManager.swift */; };
+		76693FED2B6FF704009CC4C0 /* CoordinatorClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76693FEB2B6FF6AA009CC4C0 /* CoordinatorClient.swift */; };
 		7669BA2A2ABDD3550002AD4C /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669BA292ABDD3550002AD4C /* Date+Extensions.swift */; };
 		7669BA2D2ABDDA650002AD4C /* StartChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669BA2C2ABDDA650002AD4C /* StartChat.swift */; };
 		767082592B4B81C20024EF41 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C6B7622B4B7BE100285EE2 /* HttpMethod.swift */; };
@@ -669,6 +671,8 @@
 		7655EF182B6577700028054C /* en */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = en; path = en.lproj/TermsAndConditions.pdf; sourceTree = "<group>"; };
 		7655EF192B6577790028054C /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = Base; path = Base.lproj/TermsAndConditions.pdf; sourceTree = "<group>"; };
 		7667DC772B4CDF5900938D6F /* TrashAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TrashAnimation.json; sourceTree = "<group>"; };
+		76693FE82B6FF500009CC4C0 /* CoordinatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorManager.swift; sourceTree = "<group>"; };
+		76693FEB2B6FF6AA009CC4C0 /* CoordinatorClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorClient.swift; sourceTree = "<group>"; };
 		7669BA292ABDD3550002AD4C /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		7669BA2C2ABDDA650002AD4C /* StartChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartChat.swift; sourceTree = "<group>"; };
 		7670825A2B4B89480024EF41 /* AudioMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioMessage.swift; sourceTree = "<group>"; };
@@ -1423,6 +1427,14 @@
 			path = Lottie;
 			sourceTree = "<group>";
 		};
+		76693FEA2B6FF698009CC4C0 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				76693FEB2B6FF6AA009CC4C0 /* CoordinatorClient.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		7669BA282ABDD33D0002AD4C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -1773,6 +1785,7 @@
 		7691DBD32B499A29007D52B3 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
+				76693FEA2B6FF698009CC4C0 /* Coordinator */,
 				76B1FC392B5D9E4D007D0519 /* ChatBot */,
 				76E41BF32B562D8200976A73 /* EditProfile */,
 				76AF8DCE2B51FA2C00E21CD5 /* Users */,
@@ -2442,6 +2455,7 @@
 				76C6B7602B4B507000285EE2 /* AudioRecorderManager.swift */,
 				768E40D92B4D9A5B009F8F7C /* KeyboardManager.swift */,
 				76F406EF2B6D525B007C5A67 /* PushNotificationManager.swift */,
+				76693FE82B6FF500009CC4C0 /* CoordinatorManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -3111,6 +3125,7 @@
 				7691DBF52B499A2A007D52B3 /* ChatMessageDTO.swift in Sources */,
 				7691DBFD2B499A2A007D52B3 /* FirebaseError.swift in Sources */,
 				763B03B42B4F63520022E145 /* StartChatDTO.swift in Sources */,
+				76693FED2B6FF704009CC4C0 /* CoordinatorClient.swift in Sources */,
 				7691DC022B499A2A007D52B3 /* HttpError.swift in Sources */,
 				7691DBF12B499A2A007D52B3 /* FCollectionReference.swift in Sources */,
 				7691DBF32B499A2A007D52B3 /* ChatHelperClient.swift in Sources */,
@@ -3334,6 +3349,7 @@
 				76CAA13B2A8AA1F400D742E9 /* SceneDelegate.swift in Sources */,
 				76B1FC0A2B5D6515007D0519 /* OpenAIFactory.swift in Sources */,
 				76FA5D2C2B50B438004D86A5 /* StopWatchView.swift in Sources */,
+				76693FE92B6FF500009CC4C0 /* CoordinatorManager.swift in Sources */,
 				76DA7EBC2AB78D1F00106731 /* RecentChatsFactory.swift in Sources */,
 				763B03A82B4F54C50022E145 /* GroupCell.swift in Sources */,
 				7608DE6A2A9BAFDE0036027A /* EditBioViewController.swift in Sources */,

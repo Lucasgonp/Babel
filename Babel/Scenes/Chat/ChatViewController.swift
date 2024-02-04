@@ -93,7 +93,7 @@ final class ChatViewController: MessagesViewController {
     private let currentUser = UserSafe.shared.user
     private let interactor: ChatInteractorProtocol
     
-    private(set) var dto: ChatDTO
+    let dto: ChatDTO
     
     init(interactor: ChatInteractorProtocol, dto: ChatDTO) {
         self.interactor = interactor

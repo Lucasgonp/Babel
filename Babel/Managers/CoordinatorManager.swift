@@ -27,7 +27,11 @@ final class CoordinatorManager {
                         })
                     }
                 } else {
-                    self?.handleToPushChat(navigation: currentController?.navigationController, recent: recent)
+                    if let currentController {
+                        self?.handleToPushChat(navigation: currentController.navigationController, recent: recent)
+                    } else {
+                        StorageLocal.shared.saveStorage(recent, key: kWAITPUSHCHAT)
+                    }
                 }
             case let .failure(error):
                 let currentController = UIApplication.shared.topViewController() as? ViewController<Any, UIView>

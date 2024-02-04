@@ -7,7 +7,7 @@ struct UserSafe {
     static let shared = UserSafe()
     
     var user: User { AccountInfo.shared.user! }
-    let firebaseUser = AccountInfo.shared.firebaseUser!
+    var firebaseUser: FireUser? { AccountInfo.shared.firebaseUser }
     
     private init() { }
 }

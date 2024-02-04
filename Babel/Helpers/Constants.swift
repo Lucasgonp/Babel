@@ -17,3 +17,5 @@ let kPICTUREMESSAGE = "📷 \(Localizable.MessageType.photo.localized())"
 let kVIDEOMESSAGE = "🎥 \(Localizable.MessageType.video.localized())"
 let kLOCATIONMESSAGE = "📍 \(Localizable.MessageType.location.localized())"
 let kAUDIOMESSAGE = "🔈 \(Localizable.MessageType.audio.localized())"
+
+let kWAITPUSHCHAT = "waitForPushChat"

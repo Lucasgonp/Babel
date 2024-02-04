@@ -1,5 +1,6 @@
 import UIKit
 import DesignKit
+import StorageKit
 
 protocol RecentChatsDisplaying: AnyObject {
     func displayViewState(_ state: RecentChatsViewState)
@@ -76,6 +77,11 @@ extension RecentChatsViewController: RecentChatsDisplaying {
         case .success(let recentChats):
             allRecentChats = recentChats
             tableView.reloadData()
+            
+            if let recentChatToPush: RecentChatModel = StorageLocal.shared.getStorageObject(for: kWAITPUSHCHAT) {
+                StorageLocal.shared.removeStorage(key: kWAITPUSHCHAT)
+                interactor.didTapOnChat(recentChatToPush)
+            }
         case .error:
             // TODO:
             return

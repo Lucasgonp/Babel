@@ -30,6 +30,34 @@ public struct StorageLocal {
         }
     }
     
+    public func saveStorage(_ data: Encodable, key: String) {
+        do {
+            let object = try JSONEncoder().encode(data)
+            UserDefaults.standard.set(object, forKey: key)
+        } catch {
+            print("Error saving data into storage: \(error.localizedDescription)")
+        }
+    }
+    
+    public func getStorageObject<T: Decodable>(for key: String) -> T? {
+        guard let data = UserDefaults.standard.data(forKey: key) else {
+            print("Error retreaving data from storage, type: \(T.self), for key: \(key)")
+            return nil
+        }
+        
+        do {
+            let object = try JSONDecoder().decode(T.self, from: data)
+            return object
+        } catch let error {
+            print("Error loading data into storage: \(error.localizedDescription)")
+            return nil
+        }
+    }
+    
+    public func removeStorage(key: String) {
+        UserDefaults.standard.removeObject(forKey: key)
+    }
+    
     public func removeStorageData(key: StorageKey) {
         UserDefaults.standard.removeObject(forKey: key.rawValue)
     }

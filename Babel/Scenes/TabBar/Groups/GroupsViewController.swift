@@ -87,20 +87,6 @@ extension GroupsViewController: UITableViewDelegate {
         let group = searchController.isActive ? filteredGroups[indexPath.row] : sections[indexPath.section].groups[indexPath.row]
         interactor.didTapOnGroup(id: group.id)
     }
-    //
-    //    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-    //        return true
-    //    }
-    //
-    //    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    //        if editingStyle == .delete {
-    //            let recent = searchController.isActive ? filteredRecentChats[indexPath.row] : allRecentChats[indexPath.row]
-    //            allRecentChats.removeAll(where: { $0 == recent })
-    //            filteredRecentChats.removeAll(where: { $0 == recent })
-    //            tableView.deleteRows(at: [indexPath], with: .automatic)
-    //            interactor.deleteRecentChat(recent)
-    //        }
-    //    }
 }
 
 extension GroupsViewController: UITableViewDataSource {

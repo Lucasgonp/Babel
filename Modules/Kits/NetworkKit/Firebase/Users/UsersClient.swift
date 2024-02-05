@@ -8,7 +8,7 @@ public protocol UsersClientProtocol {
 
 extension FirebaseClient: UsersClientProtocol {
     public func downloadAllUsers<T: Decodable>(completion: @escaping ((Result<[T], FirebaseError>) -> Void)) {
-        firebaseReference(.user).limit(to: 500).getDocuments { (querySnapshot, error) in
+        firebaseReference(.user).limit(to: 500).addSnapshotListener { (querySnapshot, error) in
             if let error {
                 return completion(.failure(.custom(error)))
             }

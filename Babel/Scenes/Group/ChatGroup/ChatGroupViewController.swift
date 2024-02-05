@@ -212,7 +212,7 @@ extension ChatGroupViewController: ViewConfiguration {
         configureMessageInputBar()
         
         titleViewAvatar.setImage(with: dto.groupInfo.avatarLink) { [weak self] image in
-            self?.titleViewAvatar.image = image ?? Image.avatarPlaceholder.image
+            self?.titleViewAvatar.image = image ?? Image.avatarGroupPlaceholder.image
         }
         
         // TODO: showMessageTimestampOnSwipeLeft = true

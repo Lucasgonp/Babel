@@ -30,7 +30,6 @@ final class UsersViewController: ViewController<UsersInteractorProtocol, UIView>
         tableView.register(cellType: UserCell.self)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.refreshControl = refreshControl
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -48,14 +47,15 @@ final class UsersViewController: ViewController<UsersInteractorProtocol, UIView>
     private var allContacts = [User]()
     private var filteredContacts = [User]()
     
-    private let refreshControl = UIRefreshControl()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        interactor.loadAllUsers()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
-        
-        interactor.loadAllUsers()
     }
     
     override func buildViewHierarchy() {
@@ -77,7 +77,6 @@ extension UsersViewController: UsersDisplaying {
         switch state {
         case .success(let users):
             allContacts = users.sorted(by: { $0.name.lowercased() < $1.name.lowercased() })
-            refreshControl.endRefreshing()
             setupContactsList()
         case .error(let message):
             showErrorAlert(message)
@@ -109,12 +108,6 @@ extension UsersViewController: UITableViewDelegate {
             navigationController?.pushViewController(viewController, animated: true)
         }
         
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if refreshControl.isRefreshing {
-            interactor.refreshAllUsers()
-        }
     }
 }
 
@@ -181,7 +174,9 @@ private extension UsersViewController {
             }))
         }
         
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     func filterContentForSearchText(searchText: String) {
@@ -191,7 +186,9 @@ private extension UsersViewController {
             filteredContacts = allContacts
         }
         
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 }
 

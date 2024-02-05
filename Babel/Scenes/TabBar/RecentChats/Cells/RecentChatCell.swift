@@ -127,9 +127,9 @@ extension RecentChatCell {
             unreadCountView.isHidden = true
         }
         
-        
+        let placeholder = dto.type == .chat ? Image.avatarPlaceholder.image : Image.avatarGroupPlaceholder.image
         avatarImageView.setImage(with: dto.avatarLink) { [weak self] image in
-            self?.avatarImageView.image = image ?? Image.avatarPlaceholder.image
+            self?.avatarImageView.image = image ?? placeholder
         }
     }
 }

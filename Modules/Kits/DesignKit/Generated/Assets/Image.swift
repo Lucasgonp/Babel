@@ -23,6 +23,7 @@ public typealias AssetImageTypeAlias = ImageAsset.Image
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 public enum Image {
   public static let babelBrandLogo = ImageAsset(name: "babel-brand-logo")
+  public static let avatarGroupPlaceholder = ImageAsset(name: "avatar-group-placeholder")
   public static let avatarPlaceholder = ImageAsset(name: "avatar-placeholder")
   public static let photoPlaceholder = ImageAsset(name: "photo-placeholder")
 }

@@ -76,10 +76,10 @@ extension GroupInfoHeaderCell {
         
         if !dto.avatarLink.isEmpty {
             avatarImageView.setImage(with: dto.avatarLink) { [weak self] image in
-                self?.avatarImageView.image = image ?? Image.avatarPlaceholder.image
+                self?.avatarImageView.image = image ?? Image.avatarGroupPlaceholder.image
             }
         } else {
-            avatarImageView.image = Image.avatarPlaceholder.image
+            avatarImageView.image = Image.avatarGroupPlaceholder.image
         }
     }
     

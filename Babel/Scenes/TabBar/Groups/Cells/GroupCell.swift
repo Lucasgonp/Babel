@@ -75,10 +75,10 @@ extension GroupCell {
         
         if !dto.avatarLink.isEmpty {
             avatar.setImage(with: dto.avatarLink) { [weak self] image in
-                self?.avatar.image = image ?? Image.avatarPlaceholder.image
+                self?.avatar.image = image ?? Image.avatarGroupPlaceholder.image
             }
         } else {
-            avatar.image = Image.avatarPlaceholder.image
+            avatar.image = Image.avatarGroupPlaceholder.image
         }
     }
 }

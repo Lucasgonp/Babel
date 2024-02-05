@@ -132,6 +132,5 @@
 
 // Notifications
 "Notifications.AccessNotGranted.description" = "Please enable notifications to have the best experience with the app";
-
 "Notifications.Disabled.title" = "Notification is disabled";
 "Notifications.Disabled.button" = "Enable";

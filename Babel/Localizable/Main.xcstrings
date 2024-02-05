@@ -634,6 +634,23 @@
         }
       }
     },
+    "Enable" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Habilitar"
+          }
+        }
+      }
+    },
     "Exit group" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -767,6 +784,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Olá! Estou usando babel!"
+          }
+        }
+      }
+    },
+    "Ignore" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ignorar"
           }
         }
       }
@@ -976,6 +1004,23 @@
         }
       }
     },
+    "Notification is disabled" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notification is disabled"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notificações está desabilitada"
+          }
+        }
+      }
+    },
     "Open AI" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1024,6 +1069,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Foto"
+          }
+        }
+      }
+    },
+    "Please enable notifications to have the best experience with the app" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please enable notifications to have the best experience with the app"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por favor, habilite as notificações para ter a melhor experiencia com o app"
           }
         }
       }

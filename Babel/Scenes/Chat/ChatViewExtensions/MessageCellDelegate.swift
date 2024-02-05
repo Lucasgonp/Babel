@@ -2,6 +2,7 @@ import MessageKit
 import AVFoundation
 import AVKit
 import SKPhotoBrowser
+import SafariServices
 
 extension ChatViewController: MessageCellDelegate {
     func didTapImage(in cell: MessageCollectionViewCell) {
@@ -70,5 +71,11 @@ extension ChatViewController: MessageCellDelegate {
             audioController.stopAnyOngoingPlaying()
             audioController.playSound(for: message, in: cell)
         }
+    }
+    
+    func didSelectURL(_ url: URL) {
+        let config = SFSafariViewController.Configuration()
+        let controller = SFSafariViewController(url: url, configuration: config)
+        present(controller, animated: true)
     }
 }

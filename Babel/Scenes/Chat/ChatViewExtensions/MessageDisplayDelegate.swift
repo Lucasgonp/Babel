@@ -11,6 +11,14 @@ extension ChatViewController: MessagesDisplayDelegate {
         return isFromCurrentSender(message: message) ? MessageDefaults.bubbleColorOutgoingColor : MessageDefaults.bubbleColorIncomingColor
     }
     
+    func enabledDetectors(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> [DetectorType] {
+        [.url, .phoneNumber]
+    }
+    
+    func detectorAttributes(for detector: DetectorType, and message: MessageType, at indexPath: IndexPath) -> [NSAttributedString.Key : Any] {
+        [.underlineStyle: 1]
+    }
+    
     func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
         let currentUserLastMessage = mkMessages.filter({ $0.sender.senderId == currentSender.senderId }).last
         let receiverUserLastMessage = mkMessages.filter({ $0.sender.senderId != currentSender.senderId }).last

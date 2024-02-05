@@ -20,6 +20,7 @@ private extension SettingsViewController.Layout {
         static let title = Strings.TabBar.Settings.title.localized()
         static let tellAFriendTitle = Strings.Settings.TellAFriend.title.localized()
         static let termsAndConditionsTitle = Strings.Settings.TermsAndConditions.title.localized()
+        static let systemSettings = Strings.SystemSettings.title.localized()
         static let version = Strings.Settings.version.localized()
     }
 }
@@ -55,7 +56,7 @@ final class SettingsViewController: ViewController<SettingsInteractorProtocol, U
         ),
         SettingsButtonViewModel(
             icon: UIImage(systemName: "gear")?.withRenderingMode(.alwaysOriginal).withTintColor(Color.grayscale300.uiColor) ?? UIImage(),
-            text: Layout.Texts.title,
+            text: Layout.Texts.systemSettings,
             completionHandler: { [weak self] in
                 self?.interactor.systemSettings()
             }

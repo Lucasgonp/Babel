@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if error == nil, granted != false {
                     UIApplication.shared.registerForRemoteNotifications()
                 } else {
-                    self.showMessageAlert(title: Strings.Commons.accessNotGranted, message: Strings.Notifications.AccessNotGranted.description, primaryButton: Strings.Commons.grantAccess) { _ in
+                    self.showMessageAlert(title: Strings.Commons.accessNotGranted.localized(), message: Strings.Notifications.AccessNotGranted.description.localized(), primaryButton: Strings.Commons.grantAccess.localized()) { _ in
                         guard let appSettingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
                         UIApplication.shared.open(appSettingsURL)
                     }

@@ -151,6 +151,10 @@ internal enum Strings {
     internal static let video = Strings.tr("Localizable", "MessageType.video", fallback: "Video")
   }
   internal enum Notifications {
+    /// Notifications
+    internal static let notifications = Strings.tr("Localizable", "Notifications.notifications", fallback: "Notifications")
+    /// Show notifications
+    internal static let showNotifications = Strings.tr("Localizable", "Notifications.showNotifications", fallback: "Show notifications")
     internal enum AccessNotGranted {
       /// Please enable notifications to have the best experience with the app
       internal static let description = Strings.tr("Localizable", "Notifications.AccessNotGranted.description", fallback: "Please enable notifications to have the best experience with the app")

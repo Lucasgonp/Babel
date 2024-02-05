@@ -21,6 +21,8 @@ private extension SystemSettingsViewController.Layout {
         static let cancel = Strings.Commons.cancel.localized()
         static let logout = Strings.Commons.logout.localized()
         static let logoutDescription = Strings.Commons.logoutDescription.localized()
+        static let notifications = Strings.Notifications.notifications.localized()
+        static let showNotifications = Strings.Notifications.showNotifications.localized()
     }
 }
 
@@ -107,7 +109,7 @@ extension SystemSettingsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 0 ? "Notifications" : nil
+        return section == 0 ? Layout.Texts.notifications : nil
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -118,7 +120,7 @@ extension SystemSettingsViewController: UITableViewDataSource {
             switchView.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
             cell.accessoryView = switchView
             var content = cell.defaultContentConfiguration()
-            content.text = "Show notifications"
+            content.text = Layout.Texts.showNotifications
             cell.contentConfiguration = content
             
             return cell

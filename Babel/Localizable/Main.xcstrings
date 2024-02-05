@@ -222,6 +222,108 @@
         }
       }
     },
+    "Babel requires to access your Camera" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Babel requires to access your Camera"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Babel precisa acessar sua camera"
+          }
+        }
+      }
+    },
+    "Babel requires to access your contacts list" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Babel requires to access your contacts list"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Babel precisa acessar sua lista de contatos"
+          }
+        }
+      }
+    },
+    "Babel requires to access your location" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Babel requires to access your location"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Babel precisa acessar sua localização"
+          }
+        }
+      }
+    },
+    "Babel requires to access your Media library" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Babel requires to access your Media library"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Babel precisa acessar sua galeria de mídia"
+          }
+        }
+      }
+    },
+    "Babel requires to access your microphone" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Babel requires to access your microphone"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Babel precisa acessar seu microfone"
+          }
+        }
+      }
+    },
+    "Babel requires to access your Photo library" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Babel requires to access your Photo library"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Babel precisa acessar sua galeria"
+          }
+        }
+      }
+    },
     "Battery about to die" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1379,6 +1481,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Deslize para cancelar"
+          }
+        }
+      }
+    },
+    "System settings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configurations"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajustes"
           }
         }
       }

@@ -4258,7 +4258,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Babel requires to access your Media library";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Babel requires to access your Camera";
-				INFOPLIST_KEY_NSContactsUsageDescription = "Babel Precisa acessar sua lista de contatos";
+				INFOPLIST_KEY_NSContactsUsageDescription = "Babel requires to access your contacts list";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Babel requires to access your location";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Babel requires to access your location";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Babel requires to access your location";
@@ -4307,7 +4307,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Babel requires to access your Media library";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Babel requires to access your Camera";
-				INFOPLIST_KEY_NSContactsUsageDescription = "Babel Precisa acessar sua lista de contatos";
+				INFOPLIST_KEY_NSContactsUsageDescription = "Babel requires to access your contacts list";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Babel requires to access your location";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Babel requires to access your location";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Babel requires to access your location";

@@ -2,6 +2,8 @@ import MessageKit
 import AVFoundation
 import AVKit
 import SKPhotoBrowser
+import SafariServices
+import UIKit
 
 extension ChatGroupViewController: MessageCellDelegate {
     func didTapImage(in cell: MessageCollectionViewCell) {
@@ -70,6 +72,18 @@ extension ChatGroupViewController: MessageCellDelegate {
         } else {
             audioController.stopAnyOngoingPlaying()
             audioController.playSound(for: message, in: cell)
+        }
+    }
+    
+    func didSelectURL(_ url: URL) {
+        let config = SFSafariViewController.Configuration()
+        let controller = SFSafariViewController(url: url, configuration: config)
+        present(controller, animated: true)
+    }
+    
+    func didSelectPhoneNumber(_ phoneNumber: String) {
+        if let url = URL(string: "telprompt://\(phoneNumber)"), UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
         }
     }
 }

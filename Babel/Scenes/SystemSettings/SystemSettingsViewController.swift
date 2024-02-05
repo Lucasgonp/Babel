@@ -61,6 +61,10 @@ final class SystemSettingsViewController: ViewController<SystemSettingsInteracto
     override func configureViews() {
         title = Layout.Texts.title
         view.backgroundColor = Color.backgroundPrimary.uiColor
+        
+        hasNotificationPermission { [weak self] granted in
+            self?.switchView.setOn(granted, animated: true)
+        }
     }
 }
 

@@ -3,6 +3,7 @@ import AVFoundation
 import AVKit
 import SKPhotoBrowser
 import SafariServices
+import UIKit
 
 extension ChatViewController: MessageCellDelegate {
     func didTapImage(in cell: MessageCollectionViewCell) {
@@ -77,5 +78,11 @@ extension ChatViewController: MessageCellDelegate {
         let config = SFSafariViewController.Configuration()
         let controller = SFSafariViewController(url: url, configuration: config)
         present(controller, animated: true)
+    }
+    
+    func didSelectPhoneNumber(_ phoneNumber: String) {
+        if let url = URL(string: "telprompt://\(phoneNumber)"), UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        }
     }
 }

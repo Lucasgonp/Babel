@@ -12,6 +12,7 @@
 "Commons.logoutDescription" = "Are you sure you want to logout? You will have to login with your credentials again";
 "Commons.accessNotGranted" = "Access not granted";
 "Commons.grantAccess" = "Grant access";
+"Commons.ignore" = "Ignore";
 
 // Generic Errors
 "GenericError.message" = "Ops! Something went wrong";
@@ -128,3 +129,9 @@
 // TellAFriend
 "TellAFriend.accessContactsMessage" = "We need access your contact list to send invitations";
 "TellAFriend.shareInviteLink" = "Share invite link";
+
+// Notifications
+"Notifications.AccessNotGranted.description" = "Please enable notifications to have the best experience with the app";
+
+"Notifications.Disabled.title" = "Notification is disabled";
+"Notifications.Disabled.button" = "Enable";

@@ -19,3 +19,4 @@ let kLOCATIONMESSAGE = "📍 \(Localizable.MessageType.location.localized())"
 let kAUDIOMESSAGE = "🔈 \(Localizable.MessageType.audio.localized())"
 
 let kWAITPUSHCHAT = "waitForPushChat"
+let kENABLEDNOTIFICATIONS = "enabledNotifications"

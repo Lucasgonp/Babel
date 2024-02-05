@@ -30,6 +30,14 @@ public struct StorageLocal {
         }
     }
     
+    public func saveBool(_ bool: Bool, key: String) {
+        UserDefaults.standard.set(bool, forKey: key)
+    }
+    
+    public func getBool(key: String) -> Bool {
+        UserDefaults.standard.bool(forKey: key)
+    }
+    
     public func saveStorage(_ data: Encodable, key: String) {
         do {
             let object = try JSONEncoder().encode(data)

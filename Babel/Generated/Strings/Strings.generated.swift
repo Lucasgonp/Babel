@@ -49,6 +49,8 @@ internal enum Strings {
     internal static let edit = Strings.tr("Localizable", "Commons.edit", fallback: "Edit")
     /// Grant access
     internal static let grantAccess = Strings.tr("Localizable", "Commons.grantAccess", fallback: "Grant access")
+    /// Ignore
+    internal static let ignore = Strings.tr("Localizable", "Commons.ignore", fallback: "Ignore")
     /// Logout
     internal static let logout = Strings.tr("Localizable", "Commons.logout", fallback: "Logout")
     /// Are you sure you want to logout? You will have to login with your credentials again
@@ -147,6 +149,18 @@ internal enum Strings {
     internal static let photo = Strings.tr("Localizable", "MessageType.photo", fallback: "Photo")
     /// Video
     internal static let video = Strings.tr("Localizable", "MessageType.video", fallback: "Video")
+  }
+  internal enum Notifications {
+    internal enum AccessNotGranted {
+      /// Please enable notifications to have the best experience with the app
+      internal static let description = Strings.tr("Localizable", "Notifications.AccessNotGranted.description", fallback: "Please enable notifications to have the best experience with the app")
+    }
+    internal enum Disabled {
+      /// Enable
+      internal static let button = Strings.tr("Localizable", "Notifications.Disabled.button", fallback: "Enable")
+      /// Notification is disabled
+      internal static let title = Strings.tr("Localizable", "Notifications.Disabled.title", fallback: "Notification is disabled")
+    }
   }
   internal enum OpenAI {
     internal enum ChatBot {

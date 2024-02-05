@@ -1,5 +1,8 @@
 import UIKit
 import DesignKit
+import StorageKit
+
+import UserNotifications
 
 protocol SystemSettingsDelegate: AnyObject {
     func didTapOnLogout()
@@ -33,7 +36,14 @@ final class SystemSettingsViewController: ViewController<SystemSettingsInteracto
         return tableView
     }()
     
+    private let switchView = UISwitch(frame: .zero)
+    
     weak var delegate: SystemSettingsDelegate?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(appBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -63,7 +73,7 @@ extension SystemSettingsViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         switch indexPath.section {
-        case 0:
+        case 1:
             let clearCacheAction = UIAlertAction(title: Layout.Texts.clear, style: .destructive, handler: { [weak self] _ in
                 self?.interactor.clearCache()
             })
@@ -71,7 +81,7 @@ extension SystemSettingsViewController: UITableViewDelegate {
             actionSheet.addAction(clearCacheAction)
             actionSheet.addAction(UIAlertAction(title: Layout.Texts.cancel, style: .cancel, handler: nil))
             present(actionSheet, animated: true)
-        default:
+        case 2:
             let clearCacheAction = UIAlertAction(title: Layout.Texts.logout, style: .destructive, handler: { [weak self] _ in
                 self?.navigationController?.popViewController(completion: { [weak self] _ in
                     self?.delegate?.didTapOnLogout()
@@ -81,22 +91,38 @@ extension SystemSettingsViewController: UITableViewDelegate {
             actionSheet.addAction(clearCacheAction)
             actionSheet.addAction(UIAlertAction(title: Layout.Texts.cancel, style: .cancel, handler: nil))
             present(actionSheet, animated: true)
+        default:
+            break
         }
     }
 }
 
 extension SystemSettingsViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return section == 0 ? "Notifications" : nil
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
+            let cell: UITableViewCell = tableView.makeCell(indexPath: indexPath)
+            switchView.tag = indexPath.row
+            switchView.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
+            cell.accessoryView = switchView
+            var content = cell.defaultContentConfiguration()
+            content.text = "Show notifications"
+            cell.contentConfiguration = content
+            
+            return cell
+        case 1:
             let button = Button()
             button.setTitle(Layout.Texts.clearCache, for: .normal)
             button.setTitleColor(Color.warning500.uiColor, for: .normal)
@@ -110,6 +136,36 @@ extension SystemSettingsViewController: UITableViewDataSource {
             let cell = UITableViewCell()
             cell.fillWithSubview(subview: button, spacing: .init(top: 6, left: .zero, bottom: 6, right: .zero))
             return cell
+        }
+    }
+    
+    @objc func switchChanged(_ sender: UISwitch) {
+        if sender.isOn {
+            StorageLocal.shared.saveBool(true, key: kENABLEDNOTIFICATIONS)
+            
+            let appDelegate = UIApplication.shared.delegate as? AppDelegate
+            appDelegate?.requestPushNotifications { granted in
+                DispatchQueue.main.async {
+                    sender.setOn(granted, animated: true)
+                }
+            }
+        } else {
+            StorageLocal.shared.saveBool(false, key: kENABLEDNOTIFICATIONS)
+            UIApplication.shared.unregisterForRemoteNotifications()
+        }
+    }
+    
+    func hasNotificationPermission(completion: @escaping (Bool) -> Void) {
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            completion(settings.authorizationStatus == .authorized && StorageLocal.shared.getBool(key: kENABLEDNOTIFICATIONS))
+        }
+    }
+    
+    @objc func appBecomeActive() {
+        hasNotificationPermission { [weak self] granted in
+            DispatchQueue.main.async {
+                self?.switchView.setOn(granted, animated: true)
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 import UIKit
 import Firebase
 import Authenticator
+import StorageKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -12,7 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Push notifications
         Messaging.messaging().delegate = self
         requestPushNotifications()
-        application.registerForRemoteNotifications()
         
         return true
     }
@@ -53,6 +53,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
+    }
+    
+    func requestPushNotifications(completion: ((_ granted: Bool) -> Void)? = nil) {
+        UNUserNotificationCenter.current().delegate = self
+        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+
+        UNUserNotificationCenter.current().requestAuthorization(options: authOptions, completionHandler: { granted, error in
+            DispatchQueue.main.async {
+                if error == nil, granted != false {
+                    UIApplication.shared.registerForRemoteNotifications()
+                } else {
+                    self.showMessageAlert(title: Strings.Commons.accessNotGranted, message: Strings.Notifications.AccessNotGranted.description, primaryButton: Strings.Commons.grantAccess) { _ in
+                        guard let appSettingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
+                        UIApplication.shared.open(appSettingsURL)
+                    }
+                }
+                completion?(granted)
+            }
+        })
+    }
+    
+    func showMessageAlert(title: String, message: String, primaryButton: String, completion: ((UIAlertAction) -> Void)?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: primaryButton, style: .default, handler: completion))
+        UIApplication.shared.topViewController()?.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -95,12 +120,6 @@ extension AppDelegate: MessagingDelegate {
 }
 
 private extension AppDelegate {
-    func requestPushNotifications() {
-        UNUserNotificationCenter.current().delegate = self
-        let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-        UNUserNotificationCenter.current().requestAuthorization(options: authOptions, completionHandler: { _,_ in })
-    }
-    
     func updateUserPushId(newPushId: String) {
         if var user = AccountInfo.shared.user {
             user.pushId = newPushId

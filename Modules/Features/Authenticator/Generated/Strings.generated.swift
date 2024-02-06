@@ -132,6 +132,16 @@ internal enum Strings {
       internal static let title = Strings.tr("Localizable", "ResetPassword.SentReset.title", fallback: "Reset password")
     }
   }
+  internal enum TermsAndConditions {
+    /// You need to accept the terms and conditions to use Babel
+    internal static let description = Strings.tr("Localizable", "TermsAndConditions.description", fallback: "You need to accept the terms and conditions to use Babel")
+    /// I accept
+    internal static let iAcceptButton = Strings.tr("Localizable", "TermsAndConditions.iAcceptButton", fallback: "I accept")
+    /// See terms and conditions
+    internal static let termsButton = Strings.tr("Localizable", "TermsAndConditions.termsButton", fallback: "See terms and conditions")
+    /// Terms and conditions
+    internal static let title = Strings.tr("Localizable", "TermsAndConditions.title", fallback: "Terms and conditions")
+  }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

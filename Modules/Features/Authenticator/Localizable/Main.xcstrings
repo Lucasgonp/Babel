@@ -242,6 +242,23 @@
         }
       }
     },
+    "I accept" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I accept"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eu aceito"
+          }
+        }
+      }
+    },
     "Later" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -429,6 +446,40 @@
         }
       }
     },
+    "See terms and conditions" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "See terms and conditions"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver termos e condições"
+          }
+        }
+      }
+    },
+    "Terms and conditions" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Termos e condições"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Termos e condições"
+          }
+        }
+      }
+    },
     "Username" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -511,6 +562,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Reenviamos uma mensagem de verificação para seu email, por favor, valide antes de tentar entrar"
+          }
+        }
+      }
+    },
+    "You need to accept the terms and conditions to use Babel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You need to accept the terms and conditions to use Babel"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Você precisa aceitar os termos e condições de uso do app para usar o Babel"
           }
         }
       }

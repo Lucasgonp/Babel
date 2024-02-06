@@ -1,0 +1,1 @@
+let kTERMSAGREED = "TermsAgreeded"

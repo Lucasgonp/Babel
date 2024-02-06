@@ -26,6 +26,7 @@ final class EditGroupViewController: UIViewController {
     private lazy var editAvatarButton: Button = {
         let button = Button()
         button.render(.tertiary(title: Layout.Texts.edit, titleColor: Color.blueNative))
+        button.addTarget(self, action: #selector(didTapEditAvatarButton), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

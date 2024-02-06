@@ -1,5 +1,6 @@
 import UIKit
 import DesignKit
+import StorageKit
 
 enum LoginViewState {
     case loadingButton(isLoading: Bool)
@@ -106,9 +107,20 @@ final class LoginViewController: ViewController<LoginInteractorProtocol, UIView>
         return button
     }()
     
+    private lazy var alertView: TermsAlertView = {
+        let alertView = TermsAlertView()
+        alertView.delegate = self
+        alertView.translatesAutoresizingMaskIntoConstraints = false
+        return alertView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureKeyboardObservers()
+        
+        if StorageLocal.shared.getBool(key: kTERMSAGREED) != true {
+            alertView.showAlert(from: self)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -203,6 +215,18 @@ extension LoginViewController: LoginDisplaying {
     
     func displayFeedbackAlert(title: String, message: String) {
         showMessageAlert(title: title, message: message)
+    }
+}
+
+extension LoginViewController: TermsAlertViewDelegate {
+    func didTapPrimaryButton() {
+        let terms = TermsViewController()
+        navigationController?.pushViewController(terms, animated: true)
+    }
+    
+    func didTapSecondaryButton() {
+        StorageLocal.shared.saveBool(true, key: kTERMSAGREED)
+        alertView.hideAlert()
     }
 }
 

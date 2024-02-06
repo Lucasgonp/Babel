@@ -49,3 +49,9 @@
 "Error.Field.usernameShort" = "Username is too short";
 "Error.Field.fullNameShort" = "Full name is too short";
 "Error.Field.passwordShort" = "Password is too short";
+
+// Terms and conditions
+"TermsAndConditions.title" = "Terms and conditions";
+"TermsAndConditions.description" = "You need to accept the terms and conditions to use Babel";
+"TermsAndConditions.termsButton" = "See terms and conditions";
+"TermsAndConditions.iAcceptButton" = "I accept";

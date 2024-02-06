@@ -63,7 +63,9 @@ final class SystemSettingsViewController: ViewController<SystemSettingsInteracto
         view.backgroundColor = Color.backgroundPrimary.uiColor
         
         hasNotificationPermission { [weak self] granted in
-            self?.switchView.setOn(granted, animated: true)
+            DispatchQueue.main.async {
+                self?.switchView.setOn(granted, animated: true)
+            }
         }
     }
 }

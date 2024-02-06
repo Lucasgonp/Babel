@@ -4,6 +4,7 @@ protocol LoginInteractorProtocol: AnyObject {
     func didTapOnForgotPassword()
     func resetPassword(email: String)
     func signUpAction()
+    func didTapShowTerms()
 }
 
 final class LoginInteractor {
@@ -74,6 +75,10 @@ extension LoginInteractor: LoginInteractorProtocol {
     
     func signUpAction() {
         presenter.didNextStep(action: .presentSignUp)
+    }
+    
+    func didTapShowTerms() {
+//        presenter.didNextStep(action: .presentSignUp)
     }
 }
 

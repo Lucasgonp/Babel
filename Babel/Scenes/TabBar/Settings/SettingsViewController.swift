@@ -19,7 +19,7 @@ private extension SettingsViewController.Layout {
     enum Texts {
         static let title = Strings.TabBar.Settings.title.localized()
         static let tellAFriendTitle = Strings.Settings.TellAFriend.title.localized()
-        static let termsAndConditionsTitle = Strings.Settings.TermsAndConditions.title.localized()
+        static let termsAndConditionsTitle = Strings.TermsAndConditions.title.localized()
         static let systemSettings = Strings.SystemSettings.title.localized()
         static let version = Strings.Settings.version.localized()
     }

@@ -4,7 +4,7 @@ import PDFKit
 
 private extension TermsViewController.Layout {
     enum Texts {
-        static let title = Strings.Settings.TermsAndConditions.title.localized()
+        static let title = Strings.TermsAndConditions.title.localized()
     }
 }
 

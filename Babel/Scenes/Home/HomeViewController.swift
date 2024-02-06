@@ -1,6 +1,7 @@
 import UIKit
 import DesignKit
 import Authenticator
+import StorageKit
 
 enum HomeViewState {
     case loading(isLoading: Bool)

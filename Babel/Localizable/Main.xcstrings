@@ -1123,6 +1123,17 @@
         }
       }
     },
+    "Notifications" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notificações"
+          }
+        }
+      }
+    },
     "Open AI" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1171,6 +1182,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Foto"
+          }
+        }
+      }
+    },
+    "Please enable audio access to have the best experience with the app" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please enable audio access to have the best experience with the app"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por favor, habilite permissão de audio para ter a melhor experiencia com o app"
           }
         }
       }
@@ -1446,6 +1474,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Compartilhar localização"
+          }
+        }
+      }
+    },
+    "Show notifications" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show notifications"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar notificações"
           }
         }
       }

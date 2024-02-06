@@ -10,6 +10,10 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum Strings {
+  internal enum AudioAccess {
+    /// Please enable audio access to have the best experience with the app
+    internal static let permissionNotGranted = Strings.tr("Localizable", "AudioAccess.permissionNotGranted", fallback: "Please enable audio access to have the best experience with the app")
+  }
   internal enum ChatView {
     /// Pull to load more
     internal static let pullToLoad = Strings.tr("Localizable", "ChatView.pullToLoad", fallback: "Pull to load more")
@@ -203,10 +207,6 @@ internal enum Strings {
       /// Invite friends
       internal static let title = Strings.tr("Localizable", "Settings.TellAFriend.title", fallback: "Invite friends")
     }
-    internal enum TermsAndConditions {
-      /// Terms and conditions
-      internal static let title = Strings.tr("Localizable", "Settings.TermsAndConditions.title", fallback: "Terms and conditions")
-    }
   }
   internal enum SystemSettings {
     /// Clear
@@ -245,6 +245,10 @@ internal enum Strings {
     internal static let accessContactsMessage = Strings.tr("Localizable", "TellAFriend.accessContactsMessage", fallback: "We need access your contact list to send invitations")
     /// Share invite link
     internal static let shareInviteLink = Strings.tr("Localizable", "TellAFriend.shareInviteLink", fallback: "Share invite link")
+  }
+  internal enum TermsAndConditions {
+    /// Terms and conditions
+    internal static let title = Strings.tr("Localizable", "TermsAndConditions.title", fallback: "Terms and conditions")
   }
   internal enum UserBio {
     /// Currently set to

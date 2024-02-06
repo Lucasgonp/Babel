@@ -126,6 +126,11 @@ final class ChatGroupViewController: MessagesViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.largeTitleDisplayMode =  .never
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithDefaultBackground()
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -134,6 +139,11 @@ final class ChatGroupViewController: MessagesViewController {
         //TODO: check if its necessary
 //        FirebaseRecentListener.shared.resetRecentCounter(chatRoomId: chatId)
         audioController.stopAnyOngoingPlaying()
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithTransparentBackground()
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
     }
     
     func messageSend(
@@ -214,6 +224,13 @@ extension ChatGroupViewController: ViewConfiguration {
         titleViewAvatar.setImage(with: dto.groupInfo.avatarLink) { [weak self] image in
             self?.titleViewAvatar.image = image ?? Image.avatarGroupPlaceholder.image
         }
+        
+        let image = Image.chatViewBackgroundImage.image
+        let imageView = UIImageView(image: image)
+        imageView.alpha = 0.8
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        messagesCollectionView.backgroundView = imageView
         
         // TODO: showMessageTimestampOnSwipeLeft = true
     }

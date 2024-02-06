@@ -21,6 +21,9 @@ private extension ChatViewController.Layout {
         static let library = Strings.ChatView.ActionSheet.library.localized()
         static let shareLocation = Strings.ChatView.ActionSheet.shareLocation.localized()
         static let cancel = Strings.Commons.cancel.localized()
+        static let accessNotGranted = Strings.Commons.accessNotGranted.localized()
+        static let audioNotGrantedDescription = Strings.AudioAccess.permissionNotGranted.localized()
+        static let grantAccess = Strings.Commons.grantAccess.localized()
     }
 }
 
@@ -120,12 +123,22 @@ final class ChatViewController: MessagesViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.largeTitleDisplayMode =  .never
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithDefaultBackground()
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         interactor.resetTypingIndicator()
         audioController.stopAnyOngoingPlaying()
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithTransparentBackground()
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
     }
     
     func messageSend(
@@ -200,6 +213,13 @@ extension ChatViewController: ViewConfiguration {
             self?.stackView.layoutIfNeeded()
         }
         
+        let image = Image.chatViewBackgroundImage.image
+        let imageView = UIImageView(image: image)
+        imageView.alpha = 0.8
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        messagesCollectionView.backgroundView = imageView
+        
         // TODO: showMessageTimestampOnSwipeLeft = true
     }
 }
@@ -257,10 +277,10 @@ extension ChatViewController: ChatDisplaying {
     }
     
     func audioNotGranted() {
-        let title = "Audio access not granted"
-        let message = "Audio access not granted"
+        let title = Layout.Texts.accessNotGranted
+        let message = Layout.Texts.audioNotGrantedDescription
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let grantAction = UIAlertAction(title: "Allow", style: .cancel) { _ in
+        let grantAction = UIAlertAction(title: Layout.Texts.grantAccess, style: .cancel) { _ in
             guard let appSettingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
             UIApplication.shared.open(appSettingsURL)
         }

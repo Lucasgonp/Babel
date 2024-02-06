@@ -6,7 +6,15 @@ protocol EditProfileHeaderDelegate: AnyObject {
     func didTapOnAvatar(image: UIImage)
 }
 
+private extension EditProfileHeaderCell.Layout {
+    enum Texts {
+        static let edit = Strings.Commons.edit.localized()
+    }
+}
+
 final class EditProfileHeaderCell: UITableViewCell, ViewConfiguration {
+    fileprivate enum Layout { }
+
     private lazy var avatar: ImageView = {
         let imageView = ImageView()
         imageView.layer.cornerRadius = 60
@@ -17,7 +25,7 @@ final class EditProfileHeaderCell: UITableViewCell, ViewConfiguration {
     
     private lazy var editAvatarButton: Button = {
         let button = Button()
-        button.render(.tertiary(title: "Edit", titleColor: Color.blueNative))
+        button.render(.tertiary(title: Layout.Texts.edit, titleColor: Color.blueNative))
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(didTapEditAvatarButton), for: .touchUpInside)
         return button

@@ -4,6 +4,7 @@ import Authenticator
 enum SettingsAction {
     case pushEditProfile(user: User)
     case pushTellAFriend
+    case pushChatsSettings
     case pushTermsAndCondition
     case pushSystemSettings
     case logout
@@ -23,6 +24,8 @@ extension SettingsRouter: SettingsRouterProtocol {
         switch action {
         case .pushEditProfile(let user):
             pushEditProfile(user: user)
+        case .pushChatsSettings:
+            pushToChatSettings()
         case .pushTellAFriend:
             pushTellAFriend()
         case .pushTermsAndCondition:
@@ -41,6 +44,12 @@ private extension SettingsRouter {
             user: user,
             delegate: viewController as? SettingsViewDelegate
         )
+        controller.hidesBottomBarWhenPushed = true
+        viewController?.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func pushToChatSettings() {
+        let controller = ChatSettingsViewController()
         controller.hidesBottomBarWhenPushed = true
         viewController?.navigationController?.pushViewController(controller, animated: true)
     }

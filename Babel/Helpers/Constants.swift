@@ -20,3 +20,5 @@ let kAUDIOMESSAGE = "🔈 \(Localizable.MessageType.audio.localized())"
 
 let kWAITPUSHCHAT = "waitForPushChat"
 let kENABLEDNOTIFICATIONS = "enabledNotifications"
+
+let kCHATWALLPAPER = "chatWallpaper"

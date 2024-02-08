@@ -22,11 +22,50 @@ public typealias AssetImageTypeAlias = ImageAsset.Image
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 public enum Image {
-  public static let chatViewBackgroundImage = ImageAsset(name: "chat-view-background-image")
   public static let babelBrandLogo = ImageAsset(name: "babel-brand-logo")
+  public static let chatBackgroundImage1 = ImageAsset(name: "chat-background-image-1")
+  public static let chatBackgroundImage10 = ImageAsset(name: "chat-background-image-10")
+  public static let chatBackgroundImage11 = ImageAsset(name: "chat-background-image-11")
+  public static let chatBackgroundImage12 = ImageAsset(name: "chat-background-image-12")
+  public static let chatBackgroundImage13 = ImageAsset(name: "chat-background-image-13")
+  public static let chatBackgroundImage14 = ImageAsset(name: "chat-background-image-14")
+  public static let chatBackgroundImage15 = ImageAsset(name: "chat-background-image-15")
+  public static let chatBackgroundImage2 = ImageAsset(name: "chat-background-image-2")
+  public static let chatBackgroundImage3 = ImageAsset(name: "chat-background-image-3")
+  public static let chatBackgroundImage4 = ImageAsset(name: "chat-background-image-4")
+  public static let chatBackgroundImage5 = ImageAsset(name: "chat-background-image-5")
+  public static let chatBackgroundImage6 = ImageAsset(name: "chat-background-image-6")
+  public static let chatBackgroundImage7 = ImageAsset(name: "chat-background-image-7")
+  public static let chatBackgroundImage8 = ImageAsset(name: "chat-background-image-8")
+  public static let chatBackgroundImage9 = ImageAsset(name: "chat-background-image-9")
   public static let avatarGroupPlaceholder = ImageAsset(name: "avatar-group-placeholder")
   public static let avatarPlaceholder = ImageAsset(name: "avatar-placeholder")
   public static let photoPlaceholder = ImageAsset(name: "photo-placeholder")
+
+  // swiftlint:disable trailing_comma
+  @available(*, deprecated, message: "All values properties are now deprecated")
+  public static let allImages: [ImageAsset] = [
+    babelBrandLogo,
+    chatBackgroundImage1,
+    chatBackgroundImage10,
+    chatBackgroundImage11,
+    chatBackgroundImage12,
+    chatBackgroundImage13,
+    chatBackgroundImage14,
+    chatBackgroundImage15,
+    chatBackgroundImage2,
+    chatBackgroundImage3,
+    chatBackgroundImage4,
+    chatBackgroundImage5,
+    chatBackgroundImage6,
+    chatBackgroundImage7,
+    chatBackgroundImage8,
+    chatBackgroundImage9,
+    avatarGroupPlaceholder,
+    avatarPlaceholder,
+    photoPlaceholder,
+  ]
+  // swiftlint:enable trailing_comma
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 

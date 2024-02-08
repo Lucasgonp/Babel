@@ -2,7 +2,6 @@ protocol ChatGroupPresenterProtocol: AnyObject {
     func displayMessage(_ localMessage: LocalMessage)
     func displayRefreshedMessages(_ refreshedMessege: LocalMessage)
     func refreshNewMessages()
-    func endRefreshing()
     func updateTypingIndicator(_ isTyping: Bool)
     func didUpdateGroupInfo(_ groupInfo: Group)
     func updateMessage(_ localMessage: LocalMessage)
@@ -30,10 +29,6 @@ extension ChatGroupPresenter: ChatGroupPresenterProtocol {
     
     func refreshNewMessages() {
         viewController?.refreshNewMessages()
-    }
-    
-    func endRefreshing() {
-        viewController?.endRefreshing()
     }
     
     func updateTypingIndicator(_ isTyping: Bool) {

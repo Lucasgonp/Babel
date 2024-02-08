@@ -146,6 +146,8 @@ final class MessageInputBarView: InputBarAccessoryView {
         middleContentViewPaddingOriginal = middleContentViewPadding
         
         configureStopWatch()
+        
+        backgroundView.alpha = 0.7
     }
     
     func addAttachButton() {

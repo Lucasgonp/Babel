@@ -161,6 +161,11 @@ public extension Color {
 
     /// Grayscale050, default value light color `#F2F2F2` and dark color `#39464D`
     static let grayscale050 = Color(lightColor: #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 1), darkColor: #colorLiteral(red: 0.05490196078, green: 0.0862745098, blue: 0.1019607843, alpha: 1))
+    
+    // Static
+    /// Grayscale800, default value light color `#212D33` and dark color `#F2F2F2`
+    static let greyScaleStatic800 = #colorLiteral(red: 0.1294117647, green: 0.1764705882, blue: 0.2, alpha: 1)
+    static let greyScaleStatic200 = #colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.8980392157, alpha: 1)
 }
 
 public extension Color {

@@ -3,6 +3,7 @@ import DesignKit
 import MessageKit
 import InputBarAccessoryView
 import GalleryKit
+import StorageKit
 
 protocol GroupInfoUpdateProtocol: AnyObject {
     func didUpdateGroupInfo(dto: EditGroupDTO)
@@ -12,7 +13,6 @@ protocol ChatGroupDisplaying: AnyObject {
     func displayMessage(_ localMessage: LocalMessage)
     func displayRefreshedMessages(_ localMessage: LocalMessage)
     func refreshNewMessages()
-    func endRefreshing()
     func updateTypingIndicator(_ isTyping: Bool)
     func didUpdateGroupInfo(_ groupInfo: Group)
     func updateMessage(_ localMessage: LocalMessage)
@@ -26,6 +26,9 @@ private extension ChatGroupViewController.Layout {
         static let library = Strings.ChatView.ActionSheet.library.localized()
         static let shareLocation = Strings.ChatView.ActionSheet.shareLocation.localized()
         static let cancel = Strings.Commons.cancel.localized()
+        static let accessNotGranted = Strings.Commons.accessNotGranted.localized()
+        static let audioAccessNotGranted = Strings.AudioAccess.permissionNotGranted.localized()
+        static let grantAccess = Strings.Commons.grantAccess.localized()
     }
 }
 
@@ -95,7 +98,7 @@ final class ChatGroupViewController: MessagesViewController {
     
     private(set) var mkMessages = [MKMessage]()
     
-    private let refreshController = UIRefreshControl()
+    private var shouldLoadMoreMessages = false
     private let currentUser = UserSafe.shared.user
     private let interactor: ChatGroupInteractor
     
@@ -191,8 +194,18 @@ final class ChatGroupViewController: MessagesViewController {
         return true
     }
     
-    override func scrollViewDidEndDecelerating(_: UIScrollView) {
-        if refreshController.isRefreshing {
+    override func scrollViewDidScroll(_: UIScrollView) {
+        var visibleRect = CGRect()
+        visibleRect.origin = messagesCollectionView.contentOffset
+        visibleRect.size = messagesCollectionView.bounds.size
+        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
+        
+        guard let indexPath = messagesCollectionView.indexPathForItem(at: visiblePoint) else {
+            return
+        }
+        
+        if indexPath.section <= 4 && shouldLoadMoreMessages && (dto.allLocalMessages?.count ?? 0) > dto.displayingMessagesCount {
+            shouldLoadMoreMessages = false
             interactor.refreshNewMessages()
         }
     }
@@ -225,8 +238,10 @@ extension ChatGroupViewController: ViewConfiguration {
             self?.titleViewAvatar.image = image ?? Image.avatarGroupPlaceholder.image
         }
         
-        let image = Image.chatViewBackgroundImage.image
-        let imageView = UIImageView(image: image)
+        let savedWallpaper = StorageLocal.shared.getString(key: kCHATWALLPAPER)
+        var defaultWallpaper = UserInterface.style == .dark ? Image.chatBackgroundImage1 : Image.chatBackgroundImage12
+        let wallpaper = Image.allImages.first(where: { $0.name == savedWallpaper }) ?? defaultWallpaper
+        let imageView = UIImageView(image: wallpaper.image)
         imageView.alpha = 0.8
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -243,6 +258,8 @@ extension ChatGroupViewController: ChatGroupDisplaying {
         mkMessages.append(mkMessage)
         messagesCollectionView.reloadData()
         messagesCollectionView.scrollToLastItem(animated: true)
+        
+        shouldLoadMoreMessages = true
     }
     
     func displayRefreshedMessages(_ localMessage: LocalMessage) {
@@ -250,15 +267,14 @@ extension ChatGroupViewController: ChatGroupDisplaying {
         mkMessages.insert(incoming.createMessage(localMessage: localMessage)!, at: 0)
         messagesCollectionView.reloadData()
         messagesCollectionView.scrollToLastItem(animated: true)
+        
+        shouldLoadMoreMessages = true
     }
     
     func refreshNewMessages() {
         messagesCollectionView.reloadDataAndKeepOffset()
-        refreshController.endRefreshing()
-    }
-    
-    func endRefreshing() {
-        refreshController.endRefreshing()
+        
+        shouldLoadMoreMessages = true
     }
     
     func updateTypingIndicator(_ isTyping: Bool) {
@@ -287,10 +303,8 @@ extension ChatGroupViewController: ChatGroupDisplaying {
     }
     
     func audioNotGranted() {
-        let title = "Audio access not granted"
-        let message = "Audio access not granted"
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let grantAction = UIAlertAction(title: "Allow", style: .cancel) { _ in
+        let alert = UIAlertController(title: Layout.Texts.accessNotGranted, message: Layout.Texts.audioAccessNotGranted, preferredStyle: .alert)
+        let grantAction = UIAlertAction(title: Layout.Texts.grantAccess, style: .cancel) { _ in
             guard let appSettingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
             UIApplication.shared.open(appSettingsURL)
         }
@@ -340,8 +354,6 @@ private extension ChatGroupViewController {
         
         scrollsToLastItemOnKeyboardBeginsEditing = true
         maintainPositionOnInputBarHeightChanged = true
-        
-        messagesCollectionView.refreshControl = refreshController
     }
     
     func configureMessageInputBar() {

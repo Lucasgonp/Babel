@@ -69,4 +69,12 @@ public struct StorageLocal {
     public func removeStorageData(key: StorageKey) {
         UserDefaults.standard.removeObject(forKey: key.rawValue)
     }
+    
+    public func saveString(_ string: String, key: String) {
+        UserDefaults.standard.set(string, forKey: key)
+    }
+    
+    public func getString(key: String) -> String? {
+        UserDefaults.standard.string(forKey: key)
+    }
 }

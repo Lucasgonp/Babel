@@ -44,6 +44,7 @@ xcassets:
             enumName: Image
             imageTypeName: ImageAsset
             imageAliasName: AssetImageTypeAlias
+            allValues: true
 
 
 

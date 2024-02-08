@@ -18,6 +18,7 @@ protocol SettingsDisplaying: AnyObject {
 private extension SettingsViewController.Layout {
     enum Texts {
         static let title = Strings.TabBar.Settings.title.localized()
+        static let chats = Strings.TabBar.Chats.title.localized()
         static let tellAFriendTitle = Strings.Settings.TellAFriend.title.localized()
         static let termsAndConditionsTitle = Strings.TermsAndConditions.title.localized()
         static let systemSettings = Strings.SystemSettings.title.localized()
@@ -40,6 +41,13 @@ final class SettingsViewController: ViewController<SettingsInteractorProtocol, U
     }()
     
     private lazy var settingsButtons = [
+        SettingsButtonViewModel(
+            icon: UIImage(systemName: "paperplane.fill")?.withRenderingMode(.alwaysOriginal).withTintColor(Color.primary500.uiColor) ?? UIImage(),
+            text: Layout.Texts.chats,
+            completionHandler: { [weak self] in
+                self?.interactor.chatsSettings()
+            }
+        ),
         SettingsButtonViewModel(
             icon: UIImage(systemName: "heart.fill")?.withRenderingMode(.alwaysOriginal).withTintColor(Color.warning500.uiColor) ?? UIImage(),
             text: Layout.Texts.tellAFriendTitle,

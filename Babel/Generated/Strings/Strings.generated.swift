@@ -14,6 +14,12 @@ internal enum Strings {
     /// Please enable audio access to have the best experience with the app
     internal static let permissionNotGranted = Strings.tr("Localizable", "AudioAccess.permissionNotGranted", fallback: "Please enable audio access to have the best experience with the app")
   }
+  internal enum ChatSettings {
+    /// Change chat wallpaper
+    internal static let changeWallpaper = Strings.tr("Localizable", "ChatSettings.changeWallpaper", fallback: "Change chat wallpaper")
+    /// Chat settings
+    internal static let title = Strings.tr("Localizable", "ChatSettings.title", fallback: "Chat settings")
+  }
   internal enum ChatView {
     /// Pull to load more
     internal static let pullToLoad = Strings.tr("Localizable", "ChatView.pullToLoad", fallback: "Pull to load more")

@@ -3,6 +3,7 @@ import Authenticator
 protocol SettingsInteractorProtocol: AnyObject {
     func loadSettings()
     func editProfile()
+    func chatsSettings()
     func tellAFriend()
     func termsAndConditions()
     func systemSettings()
@@ -47,6 +48,10 @@ extension SettingsInteractor: SettingsInteractorProtocol {
     
     func editProfile() {
         presenter.didNextStep(action: .pushEditProfile(user: currentUser))
+    }
+    
+    func chatsSettings() {
+        presenter.didNextStep(action: .pushChatsSettings)
     }
     
     func tellAFriend() {

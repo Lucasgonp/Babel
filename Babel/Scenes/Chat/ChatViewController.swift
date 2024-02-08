@@ -3,12 +3,12 @@ import DesignKit
 import MessageKit
 import InputBarAccessoryView
 import GalleryKit
+import StorageKit
 
 protocol ChatDisplaying: AnyObject {
     func displayMessage(_ localMessage: LocalMessage)
     func displayRefreshedMessages(_ localMessage: LocalMessage)
     func refreshNewMessages()
-    func endRefreshing()
     func updateTypingIndicator(_ isTyping: Bool)
     func updateMessage(_ localMessage: LocalMessage)
     func audioNotGranted()
@@ -92,7 +92,7 @@ final class ChatViewController: MessagesViewController {
     
     private(set) var mkMessages = [MKMessage]()
     
-    private let refreshController = UIRefreshControl()
+    private var shouldLoadMoreMessages = false
     private let currentUser = UserSafe.shared.user
     private let interactor: ChatInteractorProtocol
     
@@ -183,8 +183,18 @@ final class ChatViewController: MessagesViewController {
         return true
     }
     
-    override func scrollViewDidEndDecelerating(_: UIScrollView) {
-        if refreshController.isRefreshing {
+    override func scrollViewDidScroll(_: UIScrollView) {
+        var visibleRect = CGRect()
+        visibleRect.origin = messagesCollectionView.contentOffset
+        visibleRect.size = messagesCollectionView.bounds.size
+        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
+        
+        guard let indexPath = messagesCollectionView.indexPathForItem(at: visiblePoint) else {
+            return
+        }
+        
+        if indexPath.section <= 4 && shouldLoadMoreMessages && (dto.allLocalMessages?.count ?? 0) > dto.displayingMessagesCount {
+            shouldLoadMoreMessages = false
             interactor.refreshNewMessages()
         }
     }
@@ -213,8 +223,10 @@ extension ChatViewController: ViewConfiguration {
             self?.stackView.layoutIfNeeded()
         }
         
-        let image = Image.chatViewBackgroundImage.image
-        let imageView = UIImageView(image: image)
+        let savedWallpaper = StorageLocal.shared.getString(key: kCHATWALLPAPER)
+        var defaultWallpaper = UserInterface.style == .dark ? Image.chatBackgroundImage1 : Image.chatBackgroundImage12
+        let wallpaper = Image.allImages.first(where: { $0.name == savedWallpaper }) ?? defaultWallpaper
+        let imageView = UIImageView(image: wallpaper.image)
         imageView.alpha = 0.8
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -234,6 +246,8 @@ extension ChatViewController: ChatDisplaying {
             self.messagesCollectionView.reloadData()
             self.messagesCollectionView.scrollToLastItem(animated: true)
         }
+        
+        shouldLoadMoreMessages = true
     }
     
     func displayRefreshedMessages(_ localMessage: LocalMessage) {
@@ -248,12 +262,9 @@ extension ChatViewController: ChatDisplaying {
     func refreshNewMessages() {
         DispatchQueue.main.async {
             self.messagesCollectionView.reloadDataAndKeepOffset()
-            self.refreshController.endRefreshing()
         }
-    }
-    
-    func endRefreshing() {
-        refreshController.endRefreshing()
+        
+        shouldLoadMoreMessages = true
     }
     
     func updateTypingIndicator(_ isTyping: Bool) {
@@ -274,6 +285,8 @@ extension ChatViewController: ChatDisplaying {
                 self.messagesCollectionView.reloadData()
             }
         }
+        
+        shouldLoadMoreMessages = true
     }
     
     func audioNotGranted() {
@@ -328,8 +341,6 @@ private extension ChatViewController {
         
         scrollsToLastItemOnKeyboardBeginsEditing = true
         maintainPositionOnInputBarHeightChanged = true
-        
-        messagesCollectionView.refreshControl = refreshController
     }
     
     func configureMessageInputBar() {

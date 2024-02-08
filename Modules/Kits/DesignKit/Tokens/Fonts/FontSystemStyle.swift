@@ -30,4 +30,17 @@ public struct FontSystemStyle: FontStyle {
             return UIFont.systemFont(ofSize: size).with([.traitBold, .traitItalic])
         }
     }
+    
+    public func make() -> UIFont {
+        switch (isBold, isItalic) {
+            case (false, false):
+            return UIFont.systemFont(ofSize: size)
+            case (true, false):
+            return UIFont.boldSystemFont(ofSize: size)
+            case (false, true):
+            return UIFont.italicSystemFont(ofSize: size)
+            case (true, true):
+            return UIFont.systemFont(ofSize: size).with([.traitBold, .traitItalic])
+        }
+    }
 }

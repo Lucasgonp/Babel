@@ -16,7 +16,7 @@ final class CreateGroupHeaderCell: UITableViewCell, ViewConfiguration {
     fileprivate enum Layout { }
     
     private lazy var avatar: ImageView = {
-        let imageView = ImageView(image: Image.avatarPlaceholder.image)
+        let imageView = ImageView(image: Image.avatarGroupPlaceholder.image)
         imageView.layer.cornerRadius = 60
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -78,11 +78,11 @@ final class CreateGroupHeaderCell: UITableViewCell, ViewConfiguration {
 
 extension CreateGroupHeaderCell {
     func render(_ avatarLink: String) {
-        avatar.setImage(with: avatarLink, placeholderImage: Image.avatarPlaceholder.image) { [weak self] image in
+        avatar.setImage(with: avatarLink, placeholderImage: Image.avatarGroupPlaceholder.image) { [weak self] image in
             if let image {
                 self?.avatar.image = image
             } else {
-                self?.avatar.image = Image.avatarPlaceholder.image
+                self?.avatar.image = Image.avatarGroupPlaceholder.image
             }
         }
     }

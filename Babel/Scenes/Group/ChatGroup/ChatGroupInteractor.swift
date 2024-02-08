@@ -135,8 +135,6 @@ extension ChatGroupInteractor: ChatGroupInteractorProtocol {
         if dto.displayingMessagesCount < dto.allLocalMessages?.count ?? 0 {
             loadMoreMessages(maxNumber: dto.maxMessageNumber, minNumber: dto.minMessageNumber)
             presenter.refreshNewMessages()
-        } else {
-            presenter.endRefreshing()
         }
     }
     

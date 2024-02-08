@@ -2,7 +2,6 @@ protocol ChatPresenterProtocol: AnyObject {
     func displayMessage(_ localMessage: LocalMessage)
     func displayRefreshedMessages(_ refreshedMessege: LocalMessage)
     func refreshNewMessages()
-    func endRefreshing()
     func updateTypingIndicator(_ isTyping: Bool)
     func updateMessage(_ localMessage: LocalMessage)
     func audioNotGranted()
@@ -30,10 +29,6 @@ extension ChatPresenter: ChatPresenterProtocol {
     
     func refreshNewMessages() {
         viewController?.refreshNewMessages()
-    }
-    
-    func endRefreshing() {
-        viewController?.endRefreshing()
     }
     
     func updateTypingIndicator(_ isTyping: Bool) {

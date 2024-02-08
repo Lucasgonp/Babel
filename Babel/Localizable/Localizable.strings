@@ -141,3 +141,7 @@
 
 // Terms and conditions
 "TermsAndConditions.title" = "Terms and conditions";
+
+// ChatSettings
+"ChatSettings.title" = "Chat settings";
+"ChatSettings.changeWallpaper" = "Change chat wallpaper";

@@ -15,12 +15,15 @@ extension ChatGroupViewController: MessagesDataSource {
     
     func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
         let text = mkMessages[indexPath.section].mkSender.displayName
-        let font = Font.sm.make(isBold: true)
-        let color = UIColor.darkGray
         
         return NSAttributedString(
             string: text,
-            attributes: [.font: font, .foregroundColor: color]
+            attributes: [
+                .strokeWidth: -3.0,
+                .strokeColor: Color.greyScaleStatic800,
+                .foregroundColor: Color.greyScaleStatic200,
+                .font: Font.Verdana.demiBold.font(size: .sm)
+            ]
         )
     }
     
@@ -28,12 +31,17 @@ extension ChatGroupViewController: MessagesDataSource {
         if shouldDisplayHeader(for: message, at: indexPath) {
             let shouldLoadMore = indexPath.section == 0 && (dto.allLocalMessages?.count ?? 0) > dto.displayingMessagesCount
             let text = shouldLoadMore ? Strings.ChatView.pullToLoad.localized() : MessageKitDateFormatter.shared.string(from: message.sentDate)
-            let font = shouldLoadMore ? Font.sm.make(isBold: true) : Font.xs.make(isBold: true)
-            let color = shouldLoadMore ? UIColor.systemBlue : UIColor.darkGray
+            let font = shouldLoadMore ? Font.Verdana.demiBold.font(size: .sm) : Font.Verdana.demiBold.font(size: .xs)
+            let color = shouldLoadMore ? UIColor.systemBlue : UIColor.white
             
             return NSAttributedString(
                 string: text,
-                attributes: [.font: font, .foregroundColor: color]
+                attributes: [
+                    .strokeWidth: -3.0,
+                    .strokeColor: Color.primary900.uiColor,
+                    .font: font,
+                    .foregroundColor: color
+                ]
             )
         }
         
@@ -41,10 +49,14 @@ extension ChatGroupViewController: MessagesDataSource {
     }
     
     func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
-        let font = Font.xs.make(isBold: true)
         return NSAttributedString(
             string: message.sentDate.time(),
-            attributes: [.font: font, .foregroundColor: UIColor.darkGray]
+            attributes: [
+                .strokeWidth: -3.0,
+                .strokeColor: Color.greyScaleStatic800,
+                .foregroundColor: Color.greyScaleStatic200,
+                .font: Font.Verdana.demiBold.font(size: .xs)
+            ]
         )
     }
     
@@ -57,8 +69,10 @@ extension ChatGroupViewController: MessagesDataSource {
                 return NSAttributedString(
                     string: status,
                     attributes: [
-                        .font: Font.xs.make(isBold: true),
-                        .foregroundColor: UIColor.darkGray
+                        .strokeWidth: -3.0,
+                        .strokeColor: Color.greyScaleStatic800,
+                        .foregroundColor: Color.greyScaleStatic200,
+                        .font: Font.Verdana.demiBold.font(size: .xs)
                     ]
                 )
             }

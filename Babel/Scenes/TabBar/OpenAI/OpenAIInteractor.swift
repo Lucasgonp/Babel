@@ -20,25 +20,11 @@ final class OpenAIInteractor {
 extension OpenAIInteractor: OpenAIInteractorProtocol {
     func openChatBot() {
         let chatRoomId = ChatBotHelper.shared.createChatRoomId()
-        let chatDTO = ChatBotDTO(
-            id: kCHATBOT,
-            chatId: chatRoomId,
-            name: Strings.OpenAI.ChatBot.title.localized(),
-            description: Strings.OpenAI.ChatBot.description.localized(),
-            avatarImage: ChatBotHelper.Images.chatBotIcon
-        )
-        presenter.didNextStep(action: .pushChatBot(chatDTO))
+        presenter.didNextStep(action: .pushChatBot)
     }
     
     func openImageGenerator() {
         let chatRoomId = ChatBotHelper.shared.createImageGeneratorRoomId()
-        let chatDTO = ChatBotDTO(
-            id: kIMAGEGENERATOR,
-            chatId: chatRoomId,
-            name: Strings.OpenAI.ChatBot.title.localized(),
-            description: Strings.OpenAI.ImageGenerator.description.localized(),
-            avatarImage: ChatBotHelper.Images.imageGeneratorIcon
-        )
-        presenter.didNextStep(action: .pushImageGenerator(chatDTO))
+        presenter.didNextStep(action: .pushImageGenerator)
     }
 }

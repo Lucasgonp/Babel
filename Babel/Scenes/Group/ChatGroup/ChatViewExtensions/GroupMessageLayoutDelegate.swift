@@ -1,5 +1,6 @@
 import Foundation
 import MessageKit
+import UIKit
 
 extension ChatGroupViewController: MessagesLayoutDelegate {    
     func cellTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
@@ -30,6 +31,21 @@ extension ChatGroupViewController: MessagesLayoutDelegate {
     func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
         avatarView.set(avatar: Avatar(initials: mkMessages[indexPath.section].senderInitials))
     }
+    
+//    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//        var visibleRect = CGRect()
+//        
+//        visibleRect.origin = self.messagesCollectionView.contentOffset
+//        visibleRect.size = self.messagesCollectionView.bounds.size
+//        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
+//        
+//        guard let indexPath = self.messagesCollectionView.indexPathForItem(at: visiblePoint) else { return }
+//        
+//        print(" \(indexPath)")
+//        if indexPath.section == 3 {
+//            
+//        }
+//    }
 }
 
 private extension ChatGroupViewController {

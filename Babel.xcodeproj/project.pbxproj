@@ -128,6 +128,7 @@
 		768E40DD2B4DC94C009F8F7C /* Strings.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768E40DC2B4DC94C009F8F7C /* Strings.generated.swift */; };
 		768E9D122B72F04F00750937 /* TermsAndConditions.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7655EF172B6577690028054C /* TermsAndConditions.pdf */; };
 		768E9D162B72F2CE00750937 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7620F4562A965A09002A4EB5 /* TermsViewController.swift */; };
+		768E9D1A2B7459AF00750937 /* StorageKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768E9D192B7459AF00750937 /* StorageKeychain.swift */; };
 		768F4EB12B4F4AD80051E970 /* GroupsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768F4EAB2B4F4AD80051E970 /* GroupsFactory.swift */; };
 		768F4EB22B4F4AD80051E970 /* GroupsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768F4EAC2B4F4AD80051E970 /* GroupsPresenter.swift */; };
 		768F4EB32B4F4AD80051E970 /* GroupsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768F4EAD2B4F4AD80051E970 /* GroupsRouter.swift */; };
@@ -691,6 +692,7 @@
 		7686A88B2B545C0F0025FBD3 /* AddMembersWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMembersWorker.swift; sourceTree = "<group>"; };
 		768E40D92B4D9A5B009F8F7C /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
 		768E40DC2B4DC94C009F8F7C /* Strings.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.generated.swift; sourceTree = "<group>"; };
+		768E9D192B7459AF00750937 /* StorageKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKeychain.swift; sourceTree = "<group>"; };
 		768F4EAB2B4F4AD80051E970 /* GroupsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsFactory.swift; sourceTree = "<group>"; };
 		768F4EAC2B4F4AD80051E970 /* GroupsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsPresenter.swift; sourceTree = "<group>"; };
 		768F4EAD2B4F4AD80051E970 /* GroupsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsRouter.swift; sourceTree = "<group>"; };
@@ -1522,6 +1524,14 @@
 			path = Groups;
 			sourceTree = "<group>";
 		};
+		768E9D182B74599900750937 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				768E9D192B7459AF00750937 /* StorageKeychain.swift */,
+			);
+			path = Keychain;
+			sourceTree = "<group>";
+		};
 		7691DAF62B499409007D52B3 /* Authenticator */ = {
 			isa = PBXGroup;
 			children = (
@@ -1746,6 +1756,7 @@
 		7691DBA32B4998EA007D52B3 /* StorageKit */ = {
 			isa = PBXGroup;
 			children = (
+				768E9D182B74599900750937 /* Keychain */,
 				7691DBC62B499973007D52B3 /* Local */,
 				7691DBBF2B499973007D52B3 /* Remote */,
 				7691DBC52B499973007D52B3 /* StorageKey.swift */,
@@ -3102,6 +3113,7 @@
 				7691DB5C2B499632007D52B3 /* LoginUserRequestModel.swift in Sources */,
 				7691DB6F2B499632007D52B3 /* FirebaseManager.swift in Sources */,
 				7691DB552B499632007D52B3 /* LoginRouter.swift in Sources */,
+				768E9D1A2B7459AF00750937 /* StorageKeychain.swift in Sources */,
 				7691DB532B499632007D52B3 /* LoginViewController.swift in Sources */,
 				7691DB602B499632007D52B3 /* AuthenticatorResendEmail.swift in Sources */,
 				7691DB592B499632007D52B3 /* UserGlobalModel.swift in Sources */,

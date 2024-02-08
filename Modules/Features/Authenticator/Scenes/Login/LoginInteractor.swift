@@ -1,3 +1,5 @@
+import StorageKit
+
 protocol LoginInteractorProtocol: AnyObject {
     func loginWith(userModel: LoginUserRequestModel)
     func resendEmailVerification()
@@ -29,6 +31,7 @@ extension LoginInteractor: LoginInteractorProtocol {
             switch result {
             case .success(let model):
                 if model.isEmailVerified {
+                    StorageKeychain.shared.saveLogin(email: userModel.email, password: userModel.password)
                     self.presenter.didNextStep(action: .didLoginSuccess)
                 } else {
                     self.presenter.displayResendEmailAlert()

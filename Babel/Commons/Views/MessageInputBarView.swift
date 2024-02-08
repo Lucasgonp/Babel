@@ -147,7 +147,10 @@ final class MessageInputBarView: InputBarAccessoryView {
         
         configureStopWatch()
         
-        backgroundView.alpha = 0.7
+        let backgroundView = self.backgroundView
+        backgroundView.alpha = 0.9
+        self.backgroundView = backgroundView
+        backgroundColor = backgroundColor?.withAlphaComponent(0.9)
     }
     
     func addAttachButton() {

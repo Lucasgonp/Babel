@@ -127,7 +127,7 @@ final class ChatViewController: MessagesViewController {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithDefaultBackground()
         navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -138,7 +138,7 @@ final class ChatViewController: MessagesViewController {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithTransparentBackground()
         navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = navigationController?.navigationBar.standardAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
     
     func messageSend(

@@ -319,7 +319,6 @@
 		76B1FC122B5D6F8A007D0519 /* OpenAICell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC112B5D6F8A007D0519 /* OpenAICell.swift */; };
 		76B1FC152B5D7004007D0519 /* OpenAIDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC142B5D7004007D0519 /* OpenAIDTO.swift */; };
 		76B1FC322B5D8CCC007D0519 /* ChatBotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC312B5D8CCC007D0519 /* ChatBotHelper.swift */; };
-		76B1FC352B5D91C1007D0519 /* MessageBotInputBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC342B5D91C1007D0519 /* MessageBotInputBarView.swift */; };
 		76B1FC3E2B5D9E68007D0519 /* ChatBotClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC3A2B5D9E5C007D0519 /* ChatBotClient.swift */; };
 		76B1FC482B5DACEA007D0519 /* RemoteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B1FC472B5DACEA007D0519 /* RemoteConfig.swift */; };
 		76B1FC4A2B5DB368007D0519 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 76B1FC492B5DB368007D0519 /* FirebaseRemoteConfig */; };
@@ -389,7 +388,6 @@
 		76E41BF62B562DEE00976A73 /* EditProfileClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E41BF42B562D8E00976A73 /* EditProfileClient.swift */; };
 		76EF5D492A905E3700D9AE8B /* DesignKit.framework in Sources */ = {isa = PBXBuildFile; fileRef = 76228DA92A8AAF7000C27C7A /* DesignKit.framework */; };
 		76EF5D4A2A905E3700D9AE8B /* Authenticator.framework in Sources */ = {isa = PBXBuildFile; fileRef = 76228DA32A8AAF6200C27C7A /* Authenticator.framework */; };
-		76F257172B7078660079A6D6 /* MessageLabelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F257162B7078660079A6D6 /* MessageLabelDelegate.swift */; };
 		76F2571D2B71B36A0079A6D6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F2571B2B71B35F0079A6D6 /* Constants.swift */; };
 		76F257222B71B3E20079A6D6 /* TermsAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F257202B71B3CE0079A6D6 /* TermsAlertView.swift */; };
 		76F406F02B6D525B007C5A67 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F406EF2B6D525B007C5A67 /* PushNotificationManager.swift */; };
@@ -864,7 +862,6 @@
 		76B1FC112B5D6F8A007D0519 /* OpenAICell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAICell.swift; sourceTree = "<group>"; };
 		76B1FC142B5D7004007D0519 /* OpenAIDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIDTO.swift; sourceTree = "<group>"; };
 		76B1FC312B5D8CCC007D0519 /* ChatBotHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotHelper.swift; sourceTree = "<group>"; };
-		76B1FC342B5D91C1007D0519 /* MessageBotInputBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBotInputBarView.swift; sourceTree = "<group>"; };
 		76B1FC3A2B5D9E5C007D0519 /* ChatBotClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBotClient.swift; sourceTree = "<group>"; };
 		76B1FC472B5DACEA007D0519 /* RemoteConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfig.swift; sourceTree = "<group>"; };
 		76B1FC4E2B5DE913007D0519 /* RemoteConfigKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigKeys.swift; sourceTree = "<group>"; };
@@ -917,7 +914,6 @@
 		76DA7EC32AB78E7400106731 /* RecentChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatCell.swift; sourceTree = "<group>"; };
 		76E41BF12B559B2C00976A73 /* GroupInfoMessageWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInfoMessageWorker.swift; sourceTree = "<group>"; };
 		76E41BF42B562D8E00976A73 /* EditProfileClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileClient.swift; sourceTree = "<group>"; };
-		76F257162B7078660079A6D6 /* MessageLabelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageLabelDelegate.swift; sourceTree = "<group>"; };
 		76F2571B2B71B35F0079A6D6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		76F257202B71B3CE0079A6D6 /* TermsAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAlertView.swift; sourceTree = "<group>"; };
 		76F406EE2B6D4347007C5A67 /* Babel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Babel.entitlements; sourceTree = "<group>"; };
@@ -1079,7 +1075,6 @@
 				761011922B3A0147004639C4 /* MessageDisplayDelegate.swift */,
 				761011942B3A0156004639C4 /* MessageLayoutDelegate.swift */,
 				761011962B3A0168004639C4 /* InputBarAccessoryViewDelegate.swift */,
-				76F257162B7078660079A6D6 /* MessageLabelDelegate.swift */,
 			);
 			path = ChatViewExtensions;
 			sourceTree = "<group>";
@@ -1095,7 +1090,6 @@
 		761E38102B54BBF70080194C /* ChatGroup */ = {
 			isa = PBXGroup;
 			children = (
-				76B1FC332B5D91AD007D0519 /* Views */,
 				761E382D2B54CF100080194C /* Workers */,
 				761E38282B54BE290080194C /* Models */,
 				761E381D2B54BD0E0080194C /* ChatViewExtensions */,
@@ -2237,14 +2231,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		76B1FC332B5D91AD007D0519 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				76B1FC342B5D91C1007D0519 /* MessageBotInputBarView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		76B1FC392B5D9E4D007D0519 /* ChatBot */ = {
 			isa = PBXGroup;
 			children = (
@@ -3267,7 +3253,6 @@
 				76B1FC152B5D7004007D0519 /* OpenAIDTO.swift in Sources */,
 				76DA7EC12AB78D1F00106731 /* RecentChatsWorker.swift in Sources */,
 				7620F2DD2A92EF74002A4EB5 /* UsersWorker.swift in Sources */,
-				76F257172B7078660079A6D6 /* MessageLabelDelegate.swift in Sources */,
 				7620F42A2A9541AC002A4EB5 /* SettingsUserInfoCell.swift in Sources */,
 				76AF8DC62B51EDF400E21CD5 /* GroupInfoInteractor.swift in Sources */,
 				769E97322AA3C4FC004FC6B4 /* ContactInfoWorker.swift in Sources */,
@@ -3352,7 +3337,6 @@
 				7695DB002B5B27BD002D91CB /* SystemSettingsViewController.swift in Sources */,
 				764B13FA2B631BAB00C48FAE /* PhoneContacts.swift in Sources */,
 				769E97312AA3C4FC004FC6B4 /* ContactInfoInteractor.swift in Sources */,
-				76B1FC352B5D91C1007D0519 /* MessageBotInputBarView.swift in Sources */,
 				76D246842AC4AE7000FDA81E /* ChatInteractor.swift in Sources */,
 				7620F2DC2A92EF74002A4EB5 /* UsersInteractor.swift in Sources */,
 				7620F4402A9592C2002A4EB5 /* EditProfileRouter.swift in Sources */,

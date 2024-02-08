@@ -409,6 +409,23 @@
         }
       }
     },
+    "Change chat wallpaper" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change chat wallpaper"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mudar papel de parede"
+          }
+        }
+      }
+    },
     "Chat bot" : {
       "comment" : "Open AI",
       "extractionState" : "manual",
@@ -440,6 +457,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Chat bot apenas com mensagem"
+          }
+        }
+      }
+    },
+    "Chat settings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chat settings"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configurações de chat"
           }
         }
       }

@@ -4196,11 +4196,12 @@
 				CODE_SIGN_ENTITLEMENTS = Babel/BabelDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2024020801;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 7FD6NAZC3R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Babel/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Babel;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Babel requires to access your Media library";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Babel requires to access your Camera";
@@ -4220,7 +4221,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = lucasgonp.Babel;
@@ -4246,10 +4247,11 @@
 				CODE_SIGN_ENTITLEMENTS = Babel/Babel.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2024020801;
 				DEVELOPMENT_TEAM = 7FD6NAZC3R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Babel/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Babel;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Babel requires to access your Media library";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Babel requires to access your Camera";
@@ -4269,7 +4271,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = lucasgonp.Babel;

@@ -99,7 +99,7 @@ extension FirebaseClient: GroupClientProtocol {
         //TODO: Check if deletion is necessary
 //        firebaseReference(.group).document(groupId).delete()
         let isDeleted = ["isDeleted": true]
-        firebaseReference(.group).document(groupId).setData(isDeleted)
+        firebaseReference(.group).document(groupId).updateData(isDeleted)
     }
     
     public func removeGroupInfoListener() {

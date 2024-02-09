@@ -22,7 +22,7 @@ extension GroupsInteractor: GroupsInteractorProtocol {
                 let availableGroups = groups.filter({ $0.isDeleted != true })
                 self?.presenter.displayAllGroups(availableGroups)
             case let .failure(error):
-                fatalError(error.localizedDescription)
+                print(error.localizedDescription)
             }
         }
     }

@@ -69,7 +69,8 @@ private extension PushNotificationManager {
             self.client.downloadUsers(withIds: usersIds) { [weak self] (result: (Result<[User], FirebaseError>)) in
                 switch result {
                 case let .success(users):
-                    for user in users {
+                    let filterdUsers = users.filter({ $0.pushId != AccountInfo.shared.user?.pushId })
+                    for user in filterdUsers {
                         let title = groupName != nil ? groupName! : AccountInfo.shared.user?.name ?? String()
                         self?.sendMessageToUser(to: user.pushId, title: title, body: body, chatRoomId: chatRoomId)
                     }

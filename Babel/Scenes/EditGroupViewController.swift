@@ -72,7 +72,7 @@ final class EditGroupViewController: UIViewController {
             if let image {
                 self?.avatarImageView.image = image
             } else {
-                self?.avatarImageView.image = Image.avatarPlaceholder.image
+                self?.avatarImageView.image = Image.avatarGroupPlaceholder.image
             }
         }
     }
@@ -133,7 +133,11 @@ extension EditGroupViewController: ViewConfiguration {
         view.endEditing(true)
         dismiss(animated: true) { [weak self] in
             guard let self else { return }
-            let dto = EditGroupDTO(name: self.groupNameTextField.text, avatar: avatarImageView.image ?? Image.avatarPlaceholder.image, avatarLink: avatarLink)
+            let dto = EditGroupDTO(
+                name: self.groupNameTextField.text,
+                avatar: avatarImageView.image ?? Image.avatarGroupPlaceholder.image,
+                avatarLink: avatarLink
+            )
             self.completion?(dto)
         }
     }

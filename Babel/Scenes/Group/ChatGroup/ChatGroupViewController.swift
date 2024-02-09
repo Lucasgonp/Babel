@@ -239,7 +239,7 @@ extension ChatGroupViewController: ViewConfiguration {
         }
         
         let savedWallpaper = StorageLocal.shared.getString(key: kCHATWALLPAPER)
-        var defaultWallpaper = UserInterface.style == .dark ? Image.chatBackgroundImage1 : Image.chatBackgroundImage12
+        let defaultWallpaper = UserInterface.style == .dark ? Image.chatBackgroundImage1 : Image.chatBackgroundImage12
         let wallpaper = Image.allImages.first(where: { $0.name == savedWallpaper }) ?? defaultWallpaper
         let imageView = UIImageView(image: wallpaper.image)
         imageView.alpha = 0.8
@@ -283,7 +283,9 @@ extension ChatGroupViewController: ChatGroupDisplaying {
     
     func didUpdateGroupInfo(_ groupInfo: Group) {
         let inputBar = messageInputBar as? MessageInputBarView
-        inputBar?.setupState(available: !groupInfo.removedMembersIds.contains(currentUser.id))
+        let isMember = !groupInfo.removedMembersIds.contains(currentUser.id)
+        stackView.isUserInteractionEnabled = isMember
+        inputBar?.setupState(available: isMember)
     }
     
     func updateMessage(_ localMessage: LocalMessage) {

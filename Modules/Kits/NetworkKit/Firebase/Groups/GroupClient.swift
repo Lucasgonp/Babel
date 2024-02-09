@@ -96,7 +96,10 @@ extension FirebaseClient: GroupClientProtocol {
     }
     
     public func deleteGroup(groupId: String) {
-        firebaseReference(.group).document(groupId).delete()
+        //TODO: Check if deletion is necessary
+//        firebaseReference(.group).document(groupId).delete()
+        let isDeleted = ["isDeleted": true]
+        firebaseReference(.group).document(groupId).setData(isDeleted)
     }
     
     public func removeGroupInfoListener() {

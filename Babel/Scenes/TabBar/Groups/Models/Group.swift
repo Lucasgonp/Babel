@@ -10,5 +10,6 @@ struct Group: Codable, Equatable {
     var adminIds: [String]
     var removedMembersIds: [String] = []
     var requestToJoinMemberIds: [String] = []
+    var isDeleted: Bool? = false
     @ServerTimestamp var createdDate = Date()
 }

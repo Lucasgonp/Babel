@@ -19,7 +19,8 @@ extension GroupsInteractor: GroupsInteractorProtocol {
         worker.fetchAllGroups { [weak self] result in
             switch result {
             case let .success(groups):
-                self?.presenter.displayAllGroups(groups)
+                let availableGroups = groups.filter({ $0.isDeleted != true })
+                self?.presenter.displayAllGroups(availableGroups)
             case let .failure(error):
                 fatalError(error.localizedDescription)
             }

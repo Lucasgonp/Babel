@@ -66,10 +66,7 @@ extension GroupInfoInteractor: GroupInfoInteractorProtocol {
                 if let error {
                     self.presenter.displayError(message: error.localizedDescription)
                 } else {
-                    if self.group?.name != dto.name || self.group?.avatarLink != avatarLink {
-                        self.worker.saveGroupInRecentChats(group: group)
-                    }
-                    
+                    self.worker.saveGroupInRecentChats(group: group)
                     self.group = group
                     var dto = dto
                     dto.avatarLink = avatarLink

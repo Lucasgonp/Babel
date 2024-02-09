@@ -186,7 +186,6 @@
 		7691DB8E2B499862007D52B3 /* NetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7691DB792B499861007D52B3 /* NetworkKit.framework */; };
 		7691DB8F2B499862007D52B3 /* NetworkKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7691DB792B499861007D52B3 /* NetworkKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7691DB962B49989D007D52B3 /* NetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7691DB792B499861007D52B3 /* NetworkKit.framework */; };
-		7691DB972B49989D007D52B3 /* NetworkKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7691DB792B499861007D52B3 /* NetworkKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7691DBA62B4998EA007D52B3 /* StorageKit.docc in Sources */ = {isa = PBXBuildFile; fileRef = 7691DBA52B4998EA007D52B3 /* StorageKit.docc */; };
 		7691DBB42B4998EB007D52B3 /* StorageKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 7691DBA42B4998EA007D52B3 /* StorageKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7691DBC92B499973007D52B3 /* StorageDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691DBC02B499973007D52B3 /* StorageDownload.swift */; };
@@ -219,7 +218,6 @@
 		7691DC052B499B20007D52B3 /* StorageKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7691DBA22B4998EA007D52B3 /* StorageKit.framework */; };
 		7691DC062B499B20007D52B3 /* StorageKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7691DBA22B4998EA007D52B3 /* StorageKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7691DC0D2B499C51007D52B3 /* StorageKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7691DBA22B4998EA007D52B3 /* StorageKit.framework */; };
-		7691DC0E2B499C51007D52B3 /* StorageKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7691DBA22B4998EA007D52B3 /* StorageKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7691DC442B49A35D007D52B3 /* GalleryKit.docc in Sources */ = {isa = PBXBuildFile; fileRef = 7691DC432B49A35D007D52B3 /* GalleryKit.docc */; };
 		7691DC452B49A35D007D52B3 /* GalleryKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 7691DC422B49A35D007D52B3 /* GalleryKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7691DC542B49A39B007D52B3 /* MediaVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691DC4E2B49A39B007D52B3 /* MediaVideo.swift */; };
@@ -275,7 +273,6 @@
 		7691DCE42B49A766007D52B3 /* GalleryKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7691DC402B49A35C007D52B3 /* GalleryKit.framework */; };
 		7691DCE52B49A766007D52B3 /* GalleryKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7691DC402B49A35C007D52B3 /* GalleryKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7691DCE82B49A83D007D52B3 /* DesignKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7691DC5E2B49A3EA007D52B3 /* DesignKit.framework */; };
-		7691DCE92B49A83D007D52B3 /* DesignKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7691DC5E2B49A3EA007D52B3 /* DesignKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7695DAFD2B5B27BD002D91CB /* SystemSettingsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7695DAF72B5B27BD002D91CB /* SystemSettingsFactory.swift */; };
 		7695DAFE2B5B27BD002D91CB /* SystemSettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7695DAF82B5B27BD002D91CB /* SystemSettingsPresenter.swift */; };
 		7695DAFF2B5B27BD002D91CB /* SystemSettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7695DAF92B5B27BD002D91CB /* SystemSettingsRouter.swift */; };
@@ -492,39 +489,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		7691DB9A2B49989D007D52B3 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				7691DB972B49989D007D52B3 /* NetworkKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7691DC112B499C51007D52B3 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				7691DC0E2B499C51007D52B3 /* StorageKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7691DCEC2B49A83E007D52B3 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				7691DCE92B49A83D007D52B3 /* DesignKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		76CAA1752A8AA8F400D742E9 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2566,7 +2530,6 @@
 				7691DAF12B499409007D52B3 /* Sources */,
 				7691DAF22B499409007D52B3 /* Frameworks */,
 				7691DAF32B499409007D52B3 /* Resources */,
-				7691DB9A2B49989D007D52B3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2607,7 +2570,6 @@
 				7691DB752B499861007D52B3 /* Sources */,
 				7691DB762B499861007D52B3 /* Frameworks */,
 				7691DB772B499861007D52B3 /* Resources */,
-				7691DC112B499C51007D52B3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2649,7 +2611,6 @@
 				7691DC3C2B49A35C007D52B3 /* Sources */,
 				7691DC3D2B49A35C007D52B3 /* Frameworks */,
 				7691DC3E2B49A35C007D52B3 /* Resources */,
-				7691DCEC2B49A83E007D52B3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -3494,7 +3455,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = VZDNH969CP;
+				DEVELOPMENT_TEAM = 7FD6NAZC3R;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -3524,7 +3485,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -3538,7 +3499,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = VZDNH969CP;
+				DEVELOPMENT_TEAM = 7FD6NAZC3R;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -3567,7 +3528,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -3581,7 +3542,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = VZDNH969CP;
+				DEVELOPMENT_TEAM = 7FD6NAZC3R;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -3597,7 +3558,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Babel.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Babel";
 			};
 			name = Debug;
@@ -3609,7 +3570,7 @@
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VZDNH969CP;
+				DEVELOPMENT_TEAM = 7FD6NAZC3R;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -3624,7 +3585,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Babel.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Babel";
 			};
 			name = Release;
@@ -3638,7 +3599,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = VZDNH969CP;
+				DEVELOPMENT_TEAM = 7FD6NAZC3R;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -3668,7 +3629,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -3682,7 +3643,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = VZDNH969CP;
+				DEVELOPMENT_TEAM = 7FD6NAZC3R;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -3711,7 +3672,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -3726,7 +3687,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = VZDNH969CP;
+				DEVELOPMENT_TEAM = 7FD6NAZC3R;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -3756,7 +3717,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -3770,7 +3731,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = VZDNH969CP;
+				DEVELOPMENT_TEAM = 7FD6NAZC3R;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -3799,7 +3760,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -3814,7 +3775,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = VZDNH969CP;
+				DEVELOPMENT_TEAM = 7FD6NAZC3R;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -3844,7 +3805,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -3858,7 +3819,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = VZDNH969CP;
+				DEVELOPMENT_TEAM = 7FD6NAZC3R;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -3887,7 +3848,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -3902,7 +3863,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = VZDNH969CP;
+				DEVELOPMENT_TEAM = 7FD6NAZC3R;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -3933,7 +3894,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -3947,7 +3908,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = VZDNH969CP;
+				DEVELOPMENT_TEAM = 7FD6NAZC3R;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -3977,7 +3938,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -3992,7 +3953,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = VZDNH969CP;
+				DEVELOPMENT_TEAM = 7FD6NAZC3R;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -4022,7 +3983,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -4036,7 +3997,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = VZDNH969CP;
+				DEVELOPMENT_TEAM = 7FD6NAZC3R;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -4065,7 +4026,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -4232,7 +4193,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -4282,7 +4243,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -4293,7 +4254,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VZDNH969CP;
+				DEVELOPMENT_TEAM = 7FD6NAZC3R;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
@@ -4305,7 +4266,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Babel.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Babel";
 			};
 			name = Debug;
@@ -4317,7 +4278,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VZDNH969CP;
+				DEVELOPMENT_TEAM = 7FD6NAZC3R;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
@@ -4329,7 +4290,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Babel.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Babel";
 			};
 			name = Release;
@@ -4340,7 +4301,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VZDNH969CP;
+				DEVELOPMENT_TEAM = 7FD6NAZC3R;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
@@ -4352,7 +4313,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = Babel;
 			};
 			name = Debug;
@@ -4363,7 +4324,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VZDNH969CP;
+				DEVELOPMENT_TEAM = 7FD6NAZC3R;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
@@ -4375,7 +4336,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = Babel;
 			};
 			name = Release;

@@ -670,7 +670,6 @@
 		7670825A2B4B89480024EF41 /* AudioMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioMessage.swift; sourceTree = "<group>"; };
 		7670825D2B4B96E10024EF41 /* BasicAudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAudioController.swift; sourceTree = "<group>"; };
 		767082612B4C4F4D0024EF41 /* MessageInputBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputBarView.swift; sourceTree = "<group>"; };
-		7678FD482B7573A4002A7F17 /* DesignKit-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "DesignKit-Info.plist"; sourceTree = "<group>"; };
 		767CA9362B6829F6004C4358 /* Collection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extensions.swift"; sourceTree = "<group>"; };
 		7686A8862B545C0F0025FBD3 /* AddMembersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMembersFactory.swift; sourceTree = "<group>"; };
 		7686A8872B545C0F0025FBD3 /* AddMembersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMembersPresenter.swift; sourceTree = "<group>"; };
@@ -2287,7 +2286,6 @@
 		76CAA12C2A8AA1F400D742E9 = {
 			isa = PBXGroup;
 			children = (
-				7678FD482B7573A4002A7F17 /* DesignKit-Info.plist */,
 				76CAA1372A8AA1F400D742E9 /* Babel */,
 				76CAA14E2A8AA1F700D742E9 /* BabelTests */,
 				76CAA1582A8AA1F700D742E9 /* BabelUITests */,
@@ -3912,7 +3910,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "DesignKit-Info.plist";
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -3957,7 +3955,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "DesignKit-Info.plist";
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;

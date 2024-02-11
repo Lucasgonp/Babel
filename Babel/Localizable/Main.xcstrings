@@ -409,6 +409,23 @@
         }
       }
     },
+    "Change" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alterar"
+          }
+        }
+      }
+    },
     "Change chat wallpaper" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -646,6 +663,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Deseja aprovar a solicitação de acesso ao group deste usuário?"
+          }
+        }
+      }
+    },
+    "Do you want to change the chat wallpaper?" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do you want to change the chat wallpaper?"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deseja alterar o papel de parede?"
           }
         }
       }
@@ -1374,6 +1408,23 @@
         }
       }
     },
+    "Reset wallpaper" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset wallpaper"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resetar papel de parede"
+          }
+        }
+      }
+    },
     "Search" : {
       "comment" : "Common",
       "extractionState" : "manual",
@@ -1388,6 +1439,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pesquisar"
+          }
+        }
+      }
+    },
+    "Select chat wallpaper" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select chat wallpaper"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecionar papel de parede"
           }
         }
       }

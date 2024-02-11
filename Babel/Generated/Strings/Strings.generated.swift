@@ -42,6 +42,18 @@ internal enum Strings {
       internal static let shareLocation = Strings.tr("Localizable", "ChatView.ActionSheet.shareLocation", fallback: "Share location")
     }
   }
+  internal enum ChatWallpaper {
+    /// Reset wallpaper
+    internal static let resetWallpaper = Strings.tr("Localizable", "ChatWallpaper.resetWallpaper", fallback: "Reset wallpaper")
+    internal enum ActionSheet {
+      /// Change
+      internal static let button = Strings.tr("Localizable", "ChatWallpaper.ActionSheet.button", fallback: "Change")
+      /// Do you want to change the chat wallpaper?
+      internal static let description = Strings.tr("Localizable", "ChatWallpaper.ActionSheet.description", fallback: "Do you want to change the chat wallpaper?")
+      /// Select chat wallpaper
+      internal static let title = Strings.tr("Localizable", "ChatWallpaper.ActionSheet.title", fallback: "Select chat wallpaper")
+    }
+  }
   internal enum Commons {
     /// Access not granted
     internal static let accessNotGranted = Strings.tr("Localizable", "Commons.accessNotGranted", fallback: "Access not granted")

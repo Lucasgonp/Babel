@@ -223,15 +223,14 @@ extension ChatViewController: ViewConfiguration {
             self?.stackView.layoutIfNeeded()
         }
         
-        let savedWallpaper = StorageLocal.shared.getString(key: kCHATWALLPAPER)
-        var defaultWallpaper = UserInterface.style == .dark ? Image.chatBackgroundImage1 : Image.chatBackgroundImage12
-        let wallpaper = Image.allImages.first(where: { $0.name == savedWallpaper }) ?? defaultWallpaper
-        let imageView = UIImageView(image: wallpaper.image)
-        imageView.alpha = 0.8
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        messagesCollectionView.backgroundView = imageView
-        
+        if let savedWallpaper = StorageLocal.shared.getString(key: kCHATWALLPAPER),
+           let wallpaper = Image.allImages.first(where: { $0.name == savedWallpaper }) {
+            let imageView = UIImageView(image: wallpaper.image)
+            imageView.alpha = 0.8
+            imageView.contentMode = .scaleAspectFill
+            imageView.clipsToBounds = true
+            messagesCollectionView.backgroundView = imageView
+        }
         // TODO: showMessageTimestampOnSwipeLeft = true
     }
 }

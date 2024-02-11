@@ -6,11 +6,22 @@ private extension ChangeWallpaperViewController.Layout {
     enum Texts {
         static let title = Strings.ChatSettings.changeWallpaper.localized()
         static let cancel = Strings.Commons.cancel.localized()
+        static let resetWallpaper = Strings.ChatWallpaper.resetWallpaper.localized()
+        static let actionSheetTitle = Strings.ChatWallpaper.ActionSheet.title.localized()
+        static let actionSheetButton = Strings.ChatWallpaper.ActionSheet.button.localized()
+        static let actionSheetDescription = Strings.ChatWallpaper.ActionSheet.description.localized()
     }
 }
 
 final class ChangeWallpaperViewController: UIViewController {
     fileprivate enum Layout { }
+    
+    private lazy var resetButton: UIButton = {
+        let button = Button()
+        button.render(.primary(title: Layout.Texts.resetWallpaper))
+        button.addTarget(self, action: #selector(resetButtonAction), for: .touchUpInside)
+        return button
+    }()
     
     private lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -19,9 +30,9 @@ final class ChangeWallpaperViewController: UIViewController {
         flowLayout.minimumLineSpacing = 16
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.register(cellType: UICollectionViewCell.self)
+        collectionView.register(cellType: UICollectionReusableView.self)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
     
@@ -43,8 +54,8 @@ final class ChangeWallpaperViewController: UIViewController {
         Image.chatBackgroundImage15
     ]
     
-    private var selectedWallpaperName: String {
-        StorageLocal.shared.getString(key: kCHATWALLPAPER) ?? Image.chatBackgroundImage1.name
+    private var selectedWallpaperName: String? {
+        StorageLocal.shared.getString(key: kCHATWALLPAPER)
     }
     
     override func viewDidLoad() {
@@ -72,19 +83,21 @@ extension ChangeWallpaperViewController: ViewConfiguration {
 extension ChangeWallpaperViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        showAlertView(for: indexPath)
-    }
-    
-    func showAlertView(for indexPath: IndexPath) {
-        let changeWallpaperAction = UIAlertAction(title: "Change", style: .default, handler: { [weak self] _ in
+        showAlertView { [weak self] in
             guard let self else { return }
             let wallpaper = self.allWallpapers[indexPath.row]
             StorageLocal.shared.saveString(wallpaper.name, key: kCHATWALLPAPER)
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
+        }
+    }
+    
+    func showAlertView(completion: @escaping () -> Void) {
+        let changeWallpaperAction = UIAlertAction(title: Layout.Texts.actionSheetButton, style: .default, handler: { _ in
+            completion()
         })
-        let actionSheet = UIAlertController(title: "Select chat wallpaper", message: "Do you want to change the chat wallpaper?", preferredStyle: .alert)
+        let actionSheet = UIAlertController(title: Layout.Texts.actionSheetTitle, message: Layout.Texts.actionSheetDescription, preferredStyle: .alert)
         actionSheet.addAction(changeWallpaperAction)
         actionSheet.addAction(UIAlertAction(title: Layout.Texts.cancel, style: .cancel, handler: nil))
         present(actionSheet, animated: true)
@@ -116,6 +129,20 @@ extension ChangeWallpaperViewController: UICollectionViewDataSource {
         }
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let headerView = collectionView.makeView(kind: kind, indexPath: indexPath)
+        headerView.fillWithSubview(subview: resetButton, spacing: .init(top: 6, left: 16, bottom: 16, right: 16))
+        return headerView
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 62)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return .zero
+    }
 }
 
 extension ChangeWallpaperViewController: UICollectionViewDelegateFlowLayout {
@@ -131,5 +158,14 @@ extension ChangeWallpaperViewController: UICollectionViewDelegateFlowLayout {
 
         let size = Int((collectionView.bounds.width - totalSpace) / CGFloat(noOfCellsInRow))
         return CGSize(width: size, height: 321)
+    }
+}
+
+@objc private extension ChangeWallpaperViewController {
+    func resetButtonAction() {
+        showAlertView { [weak self] in
+            StorageLocal.shared.removeStorage(key: kCHATWALLPAPER)
+            self?.collectionView.reloadData()
+        }
     }
 }

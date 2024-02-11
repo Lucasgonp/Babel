@@ -145,3 +145,9 @@
 // ChatSettings
 "ChatSettings.title" = "Chat settings";
 "ChatSettings.changeWallpaper" = "Change chat wallpaper";
+
+// ChatWallpaper
+"ChatWallpaper.resetWallpaper" = "Reset wallpaper";
+"ChatWallpaper.ActionSheet.title" = "Select chat wallpaper";
+"ChatWallpaper.ActionSheet.button" = "Change";
+"ChatWallpaper.ActionSheet.description" = "Do you want to change the chat wallpaper?";

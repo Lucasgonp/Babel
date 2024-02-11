@@ -21,6 +21,17 @@ final class ChatSettingsViewController: UIViewController {
         return tableView
     }()
     
+    private let router: ChatSettingsRouterProtocol
+    
+    init(router: ChatSettingsRouterProtocol) {
+        self.router = router
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         buildLayout()
@@ -40,14 +51,16 @@ extension ChatSettingsViewController: ViewConfiguration {
     func configureViews() {
         title = Layout.Texts.title
         view.backgroundColor = Color.backgroundPrimary.uiColor
+        
+        let backButton = UIBarButtonItem(title: String(), style: .plain, target: nil, action: nil)
+        navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
 }
 
 extension ChatSettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let changeWallpaperViewController = ChangeWallpaperViewController()
-        navigationController?.pushViewController(changeWallpaperViewController, animated: true)
+        router.changeWallpaper()
     }
 }
 

@@ -30,6 +30,9 @@ extension HomeRouter: HomeRouterProtocol {
                     return
                 }
                 
+                let appDelegate = UIApplication.shared.delegate as? AppDelegate
+                appDelegate?.requestPushNotifications()
+                
                 delegate.reloadData()
             }
         }

@@ -49,7 +49,7 @@ private extension SettingsRouter {
     }
     
     func pushToChatSettings() {
-        let controller = ChatSettingsViewController()
+        let controller = ChatSettingsFactory.make()
         controller.hidesBottomBarWhenPushed = true
         viewController?.navigationController?.pushViewController(controller, animated: true)
     }

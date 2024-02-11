@@ -107,6 +107,8 @@
 		764B14002B63437A00C48FAE /* PhoneContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764B13FF2B63437A00C48FAE /* PhoneContactModel.swift */; };
 		764B14022B6348E700C48FAE /* DeeplinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764B14012B6348E700C48FAE /* DeeplinkManager.swift */; };
 		764B14052B6473F600C48FAE /* DeeplinkCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764B14042B6473F600C48FAE /* DeeplinkCore.swift */; };
+		7654F11F2B790F7C0065E797 /* ChatSettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654F11E2B790F7C0065E797 /* ChatSettingsRouter.swift */; };
+		7654F1212B7910210065E797 /* ChatSettingsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7654F1202B7910210065E797 /* ChatSettingsFactory.swift */; };
 		7667DC742B4CDF1D00938D6F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 7667DC732B4CDF1D00938D6F /* Lottie */; };
 		7667DC782B4CDF5900938D6F /* TrashAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 7667DC772B4CDF5900938D6F /* TrashAnimation.json */; };
 		76693FE92B6FF500009CC4C0 /* CoordinatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76693FE82B6FF500009CC4C0 /* CoordinatorManager.swift */; };
@@ -623,6 +625,8 @@
 		764B13FF2B63437A00C48FAE /* PhoneContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneContactModel.swift; sourceTree = "<group>"; };
 		764B14012B6348E700C48FAE /* DeeplinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkManager.swift; sourceTree = "<group>"; };
 		764B14042B6473F600C48FAE /* DeeplinkCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkCore.swift; sourceTree = "<group>"; };
+		7654F11E2B790F7C0065E797 /* ChatSettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSettingsRouter.swift; sourceTree = "<group>"; };
+		7654F1202B7910210065E797 /* ChatSettingsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSettingsFactory.swift; sourceTree = "<group>"; };
 		7655EF162B6577690028054C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "pt-BR"; path = "pt-BR.lproj/TermsAndConditions.pdf"; sourceTree = "<group>"; };
 		7655EF182B6577700028054C /* en */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = en; path = en.lproj/TermsAndConditions.pdf; sourceTree = "<group>"; };
 		7655EF192B6577790028054C /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = Base; path = Base.lproj/TermsAndConditions.pdf; sourceTree = "<group>"; };
@@ -1473,6 +1477,8 @@
 			children = (
 				768E9D1C2B745C6100750937 /* ChatSettingsViewController.swift */,
 				768E9D1E2B745D7000750937 /* ChangeWallpaperViewController.swift */,
+				7654F11E2B790F7C0065E797 /* ChatSettingsRouter.swift */,
+				7654F1202B7910210065E797 /* ChatSettingsFactory.swift */,
 			);
 			path = ChatSettings;
 			sourceTree = "<group>";
@@ -3155,6 +3161,7 @@
 				761011912B3A0137004639C4 /* MessageCellDelegate.swift in Sources */,
 				7620F4432A9592C2002A4EB5 /* EditProfileWorker.swift in Sources */,
 				7608DE6F2A9BAFF30036027A /* UserBio.swift in Sources */,
+				7654F11F2B790F7C0065E797 /* ChatSettingsRouter.swift in Sources */,
 				76DA7EA22AB787C700106731 /* RecentChat.swift in Sources */,
 				76B1FC0E2B5D6515007D0519 /* OpenAIViewController.swift in Sources */,
 				7608DE692A9BAFDE0036027A /* EditBioRouter.swift in Sources */,
@@ -3320,6 +3327,7 @@
 				76CAA18A2A8AA9ED00D742E9 /* HomeRouter.swift in Sources */,
 				7620F43F2A9592C2002A4EB5 /* EditProfilePresenter.swift in Sources */,
 				76CAA1882A8AA9ED00D742E9 /* HomeInteractor.swift in Sources */,
+				7654F1212B7910210065E797 /* ChatSettingsFactory.swift in Sources */,
 				761E38182B54BC080080194C /* ChatGroupPresenter.swift in Sources */,
 				76DA7EC42AB78E7400106731 /* RecentChatCell.swift in Sources */,
 				76FA5D2F2B50CA75004D86A5 /* CreateGroup.swift in Sources */,
@@ -4155,7 +4163,7 @@
 				CODE_SIGN_ENTITLEMENTS = Babel/BabelDebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2024020801;
+				CURRENT_PROJECT_VERSION = 2024020901;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 7FD6NAZC3R;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -4206,7 +4214,7 @@
 				CODE_SIGN_ENTITLEMENTS = Babel/Babel.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2024020801;
+				CURRENT_PROJECT_VERSION = 2024020901;
 				DEVELOPMENT_TEAM = 7FD6NAZC3R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Babel/Info.plist;

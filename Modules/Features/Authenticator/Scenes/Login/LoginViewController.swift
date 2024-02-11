@@ -120,6 +120,11 @@ final class LoginViewController: ViewController<LoginInteractorProtocol, UIView>
         
         if StorageLocal.shared.getBool(key: kTERMSAGREED) != true {
             alertView.showAlert(from: self)
+            view.subviews.forEach({ 
+                if !($0 is TermsAlertView) {
+                    $0.isUserInteractionEnabled = false
+                }
+            })
         }
     }
     
@@ -227,6 +232,7 @@ extension LoginViewController: TermsAlertViewDelegate {
     func didTapSecondaryButton() {
         StorageLocal.shared.saveBool(true, key: kTERMSAGREED)
         alertView.hideAlert()
+        view.subviews.forEach({ $0.isUserInteractionEnabled = true })
     }
 }
 

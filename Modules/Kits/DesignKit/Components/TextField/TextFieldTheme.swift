@@ -11,7 +11,8 @@ public enum TextFieldTheme {
         autocorrectionType: UITextAutocorrectionType = .no,
         autocapitalizationType: UITextAutocapitalizationType = .none,
         hasDividorView: Bool = true,
-        textLength: Int? = nil
+        textLength: Int? = nil,
+        textContentType: UITextContentType? = nil
     )
     case clean(
         placeholder: String,
@@ -42,7 +43,8 @@ public enum TextFieldTheme {
             autocorrectionType,
             autocapitalizationType,
             hasDividorView,
-            textLength
+            textLength,
+            textContentType
         ):
             return TextFieldDTO(
                 placeholder: placeholder,
@@ -55,7 +57,8 @@ public enum TextFieldTheme {
                 autocapitalizationType: autocapitalizationType,
                 hasDividorView: hasDividorView,
                 hasFeedback: true,
-                textLength: textLength
+                textLength: textLength,
+                textContentType: textContentType
             )
         case let .clean(
             placeholder,

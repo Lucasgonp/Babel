@@ -13,6 +13,7 @@ public struct TextFieldDTO {
     let hasDividorView: Bool
     let hasFeedback: Bool
     let textLength: Int?
+    let textContentType: UITextContentType?
     
     public init(
         placeholder: String,
@@ -26,7 +27,8 @@ public struct TextFieldDTO {
         autocapitalizationType: UITextAutocapitalizationType,
         hasDividorView: Bool,
         hasFeedback: Bool,
-        textLength: Int? = nil
+        textLength: Int? = nil,
+        textContentType: UITextContentType? = nil
     ) {
         self.placeholder = placeholder
         self.hint = hint
@@ -40,6 +42,7 @@ public struct TextFieldDTO {
         self.hasDividorView = hasDividorView
         self.hasFeedback = hasFeedback
         self.textLength = textLength
+        self.textContentType = textContentType
     }
 }
 

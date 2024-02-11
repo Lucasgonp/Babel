@@ -49,24 +49,16 @@ final class RegisterViewController: ViewController<RegisterInteractorProtocol, U
     }()
     
     private lazy var inputsStackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [emailTextField, fullNameTextField, usernameTextField, passwordTextField, primaryButton, secondaryButton])
+        let stack = UIStackView(arrangedSubviews: [fullNameTextField, usernameTextField, emailTextField, passwordTextField, primaryButton, secondaryButton])
         stack.axis = .vertical
         stack.spacing = 16
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
     
-    private lazy var emailTextField: TextField = {
-        let textField = TextField()
-        textField.render(.standard(placeholder: Layout.Texts.emailPlaceholder, keyboardType: .emailAddress))
-        textField.validations = [EmailValidation()]
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        return textField
-    }()
-    
     private lazy var fullNameTextField: TextField = {
         let textField = TextField()
-        textField.render(.standard(placeholder: Layout.Texts.fullNamePlaceholder, autocapitalizationType: .words))
+        textField.render(.standard(placeholder: Layout.Texts.fullNamePlaceholder, autocapitalizationType: .words, textContentType: .name))
         textField.validations = [FullNameValidation()]
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -76,6 +68,14 @@ final class RegisterViewController: ViewController<RegisterInteractorProtocol, U
         let textField = TextField()
         textField.render(.standard(placeholder: Layout.Texts.usernamePlaceholder, textLength: 32))
         textField.validations = [UsernameValidation()]
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    private lazy var emailTextField: TextField = {
+        let textField = TextField()
+        textField.render(.standard(placeholder: Layout.Texts.emailPlaceholder, keyboardType: .emailAddress, textContentType: .emailAddress))
+        textField.validations = [EmailValidation()]
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()

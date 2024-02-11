@@ -1,6 +1,6 @@
 import UIKit
-import struct GalleryKit.MediaVideo
 import RealmSwift
+import struct GalleryKit.MediaVideo
 
 protocol ChatInteractorProtocol: AnyObject {
     func loadChatMessages()

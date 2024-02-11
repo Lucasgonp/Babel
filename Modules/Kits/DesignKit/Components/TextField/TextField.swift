@@ -160,6 +160,10 @@ public class TextField: UIView {
         feedbackView.isHidden = !dto.hasFeedback
         isHintAlwaysVisible = dto.isHintAlwaysVisible
         
+        if let textContentType = dto.textContentType {
+            self.textFieldInput.textContentType = textContentType
+        }
+        
         if let textLength = dto.textLength {
             self.textLengthLabel.isHidden = false
             self.textLength = textLength

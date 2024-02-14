@@ -1140,6 +1140,23 @@
         }
       }
     },
+    "No group description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No group description"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sem descrição"
+          }
+        }
+      }
+    },
     "No pending requests" : {
       "extractionState" : "manual",
       "localizations" : {

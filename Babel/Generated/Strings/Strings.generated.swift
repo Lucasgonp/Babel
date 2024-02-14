@@ -115,6 +115,8 @@ internal enum Strings {
     internal static let joinGroup = Strings.tr("Localizable", "GroupInfo.joinGroup", fallback: "Join group")
     /// Members
     internal static let members = Strings.tr("Localizable", "GroupInfo.members", fallback: "Members")
+    /// No group description
+    internal static let noGroupDescription = Strings.tr("Localizable", "GroupInfo.noGroupDescription", fallback: "No group description")
     /// You're no longer a member of this group
     internal static let noLongerMember = Strings.tr("Localizable", "GroupInfo.noLongerMember", fallback: "You're no longer a member of this group")
     /// No pending requests to join into your group, when someone request to join it will appear here

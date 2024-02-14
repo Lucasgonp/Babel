@@ -17,6 +17,8 @@ protocol ChatGroupDisplaying: AnyObject {
     func didUpdateGroupInfo(_ groupInfo: Group)
     func updateMessage(_ localMessage: LocalMessage)
     func audioNotGranted()
+    func endRefreshing()
+    func setLoading(_ show: Bool)
 }
 
 private extension ChatGroupViewController.Layout {
@@ -98,7 +100,7 @@ final class ChatGroupViewController: MessagesViewController {
     
     private(set) var mkMessages = [MKMessage]()
     
-    private var shouldLoadMoreMessages = false
+    private let refreshController = UIRefreshControl()
     private let currentUser = UserSafe.shared.user
     private let interactor: ChatGroupInteractor
     
@@ -194,18 +196,8 @@ final class ChatGroupViewController: MessagesViewController {
         return true
     }
     
-    override func scrollViewDidScroll(_: UIScrollView) {
-        var visibleRect = CGRect()
-        visibleRect.origin = messagesCollectionView.contentOffset
-        visibleRect.size = messagesCollectionView.bounds.size
-        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
-        
-        guard let indexPath = messagesCollectionView.indexPathForItem(at: visiblePoint) else {
-            return
-        }
-        
-        if indexPath.section <= 4 && shouldLoadMoreMessages && (dto.allLocalMessages?.count ?? 0) > dto.displayingMessagesCount {
-            shouldLoadMoreMessages = false
+    override func scrollViewDidEndDecelerating(_: UIScrollView) {
+        if refreshController.isRefreshing {
             interactor.refreshNewMessages()
         }
     }
@@ -258,8 +250,6 @@ extension ChatGroupViewController: ChatGroupDisplaying {
         mkMessages.append(mkMessage)
         messagesCollectionView.reloadData()
         messagesCollectionView.scrollToLastItem(animated: true)
-        
-        shouldLoadMoreMessages = true
     }
     
     func displayRefreshedMessages(_ localMessage: LocalMessage) {
@@ -267,14 +257,15 @@ extension ChatGroupViewController: ChatGroupDisplaying {
         mkMessages.insert(incoming.createMessage(localMessage: localMessage)!, at: 0)
         messagesCollectionView.reloadData()
         messagesCollectionView.scrollToLastItem(animated: true)
-        
-        shouldLoadMoreMessages = true
     }
     
     func refreshNewMessages() {
         messagesCollectionView.reloadDataAndKeepOffset()
-        
-        shouldLoadMoreMessages = true
+        refreshController.endRefreshing()
+    }
+    
+    func endRefreshing() {
+        refreshController.endRefreshing()
     }
     
     func updateTypingIndicator(_ isTyping: Bool) {
@@ -312,6 +303,14 @@ extension ChatGroupViewController: ChatGroupDisplaying {
         }
         alert.addAction(grantAction)
         present(alert, animated: true, completion: nil)
+    }
+    
+    func setLoading(_ show: Bool) {
+        if show {
+            showLoadingView()
+        } else {
+            dismissLoadingView()
+        }
     }
 }
 
@@ -356,6 +355,8 @@ private extension ChatGroupViewController {
         
         scrollsToLastItemOnKeyboardBeginsEditing = true
         maintainPositionOnInputBarHeightChanged = true
+        
+        messagesCollectionView.refreshControl = refreshController
     }
     
     func configureMessageInputBar() {

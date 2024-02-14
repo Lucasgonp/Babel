@@ -83,6 +83,7 @@
 "GroupInfo.groupNamePlaceholder" = "Group name";
 "GroupInfo.title" = "Group info";
 "GroupInfo.addGroupDescription" = "Add group description";
+"GroupInfo.noGroupDescription" = "No group description";
 "GroupInfo.members" = "Members";
 "GroupInfo.joinGroup" = "Join group";
 "GroupInfo.usersRequests" = "Users requests";

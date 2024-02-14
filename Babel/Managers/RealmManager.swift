@@ -10,7 +10,7 @@ final class RealmManager {
     func saveToRealm<T: Object>(_ object: T) {
         do {
             try realm.write { [weak self] in
-                self?.realm.add(object, update: .all)
+                self?.realm.add(object, update: .modified)
             }
         } catch {
             print("error saving realm: \(error.localizedDescription)")

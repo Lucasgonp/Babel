@@ -6,6 +6,8 @@ protocol ChatGroupPresenterProtocol: AnyObject {
     func didUpdateGroupInfo(_ groupInfo: Group)
     func updateMessage(_ localMessage: LocalMessage)
     func audioNotGranted()
+    func setLoading(_ show: Bool)
+    func endRefreshing()
     func didNextStep(action: ChatGroupAction)
 }
 
@@ -45,6 +47,14 @@ extension ChatGroupPresenter: ChatGroupPresenterProtocol {
     
     func audioNotGranted() {
         viewController?.audioNotGranted()
+    }
+    
+    func setLoading(_ show: Bool) {
+        viewController?.setLoading(show)
+    }
+    
+    func endRefreshing() {
+        viewController?.endRefreshing()
     }
     
     func didNextStep(action: ChatGroupAction) {

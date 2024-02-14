@@ -12,6 +12,8 @@ protocol ChatDisplaying: AnyObject {
     func updateTypingIndicator(_ isTyping: Bool)
     func updateMessage(_ localMessage: LocalMessage)
     func audioNotGranted()
+    func endRefreshing()
+    func setLoading(_ show: Bool)
 }
 
 private extension ChatViewController.Layout {
@@ -92,7 +94,7 @@ final class ChatViewController: MessagesViewController {
     
     private(set) var mkMessages = [MKMessage]()
     
-    private var shouldLoadMoreMessages = false
+    private let refreshController = UIRefreshControl()
     private let currentUser = UserSafe.shared.user
     private let interactor: ChatInteractorProtocol
     
@@ -183,18 +185,8 @@ final class ChatViewController: MessagesViewController {
         return true
     }
     
-    override func scrollViewDidScroll(_: UIScrollView) {
-        var visibleRect = CGRect()
-        visibleRect.origin = messagesCollectionView.contentOffset
-        visibleRect.size = messagesCollectionView.bounds.size
-        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
-        
-        guard let indexPath = messagesCollectionView.indexPathForItem(at: visiblePoint) else {
-            return
-        }
-        
-        if indexPath.section <= 4 && shouldLoadMoreMessages && (dto.allLocalMessages?.count ?? 0) > dto.displayingMessagesCount {
-            shouldLoadMoreMessages = false
+    override func scrollViewDidEndDecelerating(_: UIScrollView) {
+        if refreshController.isRefreshing {
             interactor.refreshNewMessages()
         }
     }
@@ -245,8 +237,6 @@ extension ChatViewController: ChatDisplaying {
             self.messagesCollectionView.reloadData()
             self.messagesCollectionView.scrollToLastItem(animated: true)
         }
-        
-        shouldLoadMoreMessages = true
     }
     
     func displayRefreshedMessages(_ localMessage: LocalMessage) {
@@ -261,9 +251,12 @@ extension ChatViewController: ChatDisplaying {
     func refreshNewMessages() {
         DispatchQueue.main.async {
             self.messagesCollectionView.reloadDataAndKeepOffset()
+            self.refreshController.endRefreshing()
         }
-        
-        shouldLoadMoreMessages = true
+    }
+    
+    func endRefreshing() {
+        refreshController.endRefreshing()
     }
     
     func updateTypingIndicator(_ isTyping: Bool) {
@@ -284,8 +277,6 @@ extension ChatViewController: ChatDisplaying {
                 self.messagesCollectionView.reloadData()
             }
         }
-        
-        shouldLoadMoreMessages = true
     }
     
     func audioNotGranted() {
@@ -298,6 +289,14 @@ extension ChatViewController: ChatDisplaying {
         }
         alert.addAction(grantAction)
         present(alert, animated: true, completion: nil)
+    }
+    
+    func setLoading(_ show: Bool) {
+        if show {
+            showLoadingView()
+        } else {
+            dismissLoadingView()
+        }
     }
 }
 
@@ -340,6 +339,8 @@ private extension ChatViewController {
         
         scrollsToLastItemOnKeyboardBeginsEditing = true
         maintainPositionOnInputBarHeightChanged = true
+        
+        messagesCollectionView.refreshControl = refreshController
     }
     
     func configureMessageInputBar() {

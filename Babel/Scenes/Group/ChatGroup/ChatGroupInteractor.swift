@@ -66,19 +66,23 @@ extension ChatGroupInteractor: ChatGroupInteractorProtocol {
             checkForOldChats()
         }
         
-        notificationToken = dto.allLocalMessages?.observe({ [weak self] (changes: RealmCollectionChange) in
-            guard let self else { return }
-            switch changes {
-            case .initial:
-                self.insertMessages()
-            case let .update(_, _, insertions, _):
-                for index in insertions {
-                    self.insertMessage(self.dto.allLocalMessages![index])
+        DispatchQueue.global().async {
+            self.notificationToken = self.dto.allLocalMessages?.observe({ [weak self] (changes: RealmCollectionChange) in
+                guard let self else { return }
+                DispatchQueue.main.async {
+                    switch changes {
+                    case .initial:
+                        self.insertMessages()
+                    case let .update(_, _, insertions, _):
+                        for index in insertions {
+                            self.insertMessage(self.dto.allLocalMessages![index])
+                        }
+                    case let .error(error):
+                        fatalError("Error on new insertion \(error.localizedDescription)")
+                    }
                 }
-            case let .error(error):
-                fatalError("Error on new insertion \(error.localizedDescription)")
-            }
-        })
+            })
+        }
     }
     
     func registerObservers() {
@@ -135,6 +139,8 @@ extension ChatGroupInteractor: ChatGroupInteractorProtocol {
         if dto.displayingMessagesCount < dto.allLocalMessages?.count ?? 0 {
             loadMoreMessages(maxNumber: dto.maxMessageNumber, minNumber: dto.minMessageNumber)
             presenter.refreshNewMessages()
+        } else {
+            presenter.endRefreshing()
         }
     }
     
@@ -178,15 +184,21 @@ extension ChatGroupInteractor: ChatGroupInteractorProtocol {
 
 private extension ChatGroupInteractor {
     func checkForOldChats() {
-        fetchMessageWorker.getOldChats(documentId: currentUser.id, collectionId: dto.chatId) { result in
-            switch result {
-            case var .success(messages):
-                messages.sort(by: { $0.date < $1.date })
-                messages.forEach({ RealmManager.shared.saveToRealm($0) })
-                
-            case let .failure(error):
-                print("Error getting older chat: \(error.localizedDescription)")
-                return
+        
+        DispatchQueue.global().async {
+            self.fetchMessageWorker.getOldChats(documentId: self.currentUser.id, collectionId: self.dto.chatId) { result in
+                switch result {
+                case var .success(messages):
+                    DispatchQueue.main.async {
+                        messages.sort(by: { $0.date < $1.date })
+                        messages.forEach({
+                            RealmManager.shared.saveToRealm($0)
+                        })
+                    }
+                case let .failure(error):
+                    print("Error getting older chat: \(error.localizedDescription)")
+                    return
+                }
             }
         }
     }

@@ -19,6 +19,7 @@ private extension GroupInfoViewController.Layout {
         static let title = Strings.GroupInfo.title.localized()
         static let members = Strings.GroupInfo.members.localized()
         static let addGroupDescription = Strings.GroupInfo.addGroupDescription.localized()
+        static let description = Strings.Commons.description.localized()
         static let sendMessage = Strings.Commons.sendMessage.localized()
         static let requestToJoin = Strings.GroupInfo.requestToJoin.localized()
         static let requestSent = Strings.GroupInfo.requestSent.localized()
@@ -231,7 +232,7 @@ extension GroupInfoViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 1:
-            return Strings.Commons.description
+            return Layout.Texts.description
         case 3:
             return Layout.Texts.members
         default:

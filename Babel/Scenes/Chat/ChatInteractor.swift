@@ -63,6 +63,7 @@ extension ChatInteractor: ChatInteractorProtocol {
         }
         
         notificationToken = dto.allLocalMessages?.observe({ [weak self] (changes: RealmCollectionChange) in
+            print("notificationToken: \(Date())")
             guard let self else { return }
             switch changes {
             case .initial:
@@ -120,6 +121,8 @@ extension ChatInteractor: ChatInteractorProtocol {
         if dto.displayingMessagesCount < dto.allLocalMessages?.count ?? 0 {
             loadMoreMessages(maxNumber: dto.maxMessageNumber, minNumber: dto.minMessageNumber)
             presenter.refreshNewMessages()
+        } else {
+            presenter.endRefreshing()
         }
     }
     
@@ -229,15 +232,22 @@ private extension ChatInteractor {
     }
     
     func checkForOldChats() {
-        fetchMessageWorker.getOldChats(documentId: currentUser.id, collectionId: dto.chatId) { result in
-            switch result {
-            case var .success(messages):
-                messages.sort(by: { $0.date < $1.date })
-                messages.forEach({ RealmManager.shared.saveToRealm($0) })
-                
-            case let .failure(error):
-                print("Error getting older chat: \(error.localizedDescription)")
-                return
+        presenter.setLoading(true)
+        DispatchQueue.global().async {
+            self.fetchMessageWorker.getOldChats(documentId: self.currentUser.id, collectionId: self.dto.chatId) { [weak self] result in
+                print("checkForOldChats: \(Date())")
+                switch result {
+                case var .success(messages):
+                    DispatchQueue.main.async {
+                        messages.sort(by: { $0.date < $1.date })
+                        messages.forEach({ RealmManager.shared.saveToRealm($0) })
+                        self?.presenter.setLoading(false)
+                    }
+                    
+                case let .failure(error):
+                    print("Error getting older chat: \(error.localizedDescription)")
+                    return
+                }
             }
         }
     }

@@ -112,6 +112,7 @@ final class ChatViewController: MessagesViewController {
     }
     
     deinit {
+        interactor.clearTypingIndicator()
         interactor.removeListeners()
     }
     
@@ -134,7 +135,6 @@ final class ChatViewController: MessagesViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        interactor.resetTypingIndicator()
         audioController.stopAnyOngoingPlaying()
         
         let appearance = UINavigationBarAppearance()

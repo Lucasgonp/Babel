@@ -11,7 +11,7 @@ protocol ChatInteractorProtocol: AnyObject {
     func didTapOnContactInfo()
     func registerObservers()
     func removeListeners()
-    func resetTypingIndicator()
+    func clearTypingIndicator()
     func audioRecording(_ status: RecordingState)
 }
 
@@ -56,26 +56,14 @@ final class ChatInteractor {
 extension ChatInteractor: ChatInteractorProtocol {
     func loadChatMessages() {
         let predicate = NSPredicate(format: "chatRoomId = %@", dto.chatId)
-        dto.allLocalMessages = RealmManager.shared.realm.objects(LocalMessage.self).filter(predicate).sorted(byKeyPath: kDATE, ascending: true)
+        let messages = RealmManager.shared.realm.objects(LocalMessage.self)
+        dto.allLocalMessages = messages.filter(predicate).sorted(byKeyPath: kDATE, ascending: true)
         
         if dto.allLocalMessages?.isEmpty == true {
             checkForOldChats()
+        } else {
+            addMessageListener()
         }
-        
-        notificationToken = dto.allLocalMessages?.observe({ [weak self] (changes: RealmCollectionChange) in
-            print("notificationToken: \(Date())")
-            guard let self else { return }
-            switch changes {
-            case .initial:
-                self.insertMessages()
-            case let .update(_, _, insertions, _):
-                for index in insertions {
-                    self.insertMessage(self.dto.allLocalMessages![index])
-                }
-            case let .error(error):
-                fatalError("Error on new insertion \(error.localizedDescription)")
-            }
-        })
     }
     
     func sendMessage(message: OutgoingMessage) {
@@ -136,6 +124,7 @@ extension ChatInteractor: ChatInteractorProtocol {
     }
     
     func removeListeners() {
+        notificationToken?.invalidate()
         chatListenerWorker.removeListeners()
     }
     
@@ -177,12 +166,28 @@ extension ChatInteractor: ChatInteractorProtocol {
         }
     }
     
-    func resetTypingIndicator() {
-        typingCounterStop()
+    func clearTypingIndicator() {
+        ChatHelper.shared.saveTypingCounter(isTyping: false, chatRoomId: dto.chatId)
     }
 }
 
 private extension ChatInteractor {
+    func addMessageListener() {
+        notificationToken = dto.allLocalMessages?.observe({ [weak self] (changes: RealmCollectionChange) in
+            guard let self else { return }
+            switch changes {
+            case .initial:
+                self.insertMessages()
+            case let .update(_, _, insertions, _):
+                for index in insertions {
+                    self.insertMessage(self.dto.allLocalMessages![index])
+                }
+            case let .error(error):
+                fatalError("Error on new insertion \(error.localizedDescription)")
+            }
+        })
+    }
+    
     func listenForNewChats() {
         let date = dto.allLocalMessages?.last?.date ?? Date()
         let lastMessageDate = Calendar.current.date(byAdding: .second, value: 1, to: date) ?? date
@@ -233,15 +238,17 @@ private extension ChatInteractor {
     
     func checkForOldChats() {
         presenter.setLoading(true)
+        print("checkForOldChats: start - \(Date())")
         DispatchQueue.global().async {
             self.fetchMessageWorker.getOldChats(documentId: self.currentUser.id, collectionId: self.dto.chatId) { [weak self] result in
-                print("checkForOldChats: \(Date())")
+                print("checkForOldChats: stop - \(Date())")
                 switch result {
                 case var .success(messages):
                     DispatchQueue.main.async {
                         messages.sort(by: { $0.date < $1.date })
-                        messages.forEach({ RealmManager.shared.saveToRealm($0) })
+                        RealmManager.shared.saveToRealm(messages)
                         self?.presenter.setLoading(false)
+                        self?.addMessageListener()
                     }
                     
                 case let .failure(error):

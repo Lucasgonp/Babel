@@ -10,6 +10,7 @@ protocol ChatGroupInteractorProtocol: AnyObject {
     func refreshNewMessages()
     func updateTypingObserver()
     func didTapOnGroupInfo()
+    func clearTypingIndicator()
     func audioRecording(_ status: RecordingState)
 }
 
@@ -64,24 +65,8 @@ extension ChatGroupInteractor: ChatGroupInteractorProtocol {
         
         if dto.allLocalMessages?.isEmpty == true {
             checkForOldChats()
-        }
-        
-        DispatchQueue.global().async {
-            self.notificationToken = self.dto.allLocalMessages?.observe({ [weak self] (changes: RealmCollectionChange) in
-                guard let self else { return }
-                DispatchQueue.main.async {
-                    switch changes {
-                    case .initial:
-                        self.insertMessages()
-                    case let .update(_, _, insertions, _):
-                        for index in insertions {
-                            self.insertMessage(self.dto.allLocalMessages![index])
-                        }
-                    case let .error(error):
-                        fatalError("Error on new insertion \(error.localizedDescription)")
-                    }
-                }
-            })
+        } else {
+            addMessageListener()
         }
     }
     
@@ -180,20 +165,39 @@ extension ChatGroupInteractor: ChatGroupInteractorProtocol {
             }
         }
     }
+    
+    func clearTypingIndicator() {
+        ChatHelper.shared.saveTypingCounter(isTyping: false, chatRoomId: dto.chatId)
+    }
 }
 
 private extension ChatGroupInteractor {
+    func addMessageListener() {
+        notificationToken = dto.allLocalMessages?.observe({ [weak self] (changes: RealmCollectionChange) in
+            guard let self else { return }
+            switch changes {
+            case .initial:
+                self.insertMessages()
+            case let .update(_, _, insertions, _):
+                for index in insertions {
+                    self.insertMessage(self.dto.allLocalMessages![index])
+                }
+            case let .error(error):
+                fatalError("Error on new insertion \(error.localizedDescription)")
+            }
+        })
+    }
+    
     func checkForOldChats() {
-        
         DispatchQueue.global().async {
-            self.fetchMessageWorker.getOldChats(documentId: self.currentUser.id, collectionId: self.dto.chatId) { result in
+            self.fetchMessageWorker.getOldChats(documentId: self.currentUser.id, collectionId: self.dto.chatId) { [weak self] result in
                 switch result {
                 case var .success(messages):
                     DispatchQueue.main.async {
                         messages.sort(by: { $0.date < $1.date })
-                        messages.forEach({
-                            RealmManager.shared.saveToRealm($0)
-                        })
+                        RealmManager.shared.saveToRealm(messages)
+                        self?.presenter.setLoading(false)
+                        self?.addMessageListener()
                     }
                 case let .failure(error):
                     print("Error getting older chat: \(error.localizedDescription)")
@@ -338,6 +342,7 @@ private extension ChatGroupInteractor {
     func typingCounterStop() {
         typingCounter -= 1
         if typingCounter == .zero {
+            //TODO: Move this to singleton
             chatTypingWorker.saveTypingCounter(isTyping: false, chatRoomId: dto.chatId)
         }
     }

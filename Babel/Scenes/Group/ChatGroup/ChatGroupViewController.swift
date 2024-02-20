@@ -118,6 +118,7 @@ final class ChatGroupViewController: MessagesViewController {
     }
     
     deinit {
+        interactor.clearTypingIndicator()
         interactor.removeListeners()
     }
     

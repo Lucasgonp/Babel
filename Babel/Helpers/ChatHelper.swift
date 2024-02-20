@@ -3,7 +3,9 @@ import StorageKit
 
 final class ChatHelper {
     static let shared = ChatHelper()
-    private let client: ChatHelperClientProtocol = FirebaseClient.shared
+    
+    typealias ClientProtocol = ChatHelperClientProtocol & ChatTypingProtocol
+    private let client: ClientProtocol = FirebaseClient.shared
     private let currentUser = UserSafe.shared.user
     
     private init() {}
@@ -30,5 +32,9 @@ final class ChatHelper {
     
     func saveRecent(id: String, recentChat: RecentChatModel) {
         client.saveRecent(id: id, recentChat: recentChat)
+    }
+    
+    func saveTypingCounter(isTyping: Bool, chatRoomId: String) {
+        client.saveTypingCounter(isTyping: isTyping, chatRoomId: chatRoomId, currentUserId: currentUser.id)
     }
 }
